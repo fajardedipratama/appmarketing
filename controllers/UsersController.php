@@ -8,6 +8,8 @@ use app\models\search\UsersSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
+use yii\helpers\ArrayHelper;
 
 /**
  * UsersController implements the CRUD actions for Users model.
@@ -20,6 +22,16 @@ class UsersController extends Controller
     public function behaviors()
     {
         return [
+            'access'=> [
+                'class'=>AccessControl::className(),
+                'only'=>['create','index','update','view'],
+                'rules'=>[
+                    [
+                        'allow'=>true,
+                        'roles'=>['@']
+                    ]
+                ]
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -65,9 +77,10 @@ class UsersController extends Controller
     public function actionCreate()
     {
         $model = new Users();
+        $model->scenario = 'create';
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['index']);
         }
 
         return $this->render('create', [
@@ -87,7 +100,7 @@ class UsersController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['index']);
         }
 
         return $this->render('update', [

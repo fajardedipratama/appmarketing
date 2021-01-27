@@ -7,38 +7,36 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\search\UsersSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Users';
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = 'User';
+
 ?>
 <div class="users-index">
+    <div class="row">
+        <div class="col-sm-10">
+            <h1><?= Html::encode($this->title) ?></h1>
+        </div>
+        <div class="col-sm-2">
+            <?= Html::a('<i class="fa fa-fw fa-plus-square"></i> Tambah Data', ['create'], ['class' => 'btn btn-success']) ?>
+        </div>
+    </div>
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <p>
-        <?= Html::a('Create Users', ['create'], ['class' => 'btn btn-warning']) ?>
-    </p>
-
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
+    <div class="box"><div class="box-body"><div class="table-responsive">
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
-            'id',
             'profilname',
             'username',
-            'password',
             'last_login',
-            //'authKey',
-            //'accessToken',
-            //'type',
-            //'blocked',
-
-            ['class' => 'yii\grid\ActionColumn'],
+            'type',
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'header'=> 'Aksi',
+                'template' => '{update} {delete}',
+            ],
         ],
     ]); ?>
-
+    </div></div></div>
 
 </div>

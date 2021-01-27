@@ -20,7 +20,7 @@ class SiteController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['logout'],
+                'only' => ['logout','gii'],
                 'rules' => [
                     [
                         'actions' => ['logout'],
@@ -62,7 +62,7 @@ class SiteController extends Controller
     public function actionIndex()
     {
         if (!Yii::$app->user->isGuest) {
-            return $this->render('index');
+            return $this->redirect(['/users']);
         }else{
             return $this->redirect(['site/login']);
         }
@@ -81,10 +81,14 @@ class SiteController extends Controller
 
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->render('index');
+            // lastLogin
+            Yii::$app->db->createCommand()->update('id_user',
+            ['last_login' => date('Y-m-d H:i:s')],
+            ['username'=>Yii::$app->user->identity->username])->execute();
+            //redirect
+            return $this->redirect(['/users']);
         }
 
-        $model->password = '';
         return $this->render('login', [
             'model' => $model,
         ]);
