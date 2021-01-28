@@ -5,10 +5,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Jobtitle */
 
-$this->title = 'Update Jobtitle: ' . $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Jobtitles', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->title = 'Ubah ' . $model->posisi;
+
 ?>
 <div class="jobtitle-update">
 

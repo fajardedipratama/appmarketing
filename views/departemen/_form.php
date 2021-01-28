@@ -11,13 +11,16 @@ use yii\widgets\ActiveForm;
 <div class="departemen-form">
 
     <?php $form = ActiveForm::begin(); ?>
-
-    <?= $form->field($model, 'id')->textInput() ?>
-
-    <?= $form->field($model, 'departemen')->textInput(['maxlength' => true]) ?>
+    <div class="box box-success"><div class="box-body">
+    	<div class="row">
+    		<div class="col-sm-4">
+    			<?= $form->field($model, 'departemen')->textInput(['maxlength' => true]) ?>
+    		</div>
+    	</div>
+    </div></div>
 
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Simpan', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

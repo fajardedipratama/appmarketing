@@ -40,8 +40,13 @@ class Jobtitle extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'posisi' => 'Posisi',
+            'posisi' => 'Jabatan',
             'departemen' => 'Departemen',
         ];
+    }
+
+    public function getDepartement()
+    {
+        return $this->hasOne(Departemen::className(), ['id' => 'departemen']);
     }
 }

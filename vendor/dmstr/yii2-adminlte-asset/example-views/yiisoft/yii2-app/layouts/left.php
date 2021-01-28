@@ -19,7 +19,7 @@
                 'options' => ['class' => 'sidebar-menu tree', 'data-widget'=> 'tree'],
                 'items' => [
                     [
-                        'label' => 'Karyawan',
+                        'label' => 'Manajemen SDM',
                         'icon' => 'user-secret',
                         'url' => '#',
                         'items' => [

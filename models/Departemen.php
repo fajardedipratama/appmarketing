@@ -26,8 +26,7 @@ class Departemen extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id', 'departemen'], 'required'],
-            [['id'], 'integer'],
+            [['departemen'], 'required'],
             [['departemen'], 'string', 'max' => 100],
         ];
     }

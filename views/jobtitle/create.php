@@ -5,9 +5,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Jobtitle */
 
-$this->title = 'Create Jobtitle';
-$this->params['breadcrumbs'][] = ['label' => 'Jobtitles', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = 'Tambah Jabatan';
+
 ?>
 <div class="jobtitle-create">
 

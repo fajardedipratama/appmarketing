@@ -5,9 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Departemen */
 
-$this->title = 'Create Departemen';
-$this->params['breadcrumbs'][] = ['label' => 'Departemens', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = 'Tambah Departemen';
 ?>
 <div class="departemen-create">
 

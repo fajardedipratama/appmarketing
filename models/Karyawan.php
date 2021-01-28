@@ -21,11 +21,12 @@ use Yii;
  * @property string $status_kawin
  * @property string $tanggal_masuk
  * @property int $posisi
- * @property int $departemen
+ * @property int|null $departemen
  * @property string $bank
- * @property int $no_rekening
+ * @property string $no_rekening
  * @property string $nama_rekening
- * @property int $status_aktif
+ * @property string $foto_karyawan
+ * @property string $status_aktif
  */
 class Karyawan extends \yii\db\ActiveRecord
 {
@@ -43,11 +44,12 @@ class Karyawan extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['badge', 'nama', 'gender', 'tempat_lahir', 'tanggal_lahir', 'no_hp', 'no_ktp', 'alamat_ktp', 'alamat_rumah', 'pendidikan', 'status_kawin', 'tanggal_masuk', 'posisi', 'departemen', 'bank', 'no_rekening', 'nama_rekening', 'status_aktif'], 'required'],
+            [['nama', 'gender', 'tempat_lahir', 'tanggal_lahir', 'no_hp', 'alamat_rumah', 'pendidikan', 'status_kawin', 'tanggal_masuk', 'posisi'], 'required'],
             [['tanggal_lahir', 'tanggal_masuk'], 'safe'],
-            [['posisi', 'departemen', 'no_rekening', 'status_aktif'], 'integer'],
-            [['badge', 'nama', 'gender', 'tempat_lahir', 'no_hp', 'no_ktp', 'pendidikan', 'status_kawin', 'bank', 'nama_rekening'], 'string', 'max' => 100],
+            [['posisi', 'departemen'], 'integer'],
+            [['badge', 'nama', 'gender', 'tempat_lahir', 'no_hp', 'no_ktp', 'pendidikan', 'status_kawin', 'bank','no_rekening',  'nama_rekening', 'status_aktif'], 'string', 'max' => 100],
             [['alamat_ktp', 'alamat_rumah'], 'string', 'max' => 1000],
+             [['foto_karyawan'], 'file', 'extensions' => 'png, jpg, jpeg','mimeTypes'=>'image/jpeg,image/png', 'maxSize'=>1048576,'skipOnEmpty'=>true],
             [['badge'], 'unique'],
             [['no_ktp'], 'unique'],
         ];
@@ -60,24 +62,25 @@ class Karyawan extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'badge' => 'Badge',
-            'nama' => 'Nama',
-            'gender' => 'Gender',
+            'badge' => 'NIP',
+            'nama' => 'Nama Lengkap',
+            'gender' => 'Jenis Kelamin',
             'tempat_lahir' => 'Tempat Lahir',
             'tanggal_lahir' => 'Tanggal Lahir',
-            'no_hp' => 'No Hp',
-            'no_ktp' => 'No Ktp',
-            'alamat_ktp' => 'Alamat Ktp',
-            'alamat_rumah' => 'Alamat Rumah',
+            'no_hp' => 'No.HP',
+            'no_ktp' => 'No.KTP',
+            'alamat_ktp' => 'Alamat KTP',
+            'alamat_rumah' => 'Alamat Tempat Tinggal',
             'pendidikan' => 'Pendidikan',
-            'status_kawin' => 'Status Kawin',
+            'status_kawin' => 'Status Nikah',
             'tanggal_masuk' => 'Tanggal Masuk',
-            'posisi' => 'Posisi',
+            'posisi' => 'Jabatan',
             'departemen' => 'Departemen',
             'bank' => 'Bank',
-            'no_rekening' => 'No Rekening',
+            'no_rekening' => 'No. Rekening',
             'nama_rekening' => 'Nama Rekening',
-            'status_aktif' => 'Status Aktif',
+            'foto_karyawan' => 'Foto Karyawan',
+            'status_aktif' => 'Status Karyawan',
         ];
     }
 }

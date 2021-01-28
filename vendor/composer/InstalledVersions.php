@@ -24,16 +24,25 @@ class InstalledVersions
 private static $installed = array (
   'root' => 
   array (
-    'pretty_version' => '1.0.0+no-version-set',
-    'version' => '1.0.0.0',
+    'pretty_version' => 'dev-master',
+    'version' => 'dev-master',
     'aliases' => 
     array (
     ),
-    'reference' => NULL,
+    'reference' => 'f86e04c55ab2c15bd5c6a68f4a197e843037d6da',
     'name' => 'yiisoft/yii2-app-basic',
   ),
   'versions' => 
   array (
+    '2amigos/yii2-date-picker-widget' => 
+    array (
+      'pretty_version' => '1.0.7',
+      'version' => '1.0.7.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'd09c2444e8c2329e38528bba77002dd65186c1ff',
+    ),
     'almasaeed2010/adminlte' => 
     array (
       'pretty_version' => 'v2.4.18',
@@ -60,6 +69,15 @@ private static $installed = array (
       array (
       ),
       'reference' => '68b0d231a13201eb14acd3dc84e51543d16e5f7e',
+    ),
+    'bower-asset/bootstrap-datepicker' => 
+    array (
+      'pretty_version' => 'v1.7.0',
+      'version' => '1.7.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'd364be5b066b38f3675a5a1dc174ce1ab1f3360e',
     ),
     'bower-asset/inputmask' => 
     array (
@@ -815,12 +833,12 @@ private static $installed = array (
     ),
     'yiisoft/yii2-app-basic' => 
     array (
-      'pretty_version' => '1.0.0+no-version-set',
-      'version' => '1.0.0.0',
+      'pretty_version' => 'dev-master',
+      'version' => 'dev-master',
       'aliases' => 
       array (
       ),
-      'reference' => NULL,
+      'reference' => 'f86e04c55ab2c15bd5c6a68f4a197e843037d6da',
     ),
     'yiisoft/yii2-bootstrap' => 
     array (
