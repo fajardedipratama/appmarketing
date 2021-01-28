@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 27 Jan 2021 pada 10.42
+-- Waktu pembuatan: 28 Jan 2021 pada 10.44
 -- Versi server: 10.4.17-MariaDB
 -- Versi PHP: 8.0.0
 
@@ -32,6 +32,14 @@ CREATE TABLE `id_departemen` (
   `departemen` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data untuk tabel `id_departemen`
+--
+
+INSERT INTO `id_departemen` (`id`, `departemen`) VALUES
+(1, 'Manajemen'),
+(2, 'Marketing');
+
 -- --------------------------------------------------------
 
 --
@@ -43,6 +51,18 @@ CREATE TABLE `id_jobtitle` (
   `posisi` varchar(100) NOT NULL,
   `departemen` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `id_jobtitle`
+--
+
+INSERT INTO `id_jobtitle` (`id`, `posisi`, `departemen`) VALUES
+(1, 'Kepala Cabang', 1),
+(2, 'Keuangan', 1),
+(3, 'IT', 1),
+(4, 'Operasional', 1),
+(5, 'Collector', 1),
+(6, 'Telemarketing', 2);
 
 -- --------------------------------------------------------
 
@@ -65,11 +85,12 @@ CREATE TABLE `id_karyawan` (
   `status_kawin` varchar(100) NOT NULL,
   `tanggal_masuk` date NOT NULL,
   `posisi` int(11) NOT NULL,
-  `departemen` int(11) NOT NULL,
+  `departemen` int(11) DEFAULT NULL,
   `bank` varchar(100) NOT NULL,
-  `no_rekening` int(11) NOT NULL,
+  `no_rekening` varchar(100) NOT NULL,
   `nama_rekening` varchar(100) NOT NULL,
-  `status_aktif` int(11) NOT NULL
+  `foto_karyawan` varchar(100) NOT NULL,
+  `status_aktif` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -95,7 +116,7 @@ CREATE TABLE `id_user` (
 --
 
 INSERT INTO `id_user` (`id`, `profilname`, `username`, `password`, `last_login`, `authKey`, `accessToken`, `type`, `blocked`) VALUES
-(1, 'Administrator', 'admin', '$2y$13$EhqRr1x2O4bmj7FJchJxIOyHfBk6x2cSRfiUEBswHcJwaeI8J6Nki', '2021-01-27 16:34:00', '21232f297a57a5a743894a0e4a801fc3', '21232f297a57a5a743894a0e4a801fc3', 'Administrator', '');
+(1, 'Administrator', 'admin', '$2y$13$EhqRr1x2O4bmj7FJchJxIOyHfBk6x2cSRfiUEBswHcJwaeI8J6Nki', '2021-01-28 13:29:20', '21232f297a57a5a743894a0e4a801fc3', '21232f297a57a5a743894a0e4a801fc3', 'Administrator', '');
 
 --
 -- Indexes for dumped tables
@@ -136,13 +157,13 @@ ALTER TABLE `id_user`
 -- AUTO_INCREMENT untuk tabel `id_departemen`
 --
 ALTER TABLE `id_departemen`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `id_jobtitle`
 --
 ALTER TABLE `id_jobtitle`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `id_karyawan`
