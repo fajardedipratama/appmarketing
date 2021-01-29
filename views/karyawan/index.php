@@ -27,7 +27,10 @@ $this->title = 'Data Karyawan';
             'badge',
             'nama',
             'no_hp',
-            'posisi',
+            [
+                'attribute' => 'posisi',
+                'value' => 'jobtitle.posisi'
+            ],
             ['header'=>'Aksi','class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>

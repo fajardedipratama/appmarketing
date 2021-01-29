@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 28 Jan 2021 pada 10.44
+-- Waktu pembuatan: 29 Jan 2021 pada 10.38
 -- Versi server: 10.4.17-MariaDB
 -- Versi PHP: 8.0.0
 
@@ -77,6 +77,7 @@ CREATE TABLE `id_karyawan` (
   `gender` varchar(100) NOT NULL,
   `tempat_lahir` varchar(100) NOT NULL,
   `tanggal_lahir` date NOT NULL,
+  `agama` varchar(100) NOT NULL,
   `no_hp` varchar(100) NOT NULL,
   `no_ktp` varchar(100) NOT NULL,
   `alamat_ktp` varchar(1000) NOT NULL,
@@ -92,6 +93,13 @@ CREATE TABLE `id_karyawan` (
   `foto_karyawan` varchar(100) NOT NULL,
   `status_aktif` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `id_karyawan`
+--
+
+INSERT INTO `id_karyawan` (`id`, `badge`, `nama`, `gender`, `tempat_lahir`, `tanggal_lahir`, `agama`, `no_hp`, `no_ktp`, `alamat_ktp`, `alamat_rumah`, `pendidikan`, `status_kawin`, `tanggal_masuk`, `posisi`, `departemen`, `bank`, `no_rekening`, `nama_rekening`, `foto_karyawan`, `status_aktif`) VALUES
+(1, '6', 'Alisiaodha Qurnia Yaasintya', 'Perempuan', 'Surabaya', '1998-03-31', 'Islam', '081244285595', '3578087103980001', 'Jalan Lebak Rejo Utara 3/59 Surabaya', 'Jalan Lebak Rejo Utara 3/59 Surabaya', 'D4/S1', 'Belum Menikah', '2021-01-04', 6, NULL, 'BCA', '6750617407', 'Alisiaodha Qurnia Yaasintya', '6013d63cd5a93IMG20210129135148-min.jpg', 'Aktif');
 
 -- --------------------------------------------------------
 
@@ -116,7 +124,7 @@ CREATE TABLE `id_user` (
 --
 
 INSERT INTO `id_user` (`id`, `profilname`, `username`, `password`, `last_login`, `authKey`, `accessToken`, `type`, `blocked`) VALUES
-(1, 'Administrator', 'admin', '$2y$13$EhqRr1x2O4bmj7FJchJxIOyHfBk6x2cSRfiUEBswHcJwaeI8J6Nki', '2021-01-28 13:29:20', '21232f297a57a5a743894a0e4a801fc3', '21232f297a57a5a743894a0e4a801fc3', 'Administrator', '');
+(1, 'Administrator', 'admin', '$2y$13$EhqRr1x2O4bmj7FJchJxIOyHfBk6x2cSRfiUEBswHcJwaeI8J6Nki', '2021-01-29 13:11:43', '21232f297a57a5a743894a0e4a801fc3', '21232f297a57a5a743894a0e4a801fc3', 'Administrator', '');
 
 --
 -- Indexes for dumped tables
@@ -169,7 +177,7 @@ ALTER TABLE `id_jobtitle`
 -- AUTO_INCREMENT untuk tabel `id_karyawan`
 --
 ALTER TABLE `id_karyawan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `id_user`

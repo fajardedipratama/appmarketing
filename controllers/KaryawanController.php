@@ -4,11 +4,12 @@ namespace app\controllers;
 
 use Yii;
 use app\models\Karyawan;
-use yii\data\ActiveDataProvider;
+use app\models\search\KaryawanSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
+use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * KaryawanController implements the CRUD actions for Karyawan model.
@@ -46,11 +47,11 @@ class KaryawanController extends Controller
      */
     public function actionIndex()
     {
-        $dataProvider = new ActiveDataProvider([
-            'query' => Karyawan::find(),
-        ]);
+        $searchModel = new KaryawanSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
+            'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
     }
@@ -77,7 +78,25 @@ class KaryawanController extends Controller
     {
         $model = new Karyawan();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post())) 
+        {
+            //process
+            $model->tanggal_lahir=Yii::$app->formatter->asDate($_POST['Karyawan']['tanggal_lahir'],'yyyy-MM-dd');
+            $model->tanggal_masuk=Yii::$app->formatter->asDate($_POST['Karyawan']['tanggal_masuk'],'yyyy-MM-dd');
+
+            $uploadedFile = UploadedFile::getInstance($model, 'foto_karyawan');
+            if(!empty($uploadedFile))
+            {
+                $fileName= uniqid()."{$uploadedFile}";
+                $model->foto_karyawan=$fileName;
+                if($model->save()){
+                    $uploadedFile->saveAs('photos/employee/'.$fileName);
+                }
+            }
+            else
+            {
+                $model->save();
+            }
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
@@ -97,7 +116,28 @@ class KaryawanController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post())) {
+            //process
+            $model->tanggal_lahir=Yii::$app->formatter->asDate($_POST['Karyawan']['tanggal_lahir'],'yyyy-MM-dd');
+            $model->tanggal_masuk=Yii::$app->formatter->asDate($_POST['Karyawan']['tanggal_masuk'],'yyyy-MM-dd');
+            
+            $uploadedFile = UploadedFile::getInstance($model, 'foto_karyawan');
+            $query=Karyawan::findOne($id);
+            $current_file=$query->foto_karyawan;
+            if(!empty($uploadedFile))
+            {
+                $fileName= uniqid()."{$uploadedFile}";
+                $model->foto_karyawan=$fileName;
+                
+                if($model->save()){
+                    $uploadedFile->saveAs('photos/employee/'.$fileName);
+                }
+            }
+            else
+            {
+                $model->foto_karyawan=$current_file;
+                $model->save();
+            }
             return $this->redirect(['view', 'id' => $model->id]);
         }
 

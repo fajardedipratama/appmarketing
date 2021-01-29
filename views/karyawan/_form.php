@@ -26,6 +26,10 @@ use app\models\Jobtitle;
             <?= $form->field($model, 'gender')->dropDownList(['Laki-Laki'=>'Laki-Laki','Perempuan'=>'Perempuan'],['prompt'=>'--Jenis Kelamin--']) ?>
         </div>
         <div class="col-sm-4">
+            <?= $form->field($model, 'agama')->dropDownList([
+                'Islam'=>'Islam','Katolik'=>'Katolik','Protestan'=>'Protestan','Buddha'=>'Buddha','Hindu'=>'Hindu','Konghucu'=>'Konghucu'],['prompt'=>'--Pilih Agama--']) ?>
+        </div>
+        <div class="col-sm-4">
             <?= $form->field($model, 'tempat_lahir')->textInput(['maxlength' => true]) ?>
         </div>
         <div class="col-sm-4">
@@ -48,6 +52,12 @@ use app\models\Jobtitle;
             <?= $form->field($model, 'no_hp')->textInput(['type'=>'number','maxlength' => true]) ?>
         </div>
         <div class="col-sm-4">
+            <?= $form->field($model, 'pendidikan')->dropDownList(['SMA/Sederajat'=>'SMA/Sederajat','D1/D2/D3'=>'D1/D2/D3','D4/S1'=>'D4/S1','S2'=>'S2','S3'=>'S3'],['prompt'=>'--Pendidikan Terakhir--']) ?>
+        </div>
+        <div class="col-sm-4">
+            <?= $form->field($model, 'status_kawin')->dropDownList(['Belum Menikah'=>'Belum Menikah','Menikah'=>'Menikah','Cerai'=>'Cerai'],['prompt'=>'--Status Nikah--']) ?>
+        </div>
+        <div class="col-sm-4">
             <?= $form->field($model, 'no_ktp')->textInput(['type'=>'number','maxlength' => true]) ?>
         </div>
         <div class="col-sm-4">
@@ -55,19 +65,6 @@ use app\models\Jobtitle;
         </div>
         <div class="col-sm-4">
             <?= $form->field($model, 'alamat_rumah')->textarea(['style' => 'resize:none','rows' => 3]) ?>
-        </div>
-        <div class="col-sm-4">
-            <?= $form->field($model, 'pendidikan')->dropDownList(['SMA/Sederajat'=>'SMA/Sederajat','D1/D2/D3'=>'D1/D2/D3','D4/S1'=>'D4/S1','S2'=>'S2','S3'=>'S3'],['prompt'=>'--Pendidikan Terakhir--']) ?>
-        </div>
-        <div class="col-sm-4">
-            <?= $form->field($model, 'status_kawin')->dropDownList(['Belum Menikah'=>'Belum Menikah','Menikah'=>'Menikah','Cerai'=>'Cerai'],['prompt'=>'--Status Nikah--']) ?>
-        </div>
-        <div class="col-sm-4">
-            <?= $form->field($model, 'foto_karyawan')->fileInput(); ?>
-            <?php if(!$model->isNewRecord): ?>
-                <small>*Jika tidak ada perubahan foto, kosongi field ini</small>
-            <?php endif; ?>
-            <p class="help-block">Format: JPG/JPEG/PNG max. 1 MB</p>
         </div>
     </div>
     <div class="row">
@@ -108,6 +105,13 @@ use app\models\Jobtitle;
         </div>
         <div class="col-sm-4">
             <?= $form->field($model, 'nama_rekening')->textInput(['maxlength' => true]) ?>
+        </div>
+        <div class="col-sm-4">
+            <?= $form->field($model, 'foto_karyawan')->fileInput(); ?>
+            <?php if(!$model->isNewRecord): ?>
+                <small>*Jika tidak ada perubahan foto, kosongi field ini</small>
+            <?php endif; ?>
+            <p class="help-block">Format: JPG/JPEG/PNG max. 1 MB</p>
         </div>
     </div>
     <br>

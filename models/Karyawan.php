@@ -13,6 +13,7 @@ use Yii;
  * @property string $gender
  * @property string $tempat_lahir
  * @property string $tanggal_lahir
+ * @property string $agama
  * @property string $no_hp
  * @property string $no_ktp
  * @property string $alamat_ktp
@@ -47,7 +48,7 @@ class Karyawan extends \yii\db\ActiveRecord
             [['nama', 'gender', 'tempat_lahir', 'tanggal_lahir', 'no_hp', 'alamat_rumah', 'pendidikan', 'status_kawin', 'tanggal_masuk', 'posisi'], 'required'],
             [['tanggal_lahir', 'tanggal_masuk'], 'safe'],
             [['posisi', 'departemen'], 'integer'],
-            [['badge', 'nama', 'gender', 'tempat_lahir', 'no_hp', 'no_ktp', 'pendidikan', 'status_kawin', 'bank','no_rekening',  'nama_rekening', 'status_aktif'], 'string', 'max' => 100],
+            [['badge', 'nama', 'gender', 'tempat_lahir', 'agama', 'no_hp', 'no_ktp', 'pendidikan', 'status_kawin', 'bank','no_rekening',  'nama_rekening', 'status_aktif'], 'string', 'max' => 100],
             [['alamat_ktp', 'alamat_rumah'], 'string', 'max' => 1000],
              [['foto_karyawan'], 'file', 'extensions' => 'png, jpg, jpeg','mimeTypes'=>'image/jpeg,image/png', 'maxSize'=>1048576,'skipOnEmpty'=>true],
             [['badge'], 'unique'],
@@ -67,6 +68,7 @@ class Karyawan extends \yii\db\ActiveRecord
             'gender' => 'Jenis Kelamin',
             'tempat_lahir' => 'Tempat Lahir',
             'tanggal_lahir' => 'Tanggal Lahir',
+            'agama' => 'Agama',
             'no_hp' => 'No.HP',
             'no_ktp' => 'No.KTP',
             'alamat_ktp' => 'Alamat KTP',
@@ -82,5 +84,9 @@ class Karyawan extends \yii\db\ActiveRecord
             'foto_karyawan' => 'Foto Karyawan',
             'status_aktif' => 'Status Karyawan',
         ];
+    }
+    public function getJobtitle()
+    {
+        return $this->hasOne(Jobtitle::className(), ['id' => 'posisi']);
     }
 }
