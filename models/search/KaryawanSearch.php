@@ -40,7 +40,7 @@ class KaryawanSearch extends Karyawan
      */
     public function search($params)
     {
-        $query = Karyawan::find();
+        $query = Karyawan::find()->where(['status_aktif'=>'Aktif']);
 
         // add conditions that should always apply here
 

@@ -27,7 +27,7 @@ use app\models\Jobtitle;
         </div>
         <div class="col-sm-4">
             <?= $form->field($model, 'agama')->dropDownList([
-                'Islam'=>'Islam','Katolik'=>'Katolik','Protestan'=>'Protestan','Buddha'=>'Buddha','Hindu'=>'Hindu','Konghucu'=>'Konghucu'],['prompt'=>'--Pilih Agama--']) ?>
+                'Islam'=>'Islam','Kristen'=>'Kristen','Buddha'=>'Buddha','Hindu'=>'Hindu','Konghucu'=>'Konghucu'],['prompt'=>'--Pilih Agama--']) ?>
         </div>
         <div class="col-sm-4">
             <?= $form->field($model, 'tempat_lahir')->textInput(['maxlength' => true]) ?>
@@ -93,10 +93,12 @@ use app\models\Jobtitle;
             ])?>
         </div>
         <div class="col-sm-4">
-            <?= $form->field($model, 'status_aktif')->dropDownList(['Aktif'=>'Aktif','Tidak Aktif'=>'Tidak Aktif']) ?>
+            <?= $form->field($model, 'foto_karyawan')->fileInput(); ?>
+            <?php if(!$model->isNewRecord): ?>
+                <small>*Jika tidak ada perubahan foto, kosongi field ini</small>
+            <?php endif; ?>
+            <p class="help-block">Format: JPG/JPEG/PNG max. 1 MB</p>
         </div>
-    </div>
-    <div class="row">
         <div class="col-sm-4">
             <?= $form->field($model, 'bank')->textInput(['readonly'=>true,'value'=>'BCA']) ?>
         </div>
@@ -105,13 +107,6 @@ use app\models\Jobtitle;
         </div>
         <div class="col-sm-4">
             <?= $form->field($model, 'nama_rekening')->textInput(['maxlength' => true]) ?>
-        </div>
-        <div class="col-sm-4">
-            <?= $form->field($model, 'foto_karyawan')->fileInput(); ?>
-            <?php if(!$model->isNewRecord): ?>
-                <small>*Jika tidak ada perubahan foto, kosongi field ini</small>
-            <?php endif; ?>
-            <p class="help-block">Format: JPG/JPEG/PNG max. 1 MB</p>
         </div>
     </div>
     <br>

@@ -83,6 +83,7 @@ class KaryawanController extends Controller
             //process
             $model->tanggal_lahir=Yii::$app->formatter->asDate($_POST['Karyawan']['tanggal_lahir'],'yyyy-MM-dd');
             $model->tanggal_masuk=Yii::$app->formatter->asDate($_POST['Karyawan']['tanggal_masuk'],'yyyy-MM-dd');
+            $model->status_aktif = 'Aktif';
 
             $uploadedFile = UploadedFile::getInstance($model, 'foto_karyawan');
             if(!empty($uploadedFile))

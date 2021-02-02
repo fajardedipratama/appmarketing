@@ -3,6 +3,7 @@ use yii\helpers\Html;
 
 /* @var $this \yii\web\View */
 /* @var $content string */
+
 ?>
 
 <header class="main-header" style="position: fixed;">
@@ -23,18 +24,24 @@ use yii\helpers\Html;
 
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <?php if(Yii::$app->user->identity->type === 'Administrator'): ?>
+                        <img src="photos/user-admin.png" class="user-image" alt="User Image"/>
+                    <?php else: ?>
                         <img src="<?= $directoryAsset ?>/img/user2-160x160.jpg" class="user-image" alt="User Image"/>
-                        <span class="hidden-xs">Alexander Pierce</span>
+                    <?php endif; ?>
+                        <span class="hidden-xs"><?= Yii::$app->user->identity->profilname ?></span>
                     </a>
                     <ul class="dropdown-menu">
                         <!-- User image -->
                         <li class="user-header">
-                            <img src="<?= $directoryAsset ?>/img/user2-160x160.jpg" class="img-circle"
-                                 alt="User Image"/>
-
+                            <?php if(Yii::$app->user->identity->type === 'Administrator'): ?>
+                                <img src="photos/user-admin.png" class="img-circle" alt="User Image"/>
+                            <?php else: ?>
+                                <img src="<?= $directoryAsset ?>/img/user2-160x160.jpg" class="img-circle" alt="User Image"/>
+                            <?php endif; ?>
                             <p>
-                                Alexander Pierce - Web Developer
-                                <small>Member since Nov. 2012</small>
+                                <?= Yii::$app->user->identity->profilname ?>
+                                <small>@<?= Yii::$app->user->identity->username ?></small>
                             </p>
                         </li>
                         <!-- Menu Body -->
