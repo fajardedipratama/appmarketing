@@ -8,6 +8,7 @@ use app\models\search\ExkaryawanSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 
 /**
  * ExkaryawanController implements the CRUD actions for Exkaryawan model.
@@ -20,6 +21,16 @@ class ExkaryawanController extends Controller
     public function behaviors()
     {
         return [
+            'access'=> [
+                'class'=>AccessControl::className(),
+                'only'=>['create','index','update','view'],
+                'rules'=>[
+                    [
+                        'allow'=>true,
+                        'roles'=>['@']
+                    ]
+                ]
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [

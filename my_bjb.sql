@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 02 Feb 2021 pada 10.34
+-- Waktu pembuatan: 03 Feb 2021 pada 10.51
 -- Versi server: 10.4.17-MariaDB
 -- Versi PHP: 8.0.0
 
@@ -124,7 +124,8 @@ INSERT INTO `id_karyawan` (`id`, `badge`, `nama`, `gender`, `tempat_lahir`, `tan
 (10, 13, 'Sugeng Hariadi', 'Laki-Laki', 'Surabaya', '1977-09-17', 'Islam', '087760051770', '3578161709770010', 'Jalan Banyu Urip Kidul 7-A / 61 Sby\r\n', 'Jalan Banyu Urip Kidul 7-A / 61 Sby\r\n', 'D4/S1', 'Menikah', '2021-01-04', 6, NULL, 'BCA', '3630091461', 'Sugeng Hariadi', '6018dc5b8b2e2sugeng.jpg', 'Aktif'),
 (11, 10, 'Nia Hidayatul Rovitasari', 'Perempuan', 'Surabaya', '1996-03-04', 'Islam', '081334446671', '3578044403960006', 'Jalan Kendangsari 4 / XI-A Surabaya\r\n', 'Jalan Kendangsari 4 / XI-A Surabaya\r\n', 'SMA/Sederajat', 'Belum Menikah', '2021-01-11', 6, NULL, 'BCA', '8221129644', 'Nia Hidayatul Rovitasari', '6018f3e2af758nia.jpg', 'Aktif'),
 (12, 11, 'Risza Hanhamdani', 'Laki-Laki', 'Surabaya', '1976-07-15', 'Islam', '082132329911', '3578031507760003', 'Jalan Penjaringan Asri XV / 36 Sby\r\n', 'Jalan Penjaringan Asri XV / 36 Sby\r\n', 'D4/S1', 'Menikah', '2021-01-04', 6, NULL, 'BCA', '6750471810', 'Irfaniah', '6018f5c03a227risza.jpg', 'Aktif'),
-(13, 12, 'Rona Emeiliyandari', 'Perempuan', 'Surabaya', '1982-05-13', 'Islam', '085546244639', '3578017005820001', 'Jalan Griya Kebraon Utara IX / AN - 14 Sby\r\n', 'Jalan Griya Kebraon Utara IX / AN - 14 Sby\r\n', 'SMA/Sederajat', 'Cerai', '2021-01-12', 6, NULL, 'BCA', '2710803300', 'Rona Emeiliyandari', '6018f68606e4drona.jpg', 'Aktif');
+(13, 12, 'Rona Emeiliyandari', 'Perempuan', 'Surabaya', '1982-05-13', 'Islam', '085546244639', '3578017005820001', 'Jalan Griya Kebraon Utara IX / AN - 14 Sby\r\n', 'Jalan Griya Kebraon Utara IX / AN - 14 Sby\r\n', 'SMA/Sederajat', 'Cerai', '2021-01-12', 6, NULL, 'BCA', '2710803300', 'Rona Emeiliyandari', '6018f68606e4drona.jpg', 'Aktif'),
+(15, 15, 'tes', 'Laki-Laki', 'Surabaya', '1998-03-31', '', '0999', '', '', 'sby', '', '', '2021-01-04', 6, NULL, 'BCA', '', '', '', 'Aktif');
 
 -- --------------------------------------------------------
 
@@ -149,7 +150,7 @@ CREATE TABLE `id_user` (
 --
 
 INSERT INTO `id_user` (`id`, `profilname`, `username`, `password`, `last_login`, `authKey`, `accessToken`, `type`, `blocked`) VALUES
-(1, 'Administrator', 'admin', '$2y$13$EhqRr1x2O4bmj7FJchJxIOyHfBk6x2cSRfiUEBswHcJwaeI8J6Nki', '2021-02-02 10:59:54', '21232f297a57a5a743894a0e4a801fc3', '21232f297a57a5a743894a0e4a801fc3', 'Administrator', '');
+(1, 'Administrator', 'admin', '$2y$13$EhqRr1x2O4bmj7FJchJxIOyHfBk6x2cSRfiUEBswHcJwaeI8J6Nki', '2021-02-03 13:11:49', '21232f297a57a5a743894a0e4a801fc3', '21232f297a57a5a743894a0e4a801fc3', 'Administrator', '');
 
 --
 -- Indexes for dumped tables
@@ -215,7 +216,7 @@ ALTER TABLE `id_jobtitle`
 -- AUTO_INCREMENT untuk tabel `id_karyawan`
 --
 ALTER TABLE `id_karyawan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT untuk tabel `id_user`

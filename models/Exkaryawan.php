@@ -14,6 +14,7 @@ use Yii;
  */
 class Exkaryawan extends \yii\db\ActiveRecord
 {
+    public $nama_karyawan;
     /**
      * {@inheritdoc}
      */
@@ -45,7 +46,8 @@ class Exkaryawan extends \yii\db\ActiveRecord
             'id' => 'ID',
             'badge' => 'Badge',
             'alasan' => 'Alasan',
-            'tgl_resign' => 'Tgl Resign',
+            'tgl_resign' => 'Tanggal Resign',
+            'nama_karyawan' => 'Nama Karyawan',
         ];
     }
 }

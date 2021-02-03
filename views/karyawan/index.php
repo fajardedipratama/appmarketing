@@ -34,7 +34,20 @@ $this->title = 'Data Karyawan';
             ],
             [
                 'header'=>'Aksi','class' => 'yii\grid\ActionColumn',
-                'template' => '{view} {update}'
+                'template' => '{view} {update} {resign}',
+                'buttons'=>
+                [
+                    'resign'=>function($url,$model)
+                    {
+                    return Html::a
+                     (
+                        '<span class="glyphicon glyphicon-minus-sign"></span>',
+                        ["exkaryawan/create",'id'=>$model->id],
+                        ['title' => Yii::t('app', 'Nonaktifkan')]
+                     );
+                    },
+
+                ],
             ],
         ],
     ]); ?>
