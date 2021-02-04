@@ -77,8 +77,16 @@ class ExkaryawanController extends Controller
     {
         $model = new Exkaryawan();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post())) {
+            $model->tgl_resign=Yii::$app->formatter->asDate($_POST['Exkaryawan']['tgl_resign'],'yyyy-MM-dd');
+            $model->badge=$_GET['id'];
+            
+            Yii::$app->db->createCommand()->update('id_karyawan',
+            ['status_aktif' => 'Tidak Aktif'],
+            ['id'=>$_GET['id']])->execute();
+
+            $model->save();
+            return $this->redirect(['index']);
         }
 
         return $this->render('create', [

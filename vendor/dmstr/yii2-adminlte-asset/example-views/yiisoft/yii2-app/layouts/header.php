@@ -1,6 +1,8 @@
 <?php
 use yii\helpers\Html;
+use app\models\Karyawan;
 
+$karyawan = Karyawan::find()->where(['id'=>Yii::$app->user->identity->profilname])->one();
 /* @var $this \yii\web\View */
 /* @var $content string */
 
@@ -24,23 +26,14 @@ use yii\helpers\Html;
 
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    <?php if(Yii::$app->user->identity->type === 'Administrator'): ?>
-                        <img src="photos/user-admin.png" class="user-image" alt="User Image"/>
-                    <?php else: ?>
-                        <img src="<?= $directoryAsset ?>/img/user2-160x160.jpg" class="user-image" alt="User Image"/>
-                    <?php endif; ?>
-                        <span class="hidden-xs"><?= Yii::$app->user->identity->profilname ?></span>
+                        <span class="hidden-xs"><i class="fa fa-user"></i> <?= $karyawan['nama'] ?></span>
                     </a>
                     <ul class="dropdown-menu">
                         <!-- User image -->
                         <li class="user-header">
-                            <?php if(Yii::$app->user->identity->type === 'Administrator'): ?>
-                                <img src="photos/user-admin.png" class="img-circle" alt="User Image"/>
-                            <?php else: ?>
-                                <img src="<?= $directoryAsset ?>/img/user2-160x160.jpg" class="img-circle" alt="User Image"/>
-                            <?php endif; ?>
+                            <img src="photos/employee/<?= $karyawan['foto_karyawan'] ?>" class="img-circle" alt="User Image"/>
                             <p>
-                                <?= Yii::$app->user->identity->profilname ?>
+                                <?= $karyawan['nama'] ?>
                                 <small>@<?= Yii::$app->user->identity->username ?></small>
                             </p>
                         </li>

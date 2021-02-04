@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
-
+use app\models\Karyawan;
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\search\ExkaryawanSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -21,18 +21,35 @@ $this->title = 'Ex-Karyawan';
         </div>
     </div>
 
+<div class="box"><div class="box-body"><div class="table-responsive">
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
+        // 'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-            'badge',
+            [
+                'attribute' => 'badge',
+                'value' => function($data){
+                    $karyawan = Karyawan::find()->where(['id'=>$data->badge])->one();
+                    return $karyawan['badge']; 
+                }
+            ],
+            [
+                'attribute' => 'nama_karyawan',
+                'value' => function($data){
+                    $karyawan = Karyawan::find()->where(['id'=>$data->badge])->one();
+                    return $karyawan['nama']; 
+                }
+            ],
             'alasan',
             'tgl_resign',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'header' => 'Aksi',
+                'template' => '{update}'
+            ],
         ],
     ]); ?>
-
+</div></div></div>
 
 </div>

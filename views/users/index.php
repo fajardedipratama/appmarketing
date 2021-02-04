@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
-
+use app\models\Karyawan;
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\search\UsersSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -26,7 +26,13 @@ $this->title = 'User';
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-            'profilname',
+            [
+                'attribute' => 'profilname',
+                'value' => function($data){
+                    $karyawan = Karyawan::find()->where(['id'=>$data->profilname])->one();
+                    return '('.$karyawan['badge'].') '.$karyawan['nama'];
+                }
+            ],
             'username',
             'last_login',
             'type',

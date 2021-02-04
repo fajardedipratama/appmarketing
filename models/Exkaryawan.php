@@ -50,4 +50,5 @@ class Exkaryawan extends \yii\db\ActiveRecord
             'nama_karyawan' => 'Nama Karyawan',
         ];
     }
+
 }

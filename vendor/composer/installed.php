@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => 'f86e04c55ab2c15bd5c6a68f4a197e843037d6da',
+    'reference' => '73783e3b27ae6c88ae65ea97acf979e0b8591c0b',
     'name' => 'yiisoft/yii2-app-basic',
   ),
   'versions' => 
@@ -271,6 +271,24 @@
       array (
       ),
       'reference' => '53330f47520498c0ae1f61f7e2c90f55690c06a3',
+    ),
+    'kartik-v/yii2-krajee-base' => 
+    array (
+      'pretty_version' => 'v2.0.5',
+      'version' => '2.0.5.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '9ddb662bdf49fdb671a90853912a40418a26a0dd',
+    ),
+    'kartik-v/yii2-widget-select2' => 
+    array (
+      'pretty_version' => 'v2.2.0',
+      'version' => '2.2.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'ee9d54f9af745c0ad7b3578bf640c12d800479e3',
     ),
     'myclabs/deep-copy' => 
     array (
@@ -585,6 +603,15 @@
       ),
       'reference' => '99732be0ddb3361e16ad77b68ba41efc8e979019',
     ),
+    'select2/select2' => 
+    array (
+      'pretty_version' => '4.0.13',
+      'version' => '4.0.13.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '45f2b83ceed5231afa7b3d5b12b58ad335edd82e',
+    ),
     'swiftmailer/swiftmailer' => 
     array (
       'pretty_version' => 'v6.2.5',
@@ -815,7 +842,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => 'f86e04c55ab2c15bd5c6a68f4a197e843037d6da',
+      'reference' => '73783e3b27ae6c88ae65ea97acf979e0b8591c0b',
     ),
     'yiisoft/yii2-bootstrap' => 
     array (

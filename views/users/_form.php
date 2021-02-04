@@ -2,6 +2,9 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\helpers\ArrayHelper;
+use kartik\select2\Select2;
+use app\models\Karyawan;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Users */
@@ -14,7 +17,14 @@ use yii\widgets\ActiveForm;
     <div class="box box-success"><div class="box-body">
         <div class="row">
             <div class="col-sm-4">
-                <?= $form->field($model, 'profilname')->textInput(['maxlength' => true]) ?>
+                <?= $form->field($model, 'profilname')->widget(Select2::className(),[
+                'data'=>ArrayHelper::map(Karyawan::find()->where(['status_aktif'=>'Aktif'])->orderBy(['badge'=>SORT_ASC])->all(),'id',
+                    function($model){
+                      return '('.$model['badge'].') '.$model['nama'];
+                    }
+                ),
+                    'options'=>['placeholder'=>"Karyawan"],'pluginOptions'=>['allowClear'=>true]
+                ]) ?>
             </div>
             <div class="col-sm-4">
                 <?= $form->field($model, 'username')->textInput(['maxlength' => true]) ?>
