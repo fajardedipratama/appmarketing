@@ -3,11 +3,12 @@
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Customer */
+/* @var $model app\models\City */
 
-$this->title = 'Tambah Kontak';
+$this->title = 'Ubah ' . $model->kota;
+
 ?>
-<div class="customer-create">
+<div class="city-update">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

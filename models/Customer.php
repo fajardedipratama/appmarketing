@@ -32,12 +32,12 @@ class Customer extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['perusahaan', 'lokasi', 'alamat_lengkap', 'pic', 'telfon', 'email', 'catatan'], 'required'],
-            [['perusahaan', 'lokasi', 'pic', 'telfon', 'email'], 'string', 'max' => 100],
+            [['perusahaan', 'lokasi','telfon'], 'required'],
+            [['perusahaan', 'lokasi', 'pic', 'telfon'], 'string', 'max' => 100],
             [['alamat_lengkap', 'catatan'], 'string', 'max' => 1000],
             [['perusahaan'], 'unique'],
             [['telfon'], 'unique'],
-            [['email'], 'unique'],
+            [['email'], 'email', 'message'=>'Penulisan alamat email tidak valid, pastikan ada @ dan diakhiri dengan domain'],
         ];
     }
 
@@ -49,12 +49,21 @@ class Customer extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'perusahaan' => 'Perusahaan',
-            'lokasi' => 'Lokasi',
-            'alamat_lengkap' => 'Alamat Lengkap',
-            'pic' => 'Pic',
+            'lokasi' => 'Kab/Kota',
+            'alamat_lengkap' => 'Alamat',
+            'pic' => 'PIC',
             'telfon' => 'Telfon',
             'email' => 'Email',
             'catatan' => 'Catatan',
         ];
+    }
+    public function beforeSave($options = array()) {
+        $this->perusahaan = strtoupper($this->perusahaan);
+
+        return true;
+    }
+    public function getCity()
+    {
+        return $this->hasOne(City::className(), ['id' => 'lokasi']);
     }
 }

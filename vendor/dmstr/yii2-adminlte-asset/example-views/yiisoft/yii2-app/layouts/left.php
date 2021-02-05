@@ -42,6 +42,8 @@ $karyawan = Karyawan::find()->where(['id'=>Yii::$app->user->identity->profilname
                         'url' => '#',
                         'items' => [
                             ['label' => 'Kontak Perusahaan', 'icon' => 'phone', 'url' => ['/customer'], 'active'=>in_array(\Yii::$app->controller->id,['customer'])],
+                            ['label' => '.'],
+                            ['label' => 'Kabupaten/Kota', 'icon' => 'map-marker', 'url' => ['/city'], 'active'=>in_array(\Yii::$app->controller->id,['city'])],
                         ],
                     ],
                 ],

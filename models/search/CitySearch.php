@@ -4,12 +4,12 @@ namespace app\models\search;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Customer;
+use app\models\City;
 
 /**
- * CustomerSearch represents the model behind the search form of `app\models\Customer`.
+ * CitySearch represents the model behind the search form of `app\models\City`.
  */
-class CustomerSearch extends Customer
+class CitySearch extends City
 {
     /**
      * {@inheritdoc}
@@ -17,8 +17,8 @@ class CustomerSearch extends Customer
     public function rules()
     {
         return [
-            [['id'], 'integer'],
-            [['perusahaan', 'lokasi', 'alamat_lengkap', 'pic', 'telfon', 'email', 'catatan'], 'safe'],
+            [['id', 'oat'], 'integer'],
+            [['kota', 'provinsi'], 'safe'],
         ];
     }
 
@@ -40,14 +40,14 @@ class CustomerSearch extends Customer
      */
     public function search($params)
     {
-        $query = Customer::find();
+        $query = City::find();
 
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
             'pagination'=>array('pageSize'=>20),
-            'sort'=>['defaultOrder'=>['perusahaan'=>SORT_ASC]]
+            'sort'=>['defaultOrder'=>['kota'=>SORT_ASC]]
         ]);
 
         $this->load($params);
@@ -61,15 +61,11 @@ class CustomerSearch extends Customer
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
+            'oat' => $this->oat,
         ]);
 
-        $query->andFilterWhere(['like', 'perusahaan', $this->perusahaan])
-            ->andFilterWhere(['like', 'lokasi', $this->lokasi])
-            ->andFilterWhere(['like', 'alamat_lengkap', $this->alamat_lengkap])
-            ->andFilterWhere(['like', 'pic', $this->pic])
-            ->andFilterWhere(['like', 'telfon', $this->telfon])
-            ->andFilterWhere(['like', 'email', $this->email])
-            ->andFilterWhere(['like', 'catatan', $this->catatan]);
+        $query->andFilterWhere(['like', 'kota', $this->kota])
+            ->andFilterWhere(['like', 'provinsi', $this->provinsi]);
 
         return $dataProvider;
     }

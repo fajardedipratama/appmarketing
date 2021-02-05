@@ -4,13 +4,13 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\search\CustomerSearch */
+/* @var $searchModel app\models\search\CitySearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Kontak Perusahaan';
+$this->title = 'Kabupaten/Kota';
 
 ?>
-<div class="customer-index">
+<div class="city-index">
 
     <div class="row">
         <div class="col-sm-10">
@@ -27,14 +27,14 @@ $this->title = 'Kontak Perusahaan';
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-            'perusahaan',
-            [
-                'attribute' => 'lokasi',
-                'value' => 'city.kota'
-            ],
-            'pic',
+            'kota',
+            'provinsi',
+            'oat',
 
-            ['class' => 'yii\grid\ActionColumn','header'=>'Aksi'],
+            [
+                'class' => 'yii\grid\ActionColumn','header'=>'Aksi',
+                'template' => '{update} {delete}'
+            ],
         ],
     ]); ?>
 </div></div></div>

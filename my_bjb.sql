@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 04 Feb 2021 pada 10.29
+-- Waktu pembuatan: 05 Feb 2021 pada 09.38
 -- Versi server: 10.4.17-MariaDB
 -- Versi PHP: 8.0.0
 
@@ -24,6 +24,28 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `id_city`
+--
+
+CREATE TABLE `id_city` (
+  `id` int(11) NOT NULL,
+  `kota` varchar(100) NOT NULL,
+  `provinsi` varchar(100) NOT NULL,
+  `oat` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `id_city`
+--
+
+INSERT INTO `id_city` (`id`, `kota`, `provinsi`, `oat`) VALUES
+(1, 'BANGKALAN', 'Jawa Timur', 200),
+(2, 'BANYUWANGI', 'Jawa Timur', 200),
+(3, 'BLITAR', 'Jawa Timur', 200);
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `id_customer`
 --
 
@@ -37,6 +59,17 @@ CREATE TABLE `id_customer` (
   `email` varchar(100) NOT NULL,
   `catatan` varchar(1000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `id_customer`
+--
+
+INSERT INTO `id_customer` (`id`, `perusahaan`, `lokasi`, `alamat_lengkap`, `pic`, `telfon`, `email`, `catatan`) VALUES
+(1, 'ADILUHUNG SARANA SEGARA PT', '1', '', '', '024', '', ''),
+(3, 'BEN SANTOSO KAMAL PT', '1', '', '', '025', '', ''),
+(4, 'ALBAISA PRIMA LESTARI PT', '2', '', '', '026', '', ''),
+(5, 'MOJOAGUNG CV', '3', '', '', '027', '', ''),
+(6, 'KETAPANG INDAH HOTEL', '2', '', '', '028', '', '');
 
 -- --------------------------------------------------------
 
@@ -174,11 +207,18 @@ CREATE TABLE `id_user` (
 --
 
 INSERT INTO `id_user` (`id`, `profilname`, `username`, `password`, `last_login`, `authKey`, `accessToken`, `type`, `blocked`) VALUES
-(1, '5', 'dedy', '$2y$13$MdjCzwpzvuQvqvkqKvM14ezHCh.4MKx71DEaZEoI8HX6R8jW.nj1e', '2021-02-04 15:29:59', 'd5fdbe5b16111739a53f6bedc2c29e5c', 'd5fdbe5b16111739a53f6bedc2c29e5c', 'Administrator', '');
+(1, '5', 'dedy', '$2y$13$MdjCzwpzvuQvqvkqKvM14ezHCh.4MKx71DEaZEoI8HX6R8jW.nj1e', '2021-02-05 14:54:39', 'd5fdbe5b16111739a53f6bedc2c29e5c', 'd5fdbe5b16111739a53f6bedc2c29e5c', 'Administrator', '');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indeks untuk tabel `id_city`
+--
+ALTER TABLE `id_city`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `kota` (`kota`);
 
 --
 -- Indeks untuk tabel `id_customer`
@@ -186,8 +226,7 @@ INSERT INTO `id_user` (`id`, `profilname`, `username`, `password`, `last_login`,
 ALTER TABLE `id_customer`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `perusahaan` (`perusahaan`),
-  ADD UNIQUE KEY `telfon` (`telfon`),
-  ADD UNIQUE KEY `email` (`email`);
+  ADD UNIQUE KEY `telfon` (`telfon`);
 
 --
 -- Indeks untuk tabel `id_departemen`
@@ -228,10 +267,16 @@ ALTER TABLE `id_user`
 --
 
 --
+-- AUTO_INCREMENT untuk tabel `id_city`
+--
+ALTER TABLE `id_city`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT untuk tabel `id_customer`
 --
 ALTER TABLE `id_customer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `id_departemen`
