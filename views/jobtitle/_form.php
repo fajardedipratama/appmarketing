@@ -20,7 +20,7 @@ use yii\helpers\ArrayHelper;
     		</div>
     		<div class="col-sm-4">
     			<?= $form->field($model, 'departemen')->dropDownList(
-	              ArrayHelper::map(\app\models\departemen::find()->all(),'id',
+	              ArrayHelper::map(departemen::find()->all(),'id',
 	                function($model){
 	                  return $model['departemen'];
 	                }
