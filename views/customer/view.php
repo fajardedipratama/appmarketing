@@ -47,6 +47,12 @@ $this->title = $model->perusahaan;
             'telfon',
             'email:email',
             'catatan',
+            [
+              'attribute'=>'sales',
+              'value'=>function($data){
+                return $data->karyawan->nama;
+              },  
+            ]
         ],
     ]) ?>
     </div>

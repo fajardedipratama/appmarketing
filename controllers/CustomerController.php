@@ -5,11 +5,13 @@ namespace app\controllers;
 use Yii;
 use app\models\Customer;
 use app\models\search\CustomerSearch;
+use app\models\Karyawan;
+use app\models\City;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
-
+use yii\helpers\ArrayHelper;
 /**
  * CustomerController implements the CRUD actions for Customer model.
  */
@@ -49,7 +51,18 @@ class CustomerController extends Controller
         $searchModel = new CustomerSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
+        $sales = ArrayHelper::map(Karyawan::find()->where(['posisi'=>6,'status_aktif'=>'Aktif'])->all(),'id',
+                function($model){
+                    return $model['nama'];
+                });
+        $kota = ArrayHelper::map(City::find()->all(),'id',
+                function($model){
+                    return $model['kota'];
+                });
+
         return $this->render('index', [
+            'sales' => $sales,
+            'kota' => $kota,
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
@@ -78,7 +91,7 @@ class CustomerController extends Controller
         $model = new Customer();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['index']);
         }
 
         return $this->render('create', [
@@ -102,6 +115,18 @@ class CustomerController extends Controller
         }
 
         return $this->render('update', [
+            'model' => $model,
+        ]);
+    }
+    public function actionShare($id)
+    {
+        $model = $this->findModel($id);
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['index']);
+        }
+
+        return $this->render('share', [
             'model' => $model,
         ]);
     }

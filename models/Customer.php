@@ -15,6 +15,7 @@ use Yii;
  * @property string $telfon
  * @property string $email
  * @property string $catatan
+ * @property int|null $sales
  */
 class Customer extends \yii\db\ActiveRecord
 {
@@ -32,11 +33,11 @@ class Customer extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['perusahaan', 'lokasi','telfon'], 'required'],
+            [['perusahaan', 'lokasi'], 'required'],
             [['perusahaan', 'lokasi', 'pic', 'telfon'], 'string', 'max' => 100],
             [['alamat_lengkap', 'catatan'], 'string', 'max' => 1000],
+            [['sales'], 'integer'],
             [['perusahaan'], 'unique'],
-            [['telfon'], 'unique'],
             [['email'], 'email', 'message'=>'Penulisan alamat email tidak valid, pastikan ada @ dan diakhiri dengan domain'],
         ];
     }
@@ -55,6 +56,7 @@ class Customer extends \yii\db\ActiveRecord
             'telfon' => 'Telfon',
             'email' => 'Email',
             'catatan' => 'Catatan',
+            'sales' => 'Sales'
         ];
     }
     public function beforeSave($options = array()) {
@@ -65,5 +67,9 @@ class Customer extends \yii\db\ActiveRecord
     public function getCity()
     {
         return $this->hasOne(City::className(), ['id' => 'lokasi']);
+    }
+     public function getKaryawan()
+    {
+        return $this->hasOne(Karyawan::className(), ['id' => 'sales']);
     }
 }

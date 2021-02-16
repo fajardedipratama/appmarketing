@@ -35,6 +35,7 @@ $karyawan = Karyawan::find()->where(['id'=>Yii::$app->user->identity->profilname
                             ['label' => '.'],
                             ['label' => 'User Karyawan', 'icon' => 'user', 'url' => ['/users'], 'active'=>in_array(\Yii::$app->controller->id,['users'])],
                         ],
+                        'visible' => !Yii::$app->user->isGuest && Yii::$app->user->identity->type == 'Administrator' || Yii::$app->user->identity->type == 'Manajemen'
                     ],
                     [
                         'label' => 'Marketing',

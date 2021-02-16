@@ -30,11 +30,37 @@ $this->title = 'Kontak Perusahaan';
             'perusahaan',
             [
                 'attribute' => 'lokasi',
-                'value' => 'city.kota'
+                'value' => 'city.kota',
+                'filter'=>\kartik\select2\Select2::widget([
+                    'model'=>$searchModel,'attribute'=>'lokasi','data'=>$kota,
+                    'options'=>['placeholder'=>'Lokasi'],'pluginOptions'=>['allowClear'=>true]
+                ])
             ],
-            'pic',
+            [
+                'attribute' => 'sales',
+                'value' => 'karyawan.nama',
+                'filter'=>\kartik\select2\Select2::widget([
+                    'model'=>$searchModel,'attribute'=>'sales','data'=>$sales,
+                    'options'=>['placeholder'=>'Sales'],'pluginOptions'=>['allowClear'=>true]
+                ])
+            ],
+            [
+                'class' => 'yii\grid\ActionColumn','header'=>'Aksi',
+                'template' => '{view} {update} {assign}',
+                'buttons'=>
+                [
+                    'assign'=>function($url,$model)
+                    {
+                    return Html::a
+                     (
+                        '<span class="glyphicon glyphicon-share"></span>',
+                        ["customer/share",'id'=>$model->id],
+                        ['title' => Yii::t('app', 'Sebarkan')],
+                     );
+                    },
 
-            ['class' => 'yii\grid\ActionColumn','header'=>'Aksi'],
+                ],
+            ],
         ],
     ]); ?>
 </div></div></div>

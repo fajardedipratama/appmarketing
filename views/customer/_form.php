@@ -5,6 +5,7 @@ use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
 use kartik\select2\Select2;
 use app\models\City;
+use app\models\Karyawan;
 /* @var $this yii\web\View */
 /* @var $model app\models\Customer */
 /* @var $form yii\widgets\ActiveForm */
@@ -44,6 +45,16 @@ use app\models\City;
      </div>
      <div class="col-sm-4">
         <?= $form->field($model, 'catatan')->textInput(['maxlength' => true]) ?>
+     </div>
+     <div class="col-sm-4">
+        <?= $form->field($model, 'sales')->widget(Select2::className(),[
+            'data'=>ArrayHelper::map(Karyawan::find()->where(['posisi'=>6,'status_aktif'=>'Aktif'])->orderBy(['nama'=>SORT_ASC])->all(),'id',
+                function($model){
+                    return $model['nama'];
+                }
+            ),
+            'options'=>['placeholder'=>"Sales"],'pluginOptions'=>['allowClear'=>true]
+        ]) ?>
      </div>
     </div>
 </div></div>
