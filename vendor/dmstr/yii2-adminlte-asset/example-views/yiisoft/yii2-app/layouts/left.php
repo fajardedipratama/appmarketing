@@ -42,7 +42,11 @@ $karyawan = Karyawan::find()->where(['id'=>Yii::$app->user->identity->profilname
                         'icon' => 'line-chart',
                         'url' => '#',
                         'items' => [
-                            ['label' => 'Kontak Perusahaan', 'icon' => 'phone', 'url' => ['/customer'], 'active'=>in_array(\Yii::$app->controller->id,['customer'])],
+                            [
+                                'label' => 'Data Sales', 'icon' => 'phone', 'url' => ['/selfcustomer'], 'active'=>in_array(\Yii::$app->controller->id,['selfcustomer']),
+                                'visible' => !Yii::$app->user->isGuest && Yii::$app->user->identity->type == 'Marketing'
+                            ],
+                            ['label' => 'Data Perusahaan', 'icon' => 'phone', 'url' => ['/customer'], 'active'=>in_array(\Yii::$app->controller->id,['customer'])],
                             ['label' => '.'],
                             ['label' => 'Kabupaten/Kota', 'icon' => 'map-marker', 'url' => ['/city'], 'active'=>in_array(\Yii::$app->controller->id,['city'])],
                         ],

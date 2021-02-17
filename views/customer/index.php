@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\search\CustomerSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Kontak Perusahaan';
+$this->title = 'Data Perusahaan';
 
 ?>
 <div class="customer-index">
@@ -17,7 +17,9 @@ $this->title = 'Kontak Perusahaan';
             <h1><?= Html::encode($this->title) ?></h1>
         </div>
         <div class="col-sm-2">
+        <?php if(Yii::$app->user->identity->type != 'Marketing'): ?>
             <?= Html::a('<i class="fa fa-fw fa-plus-square"></i> Tambah Data', ['create'], ['class' => 'btn btn-success']) ?>
+        <?php endif; ?>
         </div>
     </div>
 
@@ -60,6 +62,7 @@ $this->title = 'Kontak Perusahaan';
                     },
 
                 ],
+                'visible' => Yii::$app->user->identity->type == 'Administrator' || Yii::$app->user->identity->type == 'Manajemen'
             ],
         ],
     ]); ?>

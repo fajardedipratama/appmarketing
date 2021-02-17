@@ -25,6 +25,13 @@ $config = [
                 ],
             ],
         ],
+        'formatter' => [
+            'class' => 'yii\i18n\Formatter',
+            'nullDisplay' => '',
+            'thousandSeparator'=>'.',
+            'decimalSeparator'=>',',
+            'currencyCode'=>'IDR',
+        ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],

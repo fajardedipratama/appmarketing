@@ -59,11 +59,13 @@ class Customer extends \yii\db\ActiveRecord
             'sales' => 'Sales'
         ];
     }
+    
     public function beforeSave($options = array()) {
         $this->perusahaan = strtoupper($this->perusahaan);
 
         return true;
     }
+
     public function getCity()
     {
         return $this->hasOne(City::className(), ['id' => 'lokasi']);
