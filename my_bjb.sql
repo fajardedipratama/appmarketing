@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 16 Feb 2021 pada 10.29
+-- Waktu pembuatan: 18 Feb 2021 pada 10.18
 -- Versi server: 10.4.17-MariaDB
 -- Versi PHP: 8.0.0
 
@@ -72,9 +72,27 @@ INSERT INTO `id_customer` (`id`, `perusahaan`, `lokasi`, `alamat_lengkap`, `pic`
 (4, 'ALBAISA PRIMA LESTARI PT', '2', '', '', '', '', '', 0),
 (5, 'MOJOAGUNG CV', '3', '', '', '', '', '', 0),
 (6, 'KETAPANG INDAH HOTEL', '2', '', '', '', '', '', 0),
-(7, 'DJAWANI GUNUNG ABADI PT', '5', '', '', '', '', '', 12),
+(7, 'DJAWANI GUNUNG ABADI PT', '5', '', 'suwito', '', '', '', 12),
 (8, 'INTI LUHUR FUJA ABADI PT', '2', '', '', '', '', '', 12),
-(9, 'ADMIRA PT', '5', '', '', '', '', '', 10);
+(9, 'ADMIRA PT', '5', '', 'purchasing/pembelian', '', '', '', 10);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `id_dailyreport`
+--
+
+CREATE TABLE `id_dailyreport` (
+  `id` int(11) NOT NULL,
+  `sales` int(11) NOT NULL,
+  `waktu` datetime NOT NULL,
+  `perusahaan` int(11) NOT NULL,
+  `keterangan` varchar(100) NOT NULL,
+  `volume` varchar(100) NOT NULL,
+  `jarak_ambil` varchar(100) NOT NULL,
+  `catatan` varchar(1000) NOT NULL,
+  `pengingat` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -212,8 +230,8 @@ CREATE TABLE `id_user` (
 --
 
 INSERT INTO `id_user` (`id`, `profilname`, `username`, `password`, `last_login`, `authKey`, `accessToken`, `type`, `blocked`) VALUES
-(1, '5', 'dedy', '$2y$13$MdjCzwpzvuQvqvkqKvM14ezHCh.4MKx71DEaZEoI8HX6R8jW.nj1e', '2021-02-16 13:58:46', 'd5fdbe5b16111739a53f6bedc2c29e5c', 'd5fdbe5b16111739a53f6bedc2c29e5c', 'Administrator', ''),
-(2, '10', 'sugeng', '$2y$13$0boAOohSI0ofjmPZ05xZbeRR03oOUkfYRQT/PGedqGTi7rJ2Y.gyG', '2021-02-16 13:57:32', '9e28894760bdf11cb2bef7a32c020e3b', '9e28894760bdf11cb2bef7a32c020e3b', 'Marketing', ''),
+(1, '5', 'dedy', '$2y$13$MdjCzwpzvuQvqvkqKvM14ezHCh.4MKx71DEaZEoI8HX6R8jW.nj1e', '2021-02-17 15:52:56', 'd5fdbe5b16111739a53f6bedc2c29e5c', 'd5fdbe5b16111739a53f6bedc2c29e5c', 'Administrator', ''),
+(2, '10', 'sugeng', '$2y$13$0boAOohSI0ofjmPZ05xZbeRR03oOUkfYRQT/PGedqGTi7rJ2Y.gyG', '2021-02-18 09:52:21', '9e28894760bdf11cb2bef7a32c020e3b', '9e28894760bdf11cb2bef7a32c020e3b', 'Marketing', ''),
 (3, '3', 'atis', '$2y$13$KVUHfL5rcRvil9nhYjUNJetLhgyb2ptcfJOEVOOWb6YcM4FjKtk8W', '2021-02-16 13:57:23', 'd5455de2f44f740d0e7ae3b97ffaf9ea', 'd5455de2f44f740d0e7ae3b97ffaf9ea', 'Manajemen', '');
 
 --
@@ -233,6 +251,12 @@ ALTER TABLE `id_city`
 ALTER TABLE `id_customer`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `perusahaan` (`perusahaan`);
+
+--
+-- Indeks untuk tabel `id_dailyreport`
+--
+ALTER TABLE `id_dailyreport`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indeks untuk tabel `id_departemen`
@@ -283,6 +307,12 @@ ALTER TABLE `id_city`
 --
 ALTER TABLE `id_customer`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT untuk tabel `id_dailyreport`
+--
+ALTER TABLE `id_dailyreport`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `id_departemen`
