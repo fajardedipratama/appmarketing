@@ -26,7 +26,7 @@ $this->title = $model->perusahaan;
                         'method' => 'post',
                     ],
                 ]) ?>
-                <?= Html::a('<i class="fa fa-fw fa-signal"></i> Progress', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+                <button class="btn btn-primary" data-toggle="modal" data-target="#progress"><i class="fa fa-fw fa-signal"></i> Progress</button>
             </p>
         </div>
     </div>
@@ -54,4 +54,18 @@ $this->title = $model->perusahaan;
         ],
     ]) ?>
     </div>
+
+    <div class="modal fade" id="progress"><div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title"><b>Progress Perusahaan</b></h4>          
+            </div>
+            <div class="modal-body">
+              <?= $this->render('_formprogress', ['modelprogress' => $modelprogress]) ?>
+            </div>
+        </div>
+    </div></div>
+
 </div>
