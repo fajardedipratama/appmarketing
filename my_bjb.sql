@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 18 Feb 2021 pada 10.18
+-- Waktu pembuatan: 20 Feb 2021 pada 06.10
 -- Versi server: 10.4.17-MariaDB
 -- Versi PHP: 8.0.0
 
@@ -91,8 +91,16 @@ CREATE TABLE `id_dailyreport` (
   `volume` varchar(100) NOT NULL,
   `jarak_ambil` varchar(100) NOT NULL,
   `catatan` varchar(1000) NOT NULL,
-  `pengingat` date NOT NULL
+  `pengingat` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `id_dailyreport`
+--
+
+INSERT INTO `id_dailyreport` (`id`, `sales`, `waktu`, `perusahaan`, `keterangan`, `volume`, `jarak_ambil`, `catatan`, `pengingat`) VALUES
+(1, 10, '2021-02-20 10:07:32', 9, 'Belum ada kebutuhan', '8', 'Tiap 1bulan sekali', 'butuh awal april', '2021-04-01'),
+(2, 10, '2021-02-20 10:09:54', 9, 'Kalah harga', '8', 'Tiap >1bulan sekali', 'dapat dari AKR 6500', NULL);
 
 -- --------------------------------------------------------
 
@@ -230,9 +238,10 @@ CREATE TABLE `id_user` (
 --
 
 INSERT INTO `id_user` (`id`, `profilname`, `username`, `password`, `last_login`, `authKey`, `accessToken`, `type`, `blocked`) VALUES
-(1, '5', 'dedy', '$2y$13$MdjCzwpzvuQvqvkqKvM14ezHCh.4MKx71DEaZEoI8HX6R8jW.nj1e', '2021-02-17 15:52:56', 'd5fdbe5b16111739a53f6bedc2c29e5c', 'd5fdbe5b16111739a53f6bedc2c29e5c', 'Administrator', ''),
-(2, '10', 'sugeng', '$2y$13$0boAOohSI0ofjmPZ05xZbeRR03oOUkfYRQT/PGedqGTi7rJ2Y.gyG', '2021-02-18 09:52:21', '9e28894760bdf11cb2bef7a32c020e3b', '9e28894760bdf11cb2bef7a32c020e3b', 'Marketing', ''),
-(3, '3', 'atis', '$2y$13$KVUHfL5rcRvil9nhYjUNJetLhgyb2ptcfJOEVOOWb6YcM4FjKtk8W', '2021-02-16 13:57:23', 'd5455de2f44f740d0e7ae3b97ffaf9ea', 'd5455de2f44f740d0e7ae3b97ffaf9ea', 'Manajemen', '');
+(1, '5', 'dedy', '$2y$13$MdjCzwpzvuQvqvkqKvM14ezHCh.4MKx71DEaZEoI8HX6R8jW.nj1e', '2021-02-20 10:50:10', 'd5fdbe5b16111739a53f6bedc2c29e5c', 'd5fdbe5b16111739a53f6bedc2c29e5c', 'Administrator', ''),
+(2, '10', 'sugeng', '$2y$13$0boAOohSI0ofjmPZ05xZbeRR03oOUkfYRQT/PGedqGTi7rJ2Y.gyG', '2021-02-20 10:45:55', '9e28894760bdf11cb2bef7a32c020e3b', '9e28894760bdf11cb2bef7a32c020e3b', 'Marketing', ''),
+(3, '3', 'atis', '$2y$13$KVUHfL5rcRvil9nhYjUNJetLhgyb2ptcfJOEVOOWb6YcM4FjKtk8W', '2021-02-16 13:57:23', 'd5455de2f44f740d0e7ae3b97ffaf9ea', 'd5455de2f44f740d0e7ae3b97ffaf9ea', 'Manajemen', ''),
+(4, '1', 'alisia', '$2y$13$vqbiCxoDOc3MVNdwa47ALuFYLB2AuFa.10MdhG1JAGVjKK7g5wlwe', '2021-02-20 10:45:18', '3c89bc5dc3c18795e99eaf0f91af12f6', '3c89bc5dc3c18795e99eaf0f91af12f6', 'Marketing', '');
 
 --
 -- Indexes for dumped tables
@@ -312,7 +321,7 @@ ALTER TABLE `id_customer`
 -- AUTO_INCREMENT untuk tabel `id_dailyreport`
 --
 ALTER TABLE `id_dailyreport`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `id_departemen`
@@ -342,7 +351,7 @@ ALTER TABLE `id_karyawan`
 -- AUTO_INCREMENT untuk tabel `id_user`
 --
 ALTER TABLE `id_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
