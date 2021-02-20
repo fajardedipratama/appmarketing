@@ -15,7 +15,7 @@ use Yii;
  * @property string $volume
  * @property string $jarak_ambil
  * @property string $catatan
- * @property string $pengingat
+ * @property string|null $pengingat
  */
 class Dailyreport extends \yii\db\ActiveRecord
 {
@@ -33,7 +33,7 @@ class Dailyreport extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['perusahaan', 'keterangan'], 'required'],
+            [['keterangan'], 'required'],
             [['sales', 'perusahaan'], 'integer'],
             [['waktu', 'pengingat'], 'safe'],
             [['keterangan', 'volume', 'jarak_ambil'], 'string', 'max' => 100],
@@ -52,10 +52,23 @@ class Dailyreport extends \yii\db\ActiveRecord
             'waktu' => 'Waktu',
             'perusahaan' => 'Perusahaan',
             'keterangan' => 'Keterangan',
-            'volume' => 'Est.Volume',
+            'volume' => 'Est.Volume (KL)',
             'jarak_ambil' => 'Est.Jarak Kebutuhan',
             'catatan' => 'Catatan',
             'pengingat' => 'Pengingat',
         ];
+    }
+
+    public function beforeSave($options = array()) {
+        $time_now=date('Y-m-d H:i:s');
+        $this->waktu=$time_now;
+
+        if(!empty($this->pengingat)){
+            $this->pengingat = Yii::$app->formatter->asDate($_POST['Dailyreport']['pengingat'],'yyyy-MM-dd');
+        }else{
+            $this->pengingat = null;
+        }
+
+        return true;
     }
 }

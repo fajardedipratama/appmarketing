@@ -78,7 +78,7 @@ class SelfcustomerController extends Controller
             //create
             $modelprogress = new Dailyreport();
             if ($modelprogress->load(Yii::$app->request->post()) && $modelprogress->save()) {
-                return $this->redirect(['view', 'id' => $model]);
+                return $this->redirect(['view', 'id' => $model->id]);
             }
 
             return $this->render('view', [

@@ -38,7 +38,10 @@ $this->title = 'Data Sales';
             ],
             'pic',
             'telfon',
-            ['class' => 'yii\grid\ActionColumn','header'=>'Aksi'],
+            [
+                'class' => 'yii\grid\ActionColumn','header'=>'Aksi',
+                'template' => '{view}'
+            ],
         ],
     ]); ?>
 </div></div></div>

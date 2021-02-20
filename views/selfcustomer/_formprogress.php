@@ -14,12 +14,11 @@ use dosamigos\datepicker\DatePicker;
     <?php $form = ActiveForm::begin(); ?>
 <div class="box box-success"><div class="box-body">
     <div class="row">
-     <div class="col-sm-4">
-        <?= $form->field($modelprogress, 'perusahaan')->textInput() ?>
-     </div>
+        <?= $form->field($modelprogress, 'sales')->hiddenInput(['value'=>$model->sales,'readonly'=>true])->label(false) ?>
+        <?= $form->field($modelprogress, 'perusahaan')->hiddenInput(['value'=>$model->id,'readonly'=>true])->label(false) ?>
      <div class="col-sm-4">
         <?= $form->field($modelprogress, 'keterangan')->dropDownList(
-              ['Penawaran'=>'Penawaran','Belum ada kebutuhan'=>'Belum ada kebutuhan','Tidak terhubung'=>'Tidak terhubung','Tidak pakai solar'=>'Tidak pakai solar','Kebutuhan <5KL'=>'Kebutuhan <5KL','Kontrak vendor lain'=>'Kontrak vendor lain'],
+              ['Penawaran'=>'Penawaran','Belum ada kebutuhan'=>'Belum ada kebutuhan','Tidak diangkat'=>'Tidak diangkat','PIC sibuk'=>'PIC sibuk','Tidak pakai solar'=>'Tidak pakai solar','Kebutuhan <5KL'=>'Kebutuhan <5KL','Kontrak vendor lain'=>'Kontrak vendor lain','Kalah harga'=>'Kalah harga'],
               ['prompt'=>'--keterangan--']); ?>
      </div>
      <div class="col-sm-4">
