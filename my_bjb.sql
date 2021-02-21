@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 20 Feb 2021 pada 06.10
+-- Waktu pembuatan: 21 Feb 2021 pada 14.05
 -- Versi server: 10.4.17-MariaDB
--- Versi PHP: 8.0.0
+-- Versi PHP: 8.0.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -218,6 +218,26 @@ INSERT INTO `id_karyawan` (`id`, `badge`, `nama`, `gender`, `tempat_lahir`, `tan
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `id_offer`
+--
+
+CREATE TABLE `id_offer` (
+  `id` int(11) NOT NULL,
+  `waktu` datetime NOT NULL,
+  `no_surat` int(11) DEFAULT NULL,
+  `perusahaan` int(11) NOT NULL,
+  `pic` varchar(100) NOT NULL,
+  `top` varchar(100) NOT NULL,
+  `harga` int(11) DEFAULT NULL,
+  `catatan` varchar(1000) NOT NULL,
+  `sales` int(11) NOT NULL,
+  `status` varchar(100) NOT NULL,
+  `expired` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `id_user`
 --
 
@@ -239,7 +259,7 @@ CREATE TABLE `id_user` (
 
 INSERT INTO `id_user` (`id`, `profilname`, `username`, `password`, `last_login`, `authKey`, `accessToken`, `type`, `blocked`) VALUES
 (1, '5', 'dedy', '$2y$13$MdjCzwpzvuQvqvkqKvM14ezHCh.4MKx71DEaZEoI8HX6R8jW.nj1e', '2021-02-20 10:50:10', 'd5fdbe5b16111739a53f6bedc2c29e5c', 'd5fdbe5b16111739a53f6bedc2c29e5c', 'Administrator', ''),
-(2, '10', 'sugeng', '$2y$13$0boAOohSI0ofjmPZ05xZbeRR03oOUkfYRQT/PGedqGTi7rJ2Y.gyG', '2021-02-20 10:45:55', '9e28894760bdf11cb2bef7a32c020e3b', '9e28894760bdf11cb2bef7a32c020e3b', 'Marketing', ''),
+(2, '10', 'sugeng', '$2y$13$0boAOohSI0ofjmPZ05xZbeRR03oOUkfYRQT/PGedqGTi7rJ2Y.gyG', '2021-02-21 19:59:45', '9e28894760bdf11cb2bef7a32c020e3b', '9e28894760bdf11cb2bef7a32c020e3b', 'Marketing', ''),
 (3, '3', 'atis', '$2y$13$KVUHfL5rcRvil9nhYjUNJetLhgyb2ptcfJOEVOOWb6YcM4FjKtk8W', '2021-02-16 13:57:23', 'd5455de2f44f740d0e7ae3b97ffaf9ea', 'd5455de2f44f740d0e7ae3b97ffaf9ea', 'Manajemen', ''),
 (4, '1', 'alisia', '$2y$13$vqbiCxoDOc3MVNdwa47ALuFYLB2AuFa.10MdhG1JAGVjKK7g5wlwe', '2021-02-20 10:45:18', '3c89bc5dc3c18795e99eaf0f91af12f6', '3c89bc5dc3c18795e99eaf0f91af12f6', 'Marketing', '');
 
@@ -295,6 +315,12 @@ ALTER TABLE `id_karyawan`
   ADD UNIQUE KEY `no_ktp` (`no_ktp`);
 
 --
+-- Indeks untuk tabel `id_offer`
+--
+ALTER TABLE `id_offer`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indeks untuk tabel `id_user`
 --
 ALTER TABLE `id_user`
@@ -346,6 +372,12 @@ ALTER TABLE `id_jobtitle`
 --
 ALTER TABLE `id_karyawan`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT untuk tabel `id_offer`
+--
+ALTER TABLE `id_offer`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `id_user`
