@@ -16,6 +16,7 @@ use Yii;
  * @property string $jarak_ambil
  * @property string $catatan
  * @property string|null $pengingat
+ * @property string $con_used
  */
 class Dailyreport extends \yii\db\ActiveRecord
 {
@@ -36,7 +37,7 @@ class Dailyreport extends \yii\db\ActiveRecord
             [['keterangan'], 'required'],
             [['sales', 'perusahaan'], 'integer'],
             [['waktu', 'pengingat'], 'safe'],
-            [['keterangan', 'volume', 'jarak_ambil'], 'string', 'max' => 100],
+            [['keterangan', 'volume', 'jarak_ambil','con_used'], 'string', 'max' => 100],
             [['catatan'], 'string', 'max' => 1000],
         ];
     }
@@ -56,6 +57,7 @@ class Dailyreport extends \yii\db\ActiveRecord
             'jarak_ambil' => 'Est.Jarak Kebutuhan',
             'catatan' => 'Catatan',
             'pengingat' => 'Pengingat',
+            'con_used' => 'Kontak Via',
         ];
     }
 

@@ -3,19 +3,16 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\Customer;
-use app\models\Dailyreport;
-use app\models\search\SelfCustomerSearch;
+use app\models\Offer;
+use app\models\search\OfferSearch;
 use yii\web\Controller;
-use app\models\City;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
-use yii\helpers\ArrayHelper;
 /**
- * SelfcustomerController implements the CRUD actions for Customer model.
+ * OfferController implements the CRUD actions for Offer model.
  */
-class SelfcustomerController extends Controller
+class OfferController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -43,68 +40,41 @@ class SelfcustomerController extends Controller
     }
 
     /**
-     * Lists all Customer models.
+     * Lists all Offer models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new SelfCustomerSearch();
+        $searchModel = new OfferSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-        $kota = ArrayHelper::map(City::find()->all(),'id',
-                function($model){
-                    return $model['kota'];
-                });
-
         return $this->render('index', [
-            'kota' => $kota,
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
     }
 
     /**
-     * Displays a single Customer model.
+     * Displays a single Offer model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionView($id)
     {
-        $model = $this->findModel($id);
-
-        //view
-        if($model->sales == Yii::$app->user->identity->profilname){
-            //create
-            $modelprogress = new Dailyreport();
-            if ($modelprogress->load(Yii::$app->request->post()) && $modelprogress->save()) {
-
-                if($_POST['Dailyreport']['keterangan']==='Penawaran'){
-                    return $this->redirect(['offer/view', 'id' => $model->id]);
-                }else{
-                    return $this->redirect(['view', 'id' => $model->id]);
-                }
-
-            }
-
-            return $this->render('view', [
-                'model' => $this->findModel($id),
-                'modelprogress' => $modelprogress
-            ]);
-        }else{
-            return $this->redirect(['index']);
-        }
-        
+        return $this->render('view', [
+            'model' => $this->findModel($id),
+        ]);
     }
 
     /**
-     * Creates a new Customer model.
+     * Creates a new Offer model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Customer();
+        $model = new Offer();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -116,7 +86,7 @@ class SelfcustomerController extends Controller
     }
 
     /**
-     * Updates an existing Customer model.
+     * Updates an existing Offer model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -126,12 +96,8 @@ class SelfcustomerController extends Controller
     {
         $model = $this->findModel($id);
 
-        if($model->sales == Yii::$app->user->identity->profilname){
-            if ($model->load(Yii::$app->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
-            }
-        }else{
-            return $this->redirect(['index']);
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('update', [
@@ -140,7 +106,7 @@ class SelfcustomerController extends Controller
     }
 
     /**
-     * Deletes an existing Customer model.
+     * Deletes an existing Offer model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -154,15 +120,15 @@ class SelfcustomerController extends Controller
     }
 
     /**
-     * Finds the Customer model based on its primary key value.
+     * Finds the Offer model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Customer the loaded model
+     * @return Offer the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Customer::findOne($id)) !== null) {
+        if (($model = Offer::findOne($id)) !== null) {
             return $model;
         }
 

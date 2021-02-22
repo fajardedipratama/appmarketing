@@ -16,23 +16,26 @@ use app\models\Jobtitle;
     <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
     <div class="box box-success"><div class="box-body">
     <div class="row">
-        <div class="col-sm-4">
+        <div class="col-sm-3">
             <?= $form->field($model, 'badge')->textInput(['maxlength' => true]) ?>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-3">
             <?= $form->field($model, 'nama')->textInput(['maxlength' => true]) ?>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-3">
+            <?= $form->field($model, 'nama_pendek')->textInput(['maxlength' => true]) ?>
+        </div>
+        <div class="col-sm-3">
             <?= $form->field($model, 'gender')->dropDownList(['Laki-Laki'=>'Laki-Laki','Perempuan'=>'Perempuan'],['prompt'=>'--Jenis Kelamin--']) ?>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-3">
             <?= $form->field($model, 'agama')->dropDownList([
                 'Islam'=>'Islam','Kristen'=>'Kristen','Buddha'=>'Buddha','Hindu'=>'Hindu','Konghucu'=>'Konghucu'],['prompt'=>'--Pilih Agama--']) ?>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-3">
             <?= $form->field($model, 'tempat_lahir')->textInput(['maxlength' => true]) ?>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-3">
             <?php 
                 if(!$model->isNewRecord || $model->isNewRecord){
                     if($model->tanggal_lahir!=null){
@@ -48,16 +51,16 @@ use app\models\Jobtitle;
                 ]
             ])?>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-3">
             <?= $form->field($model, 'no_hp')->textInput(['type'=>'number','maxlength' => true]) ?>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-3">
             <?= $form->field($model, 'pendidikan')->dropDownList(['SMA/Sederajat'=>'SMA/Sederajat','D1/D2/D3'=>'D1/D2/D3','D4/S1'=>'D4/S1','S2'=>'S2','S3'=>'S3'],['prompt'=>'--Pendidikan Terakhir--']) ?>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-3">
             <?= $form->field($model, 'status_kawin')->dropDownList(['Belum Menikah'=>'Belum Menikah','Menikah'=>'Menikah','Cerai'=>'Cerai'],['prompt'=>'--Status Nikah--']) ?>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-3">
             <?= $form->field($model, 'no_ktp')->textInput(['type'=>'number','maxlength' => true]) ?>
         </div>
         <div class="col-sm-4">
@@ -68,7 +71,7 @@ use app\models\Jobtitle;
         </div>
     </div>
     <div class="row">
-        <div class="col-sm-4">
+        <div class="col-sm-3">
             <?= $form->field($model, 'posisi')->dropDownList(
                 ArrayHelper::map(Jobtitle::find()->all(),'id',
                     function($model){
@@ -76,7 +79,7 @@ use app\models\Jobtitle;
                     }
             ),['prompt'=>'--Jabatan--']); ?>
         </div>
-         <div class="col-sm-4">
+         <div class="col-sm-3">
             <?php 
                 if(!$model->isNewRecord || $model->isNewRecord){
                     if($model->tanggal_masuk!=null){
@@ -92,20 +95,22 @@ use app\models\Jobtitle;
                 ]
             ])?>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-3">
             <?= $form->field($model, 'foto_karyawan')->fileInput(); ?>
             <?php if(!$model->isNewRecord): ?>
                 <small>*Jika tidak ada perubahan foto, kosongi field ini</small>
             <?php endif; ?>
             <p class="help-block">Format: JPG/JPEG/PNG max. 1 MB</p>
         </div>
-        <div class="col-sm-4">
+    </div>
+    <div class="row">
+        <div class="col-sm-3">
             <?= $form->field($model, 'bank')->textInput(['readonly'=>true,'value'=>'BCA']) ?>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-3">
             <?= $form->field($model, 'no_rekening')->textInput(['maxlength' => true]) ?>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-3">
             <?= $form->field($model, 'nama_rekening')->textInput(['maxlength' => true]) ?>
         </div>
     </div>

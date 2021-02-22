@@ -15,20 +15,12 @@ $query = Dailyreport::find()->where(['perusahaan'=>$model->id])->orderBy(['waktu
 ?>
 <div class="customer-view">
     <div class="row">
-        <div class="col-sm-7">
+        <div class="col-sm-9">
             <h2><b><?= Html::encode($this->title) ?></b></h2>
         </div>
-        <div class="col-sm-5">
+        <div class="col-sm-3">
             <p>
-                <?= Html::a('<i class="fa fa-fw fa-plus-square"></i> Tambah Data', ['create'], ['class' => 'btn btn-success']) ?>
                 <?= Html::a('<i class="fa fa-fw fa-pencil"></i> Ubah', ['update', 'id' => $model->id], ['class' => 'btn btn-warning']) ?>
-                <?= Html::a('<i class="fa fa-fw fa-trash"></i> Hapus', ['delete', 'id' => $model->id], [
-                    'class' => 'btn btn-danger',
-                    'data' => [
-                        'confirm' => 'Hapus data ini ?',
-                        'method' => 'post',
-                    ],
-                ]) ?>
                 <button class="btn btn-primary" data-toggle="modal" data-target="#daily-report"><i class="fa fa-fw fa-signal"></i> Progress</button>
             </p>
         </div>
@@ -37,12 +29,12 @@ $query = Dailyreport::find()->where(['perusahaan'=>$model->id])->orderBy(['waktu
     <section class="content">
       <div class="nav-tabs-custom tab-success">
         <ul class="nav nav-tabs">
-          <li class="active"><a href="#info" data-toggle="tab">Info</a></li>
-          <li><a href="#progress" data-toggle="tab">Progress</a></li>
+          <li><a href="#info" data-toggle="tab">Info</a></li>
+          <li class="active"><a href="#progress" data-toggle="tab">Progress</a></li>
         </ul>
 
         <div class="tab-content">
-            <div class="active tab-pane" id="info">
+            <div class="tab-pane" id="info">
                 <div class="table-responsive">
                 <?= DetailView::widget([
                     'model' => $model,
@@ -67,7 +59,8 @@ $query = Dailyreport::find()->where(['perusahaan'=>$model->id])->orderBy(['waktu
                 ]) ?>
                 </div>
             </div>
-            <div class="tab-pane" id="progress">
+            <div class="active tab-pane" id="progress">
+              <small style="color: red">*Perubahan data progress harap lapor ke IT</small>
               <div class="box-body table-responsive no-padding">
               <table class="table table-hover">
                 <tr>
@@ -78,17 +71,29 @@ $query = Dailyreport::find()->where(['perusahaan'=>$model->id])->orderBy(['waktu
                   <th>Jarak Ambil</th>
                   <th>Catatan</th>
                   <th>Hub.Balik</th>
+                  <th>By</th>
                 </tr>
             <?php foreach($query as $daily): ?>
             <?php $sales=Karyawan::find()->where(['id'=>$daily['sales']])->one(); ?>
                 <tr>
-                  <td><?= $daily['waktu']; ?></td>
-                  <td><?= $sales['nama']; ?></td>
+                  <td><?= date("d/m/Y",strtotime($daily['waktu'])); ?></td>
+                  <td><?= $sales['nama_pendek']; ?></td>
                   <td><?= $daily['keterangan']; ?></td>
                   <td><?= $daily['volume']; ?></td>
                   <td><?= $daily['jarak_ambil']; ?></td>
                   <td><?= $daily['catatan']; ?></td>
-                  <td><?= $daily['pengingat']; ?></td>
+                  <td>
+                    <?php if($daily['pengingat']!=NULL): ?>
+                      <?= date("d/m/Y",strtotime($daily['pengingat'])); ?>
+                    <?php endif; ?>
+                  </td>
+                  <td>
+                    <?php if($daily['con_used']==='Telfon Kantor'): ?>
+                      <i class="fa fa-fw fa-phone"></i>
+                    <?php elseif($daily['con_used']==='WA Pribadi'): ?>
+                      <i class="fa fa-fw fa-whatsapp"></i> 
+                    <?php endif; ?>
+                  </td>
                 </tr>
             <?php endforeach ?>
                </table>

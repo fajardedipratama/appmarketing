@@ -10,6 +10,7 @@ use Yii;
  * @property int $id
  * @property int $badge
  * @property string $nama
+ * @property string $nama_pendek
  * @property string $gender
  * @property string $tempat_lahir
  * @property string $tanggal_lahir
@@ -45,10 +46,10 @@ class Karyawan extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['badge', 'nama', 'gender', 'tempat_lahir', 'tanggal_lahir', 'no_hp', 'alamat_rumah','tanggal_masuk', 'posisi'], 'required'],
+            [['badge', 'nama', 'nama_pendek', 'gender', 'tempat_lahir', 'tanggal_lahir', 'no_hp', 'alamat_rumah','tanggal_masuk', 'posisi'], 'required'],
             [['tanggal_lahir', 'tanggal_masuk'], 'safe'],
             [['badge', 'posisi', 'departemen'], 'integer'],
-            [['nama', 'gender', 'tempat_lahir', 'agama', 'no_hp', 'no_ktp', 'pendidikan', 'status_kawin', 'bank','no_rekening',  'nama_rekening', 'status_aktif'], 'string', 'max' => 100],
+            [['nama','nama_pendek', 'gender', 'tempat_lahir', 'agama', 'no_hp', 'no_ktp', 'pendidikan', 'status_kawin', 'bank','no_rekening',  'nama_rekening', 'status_aktif'], 'string', 'max' => 100],
             [['alamat_ktp', 'alamat_rumah'], 'string', 'max' => 1000],
              [['foto_karyawan'], 'file', 'extensions' => 'png, jpg, jpeg','mimeTypes'=>'image/jpeg,image/png', 'maxSize'=>1048576,'skipOnEmpty'=>true],
             [['badge'], 'unique'],
@@ -65,6 +66,7 @@ class Karyawan extends \yii\db\ActiveRecord
             'id' => 'ID',
             'badge' => 'NIP',
             'nama' => 'Nama Lengkap',
+            'nama_pendek' => 'Nama Panggilan',
             'gender' => 'Jenis Kelamin',
             'tempat_lahir' => 'Tempat Lahir',
             'tanggal_lahir' => 'Tanggal Lahir',

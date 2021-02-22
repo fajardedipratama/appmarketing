@@ -25,10 +25,13 @@ use dosamigos\datepicker\DatePicker;
         <?= $form->field($modelprogress, 'volume')->textInput(['type' => 'number','min'=>5,'max'=>1000]) ?>
      </div>
      <div class="col-sm-4">
-        <?= $form->field($modelprogress, 'jarak_ambil')->dropDownList(['Tiap <1bulan sekali'=>'Tiap <1bulan sekali','Tiap 1bulan sekali'=>'Tiap 1bulan sekali','Tiap >1bulan sekali'=>'Tiap >1bulan sekali'],['prompt'=>'--Jarak Kebutuhan--']) ?>
+        <?= $form->field($modelprogress, 'jarak_ambil')->dropDownList(['<1bulan sekali'=>'<1bulan sekali','1bulan sekali'=>'1bulan sekali','>1bulan sekali'=>'>1bulan sekali'],['prompt'=>'--Jarak Kebutuhan--']) ?>
      </div>
      <div class="col-sm-4">
         <?= $form->field($modelprogress, 'catatan')->textInput(['maxlength' => true]) ?>
+     </div>
+     <div class="col-sm-4">
+        <?= $form->field($modelprogress, 'con_used')->dropDownList(['Telfon Kantor'=>'Telfon Kantor','WA Pribadi'=>'WA Pribadi']) ?>
      </div>
      <div class="col-sm-4">
         <?php 

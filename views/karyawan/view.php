@@ -16,7 +16,7 @@ $this->title = 'Detail '.$model->nama;
 
     <div class="row">
         <div class="col-sm-9">
-          <h1>Detail <strong><i>#<?= $model->nama ?></i></strong></h1>
+          <h1>Detail <strong><i>#<?= $model->nama_pendek ?></i></strong></h1>
         </div>
         <div class="col-sm-3">
           <p>

@@ -46,6 +46,7 @@ use app\models\Karyawan;
      <div class="col-sm-4">
         <?= $form->field($model, 'catatan')->textInput(['maxlength' => true]) ?>
      </div>
+    <?php if(Yii::$app->user->identity->type != 'Marketing'): ?>
      <div class="col-sm-4">
         <?= $form->field($model, 'sales')->widget(Select2::className(),[
             'data'=>ArrayHelper::map(Karyawan::find()->where(['posisi'=>6,'status_aktif'=>'Aktif'])->orderBy(['nama'=>SORT_ASC])->all(),'id',
@@ -55,6 +56,7 @@ use app\models\Karyawan;
             ),
             'options'=>['placeholder'=>"Sales"],'pluginOptions'=>['allowClear'=>true]
         ]) ?>
+    <?php endif; ?>
      </div>
     </div>
 </div></div>

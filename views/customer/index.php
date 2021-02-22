@@ -40,7 +40,7 @@ $this->title = 'Data Perusahaan';
             ],
             [
                 'attribute' => 'sales',
-                'value' => 'karyawan.nama',
+                'value' => 'karyawan.nama_pendek',
                 'filter'=>\kartik\select2\Select2::widget([
                     'model'=>$searchModel,'attribute'=>'sales','data'=>$sales,
                     'options'=>['placeholder'=>'Sales'],'pluginOptions'=>['allowClear'=>true]

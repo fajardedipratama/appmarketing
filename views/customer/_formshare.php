@@ -19,7 +19,7 @@ use app\models\Karyawan;
         <?= $form->field($model, 'sales')->widget(Select2::className(),[
             'data'=>ArrayHelper::map(Karyawan::find()->where(['posisi'=>6,'status_aktif'=>'Aktif'])->orderBy(['nama'=>SORT_ASC])->all(),'id',
                 function($model){
-                    return $model['nama'];
+                    return $model['nama_pendek'];
                 }
             ),
             'options'=>['placeholder'=>"Sales"],'pluginOptions'=>['allowClear'=>true]
