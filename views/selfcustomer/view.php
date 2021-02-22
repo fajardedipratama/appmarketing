@@ -29,7 +29,7 @@ $query = Dailyreport::find()->where(['perusahaan'=>$model->id])->orderBy(['waktu
                         'method' => 'post',
                     ],
                 ]) ?>
-                <button class="btn btn-primary" data-toggle="modal" data-target="#progress"><i class="fa fa-fw fa-signal"></i> Progress</button>
+                <button class="btn btn-primary" data-toggle="modal" data-target="#daily-report"><i class="fa fa-fw fa-signal"></i> Progress</button>
             </p>
         </div>
     </div>
@@ -98,7 +98,7 @@ $query = Dailyreport::find()->where(['perusahaan'=>$model->id])->orderBy(['waktu
       </div>
     </section>
 
-    <div class="modal fade" id="progress"><div class="modal-dialog modal-lg">
+    <div class="modal fade" id="daily-report"><div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">

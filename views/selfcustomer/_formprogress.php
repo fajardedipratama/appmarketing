@@ -12,7 +12,7 @@ use dosamigos\datepicker\DatePicker;
 <div class="dailyreport-form">
 
     <?php $form = ActiveForm::begin(); ?>
-<div class="box box-success"><div class="box-body">
+
     <div class="row">
         <?= $form->field($modelprogress, 'sales')->hiddenInput(['value'=>$model->sales,'readonly'=>true])->label(false) ?>
         <?= $form->field($modelprogress, 'perusahaan')->hiddenInput(['value'=>$model->id,'readonly'=>true])->label(false) ?>
@@ -47,7 +47,7 @@ use dosamigos\datepicker\DatePicker;
         ])?>
      </div>
     </div>
-</div></div>
+
     <div class="form-group">
         <?= Html::submitButton('Simpan', ['class' => 'btn btn-success']) ?>
     </div>
