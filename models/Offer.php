@@ -64,4 +64,15 @@ class Offer extends \yii\db\ActiveRecord
             'expired' => 'Expired',
         ];
     }
+
+    public function beforeSave($options = array()) {
+        $this->pic=ucwords(strtolower($this->pic));
+        $this->status='Belum Terkirim';
+        $this->waktu=date('Y-m-d H:i:s');
+
+        $date_now = date('Y-m-d');
+        $this->expired=date('Y-m-d', strtotime('+30 days', strtotime($date_now)));
+
+        return true;
+    }
 }

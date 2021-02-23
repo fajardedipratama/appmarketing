@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use Yii;
 use app\models\Offer;
+use app\models\Customer;
 use app\models\search\OfferSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -72,17 +73,27 @@ class OfferController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate()
+    public function actionCreate($id)
     {
-        $model = new Offer();
+        $customer = $this->findModel2($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        //view
+        if($customer->sales == Yii::$app->user->identity->profilname)
+        {
+            //create
+            $model = new Offer();
+            if ($model->load(Yii::$app->request->post()) && $model->save()) {
+                return $this->redirect(['selfcustomer/view', 'id' => $customer->id]);
+            }
+
+            return $this->render('create', [
+                'model' => $model,
+                'customer' => $customer,
+            ]);
+            
+        }else{
+            return $this->redirect(['selfcustomer/index']);
         }
-
-        return $this->render('create', [
-            'model' => $model,
-        ]);
     }
 
     /**
@@ -129,6 +140,14 @@ class OfferController extends Controller
     protected function findModel($id)
     {
         if (($model = Offer::findOne($id)) !== null) {
+            return $model;
+        }
+
+        throw new NotFoundHttpException('The requested page does not exist.');
+    }
+    protected function findModel2($id)
+    {
+        if (($model = Customer::findOne($id)) !== null) {
             return $model;
         }
 
