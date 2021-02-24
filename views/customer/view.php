@@ -49,9 +49,7 @@ $this->title = $model->perusahaan;
             'catatan',
             [
               'attribute'=>'sales',
-              'value'=>function($data){
-                return $data->karyawan->nama;
-              },  
+              'value'=>($model->karyawan)?$model->karyawan->nama:'-',
             ]
         ],
     ]) ?>

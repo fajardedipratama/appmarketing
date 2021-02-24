@@ -18,7 +18,7 @@ class SelfCustomerSearch extends Customer
     {
         return [
             [['id'], 'integer'],
-            [['perusahaan', 'lokasi', 'alamat_lengkap', 'pic', 'telfon', 'email', 'catatan', 'sales'], 'safe'],
+            [['perusahaan', 'lokasi', 'alamat_lengkap', 'pic', 'telfon', 'email', 'catatan','sales','expired'], 'safe'],
         ];
     }
 
@@ -46,6 +46,8 @@ class SelfCustomerSearch extends Customer
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'pagination'=>array('pageSize'=>20),
+            'sort'=>['defaultOrder'=>['perusahaan'=>SORT_ASC]]
         ]);
 
         $this->load($params);
@@ -59,16 +61,21 @@ class SelfCustomerSearch extends Customer
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
+            'lokasi' => $this->lokasi,
+            'sales' => $this->sales,
         ]);
+        if(!empty($this->expired)){    
+            $query->andFilterWhere([
+                'expired' => Yii::$app->formatter->asDate($this->expired,'yyyy-MM-dd'),
+            ]);
+        }
 
         $query->andFilterWhere(['like', 'perusahaan', $this->perusahaan])
-            ->andFilterWhere(['like', 'lokasi', $this->lokasi])
             ->andFilterWhere(['like', 'alamat_lengkap', $this->alamat_lengkap])
             ->andFilterWhere(['like', 'pic', $this->pic])
             ->andFilterWhere(['like', 'telfon', $this->telfon])
             ->andFilterWhere(['like', 'email', $this->email])
-            ->andFilterWhere(['like', 'catatan', $this->catatan])
-            ->andFilterWhere(['like', 'sales', $this->sales]);
+            ->andFilterWhere(['like', 'catatan', $this->catatan]);
 
         return $dataProvider;
     }

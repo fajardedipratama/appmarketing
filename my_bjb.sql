@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 23 Feb 2021 pada 10.54
+-- Waktu pembuatan: 24 Feb 2021 pada 10.32
 -- Versi server: 10.4.17-MariaDB
 -- Versi PHP: 8.0.0
 
@@ -59,22 +59,23 @@ CREATE TABLE `id_customer` (
   `telfon` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
   `catatan` varchar(1000) NOT NULL,
-  `sales` int(11) DEFAULT NULL
+  `sales` int(11) DEFAULT NULL,
+  `expired` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `id_customer`
 --
 
-INSERT INTO `id_customer` (`id`, `perusahaan`, `lokasi`, `alamat_lengkap`, `pic`, `telfon`, `email`, `catatan`, `sales`) VALUES
-(1, 'ADILUHUNG SARANA SEGARA PT', '1', '', '', '', '', '', 7),
-(3, 'BEN SANTOSO KAMAL PT', '1', '', '', '', '', '', 0),
-(4, 'ALBAISA PRIMA LESTARI PT', '2', '', '', '', '', '', 0),
-(5, 'MOJOAGUNG CV', '3', '', '', '', '', '', 0),
-(6, 'KETAPANG INDAH HOTEL', '2', '', '', '', '', '', 0),
-(7, 'DJAWANI GUNUNG ABADI PT', '5', '', 'suwito', '', '', '', 12),
-(8, 'INTI LUHUR FUJA ABADI PT', '2', '', '', '', '', '', 12),
-(9, 'ADMIRA PT', '5', '', 'purchasing', '', '', '', 10);
+INSERT INTO `id_customer` (`id`, `perusahaan`, `lokasi`, `alamat_lengkap`, `pic`, `telfon`, `email`, `catatan`, `sales`, `expired`) VALUES
+(1, 'ADILUHUNG SARANA SEGARA PT', '1', '', '', '', '', '', 7, NULL),
+(3, 'BEN SANTOSO KAMAL PT', '1', '', '', '', '', '', 0, NULL),
+(4, 'ALBAISA PRIMA LESTARI PT', '2', '', '', '', '', '', 0, NULL),
+(5, 'MOJOAGUNG CV', '3', '', '', '', '', '', 0, NULL),
+(6, 'KETAPANG INDAH HOTEL', '2', '', '', '', '', '', 0, NULL),
+(7, 'DJAWANI GUNUNG ABADI PT', '5', '', 'suwito', '', '', '', 12, NULL),
+(8, 'INTI LUHUR FUJA ABADI PT', '2', '', '', '', '', '', 12, NULL),
+(9, 'ADMIRA PT', '5', '', 'purchasing', '', '', '', 10, '2021-03-26');
 
 -- --------------------------------------------------------
 
@@ -237,17 +238,29 @@ CREATE TABLE `id_offer` (
   `harga` int(11) DEFAULT NULL,
   `catatan` varchar(1000) NOT NULL,
   `sales` int(11) NOT NULL,
-  `status` varchar(100) NOT NULL,
-  `expired` date NOT NULL
+  `status` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `id_offer`
 --
 
-INSERT INTO `id_offer` (`id`, `waktu`, `no_surat`, `perusahaan`, `pic`, `top`, `pajak`, `harga`, `catatan`, `sales`, `status`, `expired`) VALUES
-(3, '2021-02-23 16:09:40', NULL, 9, 'Purchasing', 'Cash On Delivery', 'PPN', 6600, 'compro', 10, 'Belum Terkirim', '2021-03-25'),
-(4, '2021-02-23 16:13:28', NULL, 9, 'Bu Eva', 'Cash On Delivery', 'PPN', 6650, '', 10, 'Belum Terkirim', '2021-03-25');
+INSERT INTO `id_offer` (`id`, `waktu`, `no_surat`, `perusahaan`, `pic`, `top`, `pajak`, `harga`, `catatan`, `sales`, `status`) VALUES
+(6, '2021-02-24 11:53:17', NULL, 9, 'Purchasing', 'Cash On Delivery', 'PPN', 6900, 'dapat dari akr 7200', 10, 'Belum Terkirim'),
+(10, '2021-02-24 12:58:37', NULL, 9, 'Purchasing', 'Cash Before Delivery', 'PPN', 6400, '', 10, 'Belum Terkirim'),
+(11, '2021-02-24 12:59:09', NULL, 9, 'Purchasing', 'Tempo 14 Hari', 'PPN', 6800, '', 10, 'Belum Terkirim');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `id_offer_number`
+--
+
+CREATE TABLE `id_offer_number` (
+  `id` int(11) NOT NULL,
+  `nomor` int(11) DEFAULT NULL,
+  `inisial` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -272,8 +285,8 @@ CREATE TABLE `id_user` (
 --
 
 INSERT INTO `id_user` (`id`, `profilname`, `username`, `password`, `last_login`, `authKey`, `accessToken`, `type`, `blocked`) VALUES
-(1, '5', 'dedy', '$2y$13$MdjCzwpzvuQvqvkqKvM14ezHCh.4MKx71DEaZEoI8HX6R8jW.nj1e', '2021-02-22 15:20:11', 'd5fdbe5b16111739a53f6bedc2c29e5c', 'd5fdbe5b16111739a53f6bedc2c29e5c', 'Administrator', ''),
-(2, '10', 'sugeng', '$2y$13$0boAOohSI0ofjmPZ05xZbeRR03oOUkfYRQT/PGedqGTi7rJ2Y.gyG', '2021-02-23 15:49:16', '9e28894760bdf11cb2bef7a32c020e3b', '9e28894760bdf11cb2bef7a32c020e3b', 'Marketing', ''),
+(1, '5', 'dedy', '$2y$13$MdjCzwpzvuQvqvkqKvM14ezHCh.4MKx71DEaZEoI8HX6R8jW.nj1e', '2021-02-24 13:44:02', 'd5fdbe5b16111739a53f6bedc2c29e5c', 'd5fdbe5b16111739a53f6bedc2c29e5c', 'Administrator', ''),
+(2, '10', 'sugeng', '$2y$13$0boAOohSI0ofjmPZ05xZbeRR03oOUkfYRQT/PGedqGTi7rJ2Y.gyG', '2021-02-24 13:49:21', '9e28894760bdf11cb2bef7a32c020e3b', '9e28894760bdf11cb2bef7a32c020e3b', 'Marketing', ''),
 (3, '3', 'atis', '$2y$13$KVUHfL5rcRvil9nhYjUNJetLhgyb2ptcfJOEVOOWb6YcM4FjKtk8W', '2021-02-16 13:57:23', 'd5455de2f44f740d0e7ae3b97ffaf9ea', 'd5455de2f44f740d0e7ae3b97ffaf9ea', 'Manajemen', ''),
 (4, '1', 'alisia', '$2y$13$vqbiCxoDOc3MVNdwa47ALuFYLB2AuFa.10MdhG1JAGVjKK7g5wlwe', '2021-02-20 10:45:18', '3c89bc5dc3c18795e99eaf0f91af12f6', '3c89bc5dc3c18795e99eaf0f91af12f6', 'Marketing', '');
 
@@ -335,6 +348,13 @@ ALTER TABLE `id_offer`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indeks untuk tabel `id_offer_number`
+--
+ALTER TABLE `id_offer_number`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `nomor` (`nomor`);
+
+--
 -- Indeks untuk tabel `id_user`
 --
 ALTER TABLE `id_user`
@@ -391,7 +411,13 @@ ALTER TABLE `id_karyawan`
 -- AUTO_INCREMENT untuk tabel `id_offer`
 --
 ALTER TABLE `id_offer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT untuk tabel `id_offer_number`
+--
+ALTER TABLE `id_offer_number`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `id_user`

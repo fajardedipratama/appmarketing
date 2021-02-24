@@ -16,6 +16,7 @@ use Yii;
  * @property string $email
  * @property string $catatan
  * @property int|null $sales
+ * @property string|null $expired
  */
 class Customer extends \yii\db\ActiveRecord
 {
@@ -34,6 +35,7 @@ class Customer extends \yii\db\ActiveRecord
     {
         return [
             [['perusahaan', 'lokasi'], 'required'],
+            [['expired'], 'safe'],
             [['perusahaan', 'lokasi', 'pic', 'telfon'], 'string', 'max' => 100],
             [['alamat_lengkap', 'catatan'], 'string', 'max' => 1000],
             [['sales'], 'integer'],
@@ -56,7 +58,8 @@ class Customer extends \yii\db\ActiveRecord
             'telfon' => 'Telfon',
             'email' => 'Email',
             'catatan' => 'Catatan',
-            'sales' => 'Sales'
+            'sales' => 'Sales',
+            'expired' => 'Expired',
         ];
     }
     

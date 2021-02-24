@@ -18,7 +18,7 @@ class OfferSearch extends Offer
     {
         return [
             [['id', 'no_surat', 'perusahaan', 'harga', 'sales'], 'integer'],
-            [['waktu', 'pic', 'top', 'pajak', 'catatan', 'status', 'expired'], 'safe'],
+            [['waktu', 'pic', 'top', 'pajak', 'catatan', 'status'], 'safe'],
         ];
     }
 
@@ -64,7 +64,6 @@ class OfferSearch extends Offer
             'perusahaan' => $this->perusahaan,
             'harga' => $this->harga,
             'sales' => $this->sales,
-            'expired' => $this->expired,
         ]);
 
         $query->andFilterWhere(['like', 'pic', $this->pic])

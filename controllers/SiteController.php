@@ -62,7 +62,11 @@ class SiteController extends Controller
     public function actionIndex()
     {
         if (!Yii::$app->user->isGuest) {
-            return $this->redirect(['/users']);
+            if(Yii::$app->user->identity->type == 'Marketing'){
+                return $this->redirect(['/selfcustomer']);
+            }else{
+                return $this->redirect(['/users']);
+            }
         }else{
             return $this->redirect(['site/login']);
         }
@@ -86,7 +90,11 @@ class SiteController extends Controller
             ['last_login' => date('Y-m-d H:i:s')],
             ['username'=>Yii::$app->user->identity->username])->execute();
             //redirect
-            return $this->redirect(['/users']);
+            if(Yii::$app->user->identity->type == 'Marketing'){
+                return $this->redirect(['/selfcustomer']);
+            }else{
+                return $this->redirect(['/users']);
+            }
         }
 
         return $this->render('login', [

@@ -18,7 +18,6 @@ use Yii;
  * @property string $catatan
  * @property int $sales
  * @property string $status
- * @property string $expired
  */
 class Offer extends \yii\db\ActiveRecord
 {
@@ -70,8 +69,14 @@ class Offer extends \yii\db\ActiveRecord
         $this->status='Belum Terkirim';
         $this->waktu=date('Y-m-d H:i:s');
 
+        $customer = $this->perusahaan;
         $date_now = date('Y-m-d');
-        $this->expired=date('Y-m-d', strtotime('+30 days', strtotime($date_now)));
+        $check_exp = Customer::find()->where(['id'=>$this->perusahaan])->one();
+        if($check_exp['expired']===NULL || strtotime($check_exp['expired']) < strtotime($date_now)){
+            $expired=date('Y-m-d', strtotime('+30 days', strtotime($date_now)));
+            $sql = "UPDATE id_customer SET expired='$expired' WHERE id = '$customer'";
+            Yii::$app->db->createCommand($sql)->execute();
+        }
 
         return true;
     }

@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
-
+use dosamigos\datepicker\DatePicker;
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\search\SelfCustomerSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -38,6 +38,17 @@ $this->title = 'Data Sales';
             ],
             'pic',
             'telfon',
+            [
+              'header'=>'Expired',
+              'value' => 'expired',
+              'headerOptions'=>['style'=>'width:15%'],
+              'format' => ['date', 'dd-MM-Y'],
+              'filter'=> DatePicker::widget([
+                'model'=>$searchModel,'attribute'=>'expired','clientOptions'=>[
+                  'autoclose'=>true, 'format' => 'dd-mm-yyyy','orientation'=>'bottom'
+                ],
+              ])
+            ],
             [
                 'class' => 'yii\grid\ActionColumn','header'=>'Aksi',
                 'template' => '{view}'

@@ -19,7 +19,11 @@ $offers = Offer::find()->where(['perusahaan'=>$model->id])->orderBy(['waktu'=>SO
     <div class="row">
         <div class="col-sm-7">
             <h2><b><?= Html::encode($this->title) ?></b></h2>
-            <h5><?= $model->city->kota ?></h5>
+          <?php if(strtotime($model->expired) >= strtotime(date('Y-m-d'))): ?>
+            <h5><?= $model->city->kota ?> - Exp.<?= date('d/m/Y',strtotime($model->expired))?></h5>
+          <?php else: ?>
+            <h5><?= $model->city->kota ?> - Exp. - </h5>
+          <?php endif; ?>
         </div>
         <div class="col-sm-5">
             <p>
@@ -114,9 +118,7 @@ $offers = Offer::find()->where(['perusahaan'=>$model->id])->orderBy(['waktu'=>SO
                   <th>PIC</th>
                   <th>TOP</th>
                   <th>Harga</th>
-                  <th>Pajak</th>
                   <th>Sales</th>
-                  <th>Expired</th>
                   <th>Catatan</th>
                 </tr>
             <?php foreach($offers as $tawar): ?>
@@ -127,15 +129,13 @@ $offers = Offer::find()->where(['perusahaan'=>$model->id])->orderBy(['waktu'=>SO
                   <td><?= $tawar['pic']; ?></td>
                   <td><?= $tawar['top']; ?></td>
                   <td><?= $tawar['harga']; ?></td>
-                  <td><?= $tawar['pajak']; ?></td>
                   <td><?= $sales['nama_pendek']; ?></td>
-                  <td><?= date("d/m/Y",strtotime($tawar['expired'])); ?></td>
                   <td>
-                    <a href="#" data-toggle="modal" data-target="#penawaran"><i class="fa fa-fw fa-eye"></i></a>
+                    <a href="#" data-toggle="modal" data-target="#offer<?= $tawar['id'] ?>"><i class="fa fa-fw fa-eye"></i></a>
                   </td>
                 </tr>
 
-      <div class="modal fade" id="penawaran"><div class="modal-dialog">
+      <div class="modal fade" id="offer<?= $tawar['id'] ?>"><div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -143,7 +143,10 @@ $offers = Offer::find()->where(['perusahaan'=>$model->id])->orderBy(['waktu'=>SO
                 <h4 class="modal-title"><b>No.Surat : <?= $tawar['no_surat'] ?></b></h4>          
             </div>
             <div class="modal-body">
-                
+              <ul>
+                <li><b>Pajak :</b> <?= $tawar['pajak'] ?></li>
+                <li><b>Catatan :</b> <?= $tawar['catatan'] ?></li>
+              </ul>
             </div>
         </div>
       </div></div>

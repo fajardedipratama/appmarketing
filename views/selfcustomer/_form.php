@@ -62,6 +62,7 @@ use app\models\Karyawan;
 </div></div>
     <div class="form-group">
         <?= Html::submitButton('Simpan', ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Batal', ['selfcustomer/view','id'=>$model->id], ['class' => 'btn btn-danger']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
