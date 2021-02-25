@@ -1,7 +1,7 @@
 <?php
 
 namespace app\models\search;
-
+use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use app\models\Offer;
@@ -18,7 +18,7 @@ class OfferSearch extends Offer
     {
         return [
             [['id', 'no_surat', 'perusahaan', 'harga', 'sales'], 'integer'],
-            [['waktu', 'pic', 'top', 'pajak', 'catatan', 'status'], 'safe'],
+            [['tanggal','waktu', 'pic', 'top', 'pajak', 'catatan', 'status'], 'safe'],
         ];
     }
 
@@ -46,6 +46,8 @@ class OfferSearch extends Offer
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'pagination'=>array('pageSize'=>30),
+            'sort'=>['defaultOrder'=>['perusahaan'=>SORT_ASC]]
         ]);
 
         $this->load($params);
@@ -65,6 +67,11 @@ class OfferSearch extends Offer
             'harga' => $this->harga,
             'sales' => $this->sales,
         ]);
+        if(!empty($this->tanggal)){    
+            $query->andFilterWhere([
+                'tanggal' => Yii::$app->formatter->asDate($this->tanggal,'yyyy-MM-dd'),
+            ]);
+        }
 
         $query->andFilterWhere(['like', 'pic', $this->pic])
             ->andFilterWhere(['like', 'top', $this->top])

@@ -1,7 +1,7 @@
 <?php
 
 namespace app\models\search;
-
+use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use app\models\Customer;
@@ -18,7 +18,7 @@ class CustomerSearch extends Customer
     {
         return [
             [['id'], 'integer'],
-            [['perusahaan', 'lokasi', 'alamat_lengkap', 'pic', 'telfon', 'email', 'catatan','sales','expired'], 'safe'],
+            [['perusahaan', 'lokasi', 'alamat_lengkap', 'pic', 'telfon', 'email', 'catatan','sales','expired','created_by'], 'safe'],
         ];
     }
 
@@ -63,6 +63,7 @@ class CustomerSearch extends Customer
             'id' => $this->id,
             'lokasi' => $this->lokasi,
             'sales' => $this->sales,
+            'created_by' => $this->created_by,
         ]);
         if(!empty($this->expired)){    
             $query->andFilterWhere([

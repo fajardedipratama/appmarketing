@@ -17,6 +17,7 @@ use Yii;
  * @property string $catatan
  * @property int|null $sales
  * @property string|null $expired
+ * @property int $created_by
  */
 class Customer extends \yii\db\ActiveRecord
 {
@@ -38,7 +39,7 @@ class Customer extends \yii\db\ActiveRecord
             [['expired'], 'safe'],
             [['perusahaan', 'lokasi', 'pic', 'telfon'], 'string', 'max' => 100],
             [['alamat_lengkap', 'catatan'], 'string', 'max' => 1000],
-            [['sales'], 'integer'],
+            [['sales','created_by'], 'integer'],
             [['perusahaan'], 'unique'],
             [['email'], 'email', 'message'=>'Penulisan alamat email tidak valid, pastikan ada @ dan diakhiri dengan domain'],
         ];
@@ -60,12 +61,13 @@ class Customer extends \yii\db\ActiveRecord
             'catatan' => 'Catatan',
             'sales' => 'Sales',
             'expired' => 'Expired',
+            'created_by' => 'Created By'
         ];
     }
     
     public function beforeSave($options = array()) {
         $this->perusahaan = strtoupper($this->perusahaan);
-
+        $this->created_by = Yii::$app->user->identity->profilname;
         return true;
     }
 
@@ -73,7 +75,7 @@ class Customer extends \yii\db\ActiveRecord
     {
         return $this->hasOne(City::className(), ['id' => 'lokasi']);
     }
-     public function getKaryawan()
+    public function getKaryawan()
     {
         return $this->hasOne(Karyawan::className(), ['id' => 'sales']);
     }

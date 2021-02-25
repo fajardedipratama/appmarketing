@@ -31,6 +31,10 @@ $config = [
             'thousandSeparator'=>'.',
             'decimalSeparator'=>',',
             'currencyCode'=>'IDR',
+            'dateFormat' => 'dd-MM-Y',
+            'datetimeFormat' => 'dd-MM-Y H:i:s',
+            'timeFormat' => 'H:i:s',
+            'defaultTimeZone' => 'Asia/Jakarta'
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',

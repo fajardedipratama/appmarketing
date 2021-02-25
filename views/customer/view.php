@@ -50,6 +50,10 @@ $this->title = $model->perusahaan;
             [
               'attribute'=>'sales',
               'value'=>($model->karyawan)?$model->karyawan->nama:'-',
+            ],
+            [
+              'attribute'=>'created_by',
+              'value'=>($model->karyawan)?$model->karyawan->nama:'-',
             ]
         ],
     ]) ?>

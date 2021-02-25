@@ -80,7 +80,7 @@ class SelfcustomerController extends Controller
             if ($modelprogress->load(Yii::$app->request->post()) && $modelprogress->save()) {
 
                 if($_POST['Dailyreport']['keterangan']==='Penawaran'){
-                    return $this->redirect(['offer/view', 'id' => $model->id]);
+                    return $this->redirect(['offer/create', 'id' => $model->id]);
                 }else{
                     return $this->redirect(['view', 'id' => $model->id]);
                 }

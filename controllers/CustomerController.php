@@ -53,7 +53,7 @@ class CustomerController extends Controller
 
         $sales = ArrayHelper::map(Karyawan::find()->where(['posisi'=>6,'status_aktif'=>'Aktif'])->all(),'id',
                 function($model){
-                    return $model['nama'];
+                    return $model['nama_pendek'];
                 });
         $kota = ArrayHelper::map(City::find()->all(),'id',
                 function($model){
