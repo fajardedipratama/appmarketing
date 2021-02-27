@@ -9,7 +9,7 @@ use app\models\Offer;
 /**
  * OfferSearch represents the model behind the search form of `app\models\Offer`.
  */
-class OfferSearch extends Offer
+class OfferprosesSearch extends Offer
 {
     /**
      * {@inheritdoc}
@@ -40,7 +40,7 @@ class OfferSearch extends Offer
      */
     public function search($params)
     {
-        $query = Offer::find()->where(['status'=>'Pending']);
+        $query = Offer::find()->where(['status'=>'Terkirim' || 'status'=>'Gagal Kirim']);
 
         // add conditions that should always apply here
 
