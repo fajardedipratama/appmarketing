@@ -57,10 +57,11 @@ $this->title = 'Data Penawaran';
             ],
             [
               'attribute'=>'sales',
-              'value'=>function($data){
-                $query = Karyawan::find()->where(['id'=>$data->sales])->one();
-                return $query['nama_pendek'];
-              }
+              'value' => 'karyawan.nama_pendek',
+              'filter'=>\kartik\select2\Select2::widget([
+                'model'=>$searchModel,'attribute'=>'sales','data'=>$sales,
+                'options'=>['placeholder'=>'Sales'],'pluginOptions'=>['allowClear'=>true]
+              ])
             ],
             'status',
 

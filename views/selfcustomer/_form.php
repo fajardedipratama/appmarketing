@@ -57,7 +57,7 @@ use app\models\Karyawan;
             'options'=>['placeholder'=>"Sales"],'pluginOptions'=>['allowClear'=>true]
         ]) ?>
     <?php else: ?>
-        <?= $form->field($model, 'sales')->hiddenInput(['value'=>Yii::$app->user->identity->profilname,'readonly'=>true]) ?>
+        <?= $form->field($model, 'sales')->hiddenInput(['value'=>Yii::$app->user->identity->profilname,'readonly'=>true])->label(false); ?>
     <?php endif; ?>
      </div>
     </div>

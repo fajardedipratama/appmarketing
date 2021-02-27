@@ -53,7 +53,11 @@ $this->title = $model->perusahaan;
             ],
             [
               'attribute'=>'created_by',
-              'value'=>($model->karyawan)?$model->karyawan->nama:'-',
+              'value'=>($model->karyawan)?$model->createdby->nama:'-',
+            ],
+            [
+                'attribute'=>'created_time',
+                'value'=>date('d-M-Y H:i',strtotime($model->created_time)),
             ]
         ],
     ]) ?>

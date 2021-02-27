@@ -17,7 +17,8 @@ use Yii;
  * @property string $catatan
  * @property int|null $sales
  * @property string|null $expired
- * @property int $created_by
+ * @property int|null $created_by
+ * @property string|null $created_time
  */
 class Customer extends \yii\db\ActiveRecord
 {
@@ -36,7 +37,7 @@ class Customer extends \yii\db\ActiveRecord
     {
         return [
             [['perusahaan', 'lokasi'], 'required'],
-            [['expired'], 'safe'],
+            [['expired','created_time'], 'safe'],
             [['perusahaan', 'lokasi', 'pic', 'telfon'], 'string', 'max' => 100],
             [['alamat_lengkap', 'catatan'], 'string', 'max' => 1000],
             [['sales','created_by'], 'integer'],
@@ -61,13 +62,17 @@ class Customer extends \yii\db\ActiveRecord
             'catatan' => 'Catatan',
             'sales' => 'Sales',
             'expired' => 'Expired',
-            'created_by' => 'Created By'
+            'created_by' => 'Add By',
+            'created_time' => 'Created',
         ];
     }
     
     public function beforeSave($options = array()) {
         $this->perusahaan = strtoupper($this->perusahaan);
-        $this->created_by = Yii::$app->user->identity->profilname;
+        if($this->isNewRecord){
+            $this->created_by = Yii::$app->user->identity->profilname;
+            $this->created_time = date('Y-m-d H:i:s');
+        }
         return true;
     }
 
@@ -78,5 +83,9 @@ class Customer extends \yii\db\ActiveRecord
     public function getKaryawan()
     {
         return $this->hasOne(Karyawan::className(), ['id' => 'sales']);
+    }
+    public function getCreatedby()
+    {
+        return $this->hasOne(Karyawan::className(), ['id' => 'created_by']);
     }
 }

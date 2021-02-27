@@ -88,4 +88,8 @@ class Offer extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Customer::className(), ['id' => 'perusahaan']);
     }
+    public function getKaryawan()
+    {
+        return $this->hasOne(Karyawan::className(), ['id' => 'sales']);
+    }
 }
