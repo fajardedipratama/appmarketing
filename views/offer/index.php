@@ -1,6 +1,7 @@
 <?php
 use app\models\City;
 use app\models\Karyawan;
+use app\models\Offernumber;
 use yii\helpers\Html;
 use yii\grid\GridView;
 use dosamigos\datepicker\DatePicker;
@@ -8,18 +9,19 @@ use dosamigos\datepicker\DatePicker;
 /* @var $searchModel app\models\search\OfferSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Data Penawaran';
+$this->title = 'Penawaran Baru';
 
 ?>
 <div class="offer-index">
 
     <div class="row">
-        <div class="col-sm-10">
+        <div class="col-sm-9">
             <h1><?= Html::encode($this->title) ?></h1>
         </div>
-        <div class="col-sm-2">
+        <div class="col-sm-3">
         <?php if(Yii::$app->user->identity->type == 'Administrator'): ?>
             <?= Html::a('<i class="fa fa-fw fa-plus-square"></i> Tambah Data', ['create'], ['class' => 'btn btn-success']) ?>
+            <button class="btn btn-warning" data-toggle="modal" data-target="#offer-number"><i class="fa fa-fw fa-sort-numeric-asc"></i> No.Surat</button>
         <?php endif; ?>
         </div>
     </div>
@@ -31,9 +33,11 @@ $this->title = 'Data Penawaran';
         'columns' => [
             [
               'attribute'=>'tanggal',
-              'value' => 'tanggal',
+              'value' => function($data){
+                return $data->tanggal.' '.$data->waktu;
+              },
               'headerOptions'=>['style'=>'width:15%'],
-              'format' => ['date','dd-MM-Y'],
+              'format' => ['date','dd-MM-Y H:i'],
               'filter'=> DatePicker::widget([
                 'model'=>$searchModel,'attribute'=>'tanggal','clientOptions'=>[
                   'autoclose'=>true, 'format' => 'dd-mm-yyyy','orientation'=>'bottom'
@@ -41,12 +45,12 @@ $this->title = 'Data Penawaran';
               ])
             ],
             [
-              'attribute'=>'no_surat',
-              'headerOptions'=>['style'=>'width:8%'],
-            ],
-            [
               'attribute'=>'perusahaan',
-              'value'=>'customer.perusahaan'
+              'value'=>'customer.perusahaan',
+              'filter'=>\kartik\select2\Select2::widget([
+                'model'=>$searchModel,'attribute'=>'perusahaan','data'=>$customer,
+                'options'=>['placeholder'=>'Perusahaan'],'pluginOptions'=>['allowClear'=>true]
+              ])
             ],
             [
               'header'=>'Lokasi',
@@ -63,10 +67,47 @@ $this->title = 'Data Penawaran';
                 'options'=>['placeholder'=>'Sales'],'pluginOptions'=>['allowClear'=>true]
               ])
             ],
-            'status',
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+              'class' => 'yii\grid\ActionColumn',
+              'headerOptions'=>['style'=>'width:8%'],
+              'header'=>'Verifikasi',
+              'template' => '{verifikasi}',
+                'buttons'=>
+                [
+                    'verifikasi'=>function($url,$model)
+                    {
+                    return Html::a
+                     (
+                        '<span class="glyphicon glyphicon-ok"></span>',
+                        ["offer/addnumber",'id'=>$model->id],
+                        ['title' => Yii::t('app', 'Verifikasi')],
+                     );
+                    },
+
+                ],
+                'visible' => Yii::$app->user->identity->type == 'Administrator' || Yii::$app->user->identity->type == 'Manajemen'
+            ],
+            [
+              'class' => 'yii\grid\ActionColumn',
+              'header' => 'Aksi',
+              'headerOptions'=>['style'=>'width:8%'],
+              'buttonOptions' => ['target'=>'_blank']
+            ],
         ],
     ]); ?>
   </div></div></div>
+
+  <div class="modal fade" id="offer-number"><div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title"><b>No.Surat Penawaran</b></h4>          
+            </div>
+            <div class="modal-body">
+              <?= $this->render('_formnumber', ['modelnumber' => $modelnumber]) ?>
+            </div>
+        </div>
+    </div></div>
 
 </div>

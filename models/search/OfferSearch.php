@@ -18,7 +18,7 @@ class OfferSearch extends Offer
     {
         return [
             [['id', 'no_surat', 'perusahaan', 'harga', 'sales'], 'integer'],
-            [['tanggal','waktu', 'pic', 'top', 'pajak', 'catatan', 'status'], 'safe'],
+            [['tanggal', 'pic', 'top', 'pajak', 'catatan', 'status'], 'safe'],
         ];
     }
 
@@ -47,7 +47,7 @@ class OfferSearch extends Offer
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
             'pagination'=>array('pageSize'=>30),
-            'sort'=>['defaultOrder'=>['perusahaan'=>SORT_ASC]]
+            'sort'=>['defaultOrder'=>['id'=>SORT_DESC]]
         ]);
 
         $this->load($params);

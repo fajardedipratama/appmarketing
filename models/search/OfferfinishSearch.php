@@ -9,7 +9,7 @@ use app\models\Offer;
 /**
  * OfferSearch represents the model behind the search form of `app\models\Offer`.
  */
-class OfferprosesSearch extends Offer
+class OfferfinishSearch extends Offer
 {
     /**
      * {@inheritdoc}
@@ -40,14 +40,14 @@ class OfferprosesSearch extends Offer
      */
     public function search($params)
     {
-        $query = Offer::find()->where(['status'=>'Terkirim' || 'status'=>'Gagal Kirim']);
+        $query = Offer::find()->where(['status'=>'Terkirim'])->orWhere(['status'=>'Gagal Kirim']);
 
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
             'pagination'=>array('pageSize'=>30),
-            'sort'=>['defaultOrder'=>['perusahaan'=>SORT_ASC]]
+            'sort'=>['defaultOrder'=>['id'=>SORT_DESC]]
         ]);
 
         $this->load($params);

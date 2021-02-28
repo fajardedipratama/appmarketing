@@ -7,6 +7,7 @@ use app\models\Offer;
 use app\models\Customer;
 use app\models\Karyawan;
 use app\models\City;
+use app\models\Offernumber;
 use app\models\search\OfferSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -56,17 +57,45 @@ class OfferController extends Controller
                 function($model){
                     return $model['nama_pendek'];
                 });
-        $kota = ArrayHelper::map(City::find()->all(),'id',
+        $customer = ArrayHelper::map(Offer::find()->where(['status'=>'Pending'])->all(),'perusahaan',
                 function($model){
-                    return $model['kota'];
+                $query=Customer::find()->where(['id'=>$model['perusahaan']])->all();
+                  foreach ($query as $key){
+                    return $key['perusahaan'];
+                  }
                 });
+
+        //update no_surat
+        $modelnumber = $this->findModel3();
+        if ($modelnumber->load(Yii::$app->request->post()) && $modelnumber->save()) {
+            return $this->redirect(['index']);
+        }
 
         return $this->render('index', [
             'sales' => $sales,
-            'kota' => $kota,
+            'customer' => $customer,
+            'modelnumber' => $modelnumber,
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
+    }
+
+    public function actionAddnumber($id)
+    {
+        $model = $this->findModel($id);
+
+        $query = Offernumber::find()->where(['id'=>1])->one();
+        $number = $query['nomor']+1;
+
+        Yii::$app->db->createCommand()->update('id_offer',
+        ['status' => 'Proses','no_surat'=>$number],
+        ['id'=>$model->id])->execute();
+
+        Yii::$app->db->createCommand()->update('id_offer_number',
+        ['nomor' => $number],
+        ['id'=> 1 ])->execute();
+
+        return $this->redirect(['index']);
     }
 
     /**
@@ -162,6 +191,14 @@ class OfferController extends Controller
     protected function findModel2($id)
     {
         if (($model = Customer::findOne($id)) !== null) {
+            return $model;
+        }
+
+        throw new NotFoundHttpException('The requested page does not exist.');
+    }
+    protected function findModel3()
+    {
+        if (($model = Offernumber::find()->where(['id'=>1])->one()) !== null) {
             return $model;
         }
 

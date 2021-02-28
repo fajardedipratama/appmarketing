@@ -6,13 +6,13 @@ use app\models\Offer;
 use app\models\Customer;
 use app\models\Karyawan;
 use app\models\City;
-use app\models\search\OfferprosesSearch;
+use app\models\search\OfferfinishSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use yii\helpers\ArrayHelper;
-class OfferprosesController extends \yii\web\Controller
+class OfferfinishController extends \yii\web\Controller
 {
 	/**
      * {@inheritdoc}
@@ -41,21 +41,24 @@ class OfferprosesController extends \yii\web\Controller
 
     public function actionIndex()
     {
-        $searchModel = new OfferfinisihSearch();
+        $searchModel = new OfferfinishSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         $sales = ArrayHelper::map(Karyawan::find()->where(['posisi'=>6,'status_aktif'=>'Aktif'])->all(),'id',
                 function($model){
                     return $model['nama_pendek'];
                 });
-        $kota = ArrayHelper::map(City::find()->all(),'id',
+        $customer = ArrayHelper::map(Offer::find()->where(['status'=>'Terkirim'])->orWhere(['status'=>'Gagal Kirim'])->all(),'perusahaan',
                 function($model){
-                    return $model['kota'];
+                $query=Customer::find()->where(['id'=>$model['perusahaan']])->all();
+                  foreach ($query as $key){
+                    return $key['perusahaan'];
+                  }
                 });
 
-        return $this->render('../offer/proses', [
+        return $this->render('../offer/finish', [
             'sales' => $sales,
-            'kota' => $kota,
+            'customer' => $customer,
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);

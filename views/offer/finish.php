@@ -8,12 +8,12 @@ use dosamigos\datepicker\DatePicker;
 /* @var $searchModel app\models\search\OfferSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Penawaran Proses';
+$this->title = 'Penawaran Selesai';
 
 ?>
 <div class="offer-index">
 
-  <h1><?= Html::encode($this->title) ?></h1>
+    <h1><?= Html::encode($this->title) ?></h1>
 
   <div class="box"><div class="box-body"><div class="table-responsive">
     <?= GridView::widget([
@@ -58,6 +58,8 @@ $this->title = 'Penawaran Proses';
                 'options'=>['placeholder'=>'Sales'],'pluginOptions'=>['allowClear'=>true]
               ])
             ],
+            'status',
+            ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
   </div></div></div>

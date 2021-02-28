@@ -48,14 +48,17 @@ class OfferprosesController extends \yii\web\Controller
                 function($model){
                     return $model['nama_pendek'];
                 });
-        $kota = ArrayHelper::map(City::find()->all(),'id',
+        $customer = ArrayHelper::map(Offer::find()->where(['status'=>'Proses'])->all(),'perusahaan',
                 function($model){
-                    return $model['kota'];
+                $query=Customer::find()->where(['id'=>$model['perusahaan']])->all();
+                  foreach ($query as $key){
+                    return $key['perusahaan'];
+                  }
                 });
 
         return $this->render('../offer/proses', [
             'sales' => $sales,
-            'kota' => $kota,
+            'customer' => $customer,
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);

@@ -47,7 +47,7 @@ class OfferprosesSearch extends Offer
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
             'pagination'=>array('pageSize'=>30),
-            'sort'=>['defaultOrder'=>['perusahaan'=>SORT_ASC]]
+            'sort'=>['defaultOrder'=>['id'=>SORT_DESC]]
         ]);
 
         $this->load($params);
