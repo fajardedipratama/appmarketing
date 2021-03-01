@@ -97,6 +97,26 @@ class OfferController extends Controller
 
         return $this->redirect(['index']);
     }
+    public function actionSuccess($id)
+    {
+        $model = $this->findModel($id);
+
+        Yii::$app->db->createCommand()->update('id_offer',
+        ['status' => 'Terkirim'],
+        ['id'=>$model->id])->execute();
+
+        return $this->redirect(['/offerproses']);
+    }
+    public function actionFailed($id)
+    {
+        $model = $this->findModel($id);
+
+        Yii::$app->db->createCommand()->update('id_offer',
+        ['status' => 'Gagal Kirim'],
+        ['id'=>$model->id])->execute();
+
+        return $this->redirect(['/offerproses']);
+    }
 
     /**
      * Displays a single Offer model.
@@ -137,6 +157,18 @@ class OfferController extends Controller
         }else{
             return $this->redirect(['selfcustomer/index']);
         }
+    }
+    public function actionCreateadmin()
+    {
+        $model = new Offer();
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['index']);
+        }
+
+        return $this->render('createadmin', [
+            'model' => $model,
+        ]);
     }
 
     /**

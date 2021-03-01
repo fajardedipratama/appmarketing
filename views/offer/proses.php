@@ -3,7 +3,6 @@ use app\models\City;
 use app\models\Karyawan;
 use yii\helpers\Html;
 use yii\grid\GridView;
-use dosamigos\datepicker\DatePicker;
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\search\OfferSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -20,17 +19,6 @@ $this->title = 'Penawaran Proses';
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            [
-              'attribute'=>'tanggal',
-              'value' => 'tanggal',
-              'headerOptions'=>['style'=>'width:15%'],
-              'format' => ['date','dd-MM-Y'],
-              'filter'=> DatePicker::widget([
-                'model'=>$searchModel,'attribute'=>'tanggal','clientOptions'=>[
-                  'autoclose'=>true, 'format' => 'dd-mm-yyyy','orientation'=>'bottom'
-                ],
-              ])
-            ],
             [
               'attribute'=>'no_surat',
               'headerOptions'=>['style'=>'width:8%'],
@@ -51,12 +39,73 @@ $this->title = 'Penawaran Proses';
               }
             ],
             [
+              'header'=>'Email',
+              'value'=>'customer.email',
+            ],
+            [
               'attribute'=>'sales',
               'value' => 'karyawan.nama_pendek',
               'filter'=>\kartik\select2\Select2::widget([
                 'model'=>$searchModel,'attribute'=>'sales','data'=>$sales,
                 'options'=>['placeholder'=>'Sales'],'pluginOptions'=>['allowClear'=>true]
               ])
+            ],
+            [
+              'class' => 'yii\grid\ActionColumn',
+              'headerOptions'=>['style'=>'width:8%'],
+              'header'=>'Status',
+              'template' => '{terkirim} {gagal}',
+                'buttons'=>
+                [
+                    'terkirim'=>function($url,$model)
+                    {
+                    return Html::a
+                     (
+                        '<span class="glyphicon glyphicon-ok"></span>',
+                        ["offer/success",'id'=>$model->id],
+                        ['title' => Yii::t('app', 'Terkirim')],
+                     );
+                    },
+                    'gagal'=>function($url,$model)
+                    {
+                    return Html::a
+                     (
+                        '<span class="glyphicon glyphicon-remove"></span>',
+                        ["offer/failed",'id'=>$model->id],
+                        ['title' => Yii::t('app', 'Gagal')],
+                     );
+                    },
+                ],
+                'visible' => Yii::$app->user->identity->type == 'Administrator' || Yii::$app->user->identity->type == 'Manajemen'
+            ],
+            [
+              'class' => 'yii\grid\ActionColumn',
+              'headerOptions'=>['style'=>'width:8%'],
+              'header'=>'Aksi',
+              'template' => '{view} {cetak}',
+                'buttons'=>
+                [
+                    'view'=>function($url,$model)
+                    {
+                    return Html::a
+                     (
+                        '<span class="glyphicon glyphicon-eye-open"></span>',
+                        ["offer/view",'id'=>$model->id],
+                        ['title' => Yii::t('app', 'View'),'target'=>'_blank'],
+                     );
+                    },
+                    'cetak'=>function($url,$model)
+                    {
+                    return Html::a
+                     (
+                        '<span class="glyphicon glyphicon-print"></span>',
+                        ["offer/print",'id'=>$model->id],
+                        ['title' => Yii::t('app', 'Print')],
+                     );
+                    },
+
+                ],
+                'visible' => Yii::$app->user->identity->type == 'Administrator' || Yii::$app->user->identity->type == 'Manajemen'
             ],
         ],
     ]); ?>

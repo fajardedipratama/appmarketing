@@ -124,7 +124,7 @@ $offers = Offer::find()->where(['perusahaan'=>$model->id])->orderBy(['waktu'=>SO
             <?php foreach($offers as $tawar): ?>
             <?php $sales=Karyawan::find()->where(['id'=>$tawar['sales']])->one(); ?>
                 <tr>
-                  <td><?= date("d/m/Y",strtotime($tawar['waktu'])); ?></td>
+                  <td><?= date("d/m/Y",strtotime($tawar['tanggal'])); ?></td>
                   <td><?= $tawar['no_surat']; ?></td>
                   <td><?= $tawar['pic']; ?></td>
                   <td><?= $tawar['top']; ?></td>

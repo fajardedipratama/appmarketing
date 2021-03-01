@@ -6,42 +6,54 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\Offer */
 
-$this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Offers', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = 'Detail Penawaran';
 \yii\web\YiiAsset::register($this);
 ?>
 <div class="offer-view">
-
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
-                'method' => 'post',
-            ],
-        ]) ?>
-    </p>
-
+    <div class="row">
+        <div class="col-sm-8">
+            <h1>Detail Penawaran</h1>
+        </div>
+        <div class="col-sm-4">
+            <p>
+                <?= Html::a('<i class="fa fa-fw fa-list"></i> Data', ['index'], ['class' => 'btn btn-primary']) ?>
+                <?= Html::a('<i class="fa fa-fw fa-pencil"></i> Ubah', ['update', 'id' => $model->id], ['class' => 'btn btn-warning']) ?>
+                <?= Html::a('<i class="fa fa-fw fa-trash"></i> Hapus', ['delete', 'id' => $model->id], [
+                    'class' => 'btn btn-danger',
+                    'data' => [
+                        'confirm' => 'Hapus data ini ?',
+                        'method' => 'post',
+                    ],
+                ]) ?>
+            </p>
+        </div>
+    </div>
+    <div class="table-responsive">
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id',
+            'tanggal',
             'waktu',
             'no_surat',
-            'perusahaan',
+            [
+              'attribute'=>'perusahaan',
+              'value'=>function($data){
+                return $data->customer->perusahaan;
+              },
+            ],
             'pic',
             'top',
             'pajak',
             'harga',
             'catatan',
-            'sales',
+            [
+              'attribute'=>'sales',
+              'value'=>function($data){
+                return $data->karyawan->nama;
+              },
+            ],
             'status',
-            'expired',
         ],
-    ]) ?>
-
+    ]) ?>   
+    </div>
 </div>

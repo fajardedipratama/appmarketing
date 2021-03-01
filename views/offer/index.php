@@ -20,7 +20,7 @@ $this->title = 'Penawaran Baru';
         </div>
         <div class="col-sm-3">
         <?php if(Yii::$app->user->identity->type == 'Administrator'): ?>
-            <?= Html::a('<i class="fa fa-fw fa-plus-square"></i> Tambah Data', ['create'], ['class' => 'btn btn-success']) ?>
+            <?= Html::a('<i class="fa fa-fw fa-plus-square"></i> Tambah Data', ['createadmin'], ['class' => 'btn btn-success']) ?>
             <button class="btn btn-warning" data-toggle="modal" data-target="#offer-number"><i class="fa fa-fw fa-sort-numeric-asc"></i> No.Surat</button>
         <?php endif; ?>
         </div>

@@ -59,7 +59,34 @@ $this->title = 'Penawaran Selesai';
               ])
             ],
             'status',
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+              'class' => 'yii\grid\ActionColumn',
+              'headerOptions'=>['style'=>'width:8%'],
+              'header'=>'Aksi',
+              'template' => '{view} {cetak}',
+                'buttons'=>
+                [
+                    'view'=>function($url,$model)
+                    {
+                    return Html::a
+                     (
+                        '<span class="glyphicon glyphicon-eye-open"></span>',
+                        ["offer/view",'id'=>$model->id],
+                        ['title' => Yii::t('app', 'View'),'target'=>'_blank'],
+                     );
+                    },
+                    'cetak'=>function($url,$model)
+                    {
+                    return Html::a
+                     (
+                        '<span class="glyphicon glyphicon-print"></span>',
+                        ["offer/print",'id'=>$model->id],
+                        ['title' => Yii::t('app', 'Print')],
+                     );
+                    },
+                ],
+                'visible' => Yii::$app->user->identity->type == 'Administrator' || Yii::$app->user->identity->type == 'Manajemen',
+            ],
         ],
     ]); ?>
   </div></div></div>
