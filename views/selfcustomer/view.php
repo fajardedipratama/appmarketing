@@ -28,8 +28,13 @@ $offers = Offer::find()->where(['perusahaan'=>$model->id])->orderBy(['waktu'=>SO
         <div class="col-sm-5">
             <p>
                 <?= Html::a('<i class="fa fa-fw fa-pencil"></i> Ubah', ['update', 'id' => $model->id], ['class' => 'btn btn-warning']) ?>
+              <?php if($model->verified !== 'no'): ?>
                 <button class="btn btn-primary" data-toggle="modal" data-target="#daily-report"><i class="fa fa-fw fa-plus-square"></i> Progress</button>
                 <?= Html::a('<i class="fa fa-fw fa-plus-square"></i> Penawaran', ['offer/create', 'id' => $model->id], ['class' => 'btn btn-danger']) ?>
+              <?php else: ?>
+                <button class="btn btn-primary disabled"><i class="fa fa-fw fa-plus-square"></i> Progress</button>
+                <button class="btn btn-danger disabled"><i class="fa fa-fw fa-plus-square"></i> Penawaran</button>
+              <?php endif; ?>
             </p>
         </div>
     </div>
@@ -114,7 +119,7 @@ $offers = Offer::find()->where(['perusahaan'=>$model->id])->orderBy(['waktu'=>SO
               <table class="table table-hover">
                 <tr>
                   <th>Waktu</th>
-                  <th>No.</th>
+                  <th>No.Surat</th>
                   <th>PIC</th>
                   <th>TOP</th>
                   <th>Harga</th>

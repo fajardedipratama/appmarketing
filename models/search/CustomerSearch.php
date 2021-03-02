@@ -5,7 +5,7 @@ use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use app\models\Customer;
-
+use yii\db\Expression;
 /**
  * CustomerSearch represents the model behind the search form of `app\models\Customer`.
  */
@@ -18,7 +18,7 @@ class CustomerSearch extends Customer
     {
         return [
             [['id'], 'integer'],
-            [['perusahaan', 'lokasi', 'alamat_lengkap', 'pic', 'telfon', 'email', 'catatan','sales','expired','created_by','created_time'], 'safe'],
+            [['perusahaan', 'lokasi', 'alamat_lengkap', 'pic', 'telfon', 'email', 'catatan','sales','expired','created_by','created_time','verified'], 'safe'],
         ];
     }
 
@@ -40,7 +40,11 @@ class CustomerSearch extends Customer
      */
     public function search($params)
     {
-        $query = Customer::find();
+        if(Yii::$app->user->identity->type == 'Marketing'){
+            $query = Customer::find()->where(['>=','expired',date('Y-m-d')])->orWhere(['expired'=>NULL]);
+        }else{
+            $query = Customer::find();
+        }
 
         // add conditions that should always apply here
 
@@ -76,7 +80,8 @@ class CustomerSearch extends Customer
             ->andFilterWhere(['like', 'pic', $this->pic])
             ->andFilterWhere(['like', 'telfon', $this->telfon])
             ->andFilterWhere(['like', 'email', $this->email])
-            ->andFilterWhere(['like', 'catatan', $this->catatan]);
+            ->andFilterWhere(['like', 'catatan', $this->catatan])
+            ->andFilterWhere(['like', 'verified', $this->verified]);
 
         return $dataProvider;
     }

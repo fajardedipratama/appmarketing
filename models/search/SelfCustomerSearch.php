@@ -18,7 +18,7 @@ class SelfCustomerSearch extends Customer
     {
         return [
             [['id'], 'integer'],
-            [['perusahaan', 'lokasi', 'alamat_lengkap', 'pic', 'telfon', 'email', 'catatan','sales','expired','created_by','created_time'], 'safe'],
+            [['perusahaan', 'lokasi', 'alamat_lengkap', 'pic', 'telfon', 'email', 'catatan','sales','expired','created_by','created_time','verified'], 'safe'],
         ];
     }
 
@@ -40,7 +40,7 @@ class SelfCustomerSearch extends Customer
      */
     public function search($params)
     {
-        $query = Customer::find()->where(['sales'=>Yii::$app->user->identity->profilname]);
+        $query = Customer::find()->where(['>=','expired',date('Y-m-d')])->orWhere(['expired'=>NULL])->andWhere(['sales'=>Yii::$app->user->identity->profilname]);
 
         // add conditions that should always apply here
 
@@ -75,7 +75,8 @@ class SelfCustomerSearch extends Customer
             ->andFilterWhere(['like', 'pic', $this->pic])
             ->andFilterWhere(['like', 'telfon', $this->telfon])
             ->andFilterWhere(['like', 'email', $this->email])
-            ->andFilterWhere(['like', 'catatan', $this->catatan]);
+            ->andFilterWhere(['like', 'catatan', $this->catatan])
+            ->andFilterWhere(['like', 'verified', $this->verified]);
 
         return $dataProvider;
     }

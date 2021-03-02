@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use dosamigos\datepicker\DatePicker;
+use app\models\Dailyreport;
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\search\SelfCustomerSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -26,7 +27,19 @@ $this->title = 'Data Sales';
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            [
+                'attribute'=>'verified',
+                'headerOptions'=>['style'=>'width:6%'],
+                'format'=>'raw',
+                'value'=>function($model){
+                    if($model->verified == 'yes'){
+                        return '<i class="fa fa-fw fa-check"></i>';
+                    }elseif($model->verified == 'no'){
+                        return '<i class="fa fa-fw fa-remove"></i>';
+                    }
+                },
+                'filter'=> ['yes'=>'yes','no'=>'no']
+            ],
             'perusahaan',
             [
                 'attribute' => 'lokasi',
@@ -36,8 +49,15 @@ $this->title = 'Data Sales';
                     'options'=>['placeholder'=>'Lokasi'],'pluginOptions'=>['allowClear'=>true]
                 ])
             ],
-            'pic',
-            'telfon',
+            [
+                'header'=>'Status Terakhir',
+                'value'=>function($model){
+                    $query = Dailyreport::find()->where(['perusahaan'=>$model->id])->orderBy(['waktu'=>SORT_DESC])->one();
+                    if($query){
+                        return $query['keterangan'].'-'.date('d/m/y',strtotime($query['waktu']));
+                    }
+                }
+            ],
             [
               'header'=>'Expired',
               'value' => 'expired',

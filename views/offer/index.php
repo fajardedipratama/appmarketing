@@ -70,20 +70,28 @@ $this->title = 'Penawaran Baru';
             [
               'class' => 'yii\grid\ActionColumn',
               'headerOptions'=>['style'=>'width:8%'],
-              'header'=>'Verifikasi',
-              'template' => '{verifikasi}',
+              'header'=>'Verif.',
+              'template' => '{accept}  {decline}',
                 'buttons'=>
                 [
-                    'verifikasi'=>function($url,$model)
+                    'accept'=>function($url,$model)
                     {
                     return Html::a
                      (
                         '<span class="glyphicon glyphicon-ok"></span>',
-                        ["offer/addnumber",'id'=>$model->id],
-                        ['title' => Yii::t('app', 'Verifikasi')],
+                        ["offer/accept",'id'=>$model->id],
+                        ['title' => Yii::t('app', 'Accept')],
                      );
                     },
-
+                    'decline'=>function($url,$model)
+                    {
+                    return Html::a
+                     (
+                        '<span class="glyphicon glyphicon-remove"></span>',
+                        ["offer/decline",'id'=>$model->id],
+                        ['title' => Yii::t('app', 'Decline')],
+                     );
+                    },
                 ],
                 'visible' => Yii::$app->user->identity->type == 'Administrator' || Yii::$app->user->identity->type == 'Manajemen'
             ],

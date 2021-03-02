@@ -18,7 +18,7 @@ use dosamigos\datepicker\DatePicker;
         <?= $form->field($modelprogress, 'perusahaan')->hiddenInput(['value'=>$model->id,'readonly'=>true])->label(false) ?>
      <div class="col-sm-4">
         <?= $form->field($modelprogress, 'keterangan')->dropDownList(
-              ['Penawaran'=>'Penawaran','Belum ada kebutuhan'=>'Belum ada kebutuhan','Tidak diangkat'=>'Tidak diangkat','PIC sibuk'=>'PIC sibuk','Tidak pakai solar'=>'Tidak pakai solar','Kebutuhan <5KL'=>'Kebutuhan <5KL','Kontrak vendor lain'=>'Kontrak vendor lain','Kalah harga'=>'Kalah harga'],
+              ['Penawaran'=>'Penawaran','Belum ada kebutuhan'=>'Belum ada kebutuhan','PIC sibuk'=>'PIC sibuk','Tidak pakai solar'=>'Tidak pakai solar','Kebutuhan <5KL'=>'Kebutuhan <5KL','Kontrak vendor lain'=>'Kontrak vendor lain','Kalah harga'=>'Kalah harga'],
               ['prompt'=>'--keterangan--']); ?>
      </div>
      <div class="col-sm-4">

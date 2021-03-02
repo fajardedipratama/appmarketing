@@ -80,7 +80,7 @@ class OfferController extends Controller
         ]);
     }
 
-    public function actionAddnumber($id)
+    public function actionAccept($id)
     {
         $model = $this->findModel($id);
 
@@ -95,8 +95,27 @@ class OfferController extends Controller
         ['nomor' => $number],
         ['id'=> 1 ])->execute();
 
+        Yii::$app->db->createCommand()->update('id_customer',
+        ['verified' => 'yes'],
+        ['id'=> $model->perusahaan ])->execute();
+
         return $this->redirect(['index']);
     }
+    public function actionDecline($id)
+    {
+        $model = $this->findModel($id);
+
+        Yii::$app->db->createCommand()->update('id_offer',
+        ['status' => 'Batal Kirim'],
+        ['id'=>$model->id])->execute();
+
+        Yii::$app->db->createCommand()->update('id_customer',
+        ['verified' => 'no'],
+        ['id'=> $model->perusahaan ])->execute();
+
+        return $this->redirect(['index']);
+    }
+
     public function actionSuccess($id)
     {
         $model = $this->findModel($id);

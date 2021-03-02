@@ -56,7 +56,7 @@ class Dailyreport extends \yii\db\ActiveRecord
             'volume' => 'Est.Volume (KL)',
             'jarak_ambil' => 'Est.Jarak Kebutuhan',
             'catatan' => 'Catatan',
-            'pengingat' => 'Pengingat',
+            'pengingat' => 'Hub.Balik',
             'con_used' => 'Kontak Via',
         ];
     }

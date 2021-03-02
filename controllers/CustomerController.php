@@ -121,6 +121,7 @@ class CustomerController extends Controller
     public function actionShare($id)
     {
         $model = $this->findModel($id);
+        $model->expired = NULL;
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['index']);
