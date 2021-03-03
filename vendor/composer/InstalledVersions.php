@@ -29,7 +29,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '73783e3b27ae6c88ae65ea97acf979e0b8591c0b',
+    'reference' => '6c21c14601b58255dedfb14db67b9f4925c4c2a9',
     'name' => 'yiisoft/yii2-app-basic',
   ),
   'versions' => 
@@ -294,6 +294,34 @@ private static $installed = array (
       array (
       ),
       'reference' => '53330f47520498c0ae1f61f7e2c90f55690c06a3',
+    ),
+    'kartik-v/yii2-bootstrap4-dropdown' => 
+    array (
+      'pretty_version' => 'v1.0.1',
+      'version' => '1.0.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '394cb4f85d82522ec5918f1581bdad518b324498',
+    ),
+    'kartik-v/yii2-dialog' => 
+    array (
+      'pretty_version' => 'v1.0.5',
+      'version' => '1.0.5.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'c38616d719f52530749457c022ca6134d0ad31ce',
+    ),
+    'kartik-v/yii2-grid' => 
+    array (
+      'pretty_version' => 'dev-master',
+      'version' => 'dev-master',
+      'aliases' => 
+      array (
+        0 => '3.3.x-dev',
+      ),
+      'reference' => '1aa635faba7778d354a7a1e48c66b87744eed2af',
     ),
     'kartik-v/yii2-krajee-base' => 
     array (
@@ -865,7 +893,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '73783e3b27ae6c88ae65ea97acf979e0b8591c0b',
+      'reference' => '6c21c14601b58255dedfb14db67b9f4925c4c2a9',
     ),
     'yiisoft/yii2-bootstrap' => 
     array (

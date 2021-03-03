@@ -49,6 +49,9 @@ class ComposerStaticInit965b319f9fc9c9b656d77316a61adaec
         'k' => 
         array (
             'kartik\\select2\\' => 15,
+            'kartik\\grid\\' => 12,
+            'kartik\\dialog\\' => 14,
+            'kartik\\bs4dropdown\\' => 19,
             'kartik\\base\\' => 12,
         ),
         'd' => 
@@ -165,6 +168,18 @@ class ComposerStaticInit965b319f9fc9c9b656d77316a61adaec
         'kartik\\select2\\' => 
         array (
             0 => __DIR__ . '/..' . '/kartik-v/yii2-widget-select2/src',
+        ),
+        'kartik\\grid\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/kartik-v/yii2-grid/src',
+        ),
+        'kartik\\dialog\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/kartik-v/yii2-dialog/src',
+        ),
+        'kartik\\bs4dropdown\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/kartik-v/yii2-bootstrap4-dropdown/src',
         ),
         'kartik\\base\\' => 
         array (
