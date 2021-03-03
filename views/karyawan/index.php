@@ -27,6 +27,12 @@ $this->title = 'Data Karyawan';
         'columns' => [
             'badge',
             'nama',
+            [
+                'attribute' => 'tanggal_lahir',
+                'value' => function($model){
+                    return date('d/m/Y',strtotime($model->tanggal_lahir));
+                }
+            ],
             'no_hp',
             [
                 'attribute' => 'posisi',

@@ -71,15 +71,6 @@ class Offer extends \yii\db\ActiveRecord
             $this->status='Pending';
             $this->tanggal=date('Y-m-d');
             $this->waktu=date('H:i:s');
-
-            $customer = $this->perusahaan;
-            $date_now = date('Y-m-d');
-            $check_exp = Customer::find()->where(['id'=>$this->perusahaan])->one();
-            if($check_exp['expired']===NULL || strtotime($check_exp['expired']) < strtotime($date_now)){
-                $expired=date('Y-m-d', strtotime('+30 days', strtotime($date_now)));
-                $sql = "UPDATE id_customer SET expired='$expired' WHERE id = '$customer'";
-                Yii::$app->db->createCommand($sql)->execute();
-            }
         }
 
         return true;

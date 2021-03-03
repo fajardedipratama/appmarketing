@@ -131,6 +131,31 @@ class CustomerController extends Controller
             'model' => $model,
         ]);
     }
+    public function actionMerge($id)
+    {
+        $model = $this->findModel($id);
+
+        if ($model->load(Yii::$app->request->post()) ) {
+
+            Yii::$app->db->createCommand()->update('id_dailyreport',
+            ['perusahaan' => $_POST['Customer']['target'] ],
+            ['perusahaan'=>$model->id])->execute();
+
+            Yii::$app->db->createCommand()->update('id_offer',
+            ['perusahaan' => $_POST['Customer']['target'] ],
+            ['perusahaan'=>$model->id])->execute();
+
+            Yii::$app->db->createCommand()->update('id_customer',
+            ['expired' => NULL,'sales'=>$model->sales ],
+            ['id'=>$_POST['Customer']['target']])->execute();
+
+            return $this->redirect(['view', 'id' => $_POST['Customer']['target'] ]);
+        }
+
+        return $this->render('merge', [
+            'model' => $model,
+        ]);
+    }
 
     /**
      * Deletes an existing Customer model.

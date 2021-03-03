@@ -23,6 +23,7 @@ use Yii;
  */
 class Customer extends \yii\db\ActiveRecord
 {
+    public $target;
     /**
      * {@inheritdoc}
      */
@@ -41,7 +42,7 @@ class Customer extends \yii\db\ActiveRecord
             [['expired','created_time'], 'safe'],
             [['perusahaan', 'lokasi', 'pic', 'telfon', 'verified'], 'string', 'max' => 100],
             [['alamat_lengkap', 'catatan'], 'string', 'max' => 1000],
-            [['sales','created_by'], 'integer'],
+            [['sales','created_by','target'], 'integer'],
             [['perusahaan'], 'unique'],
             [['email'], 'email', 'message'=>'Penulisan alamat email tidak valid, pastikan ada @ dan diakhiri dengan domain'],
         ];
@@ -66,6 +67,7 @@ class Customer extends \yii\db\ActiveRecord
             'created_by' => 'Add By',
             'created_time' => 'Created',
             'verified' => ' ',
+            'target' => 'Target'
         ];
     }
     

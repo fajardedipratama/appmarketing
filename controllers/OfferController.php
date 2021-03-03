@@ -99,6 +99,15 @@ class OfferController extends Controller
         ['verified' => 'yes'],
         ['id'=> $model->perusahaan ])->execute();
 
+        $date_now = date('Y-m-d');
+        $check_exp = Customer::find()->where(['id'=>$model->perusahaan])->one();
+        if($check_exp['expired']===NULL || strtotime($check_exp['expired']) < strtotime($date_now)){
+            $expired=date('Y-m-d', strtotime('+30 days', strtotime($date_now)));
+            Yii::$app->db->createCommand()->update('id_customer',
+            ['expired' => $expired],
+            ['id'=> $model->perusahaan ])->execute();
+        }
+
         return $this->redirect(['index']);
     }
     public function actionDecline($id)
