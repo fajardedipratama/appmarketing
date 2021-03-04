@@ -58,7 +58,10 @@ $this->title = 'Penawaran Selesai';
                 'options'=>['placeholder'=>'Sales'],'pluginOptions'=>['allowClear'=>true]
               ])
             ],
-            'status',
+            [
+              'attribute' => 'status',
+              'filter'=> ['Terkirim'=>'Terkirim','Gagal Kirim'=>'Gagal Kirim']
+            ],
             [
               'class' => 'yii\grid\ActionColumn',
               'headerOptions'=>['style'=>'width:8%'],

@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Offer */
 
-$this->title = 'Penawaran '.$model->no_surat;
+$this->title = 'Penawaran #'.$model->no_surat;
 ?>
 <div class="offer-update">
 

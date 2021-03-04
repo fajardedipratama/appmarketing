@@ -71,7 +71,7 @@ $this->title = 'Penawaran Baru';
               'class' => 'yii\grid\ActionColumn',
               'headerOptions'=>['style'=>'width:8%'],
               'header'=>'Verif.',
-              'template' => '{accept}  {decline}',
+              'template' => '{accept} {decline} {duplicate}',
                 'buttons'=>
                 [
                     'accept'=>function($url,$model)
@@ -89,7 +89,22 @@ $this->title = 'Penawaran Baru';
                      (
                         '<span class="glyphicon glyphicon-remove"></span>',
                         ["offer/decline",'id'=>$model->id],
-                        ['title' => Yii::t('app', 'Decline')],
+                        [
+                          'title' => Yii::t('app', 'Decline'),
+                          'data' => ['confirm' => 'Perusahaan ditolak ?','method' => 'post',]
+                        ],
+                     );
+                    },
+                    'duplicate'=>function($url,$model)
+                    {
+                    return Html::a
+                     (
+                        '<span class="glyphicon glyphicon-minus-sign"></span>',
+                        ["offer/duplicate",'id'=>$model->id],
+                        [
+                          'title' => Yii::t('app', 'Duplicate Data!'),
+                          'data' => ['confirm' => 'Perusahaan terdeteksi duplikat ?','method' => 'post',]
+                        ],
                      );
                     },
                 ],

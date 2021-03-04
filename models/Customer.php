@@ -15,6 +15,8 @@ use Yii;
  * @property string $telfon
  * @property string $email
  * @property string $catatan
+ * @property string $volume
+ * @property string $jarak_ambil
  * @property int|null $sales
  * @property string|null $expired
  * @property int|null $created_by
@@ -40,7 +42,7 @@ class Customer extends \yii\db\ActiveRecord
         return [
             [['perusahaan', 'lokasi'], 'required'],
             [['expired','created_time'], 'safe'],
-            [['perusahaan', 'lokasi', 'pic', 'telfon', 'verified'], 'string', 'max' => 100],
+            [['perusahaan', 'lokasi', 'pic', 'telfon', 'verified', 'volume', 'jarak_ambil'], 'string', 'max' => 100],
             [['alamat_lengkap', 'catatan'], 'string', 'max' => 1000],
             [['sales','created_by','target'], 'integer'],
             [['perusahaan'], 'unique'],
@@ -62,6 +64,8 @@ class Customer extends \yii\db\ActiveRecord
             'telfon' => 'Telfon',
             'email' => 'Email',
             'catatan' => 'Catatan',
+            'volume' => 'Est.Volume (KL)',
+            'jarak_ambil' => 'Est.Jarak Kebutuhan',
             'sales' => 'Sales',
             'expired' => 'Expired',
             'created_by' => 'Add By',

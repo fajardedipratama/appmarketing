@@ -124,6 +124,20 @@ class OfferController extends Controller
 
         return $this->redirect(['index']);
     }
+    public function actionDuplicate($id)
+    {
+        $model = $this->findModel($id);
+
+        Yii::$app->db->createCommand()->delete('id_customer',
+        ['id'=> $model->perusahaan ])->execute();
+        Yii::$app->db->createCommand()->delete('id_dailyreport',
+        ['perusahaan'=> $model->perusahaan ])->execute();
+        Yii::$app->db->createCommand()->delete('id_offer',
+        ['perusahaan'=> $model->perusahaan ])->execute();
+
+
+        return $this->redirect(['index']);
+    }
 
     public function actionSuccess($id)
     {
@@ -154,9 +168,15 @@ class OfferController extends Controller
      */
     public function actionView($id)
     {
-        return $this->render('view', [
-            'model' => $this->findModel($id),
-        ]);
+        $model = $this->findModel($id);
+        //view
+        if($model->sales == Yii::$app->user->identity->profilname || Yii::$app->user->identity->type != 'Marketing'){
+            return $this->render('view', [
+                'model' => $this->findModel($id),
+            ]);
+        }else{
+            return $this->redirect(['selfcustomer/index']);
+        }
     }
 
     /**

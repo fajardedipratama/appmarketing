@@ -44,6 +44,12 @@ use app\models\Karyawan;
         <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
      </div>
      <div class="col-sm-4">
+        <?= $form->field($model, 'volume')->textInput(['type' => 'number','min'=>5,'max'=>1000]) ?>
+     </div>
+     <div class="col-sm-4">
+        <?= $form->field($model, 'jarak_ambil')->dropDownList(['<1bulan sekali'=>'<1bulan sekali','1bulan sekali'=>'1bulan sekali','>1bulan sekali'=>'>1bulan sekali'],['prompt'=>'--Jarak Kebutuhan--']) ?>
+     </div>
+     <div class="col-sm-4">
         <?= $form->field($model, 'catatan')->textInput(['maxlength' => true]) ?>
      </div>
      <div class="col-sm-4">

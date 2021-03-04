@@ -77,7 +77,8 @@ $this->title = 'Data Perusahaan';
                 'model'=>$searchModel,'attribute'=>'expired','clientOptions'=>[
                   'autoclose'=>true, 'format' => 'dd-mm-yyyy','orientation'=>'bottom'
                 ],
-              ])
+              ]),
+              'visible' => Yii::$app->user->identity->type == 'Administrator' || Yii::$app->user->identity->type == 'Manajemen'
             ],
             [
                 'class' => 'yii\grid\ActionColumn','header'=>'Aksi',
