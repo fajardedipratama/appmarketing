@@ -22,6 +22,7 @@ use Yii;
  * @property int|null $created_by
  * @property string|null $created_time
  * @property string $verified
+ * @property string $alasan
  */
 class Customer extends \yii\db\ActiveRecord
 {
@@ -43,7 +44,7 @@ class Customer extends \yii\db\ActiveRecord
             [['perusahaan', 'lokasi'], 'required'],
             [['expired','created_time'], 'safe'],
             [['perusahaan', 'lokasi', 'pic', 'telfon', 'verified', 'volume', 'jarak_ambil'], 'string', 'max' => 100],
-            [['alamat_lengkap', 'catatan'], 'string', 'max' => 1000],
+            [['alamat_lengkap', 'catatan', 'alasan'], 'string', 'max' => 1000],
             [['sales','created_by','target'], 'integer'],
             [['perusahaan'], 'unique'],
             [['email'], 'email', 'message'=>'Penulisan alamat email tidak valid, pastikan ada @ dan diakhiri dengan domain'],
@@ -71,7 +72,8 @@ class Customer extends \yii\db\ActiveRecord
             'created_by' => 'Add By',
             'created_time' => 'Created',
             'verified' => ' ',
-            'target' => 'Target'
+            'target' => 'Target',
+            'alasan' => 'Alasan',
         ];
     }
     

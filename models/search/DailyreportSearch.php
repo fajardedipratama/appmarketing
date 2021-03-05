@@ -18,7 +18,7 @@ class DailyreportSearch extends Dailyreport
     {
         return [
             [['id', 'sales', 'perusahaan'], 'integer'],
-            [['waktu', 'keterangan', 'volume', 'jarak_ambil', 'catatan', 'pengingat'], 'safe'],
+            [['waktu', 'keterangan','catatan', 'pengingat'], 'safe'],
         ];
     }
 
@@ -66,8 +66,6 @@ class DailyreportSearch extends Dailyreport
         ]);
 
         $query->andFilterWhere(['like', 'keterangan', $this->keterangan])
-            ->andFilterWhere(['like', 'volume', $this->volume])
-            ->andFilterWhere(['like', 'jarak_ambil', $this->jarak_ambil])
             ->andFilterWhere(['like', 'catatan', $this->catatan]);
 
         return $dataProvider;

@@ -1,8 +1,12 @@
 <?php
 use yii\helpers\Html;
 use app\models\Karyawan;
+use app\models\DailyReport;
+use app\models\Customer;
 
 $karyawan = Karyawan::find()->where(['id'=>Yii::$app->user->identity->profilname])->one();
+
+$callback = DailyReport::find()->where(['sales'=>Yii::$app->user->identity->profilname])->andWhere(['pengingat'=>date('Y-m-d')])->all();
 /* @var $this \yii\web\View */
 /* @var $content string */
 
@@ -21,12 +25,37 @@ $karyawan = Karyawan::find()->where(['id'=>Yii::$app->user->identity->profilname
         <div class="navbar-custom-menu">
 
             <ul class="nav navbar-nav">
-                
+                <?php if(Yii::$app->user->identity->type == 'Marketing'): ?>
+                <li class="dropdown notifications-menu">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="fa fa-phone-square"></i>
+                        <span class="label label-danger">!</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="header"><b>Hubungi Balik Hari Ini</b></li>
+                        <li>
+                            <ul class="menu">
+                            <?php foreach($callback as $notif): ?>
+                            <?php $cust=Customer::find()->where(['id'=>$notif['perusahaan']])->one() ?>
+                            <?php if(($cust['expired'] >= date('Y-m-d') || $cust['expired'] == NULL) && $cust['verified'] != 'no'): ?>
+                                <li>
+                                    <a href="index.php?r=selfcustomer/view&id=<?= $cust['id'] ?>">
+                                        <i class="fa fa-phone text-aqua"></i> <?= $cust['perusahaan'] ?>
+                                    </a>
+                                </li>
+                            <?php endif; ?>
+                            <?php endforeach ?>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <?php endif ?>
                 <!-- User Account: style can be found in dropdown.less -->
 
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <span class="hidden-xs"><i class="fa fa-user"></i> <?= $karyawan['nama'] ?></span>
+                        <i class="fa fa-user"></i>
+                        <span class="hidden-xs"> <?= $karyawan['nama'] ?></span>
                     </a>
                     <ul class="dropdown-menu">
                         <!-- User image -->

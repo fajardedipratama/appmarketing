@@ -28,7 +28,7 @@ $offers = Offer::find()->where(['perusahaan'=>$model->id])->orderBy(['waktu'=>SO
         <div class="col-sm-3">
             <p>
                 <?= Html::a('<i class="fa fa-fw fa-pencil"></i> Ubah', ['update', 'id' => $model->id], ['class' => 'btn btn-warning']) ?>
-              <?php if($model->verified !== 'no'): ?>
+              <?php if($model->verified !== 'no' && $model->expired >= date('Y-m-d')): ?>
                 <button class="btn btn-primary" data-toggle="modal" data-target="#daily-report"><i class="fa fa-fw fa-plus-square"></i> Progress</button>
               <?php else: ?>
                 <button class="btn btn-primary disabled"><i class="fa fa-fw fa-plus-square"></i> Progress</button>
@@ -88,7 +88,7 @@ $offers = Offer::find()->where(['perusahaan'=>$model->id])->orderBy(['waktu'=>SO
             <?php foreach($progress as $daily): ?>
             <?php $sales=Karyawan::find()->where(['id'=>$daily['sales']])->one(); ?>
                 <tr>
-                  <td><?= date("d/m/Y",strtotime($daily['waktu'])); ?></td>
+                  <td><?= date("d/m/y H:i",strtotime($daily['waktu'])); ?></td>
                   <td><?= $sales['nama_pendek']; ?></td>
                   <td><?= $daily['keterangan']; ?></td>
                   <td><?= $daily['catatan']; ?></td>
@@ -100,8 +100,8 @@ $offers = Offer::find()->where(['perusahaan'=>$model->id])->orderBy(['waktu'=>SO
                   <td>
                     <?php if($daily['con_used']==='Telfon Kantor'): ?>
                       <i class="fa fa-fw fa-phone" title="Telfon Kantor"></i>
-                    <?php elseif($daily['con_used']==='WA Pribadi'): ?>
-                      <i class="fa fa-fw fa-whatsapp" title="WhatsApp"></i> 
+                    <?php elseif($daily['con_used']==='Telfon Pribadi'): ?>
+                      <i class="fa fa-fw fa-whatsapp" title="Telfon Pribadi"></i> 
                     <?php endif; ?>
                   </td>
                 </tr>

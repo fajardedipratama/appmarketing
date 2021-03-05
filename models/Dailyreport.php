@@ -58,11 +58,17 @@ class Dailyreport extends \yii\db\ActiveRecord
     }
 
     public function beforeSave($options = array()) {
-        $time_now=date('Y-m-d H:i:s');
-        $this->waktu=$time_now;
+        $this->waktu=date('Y-m-d H:i:s');
 
         if(!empty($this->pengingat)){
-            $this->pengingat = Yii::$app->formatter->asDate($_POST['Dailyreport']['pengingat'],'yyyy-MM-dd');
+          $check = Dailyreport::find()->where(['perusahaan'=>$this->perusahaan])->andWhere(['pengingat'=>date('Y-m-d',strtotime($this->pengingat))])->count();
+
+          if( $check > 0 ){
+               $this->pengingat = null;    
+          }else{
+               $this->pengingat=Yii::$app->formatter->asDate($_POST['Dailyreport']['pengingat'],'yyyy-MM-dd');
+          }
+
         }else{
             $this->pengingat = null;
         }

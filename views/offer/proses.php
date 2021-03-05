@@ -40,6 +40,7 @@ $this->title = 'Penawaran Proses';
             ],
             [
               'header'=>'Email',
+              'format' => 'url',
               'value'=>'customer.email',
             ],
             [

@@ -18,14 +18,14 @@ use dosamigos\datepicker\DatePicker;
         <?= $form->field($modelprogress, 'perusahaan')->hiddenInput(['value'=>$model->id,'readonly'=>true])->label(false) ?>
      <div class="col-sm-4">
         <?= $form->field($modelprogress, 'keterangan')->dropDownList(
-              ['Penawaran'=>'Penawaran','Visit'=>'Visit','Kirim Sample'=>'Kirim Sample','Belum ada kebutuhan'=>'Belum ada kebutuhan','PIC sibuk'=>'PIC sibuk','Tidak pakai solar'=>'Tidak pakai solar','Kebutuhan <5KL'=>'Kebutuhan <5KL','Kontrak vendor lain'=>'Kontrak vendor lain','Kalah harga'=>'Kalah harga'],
+              ['Penawaran'=>'Penawaran','Tidak diangkat'=>'Tidak diangkat','Visit'=>'Visit','Kirim sample'=>'Kirim sample','Belum ada kebutuhan'=>'Belum ada kebutuhan','PIC sibuk'=>'PIC sibuk','Tidak pakai solar'=>'Tidak pakai solar','Kebutuhan <5KL'=>'Kebutuhan <5KL','Kontrak vendor lain'=>'Kontrak vendor lain','Kalah harga'=>'Kalah harga'],
               ['prompt'=>'--keterangan--']); ?>
      </div>
      <div class="col-sm-4">
         <?= $form->field($modelprogress, 'catatan')->textInput(['maxlength' => true]) ?>
      </div>
      <div class="col-sm-4">
-        <?= $form->field($modelprogress, 'con_used')->dropDownList(['Telfon Kantor'=>'Telfon Kantor','WA Pribadi'=>'WA Pribadi']) ?>
+        <?= $form->field($modelprogress, 'con_used')->dropDownList(['Telfon Kantor'=>'Telfon Kantor','Telfon Pribadi'=>'Telfon Pribadi']) ?>
      </div>
      <div class="col-sm-4">
         <?php 

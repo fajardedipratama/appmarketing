@@ -35,9 +35,9 @@ $this->title = 'Data Perusahaan';
                 'format'=>'raw',
                 'value'=>function($model){
                     if($model->verified == 'yes'){
-                        return '<i class="fa fa-fw fa-check"></i>';
+                        return '<i class="fa fa-fw fa-check" title="Disetujui"></i>';
                     }elseif($model->verified == 'no'){
-                        return '<i class="fa fa-fw fa-remove"></i>';
+                        return '<i class="fa fa-fw fa-remove" title="Ditolak"></i>';
                     }
                 },
                 'filter'=> ['yes'=>'yes','no'=>'no']
