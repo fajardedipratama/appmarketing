@@ -26,9 +26,9 @@ $callback = DailyReport::find()->where(['sales'=>Yii::$app->user->identity->prof
 
             <ul class="nav navbar-nav">
                 <?php if(Yii::$app->user->identity->type == 'Marketing'): ?>
-                <li class="dropdown notifications-menu">
+                <li class="dropdown notifications-menu" title="Hubungi Balik">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <i class="fa fa-phone-square"></i>
+                        <i class="glyphicon glyphicon-phone-alt"></i>
                         <span class="label label-danger">!</span>
                     </a>
                     <ul class="dropdown-menu">
@@ -54,7 +54,7 @@ $callback = DailyReport::find()->where(['sales'=>Yii::$app->user->identity->prof
 
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <i class="fa fa-user"></i>
+                        <i class="glyphicon glyphicon-user"></i>
                         <span class="hidden-xs"> <?= $karyawan['nama'] ?></span>
                     </a>
                     <ul class="dropdown-menu">

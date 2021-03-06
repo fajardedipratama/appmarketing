@@ -30,6 +30,11 @@ use yii\widgets\ActiveForm;
      <div class="col-sm-4">
         <?= $form->field($model, 'catatan')->textInput(['maxlength' => true]) ?>
      </div>
+    <?php if(Yii::$app->user->identity->type == 'Administrator'): ?>
+     <div class="col-sm-4">
+        <?= $form->field($model, 'status')->dropDownList(['Terkirim'=>'Terkirim','Gagal Kirim'=>'Gagal Kirim'],['prompt'=>'--Status--']) ?>
+     </div>
+    <?php endif ?>
     </div>
 </div></div>
 

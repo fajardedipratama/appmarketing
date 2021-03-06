@@ -115,7 +115,7 @@ class OfferController extends Controller
         $model = $this->findModel($id);
 
         Yii::$app->db->createCommand()->update('id_offer',
-        ['status' => 'Batal Kirim'],
+        ['status' => 'Gagal Kirim'],
         ['id'=>$model->id])->execute();
 
         Yii::$app->db->createCommand()->update('id_customer',

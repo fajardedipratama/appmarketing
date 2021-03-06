@@ -28,7 +28,8 @@ $offers = Offer::find()->where(['perusahaan'=>$model->id])->orderBy(['waktu'=>SO
         <div class="col-sm-3">
             <p>
                 <?= Html::a('<i class="fa fa-fw fa-pencil"></i> Ubah', ['update', 'id' => $model->id], ['class' => 'btn btn-warning']) ?>
-              <?php if($model->verified !== 'no' && $model->expired >= date('Y-m-d')): ?>
+              <?php 
+              if($model->verified !== 'no' && ($model->expired >= date('Y-m-d') || $model->expired == NULL)): ?>
                 <button class="btn btn-primary" data-toggle="modal" data-target="#daily-report"><i class="fa fa-fw fa-plus-square"></i> Progress</button>
               <?php else: ?>
                 <button class="btn btn-primary disabled"><i class="fa fa-fw fa-plus-square"></i> Progress</button>

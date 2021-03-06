@@ -9,7 +9,7 @@ use app\models\Offer;
 /**
  * OfferSearch represents the model behind the search form of `app\models\Offer`.
  */
-class OfferfinishSearch extends Offer
+class OfferfailedSearch extends Offer
 {
     /**
      * {@inheritdoc}
@@ -40,12 +40,7 @@ class OfferfinishSearch extends Offer
      */
     public function search($params)
     {
-        
-        if(Yii::$app->user->identity->type == 'Marketing'){
-            $query = Offer::find()->where(['status'=>'Terkirim'])->orWhere(['status'=>'Gagal Kirim'])->andWhere(['sales'=>Yii::$app->user->identity->profilname]);
-        }else{
-            $query = Offer::find()->where(['status'=>'Terkirim'])->orWhere(['status'=>'Gagal Kirim']);
-        }
+        $query = Offer::find()->Where(['status'=>'Gagal Kirim']);
 
         // add conditions that should always apply here
 

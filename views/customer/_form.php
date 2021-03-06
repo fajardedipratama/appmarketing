@@ -6,6 +6,7 @@ use yii\helpers\ArrayHelper;
 use kartik\select2\Select2;
 use app\models\City;
 use app\models\Karyawan;
+use dosamigos\datepicker\DatePicker;
 /* @var $this yii\web\View */
 /* @var $model app\models\Customer */
 /* @var $form yii\widgets\ActiveForm */
@@ -62,6 +63,24 @@ use app\models\Karyawan;
             'options'=>['placeholder'=>"Sales"],'pluginOptions'=>['allowClear'=>true]
         ]) ?>
      </div>
+    <?php if(!$model->isNewRecord) : ?>
+     <div class="col-sm-4">
+        <?php 
+            if(!$model->isNewRecord || $model->isNewRecord){
+                if($model->expired!=null){
+                    $model->expired=date('d-m-Y',strtotime($model->expired));
+                }
+            }
+        ?>
+        <?= $form->field($model, 'expired')->widget(DatePicker::className(),[
+            'clientOptions'=>[
+                'autoclose'=>true,
+                'format'=>'dd-mm-yyyy',
+                'orientation'=>'bottom',
+            ]
+        ])?>
+     </div>
+    <?php endif; ?>
     </div>
 </div></div>
     <div class="form-group">

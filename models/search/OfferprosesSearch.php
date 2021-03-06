@@ -40,7 +40,11 @@ class OfferprosesSearch extends Offer
      */
     public function search($params)
     {
-        $query = Offer::find()->where(['status'=>'Proses']);
+        if(Yii::$app->user->identity->type == 'Marketing'){
+            $query = Offer::find()->where(['status'=>'Proses'])->andWhere(['sales'=>Yii::$app->user->identity->profilname]);
+        }else{
+            $query = Offer::find()->where(['status'=>'Proses']);
+        }
 
         // add conditions that should always apply here
 
