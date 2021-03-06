@@ -14,12 +14,11 @@ $this->title = 'Data Sales';
 <div class="selfcustomer-index">
 
     <div class="row">
-        <div class="col-sm-8">
+        <div class="col-sm-10">
             <h1><?= Html::encode($this->title) ?></h1>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-2">
             <?= Html::a('<i class="fa fa-fw fa-plus-square"></i> Tambah Data', ['create'], ['class' => 'btn btn-success']) ?>
-            <?= Html::a('<i class="fa fa-fw fa-warning"></i> Penawaran Gagal', ['offerfailed/index'], ['class' => 'btn btn-danger']) ?>
         </div>
     </div>
 
