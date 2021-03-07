@@ -17,17 +17,25 @@ $offers = Offer::find()->where(['perusahaan'=>$model->id])->orderBy(['waktu'=>SO
 ?>
 <div class="customer-view">
     <div class="row">
-        <div class="col-sm-7">
-            <h2><b><?= Html::encode($this->title) ?></b></h2>
+        <div class="col-sm-8">
+            <h2>
+              <?php if($model->verified === 'yes'): ?>
+                <i class="fa fa-fw fa-check-circle"></i>
+              <?php elseif($model->verified === 'no'): ?>
+                <i class="fa fa-fw fa-times-circle"></i>
+              <?php else: ?>
+                <i class="fa fa-fw fa-hourglass-2"></i>
+              <?php endif; ?>
+              <b><?= Html::encode($this->title) ?></b>
+            </h2>
           <?php if(strtotime($model->expired) >= strtotime(date('Y-m-d'))): ?>
             <h5><?= $model->city->kota ?> - Exp.<?= date('d/m/Y',strtotime($model->expired))?></h5>
           <?php else: ?>
             <h5><?= $model->city->kota ?> - Exp. - </h5>
           <?php endif; ?>
         </div>
-        <div class="col-sm-5">
+        <div class="col-sm-4">
             <p>
-                <?= Html::a('<i class="fa fa-fw fa-plus-square"></i> Tambah Data', ['create'], ['class' => 'btn btn-success']) ?>
                 <?= Html::a('<i class="fa fa-fw fa-pencil"></i> Ubah', ['update', 'id' => $model->id], ['class' => 'btn btn-warning']) ?>
                 <?= Html::a('<i class="fa fa-fw fa-trash"></i> Hapus', ['delete', 'id' => $model->id], [
                     'class' => 'btn btn-danger',
@@ -110,9 +118,9 @@ $offers = Offer::find()->where(['perusahaan'=>$model->id])->orderBy(['waktu'=>SO
                 </td>
                 <td>
                     <?php if($daily['con_used']==='Telfon Kantor'): ?>
-                      <i class="fa fa-fw fa-phone"></i>
+                      <i class="fa fa-fw fa-phone" title="Telfon Kantor"></i>
                     <?php elseif($daily['con_used']==='WA Pribadi'): ?>
-                      <i class="fa fa-fw fa-whatsapp"></i> 
+                      <i class="fa fa-fw fa-whatsapp" title="Telfon Pribadi"></i> 
                     <?php endif; ?>
                 </td>
             </tr>

@@ -18,7 +18,16 @@ $offers = Offer::find()->where(['perusahaan'=>$model->id])->orderBy(['waktu'=>SO
 <div class="customer-view">
     <div class="row">
         <div class="col-sm-9">
-            <h2><b><?= Html::encode($this->title) ?></b></h2>
+            <h2>
+              <?php if($model->verified === 'yes'): ?>
+                <i class="fa fa-fw fa-check-circle"></i>
+              <?php elseif($model->verified === 'no'): ?>
+                <i class="fa fa-fw fa-times-circle"></i>
+              <?php else: ?>
+                <i class="fa fa-fw fa-hourglass-2"></i>
+              <?php endif; ?>
+              <b><?= Html::encode($this->title) ?></b>
+            </h2>
           <?php if(strtotime($model->expired) >= strtotime(date('Y-m-d'))): ?>
             <h5><?= $model->city->kota ?> - Exp.<?= date('d/m/Y',strtotime($model->expired))?></h5>
           <?php else: ?>
