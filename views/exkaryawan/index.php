@@ -28,15 +28,11 @@ $this->title = 'Ex-Karyawan';
         'columns' => [
             [
                 'attribute' => 'badge',
-                'value' => function($data){
-                    $karyawan = Karyawan::find()->where(['id'=>$data->badge])->one();
-                    return $karyawan['badge']; 
-                }
             ],
             [
                 'attribute' => 'nama_karyawan',
                 'value' => function($data){
-                    $karyawan = Karyawan::find()->where(['id'=>$data->badge])->one();
+                    $karyawan = Karyawan::find()->where(['badge'=>$data->badge])->one();
                     return $karyawan['nama']; 
                 }
             ],

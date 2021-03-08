@@ -82,4 +82,12 @@ class PurchaseOrder extends \yii\db\ActiveRecord
             'alasan_tolak' => 'Alasan Tolak',
         ];
     }
+    public function getCustomer()
+    {
+        return $this->hasOne(Customer::className(), ['id' => 'perusahaan']);
+    }
+    public function getKaryawan()
+    {
+        return $this->hasOne(Karyawan::className(), ['id' => 'sales']);
+    }
 }

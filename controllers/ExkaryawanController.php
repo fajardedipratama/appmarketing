@@ -105,8 +105,10 @@ class ExkaryawanController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post())) {
+            $model->tgl_resign=Yii::$app->formatter->asDate($_POST['Exkaryawan']['tgl_resign'],'yyyy-MM-dd');
+            $model->save();
+            return $this->redirect(['index']);
         }
 
         return $this->render('update', [

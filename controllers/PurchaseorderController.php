@@ -9,7 +9,9 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
-
+use yii\helpers\ArrayHelper;
+use app\models\Customer;
+use app\models\Karyawan;
 /**
  * PurchaseorderController implements the CRUD actions for PurchaseOrder model.
  */
@@ -49,7 +51,32 @@ class PurchaseorderController extends Controller
         $searchModel = new PurchaseorderSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
+        $sales = ArrayHelper::map(Karyawan::find()->where(['status_aktif'=>'Aktif'])->all(),'id',
+                function($model){
+                    return $model['nama_pendek'];
+                });
+
+        if(Yii::$app->user->identity->type == 'Marketing'){
+            $customer = ArrayHelper::map(PurchaseOrder::find()->where(['sales'=>Yii::$app->user->identity->profilname])->all(),'perusahaan',
+                function($model){
+                $query=Customer::find()->where(['id'=>$model['perusahaan']])->all();
+                  foreach ($query as $key){
+                    return $key['perusahaan'];
+                  }
+                });
+        }else{
+            $customer = ArrayHelper::map(PurchaseOrder::find()->all(),'perusahaan',
+                function($model){
+                $query=Customer::find()->where(['id'=>$model['perusahaan']])->all();
+                  foreach ($query as $key){
+                    return $key['perusahaan'];
+                  }
+                });
+        }
+
         return $this->render('index', [
+            'sales' => $sales,
+            'customer' => $customer,
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
@@ -63,9 +90,46 @@ class PurchaseorderController extends Controller
      */
     public function actionView($id)
     {
+        $model = $this->findModel($id);
+        if(isset($_POST['tolak'])){
+            Yii::$app->db->createCommand()->update('id_purchase_order',
+            ['alasan_tolak' => $_POST['PurchaseOrder']['alasan_tolak'],'status'=>'Ditolak'],
+            ['id'=>$model->id])->execute();
+            return $this->redirect(['view','id' => $model->id]);
+        }
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $model,
         ]);
+    }
+    public function actionAccpo($id)
+    {
+        $model = $this->findModel($id);
+
+        Yii::$app->db->createCommand()->update('id_purchase_order',
+        ['status'=>'Disetujui'],
+        ['id'=>$model->id])->execute();
+
+        return $this->redirect(['view','id' => $model->id]);
+    }
+    public function actionSendpo($id)
+    {
+        $model = $this->findModel($id);
+
+        Yii::$app->db->createCommand()->update('id_purchase_order',
+        ['status'=>'Terkirim'],
+        ['id'=>$model->id])->execute();
+
+        return $this->redirect(['view','id' => $model->id]);
+    }
+    public function actionPaidpo($id)
+    {
+        $model = $this->findModel($id);
+
+        Yii::$app->db->createCommand()->update('id_purchase_order',
+        ['status'=>'Terbayar-Selesai'],
+        ['id'=>$model->id])->execute();
+
+        return $this->redirect(['view','id' => $model->id]);
     }
 
     /**
@@ -103,7 +167,11 @@ class PurchaseorderController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post())) {
+            //process
+            $model->tgl_po=Yii::$app->formatter->asDate($_POST['PurchaseOrder']['tgl_po'],'yyyy-MM-dd');
+            $model->tgl_kirim=Yii::$app->formatter->asDate($_POST['PurchaseOrder']['tgl_kirim'],'yyyy-MM-dd');
+            $model->save();
             return $this->redirect(['view', 'id' => $model->id]);
         }
 

@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 07 Mar 2021 pada 15.59
+-- Waktu pembuatan: 08 Mar 2021 pada 10.59
 -- Versi server: 10.4.17-MariaDB
--- Versi PHP: 8.0.2
+-- Versi PHP: 8.0.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -75,7 +75,7 @@ CREATE TABLE `id_customer` (
 
 INSERT INTO `id_customer` (`id`, `perusahaan`, `lokasi`, `alamat_lengkap`, `pic`, `telfon`, `email`, `catatan`, `volume`, `jarak_ambil`, `sales`, `expired`, `created_by`, `created_time`, `verified`, `alasan`) VALUES
 (1, 'ADILUHUNG SARANA SEGARA PT', '1', '', '', '', '', '', '5', '>1bulan sekali', 7, NULL, 5, NULL, '', ''),
-(7, 'DJAWANI GUNUNG ABADI PT', '5', '', 'suwito', '', '', '', '', '', 12, NULL, 5, NULL, '', ''),
+(7, 'DJAWANI GUNUNG ABADI PT', '5', '', 'suwito', '', '', '', '', '', 12, '2021-04-07', 5, NULL, 'yes', ''),
 (8, 'INTI LUHUR FUJA ABADI PT', '2', '', '', '', '', '', '', '', 12, NULL, 5, NULL, '', ''),
 (9, 'ADMIRA PT', '5', '', 'purchasing', '', 'admira@gmail.com', '', '', '', 10, '2021-03-03', 5, NULL, 'yes', ''),
 (11, 'CONBLOC PT', '1', '', '', '', '', '', '', '', 10, '2021-03-27', 10, NULL, 'no', ''),
@@ -129,7 +129,8 @@ INSERT INTO `id_dailyreport` (`id`, `sales`, `waktu`, `perusahaan`, `keterangan`
 (31, 10, '2021-03-05 16:02:24', 14, 'PIC sibuk', '', NULL, 'Telfon Kantor'),
 (32, 10, '2021-03-06 09:34:00', 17, 'Penawaran', '', NULL, 'Telfon Kantor'),
 (33, 10, '2021-03-06 09:38:18', 17, 'Penawaran', '', '2021-03-12', 'Telfon Kantor'),
-(34, 10, '2021-03-06 12:30:34', 14, 'Penawaran', '', NULL, 'Telfon Kantor');
+(34, 10, '2021-03-06 12:30:34', 14, 'Penawaran', '', NULL, 'Telfon Kantor'),
+(35, 12, '2021-03-08 09:24:00', 7, 'Penawaran', '', NULL, 'Telfon Kantor');
 
 -- --------------------------------------------------------
 
@@ -168,7 +169,7 @@ CREATE TABLE `id_exkaryawan` (
 --
 
 INSERT INTO `id_exkaryawan` (`id`, `badge`, `alasan`, `tgl_resign`) VALUES
-(3, 15, 'resignnnn', '2021-02-02');
+(3, 14, 'resign', '2021-02-03');
 
 -- --------------------------------------------------------
 
@@ -280,7 +281,8 @@ INSERT INTO `id_offer` (`id`, `tanggal`, `waktu`, `no_surat`, `perusahaan`, `pic
 (21, '2021-03-04', '13:49:16', 9, 12, 'Pembelian Umum', 'Tempo 14 Hari', 'PPN', 6500, '', 10, 'Gagal Kirim'),
 (22, '2021-03-03', '15:47:01', 7, 14, 'Pembelian', 'Cash On Delivery', 'PPN', 6500, '', 10, 'Terkirim'),
 (26, '2021-03-06', '09:38:40', 8, 17, 'Purchasing', 'Cash On Delivery', 'PPN', 6500, '', 10, 'Gagal Kirim'),
-(27, '2021-03-06', '12:30:39', NULL, 14, 'Pembelian Umum', 'Cash On Delivery', 'PPN', 6800, '', 10, 'Gagal Kirim');
+(27, '2021-03-06', '12:30:39', NULL, 14, 'Pembelian Umum', 'Cash On Delivery', 'PPN', 6800, '', 10, 'Gagal Kirim'),
+(28, '2021-03-08', '09:24:07', 10, 7, 'Suwito', 'Cash On Delivery', 'PPN', 6600, '', 12, 'Proses');
 
 -- --------------------------------------------------------
 
@@ -299,7 +301,7 @@ CREATE TABLE `id_offer_number` (
 --
 
 INSERT INTO `id_offer_number` (`id`, `nomor`, `inisial`) VALUES
-(1, 9, 'BJB-SBY');
+(1, 10, 'BJB-SBY');
 
 -- --------------------------------------------------------
 
@@ -336,7 +338,8 @@ CREATE TABLE `id_purchase_order` (
 --
 
 INSERT INTO `id_purchase_order` (`id`, `perusahaan`, `sales`, `no_po`, `tgl_po`, `tgl_kirim`, `alamat`, `alamat_kirim`, `purchasing`, `no_purchasing`, `keuangan`, `no_keuangan`, `volume`, `termin`, `harga`, `cashback`, `pajak`, `pembayaran`, `status`, `catatan`, `alasan_tolak`) VALUES
-(1, 12, 10, 'PO/PJS-SBY/03/21/HSD', '2021-03-01', '2021-03-03', 'Jl.Sumbawa 31 Surabaya', 'Jl.Merak 25 Pasuruan', 'Pak Fajar', '082378182999', 'Pak Dedy', '089283222111', 5000, 'Cash On Delivery', 6700, 100, 'PPN', 'Transfer', 'Pending', 'minta faktur pajak', '');
+(1, 12, 10, 'PO/PJS-SBY/03/21/HSD', '2021-03-01', '2021-03-03', 'Jl.Sumbawa 31 Tuban', 'Jl.Merak 25 Surabaya', 'Pak Fajar', '082378182999', 'Pak Dedy', '089283222111', 5000, 'Cash On Delivery', 6700, 100, 'PPN', 'Transfer', 'Terbayar-Selesai', 'minta faktur pajak dan surat jalan', ''),
+(2, 7, 12, '0123', '2021-03-04', '2021-03-05', 'jl.surabaya', 'jl.surabaya', 'neey', '08111111111', 'feey', '0899999999', 5000, 'Cash On Delivery', 6700, 0, 'PPN', 'Transfer', 'Disetujui', '', '');
 
 -- --------------------------------------------------------
 
@@ -361,11 +364,12 @@ CREATE TABLE `id_user` (
 --
 
 INSERT INTO `id_user` (`id`, `profilname`, `username`, `password`, `last_login`, `authKey`, `accessToken`, `type`, `blocked`) VALUES
-(1, '5', 'dedy', '$2y$13$MdjCzwpzvuQvqvkqKvM14ezHCh.4MKx71DEaZEoI8HX6R8jW.nj1e', '2021-03-07 20:35:04', 'd5fdbe5b16111739a53f6bedc2c29e5c', 'd5fdbe5b16111739a53f6bedc2c29e5c', 'Administrator', ''),
-(2, '10', 'sugeng', '$2y$13$0boAOohSI0ofjmPZ05xZbeRR03oOUkfYRQT/PGedqGTi7rJ2Y.gyG', '2021-03-07 20:49:55', '9e28894760bdf11cb2bef7a32c020e3b', '9e28894760bdf11cb2bef7a32c020e3b', 'Marketing', ''),
+(1, '5', 'dedy', '$2y$13$MdjCzwpzvuQvqvkqKvM14ezHCh.4MKx71DEaZEoI8HX6R8jW.nj1e', '2021-03-08 16:03:35', 'd5fdbe5b16111739a53f6bedc2c29e5c', 'd5fdbe5b16111739a53f6bedc2c29e5c', 'Administrator', ''),
+(2, '10', 'sugeng', '$2y$13$0boAOohSI0ofjmPZ05xZbeRR03oOUkfYRQT/PGedqGTi7rJ2Y.gyG', '2021-03-08 09:29:01', '9e28894760bdf11cb2bef7a32c020e3b', '9e28894760bdf11cb2bef7a32c020e3b', 'Marketing', ''),
 (3, '3', 'atis', '$2y$13$KVUHfL5rcRvil9nhYjUNJetLhgyb2ptcfJOEVOOWb6YcM4FjKtk8W', '2021-02-16 13:57:23', 'd5455de2f44f740d0e7ae3b97ffaf9ea', 'd5455de2f44f740d0e7ae3b97ffaf9ea', 'Manajemen', ''),
 (4, '1', 'alisia', '$2y$13$vqbiCxoDOc3MVNdwa47ALuFYLB2AuFa.10MdhG1JAGVjKK7g5wlwe', '2021-02-20 10:45:18', '3c89bc5dc3c18795e99eaf0f91af12f6', '3c89bc5dc3c18795e99eaf0f91af12f6', 'Marketing', ''),
-(5, '8', 'maria', '$2y$13$2vHy.0YdypFZvW6HJKgFpewvcr4reRrXAPRmrfbmO69iEZY6LxjGW', '2021-03-06 22:09:03', '263bce650e68ab4e23f28263760b9fa5', '263bce650e68ab4e23f28263760b9fa5', 'Marketing', '');
+(5, '8', 'maria', '$2y$13$2vHy.0YdypFZvW6HJKgFpewvcr4reRrXAPRmrfbmO69iEZY6LxjGW', '2021-03-08 09:22:08', '263bce650e68ab4e23f28263760b9fa5', '263bce650e68ab4e23f28263760b9fa5', 'Marketing', ''),
+(6, '12', 'risza', '$2y$13$T85tPQtJMWDDk/hcj1pqeOHFCJR.Z1Ueeyzwf4JIrwZacduMsOtmC', '2021-03-08 09:23:32', '521f6ab426fbb7296a695ab243412094', '521f6ab426fbb7296a695ab243412094', 'Marketing', '');
 
 --
 -- Indexes for dumped tables
@@ -464,7 +468,7 @@ ALTER TABLE `id_customer`
 -- AUTO_INCREMENT untuk tabel `id_dailyreport`
 --
 ALTER TABLE `id_dailyreport`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT untuk tabel `id_departemen`
@@ -494,7 +498,7 @@ ALTER TABLE `id_karyawan`
 -- AUTO_INCREMENT untuk tabel `id_offer`
 --
 ALTER TABLE `id_offer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT untuk tabel `id_offer_number`
@@ -506,13 +510,13 @@ ALTER TABLE `id_offer_number`
 -- AUTO_INCREMENT untuk tabel `id_purchase_order`
 --
 ALTER TABLE `id_purchase_order`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `id_user`
 --
 ALTER TABLE `id_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

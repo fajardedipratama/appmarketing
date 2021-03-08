@@ -4,6 +4,7 @@ use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
 use kartik\select2\Select2;
 use app\models\Customer;
+use app\models\Karyawan;
 use dosamigos\datepicker\DatePicker;
 /* @var $this yii\web\View */
 /* @var $model app\models\PurchaseOrder */

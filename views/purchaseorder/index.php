@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
-
+use dosamigos\datepicker\DatePicker;
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\search\PurchaseorderSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -28,11 +28,42 @@ $this->title = 'Data PO';
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-            'perusahaan',
-            'tgl_po',
-            'sales',
-            'status',
-            ['header'=>'Aksi','class' => 'yii\grid\ActionColumn'],
+            [
+              'attribute'=>'perusahaan',
+              'value'=>'customer.perusahaan',
+              'filter'=>\kartik\select2\Select2::widget([
+                'model'=>$searchModel,'attribute'=>'perusahaan','data'=>$customer,
+                'options'=>['placeholder'=>'Perusahaan'],'pluginOptions'=>['allowClear'=>true]
+              ])
+            ],
+            [
+              'attribute'=>'tgl_po',
+              'value' => function($data){
+                return $data->tgl_po;
+              },
+              'headerOptions'=>['style'=>'width:15%'],
+              'format' => ['date','dd-MM-Y'],
+              'filter'=> DatePicker::widget([
+                'model'=>$searchModel,'attribute'=>'tgl_po','clientOptions'=>[
+                  'autoclose'=>true, 'format' => 'dd-mm-yyyy','orientation'=>'bottom'
+                ],
+              ])
+            ],
+            [
+              'attribute'=>'sales',
+              'value' => 'karyawan.nama_pendek',
+              'filter'=>\kartik\select2\Select2::widget([
+                'model'=>$searchModel,'attribute'=>'sales','data'=>$sales,
+                'options'=>['placeholder'=>'Sales'],'pluginOptions'=>['allowClear'=>true]
+              ]),
+              'visible' => Yii::$app->user->identity->type == 'Administrator' || Yii::$app->user->identity->type == 'Manajemen'
+            ],
+            [
+               'attribute'=>'status',
+               'headerOptions'=>['style'=>'width:13%'],
+               'filter'=> ['Pending'=>'Pending','Disetujui'=>'Disetujui','Ditolak'=>'Ditolak','Terkirim'=>'Terkirim','Terbayar'=>'Terbayar']
+            ],
+            ['header'=>'Aksi','class' => 'yii\grid\ActionColumn','template'=>'{view}'],
         ],
     ]); ?>
 </div></div></div>

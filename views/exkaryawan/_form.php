@@ -6,7 +6,7 @@ use yii\web\NotFoundHttpException;
 use dosamigos\datepicker\DatePicker;
 use app\models\Karyawan;
 
-$karyawan = Karyawan::find()->where(['id'=>$_GET['id']])->one();
+$karyawan = Karyawan::find()->where(['badge'=>$model->badge])->one();
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Exkaryawan */

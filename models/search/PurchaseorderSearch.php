@@ -1,7 +1,7 @@
 <?php
 
 namespace app\models\search;
-
+use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use app\models\PurchaseOrder;
@@ -40,12 +40,18 @@ class PurchaseorderSearch extends PurchaseOrder
      */
     public function search($params)
     {
-        $query = PurchaseOrder::find();
+        if(Yii::$app->user->identity->type == 'Marketing'){
+            $query = PurchaseOrder::find()->where(['sales'=>Yii::$app->user->identity->profilname]);
+        }else{
+            $query = PurchaseOrder::find();
+        }
 
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'pagination'=>array('pageSize'=>30),
+            'sort'=>['defaultOrder'=>['id'=>SORT_DESC]]
         ]);
 
         $this->load($params);
@@ -61,12 +67,15 @@ class PurchaseorderSearch extends PurchaseOrder
             'id' => $this->id,
             'perusahaan' => $this->perusahaan,
             'sales' => $this->sales,
-            'tgl_po' => $this->tgl_po,
-            'tgl_kirim' => $this->tgl_kirim,
             'volume' => $this->volume,
             'harga' => $this->harga,
             'cashback' => $this->cashback,
         ]);
+        if(!empty($this->tgl_po)){    
+            $query->andFilterWhere([
+                'tgl_po' => Yii::$app->formatter->asDate($this->tgl_po,'yyyy-MM-dd'),
+            ]);
+        }
 
         $query->andFilterWhere(['like', 'no_po', $this->no_po])
             ->andFilterWhere(['like', 'alamat', $this->alamat])
