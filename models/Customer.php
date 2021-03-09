@@ -66,7 +66,7 @@ class Customer extends \yii\db\ActiveRecord
             'email' => 'Email',
             'catatan' => 'Catatan',
             'volume' => 'Est.Volume (KL)',
-            'jarak_ambil' => 'Est.Jarak Kebutuhan',
+            'jarak_ambil' => 'Est.Jarak Ambil',
             'sales' => 'Sales',
             'expired' => 'Expired',
             'created_by' => 'Add By',

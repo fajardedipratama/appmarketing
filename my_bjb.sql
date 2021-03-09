@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 08 Mar 2021 pada 10.59
+-- Waktu pembuatan: 09 Mar 2021 pada 10.28
 -- Versi server: 10.4.17-MariaDB
 -- Versi PHP: 8.0.0
 
@@ -79,7 +79,7 @@ INSERT INTO `id_customer` (`id`, `perusahaan`, `lokasi`, `alamat_lengkap`, `pic`
 (8, 'INTI LUHUR FUJA ABADI PT', '2', '', '', '', '', '', '', '', 12, NULL, 5, NULL, '', ''),
 (9, 'ADMIRA PT', '5', '', 'purchasing', '', 'admira@gmail.com', '', '', '', 10, '2021-03-03', 5, NULL, 'yes', ''),
 (11, 'CONBLOC PT', '1', '', '', '', '', '', '', '', 10, '2021-03-27', 10, NULL, 'no', ''),
-(12, 'PUTRA JAYA SAKTI PT', '3', '', '', '', '', '', '', '', 10, '2021-04-02', 5, '2021-02-26 10:53:18', 'yes', ''),
+(12, 'PUTRA JAYA SAKTI PT', '3', '', '', '', '', '', '', 'Setiap 1 Bulan', 10, '2021-04-02', 5, '2021-02-26 10:53:18', 'yes', ''),
 (14, 'ABC PT', '2', '', '', '', '', '', '', '', 10, '2021-05-02', 10, '2021-03-03 15:45:27', 'no', ''),
 (17, 'CONTOH PT', '3', '', 'purchasing', '', 'purchase@gmail.com', '', '', '', 10, '2021-04-06', 5, '2021-03-06 09:29:51', 'yes', ''),
 (18, 'MY PT', '5', '', '', '', '', '', '', '', 10, NULL, 10, '2021-03-06 21:27:11', '', '');
@@ -130,7 +130,8 @@ INSERT INTO `id_dailyreport` (`id`, `sales`, `waktu`, `perusahaan`, `keterangan`
 (32, 10, '2021-03-06 09:34:00', 17, 'Penawaran', '', NULL, 'Telfon Kantor'),
 (33, 10, '2021-03-06 09:38:18', 17, 'Penawaran', '', '2021-03-12', 'Telfon Kantor'),
 (34, 10, '2021-03-06 12:30:34', 14, 'Penawaran', '', NULL, 'Telfon Kantor'),
-(35, 12, '2021-03-08 09:24:00', 7, 'Penawaran', '', NULL, 'Telfon Kantor');
+(35, 12, '2021-03-08 09:24:00', 7, 'Penawaran', '', NULL, 'Telfon Kantor'),
+(36, 10, '2021-03-09 09:42:14', 18, 'Penawaran', '', NULL, 'Telfon Kantor');
 
 -- --------------------------------------------------------
 
@@ -364,8 +365,8 @@ CREATE TABLE `id_user` (
 --
 
 INSERT INTO `id_user` (`id`, `profilname`, `username`, `password`, `last_login`, `authKey`, `accessToken`, `type`, `blocked`) VALUES
-(1, '5', 'dedy', '$2y$13$MdjCzwpzvuQvqvkqKvM14ezHCh.4MKx71DEaZEoI8HX6R8jW.nj1e', '2021-03-08 16:03:35', 'd5fdbe5b16111739a53f6bedc2c29e5c', 'd5fdbe5b16111739a53f6bedc2c29e5c', 'Administrator', ''),
-(2, '10', 'sugeng', '$2y$13$0boAOohSI0ofjmPZ05xZbeRR03oOUkfYRQT/PGedqGTi7rJ2Y.gyG', '2021-03-08 09:29:01', '9e28894760bdf11cb2bef7a32c020e3b', '9e28894760bdf11cb2bef7a32c020e3b', 'Marketing', ''),
+(1, '5', 'dedy', '$2y$13$MdjCzwpzvuQvqvkqKvM14ezHCh.4MKx71DEaZEoI8HX6R8jW.nj1e', '2021-03-09 09:41:37', 'd5fdbe5b16111739a53f6bedc2c29e5c', 'd5fdbe5b16111739a53f6bedc2c29e5c', 'Administrator', ''),
+(2, '10', 'sugeng', '$2y$13$0boAOohSI0ofjmPZ05xZbeRR03oOUkfYRQT/PGedqGTi7rJ2Y.gyG', '2021-03-09 09:24:39', '9e28894760bdf11cb2bef7a32c020e3b', '9e28894760bdf11cb2bef7a32c020e3b', 'Marketing', ''),
 (3, '3', 'atis', '$2y$13$KVUHfL5rcRvil9nhYjUNJetLhgyb2ptcfJOEVOOWb6YcM4FjKtk8W', '2021-02-16 13:57:23', 'd5455de2f44f740d0e7ae3b97ffaf9ea', 'd5455de2f44f740d0e7ae3b97ffaf9ea', 'Manajemen', ''),
 (4, '1', 'alisia', '$2y$13$vqbiCxoDOc3MVNdwa47ALuFYLB2AuFa.10MdhG1JAGVjKK7g5wlwe', '2021-02-20 10:45:18', '3c89bc5dc3c18795e99eaf0f91af12f6', '3c89bc5dc3c18795e99eaf0f91af12f6', 'Marketing', ''),
 (5, '8', 'maria', '$2y$13$2vHy.0YdypFZvW6HJKgFpewvcr4reRrXAPRmrfbmO69iEZY6LxjGW', '2021-03-08 09:22:08', '263bce650e68ab4e23f28263760b9fa5', '263bce650e68ab4e23f28263760b9fa5', 'Marketing', ''),
@@ -468,7 +469,7 @@ ALTER TABLE `id_customer`
 -- AUTO_INCREMENT untuk tabel `id_dailyreport`
 --
 ALTER TABLE `id_dailyreport`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT untuk tabel `id_departemen`

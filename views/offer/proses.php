@@ -101,7 +101,7 @@ $this->title = 'Penawaran Proses';
                   (
                     '<span class="glyphicon glyphicon-print"></span>',
                     ["offer/print",'id'=>$model->id],
-                    ['title' => Yii::t('app', 'Print')],
+                    ['title' => Yii::t('app', 'Print'),'target'=>'_blank'],
                   );
                 },
               ],

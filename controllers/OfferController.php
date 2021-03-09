@@ -160,6 +160,13 @@ class OfferController extends Controller
         return $this->redirect(['/offerproses']);
     }
 
+    public function actionPrint($id)
+    {
+        return $this->renderPartial('print', [
+            'model' => $this->findModel($id),
+        ]);
+    }
+
     /**
      * Displays a single Offer model.
      * @param integer $id
