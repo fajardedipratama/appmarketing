@@ -49,15 +49,7 @@ class ComposerStaticInit965b319f9fc9c9b656d77316a61adaec
         ),
         'k' => 
         array (
-            'kartik\\sortable\\' => 16,
             'kartik\\select2\\' => 15,
-            'kartik\\mpdf\\' => 12,
-            'kartik\\grid\\' => 12,
-            'kartik\\form\\' => 12,
-            'kartik\\export\\' => 14,
-            'kartik\\dynagrid\\' => 16,
-            'kartik\\dialog\\' => 14,
-            'kartik\\bs4dropdown\\' => 19,
             'kartik\\base\\' => 12,
         ),
         'd' => 
@@ -174,41 +166,9 @@ class ComposerStaticInit965b319f9fc9c9b656d77316a61adaec
             1 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
             2 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
         ),
-        'kartik\\sortable\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/kartik-v/yii2-sortable/src',
-        ),
         'kartik\\select2\\' => 
         array (
             0 => __DIR__ . '/..' . '/kartik-v/yii2-widget-select2/src',
-        ),
-        'kartik\\mpdf\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/kartik-v/yii2-mpdf',
-        ),
-        'kartik\\grid\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/kartik-v/yii2-grid/src',
-        ),
-        'kartik\\form\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/kartik-v/yii2-widget-activeform/src',
-        ),
-        'kartik\\export\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/kartik-v/yii2-export',
-        ),
-        'kartik\\dynagrid\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/kartik-v/yii2-dynagrid/src',
-        ),
-        'kartik\\dialog\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/kartik-v/yii2-dialog/src',
-        ),
-        'kartik\\bs4dropdown\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/kartik-v/yii2-bootstrap4-dropdown/src',
         ),
         'kartik\\base\\' => 
         array (
@@ -386,13 +346,6 @@ class ComposerStaticInit965b319f9fc9c9b656d77316a61adaec
                 0 => __DIR__ . '/..' . '/cebe/yii2-gravatar',
             ),
         ),
-        'P' => 
-        array (
-            'PHPExcel' => 
-            array (
-                0 => __DIR__ . '/..' . '/phpoffice/phpexcel/Classes',
-            ),
-        ),
         'H' => 
         array (
             'HTMLPurifier' => 
@@ -425,12 +378,6 @@ class ComposerStaticInit965b319f9fc9c9b656d77316a61adaec
 
     public static $classMap = array (
         'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
-        'CGIF' => __DIR__ . '/..' . '/mpdf/mpdf/classes/gif.php',
-        'CGIFCOLORTABLE' => __DIR__ . '/..' . '/mpdf/mpdf/classes/gif.php',
-        'CGIFFILEHEADER' => __DIR__ . '/..' . '/mpdf/mpdf/classes/gif.php',
-        'CGIFIMAGE' => __DIR__ . '/..' . '/mpdf/mpdf/classes/gif.php',
-        'CGIFIMAGEHEADER' => __DIR__ . '/..' . '/mpdf/mpdf/classes/gif.php',
-        'CGIFLZW' => __DIR__ . '/..' . '/mpdf/mpdf/classes/gif.php',
         'Codeception\\Exception\\ExternalUrlException' => __DIR__ . '/..' . '/codeception/lib-innerbrowser/src/Codeception/Exception/ExternalUrlException.php',
         'Codeception\\Lib\\Connector\\Yii2' => __DIR__ . '/..' . '/codeception/module-yii2/src/Codeception/Lib/Connector/Yii2.php',
         'Codeception\\Lib\\Connector\\Yii2\\ConnectionWatcher' => __DIR__ . '/..' . '/codeception/module-yii2/src/Codeception/Lib/Connector/Yii2/ConnectionWatcher.php',
@@ -448,17 +395,8 @@ class ComposerStaticInit965b319f9fc9c9b656d77316a61adaec
         'Codeception\\Util\\Shared\\Asserts' => __DIR__ . '/..' . '/codeception/lib-asserts/src/Codeception/Util/Shared/Asserts.php',
         'Codeception\\Util\\Shared\\InheritedAsserts' => __DIR__ . '/..' . '/codeception/lib-asserts/src/Codeception/Util/Shared/InheritedAsserts.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
-        'FPDF_TPL' => __DIR__ . '/..' . '/setasign/fpdi/fpdf_tpl.php',
-        'FPDI' => __DIR__ . '/..' . '/setasign/fpdi/fpdi.php',
-        'FilterASCII85' => __DIR__ . '/..' . '/setasign/fpdi/filters/FilterASCII85.php',
-        'FilterASCIIHexDecode' => __DIR__ . '/..' . '/setasign/fpdi/filters/FilterASCIIHexDecode.php',
-        'FilterLZW' => __DIR__ . '/..' . '/setasign/fpdi/filters/FilterLZW.php',
-        'INDIC' => __DIR__ . '/..' . '/mpdf/mpdf/classes/indic.php',
         'JsonException' => __DIR__ . '/..' . '/symfony/polyfill-php73/Resources/stubs/JsonException.php',
-        'MYANMAR' => __DIR__ . '/..' . '/mpdf/mpdf/classes/myanmar.php',
         'Normalizer' => __DIR__ . '/..' . '/symfony/polyfill-intl-normalizer/Resources/stubs/Normalizer.php',
-        'OTLdump' => __DIR__ . '/..' . '/mpdf/mpdf/classes/otl_dump.php',
-        'PDFBarcode' => __DIR__ . '/..' . '/mpdf/mpdf/classes/barcode.php',
         'PHPUnit\\Exception' => __DIR__ . '/..' . '/phpunit/phpunit/src/Exception.php',
         'PHPUnit\\Framework\\Assert' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Assert.php',
         'PHPUnit\\Framework\\AssertionFailedError' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Exception/AssertionFailedError.php',
@@ -911,6 +849,7 @@ class ComposerStaticInit965b319f9fc9c9b656d77316a61adaec
         'PharIo\\Version\\GreaterThanOrEqualToVersionConstraint' => __DIR__ . '/..' . '/phar-io/version/src/constraints/GreaterThanOrEqualToVersionConstraint.php',
         'PharIo\\Version\\InvalidPreReleaseSuffixException' => __DIR__ . '/..' . '/phar-io/version/src/exceptions/InvalidPreReleaseSuffixException.php',
         'PharIo\\Version\\InvalidVersionException' => __DIR__ . '/..' . '/phar-io/version/src/exceptions/InvalidVersionException.php',
+        'PharIo\\Version\\NoPreReleaseSuffixException' => __DIR__ . '/..' . '/phar-io/version/src/exceptions/NoPreReleaseSuffixException.php',
         'PharIo\\Version\\OrVersionConstraintGroup' => __DIR__ . '/..' . '/phar-io/version/src/constraints/OrVersionConstraintGroup.php',
         'PharIo\\Version\\PreReleaseSuffix' => __DIR__ . '/..' . '/phar-io/version/src/PreReleaseSuffix.php',
         'PharIo\\Version\\SpecificMajorAndMinorVersionConstraint' => __DIR__ . '/..' . '/phar-io/version/src/constraints/SpecificMajorAndMinorVersionConstraint.php',
@@ -921,8 +860,6 @@ class ComposerStaticInit965b319f9fc9c9b656d77316a61adaec
         'PharIo\\Version\\VersionConstraintParser' => __DIR__ . '/..' . '/phar-io/version/src/VersionConstraintParser.php',
         'PharIo\\Version\\VersionConstraintValue' => __DIR__ . '/..' . '/phar-io/version/src/VersionConstraintValue.php',
         'PharIo\\Version\\VersionNumber' => __DIR__ . '/..' . '/phar-io/version/src/VersionNumber.php',
-        'SEA' => __DIR__ . '/..' . '/mpdf/mpdf/classes/sea.php',
-        'SVG' => __DIR__ . '/..' . '/mpdf/mpdf/classes/svg.php',
         'SebastianBergmann\\CodeCoverage\\CodeCoverage' => __DIR__ . '/..' . '/phpunit/php-code-coverage/src/CodeCoverage.php',
         'SebastianBergmann\\CodeCoverage\\CoveredCodeNotExecutedException' => __DIR__ . '/..' . '/phpunit/php-code-coverage/src/Exception/CoveredCodeNotExecutedException.php',
         'SebastianBergmann\\CodeCoverage\\Driver\\Driver' => __DIR__ . '/..' . '/phpunit/php-code-coverage/src/Driver/Driver.php',
@@ -1036,8 +973,6 @@ class ComposerStaticInit965b319f9fc9c9b656d77316a61adaec
         'SebastianBergmann\\Type\\VoidType' => __DIR__ . '/..' . '/sebastian/type/src/VoidType.php',
         'SebastianBergmann\\Version' => __DIR__ . '/..' . '/sebastian/version/src/Version.php',
         'Stringable' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Stringable.php',
-        'TTFontFile' => __DIR__ . '/..' . '/mpdf/mpdf/classes/ttfontsuni.php',
-        'TTFontFile_Analysis' => __DIR__ . '/..' . '/mpdf/mpdf/classes/ttfontsuni_analysis.php',
         'Text_Template' => __DIR__ . '/..' . '/phpunit/php-text-template/src/Template.php',
         'TheSeer\\Tokenizer\\Exception' => __DIR__ . '/..' . '/theseer/tokenizer/src/Exception.php',
         'TheSeer\\Tokenizer\\NamespaceUri' => __DIR__ . '/..' . '/theseer/tokenizer/src/NamespaceUri.php',
@@ -1047,21 +982,8 @@ class ComposerStaticInit965b319f9fc9c9b656d77316a61adaec
         'TheSeer\\Tokenizer\\TokenCollectionException' => __DIR__ . '/..' . '/theseer/tokenizer/src/TokenCollectionException.php',
         'TheSeer\\Tokenizer\\Tokenizer' => __DIR__ . '/..' . '/theseer/tokenizer/src/Tokenizer.php',
         'TheSeer\\Tokenizer\\XMLSerializer' => __DIR__ . '/..' . '/theseer/tokenizer/src/XMLSerializer.php',
-        'UCDN' => __DIR__ . '/..' . '/mpdf/mpdf/classes/ucdn.php',
         'UnhandledMatchError' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/UnhandledMatchError.php',
         'ValueError' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/ValueError.php',
-        'bmp' => __DIR__ . '/..' . '/mpdf/mpdf/classes/bmp.php',
-        'cssmgr' => __DIR__ . '/..' . '/mpdf/mpdf/classes/cssmgr.php',
-        'directw' => __DIR__ . '/..' . '/mpdf/mpdf/classes/directw.php',
-        'fpdi_pdf_parser' => __DIR__ . '/..' . '/setasign/fpdi/fpdi_pdf_parser.php',
-        'grad' => __DIR__ . '/..' . '/mpdf/mpdf/classes/grad.php',
-        'mPDF' => __DIR__ . '/..' . '/mpdf/mpdf/mpdf.php',
-        'meter' => __DIR__ . '/..' . '/mpdf/mpdf/classes/meter.php',
-        'mpdfform' => __DIR__ . '/..' . '/mpdf/mpdf/classes/mpdfform.php',
-        'otl' => __DIR__ . '/..' . '/mpdf/mpdf/classes/otl.php',
-        'pdf_context' => __DIR__ . '/..' . '/setasign/fpdi/pdf_context.php',
-        'tocontents' => __DIR__ . '/..' . '/mpdf/mpdf/classes/tocontents.php',
-        'wmf' => __DIR__ . '/..' . '/mpdf/mpdf/classes/wmf.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
