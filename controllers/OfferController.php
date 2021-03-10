@@ -65,7 +65,7 @@ class OfferController extends Controller
                   }
                 });
 
-        //update no_surat
+        //update no_surat,periode,inisial
         $modelnumber = $this->findModel3();
         if ($modelnumber->load(Yii::$app->request->post()) && $modelnumber->save()) {
             return $this->redirect(['index']);

@@ -81,12 +81,10 @@ $callback = DailyReport::find()->where(['sales'=>Yii::$app->user->identity->prof
                         <!-- Menu Footer-->
                         <li class="user-footer">
                             <div class="pull-left">
-                                <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                <a href="index.php?r=karyawan/view&id=<?= Yii::$app->user->identity->profilname ?>" class="btn btn-default btn-flat">Profile</a>
                             </div>
                             <div class="pull-right">
-                                <?= Html::a(
-                                    'Sign out',
-                                    ['/site/logout'],
+                                <?= Html::a('Sign out',['/site/logout'],
                                     ['data-method' => 'post', 'class' => 'btn btn-default btn-flat']
                                 ) ?>
                             </div>

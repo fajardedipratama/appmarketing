@@ -18,6 +18,9 @@ use yii\widgets\ActiveForm;
     	<div class="col-sm-4">
     		<?= $form->field($modelnumber, 'inisial')->textInput(['maxlength' => true]) ?>	
     	</div>
+        <div class="col-sm-4">
+            <?= $form->field($modelnumber, 'periode')->textInput(['maxlength' => true]) ?>  
+        </div>
     </div>
 
     <div class="form-group">

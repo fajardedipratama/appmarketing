@@ -19,10 +19,12 @@ $this->title = 'Detail '.$model->nama;
           <h1>Detail <strong><i>#<?= $model->nama_pendek ?></i></strong></h1>
         </div>
         <div class="col-sm-3">
+          <?php if(Yii::$app->user->identity->type != 'Marketing'): ?>
           <p>
             <?= Html::a('<i class="fa fa-fw fa-th-list"></i> Data', ['index'], ['class' => 'btn btn-primary']) ?>
             <?= Html::a('<i class="fa fa-fw fa-pencil"></i> Ubah', ['update', 'id' => $model->id], ['class' => 'btn btn-warning']) ?>
-          </p>  
+          </p>
+          <?php endif ?>  
         </div>
     </div>
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 09 Mar 2021 pada 10.28
+-- Waktu pembuatan: 10 Mar 2021 pada 10.26
 -- Versi server: 10.4.17-MariaDB
 -- Versi PHP: 8.0.0
 
@@ -79,10 +79,13 @@ INSERT INTO `id_customer` (`id`, `perusahaan`, `lokasi`, `alamat_lengkap`, `pic`
 (8, 'INTI LUHUR FUJA ABADI PT', '2', '', '', '', '', '', '', '', 12, NULL, 5, NULL, '', ''),
 (9, 'ADMIRA PT', '5', '', 'purchasing', '', 'admira@gmail.com', '', '', '', 10, '2021-03-03', 5, NULL, 'yes', ''),
 (11, 'CONBLOC PT', '1', '', '', '', '', '', '', '', 10, '2021-03-27', 10, NULL, 'no', ''),
-(12, 'PUTRA JAYA SAKTI PT', '3', '', '', '', '', '', '', 'Setiap 1 Bulan', 10, '2021-04-02', 5, '2021-02-26 10:53:18', 'yes', ''),
+(12, 'PUTRA JAYA SAKTI PT', '3', '', '', '', '', '', '', '', 10, '2021-04-03', 5, '2021-02-26 10:53:18', 'yes', ''),
 (14, 'ABC PT', '2', '', '', '', '', '', '', '', 10, '2021-05-02', 10, '2021-03-03 15:45:27', 'no', ''),
 (17, 'CONTOH PT', '3', '', 'purchasing', '', 'purchase@gmail.com', '', '', '', 10, '2021-04-06', 5, '2021-03-06 09:29:51', 'yes', ''),
-(18, 'MY PT', '5', '', '', '', '', '', '', '', 10, NULL, 10, '2021-03-06 21:27:11', '', '');
+(18, 'MY PT', '5', '', '', '', '', '', '', '', 10, NULL, 10, '2021-03-06 21:27:11', '', ''),
+(19, 'SUMMITAMA INTINUSA PT', '2', '', '', '', '', '', '', '', 10, NULL, 5, '2021-03-10 12:01:30', '', ''),
+(20, 'NUSA PT', '3', '', '', '', '', '', '', '', 10, NULL, 5, '2021-03-10 12:09:21', '', ''),
+(21, 'ADHILAUT PT', '5', '', '', '', '', '', '', '', 8, NULL, 5, '2021-03-10 12:17:44', '', '');
 
 -- --------------------------------------------------------
 
@@ -245,7 +248,7 @@ INSERT INTO `id_karyawan` (`id`, `badge`, `nama`, `nama_pendek`, `gender`, `temp
 (11, 10, 'Nia Hidayatul Rovitasari', 'Nia', 'Perempuan', 'Surabaya', '1996-03-04', 'Islam', '081334446671', '3578044403960006', 'Jalan Kendangsari 4 / XI-A Surabaya\r\n', 'Jalan Kendangsari 4 / XI-A Surabaya\r\n', 'SMA/Sederajat', 'Menikah', '2021-01-11', 6, NULL, 'BCA', '8221129644', 'Nia Hidayatul Rovitasari', '6018f3e2af758nia.jpg', 'Aktif'),
 (12, 11, 'Risza Hanhamdani', 'Risza', 'Laki-Laki', 'Surabaya', '1976-07-15', 'Islam', '082132329911', '3578031507760003', 'Jalan Penjaringan Asri XV / 36 Sby\r\n', 'Jalan Penjaringan Asri XV / 36 Sby\r\n', 'D4/S1', 'Menikah', '2021-01-04', 6, NULL, 'BCA', '6750471810', 'Irfaniah', '6018f5c03a227risza.jpg', 'Aktif'),
 (13, 12, 'Rona Emeiliyandari', 'Rona', 'Perempuan', 'Surabaya', '1982-05-13', 'Islam', '085546244639', '3578017005820001', 'Jalan Griya Kebraon Utara IX / AN - 14 Sby\r\n', 'Jalan Griya Kebraon Utara IX / AN - 14 Sby\r\n', 'SMA/Sederajat', 'Cerai', '2021-01-12', 6, NULL, 'BCA', '2710803300', 'Rona Emeiliyandari', '6018f68606e4drona.jpg', 'Aktif'),
-(15, 14, 'tes', '', 'Laki-Laki', 'Surabaya', '1998-03-31', '', '0999', '', '', 'sby', '', '', '2021-01-04', 6, NULL, 'BCA', '', '', '', 'Tidak Aktif');
+(15, 14, 'tes', 'tes', 'Laki-Laki', 'Surabaya', '1998-03-31', '', '0999', '', '', 'sby', '', '', '2021-01-04', 6, NULL, 'BCA', '', '', '', 'Tidak Aktif');
 
 -- --------------------------------------------------------
 
@@ -294,15 +297,16 @@ INSERT INTO `id_offer` (`id`, `tanggal`, `waktu`, `no_surat`, `perusahaan`, `pic
 CREATE TABLE `id_offer_number` (
   `id` int(11) NOT NULL,
   `nomor` int(11) DEFAULT NULL,
-  `inisial` varchar(100) NOT NULL
+  `inisial` varchar(100) NOT NULL,
+  `periode` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `id_offer_number`
 --
 
-INSERT INTO `id_offer_number` (`id`, `nomor`, `inisial`) VALUES
-(1, 10, 'BJB-SBY');
+INSERT INTO `id_offer_number` (`id`, `nomor`, `inisial`, `periode`) VALUES
+(1, 10, 'BJB-SBY / III', '15-31 Maret 2021');
 
 -- --------------------------------------------------------
 
@@ -365,8 +369,8 @@ CREATE TABLE `id_user` (
 --
 
 INSERT INTO `id_user` (`id`, `profilname`, `username`, `password`, `last_login`, `authKey`, `accessToken`, `type`, `blocked`) VALUES
-(1, '5', 'dedy', '$2y$13$MdjCzwpzvuQvqvkqKvM14ezHCh.4MKx71DEaZEoI8HX6R8jW.nj1e', '2021-03-09 09:41:37', 'd5fdbe5b16111739a53f6bedc2c29e5c', 'd5fdbe5b16111739a53f6bedc2c29e5c', 'Administrator', ''),
-(2, '10', 'sugeng', '$2y$13$0boAOohSI0ofjmPZ05xZbeRR03oOUkfYRQT/PGedqGTi7rJ2Y.gyG', '2021-03-09 09:24:39', '9e28894760bdf11cb2bef7a32c020e3b', '9e28894760bdf11cb2bef7a32c020e3b', 'Marketing', ''),
+(1, '5', 'dedy', '$2y$13$MdjCzwpzvuQvqvkqKvM14ezHCh.4MKx71DEaZEoI8HX6R8jW.nj1e', '2021-03-10 12:01:07', 'd5fdbe5b16111739a53f6bedc2c29e5c', 'd5fdbe5b16111739a53f6bedc2c29e5c', 'Administrator', ''),
+(2, '10', 'sugeng', '$2y$13$0boAOohSI0ofjmPZ05xZbeRR03oOUkfYRQT/PGedqGTi7rJ2Y.gyG', '2021-03-10 11:49:55', '9e28894760bdf11cb2bef7a32c020e3b', '9e28894760bdf11cb2bef7a32c020e3b', 'Marketing', ''),
 (3, '3', 'atis', '$2y$13$KVUHfL5rcRvil9nhYjUNJetLhgyb2ptcfJOEVOOWb6YcM4FjKtk8W', '2021-02-16 13:57:23', 'd5455de2f44f740d0e7ae3b97ffaf9ea', 'd5455de2f44f740d0e7ae3b97ffaf9ea', 'Manajemen', ''),
 (4, '1', 'alisia', '$2y$13$vqbiCxoDOc3MVNdwa47ALuFYLB2AuFa.10MdhG1JAGVjKK7g5wlwe', '2021-02-20 10:45:18', '3c89bc5dc3c18795e99eaf0f91af12f6', '3c89bc5dc3c18795e99eaf0f91af12f6', 'Marketing', ''),
 (5, '8', 'maria', '$2y$13$2vHy.0YdypFZvW6HJKgFpewvcr4reRrXAPRmrfbmO69iEZY6LxjGW', '2021-03-08 09:22:08', '263bce650e68ab4e23f28263760b9fa5', '263bce650e68ab4e23f28263760b9fa5', 'Marketing', ''),
@@ -463,7 +467,7 @@ ALTER TABLE `id_city`
 -- AUTO_INCREMENT untuk tabel `id_customer`
 --
 ALTER TABLE `id_customer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT untuk tabel `id_dailyreport`

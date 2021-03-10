@@ -12,6 +12,7 @@ dmstr\web\AdminLteAsset::register($this);
 			<html xmlns="http://www.w3c.org/1999/xhtml" xml:lang="pl" lang="pl">
 				<head>
           <title>Login System</title>
+          <meta name="viewport" content="width=device-width, initial-scale=1">
 					<!-- Latest compiled and minified CSS -->
 					<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
@@ -35,7 +36,7 @@ dmstr\web\AdminLteAsset::register($this);
   background: #FFFFFF;
   max-width: 360px;
   margin: 0 auto 100px;
-  padding: 45px;
+  padding: 15px 45px 45px 45px;
   text-align: center;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
@@ -57,15 +58,16 @@ dmstr\web\AdminLteAsset::register($this);
   background: #4CAF50;
   width: 100%;
   border: 0;
-  padding: 15px;
+  padding: 10px;
   color: #FFFFFF;
-  font-size: 14px;
+  font-size: 18px;
   -webkit-transition: all 0.3 ease;
   transition: all 0.3 ease;
   cursor: pointer;
 }
 .form button:hover,.form button:active,.form button:focus {
   background: #43A047;
+  font-weight: bold;
 }
 .form .message {
   margin: 15px 0 0;

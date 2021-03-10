@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => '7a4ff4d181b7a72c8939d63e00d8eae8f6819cf2',
+    'reference' => '5ef98f7bfb6a814e64df949df7af161b454a6e13',
     'name' => 'yiisoft/yii2-app-basic',
   ),
   'versions' => 
@@ -384,6 +384,15 @@
       array (
         0 => '1.10.2',
       ),
+    ),
+    'nesbot/carbon' => 
+    array (
+      'pretty_version' => '2.46.0',
+      'version' => '2.46.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '2fd2c4a77d58a4e95234c8a61c5df1f157a91bf4',
     ),
     'opis/closure' => 
     array (
@@ -899,6 +908,31 @@
       ),
       'reference' => '5bd67751d2e3f7d6f770c9154b8fbcb2aa05f7ed',
     ),
+    'symfony/translation' => 
+    array (
+      'pretty_version' => 'v5.2.4',
+      'version' => '5.2.4.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '74b0353ab34ff4cca827a2cf909e325d96815e60',
+    ),
+    'symfony/translation-contracts' => 
+    array (
+      'pretty_version' => 'v2.3.0',
+      'version' => '2.3.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'e2eaa60b558f26a4b0354e1bbb25636efaaad105',
+    ),
+    'symfony/translation-implementation' => 
+    array (
+      'provided' => 
+      array (
+        0 => '2.3',
+      ),
+    ),
     'symfony/yaml' => 
     array (
       'pretty_version' => 'v5.2.1',
@@ -942,7 +976,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => '7a4ff4d181b7a72c8939d63e00d8eae8f6819cf2',
+      'reference' => '5ef98f7bfb6a814e64df949df7af161b454a6e13',
     ),
     'yiisoft/yii2-bootstrap' => 
     array (

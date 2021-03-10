@@ -10,6 +10,7 @@ use Yii;
  * @property int $id
  * @property int|null $nomor
  * @property string $inisial
+ * @property string $periode
  */
 class OfferNumber extends \yii\db\ActiveRecord
 {
@@ -28,8 +29,8 @@ class OfferNumber extends \yii\db\ActiveRecord
     {
         return [
             [['nomor'], 'integer'],
-            [['inisial'], 'required'],
-            [['inisial'], 'string', 'max' => 100],
+            [['inisial','periode'], 'required'],
+            [['inisial','periode'], 'string', 'max' => 100],
             [['nomor'], 'unique'],
         ];
     }
@@ -43,6 +44,7 @@ class OfferNumber extends \yii\db\ActiveRecord
             'id' => 'ID',
             'nomor' => 'Nomor',
             'inisial' => 'Inisial',
+            'periode' => 'Periode'
         ];
     }
 }

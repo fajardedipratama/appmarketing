@@ -1,8 +1,10 @@
 <?php 
 use app\models\City;
+use app\models\OfferNumber;
 
+$hariIni = \Carbon\Carbon::now()->locale('id');
 $lokasi = City::find()->where(['id'=>$model->customer->lokasi])->one();
-
+$inisial = OfferNumber::find()->where(['id'=>1])->one();
 
 ?>
 <!DOCTYPE html>
@@ -19,7 +21,7 @@ $lokasi = City::find()->where(['id'=>$model->customer->lokasi])->one();
 		.back::after {
 		  content: "";
 		  background: url(photos/logo.png);
-		  background-size: 90% 40%;
+		  background-size: 90% 35%;
 		  background-repeat: no-repeat;
 		  background-position: center;
 		  opacity: 0.2;
@@ -50,11 +52,11 @@ $lokasi = City::find()->where(['id'=>$model->customer->lokasi])->one();
 <table style="font-family: Arial;font-size: 15px">
 	<tr>
 		<td width="12%" style="font-weight: bold;">No</td>
-		<td>: 0<?= $model->no_surat ?> / BJB-SBY / III / <?= date('Y') ?></td>
+		<td>: 0<?= $model->no_surat ?> / <?= $inisial['inisial'] ?> / <?= date('Y') ?></td>
 	</tr>
 	<tr>
 		<td width="12%" style="font-weight: bold;">Tanggal</td>
-		<td>: Surabaya, <?= date('d F Y') ?></td>
+		<td>: Surabaya, <?= date('d ').$hariIni->monthName.date(' Y'); ?></td>
 	</tr>
 	<tr>
 		<td width="12%" style="font-weight: bold;">Perihal</td>
@@ -68,7 +70,7 @@ $lokasi = City::find()->where(['id'=>$model->customer->lokasi])->one();
 	<tr><td colspan="2"><br></td></tr>
 
 	<tr><td colspan="2">Dengan Hormat,</td></tr>
-	<tr><td colspan="2" style="text-align: justify;line-height: 1.5em"><span style="display:inline-block; width: 4%;"></span>Melalui surat ini kami jelaskan bahwa PT. Berdikari Jaya Bersama adalah perusahaan yang bergerak dalam penyediaan Bahan Bakar Minyak Diesel Industri. Adapun penawaran harganya yang berlaku sesuai periode 01-15 Maret 2021, adalah sebagai berikut :</td></tr>
+	<tr><td colspan="2" style="text-align: justify;line-height: 1.5em"><span style="display:inline-block; width: 4%;"></span>Melalui surat ini kami jelaskan bahwa PT. Berdikari Jaya Bersama adalah perusahaan yang bergerak dalam penyediaan Bahan Bakar Minyak Diesel Industri. Adapun penawaran harganya yang berlaku sesuai periode <?= $inisial['periode'] ?>, adalah sebagai berikut :</td></tr>
 	<tr><td colspan="2"><br></td></tr>
 
 	<tr><td colspan="2" style="font-weight: bold;">HARGA SATUAN / LITER : <?= Yii::$app->formatter->asCurrency($model->harga) ?> / Liter </td></tr>
@@ -79,10 +81,22 @@ $lokasi = City::find()->where(['id'=>$model->customer->lokasi])->one();
 			<font style="font-style: italic;">Note :</font>
 			<ul>
 				<li>Minimal per PO 5.000 liter</li>
-				<li>Harga termasuk PPN</li>
+				<li>
+					<?php if($model->pajak === 'PPN'){
+						echo 'Harga termasuk PPN';
+					}else{
+						echo 'Harga Non PPN';
+					}?>
+				</li>
 				<li>Term Of Payment : <?= $model->top ?></li>
 				<li>Pengiriman setelah PO (Purchase Order) </li>
-				<li>Rekening Bank Mandiri (PPN) :  1430014465569 a.n. PT. Berdikari Jaya Bersama Cabang Probolinggo</li>
+				<li>
+					<?php if($model->pajak === 'PPN'){
+						echo 'Rekening Bank Mandiri (PPN) :  1430014465569 a.n. PT. Berdikari Jaya Bersama Cabang Probolinggo';
+					}else{
+						echo 'Rekening Bank BCA (NON PPN) :  0566515151 a.n. Godwin';
+					}?>
+				</li>
 				<li>Hubungi Sales : <?= $model->karyawan->nama_pendek.' ( '.$model->karyawan->no_hp.' )' ?></li>
 			</ul>
 		</td>

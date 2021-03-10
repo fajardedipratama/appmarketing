@@ -63,7 +63,7 @@ use dosamigos\datepicker\DatePicker;
             'options'=>['placeholder'=>"Sales"],'pluginOptions'=>['allowClear'=>true]
         ]) ?>
      </div>
-    <?php if(!$model->isNewRecord) : ?>
+    <?php if(!$model->isNewRecord && $model->expired!=null) : ?>
      <div class="col-sm-4">
         <?php 
             if(!$model->isNewRecord || $model->isNewRecord){
