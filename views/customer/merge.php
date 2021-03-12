@@ -22,8 +22,12 @@ $this->title = 'Gabung Customer';
         <?= $form->field($model, 'target')->widget(Select2::className(),[
             'data'=>ArrayHelper::map(Customer::find()->where(['!=','id',$model->id])->orderBy(['perusahaan'=>SORT_ASC])->all(),'id',
                 function($model){
-                    $query = Karyawan::find()->where(['id'=>$model['sales']])->one();
-                    return $model['perusahaan'].'-'.$query['nama_pendek'];
+                    
+                    if($model['sales']){
+                        $sales = Karyawan::find()->where(['id'=>$model['sales']])->one();
+                        return $model['perusahaan'].'-'.$sales['nama_pendek'];
+                    }
+                    
                 }
             ),
             'options'=>['placeholder'=>"Perusahaan"],'pluginOptions'=>['allowClear'=>true]

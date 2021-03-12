@@ -119,6 +119,10 @@ class PurchaseorderController extends Controller
         ['status'=>'Terkirim'],
         ['id'=>$model->id])->execute();
 
+        Yii::$app->db->createCommand()->update('id_customer',
+        ['expired'=>'2070-01-01'],
+        ['id'=>$model->perusahaan])->execute();
+
         return $this->redirect(['view','id' => $model->id]);
     }
     public function actionPaidpo($id)

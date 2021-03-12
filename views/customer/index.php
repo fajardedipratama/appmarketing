@@ -14,12 +14,13 @@ $this->title = 'Data Perusahaan';
 <div class="customer-index">
 
     <div class="row">
-        <div class="col-sm-10">
+        <div class="col-sm-9">
             <h1><?= Html::encode($this->title) ?></h1>
         </div>
-        <div class="col-sm-2">
+        <div class="col-sm-3">
         <?php if(Yii::$app->user->identity->type != 'Marketing'): ?>
             <?= Html::a('<i class="fa fa-fw fa-plus-square"></i> Tambah Data', ['create'], ['class' => 'btn btn-success']) ?>
+            <?= Html::a('<i class="fa fa-fw fa-warning"></i> Expired', ['/expired'], ['class' => 'btn btn-danger']) ?>
         <?php endif; ?>
         </div>
     </div>

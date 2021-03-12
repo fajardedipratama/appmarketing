@@ -139,6 +139,18 @@ class SelfcustomerController extends Controller
         ]);
     }
 
+    public function actionLongexpired($id)
+    {
+        $model = $this->findModel($id);
+        $expired=date('Y-m-d', strtotime('+15 days', strtotime($model->expired)));
+
+        Yii::$app->db->createCommand()->update('id_customer',
+        ['expired' => $expired, 'long_expired' => 'yes'],
+        ['id'=>$id])->execute();
+
+        return $this->redirect(['view', 'id' => $model->id]);
+    }
+
     /**
      * Deletes an existing Customer model.
      * If deletion is successful, the browser will be redirected to the 'index' page.

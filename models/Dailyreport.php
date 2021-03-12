@@ -75,4 +75,12 @@ class Dailyreport extends \yii\db\ActiveRecord
 
         return true;
     }
+    public function getKaryawan()
+    {
+        return $this->hasOne(Karyawan::className(), ['id' => 'sales']);
+    }
+    public function getCustomer()
+    {
+        return $this->hasOne(Customer::className(), ['id' => 'perusahaan']);
+    }
 }

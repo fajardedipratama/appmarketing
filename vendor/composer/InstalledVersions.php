@@ -30,7 +30,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '69668e346f6764d63b1657642be724779e1992ef',
+    'reference' => '033be25bb52732b97dab71bbab0655dfe250a60f',
     'name' => 'yiisoft/yii2-app-basic',
   ),
   'versions' => 
@@ -296,6 +296,51 @@ private static $installed = array (
       ),
       'reference' => '53330f47520498c0ae1f61f7e2c90f55690c06a3',
     ),
+    'kartik-v/yii2-bootstrap4-dropdown' => 
+    array (
+      'pretty_version' => 'v1.0.1',
+      'version' => '1.0.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '394cb4f85d82522ec5918f1581bdad518b324498',
+    ),
+    'kartik-v/yii2-dialog' => 
+    array (
+      'pretty_version' => 'v1.0.5',
+      'version' => '1.0.5.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'c38616d719f52530749457c022ca6134d0ad31ce',
+    ),
+    'kartik-v/yii2-dynagrid' => 
+    array (
+      'pretty_version' => 'v1.5.1',
+      'version' => '1.5.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '16b9f2bb145a4e2eee2f36d7b3fa2d75907797c3',
+    ),
+    'kartik-v/yii2-export' => 
+    array (
+      'pretty_version' => 'v1.2.8',
+      'version' => '1.2.8.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '42fd901373f03dd983481b8fb2ce537e6fa0577e',
+    ),
+    'kartik-v/yii2-grid' => 
+    array (
+      'pretty_version' => 'v3.3.5',
+      'version' => '3.3.5.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'e4ba0c68ecb864e1a158f16cc73a5e73a6cdf7c7',
+    ),
     'kartik-v/yii2-krajee-base' => 
     array (
       'pretty_version' => 'v2.0.5',
@@ -305,6 +350,33 @@ private static $installed = array (
       ),
       'reference' => '9ddb662bdf49fdb671a90853912a40418a26a0dd',
     ),
+    'kartik-v/yii2-mpdf' => 
+    array (
+      'pretty_version' => 'v1.0.1',
+      'version' => '1.0.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '17fda1cb084c58fee6014026d35af5faf73316ef',
+    ),
+    'kartik-v/yii2-sortable' => 
+    array (
+      'pretty_version' => 'v1.2.2',
+      'version' => '1.2.2.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'a6f9a9adb873d6345de92bbe5e436ac1a1db30bc',
+    ),
+    'kartik-v/yii2-widget-activeform' => 
+    array (
+      'pretty_version' => 'v1.5.8',
+      'version' => '1.5.8.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '02baee5e06a5dfbc94b71dc8c13ca87789716b29',
+    ),
     'kartik-v/yii2-widget-select2' => 
     array (
       'pretty_version' => 'v2.2.0',
@@ -313,6 +385,15 @@ private static $installed = array (
       array (
       ),
       'reference' => 'ee9d54f9af745c0ad7b3578bf640c12d800479e3',
+    ),
+    'mpdf/mpdf' => 
+    array (
+      'pretty_version' => 'v6.1.3',
+      'version' => '6.1.3.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '7f138bf7508eac895ac2c13d2509b056ac7e7e97',
     ),
     'myclabs/deep-copy' => 
     array (
@@ -389,6 +470,15 @@ private static $installed = array (
       array (
       ),
       'reference' => '6a467b8989322d92aa1c8bf2bebcc6e5c2ba55c0',
+    ),
+    'phpoffice/phpexcel' => 
+    array (
+      'pretty_version' => '1.8.1',
+      'version' => '1.8.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '372c7cbb695a6f6f1e62649381aeaa37e7e70b32',
     ),
     'phpspec/php-diff' => 
     array (
@@ -645,6 +735,15 @@ private static $installed = array (
       ),
       'reference' => '45f2b83ceed5231afa7b3d5b12b58ad335edd82e',
     ),
+    'setasign/fpdi' => 
+    array (
+      'pretty_version' => '1.6.2',
+      'version' => '1.6.2.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'a6ad58897a6d97cc2d2cd2adaeda343b25a368ea',
+    ),
     'swiftmailer/swiftmailer' => 
     array (
       'pretty_version' => 'v6.2.7',
@@ -665,12 +764,12 @@ private static $installed = array (
     ),
     'symfony/console' => 
     array (
-      'pretty_version' => 'v5.2.4',
-      'version' => '5.2.4.0',
+      'pretty_version' => 'v5.2.5',
+      'version' => '5.2.5.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'd6d0cc30d8c0fda4e7b213c20509b0159a8f4556',
+      'reference' => '938ebbadae1b0a9c9d1ec313f87f9708609f1b79',
     ),
     'symfony/css-selector' => 
     array (
@@ -834,12 +933,12 @@ private static $installed = array (
     ),
     'symfony/translation' => 
     array (
-      'pretty_version' => 'v5.2.4',
-      'version' => '5.2.4.0',
+      'pretty_version' => 'v5.2.5',
+      'version' => '5.2.5.0',
       'aliases' => 
       array (
       ),
-      'reference' => '74b0353ab34ff4cca827a2cf909e325d96815e60',
+      'reference' => '0947ab1e3aabd22a6bef393874b2555d2bb976da',
     ),
     'symfony/translation-contracts' => 
     array (
@@ -859,12 +958,12 @@ private static $installed = array (
     ),
     'symfony/yaml' => 
     array (
-      'pretty_version' => 'v5.2.4',
-      'version' => '5.2.4.0',
+      'pretty_version' => 'v5.2.5',
+      'version' => '5.2.5.0',
       'aliases' => 
       array (
       ),
-      'reference' => '7d6ae0cce3c33965af681a4355f1c4de326ed277',
+      'reference' => '298a08ddda623485208506fcee08817807a251dd',
     ),
     'theseer/tokenizer' => 
     array (
@@ -900,7 +999,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '69668e346f6764d63b1657642be724779e1992ef',
+      'reference' => '033be25bb52732b97dab71bbab0655dfe250a60f',
     ),
     'yiisoft/yii2-bootstrap' => 
     array (

@@ -127,6 +127,7 @@ class CustomerController extends Controller
     {
         $model = $this->findModel($id);
         $model->expired = NULL;
+        $model->long_expired = NULL;
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['index']);
@@ -151,7 +152,7 @@ class CustomerController extends Controller
             ['perusahaan'=>$model->id])->execute();
 
             Yii::$app->db->createCommand()->update('id_customer',
-            ['expired' => NULL,'sales'=>$model->sales ],
+            ['expired' => NULL,'sales'=>$model->sales,'long_expired'=>NULL],
             ['id'=>$_POST['Customer']['target']])->execute();
 
             return $this->redirect(['view', 'id' => $_POST['Customer']['target'] ]);

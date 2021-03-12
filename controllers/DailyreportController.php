@@ -8,6 +8,9 @@ use app\models\search\DailyreportSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\helpers\ArrayHelper;
+use app\models\Karyawan;
+use app\models\Customer;
 use yii\filters\AccessControl;
 
 /**
@@ -49,7 +52,18 @@ class DailyreportController extends Controller
         $searchModel = new DailyreportSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
+        $sales = ArrayHelper::map(Karyawan::find()->where(['posisi'=>6,'status_aktif'=>'Aktif'])->all(),'id',
+                function($model){
+                    return $model['nama_pendek'];
+                });
+        $customer = ArrayHelper::map(Customer::find()->all(),'id',
+                function($model){
+                    return $model['perusahaan'];
+                });
+
         return $this->render('index', [
+            'sales' => $sales,
+            'customer' => $customer,
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);

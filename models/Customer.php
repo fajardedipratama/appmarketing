@@ -19,6 +19,7 @@ use Yii;
  * @property string $jarak_ambil
  * @property int|null $sales
  * @property string|null $expired
+ * @property string $long_expired
  * @property int|null $created_by
  * @property string|null $created_time
  * @property string $verified
@@ -43,10 +44,9 @@ class Customer extends \yii\db\ActiveRecord
         return [
             [['perusahaan', 'lokasi'], 'required'],
             [['expired','created_time'], 'safe'],
-            [['perusahaan', 'lokasi', 'pic', 'telfon', 'verified', 'volume', 'jarak_ambil'], 'string', 'max' => 100],
+            [['perusahaan', 'lokasi', 'pic', 'telfon', 'verified', 'volume', 'jarak_ambil','long_expired'], 'string', 'max' => 100],
             [['alamat_lengkap', 'catatan', 'alasan'], 'string', 'max' => 1000],
             [['sales','created_by','target'], 'integer'],
-            [['perusahaan'], 'unique'],
             [['email'], 'email', 'message'=>'Penulisan alamat email tidak valid, pastikan ada @ dan diakhiri dengan domain'],
         ];
     }
@@ -69,9 +69,10 @@ class Customer extends \yii\db\ActiveRecord
             'jarak_ambil' => 'Est.Jarak Ambil',
             'sales' => 'Sales',
             'expired' => 'Expired',
+            'long_expired' => 'Perpanjang ?',
             'created_by' => 'Add By',
             'created_time' => 'Created',
-            'verified' => ' ',
+            'verified' => 'Verif.',
             'target' => 'Target',
             'alasan' => 'Alasan',
         ];

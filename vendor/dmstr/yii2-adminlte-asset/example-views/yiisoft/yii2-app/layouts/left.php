@@ -46,7 +46,7 @@ $karyawan = Karyawan::find()->where(['id'=>Yii::$app->user->identity->profilname
                                 'label' => 'Data Sales', 'icon' => 'user-secret', 'url' => ['/selfcustomer'], 'active'=>in_array(\Yii::$app->controller->id,['selfcustomer','offer','offerfailed']),
                                 'visible' => !Yii::$app->user->isGuest && Yii::$app->user->identity->type == 'Marketing'
                             ],
-                            ['label' => 'Data Perusahaan', 'icon' => 'institution', 'url' => ['/customer'], 'active'=>in_array(\Yii::$app->controller->id,['customer'])],
+                            ['label' => 'Data Perusahaan', 'icon' => 'institution', 'url' => ['/customer'], 'active'=>in_array(\Yii::$app->controller->id,['customer','expired'])],
                             [
                                 'label' => 'Data Penawaran', 'icon' => 'paste', 'url' => '#',
                                 'items' => [
@@ -55,6 +55,7 @@ $karyawan = Karyawan::find()->where(['id'=>Yii::$app->user->identity->profilname
                                     ['label' => 'Baru', 'icon' => 'edit', 'url' => ['/offer'], 'active'=>in_array(\Yii::$app->controller->id,['offer'])],
                                 ],
                             ],
+                            ['label' => 'Aktivitas Sales', 'icon' => 'calendar', 'url' => ['/dailyreport'], 'active'=>in_array(\Yii::$app->controller->id,['dailyreport'])],
                             ['label' => 'Data PO', 'icon' => 'cart-plus', 'url' => ['/purchaseorder'], 'active'=>in_array(\Yii::$app->controller->id,['purchaseorder'])],
                             ['label' => '.'],
                             [

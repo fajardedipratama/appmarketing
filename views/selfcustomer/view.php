@@ -17,7 +17,7 @@ $offers = Offer::find()->where(['perusahaan'=>$model->id])->orderBy(['waktu'=>SO
 ?>
 <div class="customer-view">
     <div class="row">
-        <div class="col-sm-9">
+        <div class="col-sm-7">
             <h2>
               <?php if($model->verified === 'yes'): ?>
                 <i class="fa fa-fw fa-check-circle"></i>
@@ -34,14 +34,22 @@ $offers = Offer::find()->where(['perusahaan'=>$model->id])->orderBy(['waktu'=>SO
             <h5><?= $model->city->kota ?> - Exp. - </h5>
           <?php endif; ?>
         </div>
-        <div class="col-sm-3">
+        <div class="col-sm-5">
             <p>
+              <?php if($model->long_expired != 'yes' && $model->verified !== 'no'): ?>
+                <?= Html::a('<i class="fa fa-fw fa-refresh"></i> Perpanjang', ['longexpired', 'id' => $model->id], ['class' => 'btn btn-primary',
+                  'data' => [
+                    'confirm' => 'Perpanjang expired 2 minggu kedepan ?',
+                    'method' => 'post',
+                  ],
+                ]) ?>
+              <?php endif; ?>
                 <?= Html::a('<i class="fa fa-fw fa-pencil"></i> Ubah', ['update', 'id' => $model->id], ['class' => 'btn btn-warning']) ?>
               <?php 
               if($model->verified !== 'no' && ($model->expired >= date('Y-m-d') || $model->expired == NULL)): ?>
-                <button class="btn btn-primary" data-toggle="modal" data-target="#daily-report"><i class="fa fa-fw fa-plus-square"></i> Progress</button>
+                <button class="btn btn-danger" data-toggle="modal" data-target="#daily-report"><i class="fa fa-fw fa-plus-square"></i> Progress</button>
               <?php else: ?>
-                <button class="btn btn-primary disabled"><i class="fa fa-fw fa-plus-square"></i> Progress</button>
+                <button class="btn btn-danger disabled"><i class="fa fa-fw fa-plus-square"></i> Progress</button>
               <?php endif; ?>
             </p>
         </div>
