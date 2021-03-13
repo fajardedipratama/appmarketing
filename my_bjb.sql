@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 13 Mar 2021 pada 06.45
+-- Waktu pembuatan: 13 Mar 2021 pada 06.55
 -- Versi server: 10.4.17-MariaDB
 -- Versi PHP: 8.0.0
 
@@ -42,7 +42,33 @@ INSERT INTO `id_city` (`id`, `kota`, `provinsi`, `oat`) VALUES
 (1, 'BANGKALAN', 'Jawa Timur', 200),
 (2, 'BANYUWANGI', 'Jawa Timur', 200),
 (3, 'BLITAR', 'Jawa Timur', 200),
-(5, 'TRENGGALEK', 'Jawa Timur', 300);
+(5, 'TRENGGALEK', 'Jawa Timur', 300),
+(6, 'BOJONEGORO', 'Jawa Timur', 250),
+(7, 'BONDOWOSO', 'Jawa Timur', 100),
+(8, 'GRESIK', 'Jawa Timur', 100),
+(9, 'JEMBER', 'Jawa Timur', 100),
+(10, 'JOMBANG', 'Jawa Timur', 200),
+(11, 'KEDIRI', 'Jawa Timur', 250),
+(12, 'LAMONGAN', 'Jawa Timur', 200),
+(13, 'LUMAJANG', 'Jawa Timur', 100),
+(14, 'MADIUN', 'Jawa Timur', 250),
+(15, 'MAGETAN', 'Jawa Timur', 300),
+(16, 'MALANG', 'Jawa Timur', 100),
+(17, 'MOJOKERTO', 'Jawa Timur', 100),
+(18, 'NGANJUK', 'Jawa Timur', 200),
+(19, 'NGAWI', 'Jawa Timur', 300),
+(20, 'PACITAN', 'Jawa Timur', 300),
+(21, 'PAMEKASAN', 'Jawa Timur', 250),
+(22, 'PASURUAN', 'Jawa Timur', 0),
+(23, 'PONOROGO', 'Jawa Timur', 300),
+(24, 'PROBOLINGGO', 'Jawa Timur', 0),
+(25, 'SAMPANG', 'Jawa Timur', 200),
+(26, 'SIDOARJO', 'Jawa Timur', 100),
+(27, 'SITUBONDO', 'Jawa Timur', 100),
+(28, 'SUMENEP', 'Jawa Timur', 300),
+(29, 'SURABAYA', 'Jawa Timur', 100),
+(30, 'TUBAN', 'Jawa Timur', 300),
+(31, 'TULUNGAGUNG', 'Jawa Timur', 250);
 
 -- --------------------------------------------------------
 
@@ -372,14 +398,15 @@ CREATE TABLE `id_user` (
 --
 
 INSERT INTO `id_user` (`id`, `profilname`, `username`, `password`, `last_login`, `authKey`, `accessToken`, `type`, `blocked`) VALUES
-(1, '5', 'dedy', '$2y$13$MdjCzwpzvuQvqvkqKvM14ezHCh.4MKx71DEaZEoI8HX6R8jW.nj1e', '2021-03-13 12:23:47', 'd5fdbe5b16111739a53f6bedc2c29e5c', 'd5fdbe5b16111739a53f6bedc2c29e5c', 'Administrator', ''),
+(1, '5', 'dedy', '$2y$13$MdjCzwpzvuQvqvkqKvM14ezHCh.4MKx71DEaZEoI8HX6R8jW.nj1e', '2021-03-13 12:46:01', 'd5fdbe5b16111739a53f6bedc2c29e5c', 'd5fdbe5b16111739a53f6bedc2c29e5c', 'Administrator', ''),
 (2, '10', 'sugeng', '$2y$13$0boAOohSI0ofjmPZ05xZbeRR03oOUkfYRQT/PGedqGTi7rJ2Y.gyG', '2021-03-12 08:56:38', '9e28894760bdf11cb2bef7a32c020e3b', '9e28894760bdf11cb2bef7a32c020e3b', 'Marketing', ''),
 (7, '1', 'alisiachintya', '$2y$13$J7cRKWZIwuoFamLCB79c6u6dM3dX2IQGlW1cjcQxgk9/OGyc57NQq', '0000-00-00 00:00:00', '60532c4e119ce506036cf74f655259dd', '60532c4e119ce506036cf74f655259dd', 'Marketing', ''),
 (8, '11', 'nia', '$2y$13$jv9tO8ezOgKnvHl/Nd43zuY5XdeXDb3nx2NCFKhQ226svKRr7OLSG', '0000-00-00 00:00:00', '04a481486dd84d7c8bfdfc89d38136a6', '04a481486dd84d7c8bfdfc89d38136a6', 'Marketing', ''),
 (9, '12', 'risza', '$2y$13$tD2k5kTBFRwv0DAfWO0LjO1o2gju3lAwTsctLGUDZ0G//L0u8xNa2', '0000-00-00 00:00:00', '521f6ab426fbb7296a695ab243412094', '521f6ab426fbb7296a695ab243412094', 'Marketing', ''),
 (10, '13', 'rona', '$2y$13$GJCbmqSIomHQv1DVubDgdOMhU8m01d/NgpCyUF1OvusD9NLprkN0W', '0000-00-00 00:00:00', '689b6f533e39e77830b46315ab4cb501', '689b6f533e39e77830b46315ab4cb501', 'Marketing', ''),
 (11, '7', 'faren', '$2y$13$8ufbvqlnL7DzvZX52GEN..wcZwB3KlSfBCbpXxHB4uVM7DcmFkf66', '0000-00-00 00:00:00', '582b76b44f0d7daba45e67b45ed5e074', '582b76b44f0d7daba45e67b45ed5e074', 'Marketing', ''),
-(12, '9', 'aly', '$2y$13$.7fwCl3DSo3.Gk4UjknlWOKflN.xU77CfRkZftCQ6Xp/6J.D.47ny', '0000-00-00 00:00:00', '33fb5fa89f84d0a48397f693a7c7c242', '33fb5fa89f84d0a48397f693a7c7c242', 'Marketing', '');
+(12, '9', 'aly', '$2y$13$.7fwCl3DSo3.Gk4UjknlWOKflN.xU77CfRkZftCQ6Xp/6J.D.47ny', '0000-00-00 00:00:00', '33fb5fa89f84d0a48397f693a7c7c242', '33fb5fa89f84d0a48397f693a7c7c242', 'Marketing', ''),
+(13, '8', 'mariyaaulfah', '$2y$13$1c9fKLypah2Z33ciWR/NEetgr0TNlOKiGa63h0tKDzNuIJCTL5dNW', '0000-00-00 00:00:00', 'a63525c10363ec68c0ae98b7ad282557', 'a63525c10363ec68c0ae98b7ad282557', 'Marketing', '');
 
 --
 -- Indexes for dumped tables
@@ -465,7 +492,7 @@ ALTER TABLE `id_user`
 -- AUTO_INCREMENT untuk tabel `id_city`
 --
 ALTER TABLE `id_city`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT untuk tabel `id_customer`
@@ -525,7 +552,7 @@ ALTER TABLE `id_purchase_order`
 -- AUTO_INCREMENT untuk tabel `id_user`
 --
 ALTER TABLE `id_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
