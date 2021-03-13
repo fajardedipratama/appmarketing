@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
-
+use kartik\export\ExportMenu;
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\search\DailyreportSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -15,6 +15,7 @@ $this->title = 'Aktivitas Sales';
     <h1><?= Html::encode($this->title) ?></h1>
 
 <div class="box"><div class="box-body"><div class="table-responsive">
+
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,

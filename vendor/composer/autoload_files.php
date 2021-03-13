@@ -25,4 +25,7 @@ return array(
     '538ca81a9a966a6716601ecf48f4eaef' => $vendorDir . '/opis/closure/functions.php',
     'a1105708a18b76903365ca1c4aa61b02' => $vendorDir . '/symfony/translation/Resources/functions.php',
     '180092cfc969a12e06f2132a203a3184' => $vendorDir . '/codeception/verify/src/Codeception/function.php',
+    '8f60802bf3ab1b5d3fe027b2a30fc63c' => $vendorDir . '/hscstudio/yii2-export/libraries/tbs/tbs_class.php',
+    'c97615380d0d24e0adcb1db6edeb8a28' => $vendorDir . '/hscstudio/yii2-export/libraries/tbs/plugins/tbs_plugin_opentbs.php',
+    'ef4236948f18f73b21dfa5a2df084116' => $vendorDir . '/hscstudio/yii2-export/libraries/mpdf/mpdf.php',
 );

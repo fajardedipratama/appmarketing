@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 12 Mar 2021 pada 10.40
+-- Waktu pembuatan: 13 Mar 2021 pada 04.47
 -- Versi server: 10.4.17-MariaDB
 -- Versi PHP: 8.0.0
 
@@ -81,7 +81,7 @@ INSERT INTO `id_customer` (`id`, `perusahaan`, `lokasi`, `alamat_lengkap`, `pic`
 (9, 'ADMIRA PT', '5', '', 'purchasing', '', 'admira@gmail.com', '', '', '', 12, NULL, '', 5, NULL, 'yes', ''),
 (11, 'CONBLOC PT', '1', '', '', '', '', '', '', '', 10, '2021-03-27', '', 10, NULL, 'no', ''),
 (12, 'PUTRA JAYA SAKTI PT', '3', '', '', '', '', '', '', '', 10, '2021-04-03', '', 5, '2021-02-26 10:53:18', 'yes', ''),
-(14, 'ABC PT', '2', '', '', '', '', '', '', '', 10, '2021-05-02', '', 10, '2021-03-03 15:45:27', 'no', ''),
+(14, 'ABC PT', '2', '', '', '031478956', '', '', '', '', 10, '2021-05-02', '', 10, '2021-03-03 15:45:27', 'no', ''),
 (17, 'CONTOH PT', '1', '', 'purchasing', '', 'purchase@gmail.com', '', '', '', 8, NULL, '', 5, '2021-03-06 09:29:51', 'yes', ''),
 (18, 'MY PT', '5', '', '', '', '', '', '', '', 10, NULL, '', 10, '2021-03-06 21:27:11', '', ''),
 (19, 'SUMMITAMA INTINUSA PT', '2', '', '', '', '', '', '', '', 10, NULL, '', 5, '2021-03-10 12:01:30', '', ''),
@@ -372,7 +372,7 @@ CREATE TABLE `id_user` (
 --
 
 INSERT INTO `id_user` (`id`, `profilname`, `username`, `password`, `last_login`, `authKey`, `accessToken`, `type`, `blocked`) VALUES
-(1, '5', 'dedy', '$2y$13$MdjCzwpzvuQvqvkqKvM14ezHCh.4MKx71DEaZEoI8HX6R8jW.nj1e', '2021-03-12 13:59:33', 'd5fdbe5b16111739a53f6bedc2c29e5c', 'd5fdbe5b16111739a53f6bedc2c29e5c', 'Administrator', ''),
+(1, '5', 'dedy', '$2y$13$MdjCzwpzvuQvqvkqKvM14ezHCh.4MKx71DEaZEoI8HX6R8jW.nj1e', '2021-03-13 09:00:49', 'd5fdbe5b16111739a53f6bedc2c29e5c', 'd5fdbe5b16111739a53f6bedc2c29e5c', 'Administrator', ''),
 (2, '10', 'sugeng', '$2y$13$0boAOohSI0ofjmPZ05xZbeRR03oOUkfYRQT/PGedqGTi7rJ2Y.gyG', '2021-03-12 08:56:38', '9e28894760bdf11cb2bef7a32c020e3b', '9e28894760bdf11cb2bef7a32c020e3b', 'Marketing', ''),
 (3, '3', 'atis', '$2y$13$KVUHfL5rcRvil9nhYjUNJetLhgyb2ptcfJOEVOOWb6YcM4FjKtk8W', '2021-02-16 13:57:23', 'd5455de2f44f740d0e7ae3b97ffaf9ea', 'd5455de2f44f740d0e7ae3b97ffaf9ea', 'Manajemen', ''),
 (4, '1', 'alisia', '$2y$13$vqbiCxoDOc3MVNdwa47ALuFYLB2AuFa.10MdhG1JAGVjKK7g5wlwe', '2021-02-20 10:45:18', '3c89bc5dc3c18795e99eaf0f91af12f6', '3c89bc5dc3c18795e99eaf0f91af12f6', 'Marketing', ''),
