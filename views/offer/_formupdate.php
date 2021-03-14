@@ -32,7 +32,7 @@ use yii\widgets\ActiveForm;
      </div>
     <?php if(Yii::$app->user->identity->type == 'Administrator'): ?>
      <div class="col-sm-4">
-        <?= $form->field($model, 'status')->dropDownList(['Terkirim'=>'Terkirim','Gagal Kirim'=>'Gagal Kirim'],['prompt'=>'--Status--']) ?>
+        <?= $form->field($model, 'status')->dropDownList(['Terkirim'=>'Terkirim','Gagal Kirim'=>'Gagal Kirim','Proses'=>'Proses','Pending'=>'Pending'],['prompt'=>'--Status--']) ?>
      </div>
     <?php endif ?>
     </div>

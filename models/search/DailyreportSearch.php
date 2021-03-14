@@ -1,7 +1,7 @@
 <?php
 
 namespace app\models\search;
-
+use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use app\models\Dailyreport;
@@ -40,12 +40,18 @@ class DailyreportSearch extends Dailyreport
      */
     public function search($params)
     {
-        $query = Dailyreport::find();
+        if(Yii::$app->user->identity->type == 'Marketing'){
+            $query = Dailyreport::find()->where(['sales'=>Yii::$app->user->identity->profilname]);
+        }else{
+            $query = Dailyreport::find();
+        }
 
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'pagination'=>array('pageSize'=>20),
+            'sort'=>['defaultOrder'=>['waktu'=>SORT_DESC]]
         ]);
 
         $this->load($params);
@@ -60,10 +66,15 @@ class DailyreportSearch extends Dailyreport
         $query->andFilterWhere([
             'id' => $this->id,
             'sales' => $this->sales,
-            'waktu' => $this->waktu,
             'perusahaan' => $this->perusahaan,
             'pengingat' => $this->pengingat,
         ]);
+
+        if(!empty($this->waktu)){    
+            $query->andFilterWhere([
+                'like','waktu', Yii::$app->formatter->asDate($this->waktu,'yyyy-MM-dd'),
+            ]);
+        }
 
         $query->andFilterWhere(['like', 'keterangan', $this->keterangan])
             ->andFilterWhere(['like', 'catatan', $this->catatan]);

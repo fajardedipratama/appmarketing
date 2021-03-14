@@ -19,6 +19,7 @@ use Yii;
  * @property string $catatan
  * @property int $sales
  * @property string $status
+ * @property string $is_new
  */
 class Offer extends \yii\db\ActiveRecord
 {
@@ -39,7 +40,7 @@ class Offer extends \yii\db\ActiveRecord
             [['perusahaan', 'pic', 'top', 'pajak', 'harga'], 'required'],
             [['tanggal','waktu'], 'safe'],
             [['no_surat', 'perusahaan', 'harga', 'sales'], 'integer'],
-            [['pic', 'top', 'pajak', 'status'], 'string', 'max' => 100],
+            [['pic', 'top', 'pajak', 'status','is_new'], 'string', 'max' => 100],
             [['catatan'], 'string', 'max' => 1000],
         ];
     }
@@ -62,6 +63,7 @@ class Offer extends \yii\db\ActiveRecord
             'catatan' => 'Catatan',
             'sales' => 'Sales',
             'status' => 'Status',
+            'is_new' => 'Penawaran Baru ?'
         ];
     }
 
@@ -71,6 +73,13 @@ class Offer extends \yii\db\ActiveRecord
             $this->status='Pending';
             $this->tanggal=date('Y-m-d');
             $this->waktu=date('H:i:s');
+        }
+
+        $cek_new=Offer::find()->where(['sales'=>$this->sales,'perusahaan'=>$this->perusahaan])->count();
+        if($cek_new>0){
+            $this->is_new = 'no';
+        }else{
+            $this->is_new = 'yes';
         }
 
         return true;

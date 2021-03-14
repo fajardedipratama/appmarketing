@@ -81,6 +81,7 @@ $inisial = OfferNumber::find()->where(['id'=>1])->one();
 			<font style="font-style: italic;">Note :</font>
 			<ul>
 				<li>Minimal per PO 5.000 liter</li>
+				<li>Toleransi susut yang berlaku adalah 0,5%</li>
 				<li>
 					<?php if($model->pajak === 'PPN'){
 						echo 'Harga termasuk PPN';

@@ -12,7 +12,7 @@ use yii\helpers\ArrayHelper;
 use app\models\Karyawan;
 use app\models\Customer;
 use yii\filters\AccessControl;
-
+use yii\data\ActiveDataProvider;
 /**
  * DailyreportController implements the CRUD actions for Dailyreport model.
  */
@@ -133,6 +133,42 @@ class DailyreportController extends Controller
 
         return $this->redirect(['index']);
     }
+
+    /*
+    EXPORT WITH OPENTBS
+    */
+    public function actionExportExcel2()
+    {
+        $query = Dailyreport::find(); 
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+            'pagination'=>false,
+            'sort'=>['defaultOrder'=>['sales'=>SORT_ASC]]
+        ]);
+        
+        // Initalize the TBS instance
+        $OpenTBS = new \hscstudio\export\OpenTBS; // new instance of TBS
+        // Change with Your template kaka
+        $template = Yii::getAlias('@hscstudio/export').'/templates/opentbs/dailyreport.xlsx';
+        $OpenTBS->LoadTemplate($template); // Also merge some [onload] automatic fields (depends of the type of document).
+        //$OpenTBS->VarRef['modelName']= "Mahasiswa";               
+        $data = [];
+        foreach($dataProvider->getModels() as $daily){
+            $data[] = [
+                'sales'=>$daily->karyawan->nama_pendek,
+                'waktu'=>$daily->waktu,
+                'perusahaan'=>$daily->customer->perusahaan,
+                'telfon'=>$daily->customer->telfon,
+                'keterangan'=>$daily->keterangan,
+                'catatan'=>$daily->catatan,
+            ];
+        }
+        
+        $OpenTBS->MergeBlock('data', $data);
+        // Output the result as a file on the server. You can change output file
+        $OpenTBS->Show(OPENTBS_DOWNLOAD, 'dailyreport.xlsx'); // Also merges all [onshow] automatic fields.          
+        exit;
+    } 
 
     /**
      * Finds the Dailyreport model based on its primary key value.
