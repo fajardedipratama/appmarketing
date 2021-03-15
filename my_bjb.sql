@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 14 Mar 2021 pada 15.24
+-- Waktu pembuatan: 15 Mar 2021 pada 10.51
 -- Versi server: 10.4.17-MariaDB
--- Versi PHP: 8.0.2
+-- Versi PHP: 8.0.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -114,7 +114,8 @@ INSERT INTO `id_customer` (`id`, `perusahaan`, `lokasi`, `alamat_lengkap`, `pic`
 (20, 'NUSA PT', '3', '', '', '', '', '', '', '', 10, NULL, '', 5, '2021-03-10 12:09:21', '', ''),
 (21, 'ADHILAUT PT', '5', '', '', '', '', '', '', '', 8, '2021-04-13', '', 5, '2021-03-10 12:17:44', 'yes', ''),
 (22, 'KRATON PT', '2', '', '', '', '', '', '', '', 1, NULL, '', 10, '2021-03-12 10:34:13', '', ''),
-(23, 'XYZ PT', '3', '', '', '', '', '', '', '', NULL, NULL, '', 5, '2021-03-12 15:03:18', '', '');
+(23, 'XYZ PT', '3', '', '', '', '', '', '', '', NULL, NULL, '', 5, '2021-03-12 15:03:18', '', ''),
+(24, 'TEST PT', '8', '', 'Andy', '', '', '', '', '', 10, NULL, '', 10, '2021-03-15 16:33:54', 'yes', '');
 
 -- --------------------------------------------------------
 
@@ -164,7 +165,10 @@ INSERT INTO `id_dailyreport` (`id`, `sales`, `waktu`, `perusahaan`, `keterangan`
 (35, 12, '2021-03-08 09:24:00', 7, 'Penawaran', '', NULL, 'Telfon Kantor'),
 (36, 10, '2021-03-09 09:42:14', 18, 'Penawaran', '', NULL, 'Telfon Kantor'),
 (37, 10, '2021-03-14 21:02:00', 19, 'Penawaran', '', NULL, 'Telfon Kantor'),
-(38, 10, '2021-03-14 21:02:51', 12, 'Penawaran', '', NULL, 'Telfon Kantor');
+(38, 10, '2021-03-14 21:02:51', 12, 'Penawaran', '', NULL, 'Telfon Kantor'),
+(39, 10, '2021-03-15 16:34:01', 24, 'Penawaran', '', NULL, 'Telfon Kantor'),
+(40, 1, '2021-03-15 16:40:29', 24, 'Penawaran', '', NULL, 'Telfon Kantor'),
+(41, 10, '2021-03-15 16:41:56', 24, 'Penawaran', '', NULL, 'Telfon Kantor');
 
 -- --------------------------------------------------------
 
@@ -319,7 +323,10 @@ INSERT INTO `id_offer` (`id`, `tanggal`, `waktu`, `no_surat`, `perusahaan`, `pic
 (27, '2021-03-06', '12:30:39', NULL, 14, 'Pembelian Umum', 'Cash On Delivery', 'PPN', 6800, '', 10, 'Gagal Kirim', ''),
 (28, '2021-03-08', '09:24:07', 10, 7, 'Suwito', 'Cash On Delivery', 'PPN', 6600, '', 12, 'Proses', ''),
 (29, '2021-03-14', '21:02:34', 12, 19, 'Esti', 'Cash On Delivery', 'PPN', 6700, '', 10, 'Proses', 'yes'),
-(30, '2021-03-14', '21:03:11', 13, 12, 'Hadi', 'Cash On Delivery', 'PPN', 6500, '', 10, 'Proses', 'no');
+(30, '2021-03-14', '21:03:11', 13, 12, 'Hadi', 'Cash On Delivery', 'PPN', 6500, '', 10, 'Proses', 'no'),
+(31, '2021-03-15', '16:34:10', 14, 24, 'Andy', 'Cash On Delivery', 'PPN', 6500, '', 10, 'Terkirim', 'yes'),
+(32, '2021-03-15', '16:40:34', 15, 24, 'Andy', 'Cash On Delivery', 'PPN', 6600, '', 1, 'Terkirim', 'yes'),
+(33, '2021-03-15', '16:42:01', NULL, 24, 'Andy', 'Cash On Delivery', 'PPN', 6700, '', 10, 'Pending', 'no');
 
 -- --------------------------------------------------------
 
@@ -339,7 +346,7 @@ CREATE TABLE `id_offer_number` (
 --
 
 INSERT INTO `id_offer_number` (`id`, `nomor`, `inisial`, `periode`) VALUES
-(1, 13, 'BJB-SBY / III', '15-31 Maret 2021');
+(1, 15, 'BJB-SBY / III', '15-31 Maret 2021');
 
 -- --------------------------------------------------------
 
@@ -377,7 +384,7 @@ CREATE TABLE `id_purchase_order` (
 
 INSERT INTO `id_purchase_order` (`id`, `perusahaan`, `sales`, `no_po`, `tgl_po`, `tgl_kirim`, `alamat`, `alamat_kirim`, `purchasing`, `no_purchasing`, `keuangan`, `no_keuangan`, `volume`, `termin`, `harga`, `cashback`, `pajak`, `pembayaran`, `status`, `catatan`, `alasan_tolak`) VALUES
 (1, 12, 10, 'PO/PJS-SBY/03/21/HSD', '2021-03-01', '2021-03-03', 'Jl.Sumbawa 31 Tuban', 'Jl.Merak 25 Surabaya', 'Pak Fajar', '082378182999', 'Pak Dedy', '089283222111', 5000, 'Cash On Delivery', 6700, 100, 'PPN', 'Transfer', 'Terbayar-Selesai', 'minta faktur pajak dan surat jalan', ''),
-(2, 7, 12, '0123', '2021-03-04', '2021-03-05', 'jl.surabaya', 'jl.surabaya', 'neey', '08111111111', 'feey', '0899999999', 5000, 'Cash On Delivery', 6700, 0, 'PPN', 'Transfer', 'Terkirim', '', '');
+(2, 7, 12, '0123', '2021-03-04', '2021-03-05', 'jl.surabaya', 'jl.surabaya', 'neey', '08111111111', 'feey', '0899999999', 5000, 'Cash On Delivery', 6700, 0, 'PPN', 'Transfer', 'Disetujui', '', '');
 
 -- --------------------------------------------------------
 
@@ -402,9 +409,9 @@ CREATE TABLE `id_user` (
 --
 
 INSERT INTO `id_user` (`id`, `profilname`, `username`, `password`, `last_login`, `authKey`, `accessToken`, `type`, `blocked`) VALUES
-(1, '5', 'dedy', '$2y$13$MdjCzwpzvuQvqvkqKvM14ezHCh.4MKx71DEaZEoI8HX6R8jW.nj1e', '2021-03-14 21:11:17', 'd5fdbe5b16111739a53f6bedc2c29e5c', 'd5fdbe5b16111739a53f6bedc2c29e5c', 'Administrator', ''),
-(2, '10', 'sugeng', '$2y$13$0boAOohSI0ofjmPZ05xZbeRR03oOUkfYRQT/PGedqGTi7rJ2Y.gyG', '2021-03-14 21:03:44', '9e28894760bdf11cb2bef7a32c020e3b', '9e28894760bdf11cb2bef7a32c020e3b', 'Marketing', ''),
-(7, '1', 'alisiachintya', '$2y$13$J7cRKWZIwuoFamLCB79c6u6dM3dX2IQGlW1cjcQxgk9/OGyc57NQq', '0000-00-00 00:00:00', '60532c4e119ce506036cf74f655259dd', '60532c4e119ce506036cf74f655259dd', 'Marketing', ''),
+(1, '5', 'dedy', '$2y$13$MdjCzwpzvuQvqvkqKvM14ezHCh.4MKx71DEaZEoI8HX6R8jW.nj1e', '2021-03-15 15:18:28', 'd5fdbe5b16111739a53f6bedc2c29e5c', 'd5fdbe5b16111739a53f6bedc2c29e5c', 'Administrator', ''),
+(2, '10', 'sugeng', '$2y$13$0boAOohSI0ofjmPZ05xZbeRR03oOUkfYRQT/PGedqGTi7rJ2Y.gyG', '2021-03-15 16:41:29', '9e28894760bdf11cb2bef7a32c020e3b', '9e28894760bdf11cb2bef7a32c020e3b', 'Marketing', ''),
+(7, '1', 'alisiachintya', '$2y$13$J7cRKWZIwuoFamLCB79c6u6dM3dX2IQGlW1cjcQxgk9/OGyc57NQq', '2021-03-15 16:40:09', '60532c4e119ce506036cf74f655259dd', '60532c4e119ce506036cf74f655259dd', 'Marketing', ''),
 (8, '11', 'nia', '$2y$13$jv9tO8ezOgKnvHl/Nd43zuY5XdeXDb3nx2NCFKhQ226svKRr7OLSG', '0000-00-00 00:00:00', '04a481486dd84d7c8bfdfc89d38136a6', '04a481486dd84d7c8bfdfc89d38136a6', 'Marketing', ''),
 (9, '12', 'risza', '$2y$13$tD2k5kTBFRwv0DAfWO0LjO1o2gju3lAwTsctLGUDZ0G//L0u8xNa2', '0000-00-00 00:00:00', '521f6ab426fbb7296a695ab243412094', '521f6ab426fbb7296a695ab243412094', 'Marketing', ''),
 (10, '13', 'rona', '$2y$13$GJCbmqSIomHQv1DVubDgdOMhU8m01d/NgpCyUF1OvusD9NLprkN0W', '0000-00-00 00:00:00', '689b6f533e39e77830b46315ab4cb501', '689b6f533e39e77830b46315ab4cb501', 'Marketing', ''),
@@ -502,13 +509,13 @@ ALTER TABLE `id_city`
 -- AUTO_INCREMENT untuk tabel `id_customer`
 --
 ALTER TABLE `id_customer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT untuk tabel `id_dailyreport`
 --
 ALTER TABLE `id_dailyreport`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT untuk tabel `id_departemen`
@@ -538,7 +545,7 @@ ALTER TABLE `id_karyawan`
 -- AUTO_INCREMENT untuk tabel `id_offer`
 --
 ALTER TABLE `id_offer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT untuk tabel `id_offer_number`

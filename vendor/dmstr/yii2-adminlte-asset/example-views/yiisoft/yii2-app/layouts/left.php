@@ -52,11 +52,13 @@ $karyawan = Karyawan::find()->where(['id'=>Yii::$app->user->identity->profilname
                                 'items' => [
                                     ['label' => 'Selesai', 'icon' => 'check-square-o', 'url' => ['/offerfinish'], 'active'=>in_array(\Yii::$app->controller->id,['offerfinish'])],
                                     ['label' => 'Proses', 'icon' => 'spinner', 'url' => ['/offerproses'], 'active'=>in_array(\Yii::$app->controller->id,['offerproses'])],
-                                    ['label' => 'Baru', 'icon' => 'edit', 'url' => ['/offer'], 'active'=>in_array(\Yii::$app->controller->id,['offer'])],
+                                    ['label' => 'Baru', 'icon' => 'edit', 'url' => ['/offer'], 'active'=>in_array($this->context->route,['offer/index','offer/view','offer/create','offer/createadmin','offer/update'])],
                                 ],
                             ],
-                            ['label' => 'Aktivitas Sales', 'icon' => 'calendar', 'url' => ['/dailyreport'], 'active'=>in_array(\Yii::$app->controller->id,['dailyreport'])],
                             ['label' => 'Data PO', 'icon' => 'cart-plus', 'url' => ['/purchaseorder'], 'active'=>in_array(\Yii::$app->controller->id,['purchaseorder'])],
+                            ['label' => '.'],
+                            ['label' => 'Aktivitas Sales', 'icon' => 'table', 'url' => ['/dailyreport'], 'active'=>in_array(\Yii::$app->controller->id,['dailyreport'])],
+                            ['label' => 'Statistik Sales', 'icon' => 'table', 'url' => ['/offer/statistic'], 'active'=>in_array($this->context->route,['offer/statistic'])],
                             ['label' => '.'],
                             [
                                 'label' => 'Kabupaten/Kota', 'icon' => 'map-marker', 'url' => ['/city'], 'active'=>in_array(\Yii::$app->controller->id,['city']),

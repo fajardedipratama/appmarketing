@@ -77,7 +77,13 @@ class Offer extends \yii\db\ActiveRecord
 
         $cek_new=Offer::find()->where(['sales'=>$this->sales,'perusahaan'=>$this->perusahaan])->count();
         if($cek_new>0){
-            $this->is_new = 'no';
+            $cek_fu=Offer::find()->where(['!=','sales',$this->sales])->andWhere(['<','id',$this->id])->limit(1)->orderBy(['id'=>SORT_DESC])->one();
+            if($cek_fu){
+                $this->is_new = 'yes';
+            }else{
+                $this->is_new = 'no';
+            }
+            
         }else{
             $this->is_new = 'yes';
         }

@@ -30,11 +30,20 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '2f5f5e4e39b0ae38c4b961c76cb38a78cc305ce2',
+    'reference' => 'daeb3242aea94e5fcf9cb740a9d23a0c9cde8cd2',
     'name' => 'yiisoft/yii2-app-basic',
   ),
   'versions' => 
   array (
+    '2amigos/yii2-chartjs-widget' => 
+    array (
+      'pretty_version' => '2.1.3',
+      'version' => '2.1.3.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'b144a4ebd923872a7263c980f8afe2e212378275',
+    ),
     '2amigos/yii2-date-picker-widget' => 
     array (
       'pretty_version' => '1.0.7',
@@ -79,6 +88,15 @@ private static $installed = array (
       array (
       ),
       'reference' => 'd364be5b066b38f3675a5a1dc174ce1ab1f3360e',
+    ),
+    'bower-asset/chartjs' => 
+    array (
+      'pretty_version' => 'v2.9.4',
+      'version' => '2.9.4.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '9bd4cf82fda9f50a5fb50b72843e06ab88124278',
     ),
     'bower-asset/inputmask' => 
     array (
@@ -918,7 +936,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '2f5f5e4e39b0ae38c4b961c76cb38a78cc305ce2',
+      'reference' => 'daeb3242aea94e5fcf9cb740a9d23a0c9cde8cd2',
     ),
     'yiisoft/yii2-bootstrap' => 
     array (
