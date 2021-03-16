@@ -9,7 +9,6 @@ use app\models\Karyawan;
 use app\models\City;
 use app\models\Offernumber;
 use app\models\search\OfferSearch;
-use app\models\search\StatisticSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -76,16 +75,6 @@ class OfferController extends Controller
             'sales' => $sales,
             'customer' => $customer,
             'modelnumber' => $modelnumber,
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-        ]);
-    }
-    public function actionStatistic()
-    {
-        $searchModel = new StatisticSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
-        return $this->render('statistic', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);

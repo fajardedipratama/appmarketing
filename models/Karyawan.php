@@ -32,6 +32,7 @@ use Yii;
  */
 class Karyawan extends \yii\db\ActiveRecord
 {
+
     /**
      * {@inheritdoc}
      */

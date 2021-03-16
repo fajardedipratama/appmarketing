@@ -53,6 +53,7 @@ use dosamigos\datepicker\DatePicker;
       <div class="col-sm-4">
         <?= $form->field($model, 'catatan')->textInput(['maxlength' => true]) ?>
      </div>
+    <?php if($model->isNewRecord): ?>
      <div class="col-sm-4">
         <?= $form->field($model, 'sales')->widget(Select2::className(),[
             'data'=>ArrayHelper::map(Karyawan::find()->where(['posisi'=>6,'status_aktif'=>'Aktif'])->orderBy(['nama'=>SORT_ASC])->all(),'id',
@@ -63,6 +64,7 @@ use dosamigos\datepicker\DatePicker;
             'options'=>['placeholder'=>"Sales"],'pluginOptions'=>['allowClear'=>true]
         ]) ?>
      </div>
+    <?php endif; ?>
     <?php if(!$model->isNewRecord && $model->expired!=null) : ?>
      <div class="col-sm-4">
         <?php 

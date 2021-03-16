@@ -11,7 +11,7 @@ use app\models\Karyawan;
 $this->title = $model->perusahaan;
 
 $progress = Dailyreport::find()->where(['perusahaan'=>$model->id])->orderBy(['waktu'=>SORT_DESC])->all();
-$offers = Offer::find()->where(['perusahaan'=>$model->id])->orderBy(['waktu'=>SORT_DESC])->all();
+$offers = Offer::find()->where(['perusahaan'=>$model->id])->orderBy(['id'=>SORT_DESC])->all();
 
 \yii\web\YiiAsset::register($this);
 ?>

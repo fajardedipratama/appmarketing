@@ -1,16 +1,15 @@
 <?php
 
 namespace app\models\search;
-use Yii;
+
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Offer;
 use app\models\Karyawan;
 
 /**
- * OfferSearch represents the model behind the search form of `app\models\Offer`.
+ * StatisticSearch represents the model behind the search form of `app\models\Karyawan`.
  */
-class StatisticSearch extends Offer
+class StatisticSearch extends Karyawan
 {
     /**
      * {@inheritdoc}
@@ -18,8 +17,8 @@ class StatisticSearch extends Offer
     public function rules()
     {
         return [
-            [['id', 'no_surat', 'perusahaan', 'harga', 'sales'], 'integer'],
-            [['tanggal', 'pic', 'top', 'pajak', 'catatan', 'status'], 'safe'],
+            [['id', 'badge', 'posisi', 'departemen'], 'integer'],
+            [['nama', 'nama_pendek', 'gender', 'tempat_lahir', 'tanggal_lahir', 'agama', 'no_hp', 'no_ktp', 'alamat_ktp', 'alamat_rumah', 'pendidikan', 'status_kawin', 'tanggal_masuk', 'bank', 'no_rekening', 'nama_rekening', 'foto_karyawan', 'status_aktif'], 'safe'],
         ];
     }
 
@@ -47,6 +46,7 @@ class StatisticSearch extends Offer
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'sort'=>['defaultOrder'=>['nama_pendek'=>SORT_ASC]]
         ]);
 
         $this->load($params);
@@ -60,23 +60,29 @@ class StatisticSearch extends Offer
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'waktu' => $this->waktu,
-            'no_surat' => $this->no_surat,
-            'perusahaan' => $this->perusahaan,
-            'harga' => $this->harga,
-            'sales' => $this->sales,
+            'badge' => $this->badge,
+            'tanggal_lahir' => $this->tanggal_lahir,
+            'tanggal_masuk' => $this->tanggal_masuk,
+            'posisi' => $this->posisi,
+            'departemen' => $this->departemen,
         ]);
-        if(!empty($this->tanggal)){    
-            $query->andFilterWhere([
-                'tanggal' => Yii::$app->formatter->asDate($this->tanggal,'yyyy-MM-dd'),
-            ]);
-        }
 
-        $query->andFilterWhere(['like', 'pic', $this->pic])
-            ->andFilterWhere(['like', 'top', $this->top])
-            ->andFilterWhere(['like', 'pajak', $this->pajak])
-            ->andFilterWhere(['like', 'catatan', $this->catatan])
-            ->andFilterWhere(['like', 'status', $this->status]);
+        $query->andFilterWhere(['like', 'nama', $this->nama])
+            ->andFilterWhere(['like', 'nama_pendek', $this->nama_pendek])
+            ->andFilterWhere(['like', 'gender', $this->gender])
+            ->andFilterWhere(['like', 'tempat_lahir', $this->tempat_lahir])
+            ->andFilterWhere(['like', 'agama', $this->agama])
+            ->andFilterWhere(['like', 'no_hp', $this->no_hp])
+            ->andFilterWhere(['like', 'no_ktp', $this->no_ktp])
+            ->andFilterWhere(['like', 'alamat_ktp', $this->alamat_ktp])
+            ->andFilterWhere(['like', 'alamat_rumah', $this->alamat_rumah])
+            ->andFilterWhere(['like', 'pendidikan', $this->pendidikan])
+            ->andFilterWhere(['like', 'status_kawin', $this->status_kawin])
+            ->andFilterWhere(['like', 'bank', $this->bank])
+            ->andFilterWhere(['like', 'no_rekening', $this->no_rekening])
+            ->andFilterWhere(['like', 'nama_rekening', $this->nama_rekening])
+            ->andFilterWhere(['like', 'foto_karyawan', $this->foto_karyawan])
+            ->andFilterWhere(['like', 'status_aktif', $this->status_aktif]);
 
         return $dataProvider;
     }

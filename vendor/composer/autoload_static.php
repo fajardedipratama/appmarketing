@@ -62,7 +62,6 @@ class ComposerStaticInit965b319f9fc9c9b656d77316a61adaec
         'd' => 
         array (
             'dosamigos\\datepicker\\' => 21,
-            'dosamigos\\chartjs\\' => 18,
             'dmstr\\' => 6,
         ),
         'c' => 
@@ -189,10 +188,6 @@ class ComposerStaticInit965b319f9fc9c9b656d77316a61adaec
         'dosamigos\\datepicker\\' => 
         array (
             0 => __DIR__ . '/..' . '/2amigos/yii2-date-picker-widget/src',
-        ),
-        'dosamigos\\chartjs\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/2amigos/yii2-chartjs-widget/src',
         ),
         'dmstr\\' => 
         array (
