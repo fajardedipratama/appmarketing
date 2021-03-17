@@ -17,7 +17,7 @@ $this->title = 'Aktivitas Sales';
         </div>
         <div class="col-sm-2">
         <?php if(Yii::$app->user->identity->type != 'Marketing'): ?>
-            <?= Html::a('<i class="fa fa-fw fa-file-excel-o"></i> Export Excel', ['export-excel2'], ['class'=>'btn btn-success']); ?>
+            <?= Html::a('<i class="fa fa-fw fa-file-excel-o"></i> Export Excel', ['export-excel2','waktu'=>$_GET['waktu']], ['class'=>'btn btn-success']); ?>
         <?php endif ?> 
         </div>
     </div>
@@ -42,19 +42,19 @@ $this->title = 'Aktivitas Sales';
                 'attribute'=>'waktu',
                 'headerOptions'=>['style'=>'width:15%'],
                 'format' => ['date','dd-MM-Y H:i'],
-                'filter'=> DatePicker::widget([
-                    'model'=>$searchModel,'attribute'=>'waktu','clientOptions'=>[
-                      'autoclose'=>true, 'format' => 'dd-mm-yyyy','orientation'=>'bottom'
-                    ],
-                ])
+                // 'filter'=> DatePicker::widget([
+                //     'model'=>$searchModel,'attribute'=>'waktu','clientOptions'=>[
+                //       'autoclose'=>true, 'format' => 'dd-mm-yyyy','orientation'=>'bottom'
+                //     ],
+                // ])
             ],
             [
               'attribute'=>'perusahaan',
               'value'=>'customer.perusahaan',
-              'filter'=>\kartik\select2\Select2::widget([
-                'model'=>$searchModel,'attribute'=>'perusahaan','data'=>$customer,
-                'options'=>['placeholder'=>'Perusahaan'],'pluginOptions'=>['allowClear'=>true]
-              ])
+              // 'filter'=>\kartik\select2\Select2::widget([
+              //   'model'=>$searchModel,'attribute'=>'perusahaan','data'=>$customer,
+              //   'options'=>['placeholder'=>'Perusahaan'],'pluginOptions'=>['allowClear'=>true]
+              // ])
             ],
             [
                 'header' => 'Telfon',

@@ -18,7 +18,7 @@ use dosamigos\datepicker\DatePicker;
 <div class="box box-success"><div class="box-body">
     <div class="row">
      <div class="col-sm-4">
-        <?= $form->field($model, 'perusahaan')->textInput(['maxlength' => true])->hint("Contoh penulisan : BERDIKARI JAYA BERSAMA PT") ?>
+        <?= $form->field($model, 'perusahaan')->textInput(['maxlength' => true])->hint("Contoh : BERDIKARI JAYA BERSAMA PT (polosan)") ?>
      </div>
      <div class="col-sm-4">
         <?= $form->field($model, 'lokasi')->widget(Select2::className(),[

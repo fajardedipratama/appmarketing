@@ -13,7 +13,16 @@ $this->title = 'Penawaran Selesai';
 ?>
 <div class="offer-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <div class="row">
+        <div class="col-sm-10">
+            <h1><?= Html::encode($this->title) ?></h1>
+        </div>
+        <div class="col-sm-2">
+        <?php if(Yii::$app->user->identity->type != 'Marketing'): ?>
+            <?= Html::a('<i class="fa fa-fw fa-file-excel-o"></i> Export Excel', ['export-excel2'], ['class'=>'btn btn-success']); ?>
+        <?php endif ?> 
+        </div>
+    </div>
 
   <div class="box"><div class="box-body"><div class="table-responsive">
     <?= GridView::widget([

@@ -47,7 +47,7 @@ class DailyreportController extends Controller
      * Lists all Dailyreport models.
      * @return mixed
      */
-    public function actionIndex()
+    public function actionIndex($waktu)
     {
         $searchModel = new DailyreportSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
@@ -137,12 +137,12 @@ class DailyreportController extends Controller
     /*
     EXPORT WITH OPENTBS
     */
-    public function actionExportExcel2()
+    public function actionExportExcel2($waktu)
     {
-        $query = Dailyreport::find(); 
+        $query = Dailyreport::find()->where(['like', 'waktu', $_GET['waktu'] . '%', false]);
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
-            'pagination'=>false,
+            'pagination'=> false,
             'sort'=>['defaultOrder'=>['sales'=>SORT_ASC]]
         ]);
         
@@ -166,7 +166,8 @@ class DailyreportController extends Controller
         
         $OpenTBS->MergeBlock('data', $data);
         // Output the result as a file on the server. You can change output file
-        $OpenTBS->Show(OPENTBS_DOWNLOAD, 'dailyreport.xlsx'); // Also merges all [onshow] automatic fields.          
+        $filename = 'Daily Report '.date('d-m-y',strtotime($_GET['waktu'])).'.xlsx';
+        $OpenTBS->Show(OPENTBS_DOWNLOAD, $filename); // Also merges all [onshow] automatic fields.          
         exit;
     } 
 

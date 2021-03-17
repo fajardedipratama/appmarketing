@@ -17,8 +17,7 @@ class DailyreportSearch extends Dailyreport
     public function rules()
     {
         return [
-            [['id', 'sales', 'perusahaan'], 'integer'],
-            [['waktu', 'keterangan','catatan', 'pengingat'], 'safe'],
+            [['id', 'sales'], 'integer'],
         ];
     }
 
@@ -41,16 +40,16 @@ class DailyreportSearch extends Dailyreport
     public function search($params)
     {
         if(Yii::$app->user->identity->type == 'Marketing'){
-            $query = Dailyreport::find()->where(['sales'=>Yii::$app->user->identity->profilname]);
+            $query = Dailyreport::find()->where(['sales'=>Yii::$app->user->identity->profilname])->andWhere(['like', 'waktu', $_GET['waktu'] . '%', false]);
         }else{
-            $query = Dailyreport::find();
+            $query = Dailyreport::find()->where(['like', 'waktu', $_GET['waktu'] . '%', false]);
         }
 
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
-            'pagination'=>array('pageSize'=>20),
+            'pagination'=> array('pageSize'=>20),
             'sort'=>['defaultOrder'=>['waktu'=>SORT_DESC]]
         ]);
 

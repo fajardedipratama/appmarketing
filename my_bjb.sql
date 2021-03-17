@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 16 Mar 2021 pada 10.49
+-- Waktu pembuatan: 17 Mar 2021 pada 10.46
 -- Versi server: 10.4.17-MariaDB
 -- Versi PHP: 8.0.0
 
@@ -101,22 +101,8 @@ CREATE TABLE `id_customer` (
 --
 
 INSERT INTO `id_customer` (`id`, `perusahaan`, `lokasi`, `alamat_lengkap`, `pic`, `telfon`, `email`, `catatan`, `volume`, `jarak_ambil`, `sales`, `expired`, `long_expired`, `created_by`, `created_time`, `verified`, `alasan`) VALUES
-(1, 'ADILUHUNG SARANA SEGARA PT', '1', '', '', '', '', '', '5', '>1bulan sekali', 7, NULL, '', 5, NULL, '', ''),
-(7, 'DJAWANI GUNUNG ABADI PT', '5', '', 'suwito', '', '', '', '', '', 12, '2070-01-01', '', 5, NULL, 'yes', ''),
-(8, 'INTI LUHUR FUJA ABADI PT', '2', '', '', '', '', '', '', '', 12, NULL, '', 5, NULL, '', ''),
-(9, 'ADMIRA PT', '5', '', 'purchasing', '', 'admira@gmail.com', '', '', '', 12, NULL, '', 5, NULL, 'yes', ''),
-(11, 'CONBLOC PT', '1', '', '', '', '', '', '', '', 10, '2021-03-27', '', 10, NULL, 'no', ''),
-(12, 'PUTRA JAYA SAKTI PT', '3', '', '', '', '', '', '', '', 10, '2021-04-03', '', 5, '2021-02-26 10:53:18', 'yes', ''),
-(14, 'ABC PT', '2', '', '', '031478956', '', '', '', '', 10, '2021-05-02', '', 10, '2021-03-03 15:45:27', 'no', ''),
-(17, 'CONTOH PT', '1', '', 'purchasing', '', 'purchase@gmail.com', '', '', '', 8, NULL, '', 5, '2021-03-06 09:29:51', 'yes', ''),
-(18, 'MY PT', '5', '', '', '', '', '', '', '', 10, NULL, '', 10, '2021-03-06 21:27:11', '', ''),
-(19, 'SUMMITAMA INTINUSA PT', '2', '', '', '', '', '', '', '', 10, '2021-04-13', '', 5, '2021-03-10 12:01:30', 'yes', ''),
-(20, 'NUSA PT', '3', '', '', '', '', '', '', '', 10, NULL, '', 5, '2021-03-10 12:09:21', '', ''),
-(21, 'ADHILAUT PT', '29', '', '', '', '', '', '', '', 8, '2021-04-13', '', 5, '2021-03-10 12:17:44', 'yes', ''),
-(22, 'KRATON PT', '2', '', '', '', '', '', '', '', 1, NULL, '', 10, '2021-03-12 10:34:13', '', ''),
-(23, 'XYZ PT', '3', '', '', '', '', '', '', '', NULL, NULL, '', 5, '2021-03-12 15:03:18', '', ''),
-(24, 'TEST PT', '8', '', 'Andy', '', '', '', '', '', 1, NULL, '', 10, '2021-03-15 16:33:54', 'yes', ''),
-(25, 'EXAMPLE PT', '19', '', '', '', '', '', '', '', 10, NULL, '', 10, '2021-03-16 09:48:40', '', '');
+(1, 'ABC PT', '8', '', '', '', '', '', '', '', 10, NULL, '', 5, '2021-03-17 16:14:44', '', ''),
+(2, 'DEF PT', '9', '', '', '', '', '', '', '', 10, NULL, '', 5, '2021-03-17 16:15:03', '', '');
 
 -- --------------------------------------------------------
 
@@ -134,48 +120,6 @@ CREATE TABLE `id_dailyreport` (
   `pengingat` date DEFAULT NULL,
   `con_used` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data untuk tabel `id_dailyreport`
---
-
-INSERT INTO `id_dailyreport` (`id`, `sales`, `waktu`, `perusahaan`, `keterangan`, `catatan`, `pengingat`, `con_used`) VALUES
-(3, 10, '2021-02-22 10:46:27', 9, 'Penawaran', 'butuh awal april', '2021-03-05', 'Telfon Kantor'),
-(4, 10, '2021-02-22 10:47:01', 9, 'Belum ada kebutuhan', 'butuh awal mei', NULL, 'Telfon Pribadi'),
-(6, 10, '2021-02-22 15:51:21', 9, 'Penawaran', '', NULL, 'Telfon Kantor'),
-(7, 10, '2021-02-22 15:51:53', 9, 'Belum ada kebutuhan', '', NULL, 'Telfon Kantor'),
-(8, 10, '2021-02-23 10:48:53', 9, 'PIC sibuk', '', NULL, 'Telfon Kantor'),
-(10, 10, '2021-02-25 10:27:21', 11, 'Penawaran', '', '2021-03-05', 'Telfon Kantor'),
-(11, 10, '2021-02-25 10:29:20', 11, 'Belum ada kebutuhan', '', NULL, 'Telfon Kantor'),
-(12, 10, '2021-02-25 10:29:28', 11, 'Penawaran', '', NULL, 'Telfon Kantor'),
-(13, 10, '2021-03-02 10:28:51', 11, 'Kontrak vendor lain', '', NULL, 'Telfon Kantor'),
-(14, 8, '2021-03-03 11:17:11', 12, 'PIC sibuk', '', NULL, 'Telfon Kantor'),
-(15, 8, '2021-03-03 11:17:21', 12, 'Penawaran', '', NULL, 'Telfon Kantor'),
-(16, 10, '2021-03-03 13:05:44', 12, 'Penawaran', '', NULL, 'Telfon Kantor'),
-(17, 10, '2021-03-03 15:46:32', 14, 'Belum ada kebutuhan', '', '2021-03-07', 'Telfon Kantor'),
-(18, 10, '2021-03-03 15:46:42', 14, 'Penawaran', '', NULL, 'Telfon Kantor'),
-(19, 10, '2021-03-04 15:01:19', 14, 'Belum ada kebutuhan', '', '2021-03-31', 'Telfon Kantor'),
-(24, 10, '2021-03-05 13:27:45', 14, 'PIC sibuk', '', '2021-03-05', 'Telfon Kantor'),
-(28, 10, '2021-03-05 13:35:55', 14, 'Kontrak vendor lain', '', NULL, 'Telfon Kantor'),
-(29, 10, '2021-03-05 13:36:23', 14, 'Kalah harga', '', '2021-03-06', 'Telfon Kantor'),
-(30, 10, '2021-03-05 13:36:49', 9, 'Kirim sample', '', '2021-03-06', 'Telfon Kantor'),
-(31, 10, '2021-03-05 16:02:24', 14, 'PIC sibuk', '', NULL, 'Telfon Kantor'),
-(32, 10, '2021-03-06 09:34:00', 21, 'Penawaran', '', NULL, 'Telfon Kantor'),
-(33, 10, '2021-03-06 09:38:18', 21, 'Penawaran', '', '2021-03-12', 'Telfon Kantor'),
-(34, 10, '2021-03-06 12:30:34', 14, 'Penawaran', '', NULL, 'Telfon Kantor'),
-(35, 12, '2021-03-08 09:24:00', 7, 'Penawaran', '', NULL, 'Telfon Kantor'),
-(36, 10, '2021-03-09 09:42:14', 18, 'Penawaran', '', NULL, 'Telfon Kantor'),
-(37, 10, '2021-03-14 21:02:00', 19, 'Penawaran', '', NULL, 'Telfon Kantor'),
-(38, 10, '2021-03-14 21:02:51', 12, 'Penawaran', '', NULL, 'Telfon Kantor'),
-(39, 10, '2021-03-15 16:34:01', 24, 'Penawaran', '', NULL, 'Telfon Kantor'),
-(40, 1, '2021-03-15 16:40:29', 24, 'Penawaran', '', NULL, 'Telfon Kantor'),
-(41, 10, '2021-03-15 16:41:56', 24, 'Penawaran', '', NULL, 'Telfon Kantor'),
-(42, 10, '2021-03-16 09:25:42', 24, 'Penawaran', '', NULL, 'Telfon Kantor'),
-(43, 10, '2021-03-16 09:32:01', 24, 'Penawaran', '', NULL, 'Telfon Kantor'),
-(44, 10, '2021-03-16 09:42:11', 24, 'Penawaran', '', NULL, 'Telfon Kantor'),
-(45, 10, '2021-03-16 09:43:03', 24, 'Penawaran', '', NULL, 'Telfon Kantor'),
-(46, 10, '2021-03-16 09:48:46', 25, 'Penawaran', '', NULL, 'Telfon Kantor'),
-(47, 1, '2021-03-16 09:54:33', 24, 'Penawaran', '', NULL, 'Telfon Kantor');
 
 -- --------------------------------------------------------
 
@@ -208,13 +152,6 @@ CREATE TABLE `id_exkaryawan` (
   `alasan` varchar(1000) NOT NULL,
   `tgl_resign` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data untuk tabel `id_exkaryawan`
---
-
-INSERT INTO `id_exkaryawan` (`id`, `badge`, `alasan`, `tgl_resign`) VALUES
-(3, 14, 'resign', '2021-02-03');
 
 -- --------------------------------------------------------
 
@@ -313,32 +250,6 @@ CREATE TABLE `id_offer` (
   `is_new` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data untuk tabel `id_offer`
---
-
-INSERT INTO `id_offer` (`id`, `tanggal`, `waktu`, `no_surat`, `perusahaan`, `pic`, `top`, `pajak`, `harga`, `catatan`, `sales`, `status`, `is_new`) VALUES
-(13, '2021-02-24', '10:29:48', NULL, 11, 'Purchase', 'Cash On Delivery', 'PPN', 6800, '', 10, 'Gagal Kirim', ''),
-(14, '2021-02-28', '10:10:38', 2, 9, 'Pembelian', 'Cash On Delivery', 'PPN', 6600, '', 10, 'Proses', ''),
-(15, '2021-02-27', '10:29:48', NULL, 11, 'Purchase', 'Cash On Delivery', 'PPN', 6800, '', 10, 'Gagal Kirim', ''),
-(17, '2021-03-03', '11:17:29', 4, 12, 'Pembelian', 'Cash On Delivery', 'PPN', 6500, '', 8, 'Terkirim', 'yes'),
-(18, '2021-03-03', '11:17:46', 3, 12, 'Pembelian', 'Tempo 7 Hari', 'PPN', 6700, '', 8, 'Terkirim', ''),
-(20, '2021-03-03', '13:47:10', 5, 12, 'Bu Eva', 'Cash On Delivery', 'PPN', 6300, '', 10, 'Proses', ''),
-(21, '2021-03-04', '13:49:16', 9, 12, 'Pembelian Umum', 'Tempo 14 Hari', 'PPN', 6500, '', 10, 'Gagal Kirim', ''),
-(22, '2021-03-03', '15:47:01', 7, 14, 'Pembelian', 'Cash On Delivery', 'PPN', 6500, '', 10, 'Terkirim', ''),
-(26, '2021-03-06', '09:38:40', 11, 21, 'Purchasing', 'Tempo 7 Hari', 'PPN', 6600, '', 10, 'Proses', ''),
-(27, '2021-03-06', '12:30:39', NULL, 14, 'Pembelian Umum', 'Cash On Delivery', 'PPN', 6800, '', 10, 'Gagal Kirim', ''),
-(28, '2021-03-08', '09:24:07', 10, 7, 'Suwito', 'Cash On Delivery', 'PPN', 6600, '', 12, 'Proses', ''),
-(29, '2021-03-14', '21:02:34', 12, 19, 'Esti', 'Cash On Delivery', 'PPN', 6700, '', 10, 'Proses', 'yes'),
-(30, '2021-03-14', '21:03:11', 13, 12, 'Hadi', 'Cash On Delivery', 'PPN', 6500, '', 10, 'Proses', 'no'),
-(31, '2021-03-15', '16:34:10', 14, 24, 'Andy', 'Cash On Delivery', 'PPN', 6500, '', 10, 'Terkirim', 'yes'),
-(32, '2021-03-15', '16:40:34', 15, 24, 'Andy', 'Cash On Delivery', 'PPN', 6600, '', 1, 'Terkirim', 'yes'),
-(34, '2021-03-16', '09:31:32', NULL, 24, 'Andy', 'Cash On Delivery', 'PPN', 6700, '', 10, 'Pending', 'yes'),
-(36, '2021-03-16', '09:42:19', NULL, 24, 'Andy', 'Tempo 7 Hari', 'PPN', 6800, '', 10, 'Pending', 'no'),
-(37, '2021-03-16', '09:43:09', NULL, 24, 'Andy', 'Tempo 14 Hari', 'PPN', 6900, '', 10, 'Pending', 'no'),
-(38, '2021-03-16', '09:48:58', NULL, 25, 'Anton', 'Cash On Delivery', 'PPN', 7000, '', 10, 'Pending', 'yes'),
-(39, '2021-03-16', '09:54:45', NULL, 24, 'Andy', 'Cash On Delivery', 'PPN', 7300, '', 1, 'Pending', 'yes');
-
 -- --------------------------------------------------------
 
 --
@@ -357,7 +268,7 @@ CREATE TABLE `id_offer_number` (
 --
 
 INSERT INTO `id_offer_number` (`id`, `nomor`, `inisial`, `periode`) VALUES
-(1, 15, 'BJB-SBY / III', '15-31 Maret 2021');
+(1, 0, 'BJB-SBY / III', '15-31 Maret 2021');
 
 -- --------------------------------------------------------
 
@@ -389,14 +300,6 @@ CREATE TABLE `id_purchase_order` (
   `alasan_tolak` varchar(1000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data untuk tabel `id_purchase_order`
---
-
-INSERT INTO `id_purchase_order` (`id`, `perusahaan`, `sales`, `no_po`, `tgl_po`, `tgl_kirim`, `alamat`, `alamat_kirim`, `purchasing`, `no_purchasing`, `keuangan`, `no_keuangan`, `volume`, `termin`, `harga`, `cashback`, `pajak`, `pembayaran`, `status`, `catatan`, `alasan_tolak`) VALUES
-(1, 12, 10, 'PO/PJS-SBY/03/21/HSD', '2021-03-01', '2021-03-03', 'Jl.Sumbawa 31 Tuban', 'Jl.Merak 25 Surabaya', 'Pak Fajar', '082378182999', 'Pak Dedy', '089283222111', 5000, 'Cash On Delivery', 6700, 100, 'PPN', 'Transfer', 'Terbayar-Selesai', 'minta faktur pajak dan surat jalan', ''),
-(2, 7, 12, '0123', '2021-03-04', '2021-03-05', 'jl.surabaya', 'jl.surabaya', 'neey', '08111111111', 'feey', '0899999999', 5000, 'Cash On Delivery', 6700, 0, 'PPN', 'Transfer', 'Disetujui', '', '');
-
 -- --------------------------------------------------------
 
 --
@@ -420,8 +323,8 @@ CREATE TABLE `id_user` (
 --
 
 INSERT INTO `id_user` (`id`, `profilname`, `username`, `password`, `last_login`, `authKey`, `accessToken`, `type`, `blocked`) VALUES
-(1, '5', 'dedy', '$2y$13$MdjCzwpzvuQvqvkqKvM14ezHCh.4MKx71DEaZEoI8HX6R8jW.nj1e', '2021-03-16 16:48:50', 'd5fdbe5b16111739a53f6bedc2c29e5c', 'd5fdbe5b16111739a53f6bedc2c29e5c', 'Administrator', ''),
-(2, '10', 'sugeng', '$2y$13$0boAOohSI0ofjmPZ05xZbeRR03oOUkfYRQT/PGedqGTi7rJ2Y.gyG', '2021-03-16 09:19:50', '9e28894760bdf11cb2bef7a32c020e3b', '9e28894760bdf11cb2bef7a32c020e3b', 'Marketing', ''),
+(1, '5', 'dedy', '$2y$13$MdjCzwpzvuQvqvkqKvM14ezHCh.4MKx71DEaZEoI8HX6R8jW.nj1e', '2021-03-17 09:24:07', 'd5fdbe5b16111739a53f6bedc2c29e5c', 'd5fdbe5b16111739a53f6bedc2c29e5c', 'Administrator', ''),
+(2, '10', 'sugeng', '$2y$13$0boAOohSI0ofjmPZ05xZbeRR03oOUkfYRQT/PGedqGTi7rJ2Y.gyG', '2021-03-17 16:21:47', '9e28894760bdf11cb2bef7a32c020e3b', '9e28894760bdf11cb2bef7a32c020e3b', 'Marketing', ''),
 (7, '1', 'alisiachintya', '$2y$13$J7cRKWZIwuoFamLCB79c6u6dM3dX2IQGlW1cjcQxgk9/OGyc57NQq', '2021-03-16 09:54:18', '60532c4e119ce506036cf74f655259dd', '60532c4e119ce506036cf74f655259dd', 'Marketing', ''),
 (8, '11', 'nia', '$2y$13$jv9tO8ezOgKnvHl/Nd43zuY5XdeXDb3nx2NCFKhQ226svKRr7OLSG', '0000-00-00 00:00:00', '04a481486dd84d7c8bfdfc89d38136a6', '04a481486dd84d7c8bfdfc89d38136a6', 'Marketing', ''),
 (9, '12', 'risza', '$2y$13$tD2k5kTBFRwv0DAfWO0LjO1o2gju3lAwTsctLGUDZ0G//L0u8xNa2', '0000-00-00 00:00:00', '521f6ab426fbb7296a695ab243412094', '521f6ab426fbb7296a695ab243412094', 'Marketing', ''),
@@ -520,13 +423,13 @@ ALTER TABLE `id_city`
 -- AUTO_INCREMENT untuk tabel `id_customer`
 --
 ALTER TABLE `id_customer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `id_dailyreport`
 --
 ALTER TABLE `id_dailyreport`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `id_departemen`
@@ -538,7 +441,7 @@ ALTER TABLE `id_departemen`
 -- AUTO_INCREMENT untuk tabel `id_exkaryawan`
 --
 ALTER TABLE `id_exkaryawan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `id_jobtitle`
@@ -556,7 +459,7 @@ ALTER TABLE `id_karyawan`
 -- AUTO_INCREMENT untuk tabel `id_offer`
 --
 ALTER TABLE `id_offer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `id_offer_number`
@@ -568,7 +471,7 @@ ALTER TABLE `id_offer_number`
 -- AUTO_INCREMENT untuk tabel `id_purchase_order`
 --
 ALTER TABLE `id_purchase_order`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `id_user`

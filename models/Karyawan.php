@@ -32,7 +32,7 @@ use Yii;
  */
 class Karyawan extends \yii\db\ActiveRecord
 {
-
+    public $tanggal;
     /**
      * {@inheritdoc}
      */
@@ -48,7 +48,7 @@ class Karyawan extends \yii\db\ActiveRecord
     {
         return [
             [['badge', 'nama', 'nama_pendek', 'gender', 'tempat_lahir', 'tanggal_lahir', 'no_hp', 'alamat_rumah','tanggal_masuk', 'posisi'], 'required'],
-            [['tanggal_lahir', 'tanggal_masuk'], 'safe'],
+            [['tanggal_lahir', 'tanggal_masuk','tanggal'], 'safe'],
             [['badge', 'posisi', 'departemen'], 'integer'],
             [['nama','nama_pendek', 'gender', 'tempat_lahir', 'agama', 'no_hp', 'no_ktp', 'pendidikan', 'status_kawin', 'bank','no_rekening',  'nama_rekening', 'status_aktif'], 'string', 'max' => 100],
             [['alamat_ktp', 'alamat_rumah'], 'string', 'max' => 1000],

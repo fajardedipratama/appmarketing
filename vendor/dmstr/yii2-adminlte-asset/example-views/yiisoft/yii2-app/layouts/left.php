@@ -57,7 +57,7 @@ $karyawan = Karyawan::find()->where(['id'=>Yii::$app->user->identity->profilname
                             ],
                             ['label' => 'Data PO', 'icon' => 'cart-plus', 'url' => ['/purchaseorder'], 'active'=>in_array(\Yii::$app->controller->id,['purchaseorder'])],
                             ['label' => '.'],
-                            ['label' => 'Aktivitas Sales', 'icon' => 'table', 'url' => ['/dailyreport'], 'active'=>in_array(\Yii::$app->controller->id,['dailyreport'])],
+                            ['label' => 'Aktivitas Sales', 'icon' => 'table', 'url' => ['/dailyreport','waktu'=>date('Y-m-d')], 'active'=>in_array(\Yii::$app->controller->id,['dailyreport'])],
                             [
                                 'label' => 'Statistik Sales', 'icon' => 'table', 'url' => ['/statistic'], 'active'=>in_array(\Yii::$app->controller->id,['statistic']),
                                 'visible' => !Yii::$app->user->isGuest && Yii::$app->user->identity->type == 'Administrator' || Yii::$app->user->identity->type == 'Manajemen'

@@ -12,6 +12,8 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use yii\helpers\ArrayHelper;
+use yii\data\ActiveDataProvider;
+
 class OfferfinishController extends \yii\web\Controller
 {
 	/**
@@ -63,5 +65,49 @@ class OfferfinishController extends \yii\web\Controller
             'dataProvider' => $dataProvider,
         ]);
     }
+
+    /*
+    EXPORT WITH OPENTBS
+    */
+    public function actionExportExcel2()
+    {
+        $query = Offer::find()->where(['status'=>'Terkirim'])->orWhere(['status'=>'Gagal Kirim']);;
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+            'pagination'=> false,
+            'sort'=>['defaultOrder'=>['no_surat'=>SORT_ASC]]
+        ]);
+        
+        // Initalize the TBS instance
+        $OpenTBS = new \hscstudio\export\OpenTBS; // new instance of TBS
+        // Change with Your template kaka
+        $template = Yii::getAlias('@hscstudio/export').'/templates/opentbs/penawaran.xlsx';
+        $OpenTBS->LoadTemplate($template); // Also merge some [onload] automatic fields (depends of the type of document).
+        //$OpenTBS->VarRef['modelName']= "Mahasiswa";               
+        $data = [];
+        foreach($dataProvider->getModels() as $offer){
+        $lokasi = City::find()->where(['id'=>$offer->customer->lokasi])->one();
+            $data[] = [
+                'tanggal'=>$offer->tanggal,
+                'no_surat'=>$offer->no_surat,
+                'perusahaan'=>$offer->customer->perusahaan,
+                'lokasi'=>$lokasi['kota'],
+                'pic'=>$offer->pic,
+                'top'=>$offer->top,
+                'pajak'=>$offer->pajak,
+                'harga'=>$offer->harga,
+                'sales'=>$offer->karyawan->nama_pendek,
+                'catatan'=>$offer->catatan,
+                'status'=>$offer->status,
+                'is_new'=>$offer->is_new,
+            ];
+        }
+        
+        $OpenTBS->MergeBlock('data', $data);
+        // Output the result as a file on the server. You can change output file
+        $filename = 'Penawaran per '.date('d-m-y').'.xlsx';
+        $OpenTBS->Show(OPENTBS_DOWNLOAD, $filename); // Also merges all [onshow] automatic fields.          
+        exit;
+    } 
 
 }
