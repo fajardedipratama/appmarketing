@@ -22,7 +22,7 @@ use Yii;
  * @property int $volume
  * @property string $termin
  * @property int $harga
- * @property int $cashback
+ * @property int|null $cashback
  * @property string $pajak
  * @property string $pembayaran
  * @property string $status
@@ -72,11 +72,11 @@ class PurchaseOrder extends \yii\db\ActiveRecord
             'keuangan' => 'Keuangan',
             'no_keuangan' => 'No.Keuangan',
             'volume' => 'Volume(l)',
-            'termin' => 'Termin',
+            'termin' => 'Pembayaran',
             'harga' => 'Harga/liter (Total)',
             'cashback' => 'Cashback',
             'pajak' => 'Pajak',
-            'pembayaran' => 'Pembayaran',
+            'pembayaran' => 'Metode Bayar',
             'status' => 'Status',
             'catatan' => 'Catatan',
             'alasan_tolak' => 'Alasan Tolak',

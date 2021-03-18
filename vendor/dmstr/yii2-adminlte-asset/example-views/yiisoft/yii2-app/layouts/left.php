@@ -51,7 +51,10 @@ $karyawan = Karyawan::find()->where(['id'=>Yii::$app->user->identity->profilname
                                 'label' => 'Data Penawaran', 'icon' => 'paste', 'url' => '#',
                                 'items' => [
                                     ['label' => 'Selesai', 'icon' => 'check-square-o', 'url' => ['/offerfinish'], 'active'=>in_array(\Yii::$app->controller->id,['offerfinish'])],
-                                    ['label' => 'Proses', 'icon' => 'spinner', 'url' => ['/offerproses'], 'active'=>in_array(\Yii::$app->controller->id,['offerproses'])],
+                                    [
+                                        'label' => 'Proses', 'icon' => 'spinner', 'url' => ['/offerproses'], 'active'=>in_array(\Yii::$app->controller->id,['offerproses']),
+                                        'visible' => !Yii::$app->user->isGuest && Yii::$app->user->identity->type == 'Administrator' || Yii::$app->user->identity->type == 'Manajemen'
+                                    ],
                                     ['label' => 'Baru', 'icon' => 'edit', 'url' => ['/offer'], 'active'=>in_array(\Yii::$app->controller->id,['offer'])],
                                 ],
                             ],

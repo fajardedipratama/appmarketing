@@ -27,7 +27,7 @@ $this->title = 'Data PO';
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            ['attribute'=>'no_po','headerOptions'=>['style'=>'width:20%']],
             [
               'attribute'=>'perusahaan',
               'value'=>'customer.perusahaan',

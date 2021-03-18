@@ -135,7 +135,12 @@ class PurchaseorderController extends Controller
 
         return $this->redirect(['view','id' => $model->id]);
     }
-
+    public function actionPrint($id)
+    {
+        return $this->renderPartial('print', [
+            'model' => $this->findModel($id),
+        ]);
+    }
     /**
      * Creates a new PurchaseOrder model.
      * If creation is successful, the browser will be redirected to the 'view' page.

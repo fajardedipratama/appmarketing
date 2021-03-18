@@ -88,7 +88,7 @@ class OfferfinishController extends \yii\web\Controller
         foreach($dataProvider->getModels() as $offer){
         $lokasi = City::find()->where(['id'=>$offer->customer->lokasi])->one();
             $data[] = [
-                'tanggal'=>$offer->tanggal,
+                'tanggal'=>date('d/m/Y',strtotime($offer->tanggal)),
                 'no_surat'=>$offer->no_surat,
                 'perusahaan'=>$offer->customer->perusahaan,
                 'lokasi'=>$lokasi['kota'],
