@@ -70,7 +70,11 @@ use app\models\Karyawan;
 </div></div>
     <div class="form-group">
         <?= Html::submitButton('Simpan', ['class' => 'btn btn-success']) ?>
+    <?php if(!$model->isNewRecord): ?>
         <?= Html::a('Batal', ['selfcustomer/view','id'=>$model->id], ['class' => 'btn btn-danger']) ?>
+    <?php else: ?>
+        <?= Html::a('Batal', ['index'], ['class' => 'btn btn-danger']) ?>
+    <?php endif ?>
     </div>
 
     <?php ActiveForm::end(); ?>

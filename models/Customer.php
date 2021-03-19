@@ -86,6 +86,14 @@ class Customer extends \yii\db\ActiveRecord
         }
         return true;
     }
+    public function beforeDelete($options = array()) {
+        
+        Yii::$app->db->createCommand()->delete('id_dailyreport',['perusahaan'=>$this->id])->execute();
+        Yii::$app->db->createCommand()->delete('id_offer',['perusahaan'=>$this->id])->execute();
+        Yii::$app->db->createCommand()->delete('id_purchase_order',['perusahaan'=>$this->id])->execute();
+
+        return true;
+    }
 
     public function getCity()
     {

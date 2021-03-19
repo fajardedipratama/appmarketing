@@ -1,7 +1,7 @@
 <?php
 use app\models\City;
 use app\models\Karyawan;
-use app\models\Offernumber;
+use app\models\OfferNumber;
 use yii\helpers\Html;
 use yii\grid\GridView;
 use dosamigos\datepicker\DatePicker;
