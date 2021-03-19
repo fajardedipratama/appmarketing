@@ -1,12 +1,12 @@
 <?php
 use yii\helpers\Html;
 use app\models\Karyawan;
-use app\models\DailyReport;
+use app\models\Dailyreport;
 use app\models\Customer;
 
 $karyawan = Karyawan::find()->where(['id'=>Yii::$app->user->identity->profilname])->one();
 
-$callback = DailyReport::find()->where(['sales'=>Yii::$app->user->identity->profilname])->andWhere(['pengingat'=>date('Y-m-d')])->all();
+$callback = Dailyreport::find()->where(['sales'=>Yii::$app->user->identity->profilname])->andWhere(['pengingat'=>date('Y-m-d')])->all();
 /* @var $this \yii\web\View */
 /* @var $content string */
 
