@@ -7,7 +7,7 @@ use app\models\Offer;
 use app\models\Customer;
 use app\models\Karyawan;
 use app\models\City;
-use app\models\Offernumber;
+use app\models\OfferNumber;
 use app\models\search\OfferSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -84,7 +84,7 @@ class OfferController extends Controller
     {
         $model = $this->findModel($id);
 
-        $query = Offernumber::find()->where(['id'=>1])->one();
+        $query = OfferNumber::find()->where(['id'=>1])->one();
         $number = $query['nomor']+1;
 
         Yii::$app->db->createCommand()->update('id_offer',
@@ -285,7 +285,7 @@ class OfferController extends Controller
     }
     protected function findModel3()
     {
-        if (($model = Offernumber::find()->where(['id'=>1])->one()) !== null) {
+        if (($model = OfferNumber::find()->where(['id'=>1])->one()) !== null) {
             return $model;
         }
 
