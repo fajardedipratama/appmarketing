@@ -73,22 +73,21 @@ class Offer extends \yii\db\ActiveRecord
             $this->status='Pending';
             $this->tanggal=date('Y-m-d');
             $this->waktu=date('H:i:s');
-        }
 
-        //kondisi yes : penawaran perusahaan baru / penawaran perusahaan yg pernah dipegang sales lain
-        //kondisi no  : penawaran ke-2&dst untuk perusahaan yg masih dipegang 
-        $cek_new=Offer::find()->where(['perusahaan'=>$this->perusahaan])->limit(1)->orderBy(['id'=>SORT_DESC])->one();
-        if($cek_new){
-            if($cek_new['sales'] == $this->sales){
-                $this->is_new = 'no';
+            //kondisi yes : penawaran perusahaan baru / penawaran perusahaan yg pernah dipegang sales lain
+            //kondisi no  : penawaran ke-2&dst untuk perusahaan yg masih dipegang 
+            $cek_new=Offer::find()->where(['perusahaan'=>$this->perusahaan])->limit(1)->orderBy(['id'=>SORT_DESC])->one();
+            if($cek_new){
+                if($cek_new['sales'] == $this->sales){
+                    $this->is_new = 'no';
+                }else{
+                    $this->is_new = 'yes';
+                }
             }else{
-                $this->is_new = 'yes';
+                 $this->is_new = 'yes';
             }
-        }else{
-             $this->is_new = 'yes';
         }
         
-
         return true;
     }
     public function getCustomer()

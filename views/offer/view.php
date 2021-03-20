@@ -12,7 +12,13 @@ $this->title = 'Detail Penawaran #'.$model->no_surat;
 <div class="offer-view">
     <div class="row">
         <div class="col-sm-9">
-            <h1>Detail Penawaran <b>#<?= $model->no_surat ?></b></h1>
+            <h1>
+            <?php if(Yii::$app->user->identity->type == 'Marketing'): ?>
+                <?= Html::a('<i class="glyphicon glyphicon-chevron-left"></i>', ['selfcustomer/view', 'id' => $model->perusahaan], ['class' => 'btn btn-success']) ?> Detail Penawaran <b>#<?= $model->no_surat ?></b>
+            <?php else: ?>
+                <?= Html::a('<i class="glyphicon glyphicon-chevron-left"></i>', ['customer/view', 'id' => $model->perusahaan], ['class' => 'btn btn-success']) ?> Detail Penawaran <b>#<?= $model->no_surat ?></b>
+            <?php endif; ?>
+            </h1>
         </div>
         <div class="col-sm-3">
             <p>

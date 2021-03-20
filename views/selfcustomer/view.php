@@ -36,7 +36,7 @@ $offers = Offer::find()->where(['perusahaan'=>$model->id])->orderBy(['id'=>SORT_
         </div>
         <div class="col-sm-5">
             <p>
-              <?php if($model->long_expired != 'yes' && $model->verified === 'yes'): ?>
+              <?php if($model->long_expired != 'yes' && $model->verified === 'yes' && $model->expired != NULL): ?>
                 <?= Html::a('<i class="fa fa-fw fa-refresh"></i> Perpanjang', ['longexpired', 'id' => $model->id], ['class' => 'btn btn-primary',
                   'data' => [
                     'confirm' => 'Perpanjang expired 2 minggu kedepan ?',
@@ -128,7 +128,6 @@ $offers = Offer::find()->where(['perusahaan'=>$model->id])->orderBy(['id'=>SORT_
                </div>
             </div>
             <div class="tab-pane" id="offers">
-              <small style="color: red">*Perubahan data penawaran harap lapor ke IT</small>
               <div class="box-body table-responsive no-padding">
               <table class="table table-hover">
                 <tr>

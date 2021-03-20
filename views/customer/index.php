@@ -21,6 +21,8 @@ $this->title = 'Data Perusahaan';
         <?php if(Yii::$app->user->identity->type != 'Marketing'): ?>
             <?= Html::a('<i class="fa fa-fw fa-plus-square"></i> Tambah Data', ['create'], ['class' => 'btn btn-success']) ?>
             <?= Html::a('<i class="fa fa-fw fa-warning"></i> Expired', ['/expired'], ['class' => 'btn btn-danger']) ?>
+        <?php else: ?>
+            <?= Html::a('<i class="glyphicon glyphicon-refresh"></i>', ['index'], ['class' => 'btn btn-warning pull-right']) ?>
         <?php endif; ?>
         </div>
     </div>

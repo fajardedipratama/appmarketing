@@ -65,7 +65,7 @@ class SiteController extends Controller
             if(Yii::$app->user->identity->type == 'Marketing'){
                 return $this->redirect(['/selfcustomer']);
             }else{
-                return $this->redirect(['/users']);
+                return $this->redirect(['/customer']);
             }
         }else{
             return $this->redirect(['site/login']);
@@ -93,7 +93,7 @@ class SiteController extends Controller
             if(Yii::$app->user->identity->type == 'Marketing'){
                 return $this->redirect(['/selfcustomer']);
             }else{
-                return $this->redirect(['/users']);
+                return $this->redirect(['/customer']);
             }
         }
 

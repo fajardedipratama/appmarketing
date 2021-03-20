@@ -14,12 +14,14 @@ $this->title = 'Penawaran Selesai';
 <div class="offer-index">
 
     <div class="row">
-        <div class="col-sm-10">
+        <div class="col-sm-9">
             <h1><?= Html::encode($this->title) ?></h1>
         </div>
-        <div class="col-sm-2">
+        <div class="col-sm-3">
         <?php if(Yii::$app->user->identity->type != 'Marketing'): ?>
-            <?= Html::a('<i class="fa fa-fw fa-file-excel-o"></i> Export Excel', ['export-excel2'], ['class'=>'btn btn-success']); ?>
+            <?= Html::a('<i class="fa fa-fw fa-file-excel-o"></i> Export Excel', ['export-excel2'], ['class'=>'btn btn-success pull-right']); ?>
+        <?php else: ?>
+            <?= Html::a('<i class="glyphicon glyphicon-refresh"></i>', ['index'], ['class' => 'btn btn-warning pull-right']) ?>
         <?php endif ?> 
         </div>
     </div>
