@@ -35,8 +35,8 @@ $query = Karyawan::find()->where(['posisi'=>6,'status_aktif'=>'Aktif'])->orderBy
         </tr>
     <?php foreach($query as $print): ?>
     <?php 
-    	$new = Offer::find()->where(['tanggal'=>$_GET['time'],'status'=>'Terkirim','is_new'=>'yes'])->andWhere(['sales'=>$print['id']])->count(); 
-    	$fup = Offer::find()->where(['tanggal'=>$_GET['time'],'status'=>'Terkirim','is_new'=>'no'])->andWhere(['sales'=>$print['id']])->count();
+    	$new = Offer::find()->where(['tanggal'=>$_GET['time'],'status'=>'Terkirim'])->andWhere(['like','is_new','yes'])->andWhere(['sales'=>$print['id']])->count(); 
+    	$fup = Offer::find()->where(['tanggal'=>$_GET['time'],'status'=>'Terkirim'])->andWhere(['like','is_new','no'])->andWhere(['sales'=>$print['id']])->count();
     	$fail = Offer::find()->where(['tanggal'=>$_GET['time'],'status'=>'Gagal Kirim'])->andWhere(['sales'=>$print['id']])->count(); 
     ?>
         <tr>
