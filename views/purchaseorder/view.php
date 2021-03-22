@@ -67,6 +67,7 @@ $this->title = 'PURCHASE ORDER';
             'no_purchasing',
             'keuangan',
             'no_keuangan',
+            'penerima',
             'volume',
             'termin',
             'harga',

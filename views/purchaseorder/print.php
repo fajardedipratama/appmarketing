@@ -45,6 +45,9 @@ use app\models\PurchaseOrder;
 			<td style="font-weight: bold;">Keuangan</td><td>: <?= $model->keuangan.'-'.$model->no_keuangan ?></td>
 		</tr>
 		<tr>
+			<td style="font-weight: bold;">Penerima Barang</td><td>: <?= $model->penerima ?></td>
+		</tr>
+		<tr>
 			<td style="font-weight: bold;">Volume (l)</td><td>: <?= $model->volume ?></td>
 		</tr>
 		<tr>

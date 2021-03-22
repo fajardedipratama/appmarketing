@@ -11,7 +11,7 @@ $this->title = 'Detail Penawaran #'.$model->no_surat;
 ?>
 <div class="offer-view">
     <div class="row">
-        <div class="col-sm-9">
+        <div class="col-sm-8">
             <h1>
             <?php if(Yii::$app->user->identity->type == 'Marketing'): ?>
                 <?= Html::a('<i class="glyphicon glyphicon-chevron-left"></i>', ['selfcustomer/view', 'id' => $model->perusahaan], ['class' => 'btn btn-success']) ?> Detail Penawaran <b>#<?= $model->no_surat ?></b>
@@ -20,7 +20,7 @@ $this->title = 'Detail Penawaran #'.$model->no_surat;
             <?php endif; ?>
             </h1>
         </div>
-        <div class="col-sm-3">
+        <div class="col-sm-4">
             <p>
             <?php if(Yii::$app->user->identity->type == 'Marketing'): ?>
                 <?php if($model->status === 'Pending'): ?>
@@ -34,6 +34,7 @@ $this->title = 'Detail Penawaran #'.$model->no_surat;
                 ]) ?>
                 <?php endif; ?>
             <?php else: ?>
+                <?= Html::a('<i class="fa fa-fw fa-print"></i> Cetak', ['print', 'id' => $model->id], ['target'=>'_blank','class' => 'btn btn-success']) ?>
                 <?= Html::a('<i class="fa fa-fw fa-pencil"></i> Ubah', ['update', 'id' => $model->id], ['class' => 'btn btn-warning']) ?>
                 <?= Html::a('<i class="fa fa-fw fa-trash"></i> Hapus', ['delete', 'id' => $model->id], [
                     'class' => 'btn btn-danger',

@@ -161,6 +161,7 @@ class DailyreportController extends Controller
                 'telfon'=>$daily->customer->telfon,
                 'keterangan'=>$daily->keterangan,
                 'catatan'=>$daily->catatan,
+                'con_used'=>$daily->con_used,
             ];
         }
         

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 22 Mar 2021 pada 06.08
+-- Waktu pembuatan: 22 Mar 2021 pada 10.42
 -- Versi server: 10.4.17-MariaDB
 -- Versi PHP: 8.0.0
 
@@ -106,7 +106,7 @@ INSERT INTO `id_customer` (`id`, `perusahaan`, `lokasi`, `alamat_lengkap`, `pic`
 (3, 'AGEL LANGGENG PT', '22', '', 'ibu rahayu', '?(0343) 656172', 'rahayu@agel.co.id', 'KEB SETAHUN SEKALI LEBIH KE BATU BARA', '', '', 1, '2021-04-08', '', 5, '2021-03-09 00:00:00', 'yes', '\r'),
 (4, 'AGIP LUBRINDO PRATAMA PT', '22', '', 'BPK ARIS', '0343853308', 'aris.suyono@agip.co.id', '', '', '', 12, '2021-04-01', '', 5, '2021-03-02 00:00:00', 'yes', '\r'),
 (5, 'AGRI MAKMUR PERTIWI PT', '11', '', 'CS', '0', 'hrd@benihpertiwi.co.id', '', '', '', 10, '2021-03-25', '', 5, '2021-01-06 00:00:00', 'yes', '\r'),
-(6, 'AGROTAMA INDONESIA CV', '13', '', 'Bu Efi ', '0813 57757207 ', 'cvagrotamaindonesia@yahoo.com ', '', '', '', 8, '2021-04-08', '', 5, '2021-03-09 00:00:00', 'yes', '\r'),
+(6, 'AGROTAMA INDONESIA CV', '13', '', 'Bu Efi / Ibu Ade ', '0813 57757207 ', 'cvagrotamaindonesia@yahoo.com', '', '5', 'Setiap 1 Bulan', 8, '2021-04-08', '', 5, '2021-03-09 00:00:00', 'yes', '\r'),
 (7, 'AHZA MULIA CV', '30', '', 'Pak Adi ', '0', '0', '', '', '', 8, '2021-03-31', '', 5, '2021-01-28 00:00:00', 'yes', '\r'),
 (8, 'AICA INDRIA PT', '22', '', 'pak bima', '343740123', 'bima@lem-fox.com', '', '', '', 10, '2021-03-25', '', 5, '2021-01-23 00:00:00', 'yes', '\r'),
 (9, 'ALAS PETALA MAKMUR PT', '29', 'Jl. Tambak Langon No.18, Tambak Langon, Kec. Asemrowo, Kota SBY, Jawa Timur 60184', 'bpk benny', '62317490939', 'benny.musa@yahoo.com', '', '', '', 1, '2021-04-03', '', 5, '2021-03-04 00:00:00', 'yes', '\r'),
@@ -136,7 +136,7 @@ INSERT INTO `id_customer` (`id`, `perusahaan`, `lokasi`, `alamat_lengkap`, `pic`
 (33, 'BERNOFARM PHARMACEUTICAL COMPANY', '29', '', '', '031-8913015', 'purchasing_sby@bernofarm.com', '', '', '', 13, '2021-03-25', '', 5, '2021-02-17 00:00:00', 'yes', '\r'),
 (34, 'BETON CITRA ABADI PT', '10', '', 'BU ENY', '0321 494949', 'betoncitraabadi@gmail.com', '', '', '', 9, '2021-04-12', '', 5, '2021-03-13 00:00:00', 'yes', '\r'),
 (35, 'BETON INDOTAMA SURYA BATCHING PT', '8', '', 'BPK ARON', '81330609007', 'purchasing.conblocgroup@gmail.com', '', '', '', 1, '2021-03-15', '', 5, '2021-01-15 00:00:00', 'yes', '\r'),
-(36, 'BIAN 11GA BATUAN PT', '31', '', '', '', '', '', '', '', 9, '2021-04-16', '', 5, '2021-02-16 00:00:00', 'yes', '\r'),
+(36, 'BIAN NIAGA BATUAN PT', '31', '', '', '', '', '', '', '', 9, '2021-04-16', '', 5, '2021-02-16 00:00:00', 'yes', '\r'),
 (37, 'BINA SATRIA ABADI SENTOSA PT', '8', '', 'bpk julio', '317915464', 'purchasing.binasatria@gmail.com', '', '', '', 1, '2021-03-15', '', 5, '2021-02-15 00:00:00', 'yes', '\r'),
 (38, 'BLUE SHARK PT', '8', '', 'IBU GRESTY', '085100189231', 'blueshark_teamsurabay@yahoo.com', '', '', '', 12, '2021-03-25', '', 5, '2021-02-23 00:00:00', 'yes', '\r'),
 (39, 'BOKOR MAS PT', '29', '', 'Bu Grace ', '031 5683232', 'bokor_sby@yahoo.com', '', '', '', 8, '2021-03-25', '', 5, '2021-02-20 00:00:00', 'yes', '\r'),
@@ -176,7 +176,7 @@ INSERT INTO `id_customer` (`id`, `perusahaan`, `lokasi`, `alamat_lengkap`, `pic`
 (73, 'DOMUSINDO PERDANA PT', '22', '', 'bu farida', '0343 565617', 'farida@domusindo.com', '', '', '', 9, '2021-04-10', '', 5, '2021-01-18 00:00:00', 'yes', '\r'),
 (74, 'DUA KELINCI PT', '29', '', 'P.AGUS', '81330587666', '0', '', '', '', 10, '2021-04-03', '', 5, '2021-01-15 00:00:00', 'yes', '\r'),
 (75, 'DUA PUTRI KEDATON PT', '21', '', 'bpk hendri', '03243510217', '087755890770', '', '', '', 12, '2021-03-15', '', 5, '2021-01-12 00:00:00', 'yes', '\r'),
-(76, 'DU11 KIMIA JAYA PT', '8', '', '', '', '', '', '', '', 12, '2021-04-05', '', 5, '2021-01-12 00:00:00', 'yes', '\r'),
+(76, 'DUNIA KIMIA JAYA PT', '8', '', '', '', '', '', '', '', 12, '2021-04-05', '', 5, '2021-01-12 00:00:00', 'yes', '\r'),
 (77, 'DUPAK GROSIR SURABAYA', '29', '', 'Pak ade', '3151164500', 'dupakgrosirsby@gmail.com', '', '', '', 11, '2021-04-01', '', 5, '2021-03-02 00:00:00', 'yes', '\r'),
 (78, 'DUTA TRANSPORT JUMANTARA PT', '29', '', 'PAK AAN', '0318437777', 'duta.transport99@yahoo.com', '', '', '', 12, '2021-03-31', '', 5, '2021-01-07 00:00:00', 'yes', '\r'),
 (79, 'DWIPA KHARISMA MITRA PT', '29', '', 'BU.RETNO', '7496183', 'aprilia_retno@pt-dkm.co.id', '', '', '', 10, '2021-04-05', '', 5, '2021-01-23 00:00:00', 'yes', '\r'),
@@ -188,7 +188,7 @@ INSERT INTO `id_customer` (`id`, `perusahaan`, `lokasi`, `alamat_lengkap`, `pic`
 (85, 'FINEXCO PRIMA PT', '22', '', 'BPK ANDI', '0343631868', 'finexcoprima@yahoo.com', '', '', '', 12, '2021-04-09', '', 5, '2021-03-10 00:00:00', 'yes', '\r'),
 (86, 'FOCON INDONESIA PT', '29', '', 'IBU JUSI', '0317327435', 'focon.purchasing@gmail.com', '', '', '', 12, '2021-03-27', '', 5, '2021-01-07 00:00:00', 'yes', '\r'),
 (87, 'FORGINDO PRIMA STELL', '8', '', 'BPK RUDI', '081938246721', '0', '', '', '', 12, '2021-03-27', '', 5, '2021-01-08 00:00:00', 'yes', '\r'),
-(88, 'FORTUNE FORMINDO PT', '22', '', 'BPK KAHFI', '3436744548', 'purchasing@ff.co.id', '', '', '', 12, '2021-03-31', '', 5, '2021-01-07 00:00:00', 'yes', '\r'),
+(88, 'FORTUNA FORMINDO PT', '22', '', 'BAPAK KAHFI', '03436744548', 'purchasing@fortunalancaradimakmur.co.id', '', '5', '', 12, '2021-04-01', '', 5, '2021-01-07 00:00:00', 'yes', '\r'),
 (89, 'FUBORU INDONESIA PT', '29', '', 'pak fajar', '031 8971669', 'purchasing@fuboru.co.id', '', '', '', 9, '2021-03-28', '', 5, '2021-01-15 00:00:00', 'yes', '\r'),
 (90, 'GADING MURNI PT', '29', '', 'BU.CHRISTIN', '81553242222', 'christin.osman@gadingmurni.co.id', '', '', '', 10, '2021-04-08', '', 5, '2021-01-08 00:00:00', 'yes', '\r'),
 (91, 'GAPURA GALANGAN KAPAL PT', '1', '', 'B\'Novi', '031 99303966', 'pembeliangapuramadura@gmail.com', '', '', '', 7, '2021-04-02', '', 5, '2021-03-03 00:00:00', 'yes', '\r'),
@@ -203,7 +203,7 @@ INSERT INTO `id_customer` (`id`, `perusahaan`, `lokasi`, `alamat_lengkap`, `pic`
 (100, 'GRESIK JASATAMA PT', '8', '', 'bpk riza', '0313972699', 'jasatama@gjtama.co.id', '', '', '', 12, '2021-03-15', '', 5, '2021-01-29 00:00:00', 'yes', '\r'),
 (101, 'GROGOL SARANA TRANSJAYA PT', '29', '', 'BU.LUSIANA', '031) 7499300', 'lusiani6000@gmail.com', '', '', '', 10, '2021-04-24', 'yes', 5, '2021-03-10 00:00:00', 'yes', '\r'),
 (102, 'GUNAWAN DIANJAYA STEEL PT', '29', '', 'IBU CITRA', '317490598', 'purchasing@gunawansteel.com', '', '', '', 1, '2021-03-31', '', 5, '2021-01-12 00:00:00', 'yes', '\r'),
-(103, 'GUNUNG BALE PT', '16', '', 'pak eko', '0', 'ekosugiono89@gmail.com', '', '', '', 9, '2021-03-15', '', 5, '2021-01-06 00:00:00', 'yes', '\r'),
+(103, 'GUNUNG BALE PT', '16', '	Jl. Sumber Waras No.255, Pilang, Sidodadi, Kec. Lawang, Malang, Jawa Timur 65216', 'pak eko', '0341426681', 'ekosugiono89@gmail.com', 'ambil di exon dan akr', '16', '1bulan sekali', 11, '2021-04-21', '', 5, '2021-01-06 00:00:00', 'yes', '\r'),
 (104, 'GYUNG DO INDONESIA PT', '17', '', 'BPK WILLY', '03216819444', 'gyungdo17@gmail.com', '', '', '', 12, '2021-04-11', '', 5, '2021-03-12 00:00:00', 'yes', '\r'),
 (105, 'HARRIS HOTEL SURABAYA', '29', '', 'bpk siswanto', '?(031) 5011100', '0', '', '', '', 1, '2021-03-25', '', 5, '2021-02-23 00:00:00', 'yes', '\r'),
 (106, 'HEXAMITRA CHORCOALINDO PT', '29', '', 'PURCHAS', '031 7507290', 'purchasinghexamitra@gmail.com', '', '', '', 9, '2021-04-03', '', 5, '2021-03-04 00:00:00', 'yes', '\r'),
@@ -234,7 +234,7 @@ INSERT INTO `id_customer` (`id`, `perusahaan`, `lokasi`, `alamat_lengkap`, `pic`
 (131, 'KALISURUH KARSA MANDIRI PT', '19', '', 'IBU ENDAH', '351744519', 'kalisuruhkarsamandiri@yahoo.co.id', '', '', '', 1, '2021-03-15', '', 5, '2021-01-19 00:00:00', 'yes', '\r'),
 (132, 'KAN ISOTANK MANDIRI PT', '29', '', 'P.ADI', '99025120', 'bowo.arif@kim-isotank.com', '', '', '', 10, '2021-04-01', '', 5, '2021-01-09 00:00:00', 'yes', '\r'),
 (133, 'KARANA PANORAMA LOGISTIK PT', '29', '', 'P Marwan', '0', '0', '', '', '', 1, '2021-04-02', '', 5, '2021-03-03 00:00:00', 'yes', '\r'),
-(134, 'KARU11 REJEKI ABADI PT', '29', '', '', '', '', '', '', '', 8, '2021-04-12', '', 5, '2021-03-13 00:00:00', 'yes', '\r'),
+(134, 'KARUNIA REJEKI ABADI PT', '29', '', '', '', '', '', '', '', 8, '2021-04-12', '', 5, '2021-03-13 00:00:00', 'yes', '\r'),
 (135, 'KASMAJI INTI UTAMA PT', '17', '', 'IBU ETNI', '0321363842', 'etni@kasmaji.id', '', '', '', 12, '2021-03-31', '', 5, '2021-01-07 00:00:00', 'yes', '\r'),
 (136, 'KAYANA INDONESIA PT', '22', '', 'BP. BUDI', '0343 5345992', 'pt.kayana78a@gmail.com', '', '', '', 9, '2021-03-27', '', 5, '2021-02-25 00:00:00', 'yes', '\r'),
 (137, 'KAYUMAS ABADI PT', '8', '', 'Bu Ita ', '031 51168009', 'kayumas_doc@gmail.com', '', '', '', 8, '2021-03-15', '', 5, '2021-01-30 00:00:00', 'yes', '\r'),
@@ -276,7 +276,7 @@ INSERT INTO `id_customer` (`id`, `perusahaan`, `lokasi`, `alamat_lengkap`, `pic`
 (173, 'PAPILIO HOTEL', '29', '', 'bu desi', '031 99043000', 'purchasing@bwpapilio.com', '', '', '', 9, '2021-03-15', '', 5, '2021-01-15 00:00:00', 'yes', '\r'),
 (174, 'PAPUA UTAMA MITRA PT', '29', '', 'BPK WAHYUDI', '317493354', '0', '', '', '', 1, '2021-03-31', '', 5, '2021-01-13 00:00:00', 'yes', '\r'),
 (175, 'PAVERTA CAKRA KENCANA', '22', '', 'BPK GATOT', '0343631656', 'purchasing@paverta.com', '', '', '', 12, '2021-03-25', '', 5, '2021-02-03 00:00:00', 'yes', '\r'),
-(176, 'PERONI KARYA SENTRA PT', '17', '', 'BU.DIANA', '81233648989', 'purchasing2@peroniks.com', '', '', '', 10, '2021-04-01', '', 5, '2021-01-07 00:00:00', 'yes', '\r'),
+(176, 'PERONI KARYA SENTRA PT', '17', 'NGORO INDUSTRI PERSADA BLOK.K 5A NGORO', 'BU.DIANA', '81233648989 / 03216818099', 'purchasing2@peroniks.com', '', '8', 'Setiap 6-12 bulan', 10, '2021-04-01', '', 5, '2021-01-07 00:00:00', 'yes', '\r'),
 (177, 'PETROKIMIA KAYAKU PT', '8', '', 'P.SETIABUDI', '3981815', 'asetiabudipetroka@gmail.com', '', '', '', 10, '2021-03-27', '', 5, '2021-01-14 00:00:00', 'yes', '\r'),
 (178, 'PETROKOPINDO CIPTA SELARAS PT', '8', '', 'IBU FENTI', '?(031) 3984194', 'pengadaan_logistik@petrokopindo.com', '', '', '', 1, '2021-03-25', '', 5, '2021-02-20 00:00:00', 'yes', '\r'),
 (179, 'PETROSIDA GRESIK PT', '8', '', 'BPK DAAN', '0313981553', 'daan.petrosida@ymail.com', '', '', '', 12, '2021-03-25', '', 5, '2021-02-16 00:00:00', 'yes', '\r'),
@@ -313,7 +313,7 @@ INSERT INTO `id_customer` (`id`, `perusahaan`, `lokasi`, `alamat_lengkap`, `pic`
 (210, 'SIONCHEM GLOBALINDO PT', '8', '', 'IBU LISTI', '0317915167', 'scm.kedamean99@gmail.com', '', '', '', 12, '2021-03-25', '', 5, '2021-02-15 00:00:00', 'yes', '\r'),
 (211, 'SORIN SENTOSA PT ', '26', '', 'P\'Richard', '62 851 03007097?/62 851 00165959', '0', '', '', '', 7, '2021-03-25', '', 5, '2021-02-23 00:00:00', 'yes', '\r'),
 (212, 'STARFOOD INTERNATIONAL PT', '12', '', 'BP. DAVID', '0322 666463', 'food@starfoodcorp.com', '', '', '', 9, '2021-04-09', '', 5, '2021-03-10 00:00:00', 'yes', '\r'),
-(213, 'SUMBER BERSIH DU11 PT', '8', '', '', '', '', '', '', '', 12, '2021-03-25', '', 5, '2021-02-16 00:00:00', 'yes', '\r'),
+(213, 'SUMBER BERSIH DUNIA PT', '8', '', '', '', '', '', '', '', 12, '2021-03-25', '', 5, '2021-02-16 00:00:00', 'yes', '\r'),
 (214, 'SUMBER DJAJA PERKASA PT', '26', '', 'BU.INGE', '8855588', 'inge@sumberdjajaperkasa.com', '', '', '', 10, '2021-04-01', '', 5, '2021-01-23 00:00:00', 'yes', '\r'),
 (215, 'SUMBER KESEHATAN BARU PT', '26', '', 'P\'Hendra', '031 5341545', 'skb38@live.com', '', '', '', 7, '2021-04-07', '', 5, '2021-03-08 00:00:00', 'yes', '\r'),
 (216, 'SUMBER PLASTIK PT', '26', '', 'Bu.Neni', '0', 'technical@sumberplastik.com', '', '', '', 2, '2021-03-27', '', 5, '2021-02-25 00:00:00', 'yes', '\r'),
@@ -322,7 +322,7 @@ INSERT INTO `id_customer` (`id`, `perusahaan`, `lokasi`, `alamat_lengkap`, `pic`
 (219, 'SUN PAPER SOURCE PT', '17', '', 'Bagian purchasing', '0321 6818800', 'purchasing.sapanusa@spscorporate.com', '', '', '', 8, '2021-03-25', '', 5, '2021-02-18 00:00:00', 'yes', '\r'),
 (220, 'SUPARMA TBK PT', '29', '', 'PURCHASING', '0317666666', 'purchasing@ptsuparmatbk.com', '', '', '', 12, '2021-04-12', '', 5, '2021-03-13 00:00:00', 'yes', '\r'),
 (221, 'SUPRA SURYA INDO PT', '29', '', 'masruhin', '031-8010899', 'purchasing@pt-ssi.com', '', '', '', 13, '2021-03-15', '', 5, '2021-02-25 00:00:00', 'yes', '\r'),
-(222, 'SURYA BETON PERKASA PT', '10', '', 'bp. Syafiudin', '0', '0', '', '', '', 9, '2021-03-25', '', 5, '2021-02-23 00:00:00', 'yes', '\r'),
+(222, 'SURYA BETON PERKASA PT', '10', '', 'bp. Syafiudin', '0', '0', '', '', '', 9, '2021-04-09', 'yes', 5, '2021-02-23 00:00:00', 'yes', '\r'),
 (223, 'SURYA BINTANG TIMUR', '29', '', 'pak hendra', '0313297603', 'suryabintimsby@gmail.com', '', '', '', 12, '2021-04-06', '', 5, '2021-01-12 00:00:00', 'yes', '\r'),
 (224, 'SURYA MULTI CEMERLANG PT', '26', '', 'Adrian', '0', 'adrian.darmasaputra@titaniumgranite.com', '', '', '', 9, '2021-03-15', '', 5, '2021-01-15 00:00:00', 'yes', '\r'),
 (225, 'SURYA PERTIWI NUSANTARA PT', '8', '', 'ibu donna', '?(031) 7506191', 'donna@totospn.co.id', '', '', '', 1, '2021-04-02', '', 5, '2021-03-03 00:00:00', 'yes', '\r'),
@@ -346,7 +346,7 @@ INSERT INTO `id_customer` (`id`, `perusahaan`, `lokasi`, `alamat_lengkap`, `pic`
 (243, 'WANA CAHAYA NUGRAHA PT', '13', '', 'PAK MUJI', '0', '_wcn@yahoo.co.id', '', '', '', 11, '2021-04-01', '', 5, '2021-03-02 00:00:00', 'yes', '\r'),
 (244, 'WIJAYA SANTOSA BOX', '29', '', '', '031-8970248', 'idapurch.wastbox@gmail.com', '', '', '', 13, '2021-03-27', '', 5, '2021-01-28 00:00:00', 'yes', '\r'),
 (245, 'WINGS GROUP PT', '8', '', 'BPK DANIL', '818578682', '0', '', '', '', 1, '2021-03-31', '', 5, '2021-03-01 00:00:00', 'yes', '\r'),
-(246, 'WIRA 11GA CV', '17', '', '', '', '', '', '', '', 12, '2021-04-03', '', 5, '2021-01-11 00:00:00', 'yes', '\r'),
+(246, 'WIRA NIAGA CV', '17', '', '', '', '', '', '', '', 12, '2021-04-03', '', 5, '2021-01-11 00:00:00', 'yes', '\r'),
 (247, 'WOODONE INTERGRA PT', '26', '', 'P.RIZAL', '(031) 33101108', 'purchasing.wii@iil.co.id', '', '', '', 10, '2021-03-31', '', 5, '2021-03-01 00:00:00', 'yes', '\r'),
 (248, 'YANAPRIMA HASTA PERSADA PT', '26', '', 'ibu wiwid', '(031) 8969618', 'pengadaan.yp@gmail.co.id', '', '5', 'Setiap 2-5 bulan', 1, '2021-04-02', '', 5, '2021-03-03 00:00:00', 'yes', '\r'),
 (249, 'ABADI KARYA CV', '16', '', 'bu dewi', '85216799191', 'info@jayabaru.gmail.com', '', '', '', 1, '2021-03-01', '', 5, '2021-01-06 00:00:00', 'yes', '\r'),
@@ -406,10 +406,10 @@ INSERT INTO `id_customer` (`id`, `perusahaan`, `lokasi`, `alamat_lengkap`, `pic`
 (303, 'ARJUNA UTAMA KIMIA PT', '29', '', 'BPK TANTOWI', '318431646', 'purchasing@aruki.co.id', '', '', '', 1, '2021-03-01', '', 5, '2021-01-09 00:00:00', 'yes', '\r'),
 (304, 'ARMADA MIX PT', '29', '', 'pak joni', '', 'joni.armadamix@gmail.com', '', '', '', 12, '2021-03-01', '', 5, '2021-01-07 00:00:00', 'yes', '\r'),
 (305, 'ART HOTEL', '16', '', 'pak rendra', '', 'purchasing@regantrishotel.com', '', '', '', 12, '2021-03-01', '', 5, '2021-01-07 00:00:00', 'yes', '\r'),
-(306, 'ARTHA ADIPERSADA PT', '29', '', 'Ibu lina', '3199441777', 'pchlokal.staff.aa@gmail.com', '', '', '', 11, '2021-03-28', '', 5, '2021-02-26 00:00:00', 'yes', '\r'),
-(307, 'ARYANA CAKASANA', '29', '', '', '031-8978680', 'workshoparsana.purchas@gmail.com', '', '', '', 13, '2021-04-03', '', 5, '2021-03-04 00:00:00', 'yes', '\r'),
-(308, 'ARYANTOPUTRA MITRA NUSANTARA PT', '16', '', 'pak beny', '', 'pt_arpmn@yahoo.co.id', '', '', '', 12, '2021-03-01', '', 5, '2021-01-07 00:00:00', 'yes', '\r');
+(306, 'ARTHA ADIPERSADA PT', '29', '', 'Ibu lina', '3199441777', 'pchlokal.staff.aa@gmail.com', '', '', '', 11, '2021-03-28', '', 5, '2021-02-26 00:00:00', 'yes', '\r');
 INSERT INTO `id_customer` (`id`, `perusahaan`, `lokasi`, `alamat_lengkap`, `pic`, `telfon`, `email`, `catatan`, `volume`, `jarak_ambil`, `sales`, `expired`, `long_expired`, `created_by`, `created_time`, `verified`, `alasan`) VALUES
+(307, 'ARYANA CAKASANA', '29', '', '', '031-8978680', 'workshoparsana.purchas@gmail.com', '', '', '', 13, '2021-04-03', '', 5, '2021-03-04 00:00:00', 'yes', '\r'),
+(308, 'ARYANTOPUTRA MITRA NUSANTARA PT', '16', '', 'pak beny', '', 'pt_arpmn@yahoo.co.id', '', '', '', 12, '2021-03-01', '', 5, '2021-01-07 00:00:00', 'yes', '\r'),
 (309, 'ASA CIPTA ASRI PT', '29', '', 'bpk rahmat', '0318710050', 'info@asaciptaasri.com', '', '', '', 12, '2021-04-05', '', 5, '2021-02-01 00:00:00', 'yes', '\r'),
 (310, 'ASA PRAMULIA PT', '29', '', 'IBU LARISA', '?(031) 8708077', 'asprapurchasing3@gmail.com', '', '', '', 1, '2021-04-04', '', 5, '2021-03-05 00:00:00', 'yes', '\r'),
 (311, 'ASIA PLASTIK PT', '29', '', 'bu natasha', '8439998', 'purchasingcvasia@gmail.com', '', '', '', 10, '2021-03-01', '', 5, '2021-01-06 00:00:00', 'yes', '\r'),
@@ -593,7 +593,7 @@ INSERT INTO `id_customer` (`id`, `perusahaan`, `lokasi`, `alamat_lengkap`, `pic`
 (489, 'GRAHA ANDALAN PERMAI PT', '29', '', 'BPK DIAN', '81324778802', '', '', '', '', 12, '2021-03-26', '', 5, '2021-02-11 00:00:00', 'yes', '\r'),
 (490, 'GRAHA ANOM JAYA PT', '26', '', 'IBU AYU', '8557123', 'hrd.graha09@gmail.com', '', '', '', 1, '2021-03-01', '', 5, '2021-01-27 00:00:00', 'yes', '\r'),
 (491, 'GRAHA FAMILY KONDOMINIUM', '29', '', 'bu julia', '81335848898', 'sugiono.julia29@gmail.com', '', '', '', 1, '2021-03-01', '', 5, '2021-01-06 00:00:00', 'yes', '\r'),
-(492, 'GRAHA MAKMUR CIPTAPRATAMA PT', '8', '', 'B\'Anita', '031 3970023', 'anitarosaria1982@gmail.com', '', '', '', 7, '2021-03-26', '', 5, '2021-02-16 00:00:00', 'yes', '\r'),
+(492, 'GRAHA MAKMUR CIPTAPRATAMA PT', '8', '', 'Ibu Anita', '031 3970023', 'anitarosaria1982@gmail.com', '', '', '', 7, '2021-03-26', '', 5, '2021-02-16 00:00:00', 'yes', '\r'),
 (493, 'GRAHA PANGERAN PT', '29', '', 'ibu edit', '0318289393', 'bm.grahapangeran@gmail.com', '', '', '', 12, '2021-03-01', '', 5, '2021-01-13 00:00:00', 'yes', '\r'),
 (494, 'GRAMITAMA JAYA STEEL PT', '8', '', 'Pak dadang', '313990149', 'akoe.dadang@gmail.com', '', '', '', 11, '2021-03-01', '', 5, '2021-01-13 00:00:00', 'yes', '\r'),
 (495, 'GRAND CAKRA HOTEL', '16', '', 'B\'HANUNG', '341484777', 'purchasing.grandcakra@gmail.com', '', '', '', 13, '2021-03-31', '', 5, '2021-01-18 00:00:00', 'yes', '\r'),
@@ -650,7 +650,7 @@ INSERT INTO `id_customer` (`id`, `perusahaan`, `lokasi`, `alamat_lengkap`, `pic`
 (546, 'INSAKAS SURYA INTAN PT', '13', '', 'P.SURIAWAN', '0344 590 054', '', '', '', '', 10, '2021-04-11', '', 5, '2021-03-12 00:00:00', 'yes', '\r'),
 (547, 'INSERA SENA PT', '26', '', 'bpk wahyudi', '0318963951', 'purchasing02@insera.co.id', '', '', '', 12, '2021-03-01', '', 5, '2021-01-15 00:00:00', 'yes', '\r'),
 (548, 'INTAN USTRIX PT', '8', '', 'BU ANA', '0313951910', 'purchase@intanustrix.com', '', '', '', 12, '2021-03-01', '', 5, '2021-02-17 00:00:00', 'yes', '\r'),
-(549, 'INTEGRA GROUP PT', '29', '', 'bpk hedi', '0318910434', 'purchasing-umum@iil.co.id', '', '', '', 12, '2021-03-01', '', 5, '2021-01-12 00:00:00', 'yes', '\r'),
+(549, 'INTEGRA INDOCABINET PT', '26', 'Jl. Raya Betro No. 678 Sedati Sidoarjo East Java 61253', 'Bapak Heri', '0318910434,8910435/36', 'purchasing-umum@iil.co.id', 'ambil di exon', '23', '1bulan sekali', 11, '2021-04-21', '', 5, '2021-01-12 00:00:00', 'yes', '\r'),
 (550, 'INTERBAT PT', '26', '', 'bpk adi', '0318914201', 'interbat.factory@interbat.co.id', '', '', '', 12, '2021-03-01', '', 5, '2021-01-16 00:00:00', 'yes', '\r'),
 (551, 'INTERJAYA SURYA MEGAH PT', '29', '', 'IBU NAJIBA', '03199850000', 'adm.office.interjaya@gmail.com', '', '', '', 13, '2021-03-27', '', 5, '2021-02-25 00:00:00', 'yes', '\r'),
 (552, 'INTERNATIONAL PACKAGING MANUCFATURING', '29', '', '', '031-99031988', 'admin.operation@ipmbiz.com', '', '', '', 13, '2021-03-01', '', 5, '2021-01-29 00:00:00', 'yes', '\r'),
@@ -712,10 +712,10 @@ INSERT INTO `id_customer` (`id`, `perusahaan`, `lokasi`, `alamat_lengkap`, `pic`
 (608, 'KEMAS SUPER INDONESIA PT', '16', '', 'm\'eka', '0341-458480', 'eka@ekasi.co.id', '', '', '', 13, '2021-03-01', '', 5, '2021-01-27 00:00:00', 'yes', '\r'),
 (609, 'KEMILAU BUMI SENTOSA PT', '29', '', 'BP. FUAD', '031 3903888', 'purchasing.kbs@gmail.com', '', '', '', 9, '2021-04-09', '', 5, '2021-03-10 00:00:00', 'yes', '\r'),
 (610, 'KENARI PT', '29', '', 'UP PUCHASING', '?(031) 3710474', '', '', '', '', 1, '2021-03-01', '', 5, '2021-02-01 00:00:00', 'yes', '\r'),
-(611, 'KENCANA MAJU BERSAMA PT', '17', '', 'P.ITO', '', 'purchasingkka@gmail.com', '', '', '', 10, '2021-03-01', '', 5, '2021-01-15 00:00:00', 'yes', '\r'),
-(612, 'KENCANA TIARA GEMILANG PT', '16', '', 'Purchasing', '341456531', 'purchasing.ktgplastics@gmail.com', '', '', '', 11, '2021-03-01', '', 5, '2021-01-15 00:00:00', 'yes', '\r'),
-(613, 'KEONG NUSANTARA ABADI PT', '11', '', 'ibu kristin', '0354 526251', 'kristin@wongcoco.com', '', '', '', 9, '2021-03-26', '', 5, '2021-01-13 00:00:00', 'yes', '\r');
+(611, 'KENCANA MAJU BERSAMA PT', '17', '', 'P.ITO', '', 'purchasingkka@gmail.com', '', '', '', 10, '2021-03-01', '', 5, '2021-01-15 00:00:00', 'yes', '\r');
 INSERT INTO `id_customer` (`id`, `perusahaan`, `lokasi`, `alamat_lengkap`, `pic`, `telfon`, `email`, `catatan`, `volume`, `jarak_ambil`, `sales`, `expired`, `long_expired`, `created_by`, `created_time`, `verified`, `alasan`) VALUES
+(612, 'KENCANA TIARA GEMILANG PT', '16', '', 'Purchasing', '341456531', 'purchasing.ktgplastics@gmail.com', '', '', '', 11, '2021-03-01', '', 5, '2021-01-15 00:00:00', 'yes', '\r'),
+(613, 'KEONG NUSANTARA ABADI PT', '11', '', 'ibu kristin', '0354 526251', 'kristin@wongcoco.com', '', '', '', 9, '2021-03-26', '', 5, '2021-01-13 00:00:00', 'yes', '\r'),
 (614, 'KEPUH KENCANA ARUM PT', '17', '', 'IBU HERMIN', '321321250', 'purchasingkka@gmail.com', '', '', '', 1, '2021-03-01', '', 5, '2021-01-19 00:00:00', 'yes', '\r'),
 (615, 'KETAPANG INDAH HOTEL', '2', '', 'P.TAUFIK', '333422280', 'purchasing@ketapangindahhotel.com', '', '', '', 10, '2021-03-01', '', 5, '2021-01-19 00:00:00', 'yes', '\r'),
 (616, 'KHARISMA BINA KONSTRUKSI PT', '23', '', 'BPK SONY', '81230739589', '', '', '', '', 1, '2021-03-01', '', 5, '2021-01-19 00:00:00', 'yes', '\r'),
@@ -746,7 +746,7 @@ INSERT INTO `id_customer` (`id`, `perusahaan`, `lokasi`, `alamat_lengkap`, `pic`
 (641, 'LIMA JAYA TUNGGAL PT', '9', '', 'Pak hary', '331336929', 'jagatraya@gmail.com', '', '', '', 11, '2021-03-01', '', 5, '2021-01-18 00:00:00', 'yes', '\r'),
 (642, 'LINTAS INDONESIA TIMOR LINE PT', '29', '', 'PAK SIGIT', '81234901055', '', '', '', '', 1, '2021-03-01', '', 5, '2021-01-20 00:00:00', 'yes', '\r'),
 (643, 'LINTAS NIAGA JAYA PT', '8', '', 'Pak livian', '81319835775', '', '', '', '', 11, '2021-03-01', '', 5, '2021-01-18 00:00:00', 'yes', '\r'),
-(644, 'LIPPO PLAZA BATU', '16', '', 'P\'AJI', '0341-2991299', 'aji.sulaksono@lippomalls.com', '', '', '', 13, '2021-04-19', '', 5, '2021-03-20 00:00:00', 'yes', '\r'),
+(644, 'LIPPO PLAZA BATU', '16', '', 'P\'AJI', '0341-2991299', 'aji.sulaksono@lippomalls.com', '', '5', 'Setiap 6-12 bulan', 13, '2021-04-19', '', 5, '2021-03-20 00:00:00', 'yes', '\r'),
 (645, 'LIPPO PLAZA SIDOARJO', '26', '', 'ibu prisdilla', '03158204746', 'lippoplazasidoarjo@gmail.com', '', '', '', 12, '2021-03-01', '', 5, '2021-01-26 00:00:00', 'yes', '\r'),
 (646, 'LISA CONCETRE PT', '29', '', 'Bu.Viera', '031 7326070', 'viera@lisaconcrete.com', '', '', '', 7, '2021-03-01', '', 5, '2021-01-09 00:00:00', 'yes', '\r'),
 (647, 'LOTTE MART PT', '29', '', 'BU.WINDA', '?0812-1667-2320', '', '', '', '', 10, '2021-04-16', '', 5, '2021-03-17 00:00:00', 'yes', '\r'),
@@ -780,7 +780,7 @@ INSERT INTO `id_customer` (`id`, `perusahaan`, `lokasi`, `alamat_lengkap`, `pic`
 (675, 'MEGA LESTARI PLASINDO CV', '10', '', 'purchasing', '(0321) 875497', 'mplasindo@yahoo.co.id', '', '', '', 1, '2021-03-31', '', 5, '2021-03-01 00:00:00', 'yes', '\r'),
 (676, 'MEGA MARINE PRIDE PT', '22', '', 'B\'Reni', '0343 656513', 'purchase3@megamarinepride.com', '', '', '', 7, '2021-03-26', '', 5, '2021-02-11 00:00:00', 'yes', '\r'),
 (677, 'MEGA MULTI TRAY PT', '26', '', 'P.TOHARI', '81330387717', '', '', '', '', 10, '2021-03-01', '', 5, '2021-01-22 00:00:00', 'yes', '\r'),
-(678, 'MEGAH KARYA PT', '29', '', 'bu. Lia', '031 56579983', 'lia.megahkaryah@gmail.com', '', '', '', 9, '2021-03-25', '', 5, '2021-01-21 00:00:00', 'yes', '\r'),
+(678, 'MEGAH KARYA PT', '29', '', 'bu. Lia', '031 56579983', 'lia.megahkaryah@gmail.com', '', '', '', 9, '2021-04-09', 'yes', 5, '2021-01-21 00:00:00', 'yes', '\r'),
 (679, 'MEKABOX INTERNATIOANL PT', '17', '', 'Ibu niken', '3216815788', 'niken.mekaboxint@gmail.com', '', '', '', 11, '2021-03-01', '', 5, '2021-01-19 00:00:00', 'yes', '\r'),
 (680, 'MENARA JAYA LESTARI PT', '29', '', 'IBU NURUL', '0318971858', 'pt.menarajayalestari@hotmail.co.id', '', '', '', 12, '2021-03-01', '', 5, '2021-02-02 00:00:00', 'yes', '\r'),
 (681, 'MENTARI INTERNASIONAL PT', '10', '', 'bpk azib', '(0321) 870788', 'mentari@indotois.com', '', '', '', 1, '2021-03-28', '', 5, '2021-02-26 00:00:00', 'yes', '\r'),
@@ -814,7 +814,7 @@ INSERT INTO `id_customer` (`id`, `perusahaan`, `lokasi`, `alamat_lengkap`, `pic`
 (709, 'MULTI JAYA SAMUDRA PT', '29', '', 'IBU LENI', '0313566976', 'leonite@multijayasamudera.com', '', '', '', 12, '2021-04-08', '', 5, '2021-03-09 00:00:00', 'yes', '\r'),
 (710, 'MULTI PAKAN JAYA SENTOSA PT', '17', '', 'P\'RIO', '0321-8491800', 'rio@mail.multipakan.com', '', '', '', 13, '2021-04-01', '', 5, '2021-02-03 00:00:00', 'yes', '\r'),
 (711, 'MULTI RAZULKA SAKTI PT', '16', '', 'bp. Bagas', '0341 8521139', 'rusmiesasuke@gmail.com', '', '', '', 9, '2021-03-01', '', 5, '2021-01-21 00:00:00', 'yes', '\r'),
-(712, 'MULTI SPUNINDO JAYA PT', '29', '', 'purchasng', '031 8975555', 'pb02@spunindo.com', '', '', '', 9, '2021-03-25', '', 5, '2021-01-20 00:00:00', 'yes', '\r'),
+(712, 'MULTI SPUNINDO JAYA PT', '29', '', 'purchasng', '031 8975555', 'pb02@spunindo.com', '', '', '', 9, '2021-04-09', 'yes', 5, '2021-01-20 00:00:00', 'yes', '\r'),
 (713, 'MULTIGUNA SHIPPING LINES PT', '8', '', 'Ibu nur', '317323568', 'mgsl_sby@yahoo.co.id', '', '', '', 11, '2021-03-01', '', 5, '2021-01-19 00:00:00', 'yes', '\r'),
 (714, 'MURINDA IRON STELL PT', '29', '', 'purchasing', '0318495101', 'murindasurabaya@gmail.com', '', '', '', 12, '2021-03-01', '', 5, '2021-01-15 00:00:00', 'yes', '\r'),
 (715, 'MURNI MAPAN MAKMUR PT', '22', '', 'BU.IIN', '343611912', 'staf.mmm@gmail.com', '', '', '', 10, '2021-03-01', '', 5, '2021-01-12 00:00:00', 'yes', '\r'),
@@ -880,7 +880,7 @@ INSERT INTO `id_customer` (`id`, `perusahaan`, `lokasi`, `alamat_lengkap`, `pic`
 (775, 'PITAMAS INDONESIA PT', '26', '', 'P.HARDONO', '85230005040', '', '', '', '', 10, '2021-03-01', '', 5, '2021-01-08 00:00:00', 'yes', '\r'),
 (776, 'PLAZA MADIUN', '14', '', 'SILVIA', '82132828208', 'sylvia.sari@lippomalls.com', '', '', '', 13, '2021-04-16', '', 5, '2021-03-17 00:00:00', 'yes', '\r'),
 (777, 'PLYWOOD TUNAS SUBUR', '20', '', 'BPK HARI', '357441170', '', '', '', '', 1, '2021-04-14', '', 5, '2021-03-15 00:00:00', 'yes', '\r'),
-(778, 'PODOMORO CV', '17', '', '', '', '', '', '', '', 10, '2021-03-31', '', 5, '2021-03-01 00:00:00', 'yes', '\r'),
+(778, 'PODOMORO CV', '24', '	DESA NGEPOH KEC.DRINGU', 'P.EDY', '081333145994', '', '', '5', 'Setiap 1-3 Minggu', 10, '2021-03-31', '', 5, '2021-03-01 00:00:00', 'yes', '\r'),
 (779, 'PRADIPTA PERKASA MAKMUR PT ', '8', '', 'B\'Yuyun', '031 8986751', 'ena_hernawati@yahoo.co.id', '', '', '', 7, '2021-03-26', '', 5, '2021-02-09 00:00:00', 'yes', '\r'),
 (780, 'PRASETYA HUSADA RS', '16', '', 'SDM', '0341-460558', 'prasetyahusada@gmail.com', '', '', '', 13, '2021-04-18', '', 5, '2021-03-19 00:00:00', 'yes', '\r'),
 (781, 'PRATAMA TANJUNG SARI PT', '29', '', 'BU AYI', '081334913193', '', '', '', '', 12, '2021-03-25', '', 5, '2021-02-03 00:00:00', 'yes', '\r'),
@@ -898,7 +898,7 @@ INSERT INTO `id_customer` (`id`, `perusahaan`, `lokasi`, `alamat_lengkap`, `pic`
 (793, 'PURNAMA HOTEL', '16', '', 'P.INDRA', '85100002702', '', '', '', '', 10, '2021-03-01', '', 5, '2021-01-18 00:00:00', 'yes', '\r'),
 (794, 'PURNAMA INDONESIA PT', '29', '', 'PURCHASING', '0317879789', 'purindo07@yahoo.co.id', '', '', '', 12, '2021-03-01', '', 5, '2021-02-10 00:00:00', 'yes', '\r'),
 (795, 'PUTERA ENERGI GEMILANG PT', '29', '', 'Bpk Destianto ', '082 112873008', '', '', '', '', 8, '2021-03-01', '', 5, '2021-01-19 00:00:00', 'yes', '\r'),
-(796, 'PUTRA BINTANG TIMUR PT', '29', '', 'bu wiwid', '031 3991721', 'nwijayanti.wiwied@gmail.com', '', '', '', 9, '2021-03-25', '', 5, '2021-01-20 00:00:00', 'yes', '\r'),
+(796, 'PUTRA BINTANG TIMUR PT', '29', '', 'bu wiwid', '031 3991721', 'nwijayanti.wiwied@gmail.com', '', '', '', 9, '2021-04-09', 'yes', 5, '2021-01-20 00:00:00', 'yes', '\r'),
 (797, 'PUTRA JAYA ADI PT', '26', '', 'PURCHASING', '8912831', 'purchasing@boxerpaint.com', '', '', '', 10, '2021-03-01', '', 5, '2021-01-23 00:00:00', 'yes', '\r'),
 (798, 'PUTRA MANDIRI PT', '16', '', 'B\'TIARA', '0341-835866', 'pr_putra_mandiri@yahoo.co.id', '', '', '', 13, '2021-03-01', '', 5, '2021-02-06 00:00:00', 'yes', '\r'),
 (799, 'PUTRA NUSANTARA MANDIRI PT', '29', '', 'PURCHASING', '0318950160', 'pnmcorp_lobp@yahoo.com', '', '', '', 12, '2021-04-08', '', 5, '2021-03-09 00:00:00', 'yes', '\r'),
@@ -1019,10 +1019,10 @@ INSERT INTO `id_customer` (`id`, `perusahaan`, `lokasi`, `alamat_lengkap`, `pic`
 (914, 'SURABAYA SUITES HOTEL', '29', '', 'P.FIRDAUS', '85784187816', '', '', '', '', 10, '2021-03-01', '', 5, '2021-01-19 00:00:00', 'yes', '\r'),
 (915, 'SURABAYA WIRE PT', '8', '', 'B\'Feni', '031 7507081', '', '', '', '', 7, '2021-03-01', '', 5, '2021-01-22 00:00:00', 'yes', '\r'),
 (916, 'SURINDO PT', '29', '', 'P\'PEBY', '31791411', 'surindopr@gmail.com', '', '', '', 13, '2021-03-01', '', 5, '2021-01-19 00:00:00', 'yes', '\r'),
-(917, 'SURYA BANGUN PERSADA PT', '29', '', 'BU.IRA', '5993544', 'sbpisby@yahoo.com', '', '', '', 10, '2021-03-27', '', 5, '2021-01-14 00:00:00', 'yes', '\r'),
-(918, 'SURYA COIL CENTRE PT', '29', '', 'ibu hera', '031748044', 'scc@yahoo.com', '', '', '', 12, '2021-04-02', '', 5, '2021-01-28 00:00:00', 'yes', '\r'),
-(919, 'SURYA DERMATO MEDICA PT', '29', '', 'BU.REONITA', '81330619885', '', '', '', '', 10, '2021-03-01', '', 5, '2021-01-19 00:00:00', 'yes', '\r');
+(917, 'SURYA BANGUN PERSADA PT', '29', '', 'BU.IRA', '5993544', 'sbpisby@yahoo.com', '', '', '', 10, '2021-03-27', '', 5, '2021-01-14 00:00:00', 'yes', '\r');
 INSERT INTO `id_customer` (`id`, `perusahaan`, `lokasi`, `alamat_lengkap`, `pic`, `telfon`, `email`, `catatan`, `volume`, `jarak_ambil`, `sales`, `expired`, `long_expired`, `created_by`, `created_time`, `verified`, `alasan`) VALUES
+(918, 'SURYA COIL CENTRE PT', '29', '', 'ibu hera', '031748044', 'scc@yahoo.com', '', '', '', 12, '2021-04-02', '', 5, '2021-01-28 00:00:00', 'yes', '\r'),
+(919, 'SURYA DERMATO MEDICA PT', '29', '', 'BU.REONITA', '81330619885', '', '', '', '', 10, '2021-03-01', '', 5, '2021-01-19 00:00:00', 'yes', '\r'),
 (920, 'SURYA HOTEL & COTTAGE', '22', '', 'PURCHASING', '343881991', 'purchasing.shc@suryahotelsgroup.com', '', '', '', 11, '2021-03-26', '', 5, '2021-02-24 00:00:00', 'yes', '\r'),
 (921, 'SURYA INDAH WOOD PT', '29', '', 'bpk puji', '0317507249', 'purchasingsiwi@gmail.com', '', '', '', 12, '2021-03-01', '', 5, '2021-01-19 00:00:00', 'yes', '\r'),
 (922, 'SURYA INTRINDO MAKMUR PT', '29', '', 'IBU ENDANG', '0315612818', 'endang.wiyanti@fmiindo.com', '', '', '', 13, '2021-03-27', '', 5, '2021-02-25 00:00:00', 'yes', '\r'),
@@ -1038,8 +1038,8 @@ INSERT INTO `id_customer` (`id`, `perusahaan`, `lokasi`, `alamat_lengkap`, `pic`
 (932, 'SURYARAGI NUSARYA PT', '26', '', 'purchasing', '318013000', 'snsubuumum@gmail.com', '', '', '', 9, '2021-03-01', '', 5, '2021-01-22 00:00:00', 'yes', '\r'),
 (933, 'SURYATAMA MEGA CEMERLANG PT', '8', '', 'bp. Samsul', '031 7991500', 'logistik@cemerlang.co.id', '', '', '', 9, '2021-03-31', '', 5, '2021-01-14 00:00:00', 'yes', '\r'),
 (934, 'SUTANTO CONSTRUCTION CV', '29', '', 'BPK RYAN', '81807481296', '', '', '', '', 12, '2021-03-26', '', 5, '2021-02-11 00:00:00', 'yes', '\r'),
-(935, 'SUTINDO RAYA MULIA', '29', '', 'P\'ANDY', '031-7499500', 'andy.srmsby@sutindo.com', '', '', '', 13, '2021-04-09', '', 5, '2021-03-10 00:00:00', 'yes', '\r'),
-(936, 'SWADAYA GRAHA PT', '8', '', 'bp. Edi', '031 398447', 'esantoso@swadaya.com', '', '', '', 9, '2021-03-25', '', 5, '2021-01-21 00:00:00', 'yes', '\r'),
+(935, 'SUTINDO RAYA MULIA', '29', '', 'P\'ANDY', '031-7499500', 'andy.srmsby@sutindo.com', '', '5', '>1bulan sekali', 13, NULL, '', 5, '2021-03-10 00:00:00', 'yes', '\r'),
+(936, 'SWADAYA GRAHA PT', '8', '', 'bp. Edi', '031 398447', 'esantoso@swadaya.com', '', '', '', 9, '2021-04-09', 'yes', 5, '2021-01-21 00:00:00', 'yes', '\r'),
 (937, 'SWISS-BERLINN HOTEL', '29', '', 'bpk dwi', '315946868', 'pursimy@swiss-belhotel.com', '', '', '', 1, '2021-03-25', '', 5, '2021-02-23 00:00:00', 'yes', '\r'),
 (938, 'SYAM SURYA MANDIRI ', '29', '', 'BU.RISTA', '81235799933', '', '', '', '', 10, '2021-03-29', '', 5, '2021-01-29 00:00:00', 'yes', '\r'),
 (939, 'TAE KWANG METECH PT', '29', '', 'Bu.Maya', '0821 95301069', '', '', '', '', 7, '2021-03-31', '', 5, '2021-01-11 00:00:00', 'yes', '\r'),
@@ -1084,7 +1084,7 @@ INSERT INTO `id_customer` (`id`, `perusahaan`, `lokasi`, `alamat_lengkap`, `pic`
 (978, 'UNICHEM CANDI INDONESIA PT ', '26', '', 'Bpk Edgar ', '031 8921342', 'purchasing@unichem.co.id ', '', '', '', 8, '2021-04-18', '', 5, '2021-03-19 00:00:00', 'yes', '\r'),
 (979, 'UNISMA RSI', '16', '', '', '0341-551356', 'rsi_unisma@yahoo.com', '', '', '', 13, '2021-03-26', '', 5, '2021-02-24 00:00:00', 'yes', '\r'),
 (980, 'UNISON INDONESIA INDUSTRIAL PT', '29', '', 'ibu ayu', '0317484580', 'hayu@ptunison.com', '', '', '', 12, '2021-03-01', '', 5, '2021-01-26 00:00:00', 'yes', '\r'),
-(981, 'UNIVERSAL JASA KEMAS', '22', '', 'm\'okta', '0343-656148', 'purchasing.ujk@teguhgroup.com', '', '', '', 13, '2021-03-31', '', 5, '2021-01-29 00:00:00', 'yes', '\r'),
+(981, 'UNIVERSAL JASA KEMAS', '22', '', 'Ibu Okta', '0343-656148', 'purchasing.ujk@teguhgroup.com', '', '5', 'Setiap 2-5 bulan', 13, NULL, '', 5, '2021-01-29 00:00:00', 'yes', '\r'),
 (982, 'UNIVERSAL WISESA INDUSTRI PT', '26', '', 'P.ADI', '85101610872', '', '', '', '', 10, '2021-03-01', '', 5, '2021-01-23 00:00:00', 'yes', '\r'),
 (983, 'USAHA BAKTI PERKASA PT ', '26', '', 'Bu Antika', '031 8956551', 'antika.wenda@yahoo.com', '', '', '', 8, '2021-03-01', '', 5, '2021-02-15 00:00:00', 'yes', '\r'),
 (984, 'UTAMA MAMA PT', '16', '', 'B\'VERA', '0341-567782', 'ptutamamama@yahoo.com', '', '', '', 13, '2021-04-07', '', 5, '2021-03-08 00:00:00', 'yes', '\r'),
@@ -1142,40 +1142,80 @@ INSERT INTO `id_customer` (`id`, `perusahaan`, `lokasi`, `alamat_lengkap`, `pic`
 (1036, 'WONOJATI WIJOYO PT', '11', '', '', '', '', '', '', '', NULL, NULL, '', 5, '2021-03-21 00:00:00', 'no', '\r'),
 (1037, 'WONOSALAM MAKMUR PT', '10', '', '', '', '', '', '', '', NULL, NULL, '', 5, '2021-03-21 00:00:00', 'no', '\r'),
 (1777, 'SANDI BAHARI NUSANTARA PT', '29', 'Jl. Laksda Moh. Nazir No.29 A-10, Perak Bar., Kec. Krembangan, Kota SBY, Jawa Timur 60177', 'BAPAK ARIK', ' (031) 99342141', '', 'TIDAK ADA PEMAKAIAN SOLAR', '', '', 1, NULL, '', 1, '2021-03-22 09:04:57', '', ''),
-(1778, 'NIAGA RAYA CV ', '8', '', 'IBU YENNY ', '081216029677', 'cv.niagaraya@gmail.com', '', '8', 'Setiap 2-5 bulan', 8, NULL, '', 8, '2021-03-22 09:05:46', '', ''),
+(1778, 'NIAGA RAYA CV ', '8', '', 'IBU YENNY ', '081216029677', 'cv.niagaraya@gmail.com', '', '8', 'Setiap 2-5 bulan', 8, '2021-04-21', '', 8, '2021-03-22 09:05:46', 'yes', ''),
 (1779, 'PABRIK GULA PRAJEKAN', '7', ' Jl. Raya Situbondo, Grundo, Prajekan Kidul, Prajekan, Kabupaten Bondowoso, Jawa Timur 68284', '', '0332561001', '', '', '', '', 11, NULL, '', 11, '2021-03-22 09:06:30', '', ''),
 (1780, 'KURNIA WIJAYA ANEKA INDUSTRI PT', '26', 'Jl. Tambak Sawah No.28, Jabon, Tambaksawah, Kec. Waru, Kabupaten Sidoarjo, Jawa Timur 61256', 'PAK STEPHEN', '0318666606', '', '', '', '', 11, '2021-04-21', '', 11, '2021-03-22 09:11:11', 'yes', ''),
 (1781, 'CAMPINA ICE CREAM INDUSTRI PT', '9', 'Jl. Letjen Sutoyo, Krajan, Kranjingan, Kec. Sumbersari, Kabupaten Jember, Jawa Timur 68126', '', '082141793821', '', 'tidak mau info operator jahat', '', '', 11, NULL, '', 11, '2021-03-22 09:13:04', '', ''),
 (1782, 'ADIGUNA LABEL INDONESIA PT', '29', 'Jl. Tambak Osowilangun No.61, Tambak Osowilangun, Benowo, Surabaya City, East Java 60217', '', '0317484506', '', '', '', '', 11, NULL, '', 11, '2021-03-22 09:20:19', '', ''),
-(1783, 'INTERNUSA BETON PT ', '8', '', 'Bapak Parlan ', '', '', '', '8', '', 8, NULL, '', 8, '2021-03-22 09:21:00', '', ''),
+(1783, 'INTERNUSA BETON PT ', '8', '', 'Bapak Parlan ', '0812 35332589', '', '', '8', '', 8, '2021-04-21', '', 8, '2021-03-22 09:21:00', 'yes', ''),
 (1784, 'TIMUR JAYA PANEL PT', '29', 'Jl. Tambak Osowilangun No.234, Tambak Osowilangun, Kec. Benowo, Kota SBY, Jawa Timur 60191', 'ibu eki', '0317499785', '', '', '', '', 11, NULL, '', 11, '2021-03-22 09:22:28', '', ''),
-(1785, 'SARANA BAJA RAGAM CITRA PT', '26', 'JL.RAYA TROSOBO KM.24 TAMAN', '', '', '', '', '', '', 10, NULL, '', 10, '2021-03-22 09:22:50', '', ''),
+(1785, 'SARANA BAJA RAGAM CITRA PT', '26', 'JL.RAYA TROSOBO KM.24 TAMAN', '', '8972085', '', 'besok di hub lagi,purch hari ini tdk masuk', '', '', 10, NULL, '', 10, '2021-03-22 09:22:50', '', ''),
 (1786, 'INDOTRUCK UTAMA PT', '29', 'Jl. Perak Timur No.356, Perak Utara, Kec. Pabean Cantian, Kota SBY, Jawa Timur 60165', '', '0313292480', '', '', '', '', 11, NULL, '', 11, '2021-03-22 09:24:47', '', ''),
 (1787, 'IMANUEL TEHNIK SENTOSA PT', '29', 'Jl. Tropodo Asri E-16 (10,55 km) Kota Surabaya, Jawa Timur 61256', 'BAPAK STEFANI', '0318661141', '', '', '', '', 1, NULL, '', 1, '2021-03-22 09:27:00', '', ''),
 (1788, 'GUNAWANGSA HOTEL MANYAR', '29', 'Jl. Menur Pumpungan No.62, Menur Pumpungan, Kec. Sukolilo, Kota SBY, Jawa Timur 60118', 'PAK HENDRO', '0312957272', '', '', '', '', 11, NULL, '', 11, '2021-03-22 09:27:37', '', ''),
 (1790, 'SIERAD PRODUCE PT', '26', ' Jl. Raya Sidoarjo Krian, Ketimang, Kec. Wonoayu, Kabupaten Sidoarjo, Jawa Timur 61261', 'BAPAK HEPI', '0318853333', '', '', '', '', 1, NULL, '', 1, '2021-03-22 09:30:39', '', ''),
 (1791, 'OAK WOOD HOTEL', '29', 'Jl. Raya Kertajaya Indah No.79, Manyar Sabrangan, Kec. Mulyorejo, Kota SBY, Jawa Timur 60116', 'BAPAK YUSEK', '0312880388', '', '', '', '', 1, NULL, '', 1, '2021-03-22 09:31:51', '', ''),
 (1792, 'TATA BUMI RAYA PT', '29', 'Jl. Pandegiling No. 223', 'logistik', '031-5677419', 'tbr.logistik@gmail.com', '', '', '', 12, '2021-04-21', '', 12, '2021-03-22 09:35:21', 'yes', ''),
-(1793, 'CITRA NUTRINDO LANGGENG PT', '29', 'Jl. Rungkut Industri I No.21, Kendangsari, Kec. Tenggilis Mejoyo, Kota SBY, Jawa Timur 60293', '', '0318476801', '', '', '', '', 11, NULL, '', 11, '2021-03-22 09:38:27', '', ''),
-(1794, 'SUMBER MAS INDAH PLAYWOOD,PT', '8', 'JL.KAPTEN DARMO SUGONDO NO.99', '', '0313981511', '', 'LANGSUNG PENGAMBILAN BY ONWER', '', '', 10, NULL, '', 10, '2021-03-22 09:42:32', '', ''),
+(1794, 'SUMBER MAS INDAH PLAYWOOD PT', '8', 'JL.KAPTEN DARMO SUGONDO NO.99', '', '0313981511', '', 'LANGSUNG PENGAMBILAN BY ONWER', '', '', 10, NULL, '', 10, '2021-03-22 09:42:32', '', ''),
 (1795, 'BINTANG TIMUR PASIFIK PT', '8', 'Jl. Raya Banyutengah Panceng Gresik, Ketanen, Banyutengah, Kec. Panceng, Kabupaten Gresik, Jawa Timur 61156', '', '0313940440', '', '', '', '', 11, NULL, '', 11, '2021-03-22 10:02:02', '', ''),
 (1796, 'RAX CANNING', '22', 'Jl. Raya Beji Km 4 No. 42  Kecamatan Beji, Kabupaten Pasuruan, Provinsi Jawa Timur', '', '0343-656470-74', '', '', '', '', 7, NULL, '', 7, '2021-03-22 10:12:15', '', ''),
-(1797, 'PODOMORO,CV', '24', 'DESA NGEPOH KEC.DRINGU', 'P.EDY', '081335030635', '', 'SUDAH PENGAMBILAN BULAN FEB PERIODE 2', '5.000', 'Setiap 1-3 Minggu', 10, NULL, '', 10, '2021-03-22 10:12:37', '', ''),
 (1798, 'ADHIGUNA PUTERA PT', '12', 'JL. Raya daendels KM.65 Desa kemantren Kec.Paciran Lamongan 62264', '', '032266264', '', '', '', '', 11, NULL, '', 11, '2021-03-22 10:12:39', '', ''),
 (1799, 'SARIFEED INDOJAYA', '2', 'Jl. Pelabuhan 35 Kecamatan Muncar, Banyuwangi JATIM', '', '0333 593 325', '', '', '', '', 7, NULL, '', 7, '2021-03-22 10:28:28', '', ''),
 (1801, 'SUPERINDO JAYA MAKMUR FEEDMILL', '29', 'JL. Margomulyo Indah Blok C, Kav 9 -11, Greges, Asemrowo, Kota SBY, Jawa Timur 60238', 'Bapak Sutopo', '031 7483288', 'accf.superindo@gmail.com', '', '', '', 7, '2021-04-21', '', 7, '2021-03-22 10:38:05', 'yes', ''),
-(1802, 'EMDEKI,PT', '8', 'JL.RAYA KRIKILAN NO 294', 'P.RIO', '7507001', '', 'PENGAMBILAN LAGI APRIL AWAL BULAN', '5.000', 'Setiap 1 Bulan', 10, NULL, '', 10, '2021-03-22 10:39:44', '', ''),
+(1802, 'EMDEKI PT', '8', 'JL.RAYA KRIKILAN NO 294', 'P.RIO', '7507001', '', 'PENGAMBILAN LAGI APRIL AWAL BULAN', '5.000', '', 10, NULL, '', 10, '2021-03-22 10:39:44', '', ''),
 (1803, 'PANCA PATRIOT PRIMA PT', '26', 'Jl. Muncul Industri II/11, Gedang, Sidoarjo, Jawa Timur 61254', '', '031-8543701', '', '', '', '', 7, NULL, '', 7, '2021-03-22 10:45:44', '', ''),
 (1804, 'JADI ABADI CORAK BISCUIT PT', '29', 'Jl. Raya Rungkut No.7-9, Kali Rungkut, Kec. Rungkut, Kota SBY, Jawa Timur 60293', '', '0318700578', '', '', '', '', 11, NULL, '', 11, '2021-03-22 10:45:46', '', ''),
-(1806, 'INTEGRA INDOCABINET PT', '26', 'Jl. Raya Betro No. 678 Sedati Sidoarjo East Java 61253', '', '0318910434,8910435/36', '', '', '', '', 11, NULL, '', 11, '2021-03-22 10:51:29', '', ''),
 (1807, 'BATU PUALAM FACTORY ', '31', 'Jl. Raya Popoh No.399, Cerme, Gamping, Campur Darat, Kabupaten Tulungagung, Jawa Timur 66272', '', '+6281234444188', '', 'PEMAKAIAN LISTRIK', '', '', 1, NULL, '', 1, '2021-03-22 10:59:24', '', ''),
 (1808, 'GRAHA ANOM JAYA PT', '26', 'Jl. Muncul Industri No.18, Gedangan, Sidoarjo, Kabupaten Sidoarjo, Jawa Timur 61254. Graha Anom Jaya. PT, Gedangan, Sidoarjo Regency, East Java, Indonesia', '', '0318557037', '', '', '', '', 11, NULL, '', 11, '2021-03-22 11:06:51', '', ''),
-(1809, 'WONOKOYO JAYA CORPORINDO PT', '29', 'Jl. Taman Bungkul No. 1-7 Surabaya 60241', 'TONI', ' 031-295 6000', 'purchasing_micro@wonokoyo.co.id', '', '', '', 7, NULL, '', 7, '2021-03-22 11:08:31', '', ''),
-(1812, 'GUNUNG BALE PT', '16', ' Jl. Sumber Waras No.255, Pilang, Sidodadi, Kec. Lawang, Malang, Jawa Timur 65216', '', '0341426681', '', '', '', '', 11, NULL, '', 11, '2021-03-22 11:22:52', '', ''),
+(1809, 'WONOKOYO JAYA CORPORINDO PT', '29', 'Jl. Taman Bungkul No. 1-7 Surabaya 60241', 'BAPAK TONI', ' 031-295 6000', 'purchasing_micro@wonokoyo.co.id', '', '', '', 7, '2021-04-21', '', 7, '2021-03-22 11:08:31', 'yes', ''),
 (1813, 'PASIR LUMAJANG', '13', 'Perumahan Zam-Zam Jalan Tompokersan, Perjuangan, Petahunan, Sumbersuko, Kabupaten Lumajang, Jawa Timur 67311', '', '+6285536306785', '', 'TIDAK ADA PEMAKAIAN SOLAR', '', '', 1, NULL, '', 1, '2021-03-22 11:25:13', '', ''),
 (1814, 'MOJO AGUNG CV', '3', 'Jl. Raya Tulungagung - Blitar No.24, Mojo, Plosoarang, Kec. Sanankulon, Blitar, Jawa Timur 66151', 'BAPAK INU', '+6282233870040', '', 'BELUM ADA KEBUTUHAN SAAT INI', '', '', 1, NULL, '', 1, '2021-03-22 11:35:51', '', ''),
 (1815, 'CIPTA MAKMUR PERTIWI ', '8', '', '', '0313943271', '', '', '', '', 8, NULL, '', 8, '2021-03-22 11:37:13', '', ''),
-(1816, 'GRAHA JAYA KONKRIT FACTORY', '17', 'Siderejo, Wonosari, Kec. Ngoro, Mojokerto, Jawa Timur 61385', 'IBU NANIK', '03216819486', '', '', '', '', 1, NULL, '', 1, '2021-03-22 11:45:45', '', '');
+(1816, 'GRAHA JAYA KONKRIT FACTORY PT', '17', 'Siderejo, Wonosari, Kec. Ngoro, Mojokerto, Jawa Timur 61385', 'IBU NANIK', '03216819486', '', '', '', '', 1, NULL, '', 1, '2021-03-22 11:45:45', '', ''),
+(1817, 'PABRIK BATA RINGAN FASTCON ', '26', 'Jl. Raya Tarik No.Km, RW.1, Waru, Waruberon, Kec. BalongBendo, Kabupaten Sidoarjo, Jawa Timur 61263', 'BAPAK ROBERT', ' (031) 8986336', '', 'PENGAMBILAN DARI PERTAMINA ', '8', 'Setiap 1 Bulan', 1, NULL, '', 1, '2021-03-22 13:37:07', '', ''),
+(1818, 'BRICON TRAWAS PT ', '17', 'Landep, Banjartanggul, Kec. Pungging, Mojokerto, Jawa Timur 61384', '', ' 0857-1308-2592', '', 'TIDAK ADA PEMAKAIAN SOLAR', '', '', 1, NULL, '', 1, '2021-03-22 13:40:22', '', ''),
+(1819, 'FANCOMAS PT', '29', '', 'BPK DANIL', '0315313400', '', 'PERUSAHAAN TIDAK PAKAI SOLAR', '', '', 12, NULL, '', 12, '2021-03-22 13:42:29', '', ''),
+(1820, 'SEKARBUMI PT', '26', 'Jl. Jenggolo 2 No. 17 61219 Sidoarjo, East Java Indonesia', '', '031 895 1910', '', '', '', '', 7, NULL, '', 7, '2021-03-22 13:44:09', '', ''),
+(1821, 'CENTRANUSA INTI PRIMA INDUSTRI PT ', '29', '', '', '031 7344841', '', 'Tidak pakai solar ', '', '', 8, NULL, '', 8, '2021-03-22 13:46:17', '', ''),
+(1822, 'LISA CONCRETE INDONESIA PT ', '17', 'Desa Watesnegoro, Kec. Ngoro, Gn. Sari, Watesnegoro, Ngoro, Mojokerto, East Java 61385', 'IBU FIERA', '0317326070', '', '', '', '', 1, NULL, '', 1, '2021-03-22 13:50:36', '', ''),
+(1823, 'FAVE HOTEL', '26', '', 'bapak emeral', '03130009999', 'sidoarjoinfo@favehotels.com', '', '5', '', 12, '2021-04-21', '', 12, '2021-03-22 13:51:35', 'yes', ''),
+(1824, 'SURYA JAYA ABADI PERKASA PT', '24', 'Jl Raya Surabaya - Probolinggo Km 90', '', '0335 421172', 'suryajaya@sjapmail.co.id', '', '5', 'Setiap 2-5 bulan', 7, '2021-04-21', '', 7, '2021-03-22 13:52:37', 'yes', ''),
+(1825, 'BAHTERA SAMUDRA KONSTRUKSI PT ', '17', 'Jl. Raden Patah No.99, Dusun Adi Sono, Lebaksono, Kec. Pungging, Mojokerto, Jawa Timur 61384', '', ' 0822-3018-4377', '', 'TIDAK ADA PEMAKAIAN SOLAR', '', '', 1, NULL, '', 1, '2021-03-22 13:55:50', '', ''),
+(1826, 'SARARASA BIOMAS PT', '29', '', 'PAK ROBBY', '031-7497762', 'robby.lindartanto@sararasa.asia', '', '5', '', 13, '2021-04-21', '', 13, '2021-03-22 13:57:22', 'yes', ''),
+(1829, 'FERODATAMA MUKTI JAYA', '29', 'Jl. Kalianak No. 51 AS/Kav. 20 Surabaya ', '', '031 7481451 – 2', '', '', '', '', 7, NULL, '', 7, '2021-03-22 14:15:36', '', ''),
+(1830, 'BEEFEATHER MEAT INDONESIA PT', '29', 'Jl. Biliton 28 Surabaya', '', ' 031 5032360', '', '', '', '', 7, NULL, '', 7, '2021-03-22 14:18:06', '', ''),
+(1831, 'TAMA SILIKA PT ', '30', '', 'Bapak Zaenal ', '0823 32747114 ', '', '', '5', 'Setiap 1 Bulan', 8, '2021-04-21', '', 8, '2021-03-22 14:27:55', 'yes', ''),
+(1832, 'MEGA GLOBAL FOOD INDUSTRI PT', '8', 'Jalan Raya Tenaru Industri No, Jl. Raya Driyorejo, RT.02/RW.01, Dusun Gading, Cangkir, Kec. Driyorejo, Kabupaten Gresik, Jawa Timur 61177', '', '+62317590008', '', '', '', '', 1, NULL, '', 1, '2021-03-22 14:36:09', '', ''),
+(1833, 'BENTOEL PRIMA PT', '16', '', '', '0341 490000', '', '', '', '', 7, NULL, '', 7, '2021-03-22 14:36:33', '', ''),
+(1834, 'GALAXY SURYA PANELINDO', '13', '', 'PURCHASING', '0334571098', '', '', '', '', 12, NULL, '', 12, '2021-03-22 14:39:27', '', ''),
+(1835, 'BOMA BISMA INDRA PT', '29', '', 'PURCHASING', '031-3530513', '', '', '', '', 12, NULL, '', 12, '2021-03-22 14:46:52', '', ''),
+(1836, 'KENCANA ALAM PUTRA PT', '29', '', 'PURCHASING', '031-5939609', '', '', '', '', 12, NULL, '', 12, '2021-03-22 14:49:00', '', ''),
+(1837, 'TRIPLE S PT', '11', '', 'PURCHASING', '0354-683492', '', '', '', '', 12, NULL, '', 12, '2021-03-22 14:52:17', '', ''),
+(1838, 'ROLAS NUSANTARA TAMBANG PT', '29', 'Jl. Indrapura No.33A, Kemayoran, Kec. Krembangan, Kota SBY, Jawa Timur 60115', 'BAPAK HENDRI', '03199018766', 'rolas.nusantara.tambang@gmail.com', '', '', '', 1, NULL, '', 1, '2021-03-22 14:59:15', '', ''),
+(1839, 'SYAM SURYA MANDIRI PT', '29', 'JL, Jl. Nginden Intan Raya No.30,', 'P.TOYIB', '8972085', '', 'SEMENTARA INI BELUM ADA PROJECT', '5', '', 10, NULL, '', 10, '2021-03-22 15:02:25', '', ''),
+(1841, 'ARTA NIAGA NUSANTARA PT', '29', '', 'PURCHASING', '0315996780', '', '', '', '', 12, NULL, '', 12, '2021-03-22 15:07:25', '', ''),
+(1842, 'SUPERMAL MANSION APART.', '29', '', 'pak mahfud', '031-99000323', '', '', '5', '', 13, NULL, '', 13, '2021-03-22 15:08:49', '', ''),
+(1843, 'SHANTY WIRAPERKASA PT', '29', '', 'PURCHASING', '031-3523479', '', '', '', '', 12, NULL, '', 12, '2021-03-22 15:09:06', '', ''),
+(1844, 'WAHANA PRIMA UTAMA CV', '30', 'Jl. Sunan Drajat No.6, Latsari, Kec. Tuban, Kabupaten Tuban, Jawa Timur 62314', 'BAPAK FARIS', ' 0812-5228-8700', 'wahana.primautama@gmail.com', '', '', '', 1, NULL, '', 1, '2021-03-22 15:09:10', '', ''),
+(1845, 'NUSANTARA MAKMUR SADHANA PT', '14', '', 'PURCHASING', '0351454795', '', '', '', '', 12, NULL, '', 12, '2021-03-22 15:19:13', '', ''),
+(1846, 'CIPTA BHAKTI PERTIWI PT', '31', '', 'IBU RINI', '08121625748', '', '', '5', '', 13, NULL, '', 13, '2021-03-22 15:19:44', '', ''),
+(1848, 'TIMBUL PERSADA PT', '30', 'Jl. Raya Kesamben - Plumpang, Penebusan, Kepohagung, Kec. Plumpang, Kabupaten Tuban, Jawa Timur 62382', 'IBU NINIK', '0356811213', 'timbulpersada@yahoo.co.id', '', '', '', 1, NULL, '', 1, '2021-03-22 15:31:24', '', ''),
+(1850, 'GOLD CO IN', '29', '', 'BPK FEHMI', '031) 7491257', '', '', '5', '', 12, NULL, '', 12, '2021-03-22 15:39:03', '', ''),
+(1852, 'SUGIH INDAH INDOPLAST PT', '29', '', 'MBAK LARAS', '031-7592149', '', '', '5', 'Setiap 2-5 bulan', 13, NULL, '', 13, '2021-03-22 15:52:56', '', ''),
+(1853, 'SINAR CENDANA ABDI PUTRA PT', '29', '', '', '0313538655', '', '', '', '', 11, NULL, '', 11, '2021-03-22 15:54:50', '', ''),
+(1854, 'SARANA JAYA SERBAGUNA PT', '16', 'Jl. Suropati Raya No.75, Bululawang, Kec. Bululawang, Malang, Jawa Timur 65171', '', 'PAK YUKI', '', '', '', '', 11, NULL, '', 11, '2021-03-22 15:58:19', '', ''),
+(1855, 'INDOMURNI DAIRY INDUSTRY PT', '22', '', '', '0343 633843', '', '', '', '', 7, NULL, '', 7, '2021-03-22 15:59:19', '', ''),
+(1857, 'GAWIH JAYA PT', '29', '', '', '031-7497921', '', 'lngsung  pusat dan tdk tau nomer pusat', '', '', 13, NULL, '', 13, '2021-03-22 16:08:39', '', ''),
+(1858, 'SURYA BAMBU TIMUR PT', '19', 'Jl. Raya Ngawi - Caruban No.Km 3, Mudal, Karang Tengah Prandon, Kec. Ngawi, Kabupaten Ngawi, Jawa Timur 63218', '', '0351747100', '', '', '', '', 11, NULL, '', 11, '2021-03-22 16:09:25', '', ''),
+(1859, 'ROLLENT INDONESIA PT', '8', 'Jl. KIG Raya Barat Kav-G No. 11, Kebomas, Randuagung, Kec. Gresik, Kabupaten Gresik, Jawa Timur 61121', '', '03139900700', '', '', '', '', 11, NULL, '', 11, '2021-03-22 16:13:12', '', ''),
+(1860, 'SINAR WIJAYA PLYWOOD INDUSTRI PT', '29', '', 'BU ERNI', '031-7496983', '', '', '6', 'Setiap 2-5 bulan', 13, NULL, '', 13, '2021-03-22 16:14:43', '', ''),
+(1861, 'ROCHBINI LEATHER PT', '26', 'Jl. A. Yani 1 – Gedangan. Sidoarjo ', '', '031 8532020', '', '', '', '', 7, NULL, '', 7, '2021-03-22 16:17:06', '', ''),
+(1862, 'OMYA INDONESIA', '26', 'Jl. Raya Surabaya-Mojokerto KM. 20, Tanjungsari, Trosobo, Dodokan, Tanjungsari, Kec. Taman, Kabupaten Sidoarjo, Jawa Timur 61257', 'BAPAK PURWANTO', '+62317881981', '', '', '', '', 1, NULL, '', 1, '2021-03-22 16:17:43', '', ''),
+(1863, 'KING JIM INDONESIA PT', '22', 'Jl. Rembang Industri II Kav. I, Pier, Pasuruan East Java, Mojokopek, Mojoparon, Rembang, Pasuruan, East Java 67152', '', '0343740166', '', '', '', '', 11, NULL, '', 11, '2021-03-22 16:19:04', '', ''),
+(1864, 'SUMBER SETIA PT', '24', '', '', '0355 422332 ', '', '', '', '', 7, NULL, '', 7, '2021-03-22 16:23:22', '', ''),
+(1865, 'RS PREMIER SURABAYA', '29', '', 'PAK LUKAS', '031-5993211', '', '', '', '', 13, NULL, '', 13, '2021-03-22 16:24:23', '', ''),
+(1866, 'RS KARTINI', '10', '', 'MBAK SARI', '', '', '', '', '', 13, NULL, '', 13, '2021-03-22 16:28:33', '', ''),
+(1867, 'HOTEL SELAMET', '2', '', 'PAK IMAM', '0333-424675', '', '', '', '', 13, NULL, '', 13, '2021-03-22 16:30:44', '', '');
 
 -- --------------------------------------------------------
 
@@ -1225,7 +1265,6 @@ INSERT INTO `id_dailyreport` (`id`, `sales`, `waktu`, `perusahaan`, `keterangan`
 (25, 1, '2021-03-22 10:28:28', 1777, 'Tidak pakai solar', '', NULL, 'Telfon Kantor'),
 (26, 7, '2021-03-22 10:28:43', 1799, 'Tidak pakai solar', '', NULL, 'Telfon Kantor'),
 (27, 11, '2021-03-22 10:33:04', 1782, 'Tidak pakai solar', '', NULL, 'Telfon Kantor'),
-(28, 8, '2021-03-22 10:35:21', 883, 'Penawaran', '', '2021-03-22', 'Telfon Kantor'),
 (29, 1, '2021-03-22 10:35:35', 248, 'Belum ada kebutuhan', 'BELUM ADA KEBUTUHAN ', NULL, 'Telfon Kantor'),
 (30, 8, '2021-03-22 10:36:22', 883, 'Tidak terhubung ke PIC', '', NULL, 'Telfon Kantor'),
 (31, 7, '2021-03-22 10:38:22', 1801, 'Penawaran', '', NULL, 'Telfon Kantor'),
@@ -1244,7 +1283,86 @@ INSERT INTO `id_dailyreport` (`id`, `sales`, `waktu`, `perusahaan`, `keterangan`
 (45, 9, '2021-03-22 11:30:16', 172, 'Penawaran', '', NULL, 'Telfon Kantor'),
 (46, 10, '2021-03-22 11:42:43', 101, 'Belum ada kebutuhan', 'sudah PO awal bulan maret ', '2021-04-01', 'Telfon Pribadi'),
 (47, 1, '2021-03-22 11:46:05', 1816, 'Tidak terhubung ke PIC', 'CALL BACK SIANG', '2021-03-22', 'Telfon Kantor'),
-(48, 8, '2021-03-22 11:52:50', 1783, 'Penawaran', '', NULL, 'Telfon Pribadi');
+(49, 10, '2021-03-22 13:20:06', 1785, 'Tidak terhubung ke PIC', 'besok di hub kembali', '2021-03-23', 'Telfon Kantor'),
+(50, 8, '2021-03-22 13:21:07', 1783, 'Penawaran', '', NULL, 'Telfon Pribadi'),
+(52, 7, '2021-03-22 13:37:54', 1801, 'Tidak pakai solar', '', NULL, 'Telfon Kantor'),
+(53, 1, '2021-03-22 13:41:05', 1818, 'Tidak pakai solar', '', NULL, 'Telfon Kantor'),
+(54, 1, '2021-03-22 13:41:26', 1807, 'Tidak pakai solar', '', NULL, 'Telfon Kantor'),
+(55, 1, '2021-03-22 13:42:04', 1814, 'Belum ada kebutuhan', '', NULL, 'Telfon Kantor'),
+(56, 1, '2021-03-22 13:42:57', 1817, 'Kontrak vendor lain', '', NULL, 'Telfon Kantor'),
+(57, 1, '2021-03-22 13:43:25', 1813, 'Tidak pakai solar', '', NULL, 'Telfon Kantor'),
+(58, 7, '2021-03-22 13:44:23', 1820, 'Tidak pakai solar', '', NULL, 'Telfon Kantor'),
+(59, 12, '2021-03-22 13:45:07', 1819, 'Tidak pakai solar', '', NULL, 'Telfon Kantor'),
+(60, 8, '2021-03-22 13:47:10', 1821, 'Tidak pakai solar', '', NULL, 'Telfon Kantor'),
+(61, 9, '2021-03-22 13:47:12', 140, 'Belum ada kebutuhan', '', '2021-03-10', 'Telfon Kantor'),
+(62, 9, '2021-03-22 13:49:27', 626, 'Belum ada kebutuhan', '', '2021-03-10', 'Telfon Kantor'),
+(63, 1, '2021-03-22 13:51:04', 1822, 'Tidak terhubung ke PIC', 'MASIH ONLINE CALL BACK ', '2021-03-22', 'Telfon Kantor'),
+(64, 12, '2021-03-22 13:51:51', 1823, 'Penawaran', '', NULL, 'Telfon Kantor'),
+(65, 9, '2021-03-22 13:52:07', 678, 'Belum ada kebutuhan', '', '2021-03-13', 'Telfon Kantor'),
+(66, 7, '2021-03-22 13:52:52', 1824, 'Penawaran', '', NULL, 'Telfon Kantor'),
+(67, 1, '2021-03-22 13:56:00', 1825, 'Tidak pakai solar', '', NULL, 'Telfon Kantor'),
+(68, 9, '2021-03-22 13:56:06', 1010, 'Kontrak vendor lain', '', NULL, 'Telfon Kantor'),
+(69, 13, '2021-03-22 13:57:38', 1826, 'Penawaran', '', NULL, 'Telfon Kantor'),
+(70, 8, '2021-03-22 13:58:49', 6, 'Tidak terhubung ke PIC', '', NULL, 'Telfon Kantor'),
+(71, 1, '2021-03-22 14:00:02', 1822, 'Kontrak vendor lain', 'kontrak dengan akr sudah puluhan tahun', NULL, 'Telfon Kantor'),
+(72, 12, '2021-03-22 14:01:09', 88, 'Penawaran', '', NULL, 'Telfon Kantor'),
+(73, 11, '2021-03-22 14:03:10', 549, 'Penawaran', '', NULL, 'Telfon Kantor'),
+(74, 8, '2021-03-22 14:07:43', 669, 'Kebutuhan minim', '', NULL, 'Telfon Kantor'),
+(75, 9, '2021-03-22 14:09:01', 267, 'Penawaran', '', NULL, 'Telfon Kantor'),
+(76, 11, '2021-03-22 14:10:32', 1808, 'Tidak terhubung ke PIC', '', '2021-03-23', 'Telfon Kantor'),
+(77, 7, '2021-03-22 14:15:45', 1829, 'Tidak pakai solar', '', NULL, 'Telfon Kantor'),
+(78, 11, '2021-03-22 14:16:27', 103, 'Penawaran', '', NULL, 'Telfon Kantor'),
+(79, 8, '2021-03-22 14:17:35', 606, 'Kebutuhan minim', '', NULL, 'Telfon Kantor'),
+(80, 7, '2021-03-22 14:18:15', 1830, 'Tidak pakai solar', '', NULL, 'Telfon Kantor'),
+(81, 1, '2021-03-22 14:20:44', 1787, 'Tidak terhubung ke PIC', 'CALL BACK BESOK KARENA BELUM DATANG', '2021-03-23', 'Telfon Kantor'),
+(82, 13, '2021-03-22 14:26:03', 631, 'Penawaran', '', NULL, 'Telfon Kantor'),
+(83, 8, '2021-03-22 14:28:21', 1831, 'Penawaran', '', NULL, 'Telfon Pribadi'),
+(84, 1, '2021-03-22 14:36:31', 1832, 'Kebutuhan minim', 'LANGSUNG BELI DI PERTAMINA', NULL, 'Telfon Kantor'),
+(85, 7, '2021-03-22 14:37:07', 1833, 'Tidak terhubung ke PIC', 'Masih WFH', NULL, 'Telfon Kantor'),
+(86, 12, '2021-03-22 14:39:45', 1834, 'Tidak terhubung ke PIC', '', NULL, 'Telfon Kantor'),
+(87, 12, '2021-03-22 14:47:20', 1835, 'Tidak terhubung ke PIC', '', NULL, 'Telfon Kantor'),
+(88, 12, '2021-03-22 14:49:16', 1836, 'Tidak pakai solar', '', NULL, 'Telfon Kantor'),
+(89, 12, '2021-03-22 14:53:03', 1837, 'Tidak terhubung ke PIC', '', NULL, 'Telfon Kantor'),
+(90, 8, '2021-03-22 14:59:42', 1831, 'Penawaran', '', NULL, 'Telfon Pribadi'),
+(91, 1, '2021-03-22 14:59:47', 1838, 'Penawaran', '', NULL, 'Telfon Kantor'),
+(92, 12, '2021-03-22 15:07:44', 1841, 'Tidak terhubung ke PIC', '', NULL, 'Telfon Kantor'),
+(93, 12, '2021-03-22 15:09:28', 1843, 'Tidak terhubung ke PIC', '', NULL, 'Telfon Kantor'),
+(94, 13, '2021-03-22 15:09:47', 1842, 'Belum ada kebutuhan', '', NULL, 'Telfon Pribadi'),
+(96, 7, '2021-03-22 15:12:54', 492, 'Penawaran', '', NULL, 'Telfon Pribadi'),
+(97, 12, '2021-03-22 15:19:31', 1845, 'Tidak terhubung ke PIC', '', NULL, 'Telfon Kantor'),
+(98, 13, '2021-03-22 15:20:14', 1846, 'Belum ada kebutuhan', '', NULL, 'Telfon Pribadi'),
+(99, 9, '2021-03-22 15:21:56', 222, 'Belum ada kebutuhan', '', '2021-04-06', 'Telfon Kantor'),
+(100, 9, '2021-03-22 15:22:58', 140, 'Belum ada kebutuhan', '', '2021-04-06', 'Telfon Kantor'),
+(101, 9, '2021-03-22 15:23:49', 712, 'Belum ada kebutuhan', '', '2021-04-09', 'Telfon Kantor'),
+(102, 13, '2021-03-22 15:26:37', 935, 'Belum ada kebutuhan', '', NULL, 'Telfon Pribadi'),
+(103, 1, '2021-03-22 15:31:33', 1848, 'Penawaran', '', NULL, 'Telfon Kantor'),
+(104, 1, '2021-03-22 15:33:44', 1844, 'Penawaran', '', NULL, 'Telfon Kantor'),
+(105, 12, '2021-03-22 15:39:20', 1850, 'Penawaran', '', NULL, 'Telfon Kantor'),
+(106, 10, '2021-03-22 15:39:37', 1839, 'Belum ada kebutuhan', 'INFO PROYEK MASIH SEPI', '2021-04-01', 'Telfon Pribadi'),
+(107, 13, '2021-03-22 15:53:11', 1852, 'Menunggu Keputusan', '', NULL, 'Telfon Pribadi'),
+(108, 11, '2021-03-22 15:55:00', 1853, 'Tidak pakai solar', '', NULL, 'Telfon Kantor'),
+(109, 8, '2021-03-22 15:55:11', 353, 'Belum ada kebutuhan', 'kebutuhan 1 tahun sekali ', NULL, 'Telfon Kantor'),
+(110, 11, '2021-03-22 15:58:27', 1854, 'Kebutuhan minim', '', NULL, 'Telfon Kantor'),
+(111, 7, '2021-03-22 15:59:33', 1855, 'Tidak pakai solar', '', NULL, 'Telfon Kantor'),
+(112, 13, '2021-03-22 16:02:50', 981, 'Menunggu Keputusan', '', NULL, 'Telfon Pribadi'),
+(113, 9, '2021-03-22 16:03:53', 796, 'Penawaran', '', NULL, 'Telfon Kantor'),
+(114, 10, '2021-03-22 16:08:22', 778, 'Belum ada kebutuhan', '', NULL, 'Telfon Pribadi'),
+(115, 13, '2021-03-22 16:08:49', 1857, 'Tidak terhubung ke PIC', '', NULL, 'Telfon Kantor'),
+(116, 10, '2021-03-22 16:10:10', 176, 'Belum ada kebutuhan', '', NULL, 'Telfon Kantor'),
+(117, 11, '2021-03-22 16:10:11', 1858, 'Kebutuhan minim', '', NULL, 'Telfon Kantor'),
+(118, 9, '2021-03-22 16:11:52', 936, 'Tidak terhubung ke PIC', '', NULL, 'Telfon Kantor'),
+(119, 11, '2021-03-22 16:13:28', 1859, 'Kontrak vendor lain', '', NULL, 'Telfon Kantor'),
+(120, 13, '2021-03-22 16:14:54', 1860, 'Belum ada kebutuhan', '', NULL, 'Telfon Kantor'),
+(121, 7, '2021-03-22 16:17:36', 1861, 'Tidak terhubung ke PIC', '', '2021-03-23', 'Telfon Kantor'),
+(122, 1, '2021-03-22 16:17:55', 1862, 'Tidak terhubung ke PIC', '', '2021-03-23', 'Telfon Kantor'),
+(123, 11, '2021-03-22 16:19:12', 1863, 'Tidak pakai solar', '', NULL, 'Telfon Kantor'),
+(124, 13, '2021-03-22 16:19:44', 644, 'Belum ada kebutuhan', '', NULL, 'Telfon Kantor'),
+(125, 10, '2021-03-22 16:20:53', 350, 'Belum ada kebutuhan', 'AWAL BULAN APRIL MINTA PENAWARAN ', NULL, 'Telfon Pribadi'),
+(126, 7, '2021-03-22 16:23:52', 1864, 'Tidak terhubung ke PIC', '', '2021-03-23', 'Telfon Kantor'),
+(127, 13, '2021-03-22 16:24:31', 1865, 'Tidak terhubung ke PIC', '', NULL, 'Telfon Kantor'),
+(128, 10, '2021-03-22 16:27:08', 218, 'Menunggu Keputusan', '', NULL, 'Telfon Kantor'),
+(129, 13, '2021-03-22 16:28:42', 1866, 'Tidak terhubung ke PIC', '', NULL, 'Telfon Kantor'),
+(130, 13, '2021-03-22 16:31:16', 1867, 'Tidak terhubung ke PIC', '', '2021-03-23', 'Telfon Pribadi');
 
 -- --------------------------------------------------------
 
@@ -1459,7 +1577,7 @@ INSERT INTO `id_offer` (`id`, `tanggal`, `waktu`, `no_surat`, `perusahaan`, `pic
 (77, '2021-01-07', '00:00:00', 77, 420, 'P.BUANG', 'Cash On Delivery', 'PPN', 6700, '', 10, 'Terkirim', 'yes\r'),
 (78, '2021-01-07', '00:00:00', 78, 524, 'ibu rikha', 'Tempo 30 Hari', 'PPN', 7100, '', 9, 'Terkirim', 'yes\r'),
 (79, '2021-01-07', '00:00:00', 79, 67, 'bp. Dedi', 'Tempo 30 Hari', 'PPN', 7100, '', 9, 'Terkirim', 'yes\r'),
-(80, '2021-01-07', '00:00:00', 80, 593, 'IBU WULAN', 'Cash On Delivery', 'PPN', 6600, '', 12, 'Terkirim', 'yes\r'),
+(80, '2021-01-07', '00:00:00', 80, 134, 'IBU WULAN', 'Cash On Delivery', 'PPN', 6600, '', 12, 'Terkirim', 'yes\r'),
 (81, '2021-01-07', '00:00:00', 81, 300, 'BPK HARIANTO', 'Cash On Delivery', 'PPN', 6700, '', 12, 'Terkirim', 'yes\r'),
 (82, '2021-01-07', '00:00:00', 82, 135, 'IBU ETNI', 'Cash On Delivery', 'PPN', 6700, '', 12, 'Terkirim', 'yes\r'),
 (83, '2021-01-07', '00:00:00', 83, 86, 'IBU JUSI', 'Cash On Delivery', 'PPN', 6700, '', 12, 'Terkirim', 'yes\r'),
@@ -2041,7 +2159,7 @@ INSERT INTO `id_offer` (`id`, `tanggal`, `waktu`, `no_surat`, `perusahaan`, `pic
 (658, '2021-01-28', '00:00:00', 653, 969, 'Bu Bianca', 'Cash On Delivery', 'PPN', 6700, '', 8, 'Terkirim', 'yes\r'),
 (659, '2021-01-28', '00:00:00', 654, 130, 'bpk alfon', 'Cash On Delivery', 'PPN', 6700, 'kebutuhan tiap 3 bulan', 12, 'Terkirim', 'no\r'),
 (660, '2021-01-29', '00:00:00', 655, 144, 'IBU FELIN', 'Cash On Delivery', 'PPN', 6300, '', 1, 'Terkirim', 'no\r'),
-(661, '2021-01-29', '00:00:00', 656, 593, 'IBU WULAN', 'Cash On Delivery', 'PPN', 6600, '', 12, 'Terkirim', 'no\r'),
+(661, '2021-01-29', '00:00:00', 656, 134, 'IBU WULAN', 'Cash On Delivery', 'PPN', 6600, '', 12, 'Terkirim', 'no\r'),
 (662, '2021-01-29', '00:00:00', 657, 405, 'BU.SULIS', 'Cash On Delivery', 'PPN', 6700, 'MINTA PENAWARAN BY WA', 10, 'Terkirim', 'yes\r'),
 (663, '2021-01-29', '00:00:00', 658, 221, 'mas ruhin', 'Cash On Delivery', 'PPN', 6700, 'kirim penawaran', 13, 'Gagal Kirim', 'yes\r'),
 (664, '2021-01-29', '00:00:00', 659, 552, '', 'Cash On Delivery', 'PPN', 6700, 'kirim penawaran', 13, 'Terkirim', 'yes\r'),
@@ -2073,7 +2191,7 @@ INSERT INTO `id_offer` (`id`, `tanggal`, `waktu`, `no_surat`, `perusahaan`, `pic
 (690, '2021-02-01', '00:00:00', 1, 120, 'IBU ANUM', 'Cash On Delivery', 'PPN', 6700, 'kirim email', 1, 'Terkirim', 'no\r'),
 (691, '2021-02-01', '00:00:00', 2, 69, 'BPK ERFO', 'Tempo 30 Hari', 'PPN', 6750, 'BIKIN SURAT PENAWAN TEMPO 1 BULAN HARGA 6750 KIRIM KE WA KU', 1, 'Terkirim', 'no\r'),
 (692, '2021-02-01', '00:00:00', 3, 238, 'ibu lusi', 'Cash On Delivery', 'PPN', 6700, 'penawaran kirim lewat email', 12, 'Terkirim', 'no\r'),
-(693, '2021-02-01', '00:00:00', 4, 593, 'ibu wulan', 'Cash On Delivery', 'PPN', 6600, 'follow up periode 1 februari', 12, 'Terkirim', 'no\r'),
+(693, '2021-02-01', '00:00:00', 4, 134, 'ibu wulan', 'Cash On Delivery', 'PPN', 6600, 'follow up periode 1 februari', 12, 'Terkirim', 'no\r'),
 (694, '2021-02-01', '00:00:00', 5, 610, 'UP PUCHASING', 'Cash On Delivery', 'PPN', 6700, 'KIRIM POM', 1, 'Terkirim', 'yes\r'),
 (695, '2021-02-01', '00:00:00', 6, 668, 'BU.MARIA', 'Cash On Delivery', 'PPN', 6700, 'minta penawaran & cp', 10, 'Terkirim', 'yes\r'),
 (696, '2021-02-01', '00:00:00', 7, 772, 'm\'dara', 'Cash On Delivery', 'PPN', 6700, 'kirim penawaran', 13, 'Terkirim', 'yes\r'),
@@ -2651,7 +2769,7 @@ INSERT INTO `id_offer` (`id`, `tanggal`, `waktu`, `no_surat`, `perusahaan`, `pic
 (1266, '2021-03-13', '00:00:00', 224, 358, 'PURCHASING', 'Cash On Delivery', 'PPN', 6700, 'KEBUTUHAN TIAP 3 BULAN SEKALI', 12, 'Terkirim', 'yes\r'),
 (1267, '2021-03-13', '00:00:00', 225, 220, 'PURCHASING', 'Cash On Delivery', 'PPN', 6700, 'KEBUTUHAN TIAP 3 BULAN SEKALI', 12, 'Terkirim', 'yes\r'),
 (1268, '2021-03-13', '00:00:00', 226, 592, 'Bpk Dani ', 'Cash On Delivery', 'PPN', 6700, '', 8, 'Terkirim', 'yes\r'),
-(1269, '2021-03-13', '00:00:00', 227, 593, 'Bu Wulan ', 'Cash On Delivery', 'PPN', 6700, '', 8, 'Terkirim', 'yes\r'),
+(1269, '2021-03-13', '00:00:00', 227, 134, 'Bu Wulan ', 'Cash On Delivery', 'PPN', 6700, '', 8, 'Terkirim', 'yes\r'),
 (1270, '2021-03-13', '00:00:00', 228, 240, 'IBU SILVI', 'Tempo 14 Hari', 'PPN', 6700, 'kasih harga 67', 1, 'Gagal Kirim', 'yes\r'),
 (1271, '2021-03-13', '00:00:00', 229, 381, 'BPK BUDI', 'Tempo 7 Hari', 'PPN', 6800, 'KASIH HARGA 68', 1, 'Terkirim', 'yes\r'),
 (1272, '2021-03-15', '00:00:00', 230, 884, 'Bu Yuli ', 'Cash On Delivery', 'PPN', 7100, '', 10, 'Terkirim', 'yes\r'),
@@ -2758,14 +2876,30 @@ INSERT INTO `id_offer` (`id`, `tanggal`, `waktu`, `no_surat`, `perusahaan`, `pic
 (1373, '2021-03-22', '09:36:21', 334, 1792, 'Logistik', 'Cash On Delivery', 'PPN', 6800, '', 12, 'Terkirim', 'yes'),
 (1374, '2021-03-22', '09:40:32', 329, 230, 'Bapak Wanto', 'Cash On Delivery', 'PPN', 7000, '', 13, 'Terkirim', 'no'),
 (1375, '2021-03-22', '09:49:07', 328, 435, 'Bapak Krisnanda', 'Cash On Delivery', 'PPN', 7000, '', 1, 'Terkirim', 'yes'),
-(1376, '2021-03-22', '10:26:52', 333, 1780, 'Pak Stephen', 'Cash On Delivery', 'PPN', 6900, 'kirim ke lokasi cp+sampel', 11, 'Proses', 'yes'),
+(1376, '2021-03-22', '10:26:52', 333, 1780, 'Pak Stephen', 'Cash On Delivery', 'PPN', 6900, 'kirim ke lokasi cp+sampel', 11, 'Terkirim', 'yes'),
 (1377, '2021-03-22', '10:39:13', 332, 1801, 'Bapak Sutopo', 'Cash On Delivery', 'PPN', 6900, '', 7, 'Gagal Kirim', 'yes'),
 (1378, '2021-03-22', '10:51:10', 331, 706, 'Purchasing', 'Cash On Delivery', 'PPN', 6800, '', 12, 'Terkirim', 'yes'),
-(1379, '2021-03-22', '10:56:37', NULL, 1778, 'Ibu Yenny ', 'Cash On Delivery', 'PPN', 6900, '', 8, 'Pending', 'yes'),
-(1380, '2021-03-22', '11:09:51', NULL, 1809, 'Toni', 'Cash On Delivery', 'PPN', 6900, '', 7, 'Pending', 'yes'),
+(1379, '2021-03-22', '10:56:37', 346, 1778, 'Ibu Yenny ', 'Cash On Delivery', 'PPN', 6900, '', 8, 'Terkirim', 'yes'),
+(1380, '2021-03-22', '11:09:51', 345, 1809, 'Bapak Toni', 'Cash On Delivery', 'PPN', 6900, '', 7, 'Gagal Kirim', 'yes'),
 (1381, '2021-03-22', '11:15:48', 337, 324, 'Purchasing', 'Cash On Delivery', 'PPN', 6800, '', 12, 'Terkirim', 'yes'),
 (1382, '2021-03-22', '11:30:36', 336, 172, 'Bu Flo', 'Tempo 14 Hari', 'PPN', 7000, '', 9, 'Terkirim', 'no'),
-(1383, '2021-03-22', '11:31:17', 335, 256, 'Bu Ima', 'Cash On Delivery', 'PPN', 7000, '', 10, 'Proses', 'no');
+(1383, '2021-03-22', '11:31:17', 335, 256, 'Bu Ima', 'Cash On Delivery', 'PPN', 7000, '', 10, 'Terkirim', 'no'),
+(1384, '2021-03-22', '13:22:21', 344, 1783, 'Bapak Parlan ', 'Tempo 30 Hari', 'PPN', 7500, '', 8, 'Terkirim', 'yes'),
+(1386, '2021-03-22', '13:52:23', 343, 1823, 'Bapak Emeral', 'Cash On Delivery', 'PPN', 6800, '', 12, 'Terkirim', 'yes'),
+(1387, '2021-03-22', '13:53:50', 342, 1824, 'Purchasing', 'Tempo 30 Hari', 'PPN', 6900, '', 7, 'Terkirim', 'yes'),
+(1388, '2021-03-22', '13:58:21', 341, 1826, 'Pak Robby', 'Tempo 21 Hari', 'PPN', 6900, '', 13, 'Terkirim', 'yes'),
+(1389, '2021-03-22', '14:01:21', 340, 88, 'Bapak Kahfi', 'Cash On Delivery', 'PPN', 6800, '', 12, 'Terkirim', 'no'),
+(1390, '2021-03-22', '14:03:18', 339, 549, 'Pak Heri', 'Cash On Delivery', 'PPN', 6900, '', 11, 'Terkirim', 'yes'),
+(1391, '2021-03-22', '14:09:43', 338, 267, 'Bu Mei', 'Cash On Delivery', 'PPN', 6900, '', 9, 'Terkirim', 'no'),
+(1392, '2021-03-22', '14:17:44', 348, 103, 'Pak Eko', 'Cash On Delivery', 'PPN', 6900, '', 11, 'Terkirim', 'yes'),
+(1393, '2021-03-22', '14:26:53', 347, 631, 'Bu Mila', 'Cash On Delivery', 'PPN', 6900, '', 13, 'Terkirim', 'no'),
+(1394, '2021-03-22', '14:28:56', 349, 1831, 'Bapak Zaenal ', 'Cash On Delivery', 'PPN', 7300, 'ppn 73 dan non 67 ', 8, 'Terkirim', 'yes'),
+(1395, '2021-03-22', '15:00:39', NULL, 1838, 'Bapak Hendri', 'Cash On Delivery', 'PPN', 6900, '', 1, 'Pending', 'yes'),
+(1396, '2021-03-22', '15:19:15', 350, 492, 'Ibu Anita', 'Tempo 14 Hari', 'PPN', 7200, '', 7, 'Terkirim', 'no'),
+(1397, '2021-03-22', '15:31:55', NULL, 1848, 'Ibu Ninik', 'Cash On Delivery', 'PPN', 7100, '', 1, 'Pending', 'yes'),
+(1398, '2021-03-22', '15:34:18', NULL, 1844, 'Bapak Faris', 'Cash On Delivery', 'PPN', 7100, '', 1, 'Pending', 'yes'),
+(1399, '2021-03-22', '15:39:44', NULL, 1850, 'Bpk Fehmi', 'Cash On Delivery', 'PPN', 6800, '', 12, 'Pending', 'yes'),
+(1400, '2021-03-22', '16:04:09', NULL, 796, 'Bu Wiwid', 'Cash On Delivery', 'PPN', 7000, '', 9, 'Pending', 'no');
 
 -- --------------------------------------------------------
 
@@ -2785,7 +2919,7 @@ CREATE TABLE `id_offer_number` (
 --
 
 INSERT INTO `id_offer_number` (`id`, `nomor`, `inisial`, `periode`) VALUES
-(1, 337, 'BJB-SBY / III', '15-31 Maret 2021');
+(1, 350, 'BJB-SBY / III', '15-31 Maret 2021');
 
 -- --------------------------------------------------------
 
@@ -2814,8 +2948,16 @@ CREATE TABLE `id_purchase_order` (
   `pembayaran` varchar(100) NOT NULL,
   `status` varchar(100) NOT NULL,
   `catatan` varchar(1000) NOT NULL,
-  `alasan_tolak` varchar(1000) NOT NULL
+  `alasan_tolak` varchar(1000) NOT NULL,
+  `penerima` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `id_purchase_order`
+--
+
+INSERT INTO `id_purchase_order` (`id`, `perusahaan`, `sales`, `no_po`, `tgl_po`, `tgl_kirim`, `alamat`, `alamat_kirim`, `purchasing`, `no_purchasing`, `keuangan`, `no_keuangan`, `volume`, `termin`, `harga`, `cashback`, `pajak`, `pembayaran`, `status`, `catatan`, `alasan_tolak`, `penerima`) VALUES
+(1, 419, 10, 'PO/CORMIX/02/III/2021', '2021-03-22', '2021-03-23', 'jl.maospati - magetan Km.5,5 Sukomoro Magetan', 'jl.maospati - magetan Km.5,5 Sukomoro Magetan', 'Ibu Dita', '081363619093', '', '081363619093', 8000, 'Cash On Delivery', 7200, 100, 'PPN', 'Transfer', 'Disetujui', 'MINTA DIKIRIM JAM HARI KERJA', '', '');
 
 -- --------------------------------------------------------
 
@@ -2844,7 +2986,7 @@ INSERT INTO `id_user` (`id`, `profilname`, `username`, `password`, `last_login`,
 (2, '10', 'sugeng', '$2y$13$zF4RuFW743TDuFQwqzXzaOa18a2l21Q8WGPevoGynoc9FeWl361O2', '2021-03-22 08:50:24', '9e28894760bdf11cb2bef7a32c020e3b', '9e28894760bdf11cb2bef7a32c020e3b', 'Marketing', ''),
 (7, '1', 'alisiachintya', '$2y$13$SMiUO/xBwZvGKMEKtfXe7.wG3qXPcUjCCkKcxHFSxfP11OzriM.s2', '2021-03-22 08:46:39', '60532c4e119ce506036cf74f655259dd', '60532c4e119ce506036cf74f655259dd', 'Marketing', ''),
 (8, '11', 'nia', '$2y$13$jv9tO8ezOgKnvHl/Nd43zuY5XdeXDb3nx2NCFKhQ226svKRr7OLSG', '2021-03-22 09:00:44', '04a481486dd84d7c8bfdfc89d38136a6', '04a481486dd84d7c8bfdfc89d38136a6', 'Marketing', ''),
-(9, '12', 'risza', '$2y$13$tD2k5kTBFRwv0DAfWO0LjO1o2gju3lAwTsctLGUDZ0G//L0u8xNa2', '2021-03-22 10:23:30', '521f6ab426fbb7296a695ab243412094', '521f6ab426fbb7296a695ab243412094', 'Marketing', ''),
+(9, '12', 'risza', '$2y$13$tD2k5kTBFRwv0DAfWO0LjO1o2gju3lAwTsctLGUDZ0G//L0u8xNa2', '2021-03-22 13:28:09', '521f6ab426fbb7296a695ab243412094', '521f6ab426fbb7296a695ab243412094', 'Marketing', ''),
 (10, '13', 'rona', '$2y$13$GJCbmqSIomHQv1DVubDgdOMhU8m01d/NgpCyUF1OvusD9NLprkN0W', '2021-03-22 11:25:25', '689b6f533e39e77830b46315ab4cb501', '689b6f533e39e77830b46315ab4cb501', 'Marketing', ''),
 (11, '7', 'faren', '$2y$13$8ufbvqlnL7DzvZX52GEN..wcZwB3KlSfBCbpXxHB4uVM7DcmFkf66', '2021-03-22 08:43:57', '582b76b44f0d7daba45e67b45ed5e074', '582b76b44f0d7daba45e67b45ed5e074', 'Marketing', ''),
 (12, '9', 'aly', '$2y$13$.7fwCl3DSo3.Gk4UjknlWOKflN.xU77CfRkZftCQ6Xp/6J.D.47ny', '2021-03-22 08:43:26', '33fb5fa89f84d0a48397f693a7c7c242', '33fb5fa89f84d0a48397f693a7c7c242', 'Marketing', ''),
@@ -2942,13 +3084,13 @@ ALTER TABLE `id_city`
 -- AUTO_INCREMENT untuk tabel `id_customer`
 --
 ALTER TABLE `id_customer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1817;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1868;
 
 --
 -- AUTO_INCREMENT untuk tabel `id_dailyreport`
 --
 ALTER TABLE `id_dailyreport`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=131;
 
 --
 -- AUTO_INCREMENT untuk tabel `id_departemen`
@@ -2978,7 +3120,7 @@ ALTER TABLE `id_karyawan`
 -- AUTO_INCREMENT untuk tabel `id_offer`
 --
 ALTER TABLE `id_offer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1384;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1401;
 
 --
 -- AUTO_INCREMENT untuk tabel `id_offer_number`
@@ -2990,7 +3132,7 @@ ALTER TABLE `id_offer_number`
 -- AUTO_INCREMENT untuk tabel `id_purchase_order`
 --
 ALTER TABLE `id_purchase_order`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `id_user`

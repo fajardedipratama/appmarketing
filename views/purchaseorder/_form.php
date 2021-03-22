@@ -107,6 +107,9 @@ use dosamigos\datepicker\DatePicker;
     <div class="col-sm-4">
         <?= $form->field($model, 'catatan')->textInput(['maxlength' => true]) ?>
     </div>
+    <div class="col-sm-4">
+        <?= $form->field($model, 'penerima')->textInput(['maxlength' => true]) ?>
+    </div>
 </div>
     </div></div>
 

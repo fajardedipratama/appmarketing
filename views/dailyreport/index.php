@@ -62,6 +62,7 @@ $this->title = 'Aktivitas Sales';
             ],
             'keterangan',
             'catatan',
+            'con_used',
         ],
     ]); ?>
 </div></div></div>
