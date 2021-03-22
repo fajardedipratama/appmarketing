@@ -52,7 +52,7 @@ class OfferfinishSearch extends Offer
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
             'pagination'=>array('pageSize'=>30),
-            'sort'=>['defaultOrder'=>['id'=>SORT_DESC]]
+            'sort'=>['defaultOrder'=>['tanggal'=>SORT_DESC,'no_surat'=>SORT_DESC]]
         ]);
 
         $this->load($params);
