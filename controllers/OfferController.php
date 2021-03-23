@@ -84,21 +84,37 @@ class OfferController extends Controller
     {
         $model = $this->findModel($id);
 
+        //kondisi yes : penawaran perusahaan baru / penawaran perusahaan yg pernah dipegang sales lain
+        //kondisi no  : penawaran ke-2&dst untuk perusahaan yg masih dipegang 
+        $cek_new=Offer::find()->where(['perusahaan'=>$model->perusahaan])->andWhere(['<','id',$model->id])->limit(1)->orderBy(['id'=>SORT_DESC])->one();
+        if($cek_new){
+            if($cek_new['sales'] === $model->sales){
+                Yii::$app->db->createCommand()->update('id_offer',
+                ['is_new' => 'no'],['id'=>$model->id])->execute();
+            }else{
+                Yii::$app->db->createCommand()->update('id_offer',
+                ['is_new' => 'yes'],['id'=>$model->id])->execute();
+            }
+        }else{
+            Yii::$app->db->createCommand()->update('id_offer',
+            ['is_new' => 'yes'],['id'=>$model->id])->execute();
+        }
+
         $query = OfferNumber::find()->where(['id'=>1])->one();
         $number = $query['nomor']+1;
-
+        //menambahkan no surat
         Yii::$app->db->createCommand()->update('id_offer',
         ['status' => 'Proses','no_surat'=>$number],
         ['id'=>$model->id])->execute();
-
+        //update no.surat terakhir
         Yii::$app->db->createCommand()->update('id_offer_number',
         ['nomor' => $number],
         ['id'=> 1 ])->execute();
-
+        //update customer terverifikasi
         Yii::$app->db->createCommand()->update('id_customer',
         ['verified' => 'yes'],
         ['id'=> $model->perusahaan ])->execute();
-
+        //update expired perusahaan
         $date_now = date('Y-m-d');
         $check_exp = Customer::find()->where(['id'=>$model->perusahaan])->one();
         if($check_exp['expired']===NULL || strtotime($check_exp['expired']) < strtotime($date_now)){
