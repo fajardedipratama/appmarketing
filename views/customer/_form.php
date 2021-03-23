@@ -83,6 +83,9 @@ use dosamigos\datepicker\DatePicker;
         ])?>
      </div>
     <?php endif; ?>
+     <div class="col-sm-4">
+        <?= $form->field($model, 'verified')->dropDownList(['yes'=>'yes','no'=>'no'],['prompt'=>'--Verifikasi--']) ?>
+     </div>
     </div>
 </div></div>
     <div class="form-group">

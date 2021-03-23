@@ -144,7 +144,7 @@ class OfferController extends Controller
         $model = $this->findModel($id);
 
         Yii::$app->db->createCommand()->update('id_offer',
-        ['status' => 'Terkirim'],
+        ['status' => 'Terkirim','tanggal'=>date('Y-m-d'),'waktu'=>date('H:i:s')],
         ['id'=>$model->id])->execute();
 
         return $this->redirect(['/offerproses']);
@@ -154,7 +154,7 @@ class OfferController extends Controller
         $model = $this->findModel($id);
 
         Yii::$app->db->createCommand()->update('id_offer',
-        ['status' => 'Gagal Kirim'],
+        ['status' => 'Gagal Kirim','tanggal'=>date('Y-m-d'),'waktu'=>date('H:i:s')],
         ['id'=>$model->id])->execute();
 
         return $this->redirect(['/offerproses']);

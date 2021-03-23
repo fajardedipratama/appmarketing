@@ -34,6 +34,9 @@ use yii\widgets\ActiveForm;
      <div class="col-sm-4">
         <?= $form->field($model, 'status')->dropDownList(['Terkirim'=>'Terkirim','Gagal Kirim'=>'Gagal Kirim','Proses'=>'Proses','Pending'=>'Pending'],['prompt'=>'--Status--']) ?>
      </div>
+     <div class="col-sm-4">
+        <?= $form->field($model, 'is_new')->dropDownList(['yes'=>'yes','no'=>'no']) ?>
+     </div>
     <?php endif ?>
     </div>
 </div></div>

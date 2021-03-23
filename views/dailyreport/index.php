@@ -63,6 +63,11 @@ $this->title = 'Aktivitas Sales';
             'keterangan',
             'catatan',
             'con_used',
+            [
+                'class' => 'yii\grid\ActionColumn','header'=>'Aksi',
+                'template' => '{update} {delete}',
+                'visible' => Yii::$app->user->identity->type == 'Administrator'
+            ],
         ],
     ]); ?>
 </div></div></div>
