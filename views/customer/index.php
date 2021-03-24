@@ -99,7 +99,15 @@ $this->title = 'Data Perusahaan';
                     },
 
                 ],
-                'visible' => Yii::$app->user->identity->type == 'Administrator' || Yii::$app->user->identity->type == 'Manajemen'
+                'visible' => Yii::$app->user->identity->type == 'Administrator' || Yii::$app->user->identity->type == 'Manajemen',
+                'visibleButtons' => [
+                    'update' => function ($model) {
+                        return Yii::$app->user->identity->type == 'Administrator';
+                    },
+                    'assign' => function ($model) {
+                        return Yii::$app->user->identity->type == 'Administrator';
+                    },
+                ]
             ],
         ],
     ]); ?>

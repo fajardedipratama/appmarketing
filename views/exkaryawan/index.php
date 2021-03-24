@@ -42,7 +42,8 @@ $this->title = 'Ex-Karyawan';
             [
                 'class' => 'yii\grid\ActionColumn',
                 'header' => 'Aksi',
-                'template' => '{update}'
+                'template' => '{update}',
+                'visible' => Yii::$app->user->identity->type == 'Administrator'
             ],
         ],
     ]); ?>

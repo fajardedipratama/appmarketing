@@ -16,8 +16,10 @@ $this->title = 'Data Karyawan';
             <h1><?= Html::encode($this->title) ?></h1>
         </div>
         <div class="col-sm-4">
+        <?php if(Yii::$app->user->identity->type == 'Administrator'): ?>
             <?= Html::a('<i class="fa fa-fw fa-plus-square"></i> Tambah Data', ['create'], ['class' => 'btn btn-success']) ?>
-            <?= Html::a('<i class="fa fa-fw fa-minus-square"></i> Ex-Karyawan', ['/exkaryawan'], ['class' => 'btn btn-danger']) ?>
+        <?php endif; ?>
+            <?= Html::a('<i class="fa fa-fw fa-users"></i> Ex-Karyawan', ['/exkaryawan'], ['class' => 'btn btn-danger pull-right']) ?>
         </div>
     </div>
 
@@ -41,19 +43,24 @@ $this->title = 'Data Karyawan';
             [
                 'header'=>'Aksi','class' => 'yii\grid\ActionColumn',
                 'template' => '{view} {update} {resign}',
-                'buttons'=>
-                [
+                'buttons'=> [
                     'resign'=>function($url,$model)
                     {
                     return Html::a
                      (
                         '<span class="glyphicon glyphicon-minus-sign"></span>',
-                        ["exkaryawan/create",'id'=>$model->id],
-                        ['title' => Yii::t('app', 'Nonaktifkan')]
+                        ["exkaryawan/create",'id'=>$model->id],['title' => Yii::t('app', 'Nonaktifkan')]
                      );
                     },
-
                 ],
+                'visibleButtons' => [
+                    'update' => function ($model) {
+                        return Yii::$app->user->identity->type == 'Administrator';
+                    },
+                    'resign' => function ($model) {
+                        return Yii::$app->user->identity->type == 'Administrator';
+                    },
+                ]
             ],
         ],
     ]); ?>

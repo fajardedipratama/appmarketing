@@ -56,7 +56,7 @@ use dosamigos\datepicker\DatePicker;
     <?php if($model->isNewRecord): ?>
      <div class="col-sm-4">
         <?= $form->field($model, 'sales')->widget(Select2::className(),[
-            'data'=>ArrayHelper::map(Karyawan::find()->where(['posisi'=>6,'status_aktif'=>'Aktif'])->orderBy(['nama'=>SORT_ASC])->all(),'id',
+            'data'=>ArrayHelper::map(Karyawan::find()->where(['status_aktif'=>'Aktif'])->orderBy(['nama'=>SORT_ASC])->all(),'id',
                 function($model){
                     return $model['nama_pendek'];
                 }
@@ -83,9 +83,11 @@ use dosamigos\datepicker\DatePicker;
         ])?>
      </div>
     <?php endif; ?>
+    <?php if(!$model->isNewRecord && $model->verified != NULL): ?>
      <div class="col-sm-4">
         <?= $form->field($model, 'verified')->dropDownList(['yes'=>'yes','no'=>'no'],['prompt'=>'--Verifikasi--']) ?>
      </div>
+    <?php endif ?>
     </div>
 </div></div>
     <div class="form-group">

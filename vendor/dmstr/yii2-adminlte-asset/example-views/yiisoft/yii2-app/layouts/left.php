@@ -33,7 +33,10 @@ $karyawan = Karyawan::find()->where(['id'=>Yii::$app->user->identity->profilname
                             ['label' => 'Jabatan', 'icon' => 'briefcase', 'url' => ['/jobtitle'], 'active'=>in_array(\Yii::$app->controller->id,['jobtitle'])],
                             ['label' => 'Departemen', 'icon' => 'building', 'url' => ['/departemen'], 'active'=>in_array(\Yii::$app->controller->id,['departemen'])],
                             ['label' => '.'],
-                            ['label' => 'User Karyawan', 'icon' => 'user', 'url' => ['/users'], 'active'=>in_array(\Yii::$app->controller->id,['users'])],
+                            [
+                                'label' => 'User Login', 'icon' => 'key', 'url' => ['/users'], 'active'=>in_array(\Yii::$app->controller->id,['users']),
+                                'visible' => !Yii::$app->user->isGuest && Yii::$app->user->identity->type == 'Administrator'
+                            ],
                         ],
                         'visible' => !Yii::$app->user->isGuest && Yii::$app->user->identity->type == 'Administrator' || Yii::$app->user->identity->type == 'Manajemen'
                     ],

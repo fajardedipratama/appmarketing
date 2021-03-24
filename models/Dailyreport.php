@@ -58,7 +58,9 @@ class Dailyreport extends \yii\db\ActiveRecord
     }
 
     public function beforeSave($options = array()) {
+      if($this->isNewRecord){
         $this->waktu=date('Y-m-d H:i:s');
+      }
 
         if(!empty($this->pengingat)){
           $check = Dailyreport::find()->where(['perusahaan'=>$this->perusahaan])->andWhere(['pengingat'=>date('Y-m-d',strtotime($this->pengingat))])->count();

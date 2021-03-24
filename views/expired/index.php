@@ -59,6 +59,7 @@ $this->title = 'Data Expired';
               ]),
             ],
             [
+                'header'=>'+2 Minggu ?',
                 'attribute'=>'long_expired',
                 'headerOptions'=>['style'=>'width:6%'],
                 'format'=>'raw',

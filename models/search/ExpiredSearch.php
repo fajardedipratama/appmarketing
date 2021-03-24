@@ -40,7 +40,7 @@ class ExpiredSearch extends Customer
      */
     public function search($params)
     {
-        $query = Customer::find()->where(['<=','expired',date('Y-m-d')])->orWhere(['long_expired'=>'yes']);
+        $query = Customer::find()->where(['<','expired',date('Y-m-d')]);
 
         // add conditions that should always apply here
 

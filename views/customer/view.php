@@ -34,6 +34,7 @@ $offers = Offer::find()->where(['perusahaan'=>$model->id])->orderBy(['id'=>SORT_
             <h5><?= $model->city->kota ?> - Exp. - </h5>
           <?php endif; ?>
         </div>
+        <?php if(Yii::$app->user->identity->type == 'Administrator'): ?>
         <div class="col-sm-4">
             <p>
                 <?= Html::a('<i class="fa fa-fw fa-pencil"></i> Ubah', ['update', 'id' => $model->id], ['class' => 'btn btn-warning']) ?>
@@ -47,6 +48,7 @@ $offers = Offer::find()->where(['perusahaan'=>$model->id])->orderBy(['id'=>SORT_
                 <?= Html::a('<i class="fa fa-fw fa-refresh"></i> Gabung', ['merge', 'id' => $model->id], ['class' => 'btn btn-primary','target'=>'_blank']) ?>
             </p>
         </div>
+        <?php endif ?>
     </div>
     
     <section class="content">
