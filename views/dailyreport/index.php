@@ -14,9 +14,10 @@ $this->title = 'Aktivitas Sales';
     <div class="row">
         <div class="col-sm-10">
             <h1><?= Html::encode($this->title) ?></h1>
+            <h5><i>Tanggal : <?= date('d-m-Y',strtotime($_GET['waktu'])); ?></i></h5>
         </div>
         <div class="col-sm-2">
-        <?php if(Yii::$app->user->identity->type != 'Marketing'): ?>
+        <?php if(Yii::$app->user->identity->type == 'Administrator'): ?>
             <?= Html::a('<i class="fa fa-fw fa-file-excel-o"></i> Export Excel', ['export-excel2','waktu'=>$_GET['waktu']], ['class'=>'btn btn-success']); ?>
         <?php endif ?> 
         </div>

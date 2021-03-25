@@ -16,7 +16,11 @@ $this->title = 'Data Expired';
             <h1><?= Html::encode($this->title) ?></h1>
         </div>
         <div class="col-sm-2">
+        <?php if(Yii::$app->user->identity->type == 'Marketing'): ?>
+            <?= Html::a('<i class="fa fa-fw fa-chevron-left"></i> Kembali', ['selfcustomer/index'], ['class' => 'btn btn-success']) ?>
+        <?php else: ?>
             <?= Html::a('<i class="fa fa-fw fa-institution"></i> Data Perusahaan', ['customer/index'], ['class' => 'btn btn-success']) ?>
+        <?php endif; ?>
         </div>
     </div>
 
@@ -40,12 +44,21 @@ $this->title = 'Data Expired';
             ],
             'perusahaan',
             [
+                'attribute' => 'lokasi',
+                'value' => 'city.kota',
+                'filter'=>\kartik\select2\Select2::widget([
+                    'model'=>$searchModel,'attribute'=>'lokasi','data'=>$kota,
+                    'options'=>['placeholder'=>'Lokasi'],'pluginOptions'=>['allowClear'=>true]
+                ])
+            ],
+            [
                 'attribute' => 'sales',
                 'value' => 'karyawan.nama_pendek',
                 'filter'=>\kartik\select2\Select2::widget([
                     'model'=>$searchModel,'attribute'=>'sales','data'=>$sales,
                     'options'=>['placeholder'=>'Sales'],'pluginOptions'=>['allowClear'=>true]
-                ])
+                ]),
+                'visible' => Yii::$app->user->identity->type == 'Administrator' || Yii::$app->user->identity->type == 'Manajemen',
             ],
             [
               'header'=>'Expired',
@@ -85,8 +98,8 @@ $this->title = 'Data Expired';
                         ['title' => Yii::t('app', 'Sebarkan')],
                      );
                     },
-
                 ],
+                'visible' => Yii::$app->user->identity->type == 'Administrator' || Yii::$app->user->identity->type == 'Manajemen',
             ],
         ],
     ]); ?>

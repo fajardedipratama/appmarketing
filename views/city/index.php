@@ -17,7 +17,9 @@ $this->title = 'Kabupaten/Kota';
             <h1><?= Html::encode($this->title) ?></h1>
         </div>
         <div class="col-sm-2">
+        <?php if(Yii::$app->user->identity->type == 'Administrator'): ?>
             <?= Html::a('<i class="fa fa-fw fa-plus-square"></i> Tambah Data', ['create'], ['class' => 'btn btn-success']) ?>
+        <?php endif; ?>
         </div>
     </div>
 
@@ -33,7 +35,8 @@ $this->title = 'Kabupaten/Kota';
 
             [
                 'class' => 'yii\grid\ActionColumn','header'=>'Aksi',
-                'template' => '{update} {delete}'
+                'template' => '{update} {delete}',
+                'visible' => Yii::$app->user->identity->type == 'Administrator'
             ],
         ],
     ]); ?>

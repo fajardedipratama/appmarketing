@@ -102,7 +102,7 @@ $this->title = 'Penawaran Selesai';
               'visibleButtons'=>
               [
                 'cetak'=>function($model){
-                  return Yii::$app->user->identity->type == 'Administrator' || Yii::$app->user->identity->type == 'Manajemen';
+                  return Yii::$app->user->identity->type == 'Administrator';
                 }
               ]
             ],

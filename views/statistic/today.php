@@ -6,7 +6,7 @@ use app\models\Karyawan;
 /* @var $this yii\web\View */
 /* @var $model app\models\Karyawan */
 
-$this->title = 'Statistik Harian ('.date('d/m/Y',strtotime($_GET['time'])).')';
+$this->title = 'Statistik Harian';
 \yii\web\YiiAsset::register($this);
 
 $query = Karyawan::find()->where(['posisi'=>6,'status_aktif'=>'Aktif'])->orderBy(['nama_pendek'=>SORT_ASC])->all();
@@ -17,6 +17,7 @@ $query = Karyawan::find()->where(['posisi'=>6,'status_aktif'=>'Aktif'])->orderBy
     <div class="row">
         <div class="col-sm-10">
             <h1><?= Html::encode($this->title) ?></h1>
+            <h5><i>Tanggal : <?= date('d-m-Y',strtotime($_GET['time'])); ?></i></h5>
         </div>
         <div class="col-sm-2">
             <?= Html::a('<i class="fa fa-fw fa-calendar"></i> Statistik Total', ['index'], ['class' => 'btn btn-success']) ?>

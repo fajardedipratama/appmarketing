@@ -17,7 +17,9 @@ $this->title = 'Data PO';
             <h1><?= Html::encode($this->title) ?></h1>
         </div>
         <div class="col-sm-2">
+        <?php if(Yii::$app->user->identity->type != 'Manajemen'): ?>
             <?= Html::a('<i class="fa fa-fw fa-plus-square"></i> Tambah Data', ['create'], ['class' => 'btn btn-success']) ?>
+        <?php endif; ?>
         </div>
     </div>
 

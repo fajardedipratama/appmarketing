@@ -40,7 +40,11 @@ class ExpiredSearch extends Customer
      */
     public function search($params)
     {
-        $query = Customer::find()->where(['<','expired',date('Y-m-d')]);
+        if(Yii::$app->user->identity->type == 'Marketing'){
+            $query = Customer::find()->where(['<','expired',date('Y-m-d')])->andWhere(['sales'=>Yii::$app->user->identity->profilname]);
+        }else{
+            $query = Customer::find()->where(['<','expired',date('Y-m-d')]);
+        }
 
         // add conditions that should always apply here
 

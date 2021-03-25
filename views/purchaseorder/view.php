@@ -15,7 +15,7 @@ $this->title = 'PURCHASE ORDER';
         <h1><b><?= Html::encode($this->title) ?></b></h1>
         <h4><?= $model->customer->perusahaan.' - '.$model->no_po ?></h4>
     </div>
-<?php if(Yii::$app->user->identity->type != 'Marketing'): ?>
+<?php if(Yii::$app->user->identity->type == 'Administrator'): ?>
     <div class="col-sm-5">
         <!-- tombol admin -->
     <?php if($model->status === 'Pending'): ?>
@@ -27,7 +27,7 @@ $this->title = 'PURCHASE ORDER';
         <?= Html::a('<i class="fa fa-fw fa-money"></i> Terbayar', ['paidpo', 'id' => $model->id], ['class' => 'btn btn-success','data' => ['confirm' => 'PO Terbayar Lunas ?','method' => 'post']]) ?>
     <?php endif; ?>
         <!-- tombol admin -->
-        <?= Html::a('<i class="fa fa-fw fa-print"></i> Print', ['print', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('<i class="fa fa-fw fa-print"></i> Print', ['print', 'id' => $model->id], ['class' => 'btn btn-primary','target'=>'_blank']) ?>
         <?= Html::a('<i class="fa fa-fw fa-pencil"></i> Ubah', ['update', 'id' => $model->id], ['class' => 'btn btn-info']) ?>
         <?= Html::a('<i class="fa fa-fw fa-trash"></i> Hapus', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-warning',

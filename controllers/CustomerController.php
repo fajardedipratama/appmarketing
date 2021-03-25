@@ -51,10 +51,18 @@ class CustomerController extends Controller
         $searchModel = new CustomerSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-        $sales = ArrayHelper::map(Karyawan::find()->where(['posisi'=>6,'status_aktif'=>'Aktif'])->all(),'id',
+        if(Yii::$app->user->identity->type == 'Marketing'){
+            $sales = ArrayHelper::map(Karyawan::find()->where(['posisi'=>6,'status_aktif'=>'Aktif'])->all(),'id',
                 function($model){
                     return $model['nama_pendek'];
                 });
+        }else{
+            $sales = ArrayHelper::map(Karyawan::find()->where(['status_aktif'=>'Aktif'])->all(),'id',
+                function($model){
+                    return $model['nama_pendek'];
+                });
+        }
+
         $kota = ArrayHelper::map(City::find()->all(),'id',
                 function($model){
                     return $model['kota'];
