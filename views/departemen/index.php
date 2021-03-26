@@ -30,6 +30,7 @@ $this->title = 'Departemen';
             'departemen',
             [
                 'header'=>'Aksi','class' => 'yii\grid\ActionColumn',
+                'template'=>'{update} {delete}',
                 'visible' => Yii::$app->user->identity->type == 'Administrator'
             ],
         ],
