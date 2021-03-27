@@ -142,7 +142,7 @@ class SelfcustomerController extends Controller
     public function actionLongexpired($id)
     {
         $model = $this->findModel($id);
-        $expired=date('Y-m-d', strtotime('+15 days', strtotime($model->expired)));
+        $expired=date('Y-m-d', strtotime('+31 days', strtotime($model->expired)));
 
         Yii::$app->db->createCommand()->update('id_customer',
         ['expired' => $expired, 'long_expired' => 'yes'],

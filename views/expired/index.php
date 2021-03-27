@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use dosamigos\datepicker\DatePicker;
+use app\models\Dailyreport;
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\search\ExpiredSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -42,7 +43,17 @@ $this->title = 'Data Expired';
                 },
                 'filter'=> ['yes'=>'yes','no'=>'no']
             ],
-            'perusahaan',
+            [
+                'attribute'=>'perusahaan',
+                'format'=>'raw',
+                'value'=>function($model){
+                    if($model->long_expired == 'yes'){
+                        return $model->perusahaan.' <i class="fa fa-fw fa-warning" title="Pernah Diperpanjang"></i>';
+                    }else{
+                        return $model->perusahaan;
+                    }
+                }
+            ],
             [
                 'attribute' => 'lokasi',
                 'value' => 'city.kota',
@@ -50,6 +61,19 @@ $this->title = 'Data Expired';
                     'model'=>$searchModel,'attribute'=>'lokasi','data'=>$kota,
                     'options'=>['placeholder'=>'Lokasi'],'pluginOptions'=>['allowClear'=>true]
                 ])
+            ],
+            [
+                'header'=>'Status Terakhir',
+                'value'=>function($model){
+                    if($model->verified != 'no'){
+                        $query = Dailyreport::find()->where(['perusahaan'=>$model->id])->orderBy(['waktu'=>SORT_DESC])->one();
+                        if($query){
+                            return $query['keterangan'].'-'.date('d/m/y',strtotime($query['waktu']));;
+                        }
+                    }else{
+                        return $model->catatan;
+                    }
+                }
             ],
             [
                 'attribute' => 'sales',
@@ -71,19 +95,6 @@ $this->title = 'Data Expired';
                 ],
               ]),
             ],
-            [
-                'header'=>'+2 Minggu ?',
-                'attribute'=>'long_expired',
-                'headerOptions'=>['style'=>'width:6%'],
-                'format'=>'raw',
-                'value'=>function($model){
-                    if($model->long_expired == 'yes'){
-                        return '<i class="fa fa-fw fa-warning" title="Pernah Diperpanjang"></i>';
-                    }
-                },
-                'filter'=> ['yes'=>'yes']
-            ],
-
             [
                 'class' => 'yii\grid\ActionColumn','header'=>'Aksi',
                 'template' => '{assign}',
