@@ -68,7 +68,11 @@ $this->title = 'Data Perusahaan';
                     if($model->verified != 'no'){
                         $query = Dailyreport::find()->where(['perusahaan'=>$model->id])->orderBy(['waktu'=>SORT_DESC])->one();
                         if($query){
-                            return $query['keterangan'].'-'.date('d/m/y',strtotime($query['waktu']));;
+                            if(Yii::$app->user->identity->type != 'Marketing'){
+                            return $query['keterangan'].'-'.date('d/m/y',strtotime($query['waktu']));
+                            }else{
+                            return $query['keterangan'];
+                            }
                         }
                     }else{
                         return $model->catatan;

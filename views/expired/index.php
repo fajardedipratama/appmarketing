@@ -68,7 +68,7 @@ $this->title = 'Data Expired';
                     if($model->verified != 'no'){
                         $query = Dailyreport::find()->where(['perusahaan'=>$model->id])->orderBy(['waktu'=>SORT_DESC])->one();
                         if($query){
-                            return $query['keterangan'].'-'.date('d/m/y',strtotime($query['waktu']));;
+                            return $query['keterangan'];
                         }
                     }else{
                         return $model->catatan;
