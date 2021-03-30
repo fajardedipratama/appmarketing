@@ -56,7 +56,17 @@ $this->title = 'Data Perusahaan';
             ],
             [
                 'attribute' => 'sales',
-                'value' => 'karyawan.nama_pendek',
+                'value' => function($model){
+                    if(Yii::$app->user->identity->type != 'Marketing'){
+                        return $model->karyawan->nama_pendek;
+                    }else{
+                        if($model->karyawan->id == 2){
+                            return " ";
+                        }else{
+                            return $model->karyawan->nama_pendek;
+                        }
+                    }
+                },
                 'filter'=>\kartik\select2\Select2::widget([
                     'model'=>$searchModel,'attribute'=>'sales','data'=>$sales,
                     'options'=>['placeholder'=>'Sales'],'pluginOptions'=>['allowClear'=>true]

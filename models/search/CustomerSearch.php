@@ -41,7 +41,7 @@ class CustomerSearch extends Customer
     public function search($params)
     {
         if(Yii::$app->user->identity->type == 'Marketing'){
-            $query = Customer::find()->where(['>=','expired',date('Y-m-d')])->orWhere(['expired'=>NULL])->andWhere(['!=','sales','2']);
+            $query =Customer::find()->where(['>=','expired',date('Y-m-d')])->orWhere(['expired'=>NULL]);
         }else{
             $query = Customer::find();
         }

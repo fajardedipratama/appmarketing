@@ -20,6 +20,7 @@ use dosamigos\datepicker\DatePicker;
     <div class="box box-success"><div class="box-body">
 <div class="row">
     <div class="col-sm-4">
+      <?php if(Yii::$app->user->identity->type == 'Marketing'): ?>
         <?= $form->field($model, 'perusahaan')->widget(Select2::className(),[
             'data'=>ArrayHelper::map(Customer::find()->where(['sales'=>Yii::$app->user->identity->profilname])->andWhere(['verified'=>'yes'])->all(),'id',
                 function($model){
@@ -28,6 +29,16 @@ use dosamigos\datepicker\DatePicker;
             ),
             'options'=>['placeholder'=>"Perusahaan"],'pluginOptions'=>['allowClear'=>true]
         ]) ?>
+      <?php else: ?>
+        <?= $form->field($model, 'perusahaan')->widget(Select2::className(),[
+            'data'=>ArrayHelper::map(Customer::find()->where(['sales'=>2])->all(),'id',
+                function($model){
+                    return $model['perusahaan'];
+                }
+            ),
+            'options'=>['placeholder'=>"Perusahaan"],'pluginOptions'=>['allowClear'=>true]
+        ]) ?>
+      <?php endif ?>
     </div>
 <?php if(Yii::$app->user->identity->type != 'Marketing'): ?>
     <div class="col-sm-4">

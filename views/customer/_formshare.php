@@ -17,7 +17,7 @@ use app\models\Karyawan;
     <div class="row">
      <div class="col-sm-4">
         <?= $form->field($model, 'sales')->widget(Select2::className(),[
-            'data'=>ArrayHelper::map(Karyawan::find()->where(['posisi'=>6,'status_aktif'=>'Aktif'])->orderBy(['nama'=>SORT_ASC])->all(),'id',
+            'data'=>ArrayHelper::map(Karyawan::find()->where(['status_aktif'=>'Aktif'])->orderBy(['nama'=>SORT_ASC])->all(),'id',
                 function($model){
                     return $model['nama_pendek'];
                 }

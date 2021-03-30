@@ -18,7 +18,7 @@ use app\models\Customer;
     <div class="row">
      <div class="col-sm-4">
         <?= $form->field($model, 'perusahaan')->widget(Select2::className(),[
-            'data'=>ArrayHelper::map(Customer::find()->where(['sales'=>NULL])->orderBy(['perusahaan'=>SORT_ASC])->all(),'id',
+            'data'=>ArrayHelper::map(Customer::find()->orderBy(['perusahaan'=>SORT_ASC])->all(),'id',
                 function($model){
                     return $model['perusahaan'];
                 }
