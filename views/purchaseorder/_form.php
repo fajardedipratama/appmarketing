@@ -31,7 +31,7 @@ use dosamigos\datepicker\DatePicker;
         ]) ?>
       <?php else: ?>
         <?= $form->field($model, 'perusahaan')->widget(Select2::className(),[
-            'data'=>ArrayHelper::map(Customer::find()->where(['sales'=>2])->all(),'id',
+            'data'=>ArrayHelper::map(Customer::find()->all(),'id',
                 function($model){
                     return $model['perusahaan'];
                 }
