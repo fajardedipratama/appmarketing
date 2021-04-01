@@ -30,12 +30,18 @@ use yii\widgets\ActiveForm;
      <div class="col-sm-4">
         <?= $form->field($model, 'catatan')->textInput(['maxlength' => true]) ?>
      </div>
+     <div class="col-sm-4">
+        <label>Kirim Ke WhatsApp ?</label>
+        <?= $form->field($model, 'send_wa')->checkBox(['label'=>false,'selected' => $model->send_wa]) ?>
+     </div>
+    </div>
+    <div class="row">
     <?php if(Yii::$app->user->identity->type == 'Administrator'): ?>
      <div class="col-sm-4">
         <?= $form->field($model, 'status')->dropDownList(['Terkirim'=>'Terkirim','Gagal Kirim'=>'Gagal Kirim','Proses'=>'Proses','Pending'=>'Pending'],['prompt'=>'--Status--']) ?>
      </div>
      <div class="col-sm-4">
-        <?= $form->field($model, 'is_new')->dropDownList(['yes'=>'yes','no'=>'no']) ?>
+        <?= $form->field($model, 'is_new')->dropDownList(['yes'=>'yes','no'=>'no'],['prompt'=>'--Penawaran Baru--']) ?>
      </div>
     <?php endif ?>
     </div>

@@ -32,10 +32,15 @@ $this->title = 'Penawaran Proses';
               ])
             ],
             [
-              'header'=>'Lokasi',
+              'header'=>'SendToWA',
+              'format'=>'raw',
+              'headerOptions'=>['style'=>'width:8%'],
               'value'=>function($data){
-                $query = City::find()->where(['id'=>$data->customer->lokasi])->one();
-                return $query['kota'];
+                if($data->send_wa === 1){
+                  return '<i class="fa fa-fw fa-check"></i>';
+                }else{
+                  return ' ';
+                }
               }
             ],
             [

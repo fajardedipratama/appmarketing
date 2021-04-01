@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 use dosamigos\datepicker\DatePicker;
 use app\models\Dailyreport;
+use app\models\PurchaseOrder;
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\search\CustomerSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -37,10 +38,19 @@ $this->title = 'Data Perusahaan';
                 'headerOptions'=>['style'=>'width:6%'],
                 'format'=>'raw',
                 'value'=>function($model){
-                    if($model->verified == 'yes'){
-                        return '<i class="fa fa-fw fa-check" title="Disetujui"></i>';
-                    }elseif($model->verified == 'no'){
-                        return '<i class="fa fa-fw fa-remove" title="Ditolak"></i>';
+                    $query = PurchaseOrder::find()->where(['perusahaan'=>$model->id])->andWhere(['!=','status','Ditolak'])->andWhere(['!=','status','Pending'])->count();
+                    if($query>0){
+                        if($model->verified == 'yes'){
+                            return '<i class="fa fa-fw fa-check" title="Disetujui"></i> <i class="fa fa-fw fa-lock" title="PO"></i>';
+                        }elseif($model->verified == 'no'){
+                            return '<i class="fa fa-fw fa-remove" title="Ditolak"></i> <i class="fa fa-fw fa-lock" title="PO"></i>';
+                        }
+                    }else{
+                        if($model->verified == 'yes'){
+                            return '<i class="fa fa-fw fa-check" title="Disetujui"></i>';
+                        }elseif($model->verified == 'no'){
+                            return '<i class="fa fa-fw fa-remove" title="Ditolak"></i>';
+                        }
                     }
                 },
                 'filter'=> ['yes'=>'yes','no'=>'no']

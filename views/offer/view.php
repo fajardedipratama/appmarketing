@@ -80,6 +80,17 @@ $this->title = 'Detail Penawaran #'.$model->no_surat;
               },
             ],
             'status',
+            [
+                'attribute'=>'send_wa',
+                'format'=>'raw',
+                'value'=>function($data){
+                    if($data->send_wa === 1){
+                        return '<i class="fa fa-fw fa-check"></i>';
+                    }else{
+                        return ' ';
+                    }
+                },
+            ]
         ],
     ]) ?>   
     </div>

@@ -51,6 +51,10 @@ use app\models\Customer;
             'options'=>['placeholder'=>"Sales"],'pluginOptions'=>['allowClear'=>true]
         ]) ?>
      </div>
+     <div class="col-sm-4">
+        <label>Kirim Ke WhatsApp ?</label>
+        <?= $form->field($model, 'send_wa')->checkBox(['label'=>false,'selected' => $model->send_wa]) ?>
+     </div>
     </div>
 </div></div>
 

@@ -20,6 +20,7 @@ use Yii;
  * @property int $sales
  * @property string $status
  * @property string $is_new
+ * @property int|null $send_wa
  */
 class Offer extends \yii\db\ActiveRecord
 {
@@ -39,7 +40,7 @@ class Offer extends \yii\db\ActiveRecord
         return [
             [['perusahaan', 'pic', 'top', 'pajak', 'harga'], 'required'],
             [['tanggal','waktu'], 'safe'],
-            [['no_surat', 'perusahaan', 'harga', 'sales'], 'integer'],
+            [['no_surat', 'perusahaan', 'harga', 'sales','send_wa'], 'integer'],
             [['pic', 'top', 'pajak', 'status','is_new'], 'string', 'max' => 100],
             [['catatan'], 'string', 'max' => 1000],
         ];
@@ -63,7 +64,8 @@ class Offer extends \yii\db\ActiveRecord
             'catatan' => 'Catatan',
             'sales' => 'Sales',
             'status' => 'Status',
-            'is_new' => 'Penawaran Baru ?'
+            'is_new' => 'Penawaran Baru ?',
+            'send_wa' => 'Kirim WhatsApp ?',
         ];
     }
 
@@ -73,19 +75,6 @@ class Offer extends \yii\db\ActiveRecord
             $this->status='Pending';
             $this->tanggal=date('Y-m-d');
             $this->waktu=date('H:i:s');
-
-            //kondisi yes : penawaran perusahaan baru / penawaran perusahaan yg pernah dipegang sales lain
-            //kondisi no  : penawaran ke-2&dst untuk perusahaan yg masih dipegang 
-            // $cek_new=Offer::find()->where(['perusahaan'=>$this->perusahaan])->limit(1)->orderBy(['id'=>SORT_DESC])->one();
-            // if($cek_new){
-            //     if($cek_new['sales'] == $this->sales){
-            //         $this->is_new = 'no';
-            //     }else{
-            //         $this->is_new = 'yes';
-            //     }
-            // }else{
-            //      $this->is_new = 'yes';
-            // }
         }
         
         return true;

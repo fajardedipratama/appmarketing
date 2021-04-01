@@ -47,7 +47,7 @@ $this->title = 'Statistik Total';
             [
                 'header'=>'Total PO (Disetujui + Ditolak)',
                 'value'=>function($data){
-                    $success = PurchaseOrder::find()->where(['sales'=>$data['id']])->andWhere(['!=','status','Ditolak'])->count();
+                    $success = PurchaseOrder::find()->where(['sales'=>$data['id']])->andWhere(['!=','status','Ditolak'])->andWhere(['!=','status','Pending'])->count();
                     $failed = PurchaseOrder::find()->where(['sales'=>$data['id']])->andWhere(['status'=>'Ditolak'])->count();
                     return $success+$failed.' ('.$success.'+'.$failed.')';
                 }
