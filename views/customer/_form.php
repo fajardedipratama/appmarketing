@@ -83,11 +83,9 @@ use dosamigos\datepicker\DatePicker;
         ])?>
      </div>
     <?php endif; ?>
-    <?php if(!$model->isNewRecord && $model->verified != NULL): ?>
      <div class="col-sm-4">
         <?= $form->field($model, 'verified')->dropDownList(['yes'=>'yes','no'=>'no'],['prompt'=>'--Verifikasi--']) ?>
      </div>
-    <?php endif ?>
     </div>
 </div></div>
     <div class="form-group">

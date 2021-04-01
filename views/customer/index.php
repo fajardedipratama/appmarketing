@@ -58,12 +58,20 @@ $this->title = 'Data Perusahaan';
                 'attribute' => 'sales',
                 'value' => function($model){
                     if(Yii::$app->user->identity->type != 'Marketing'){
-                        return $model->karyawan->nama_pendek;
-                    }else{
-                        if($model->karyawan->id == 2){
-                            return " ";
-                        }else{
+                        if ($model->sales) {
                             return $model->karyawan->nama_pendek;
+                        }else{
+                            return " ";
+                        }
+                    }else{
+                        if ($model->sales) {
+                            if($model->sales == 2){
+                                return " ";
+                            }else{
+                                return $model->karyawan->nama_pendek;
+                            }
+                        }else{
+                            return " ";
                         }
                     }
                 },
