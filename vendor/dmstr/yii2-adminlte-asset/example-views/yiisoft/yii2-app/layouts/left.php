@@ -46,7 +46,7 @@ $karyawan = Karyawan::find()->where(['id'=>Yii::$app->user->identity->profilname
                         'url' => '#',
                         'items' => [
                             [
-                                'label' => 'Data Sales', 'icon' => 'user-secret', 'url' => ['/selfcustomer'], 'active'=>in_array(\Yii::$app->controller->id,['selfcustomer','offer','offerfailed']),
+                                'label' => 'Data Sales', 'icon' => 'user-secret', 'url' => ['/selfcustomer'], 'active'=>in_array(\Yii::$app->controller->id,['selfcustomer']),
                                 'visible' => !Yii::$app->user->isGuest && Yii::$app->user->identity->type == 'Marketing'
                             ],
                             ['label' => 'Data Perusahaan', 'icon' => 'institution', 'url' => ['/customer'], 'active'=>in_array(\Yii::$app->controller->id,['customer','expired'])],
