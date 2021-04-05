@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use Yii;
 use app\models\Karyawan;
+use app\models\Departemen;
 use app\models\search\KaryawanSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -160,6 +161,51 @@ class KaryawanController extends Controller
 
         return $this->redirect(['index']);
     }
+
+    /*
+    EXPORT WITH OPENTBS
+    */
+    public function actionExportExcel2()
+    {
+        $searchModel = new KaryawanSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        
+        // Initalize the TBS instance
+        $OpenTBS = new \hscstudio\export\OpenTBS; // new instance of TBS
+        // Change with Your template kaka
+        $template = Yii::getAlias('@hscstudio/export').'/templates/opentbs/employee.xlsx';
+        $OpenTBS->LoadTemplate($template); // Also merge some [onload] automatic fields (depends of the type of document).
+        //$OpenTBS->VarRef['modelName']= "Mahasiswa";               
+        $data = [];
+        foreach($dataProvider->getModels() as $print){
+        $dept = Departemen::find()->where(['id'=>$print->jobtitle->departemen])->one();
+            $data[] = [
+                'badge'=> $print->badge,
+                'nama' => $print->nama,
+                'posisi' => $print->jobtitle->posisi,
+                'departemen'=>$dept['departemen'],
+                'tanggal_masuk' => date('d/m/Y',strtotime($print->tanggal_masuk)),
+                'alamat_ktp' => $print->alamat_ktp,
+                'alamat_rumah' => $print->alamat_rumah,
+                'tempat_lahir' => $print->tempat_lahir,
+                'tanggal_lahir' => date('d/m/Y',strtotime($print->tanggal_lahir)),
+                'gender' => $print->gender,
+                'agama' => $print->agama,
+                'pendidikan' => $print->pendidikan,
+                'status_kawin' => $print->status_kawin,
+                'no_ktp' => $print->no_ktp,
+                'no_hp' => $print->no_hp,
+                'no_rekening' => $print->no_rekening,
+                'nama_rekening' => $print->nama_rekening,
+            ];
+        }
+        
+        $OpenTBS->MergeBlock('data', $data);
+        // Output the result as a file on the server. You can change output file
+        $filename = 'Data Karyawan BJB-NaVi Surabaya'.'.xlsx';
+        $OpenTBS->Show(OPENTBS_DOWNLOAD, $filename); // Also merges all [onshow] automatic fields.          
+        exit;
+    } 
 
     /**
      * Finds the Karyawan model based on its primary key value.
