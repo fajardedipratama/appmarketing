@@ -3,6 +3,7 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 use app\models\Karyawan;
 use app\models\Offer;
+use app\models\Customer;
 use app\models\PurchaseOrder;
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\search\OfferSearch */
@@ -34,6 +35,13 @@ $this->title = 'Statistik Total';
                 'header'=>'Tanggal Masuk',
                 'value'=>function($data){
                     return date('d-M-Y',strtotime($data['tanggal_masuk']));
+                }
+            ],
+            [
+                'header'=>'Perusahaan Aktif',
+                'value'=>function($data){
+                    $query = Customer::find()->where(['sales'=>$data['id']])->andWhere(['>=','expired',date('Y-m-d')])->andWhere(['verified'=>'yes'])->count();
+                    return $query;
                 }
             ],
             [
