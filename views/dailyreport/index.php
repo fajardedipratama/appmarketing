@@ -41,7 +41,7 @@ $this->title = 'Aktivitas Sales';
             ],
             [
                 'attribute'=>'waktu',
-                'headerOptions'=>['style'=>'width:15%'],
+                'headerOptions'=>['style'=>'width:12%'],
                 'format' => ['date','dd-MM-Y H:i'],
                 // 'filter'=> DatePicker::widget([
                 //     'model'=>$searchModel,'attribute'=>'waktu','clientOptions'=>[
@@ -52,14 +52,15 @@ $this->title = 'Aktivitas Sales';
             [
               'attribute'=>'perusahaan',
               'value'=>'customer.perusahaan',
+              'headerOptions'=>['style'=>'width:25%'],
               // 'filter'=>\kartik\select2\Select2::widget([
               //   'model'=>$searchModel,'attribute'=>'perusahaan','data'=>$customer,
               //   'options'=>['placeholder'=>'Perusahaan'],'pluginOptions'=>['allowClear'=>true]
               // ])
             ],
             [
-                'header' => 'Telfon',
-                'value' => 'customer.telfon'
+                'attribute'=>'pengingat',
+                'format' => ['date','dd-MM-Y'],
             ],
             'keterangan',
             'catatan',
