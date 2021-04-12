@@ -17,7 +17,7 @@ class ExkaryawanSearch extends Exkaryawan
     public function rules()
     {
         return [
-            [['id', 'badge'], 'integer'],
+            [['id', 'id_employee'], 'integer'],
             [['alasan', 'tgl_resign'], 'safe'],
         ];
     }
@@ -59,7 +59,7 @@ class ExkaryawanSearch extends Exkaryawan
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'badge' => $this->badge,
+            'id_employee' => $this->id_employee,
             'tgl_resign' => $this->tgl_resign,
         ]);
 

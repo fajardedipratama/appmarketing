@@ -57,7 +57,7 @@ class CustomerController extends Controller
                     return $model['nama_pendek'];
                 });
         }else{
-            $sales = ArrayHelper::map(Karyawan::find()->where(['status_aktif'=>'Aktif'])->all(),'id',
+            $sales = ArrayHelper::map(Karyawan::find()->all(),'id',
                 function($model){
                     return $model['nama_pendek'];
                 });

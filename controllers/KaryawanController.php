@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use Yii;
 use app\models\Karyawan;
+use app\models\Exkaryawan;
 use app\models\Departemen;
 use app\models\search\KaryawanSearch;
 use yii\web\Controller;
@@ -160,6 +161,28 @@ class KaryawanController extends Controller
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
+    }
+
+    public function actionResign($id)
+    {
+        $model = $this->findModel($id);
+        $model2 = new Exkaryawan();
+
+        if ($model2->load(Yii::$app->request->post())) {
+            $model2->tgl_resign=Yii::$app->formatter->asDate($_POST['Exkaryawan']['tgl_resign'],'yyyy-MM-dd');
+            $model2->id_employee=$id;
+                
+            Yii::$app->db->createCommand()->update('id_karyawan',
+            ['status_aktif' => 'Tidak Aktif'],
+            ['id'=>$id])->execute();
+
+            $model2->save();
+            return $this->redirect(['index']);
+        }
+
+        return $this->render('_formex', [
+            'model' => $model,'model2'=>$model2
+        ]);
     }
 
     /*

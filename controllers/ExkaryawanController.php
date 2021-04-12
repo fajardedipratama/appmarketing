@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use Yii;
 use app\models\Exkaryawan;
+use app\models\Karyawan;
 use app\models\search\ExkaryawanSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -73,19 +74,11 @@ class ExkaryawanController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate()
+    public function actionCreate($id)
     {
         $model = new Exkaryawan();
 
-        if ($model->load(Yii::$app->request->post())) {
-            $model->tgl_resign=Yii::$app->formatter->asDate($_POST['Exkaryawan']['tgl_resign'],'yyyy-MM-dd');
-            $model->badge=$_GET['id'];
-            
-            Yii::$app->db->createCommand()->update('id_karyawan',
-            ['status_aktif' => 'Tidak Aktif'],
-            ['id'=>$_GET['id']])->execute();
-
-            $model->save();
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['index']);
         }
 

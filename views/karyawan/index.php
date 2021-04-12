@@ -50,7 +50,7 @@ $this->title = 'Data Karyawan';
                     return Html::a
                      (
                         '<span class="glyphicon glyphicon-minus-sign"></span>',
-                        ["exkaryawan/create",'id'=>$model->id],['title' => Yii::t('app', 'Nonaktifkan')]
+                        ["resign",'id'=>$model->id],['title' => Yii::t('app', 'Nonaktifkan')]
                      );
                     },
                 ],

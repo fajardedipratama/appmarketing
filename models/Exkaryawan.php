@@ -8,7 +8,7 @@ use Yii;
  * This is the model class for table "id_exkaryawan".
  *
  * @property int $id
- * @property int $badge
+ * @property int $id_employee
  * @property string $alasan
  * @property string $tgl_resign
  */
@@ -29,11 +29,11 @@ class Exkaryawan extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['badge', 'alasan', 'tgl_resign'], 'required'],
-            [['badge'], 'integer'],
+            [['id_employee', 'alasan', 'tgl_resign'], 'required'],
+            [['id_employee'], 'integer'],
             [['tgl_resign'], 'safe'],
             [['alasan'], 'string', 'max' => 1000],
-            [['badge'], 'unique'],
+            [['id_employee'], 'unique'],
         ];
     }
 
@@ -44,11 +44,16 @@ class Exkaryawan extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'badge' => 'Badge',
+            'id_employee' => 'ID',
             'alasan' => 'Alasan',
             'tgl_resign' => 'Tanggal Resign',
             'nama_karyawan' => 'Nama Karyawan',
         ];
+    }
+
+    public function getKaryawan()
+    {
+        return $this->hasOne(Karyawan::className(), ['id' => 'id_employee']);
     }
 
 }

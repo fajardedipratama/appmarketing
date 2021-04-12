@@ -27,14 +27,12 @@ $this->title = 'Ex-Karyawan';
         // 'filterModel' => $searchModel,
         'columns' => [
             [
-                'attribute' => 'badge',
+                'header' => 'NIP',
+                'value'=>'karyawan.badge',
             ],
             [
-                'attribute' => 'nama_karyawan',
-                'value' => function($data){
-                    $karyawan = Karyawan::find()->where(['badge'=>$data->badge])->one();
-                    return $karyawan['nama']; 
-                }
+                'header' => 'Nama',
+                'value'=>'karyawan.nama',
             ],
             'alasan',
             'tgl_resign',

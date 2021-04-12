@@ -46,7 +46,7 @@ class OfferfinishController extends \yii\web\Controller
         $searchModel = new OfferfinishSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-        $sales = ArrayHelper::map(Karyawan::find()->where(['posisi'=>6,'status_aktif'=>'Aktif'])->all(),'id',
+        $sales = ArrayHelper::map(Karyawan::find()->all(),'id',
                 function($model){
                     return $model['nama_pendek'];
                 });
