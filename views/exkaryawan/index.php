@@ -40,8 +40,18 @@ $this->title = 'Ex-Karyawan';
             [
                 'class' => 'yii\grid\ActionColumn',
                 'header' => 'Aksi',
-                'template' => '{update}',
-                'visible' => Yii::$app->user->identity->type == 'Administrator'
+                'template' => '{view} {update}',
+                'visible' => Yii::$app->user->identity->type == 'Administrator',
+                'buttons'=> [
+                    'view'=>function($url,$model)
+                    {
+                    return Html::a
+                     (
+                        '<span class="glyphicon glyphicon-user"></span>',
+                        ["karyawan/view",'id'=>$model->id_employee],['title' => Yii::t('app', 'View Profile')]
+                     );
+                    },
+                ],
             ],
         ],
     ]); ?>

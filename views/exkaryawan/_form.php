@@ -6,7 +6,7 @@ use yii\web\NotFoundHttpException;
 use dosamigos\datepicker\DatePicker;
 use app\models\Karyawan;
 
-$karyawan = Karyawan::find()->where(['badge'=>$model->badge])->one();
+$karyawan = Karyawan::find()->where(['badge'=>$model->id_employee])->one();
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Exkaryawan */
@@ -20,7 +20,7 @@ $karyawan = Karyawan::find()->where(['badge'=>$model->badge])->one();
     <div class="row">
         <div class="col-sm-1">
         <?php if($karyawan): ?>
-    		<?= $form->field($model, 'badge')->textInput(['value'=>$karyawan['badge'],'readonly'=>true]) ?>
+    		<?= $form->field($model, 'id_employee')->textInput(['value'=>$karyawan['badge'],'readonly'=>true]) ?>
     	<?php else: ?>
     		<?php  throw new NotFoundHttpException('The requested page does not exist.'); ?>
     	<?php endif; ?>

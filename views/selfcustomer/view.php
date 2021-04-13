@@ -137,6 +137,7 @@ $offers = Offer::find()->where(['perusahaan'=>$model->id])->orderBy(['id'=>SORT_
                   <th>TOP</th>
                   <th>Harga</th>
                   <th>Sales</th>
+                  <th>Status</th>
                   <th>Aksi</th>
                 </tr>
             <?php foreach($offers as $tawar): ?>
@@ -148,6 +149,7 @@ $offers = Offer::find()->where(['perusahaan'=>$model->id])->orderBy(['id'=>SORT_
                   <td><?= $tawar['top']; ?></td>
                   <td><?= $tawar['harga']; ?></td>
                   <td><?= $sales['nama_pendek']; ?></td>
+                  <td><?= $tawar['status']; ?></td>
                   <td>
                     <a href="index.php?r=offer/view&id=<?= $tawar['id'] ?>" target="_blank"><i class="fa fa-fw fa-eye"></i></a>
                   </td>
