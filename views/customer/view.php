@@ -20,9 +20,17 @@ $offers = Offer::find()->where(['perusahaan'=>$model->id])->orderBy(['id'=>SORT_
         <div class="col-sm-8">
             <h2>
               <?php if($model->verified === 'yes'): ?>
-                <i class="fa fa-fw fa-check-circle"></i>
+                <?php if(!$model->entrusted): ?>
+                    <i class="fa fa-fw fa-check-circle" title="Terverifikasi"></i>
+                <?php else: ?>
+                    <i class="fa fa-fw fa-check-circle" title="Terverifikasi"></i><i class="fa fa-fw  fa-user-secret" title="Titipan"></i>
+                <?php endif; ?>
               <?php elseif($model->verified === 'no'): ?>
-                <i class="fa fa-fw fa-times-circle"></i>
+                <?php if(!$model->entrusted): ?>
+                    <i class="fa fa-fw fa-times-circle" title="Ditolak Pusat"></i>
+                <?php else: ?>
+                    <i class="fa fa-fw fa-times-circle" title="Ditolak Pusat"></i><i class="fa fa-fw  fa-user-secret" title="Titipan"></i>
+                <?php endif; ?>
               <?php else: ?>
                 <i class="fa fa-fw fa-hourglass-2"></i>
               <?php endif; ?>
