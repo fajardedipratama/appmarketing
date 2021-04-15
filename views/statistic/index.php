@@ -32,12 +32,6 @@ $this->title = 'Statistik Total';
                 'value'=>'nama_pendek',
             ],
             [
-                'header'=>'Tanggal Masuk',
-                'value'=>function($data){
-                    return date('d-M-Y',strtotime($data['tanggal_masuk']));
-                }
-            ],
-            [
                 'header'=>'Perusahaan Aktif',
                 'value'=>function($data){
                     $query = Customer::find()->where(['sales'=>$data['id']])->andWhere(['>=','expired',date('Y-m-d')])->andWhere(['verified'=>'yes'])->count();
@@ -53,17 +47,14 @@ $this->title = 'Statistik Total';
                 }
             ],
             [
-                'header'=>'Total PO (Disetujui + Ditolak)',
+                'header'=>'Statistik PO',
                 'value'=>function($data){
-                    $success = PurchaseOrder::find()->where(['sales'=>$data['id']])->andWhere(['!=','status','Ditolak'])->andWhere(['!=','status','Pending'])->count();
-                    $failed = PurchaseOrder::find()->where(['sales'=>$data['id']])->andWhere(['status'=>'Ditolak'])->count();
-                    return $success+$failed.' ('.$success.'+'.$failed.')';
+                    $po = PurchaseOrder::find()->where(['sales'=>$data['id']])->andWhere(['!=','status','Ditolak'])->andWhere(['!=','status','Pending']);
+                    $company = PurchaseOrder::find()->select(['perusahaan'])->where(['sales'=>$data['id']])->andWhere(['!=','status','Ditolak'])->andWhere(['!=','status','Pending'])->distinct()->count();
+                    $total_kl=$po->sum('volume')/1000;
+                    return $po->count().'x PO dari '.$company.' Perusahaan, total '.$total_kl.' KL';
                 }
             ],
-            // [
-            //     'class' => 'yii\grid\ActionColumn','header'=>'Aksi',
-            //     'template' => '{view}'
-            // ],
         ],
     ]); ?>
 </div></div></div>
