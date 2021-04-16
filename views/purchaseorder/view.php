@@ -52,7 +52,15 @@ $this->title = 'PURCHASE ORDER';
         'attributes' => [
             [
                 'attribute'=>'perusahaan',
-                'value'=>($model->customer)?$model->customer->perusahaan:'-',
+                // 'value'=>($model->customer)?$model->customer->perusahaan:'-',
+                'format' => 'raw',
+                'value'=>function($data){
+                    if(Yii::$app->user->identity->type == 'Marketing'){
+                        return Html::a($data->customer->perusahaan, ['selfcustomer/view', 'id' => $data->perusahaan]);
+                    }else{
+                        return Html::a($data->customer->perusahaan, ['customer/view', 'id' => $data->perusahaan]);
+                    }
+                },
             ],
             [
                 'attribute'=>'sales',
