@@ -171,6 +171,18 @@ class CustomerController extends Controller
         ]);
     }
 
+    public function actionBlokir($id)
+    {
+        $model = $this->findModel($id);
+
+        Yii::$app->db->createCommand()->update('id_customer',
+        ['expired' => NULL,'verified'=>'black'],
+        ['id'=>$id])->execute();
+
+        return $this->redirect(['view', 'id' => $id ]);
+
+    }
+
     /**
      * Deletes an existing Customer model.
      * If deletion is successful, the browser will be redirected to the 'index' page.

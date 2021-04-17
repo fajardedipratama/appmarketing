@@ -31,6 +31,12 @@ $offers = Offer::find()->where(['perusahaan'=>$model->id])->orderBy(['id'=>SORT_
                 <?php else: ?>
                     <i class="fa fa-fw fa-times-circle" title="Ditolak Pusat"></i><i class="fa fa-fw  fa-user-secret" title="Titipan"></i>
                 <?php endif; ?>
+              <?php elseif($model->verified === 'black'): ?>
+                <?php if(!$model->entrusted): ?>
+                    <i class="fa fa-fw fa-ban" title="Blacklist"></i>
+                <?php else: ?>
+                    <i class="fa fa-fw fa-ban" title="Blacklist"></i><i class="fa fa-fw  fa-user-secret" title="Titipan"></i>
+                <?php endif; ?>
               <?php else: ?>
                 <i class="fa fa-fw fa-hourglass-2"></i>
               <?php endif; ?>
@@ -45,14 +51,23 @@ $offers = Offer::find()->where(['perusahaan'=>$model->id])->orderBy(['id'=>SORT_
         <?php if(Yii::$app->user->identity->type == 'Administrator'): ?>
         <div class="col-sm-4">
             <p>
-                <?= Html::a('<i class="fa fa-fw fa-pencil"></i> Ubah', ['update', 'id' => $model->id], ['class' => 'btn btn-warning']) ?>
+                <?= Html::a('<i class="fa fa-fw fa-pencil"></i> Ubah', ['update', 'id' => $model->id], ['class' => 'btn btn-success']) ?>
                 <?= Html::a('<i class="fa fa-fw fa-trash"></i> Hapus', ['delete', 'id' => $model->id], [
-                    'class' => 'btn btn-danger',
+                    'class' => 'btn btn-warning',
                     'data' => [
                         'confirm' => 'Hapus data ini ?',
                         'method' => 'post',
                     ],
                 ]) ?>
+            <?php if($model->verified != 'black'): ?>
+                <?= Html::a('<i class="fa fa-fw fa-warning"></i> Blokir', ['blokir', 'id' => $model->id], [
+                    'class' => 'btn btn-danger',
+                    'data' => [
+                        'confirm' => 'Blacklist perusahaan ini ?',
+                        'method' => 'post',
+                    ],
+                ]) ?>
+            <?php endif; ?>
                 <?= Html::a('<i class="fa fa-fw fa-refresh"></i> Gabung', ['merge', 'id' => $model->id], ['class' => 'btn btn-primary','target'=>'_blank']) ?>
             </p>
         </div>

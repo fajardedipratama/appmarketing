@@ -44,16 +44,20 @@ $this->title = 'Data Perusahaan';
                             return '<i class="fa fa-fw fa-check" title="Disetujui"></i> <i class="fa fa-fw fa-lock" title="PO"></i>';
                         }elseif($model->verified == 'no'){
                             return '<i class="fa fa-fw fa-remove" title="Ditolak"></i> <i class="fa fa-fw fa-lock" title="PO"></i>';
+                        }elseif($model->verified == 'black'){
+                            return '<i class="fa fa-fw fa-ban" title="Blacklist"></i> <i class="fa fa-fw fa-lock" title="PO"></i>';
                         }
                     }else{
                         if($model->verified == 'yes'){
                             return '<i class="fa fa-fw fa-check" title="Disetujui"></i>';
                         }elseif($model->verified == 'no'){
                             return '<i class="fa fa-fw fa-remove" title="Ditolak"></i>';
+                        }elseif($model->verified == 'black'){
+                            return '<i class="fa fa-fw fa-ban" title="Blacklist"></i>';
                         }
                     }
                 },
-                'filter'=> ['yes'=>'yes','no'=>'no']
+                'filter'=> ['yes'=>'yes','no'=>'no','black'=>'black']
             ],
             'perusahaan',
             [

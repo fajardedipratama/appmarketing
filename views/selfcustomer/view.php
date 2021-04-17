@@ -20,9 +20,11 @@ $offers = Offer::find()->where(['perusahaan'=>$model->id])->orderBy(['id'=>SORT_
         <div class="col-sm-7">
             <h2>
               <?php if($model->verified === 'yes'): ?>
-                <i class="fa fa-fw fa-check-circle"></i>
+                <i class="fa fa-fw fa-check-circle" title="Terverifikasi"></i>
               <?php elseif($model->verified === 'no'): ?>
-                <i class="fa fa-fw fa-times-circle"></i>
+                <i class="fa fa-fw fa-times-circle" title="Ditolak Pusat"></i>
+              <?php elseif($model->verified === 'black'): ?>
+                <i class="fa fa-fw fa-ban" title="Blacklist"></i>
               <?php else: ?>
                 <i class="fa fa-fw fa-hourglass-2"></i>
               <?php endif; ?>
@@ -44,10 +46,13 @@ $offers = Offer::find()->where(['perusahaan'=>$model->id])->orderBy(['id'=>SORT_
                   ],
                 ]) ?>
               <?php endif; ?>
+              
                 <?= Html::a('<i class="fa fa-fw fa-pencil"></i> Ubah', ['update', 'id' => $model->id], ['class' => 'btn btn-warning']) ?>
-              <?php 
-              if($model->verified !== 'no' && ($model->expired >= date('Y-m-d') || $model->expired == NULL)): ?>
-                <button class="btn btn-danger" data-toggle="modal" data-target="#daily-report"><i class="fa fa-fw fa-plus-square"></i> Progress</button>
+
+              <?php if($model->verified !== 'no' && $model->verified !== 'black'): ?>
+                <?php if($model->expired >= date('Y-m-d') || $model->expired == NULL): ?>
+                  <button class="btn btn-danger" data-toggle="modal" data-target="#daily-report"><i class="fa fa-fw fa-plus-square"></i> Progress</button>
+                <?php endif; ?>
               <?php else: ?>
                 <button class="btn btn-danger disabled"><i class="fa fa-fw fa-plus-square"></i> Progress</button>
               <?php endif; ?>

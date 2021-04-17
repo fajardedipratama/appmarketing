@@ -13,7 +13,7 @@ $this->title = 'PURCHASE ORDER';
 <div class="row">
     <div class="col-sm-7">
         <h1><b><?= Html::encode($this->title) ?></b></h1>
-        <h4><?= $model->customer->perusahaan.' - '.$model->no_po ?></h4>
+        <h4><?= $model->no_po ?></h4>
     </div>
 <?php if(Yii::$app->user->identity->type == 'Administrator'): ?>
     <div class="col-sm-5">
@@ -52,7 +52,6 @@ $this->title = 'PURCHASE ORDER';
         'attributes' => [
             [
                 'attribute'=>'perusahaan',
-                // 'value'=>($model->customer)?$model->customer->perusahaan:'-',
                 'format' => 'raw',
                 'value'=>function($data){
                     if(Yii::$app->user->identity->type == 'Marketing'){
@@ -66,21 +65,32 @@ $this->title = 'PURCHASE ORDER';
                 'attribute'=>'sales',
                 'value'=>($model->karyawan)?$model->karyawan->nama:'-',
             ],
-            'no_po',
             ['attribute'=>'tgl_po','value'=>date('d/m/Y',strtotime($model->tgl_po))],
             ['attribute'=>'tgl_kirim','value'=>date('d/m/Y',strtotime($model->tgl_kirim))],
             'alamat',
             'alamat_kirim',
-            'purchasing',
-            'no_purchasing',
-            'keuangan',
-            'no_keuangan',
+            [
+                'attribute'=>'purchasing',
+                'value'=>function($data){
+                    return $data->purchasing.' - '.$data->no_purchasing;
+                }
+            ],
+            [
+                'attribute'=>'keuangan',
+                'value'=>function($data){
+                    return $data->keuangan.' - '.$data->no_keuangan;
+                }
+            ],
             'penerima',
             'volume',
             'termin',
-            'harga',
+            [
+                'attribute'=>'harga',
+                'value'=>function($data){
+                    return $data->harga.' ('.$data->pajak.')';
+                }
+            ],
             'cashback',
-            'pajak',
             'pembayaran',
             'catatan',
             'status',
