@@ -4,8 +4,12 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 use app\models\PurchaseOrder;
 
-$volume = PurchaseOrder::find()->where(['status'=>'Terkirim'])->orWhere(['status'=>'Terbayar-Selesai'])->sum('volume');
-$finance = PurchaseOrder::find()->where(['status'=>'Terbayar-Selesai'])->all();
+$volume_kirim = PurchaseOrder::find()->where(['status'=>'Terkirim'])->orWhere(['status'=>'Terbayar-Selesai'])->sum('volume');
+$volume_pending = PurchaseOrder::find()->where(['status'=>'Disetujui'])->sum('volume');
+$terbayar = Yii::$app->db->createCommand('SELECT SUM(harga*volume) AS total FROM id_purchase_order WHERE status="Terbayar-Selesai"')->queryAll();
+$terkirim = Yii::$app->db->createCommand('SELECT SUM(harga*volume) AS total FROM id_purchase_order WHERE status="Terkirim"')->queryAll();
+$cashback_lunas = Yii::$app->db->createCommand('SELECT SUM(cashback*volume) AS total FROM id_purchase_order WHERE status="Terbayar-Selesai"')->queryAll();
+$cashback_pending = Yii::$app->db->createCommand('SELECT SUM(cashback*volume) AS total FROM id_purchase_order WHERE status="Terkirim"')->queryAll();
 
 /* @var $this yii\web\View */
 /* @var $model app\models\PurchaseOrder */
@@ -16,37 +20,45 @@ $finance = PurchaseOrder::find()->where(['status'=>'Terbayar-Selesai'])->all();
     <div class="box-body">
     <table class="table table-bordered">
         <tr>
-            <th>Total Volume</th>
-            <td><?= $volume/1000 ?> KL</td>
+            <th>Solar Terkirim</th>
+            <td><?= $volume_kirim/1000 ?> KL</td>
      	</tr>
+        <tr>
+            <th>Solar Belum Terkirim</th>
+            <td><?= $volume_pending/1000 ?> KL</td>
+        </tr>
      	<tr>
             <th>Total Terbayar (Rp)</th>
             <td>
-            	<?php foreach($finance as $total): ?>
-            		<?= $total['harga']*$total['volume'] ?>
+            	<?php foreach($terbayar as $total): ?>
+            		<?= Yii::$app->formatter->asCurrency($total['total']) ?>
             	<?php endforeach ?>	
             </td>
      	</tr>
      	<tr>
             <th>Total Belum Bayar (Rp)</th>
-            <td>112231111121</td>
+            <td>
+                <?php foreach($terkirim as $total): ?>
+                    <?= Yii::$app->formatter->asCurrency($total['total']) ?>
+                <?php endforeach ?> 
+            </td>
      	</tr>
      	<tr>
-            <th>Total Cashback (Rp)</th>
-            <td>112231111121</td>
+            <th>Cashback Terbayar (Rp)</th>
+            <td>
+                <?php foreach($cashback_lunas as $total): ?>
+                    <?= Yii::$app->formatter->asCurrency($total['total']) ?>
+                <?php endforeach ?> 
+            </td>
      	</tr>
+        <tr>
+            <th>Cashback Belum Terbayar (Rp)</th>
+            <td>
+                <?php foreach($cashback_pending as $total): ?>
+                    <?= Yii::$app->formatter->asCurrency($total['total']) ?>
+                <?php endforeach ?> 
+            </td>
+        </tr>
     </table>
     </div>
 </div>
-<div class="modal fade" id="hasilpo"><div class="modal-dialog modal-lg">
-  <div class="modal-content">
-    <div class="modal-header">
-      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-      <span aria-hidden="true">&times;</span></button>
-      <h4 class="modal-title"><b>Hasil Purchase Order</b></h4>          
-    </div>
-    <div class="modal-body">
-      <!-- <?= $this->render('hasilpo') ?> -->
-    </div>
-  </div>
-</div></div>
