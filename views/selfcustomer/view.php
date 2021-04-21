@@ -49,7 +49,7 @@ $offers = Offer::find()->where(['perusahaan'=>$model->id])->orderBy(['id'=>SORT_
               
                 <?= Html::a('<i class="fa fa-fw fa-pencil"></i> Ubah', ['update', 'id' => $model->id], ['class' => 'btn btn-warning']) ?>
 
-              <?php if($model->verified !== 'no' && $model->verified !== 'black'): ?>
+              <?php if($model->verified !== 'no' && $model->verified !== 'black' && !$model->entrusted): ?>
                 <?php if($model->expired >= date('Y-m-d') || $model->expired == NULL): ?>
                   <button class="btn btn-danger" data-toggle="modal" data-target="#daily-report"><i class="fa fa-fw fa-plus-square"></i> Progress</button>
                 <?php endif; ?>
