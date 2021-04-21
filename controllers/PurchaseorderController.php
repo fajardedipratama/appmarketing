@@ -51,7 +51,7 @@ class PurchaseorderController extends Controller
         $searchModel = new PurchaseorderSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-        $sales = ArrayHelper::map(Karyawan::find()->where(['status_aktif'=>'Aktif'])->all(),'id',
+        $sales = ArrayHelper::map(Karyawan::find()->all(),'id',
                 function($model){
                     return $model['nama_pendek'];
                 });
