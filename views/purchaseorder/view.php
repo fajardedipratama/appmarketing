@@ -12,7 +12,12 @@ $this->title = 'PURCHASE ORDER';
 <div class="purchase-order-view">
 <div class="row">
     <div class="col-sm-7">
-        <h1><b><?= Html::encode($this->title) ?></b></h1>
+        <h1>
+            <?php if($model->eksternal): ?>
+                <i class="fa fa-fw fa-user-secret" title="Titipan"></i>
+            <?php endif; ?>
+            <b><?= Html::encode($this->title) ?></b>
+        </h1>
         <h4><?= $model->no_po ?></h4>
     </div>
 <?php if(Yii::$app->user->identity->type == 'Administrator'): ?>

@@ -121,6 +121,11 @@ use dosamigos\datepicker\DatePicker;
     <div class="col-sm-4">
         <?= $form->field($model, 'penerima')->textInput(['maxlength' => true]) ?>
     </div>
+<?php if(Yii::$app->user->identity->type != 'Marketing'): ?>
+    <div class="col-sm-4">
+        <?= $form->field($model, 'eksternal')->dropDownList(['yes'=>'yes'],['prompt'=>'--Eksternal ?--']) ?>
+    </div>
+<?php endif ?>
 </div>
     </div></div>
 

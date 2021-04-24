@@ -32,10 +32,16 @@ $this->title = 'Data PO';
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['attribute'=>'no_po','headerOptions'=>['style'=>'width:20%']],
             [
               'attribute'=>'perusahaan',
-              'value'=>'customer.perusahaan',
+              'format'=>'raw',
+              'value'=>function($data){
+                if($data->eksternal){
+                  return '<i class="fa fa-fw fa-user-secret" title="Titipan"></i>'.$data->customer->perusahaan;
+                }else{
+                  return $data->customer->perusahaan;
+                }
+              },
               'filter'=>\kartik\select2\Select2::widget([
                 'model'=>$searchModel,'attribute'=>'perusahaan','data'=>$customer,
                 'options'=>['placeholder'=>'Perusahaan'],'pluginOptions'=>['allowClear'=>true]
@@ -53,6 +59,30 @@ $this->title = 'Data PO';
                   'autoclose'=>true, 'format' => 'dd-mm-yyyy','orientation'=>'bottom'
                 ],
               ])
+            ],
+            [
+              'attribute'=>'tgl_kirim',
+              'value' => function($data){
+                return $data->tgl_kirim;
+              },
+              'headerOptions'=>['style'=>'width:15%'],
+              'format' => ['date','dd-MM-Y'],
+              'filter'=> DatePicker::widget([
+                'model'=>$searchModel,'attribute'=>'tgl_kirim','clientOptions'=>[
+                  'autoclose'=>true, 'format' => 'dd-mm-yyyy','orientation'=>'bottom'
+                ],
+              ])
+            ],
+            [
+              'attribute'=>'volume',
+              'headerOptions'=>['style'=>'width:5%'],
+              'value'=>function($data){
+                return $data->volume/1000;
+              }
+            ],
+            [
+              'attribute'=>'termin',
+              'filter'=> ['Cash On Delivery'=>'Cash On Delivery','Cash Before Delivery'=>'Cash Before Delivery','Tempo 7 Hari'=>'Tempo 7 Hari','Tempo 14 Hari'=>'Tempo 14 Hari','Tempo 21 Hari'=>'Tempo 21 Hari','Tempo 30 Hari'=>'Tempo 30 Hari']
             ],
             [
               'attribute'=>'sales',

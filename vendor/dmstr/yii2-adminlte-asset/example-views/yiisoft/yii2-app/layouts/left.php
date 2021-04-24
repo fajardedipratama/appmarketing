@@ -1,7 +1,9 @@
 <?php 
 use app\models\Karyawan;
+use app\models\Jobtitle;
 
 $karyawan = Karyawan::find()->where(['id'=>Yii::$app->user->identity->profilname])->one();
+$jobtitle = Jobtitle::find()->where(['id'=>$karyawan['posisi']])->one();
 
 ?>
 <aside class="main-sidebar" style="position: fixed;">
@@ -16,7 +18,7 @@ $karyawan = Karyawan::find()->where(['id'=>Yii::$app->user->identity->profilname
             <div class="pull-left info">
                 <p><?= $karyawan['nama'] ?></p>
 
-                <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                <a href="#"><i class="fa fa-circle text-success"></i> <?= $jobtitle['posisi'] ?></a>
             </div>
         </div>
 
@@ -74,6 +76,12 @@ $karyawan = Karyawan::find()->where(['id'=>Yii::$app->user->identity->profilname
                                 'visible' => !Yii::$app->user->isGuest && Yii::$app->user->identity->type == 'Administrator' || Yii::$app->user->identity->type == 'Manajemen'
                             ],
                         ],
+                    ],
+                    [
+                        'label' => 'Keuangan',
+                        'icon' => 'money',
+                        'url' => '#',
+                        'visible' => !Yii::$app->user->isGuest && Yii::$app->user->identity->type == 'Administrator'
                     ],
                 ],
             ]

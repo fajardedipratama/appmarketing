@@ -41,7 +41,7 @@ class PurchaseorderSearch extends PurchaseOrder
     public function search($params)
     {
         if(Yii::$app->user->identity->type == 'Marketing'){
-            $query = PurchaseOrder::find()->where(['sales'=>Yii::$app->user->identity->profilname]);
+            $query = PurchaseOrder::find()->where(['sales'=>Yii::$app->user->identity->profilname])->andWhere(['eksternal'=>NULL]);
         }else{
             $query = PurchaseOrder::find();
         }
@@ -74,6 +74,11 @@ class PurchaseorderSearch extends PurchaseOrder
         if(!empty($this->tgl_po)){    
             $query->andFilterWhere([
                 'tgl_po' => Yii::$app->formatter->asDate($this->tgl_po,'yyyy-MM-dd'),
+            ]);
+        }
+        if(!empty($this->tgl_kirim)){    
+            $query->andFilterWhere([
+                'tgl_kirim' => Yii::$app->formatter->asDate($this->tgl_kirim,'yyyy-MM-dd'),
             ]);
         }
 

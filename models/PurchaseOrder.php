@@ -29,6 +29,7 @@ use Yii;
  * @property string $catatan
  * @property string $alasan_tolak
  * @property string $penerima
+ * @property string|null $eksternal
  */
 class PurchaseOrder extends \yii\db\ActiveRecord
 {
@@ -49,7 +50,7 @@ class PurchaseOrder extends \yii\db\ActiveRecord
             [['perusahaan', 'no_po', 'tgl_po', 'tgl_kirim', 'alamat', 'alamat_kirim', 'purchasing', 'no_purchasing', 'volume', 'termin', 'harga', 'pajak', 'pembayaran'], 'required'],
             [['perusahaan', 'sales', 'volume', 'harga', 'cashback'], 'integer'],
             [['tgl_po', 'tgl_kirim'], 'safe'],
-            [['no_po', 'purchasing', 'no_purchasing', 'keuangan', 'no_keuangan', 'termin', 'pajak', 'pembayaran', 'status','penerima'], 'string', 'max' => 100],
+            [['no_po', 'purchasing', 'no_purchasing', 'keuangan', 'no_keuangan', 'termin', 'pajak', 'pembayaran', 'status','penerima','eksternal'], 'string', 'max' => 100],
             [['alamat', 'alamat_kirim', 'catatan', 'alasan_tolak'], 'string', 'max' => 1000],
         ];
     }
@@ -82,6 +83,7 @@ class PurchaseOrder extends \yii\db\ActiveRecord
             'catatan' => 'Catatan',
             'alasan_tolak' => 'Alasan Tolak',
             'penerima' => 'Penerima + No.Hp',
+            'eksternal' => 'Eksternal ?',
         ];
     }
     public function getCustomer()
