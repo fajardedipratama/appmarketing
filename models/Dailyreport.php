@@ -18,6 +18,7 @@ use Yii;
  */
 class Dailyreport extends \yii\db\ActiveRecord
 {
+  // public $cari_waktu;
     /**
      * {@inheritdoc}
      */
@@ -54,6 +55,7 @@ class Dailyreport extends \yii\db\ActiveRecord
             'catatan' => 'Catatan',
             'pengingat' => 'Hub.Balik',
             'con_used' => 'Kontak Via',
+            // 'cari_waktu'=>'Cari Tanggal',
         ];
     }
 

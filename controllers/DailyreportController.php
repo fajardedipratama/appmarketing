@@ -69,6 +69,17 @@ class DailyreportController extends Controller
         ]);
     }
 
+    public function actionSearch()
+    {
+        $searchModel = new DailyreportSearch();
+
+        if ($searchModel->load(Yii::$app->request->post()) ) {
+            return $this->redirect(['/dailyreport','waktu'=>date('Y-m-d')]);
+        }
+
+        return $this->render('index',['searchModel' => $searchModel]);
+    }
+
     /**
      * Displays a single Dailyreport model.
      * @param integer $id

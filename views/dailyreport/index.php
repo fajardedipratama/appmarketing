@@ -12,13 +12,14 @@ $this->title = 'Aktivitas Sales';
 <div class="dailyreport-index">
 
     <div class="row">
-        <div class="col-sm-10">
+        <div class="col-sm-9">
             <h1><?= Html::encode($this->title) ?></h1>
             <h5><i>Tanggal : <?= date('d-m-Y',strtotime($_GET['waktu'])); ?></i></h5>
         </div>
-        <div class="col-sm-2">
+        <div class="col-sm-3">
         <?php if(Yii::$app->user->identity->type == 'Administrator'): ?>
             <?= Html::a('<i class="fa fa-fw fa-file-excel-o"></i> Export Excel', ['export-excel2','waktu'=>$_GET['waktu']], ['class'=>'btn btn-success']); ?>
+            <button class="btn btn-info" data-toggle="modal" data-target="#searchglobal"><i class="fa fa-fw fa-search"></i> Cari</button>
         <?php endif ?> 
         </div>
     </div>
@@ -73,5 +74,22 @@ $this->title = 'Aktivitas Sales';
         ],
     ]); ?>
 </div></div></div>
+
+<!-- modal -->
+    <div class="modal fade" id="searchglobal">
+    <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title"><b>Pencarian Tanggal</b></h4>          
+        </div>
+        <div class="modal-body">
+            <?= $this->render('_searchform', ['searchModel' => $searchModel]) ?>
+        </div>
+    </div>
+    </div>
+    </div>
+<!-- modal -->
 
 </div>
