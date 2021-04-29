@@ -93,7 +93,7 @@ $inisial = OfferNumber::find()->where(['id'=>1])->one();
 				<li>Pengiriman setelah PO (Purchase Order) </li>
 				<li>
 					<?php if($model->pajak === 'PPN'){
-						echo 'Rekening Bank Mandiri (PPN) :  1430014465569 a.n. PT. Berdikari Jaya Bersama Cabang Probolinggo';
+						echo 'Rekening Bank Mandiri (PPN) : 1430014465569 a.n. PT. Berdikari Jaya Bersama<br>Rekening Bank BCA (PPN) : 0393039300 a.n. PT. Berdikari Jaya Bersama';
 					}else{
 						echo 'Rekening Bank BCA (NON PPN) :  0566515151 a.n. Godwin';
 					}?>
