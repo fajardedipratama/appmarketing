@@ -5,6 +5,7 @@ use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use app\models\Customer;
+use app\models\Karyawan;
 use yii\db\Expression;
 /**
  * CustomerSearch represents the model behind the search form of `app\models\Customer`.
@@ -41,7 +42,7 @@ class CustomerSearch extends Customer
     public function search($params)
     {
         if(Yii::$app->user->identity->type == 'Marketing'){
-            $query =Customer::find()->where(['>=','expired',date('Y-m-d')])->orWhere(['expired'=>NULL]);
+            $query = Customer::find()->where(['>=','expired',date('Y-m-d')])->orWhere(['expired'=>NULL]);
         }else{
             $query = Customer::find();
         }
