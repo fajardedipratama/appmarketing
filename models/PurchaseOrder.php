@@ -94,4 +94,13 @@ class PurchaseOrder extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Karyawan::className(), ['id' => 'sales']);
     }
+    public function beforeSave($options = array()) {
+        if(!empty($this->eksternal)){
+            $this->eksternal = $this->eksternal;    
+        }else{
+            $this->eksternal = null;
+        }
+
+        return true;
+    }
 }
