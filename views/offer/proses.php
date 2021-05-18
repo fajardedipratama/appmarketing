@@ -25,7 +25,14 @@ $this->title = 'Penawaran Proses';
             ],
             [
               'attribute'=>'perusahaan',
-              'value'=>'customer.perusahaan',
+              'format' => 'raw',
+              'value'=>function($data){
+                if(!empty($data->catatan)){
+                  return $data->customer->perusahaan.' <i class="fa fa-fw fa-info-circle" title="'.$data->catatan.'"></i>';
+                }else{
+                  return $data->customer->perusahaan;
+                }
+              },
               'filter'=>\kartik\select2\Select2::widget([
                 'model'=>$searchModel,'attribute'=>'perusahaan','data'=>$customer,
                 'options'=>['placeholder'=>'Perusahaan'],'pluginOptions'=>['allowClear'=>true]
