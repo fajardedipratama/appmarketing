@@ -39,16 +39,18 @@ $offers = Offer::find()->where(['perusahaan'=>$model->id])->orderBy(['id'=>SORT_
         <div class="col-sm-5">
             <p>
               <?php if($model->long_expired != 'yes' && $model->verified === 'yes' && $model->expired != NULL): ?>
+                <?php if(strtotime($model->expired) >= strtotime(date('Y-m-d'))): ?>
                 <?= Html::a('<i class="fa fa-fw fa-refresh"></i> Perpanjang', ['longexpired', 'id' => $model->id], ['class' => 'btn btn-primary',
                   'data' => [
                     'confirm' => 'Perpanjang expired 1 bulan kedepan ?',
                     'method' => 'post',
                   ],
                 ]) ?>
+                <?php endif; ?>
               <?php endif; ?>
-              
+              <?php if(strtotime($model->expired) >= strtotime(date('Y-m-d')) || $model->expired == NULL): ?>
                 <?= Html::a('<i class="fa fa-fw fa-pencil"></i> Ubah', ['update', 'id' => $model->id], ['class' => 'btn btn-warning']) ?>
-
+              <?php endif; ?>
               <?php if($model->verified !== 'no' && $model->verified !== 'black' && !$model->entrusted): ?>
                 <?php if($model->expired >= date('Y-m-d') || $model->expired == NULL): ?>
                   <button class="btn btn-danger" data-toggle="modal" data-target="#daily-report"><i class="fa fa-fw fa-plus-square"></i> Progress</button>

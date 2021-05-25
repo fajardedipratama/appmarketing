@@ -112,6 +112,24 @@ $this->title = 'Data Expired';
                 ],
                 'visible' => Yii::$app->user->identity->type == 'Administrator' || Yii::$app->user->identity->type == 'Manajemen',
             ],
+            [
+                'class' => 'yii\grid\ActionColumn','header'=>'Detail',
+                'template' => '{view}',
+                'buttons'=>
+                [
+                    'view'=>function($url,$model)
+                    {
+                        if(strtotime('+14 days', strtotime($model->expired)) <= strtotime(date('Y-m-d'))){
+                            return Html::a
+                            (
+                                '<span class="glyphicon glyphicon-eye-open"></span>',
+                                ["selfcustomer/view",'id'=>$model->id],['title' => Yii::t('app', 'View')],
+                            );
+                        }
+                    },
+                ],
+                'visible' => Yii::$app->user->identity->type == 'Marketing',
+            ],
         ],
     ]); ?>
 </div></div></div>
