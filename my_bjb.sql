@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 25 Bulan Mei 2021 pada 11.31
+-- Waktu pembuatan: 25 Bulan Mei 2021 pada 11.54
 -- Versi server: 10.4.17-MariaDB
 -- Versi PHP: 8.0.0
 
@@ -3005,7 +3005,10 @@ INSERT INTO `id_customer` (`id`, `perusahaan`, `lokasi`, `alamat_lengkap`, `pic`
 (4086, 'BERKAT ABADI JAYA MAKMUR PT', '29', '', 'PAK WIKIAT', '031-5484821', '', '', '', '', 13, NULL, '', 13, '2021-05-25 15:47:25', '', '', ''),
 (4087, 'INDIRATEX SPINDO', '16', '', '', '0341 450888', '', '', '', '', 17, NULL, '', 17, '2021-05-25 15:50:16', '', '', ''),
 (4088, 'GEMILANG MAKMUR JAYA RAYA PT', '29', '', '', '0315924905', '', '', '', '', 12, NULL, '', 12, '2021-05-25 15:50:49', '', '', ''),
-(4089, 'SUMBER BERSIH DUNIA PT', '29', '', 'PURCHASING', '0313987504', 'purchasing@cleanmom-d.com', '', '', '', 12, NULL, '', 12, '2021-05-25 16:08:55', '', '', '');
+(4089, 'SUMBER BERSIH DUNIA PT', '29', '', 'PURCHASING', '0313987504', 'purchasing@cleanmom-d.com', '', '', '', 12, NULL, '', 12, '2021-05-25 16:08:55', '', '', ''),
+(4090, 'PUTERA PERTAMA PT', '29', '', '', '03171588066', '', '', '', '', 12, NULL, '', 12, '2021-05-25 16:40:14', '', '', ''),
+(4091, 'DUTA BANGUN CIPTA PT', '29', '', '', '0318713714', '', '', '', '', 12, NULL, '', 12, '2021-05-25 16:43:25', '', '', ''),
+(4092, 'WONOJOYO PERKASA PT ', '16', '', '', '0341479961', '', '', '', '', 8, NULL, '', 8, '2021-05-25 16:47:47', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -7279,7 +7282,9 @@ INSERT INTO `id_dailyreport` (`id`, `sales`, `waktu`, `perusahaan`, `keterangan`
 (4374, 13, '2021-05-25 16:04:04', 2839, 'Belum ada kebutuhan', 'DIPERKIRAKAN DI BULAN JULY ATAU AWAL AGUSTUS', NULL, 'Telfon Kantor'),
 (4375, 10, '2021-05-25 16:08:56', 2048, 'Penawaran', '', NULL, 'Telfon Kantor'),
 (4376, 12, '2021-05-25 16:09:49', 4089, 'Penawaran', '', NULL, 'Telfon Kantor'),
-(4377, 8, '2021-05-25 16:10:21', 13, 'Tidak terhubung ke PIC', '', NULL, 'Telfon Kantor');
+(4377, 8, '2021-05-25 16:10:21', 13, 'Tidak terhubung ke PIC', '', NULL, 'Telfon Kantor'),
+(4378, 12, '2021-05-25 16:40:22', 4090, 'Tidak terhubung ke PIC', 'TLP TIDAK AKTIF', NULL, 'Telfon Kantor'),
+(4379, 12, '2021-05-25 16:43:36', 4091, 'Tidak pakai solar', '', NULL, 'Telfon Kantor');
 
 -- --------------------------------------------------------
 
@@ -10256,8 +10261,8 @@ INSERT INTO `id_purchase_order` (`id`, `perusahaan`, `sales`, `no_po`, `tgl_po`,
 (81, 3671, 1, '2.2.20-002.130', '2021-05-19', '2021-05-23', 'Jl. Kumasa Bangsa, Gg Beringin IV, No. 124 Tumenggungan Lamongan - Jawa Timur', 'Desa Tlogoretno, Kecamatan Brondong Kabupaten Lamongan', 'BAPAK IRWAN', '081333534448', 'BAPAK RIFQI', '', 5000, 'Tempo 30 Hari', 8000, 400, 'PPN', 'Transfer', 'Ditolak', '', 'gagal kirim karena tidak bilang ada BG, takut mesin rusak', '', NULL),
 (82, 144, 1, '18/09/633', '2021-05-21', '2021-05-23', 'JL. RAYA TAMBAKREJO - SIDOGIRI KM 1 KRATON - PASURUAN - JAWA TIMUR', 'JL. RAYA TAMBAKREJO - SIDOGIRI KM 1 KRATON - PASURUAN - JAWA TIMUR', 'IBU FELIN', '082336499378', 'IBU FELIN', '082336499378', 5000, 'Tempo 14 Hari', 7200, NULL, 'PPN', 'Transfer', 'Terkirim', '', '', '', NULL),
 (83, 419, 10, 'PO/CORMIC/07/V/2021', '2021-05-25', '2021-05-26', 'JL.RAYA MAOSPATI - MAGETAN KM.5,5 SUKOMORO,MAGETAN', 'JL.RAYA MAOSPATI - MAGETAN KM.5,5 SUKOMORO,MAGETAN', 'BU.DITA', '081363619093', '081363619093', '081363619093', 8000, 'Cash On Delivery', 7200, NULL, 'PPN', 'Transfer', 'Disetujui', 'DIKIRIM SESUAI JAM KERJA SAMPAI TEMPAT', '', '', NULL),
-(84, 2092, 12, '005/ADM PRO/PO-BJB/SPU/V/2021', '2021-05-25', '2021-05-26', 'Jl.Rungkut Industri Raya No.10 Surabaya 60293', 'Proyek perataan jalan Kraton Industri II Pier, Pasuruan', 'Bapak Eko', '0318432231', '', '', 5000, 'Cash On Delivery', 7100, 300, 'PPN', 'Transfer', 'Pending', '', '', 'Bapak Ardi + 082233341533', 'yes'),
-(85, 235, 10, 'po.2021.05.0000014', '2021-05-25', '2021-05-27', 'LUMBUNG CHAYUN NO.09 RT.07 RW.01.Ds.Besuk kec.Tempeh LUMAJANG - JATIM', 'LUMBUNG CHAYUN NO.09 RT.07 RW.01.Ds.Besuk kec.Tempeh LUMAJANG - JATIM', 'BU AYU', '088230093157', '', '088230093157', 5000, 'Tempo 7 Hari', 7300, 100, 'PPN', 'Transfer', 'Pending', 'DIKIRIM SESUAI JAM KERJA SAMPAI TEMPAT', '', '', NULL);
+(84, 2092, 12, '005/ADM PRO/PO-BJB/SPU/V/2021', '2021-05-25', '2021-05-26', 'Jl.Rungkut Industri Raya No.10 Surabaya 60293', 'Proyek perataan jalan Kraton Industri II Pier, Pasuruan', 'Bapak Eko', '0318432231', '', '', 5000, 'Cash On Delivery', 7100, 300, 'PPN', 'Transfer', 'Disetujui', '', '', 'Bapak Ardi + 082233341533', 'yes'),
+(85, 235, 10, 'po.2021.05.0000014', '2021-05-25', '2021-05-27', 'LUMBUNG CHAYUN NO.09 RT.07 RW.01.Ds.Besuk kec.Tempeh LUMAJANG - JATIM', 'LUMBUNG CHAYUN NO.09 RT.07 RW.01.Ds.Besuk kec.Tempeh LUMAJANG - JATIM', 'BU AYU', '088230093157', '', '088230093157', 5000, 'Tempo 7 Hari', 7300, 100, 'PPN', 'Transfer', 'Disetujui', 'DIKIRIM SESUAI JAM KERJA SAMPAI TEMPAT', '', '', NULL);
 
 -- --------------------------------------------------------
 
@@ -10282,7 +10287,7 @@ CREATE TABLE `id_user` (
 --
 
 INSERT INTO `id_user` (`id`, `profilname`, `username`, `password`, `last_login`, `authKey`, `accessToken`, `type`, `blocked`) VALUES
-(1, '5', 'dedy', '$2y$13$.d2C0.bHMWLqkIT0k6Dd3.7xNwLBUey3mvzOwx/v.6fiDSOEzn/2e', '2021-05-25 10:44:35', 'd5fdbe5b16111739a53f6bedc2c29e5c', 'd5fdbe5b16111739a53f6bedc2c29e5c', 'Administrator', ''),
+(1, '5', 'dedy', '$2y$13$.d2C0.bHMWLqkIT0k6Dd3.7xNwLBUey3mvzOwx/v.6fiDSOEzn/2e', '2021-05-25 16:53:37', 'd5fdbe5b16111739a53f6bedc2c29e5c', 'd5fdbe5b16111739a53f6bedc2c29e5c', 'Administrator', ''),
 (2, '10', 'sugeng', '$2y$13$zF4RuFW743TDuFQwqzXzaOa18a2l21Q8WGPevoGynoc9FeWl361O2', '2021-05-25 08:46:12', '9e28894760bdf11cb2bef7a32c020e3b', '9e28894760bdf11cb2bef7a32c020e3b', 'Marketing', ''),
 (7, '1', 'alisiachintya', '$2y$13$SMiUO/xBwZvGKMEKtfXe7.wG3qXPcUjCCkKcxHFSxfP11OzriM.s2', '2021-05-25 08:58:46', '60532c4e119ce506036cf74f655259dd', '60532c4e119ce506036cf74f655259dd', 'Marketing', ''),
 (9, '12', 'risza', '$2y$13$tD2k5kTBFRwv0DAfWO0LjO1o2gju3lAwTsctLGUDZ0G//L0u8xNa2', '2021-05-25 15:40:56', '521f6ab426fbb7296a695ab243412094', '521f6ab426fbb7296a695ab243412094', 'Marketing', ''),
@@ -10385,13 +10390,13 @@ ALTER TABLE `id_city`
 -- AUTO_INCREMENT untuk tabel `id_customer`
 --
 ALTER TABLE `id_customer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4090;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4093;
 
 --
 -- AUTO_INCREMENT untuk tabel `id_dailyreport`
 --
 ALTER TABLE `id_dailyreport`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4378;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4380;
 
 --
 -- AUTO_INCREMENT untuk tabel `id_departemen`
