@@ -48,15 +48,26 @@ $offers = Offer::find()->where(['perusahaan'=>$model->id])->orderBy(['id'=>SORT_
                 ]) ?>
                 <?php endif; ?>
               <?php endif; ?>
+
               <?php if(strtotime($model->expired) >= strtotime(date('Y-m-d')) || $model->expired == NULL): ?>
                 <?= Html::a('<i class="fa fa-fw fa-pencil"></i> Ubah', ['update', 'id' => $model->id], ['class' => 'btn btn-warning']) ?>
               <?php endif; ?>
+
               <?php if($model->verified !== 'no' && $model->verified !== 'black' && !$model->entrusted): ?>
                 <?php if($model->expired >= date('Y-m-d') || $model->expired == NULL): ?>
                   <button class="btn btn-danger" data-toggle="modal" data-target="#daily-report"><i class="fa fa-fw fa-plus-square"></i> Progress</button>
                 <?php endif; ?>
               <?php else: ?>
                 <button class="btn btn-danger disabled"><i class="fa fa-fw fa-plus-square"></i> Progress</button>
+              <?php endif; ?>
+
+              <?php if(strtotime('+14 days', strtotime($model->expired)) <= strtotime(date('Y-m-d')) && $model->expired != NULL): ?>
+                <?= Html::a('<i class="fa fa-fw fa-check-square"></i> Aktifkan', ['activeagain', 'id' => $model->id], ['class' => 'btn btn-success',
+                  'data' => [
+                    'confirm' => 'Aktifkan kembali perusahaan ini ?',
+                    'method' => 'post',
+                  ],
+                ]) ?>
               <?php endif; ?>
             </p>
         </div>
