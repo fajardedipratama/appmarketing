@@ -150,6 +150,18 @@ class SelfcustomerController extends Controller
 
         return $this->redirect(['view', 'id' => $model->id]);
     }
+    public function actionActiveagain($id)
+    {
+        $model = $this->findModel($id);
+        $now = date('Y-m-d');
+        $expired=date('Y-m-d', strtotime('+31 days', strtotime($now)));
+
+        Yii::$app->db->createCommand()->update('id_customer',
+        ['expired' => $expired, 'long_expired' => NULL],
+        ['id'=>$id])->execute();
+
+        return $this->redirect(['view', 'id' => $model->id]);
+    }
 
     /**
      * Deletes an existing Customer model.
