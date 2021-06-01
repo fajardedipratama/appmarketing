@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 31 Bulan Mei 2021 pada 11.55
--- Versi server: 10.4.17-MariaDB
--- Versi PHP: 8.0.0
+-- Generation Time: Jun 01, 2021 at 06:09 AM
+-- Server version: 10.4.17-MariaDB
+-- PHP Version: 8.0.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `id_city`
+-- Table structure for table `id_city`
 --
 
 CREATE TABLE `id_city` (
@@ -35,7 +35,7 @@ CREATE TABLE `id_city` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `id_city`
+-- Dumping data for table `id_city`
 --
 
 INSERT INTO `id_city` (`id`, `kota`, `provinsi`, `oat`) VALUES
@@ -73,7 +73,7 @@ INSERT INTO `id_city` (`id`, `kota`, `provinsi`, `oat`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `id_customer`
+-- Table structure for table `id_customer`
 --
 
 CREATE TABLE `id_customer` (
@@ -98,7 +98,7 @@ CREATE TABLE `id_customer` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `id_customer`
+-- Dumping data for table `id_customer`
 --
 
 INSERT INTO `id_customer` (`id`, `perusahaan`, `lokasi`, `alamat_lengkap`, `pic`, `telfon`, `email`, `catatan`, `volume`, `jarak_ambil`, `sales`, `expired`, `long_expired`, `created_by`, `created_time`, `verified`, `alasan`, `entrusted`) VALUES
@@ -3136,7 +3136,7 @@ INSERT INTO `id_customer` (`id`, `perusahaan`, `lokasi`, `alamat_lengkap`, `pic`
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `id_dailyreport`
+-- Table structure for table `id_dailyreport`
 --
 
 CREATE TABLE `id_dailyreport` (
@@ -3151,7 +3151,7 @@ CREATE TABLE `id_dailyreport` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `id_dailyreport`
+-- Dumping data for table `id_dailyreport`
 --
 
 INSERT INTO `id_dailyreport` (`id`, `sales`, `waktu`, `perusahaan`, `keterangan`, `catatan`, `pengingat`, `con_used`) VALUES
@@ -7700,7 +7700,7 @@ INSERT INTO `id_dailyreport` (`id`, `sales`, `waktu`, `perusahaan`, `keterangan`
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `id_departemen`
+-- Table structure for table `id_departemen`
 --
 
 CREATE TABLE `id_departemen` (
@@ -7709,7 +7709,7 @@ CREATE TABLE `id_departemen` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `id_departemen`
+-- Dumping data for table `id_departemen`
 --
 
 INSERT INTO `id_departemen` (`id`, `departemen`) VALUES
@@ -7719,7 +7719,7 @@ INSERT INTO `id_departemen` (`id`, `departemen`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `id_exkaryawan`
+-- Table structure for table `id_exkaryawan`
 --
 
 CREATE TABLE `id_exkaryawan` (
@@ -7730,7 +7730,7 @@ CREATE TABLE `id_exkaryawan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `id_exkaryawan`
+-- Dumping data for table `id_exkaryawan`
 --
 
 INSERT INTO `id_exkaryawan` (`id`, `id_employee`, `alasan`, `tgl_resign`) VALUES
@@ -7741,7 +7741,7 @@ INSERT INTO `id_exkaryawan` (`id`, `id_employee`, `alasan`, `tgl_resign`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `id_jobtitle`
+-- Table structure for table `id_jobtitle`
 --
 
 CREATE TABLE `id_jobtitle` (
@@ -7751,7 +7751,7 @@ CREATE TABLE `id_jobtitle` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `id_jobtitle`
+-- Dumping data for table `id_jobtitle`
 --
 
 INSERT INTO `id_jobtitle` (`id`, `posisi`, `departemen`) VALUES
@@ -7765,7 +7765,7 @@ INSERT INTO `id_jobtitle` (`id`, `posisi`, `departemen`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `id_karyawan`
+-- Table structure for table `id_karyawan`
 --
 
 CREATE TABLE `id_karyawan` (
@@ -7794,7 +7794,7 @@ CREATE TABLE `id_karyawan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `id_karyawan`
+-- Dumping data for table `id_karyawan`
 --
 
 INSERT INTO `id_karyawan` (`id`, `badge`, `nama`, `nama_pendek`, `gender`, `tempat_lahir`, `tanggal_lahir`, `agama`, `no_hp`, `no_ktp`, `alamat_ktp`, `alamat_rumah`, `pendidikan`, `status_kawin`, `tanggal_masuk`, `posisi`, `departemen`, `bank`, `no_rekening`, `nama_rekening`, `foto_karyawan`, `status_aktif`) VALUES
@@ -7817,7 +7817,7 @@ INSERT INTO `id_karyawan` (`id`, `badge`, `nama`, `nama_pendek`, `gender`, `temp
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `id_offer`
+-- Table structure for table `id_offer`
 --
 
 CREATE TABLE `id_offer` (
@@ -7838,7 +7838,7 @@ CREATE TABLE `id_offer` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `id_offer`
+-- Dumping data for table `id_offer`
 --
 
 INSERT INTO `id_offer` (`id`, `tanggal`, `waktu`, `no_surat`, `perusahaan`, `pic`, `top`, `pajak`, `harga`, `catatan`, `sales`, `status`, `is_new`, `send_wa`) VALUES
@@ -10631,7 +10631,7 @@ INSERT INTO `id_offer` (`id`, `tanggal`, `waktu`, `no_surat`, `perusahaan`, `pic
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `id_offer_number`
+-- Table structure for table `id_offer_number`
 --
 
 CREATE TABLE `id_offer_number` (
@@ -10642,7 +10642,7 @@ CREATE TABLE `id_offer_number` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `id_offer_number`
+-- Dumping data for table `id_offer_number`
 --
 
 INSERT INTO `id_offer_number` (`id`, `nomor`, `inisial`, `periode`) VALUES
@@ -10651,7 +10651,7 @@ INSERT INTO `id_offer_number` (`id`, `nomor`, `inisial`, `periode`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `id_purchase_order`
+-- Table structure for table `id_purchase_order`
 --
 
 CREATE TABLE `id_purchase_order` (
@@ -10681,7 +10681,7 @@ CREATE TABLE `id_purchase_order` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `id_purchase_order`
+-- Dumping data for table `id_purchase_order`
 --
 
 INSERT INTO `id_purchase_order` (`id`, `perusahaan`, `sales`, `no_po`, `tgl_po`, `tgl_kirim`, `alamat`, `alamat_kirim`, `purchasing`, `no_purchasing`, `keuangan`, `no_keuangan`, `volume`, `termin`, `harga`, `cashback`, `pajak`, `pembayaran`, `status`, `catatan`, `alasan_tolak`, `penerima`, `eksternal`) VALUES
@@ -10770,12 +10770,13 @@ INSERT INTO `id_purchase_order` (`id`, `perusahaan`, `sales`, `no_po`, `tgl_po`,
 (88, 2254, 8, '002/V/2021', '2021-05-25', '2021-05-28', 'Kirana Two Tower, Level 10-A, Jl. Boulevard Timur No.88, RT 05 RW 02 Kelapa Gading Jakarta', 'Panggul, Desa Banjar Ngulingwetan, Munjungan, Trenggalek', 'Pak Fahmi', '085235232000', 'Bu Kristin', '081244274626', 5000, 'Tempo 14 Hari', 8100, 1000, 'Non PPN', 'Transfer', 'Terkirim', 'invoice ditujukan ke kantor pusat= jl.manuan tengah 12k no.2', '', 'Pak Fahmi + 085235232000', 'yes'),
 (89, 3060, 12, '011/HSDRPT/V/2021', '2021-05-27', '2021-05-28', 'LAKSDA M NASIR NO. 29 B 12 - B15', 'KALIANAK BARAT 116', 'ERWIN', '081322366692', 'ERWIN', '081322366692', 5000, 'Tempo 14 Hari', 7400, 100, 'PPN', 'Transfer', 'Terkirim', '', '', '081322366692', NULL),
 (90, 953, 1, 'No. 6/TP/PCS/IV/2021', '2021-05-29', '2021-05-31', 'JL. RAYA TUBAN - BOJONEGORO KM 20 - PENEBUSAN - PLUMPANG - TUBAN - JAWA TIMUR - 62382', 'JL. RAYA TUBAN - BOJONEGORO KM 20 - PENEBUSAN - PLUMPANG - TUBAN - JAWA TIMUR - 62382', 'IBU NINIK', '085235848399', 'IBU NINIK', '085235848399', 8000, 'Tempo 14 Hari', 7400, NULL, 'PPN', 'Transfer', 'Terkirim', '', '', 'MINOYO 085257233009', NULL),
-(91, 26, 1, '62/BCI-PO/BWI.V/2021', '2021-05-31', '2021-05-31', 'JL. RAYA SITUBONDO KM 12,5 KETAPANG - KALIPURO BANYUWANGI', 'JL. RAYA SITUBONDO KM 12,5 KETAPANG - KALIPURO BANYUWANGI', 'IBU QOMARIAH', '087882121352', '', '', 5000, 'Tempo 14 Hari', 7400, 0, 'PPN', 'Transfer', 'Terkirim', '', '', 'IBU QOMARIAH / 087882121352', 'yes');
+(91, 26, 1, '62/BCI-PO/BWI.V/2021', '2021-05-31', '2021-05-31', 'JL. RAYA SITUBONDO KM 12,5 KETAPANG - KALIPURO BANYUWANGI', 'JL. RAYA SITUBONDO KM 12,5 KETAPANG - KALIPURO BANYUWANGI', 'IBU QOMARIAH', '087882121352', '', '', 5000, 'Tempo 14 Hari', 7400, 0, 'PPN', 'Transfer', 'Terkirim', '', '', 'IBU QOMARIAH / 087882121352', 'yes'),
+(92, 1778, 8, '004/NR/BJB/IV/2021', '2021-05-31', '2021-06-02', 'Jl. Darmahusada Utara II No. 30 Surabaya', 'JL.RAYA DEANDELS KM 59 WONTAN PANCENG, GRESIK', 'IBU RINI ', ' 0818506710', 'IBU YENNY', ' 0818506710', 7000, 'Cash On Delivery', 7000, NULL, 'PPN', 'Transfer', 'Disetujui', '', '', 'BAPAK BANDI 081216029677', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `id_user`
+-- Table structure for table `id_user`
 --
 
 CREATE TABLE `id_user` (
@@ -10791,11 +10792,11 @@ CREATE TABLE `id_user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `id_user`
+-- Dumping data for table `id_user`
 --
 
 INSERT INTO `id_user` (`id`, `profilname`, `username`, `password`, `last_login`, `authKey`, `accessToken`, `type`, `blocked`) VALUES
-(1, '5', 'dedy', '$2y$13$.d2C0.bHMWLqkIT0k6Dd3.7xNwLBUey3mvzOwx/v.6fiDSOEzn/2e', '2021-05-31 08:44:48', 'd5fdbe5b16111739a53f6bedc2c29e5c', 'd5fdbe5b16111739a53f6bedc2c29e5c', 'Administrator', ''),
+(1, '5', 'dedy', '$2y$13$.d2C0.bHMWLqkIT0k6Dd3.7xNwLBUey3mvzOwx/v.6fiDSOEzn/2e', '2021-06-01 11:03:40', 'd5fdbe5b16111739a53f6bedc2c29e5c', 'd5fdbe5b16111739a53f6bedc2c29e5c', 'Administrator', ''),
 (2, '10', 'sugeng', '$2y$13$zF4RuFW743TDuFQwqzXzaOa18a2l21Q8WGPevoGynoc9FeWl361O2', '2021-05-31 08:59:20', '9e28894760bdf11cb2bef7a32c020e3b', '9e28894760bdf11cb2bef7a32c020e3b', 'Marketing', ''),
 (7, '1', 'alisiachintya', '$2y$13$SMiUO/xBwZvGKMEKtfXe7.wG3qXPcUjCCkKcxHFSxfP11OzriM.s2', '2021-05-29 08:42:44', '60532c4e119ce506036cf74f655259dd', '60532c4e119ce506036cf74f655259dd', 'Marketing', ''),
 (9, '12', 'risza', '$2y$13$tD2k5kTBFRwv0DAfWO0LjO1o2gju3lAwTsctLGUDZ0G//L0u8xNa2', '2021-05-31 09:00:39', '521f6ab426fbb7296a695ab243412094', '521f6ab426fbb7296a695ab243412094', 'Marketing', ''),
@@ -10813,45 +10814,45 @@ INSERT INTO `id_user` (`id`, `profilname`, `username`, `password`, `last_login`,
 --
 
 --
--- Indeks untuk tabel `id_city`
+-- Indexes for table `id_city`
 --
 ALTER TABLE `id_city`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `kota` (`kota`);
 
 --
--- Indeks untuk tabel `id_customer`
+-- Indexes for table `id_customer`
 --
 ALTER TABLE `id_customer`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `id_dailyreport`
+-- Indexes for table `id_dailyreport`
 --
 ALTER TABLE `id_dailyreport`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `id_departemen`
+-- Indexes for table `id_departemen`
 --
 ALTER TABLE `id_departemen`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `id_exkaryawan`
+-- Indexes for table `id_exkaryawan`
 --
 ALTER TABLE `id_exkaryawan`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `badge` (`id_employee`);
 
 --
--- Indeks untuk tabel `id_jobtitle`
+-- Indexes for table `id_jobtitle`
 --
 ALTER TABLE `id_jobtitle`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `id_karyawan`
+-- Indexes for table `id_karyawan`
 --
 ALTER TABLE `id_karyawan`
   ADD PRIMARY KEY (`id`),
@@ -10859,97 +10860,97 @@ ALTER TABLE `id_karyawan`
   ADD UNIQUE KEY `no_ktp` (`no_ktp`);
 
 --
--- Indeks untuk tabel `id_offer`
+-- Indexes for table `id_offer`
 --
 ALTER TABLE `id_offer`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `id_offer_number`
+-- Indexes for table `id_offer_number`
 --
 ALTER TABLE `id_offer_number`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `nomor` (`nomor`);
 
 --
--- Indeks untuk tabel `id_purchase_order`
+-- Indexes for table `id_purchase_order`
 --
 ALTER TABLE `id_purchase_order`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `id_user`
+-- Indexes for table `id_user`
 --
 ALTER TABLE `id_user`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `username` (`username`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `id_city`
+-- AUTO_INCREMENT for table `id_city`
 --
 ALTER TABLE `id_city`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
--- AUTO_INCREMENT untuk tabel `id_customer`
+-- AUTO_INCREMENT for table `id_customer`
 --
 ALTER TABLE `id_customer`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4255;
 
 --
--- AUTO_INCREMENT untuk tabel `id_dailyreport`
+-- AUTO_INCREMENT for table `id_dailyreport`
 --
 ALTER TABLE `id_dailyreport`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4680;
 
 --
--- AUTO_INCREMENT untuk tabel `id_departemen`
+-- AUTO_INCREMENT for table `id_departemen`
 --
 ALTER TABLE `id_departemen`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT untuk tabel `id_exkaryawan`
+-- AUTO_INCREMENT for table `id_exkaryawan`
 --
 ALTER TABLE `id_exkaryawan`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT untuk tabel `id_jobtitle`
+-- AUTO_INCREMENT for table `id_jobtitle`
 --
 ALTER TABLE `id_jobtitle`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT untuk tabel `id_karyawan`
+-- AUTO_INCREMENT for table `id_karyawan`
 --
 ALTER TABLE `id_karyawan`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
--- AUTO_INCREMENT untuk tabel `id_offer`
+-- AUTO_INCREMENT for table `id_offer`
 --
 ALTER TABLE `id_offer`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2886;
 
 --
--- AUTO_INCREMENT untuk tabel `id_offer_number`
+-- AUTO_INCREMENT for table `id_offer_number`
 --
 ALTER TABLE `id_offer_number`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT untuk tabel `id_purchase_order`
+-- AUTO_INCREMENT for table `id_purchase_order`
 --
 ALTER TABLE `id_purchase_order`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
 
 --
--- AUTO_INCREMENT untuk tabel `id_user`
+-- AUTO_INCREMENT for table `id_user`
 --
 ALTER TABLE `id_user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
