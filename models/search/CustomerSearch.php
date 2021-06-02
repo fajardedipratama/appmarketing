@@ -19,7 +19,7 @@ class CustomerSearch extends Customer
     {
         return [
             [['id'], 'integer'],
-            [['perusahaan', 'lokasi', 'alamat_lengkap', 'pic', 'telfon', 'email', 'catatan','sales','expired','created_by','created_time','verified','entrusted'], 'safe'],
+            [['perusahaan', 'lokasi', 'alamat_lengkap', 'pic', 'telfon', 'email', 'catatan','sales','expired','created_by','created_time','keterangan_fix','verified','entrusted'], 'safe'],
         ];
     }
 
@@ -42,7 +42,7 @@ class CustomerSearch extends Customer
     public function search($params)
     {
         if(Yii::$app->user->identity->type == 'Marketing'){
-            $query = Customer::find()->where(['>=','expired',date('Y-m-d')])->orWhere(['expired'=>NULL]);
+            $query = Customer::find()->where(['>=','expired',date('Y-m-d')])->orWhere(['not',['keterangan_fix'=>NULL]])->orWhere(['expired'=>NULL]);
         }else{
             $query = Customer::find();
         }

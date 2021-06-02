@@ -62,12 +62,8 @@ $offers = Offer::find()->where(['perusahaan'=>$model->id])->orderBy(['id'=>SORT_
               <?php endif; ?>
 
               <?php if(strtotime('+14 days', strtotime($model->expired)) <= strtotime(date('Y-m-d')) && $model->expired != NULL): ?>
-                <?= Html::a('<i class="fa fa-fw fa-check-square"></i> Aktifkan', ['activeagain', 'id' => $model->id], ['class' => 'btn btn-success',
-                  'data' => [
-                    'confirm' => 'Aktifkan kembali perusahaan ini ?',
-                    'method' => 'post',
-                  ],
-                ]) ?>
+                <?= Html::a('<i class="fa fa-fw fa-pencil"></i> Ubah', ['update', 'id' => $model->id], ['class' => 'btn btn-warning']) ?>
+                <button class="btn btn-success" data-toggle="modal" data-target="#daily-report"><i class="fa fa-fw fa-check-square"></i> Aktifkan</button>
               <?php endif; ?>
             </p>
         </div>

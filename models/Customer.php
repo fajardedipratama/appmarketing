@@ -24,6 +24,7 @@ use Yii;
  * @property string|null $created_time
  * @property string $verified
  * @property string $alasan
+ * @property string|null $keterangan_fix
  * @property string $entrusted
  */
 class Customer extends \yii\db\ActiveRecord
@@ -45,7 +46,7 @@ class Customer extends \yii\db\ActiveRecord
         return [
             [['perusahaan', 'lokasi'], 'required'],
             [['expired','created_time'], 'safe'],
-            [['perusahaan', 'lokasi', 'pic', 'telfon', 'verified', 'volume', 'jarak_ambil','long_expired','entrusted'], 'string', 'max' => 100],
+            [['perusahaan', 'lokasi', 'pic', 'telfon', 'verified', 'volume', 'jarak_ambil','long_expired','keterangan_fix','entrusted'], 'string', 'max' => 100],
             [['alamat_lengkap', 'catatan', 'alasan'], 'string', 'max' => 1000],
             [['sales','created_by','target'], 'integer'],
             [['email'], 'email', 'message'=>'Penulisan alamat email tidak valid, pastikan ada @ dan diakhiri dengan domain'],
@@ -76,6 +77,7 @@ class Customer extends \yii\db\ActiveRecord
             'verified' => 'Verif.',
             'target' => 'Target',
             'alasan' => 'Alasan',
+            'keterangan_fix' => 'Keterangan',
             'entrusted'=>'Pihak Eksternal',
         ];
     }
