@@ -48,7 +48,16 @@ $this->title = 'Penawaran Baru';
             ],
             [
               'attribute'=>'perusahaan',
-              'value'=>'customer.perusahaan',
+              'format'=>'raw',
+              'value'=>function($data){
+                if($data->customer->verified == 'yes'){
+                  return $data->customer->perusahaan.'<i class="fa fa-fw fa-check"></i>';
+                }elseif($data->customer->verified == NULL){
+                  return $data->customer->perusahaan.'<i class="fa fa-fw fa-hourglass-2"></i>';
+                }else{
+                  return $data->customer->perusahaan.'<i class="fa fa-fw fa-question-circle"></i>';
+                }
+              },
               'filter'=>\kartik\select2\Select2::widget([
                 'model'=>$searchModel,'attribute'=>'perusahaan','data'=>$customer,
                 'options'=>['placeholder'=>'Perusahaan'],'pluginOptions'=>['allowClear'=>true]

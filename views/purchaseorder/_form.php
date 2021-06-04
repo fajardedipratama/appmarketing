@@ -113,7 +113,7 @@ use dosamigos\datepicker\DatePicker;
         <?= $form->field($model, 'pajak')->dropDownList(['PPN'=>'PPN','Non PPN'=>'Non PPN']) ?>
     </div>
     <div class="col-sm-4">
-        <?= $form->field($model, 'pembayaran')->dropDownList(['Transfer'=>'Transfer','Backup BG'=>'Backup BG','Tunai'=>'Tunai']) ?>
+        <?= $form->field($model, 'pembayaran')->dropDownList(['Transfer'=>'Transfer','Tunai'=>'Tunai','Barter'=>'Barter']) ?>
     </div>
     <div class="col-sm-4">
         <?= $form->field($model, 'catatan')->textInput(['maxlength' => true]) ?>
@@ -126,6 +126,10 @@ use dosamigos\datepicker\DatePicker;
         <?= $form->field($model, 'eksternal')->dropDownList(['yes'=>'yes'],['prompt'=>'--Eksternal ?--']) ?>
     </div>
 <?php endif ?>
+    <div class="col-sm-4">
+        <label>Backup BG ?</label>
+        <?= $form->field($model, 'bilyet_giro')->checkBox(['label'=>false,'selected' => $model->bilyet_giro]) ?>
+    </div>
 </div>
     </div></div>
 

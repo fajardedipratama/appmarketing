@@ -60,7 +60,16 @@ use app\models\PurchaseOrder;
 			<td style="font-weight: bold;">Pembayaran</td><td>: <?= $model->termin ?></td>
 		</tr>
 		<tr>
-			<td style="font-weight: bold;">Metode Bayar</td><td>: <?= $model->pembayaran ?></td>
+			<td style="font-weight: bold;">Metode Bayar</td>
+			<td>: 
+				<?php 
+					if($model->bilyet_giro == 1){
+						echo $model->pembayaran.' (& Backup BG)';
+					}else{
+						echo $model->pembayaran;
+					} 
+				?>	
+			</td>
 		</tr>
 		<tr>
 			<td style="font-weight: bold;">Catatan</td><td>: <?= $model->catatan ?></td>

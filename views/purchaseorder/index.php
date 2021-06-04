@@ -77,7 +77,7 @@ $this->title = 'Data PO';
               'attribute'=>'volume',
               'headerOptions'=>['style'=>'width:5%'],
               'value'=>function($data){
-                return $data->volume/1000;
+                return $data->volume;
               }
             ],
             [

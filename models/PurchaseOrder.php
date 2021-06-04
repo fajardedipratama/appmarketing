@@ -25,6 +25,7 @@ use Yii;
  * @property int|null $cashback
  * @property string $pajak
  * @property string $pembayaran
+ * @property int|null $bilyet_giro
  * @property string $status
  * @property string $catatan
  * @property string $alasan_tolak
@@ -48,7 +49,7 @@ class PurchaseOrder extends \yii\db\ActiveRecord
     {
         return [
             [['perusahaan', 'no_po', 'tgl_po', 'tgl_kirim', 'alamat', 'alamat_kirim', 'purchasing', 'no_purchasing', 'volume', 'termin', 'harga', 'pajak', 'pembayaran'], 'required'],
-            [['perusahaan', 'sales', 'volume', 'harga', 'cashback'], 'integer'],
+            [['perusahaan', 'sales', 'volume', 'harga', 'cashback','bilyet_giro'], 'integer'],
             [['tgl_po', 'tgl_kirim'], 'safe'],
             [['no_po', 'purchasing', 'no_purchasing', 'keuangan', 'no_keuangan', 'termin', 'pajak', 'pembayaran', 'status','penerima','eksternal'], 'string', 'max' => 100],
             [['alamat', 'alamat_kirim', 'catatan', 'alasan_tolak'], 'string', 'max' => 1000],
@@ -79,6 +80,7 @@ class PurchaseOrder extends \yii\db\ActiveRecord
             'cashback' => 'Cashback',
             'pajak' => 'Pajak',
             'pembayaran' => 'Metode Bayar',
+            'bilyet_giro' => 'Backup BG ?',
             'status' => 'Status',
             'catatan' => 'Catatan',
             'alasan_tolak' => 'Alasan Tolak',

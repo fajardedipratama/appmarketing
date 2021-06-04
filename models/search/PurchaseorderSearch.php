@@ -17,8 +17,8 @@ class PurchaseorderSearch extends PurchaseOrder
     public function rules()
     {
         return [
-            [['id', 'perusahaan', 'sales', 'volume', 'harga', 'cashback'], 'integer'],
-            [['no_po', 'tgl_po', 'tgl_kirim', 'alamat', 'alamat_kirim', 'purchasing', 'no_purchasing', 'keuangan', 'no_keuangan', 'termin', 'pajak', 'pembayaran', 'status', 'catatan', 'alasan_tolak'], 'safe'],
+            [['id', 'perusahaan', 'sales', 'volume', 'harga', 'cashback', 'bilyet_giro'], 'integer'],
+            [['no_po', 'tgl_po', 'tgl_kirim', 'alamat', 'alamat_kirim', 'purchasing', 'no_purchasing', 'keuangan', 'no_keuangan', 'termin', 'pajak', 'pembayaran','status', 'catatan', 'alasan_tolak'], 'safe'],
         ];
     }
 
@@ -70,6 +70,7 @@ class PurchaseorderSearch extends PurchaseOrder
             'volume' => $this->volume,
             'harga' => $this->harga,
             'cashback' => $this->cashback,
+            'bilyet_giro' => $this->bilyet_giro,
         ]);
         if(!empty($this->tgl_po)){    
             $query->andFilterWhere([

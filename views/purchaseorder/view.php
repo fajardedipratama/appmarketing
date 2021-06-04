@@ -96,7 +96,16 @@ $this->title = 'PURCHASE ORDER';
                 }
             ],
             'cashback',
-            'pembayaran',
+            [
+                'attribute'=>'pembayaran',
+                'value'=>function($data){
+                    if($data->bilyet_giro == 1){
+                        return $data->pembayaran.' (& Backup BG)';
+                    }else{
+                        return $data->pembayaran;
+                    }
+                }
+            ],
             'catatan',
             'status',
             'alasan_tolak',
