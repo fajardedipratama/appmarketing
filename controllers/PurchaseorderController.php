@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use Yii;
 use app\models\PurchaseOrder;
+use app\models\PurchaseOrderPaid;
 use app\models\search\PurchaseorderSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -91,6 +92,15 @@ class PurchaseorderController extends Controller
     public function actionView($id)
     {
         $model = $this->findModel($id);
+        //paid
+        $modelpaid = new PurchaseOrderPaid();
+        if ($modelpaid->load(Yii::$app->request->post()) ) {
+            //process
+            $modelpaid->paid_date=Yii::$app->formatter->asDate($modelpaid->paid_date,'yyyy-MM-dd');
+            $modelpaid->save();
+            return $this->redirect(['view', 'id' => $model->id]);
+        }
+
         if(isset($_POST['tolak'])){
             Yii::$app->db->createCommand()->update('id_purchase_order',
             ['alasan_tolak' => $_POST['PurchaseOrder']['alasan_tolak'],'status'=>'Ditolak'],
@@ -99,6 +109,7 @@ class PurchaseorderController extends Controller
         }
         return $this->render('view', [
             'model' => $model,
+            'modelpaid' => $modelpaid
         ]);
     }
     public function actionAccpo($id)

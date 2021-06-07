@@ -1,10 +1,12 @@
 <?php
-
+use app\models\PurchaseOrderPaid;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\PurchaseOrder */
+
+$paid = PurchaseOrderPaid::find()->where(['purchase_order_id'=>$model->id])->all();
 
 $this->title = 'PURCHASE ORDER';
 \yii\web\YiiAsset::register($this);
@@ -51,6 +53,14 @@ $this->title = 'PURCHASE ORDER';
 <?php endif; ?>
 </div>
 
+<section class="content"><div class="nav-tabs-custom tab-success">
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#detail" data-toggle="tab">Detail</a></li>
+        <li><a href="#paid" data-toggle="tab">Pembayaran</a></li>
+    </ul>
+
+<div class="tab-content">
+    <div class="active tab-pane" id="detail">
     <div class="table-responsive">
     <?= DetailView::widget([
         'model' => $model,
@@ -112,6 +122,31 @@ $this->title = 'PURCHASE ORDER';
         ],
     ]) ?>
     </div>
+    </div>
+    
+    <div class="tab-pane" id="paid">
+    <?php if(Yii::$app->user->identity->type != 'Marketing'): ?>
+        <button class="btn btn-sm btn-success" data-toggle="modal" data-target="#paid-po"><i class="fa fa-fw fa-dollar"></i> Tambah Bayar</button>
+    <?php endif ?>
+        <div class="box-body table-responsive no-padding">
+          <table class="table table-hover">
+            <tr>
+                <th>Tanggal</th>
+                <th>Jumlah</th>
+                <th>Catatan</th>
+            </tr>
+        <?php foreach($paid as $show_paid): ?>
+            <tr>
+                <td><?= date('d/m/Y',strtotime($show_paid['paid_date'])) ?></td>
+                <td><?= Yii::$app->formatter->asCurrency($show_paid['amount']) ?></td>
+                <td><?= $show_paid['note'] ?></td>
+            </tr>
+        <?php endforeach ?>
+          </table>
+        </div>
+    </div>
+</div>
+</div></section>
 
     <div class="modal fade" id="tolak-po"><div class="modal-dialog">
         <div class="modal-content">
@@ -122,6 +157,19 @@ $this->title = 'PURCHASE ORDER';
             </div>
             <div class="modal-body">
               <?= $this->render('_formtolak', ['model' => $model]) ?>
+            </div>
+        </div>
+    </div></div>
+
+    <div class="modal fade" id="paid-po"><div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title"><b>Pembayaran</b></h4>          
+            </div>
+            <div class="modal-body">
+              <?= $this->render('_formbayar', ['model'=>$model,'modelpaid' => $modelpaid]) ?>
             </div>
         </div>
     </div></div>
