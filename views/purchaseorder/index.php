@@ -21,7 +21,7 @@ $this->title = 'Data PO';
             <?= Html::a('<i class="fa fa-fw fa-plus-square"></i> Tambah Data', ['create'], ['class' => 'btn btn-success']) ?>
         <?php endif; ?>
         <?php if(Yii::$app->user->identity->type != 'Marketing'): ?>
-            <?= Html::a('<i class="fa fa-fw fa-dollar"></i> Hasil PO', ['hasilpo'],['class' => 'btn btn-danger']) ?>
+            <?= Html::a('<i class="fa fa-fw fa-dollar"></i> Hasil PO', ['hasilpo','range'=>'all'],['class' => 'btn btn-danger']) ?>
         <?php endif; ?>
         </div>
     </div>

@@ -35,6 +35,7 @@ use Yii;
  */
 class PurchaseOrder extends \yii\db\ActiveRecord
 {
+    public $set_awal,$set_akhir;
     /**
      * {@inheritdoc}
      */
@@ -51,7 +52,7 @@ class PurchaseOrder extends \yii\db\ActiveRecord
         return [
             [['perusahaan', 'no_po', 'tgl_po', 'tgl_kirim', 'alamat', 'alamat_kirim', 'purchasing', 'no_purchasing', 'volume', 'termin', 'harga', 'pajak', 'pembayaran'], 'required'],
             [['perusahaan', 'sales', 'volume', 'harga', 'cashback','bilyet_giro','penalti'], 'integer'],
-            [['tgl_po', 'tgl_kirim'], 'safe'],
+            [['tgl_po', 'tgl_kirim','set_awal','set_akhir'], 'safe'],
             [['no_po', 'purchasing', 'no_purchasing', 'keuangan', 'no_keuangan', 'termin', 'pajak', 'pembayaran', 'status','penerima','eksternal'], 'string', 'max' => 100],
             [['alamat', 'alamat_kirim', 'catatan', 'alasan_tolak'], 'string', 'max' => 1000],
         ];
@@ -88,6 +89,8 @@ class PurchaseOrder extends \yii\db\ActiveRecord
             'penerima' => 'Penerima + No.Hp',
             'eksternal' => 'Eksternal ?',
             'penalti' => 'Penalti',
+            'set_awal'=> 'Dari',
+            'set_akhir'=> 'Sampai',
         ];
     }
     public function getCustomer()
