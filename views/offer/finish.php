@@ -19,7 +19,17 @@ $this->title = 'Penawaran Selesai';
         </div>
         <div class="col-sm-3">
         <?php if(Yii::$app->user->identity->type != 'Marketing'): ?>
-            <?= Html::a('<i class="fa fa-fw fa-file-excel-o"></i> Export Excel', ['export-excel2'], ['class'=>'btn btn-success pull-right']); ?>
+            <div class="btn-group">
+              <button type="button" class="btn btn-success"><i class="fa fa-fw fa-file-excel-o"></i> Export</button>
+              <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
+                <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+              </button>
+              <ul class="dropdown-menu" role="menu">
+                <li><?= Html::a('Hari Ini', ['export-excel']); ?></li>
+                <li><?= Html::a('Semua', ['export-excel2']); ?></li>
+              </ul>
+            </div>
         <?php else: ?>
             <?= Html::a('<i class="glyphicon glyphicon-refresh"></i>', ['index'], ['class' => 'btn btn-warning pull-right']) ?>
         <?php endif ?> 

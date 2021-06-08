@@ -82,6 +82,10 @@ class PurchaseorderController extends Controller
             'dataProvider' => $dataProvider,
         ]);
     }
+    public function actionHasilpo()
+    {
+        return $this->render('hasilpo');
+    }
 
     /**
      * Displays a single PurchaseOrder model.

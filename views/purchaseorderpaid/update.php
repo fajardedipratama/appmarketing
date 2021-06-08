@@ -5,10 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\PurchaseOrderPaid */
 
-$this->title = 'Update Purchase Order Paid: ' . $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Purchase Order Paids', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->title = 'Update Pembayaran'
 ?>
 <div class="purchase-order-paid-update">
 

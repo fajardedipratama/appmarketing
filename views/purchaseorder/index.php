@@ -21,7 +21,7 @@ $this->title = 'Data PO';
             <?= Html::a('<i class="fa fa-fw fa-plus-square"></i> Tambah Data', ['create'], ['class' => 'btn btn-success']) ?>
         <?php endif; ?>
         <?php if(Yii::$app->user->identity->type != 'Marketing'): ?>
-            <button class="btn btn-danger" data-toggle="modal" data-target="#hasilpo"><i class="fa fa-fw fa-dollar"></i> Hasil PO</button>
+            <?= Html::a('<i class="fa fa-fw fa-dollar"></i> Hasil PO', ['hasilpo'],['class' => 'btn btn-danger']) ?>
         <?php endif; ?>
         </div>
     </div>
@@ -102,18 +102,5 @@ $this->title = 'Data PO';
         ],
     ]); ?>
 </div></div></div>
-
-<div class="modal fade" id="hasilpo"><div class="modal-dialog modal-lg">
-  <div class="modal-content">
-    <div class="modal-header">
-      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-      <span aria-hidden="true">&times;</span></button>
-      <h4 class="modal-title"><b>Hasil Purchase Order</b></h4>          
-    </div>
-    <div class="modal-body">
-       <?= $this->render('hasilpo') ?>
-    </div>
-  </div>
-</div></div>
 
 </div>

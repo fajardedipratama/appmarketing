@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-
+use dosamigos\datepicker\DatePicker;
 /* @var $this yii\web\View */
 /* @var $model app\models\PurchaseOrderPaid */
 /* @var $form yii\widgets\ActiveForm */
@@ -11,17 +11,28 @@ use yii\widgets\ActiveForm;
 <div class="purchase-order-paid-form">
 
     <?php $form = ActiveForm::begin(); ?>
-
-    <?= $form->field($model, 'purchase_order_id')->textInput() ?>
-
-    <?= $form->field($model, 'paid_date')->textInput() ?>
-
-    <?= $form->field($model, 'amount')->textInput() ?>
-
-    <?= $form->field($model, 'note')->textInput(['maxlength' => true]) ?>
-
+<div class="box box-success"><div class="box-body"><div class="row">
+	<div class="col-sm-4">
+		<?php 
+            if(!$model->isNewRecord || $model->isNewRecord){
+                if($model->paid_date!=null){
+                    $model->paid_date=date('d-m-Y',strtotime($model->paid_date));
+                }
+            }
+        ?>
+        <?= $form->field($model, 'paid_date')->widget(DatePicker::className(),[
+            'clientOptions'=>['autoclose'=>true,'format'=>'dd-mm-yyyy','orientation'=>'bottom']
+        ])?>
+	</div>
+    <div class="col-sm-4">
+    	<?= $form->field($model, 'amount')->textInput(['type'=>'number']) ?>
+	</div>
+    <div class="col-sm-4">
+    	<?= $form->field($model, 'note')->textInput(['maxlength' => true]) ?>
+	</div>
+</div></div></div>
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Simpan', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

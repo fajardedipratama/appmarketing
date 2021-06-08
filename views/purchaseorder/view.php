@@ -6,7 +6,8 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\PurchaseOrder */
 
-$paid = PurchaseOrderPaid::find()->where(['purchase_order_id'=>$model->id])->all();
+$paid = PurchaseOrderPaid::find()->where(['purchase_order_id'=>$model->id])->orderBy(['paid_date'=>SORT_DESC])->all();
+$paid_done = PurchaseOrderPaid::find()->where(['purchase_order_id'=>$model->id])->sum('amount');
 
 $this->title = 'PURCHASE ORDER';
 \yii\web\YiiAsset::register($this);
@@ -106,6 +107,7 @@ $this->title = 'PURCHASE ORDER';
                 }
             ],
             'cashback',
+            'penalti',
             [
                 'attribute'=>'pembayaran',
                 'value'=>function($data){
@@ -134,14 +136,32 @@ $this->title = 'PURCHASE ORDER';
                 <th>Tanggal</th>
                 <th>Jumlah</th>
                 <th>Catatan</th>
+                <th>Aksi</th>
             </tr>
         <?php foreach($paid as $show_paid): ?>
             <tr>
                 <td><?= date('d/m/Y',strtotime($show_paid['paid_date'])) ?></td>
                 <td><?= Yii::$app->formatter->asCurrency($show_paid['amount']) ?></td>
                 <td><?= $show_paid['note'] ?></td>
+                <td>
+                    <?= Html::a('<i class="fa fa-fw fa-pencil"></i>', ['purchaseorderpaid/update', 'id' => $show_paid['id']]) ?>
+                    <?= Html::a('<i class="fa fa-fw fa-trash"></i>', ['purchaseorderpaid/delete', 'id' => $show_paid['id']], ['data' => ['confirm' => 'Hapus data ini ?','method' => 'post']]) ?>
+                </td>
             </tr>
         <?php endforeach ?>
+        <?php $total_tagihan = ($model->harga+$model->penalti)*$model->volume; ?>
+            <tr>
+                <th>Total Tagihan</th>
+                <th><?= Yii::$app->formatter->asCurrency($total_tagihan); ?></th>
+            </tr>
+            <tr>
+                <th>Total Terbayar</th>
+                <th><?= Yii::$app->formatter->asCurrency($paid_done); ?></th>
+            </tr>
+            <tr>
+                <th>Kurang Bayar</th>
+                <th><?= Yii::$app->formatter->asCurrency($total_tagihan-$paid_done); ?></th>
+            </tr>
           </table>
         </div>
     </div>

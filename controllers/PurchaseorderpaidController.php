@@ -97,8 +97,10 @@ class PurchaseorderpaidController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post())) {
+            $model->paid_date=Yii::$app->formatter->asDate($model->paid_date,'yyyy-MM-dd');
+            $model->save();
+            return $this->redirect(['purchaseorder/view', 'id' => $model->purchase_order_id]);
         }
 
         return $this->render('update', [
@@ -115,9 +117,10 @@ class PurchaseorderpaidController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        $model = $this->findModel($id);
+        $model->delete();
 
-        return $this->redirect(['index']);
+        return $this->redirect(['purchaseorder/view', 'id' => $model->purchase_order_id]);
     }
 
     /**

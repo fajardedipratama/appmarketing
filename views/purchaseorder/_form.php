@@ -125,6 +125,9 @@ use dosamigos\datepicker\DatePicker;
     <div class="col-sm-4">
         <?= $form->field($model, 'eksternal')->dropDownList(['yes'=>'yes'],['prompt'=>'--Eksternal ?--']) ?>
     </div>
+    <div class="col-sm-4">
+        <?= $form->field($model, 'penalti')->textInput(['type'=>'number']) ?>
+    </div>
 <?php endif ?>
     <div class="col-sm-4">
         <label>Backup BG ?</label>
