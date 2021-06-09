@@ -70,7 +70,15 @@ class StatisticController extends Controller
 
     public function actionToday($time)
     {
-        return $this->render('today');
+        $model = new Karyawan();
+        if ($model->load(Yii::$app->request->post()) ) {
+            $waktu = Yii::$app->formatter->asDate($model->waktu,'yyyy-MM-dd');
+            return $this->redirect(['today','time'=>$waktu]);
+        }
+
+        return $this->render('today',[
+            'model' => $model,
+        ]);
     }
 
     /**

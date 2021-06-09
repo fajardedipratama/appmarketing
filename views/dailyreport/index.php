@@ -18,9 +18,10 @@ $this->title = 'Aktivitas Sales';
         </div>
         <div class="col-sm-3">
         <?php if(Yii::$app->user->identity->type == 'Administrator'): ?>
-            <?= Html::a('<i class="fa fa-fw fa-file-excel-o"></i> Export Excel', ['export-excel2','waktu'=>$_GET['waktu']], ['class'=>'btn btn-success']); ?>
-            <button class="btn btn-info" data-toggle="modal" data-target="#searchglobal"><i class="fa fa-fw fa-search"></i> Cari</button>
+            <?= Html::a('<i class="fa fa-fw fa-file-excel-o"></i> Export', ['export-excel2','waktu'=>$_GET['waktu']], ['class'=>'btn btn-success']); ?>
         <?php endif ?> 
+            <button class="btn btn-primary" data-toggle="modal" data-target="#searchglobal"><i class="fa fa-fw fa-search"></i> Cari</button>
+            <?= Html::a('<i class="fa fa-fw fa-calendar"></i> Today', ['index','waktu'=>date('Y-m-d')], ['class'=>'btn btn-warning']); ?>
         </div>
     </div>
 
@@ -44,20 +45,11 @@ $this->title = 'Aktivitas Sales';
                 'attribute'=>'waktu',
                 'headerOptions'=>['style'=>'width:12%'],
                 'format' => ['date','dd-MM-Y H:i'],
-                // 'filter'=> DatePicker::widget([
-                //     'model'=>$searchModel,'attribute'=>'waktu','clientOptions'=>[
-                //       'autoclose'=>true, 'format' => 'dd-mm-yyyy','orientation'=>'bottom'
-                //     ],
-                // ])
             ],
             [
               'attribute'=>'perusahaan',
               'value'=>'customer.perusahaan',
               'headerOptions'=>['style'=>'width:25%'],
-              // 'filter'=>\kartik\select2\Select2::widget([
-              //   'model'=>$searchModel,'attribute'=>'perusahaan','data'=>$customer,
-              //   'options'=>['placeholder'=>'Perusahaan'],'pluginOptions'=>['allowClear'=>true]
-              // ])
             ],
             [
                 'attribute'=>'pengingat',
@@ -77,7 +69,7 @@ $this->title = 'Aktivitas Sales';
 
 <!-- modal -->
     <div class="modal fade" id="searchglobal">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-sm">
     <div class="modal-content">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -85,7 +77,7 @@ $this->title = 'Aktivitas Sales';
             <h4 class="modal-title"><b>Pencarian Tanggal</b></h4>          
         </div>
         <div class="modal-body">
-            <?= $this->render('_searchform', ['searchModel' => $searchModel]) ?>
+            <?= $this->render('_searchform', ['model' => $model]) ?>
         </div>
     </div>
     </div>

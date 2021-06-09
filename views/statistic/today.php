@@ -15,12 +15,14 @@ $query = Karyawan::find()->where(['posisi'=>6,'status_aktif'=>'Aktif'])->orderBy
 <div class="karyawan-view">
 
     <div class="row">
-        <div class="col-sm-10">
+        <div class="col-sm-8">
             <h1><?= Html::encode($this->title) ?></h1>
             <h5><i>Tanggal : <?= date('d-m-Y',strtotime($_GET['time'])); ?></i></h5>
         </div>
-        <div class="col-sm-2">
+        <div class="col-sm-4">
             <?= Html::a('<i class="fa fa-fw fa-calendar"></i> Statistik Total', ['index'], ['class' => 'btn btn-success']) ?>
+            <button class="btn btn-primary" data-toggle="modal" data-target="#searchglobal"><i class="fa fa-fw fa-search"></i> Cari</button>
+            <?= Html::a('<i class="fa fa-fw fa-calendar"></i> Today', ['today','time'=>date('Y-m-d')], ['class'=>'btn btn-warning']); ?>
         </div>
     </div>
 
@@ -50,4 +52,22 @@ $query = Karyawan::find()->where(['posisi'=>6,'status_aktif'=>'Aktif'])->orderBy
     <?php endforeach ?>
     </table>
     </div></div></div>
+
+<!-- modal -->
+    <div class="modal fade" id="searchglobal">
+    <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title"><b>Pencarian Tanggal</b></h4>          
+        </div>
+        <div class="modal-body">
+            <?= $this->render('_searchform', ['model' => $model]) ?>
+        </div>
+    </div>
+    </div>
+    </div>
+<!-- modal -->
+
 </div>

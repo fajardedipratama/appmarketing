@@ -50,6 +50,13 @@ class DailyreportController extends Controller
     public function actionIndex($waktu)
     {
         $searchModel = new DailyreportSearch();
+
+        $model = new Dailyreport();
+        if ($model->load(Yii::$app->request->post()) ) {
+            $waktu = Yii::$app->formatter->asDate($model->waktu,'yyyy-MM-dd');
+            return $this->redirect(['index','waktu'=>$waktu]);
+        }
+
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         $sales = ArrayHelper::map(Karyawan::find()->where(['posisi'=>6,'status_aktif'=>'Aktif'])->all(),'id',
@@ -65,6 +72,7 @@ class DailyreportController extends Controller
             'sales' => $sales,
             'customer' => $customer,
             'searchModel' => $searchModel,
+            'model' => $model,
             'dataProvider' => $dataProvider,
         ]);
     }

@@ -7,16 +7,12 @@ use app\models\PurchaseOrder;
 if($_GET['range']=='all'){
     $kirim = PurchaseOrder::find()->where(['status'=>'Terkirim'])->orWhere(['status'=>'Terbayar-Selesai'])->sum('volume');
     $pending = PurchaseOrder::find()->where(['status'=>'Disetujui'])->sum('volume');
-    $terbayar = Yii::$app->db->createCommand('SELECT SUM(harga*volume) AS total FROM id_purchase_order WHERE status="Terbayar-Selesai"')->queryAll();
-    $terkirim = Yii::$app->db->createCommand('SELECT SUM(harga*volume) AS total FROM id_purchase_order WHERE status="Terkirim"')->queryAll();
 }else{
     $data = explode("x", $_GET['range']);
     $set_awal = $data[0];
     $set_akhir = $data[1];
     $kirim=PurchaseOrder::find()->where(['status'=>'Terkirim'])->orWhere(['status'=>'Terbayar-Selesai'])->andWhere(['between','tgl_kirim',$set_awal,$set_akhir])->sum('volume');
     $pending = PurchaseOrder::find()->where(['status'=>'Disetujui'])->andWhere(['between','tgl_kirim',$set_awal,$set_akhir])->sum('volume');
-    // $terbayar = PurchaseOrder::find()->where(['status'=>'Terbayar-Selesai'])->andWhere(['between','tgl_kirim',$set_awal,$set_akhir])->all();
-    // $terkirim = PurchaseOrder::find()->where(['status'=>'Terkirim'])->andWhere(['between','tgl_kirim',$set_awal,$set_akhir])->all();
 }
 
 /* @var $this yii\web\View */
@@ -28,6 +24,9 @@ $this->title = 'Hasil PO';
 <div class="row">
   <div class="col-sm-10">
     <h1><?= Html::a('<i class="glyphicon glyphicon-chevron-left"></i>', ['index'], ['class' => 'btn btn-success']) ?> <?= Html::encode($this->title) ?></h1>
+  <?php if($_GET['range']!='all'): ?>
+    <h5><i><?= $set_awal.' / '.$set_akhir ?></i></h5>
+  <?php endif; ?>
   </div>
   <div class="col-sm-2">
     <?= Html::a('<i class="glyphicon glyphicon-refresh"></i>', ['hasilpo','range'=>'all'], ['class' => 'btn btn-warning']) ?>
