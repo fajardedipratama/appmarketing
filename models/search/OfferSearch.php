@@ -50,7 +50,7 @@ class OfferSearch extends Offer
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
-            'pagination'=>array('pageSize'=>30),
+            'pagination'=>array('pageSize'=>20),
             'sort'=>['defaultOrder'=>['id'=>SORT_DESC]]
         ]);
 
