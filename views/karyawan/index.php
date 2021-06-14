@@ -31,9 +31,9 @@ $this->title = 'Data Karyawan';
             'badge',
             'nama',
             [
-                'attribute' => 'tanggal_masuk',
+                'attribute' => 'tanggal_lahir',
                 'value' => function($model){
-                    return date('d/m/Y',strtotime($model->tanggal_masuk));
+                    return date('d/m/Y',strtotime($model->tanggal_lahir));
                 }
             ],
             'no_hp',
