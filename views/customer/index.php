@@ -99,16 +99,12 @@ $this->title = 'Data Perusahaan';
                 'value'=>function($model){
                     if($model->verified != 'no'){
                         $query = Dailyreport::find()->where(['perusahaan'=>$model->id])->orderBy(['waktu'=>SORT_DESC])->one();
-                      if($model->keterangan_fix == NULL){
-                        if($query){
-                            if(Yii::$app->user->identity->type != 'Marketing'){
-                                return $query['keterangan'].'-'.date('d/m/y',strtotime($query['waktu']));
-                            }else{
-                                return $query['keterangan'];
-                            }
+                      if($query){
+                        if(Yii::$app->user->identity->type != 'Marketing'){
+                            return $query['keterangan'].'-'.date('d/m/y',strtotime($query['waktu']));
+                        }else{
+                            return $query['keterangan'];
                         }
-                      }else{
-                        return $model->keterangan_fix;
                       }
                     }else{
                         return $model->catatan;

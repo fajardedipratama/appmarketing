@@ -69,12 +69,8 @@ $this->title = 'Data Sales';
                 'header'=>'Status Terakhir',
                 'value'=>function($model){
                     $query = Dailyreport::find()->where(['perusahaan'=>$model->id])->orderBy(['waktu'=>SORT_DESC])->one();
-                    if($model->keterangan_fix == NULL){
-                        if($query){
-                            return $query['keterangan'].'-'.date('d/m/y',strtotime($query['waktu']));
-                        }
-                    }else{
-                        return $model->keterangan_fix;
+                    if($query){
+                        return $query['keterangan'].'-'.date('d/m/y',strtotime($query['waktu']));
                     }
                 }
             ],
