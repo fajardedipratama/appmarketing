@@ -27,6 +27,12 @@ $jobtitle = Jobtitle::find()->where(['id'=>$karyawan['posisi']])->one();
                 'options' => ['class' => 'sidebar-menu tree', 'data-widget'=> 'tree'],
                 'items' => [
                     [
+                        'label' => 'Administrasi',
+                        'icon' => 'book',
+                        'url' => '#',
+                        'visible' => !Yii::$app->user->isGuest && Yii::$app->user->identity->type == 'Administrator'
+                    ],
+                    [
                         'label' => 'Manajemen SDM',
                         'icon' => 'user-secret',
                         'url' => '#',
@@ -76,12 +82,6 @@ $jobtitle = Jobtitle::find()->where(['id'=>$karyawan['posisi']])->one();
                                 'visible' => !Yii::$app->user->isGuest && Yii::$app->user->identity->type == 'Administrator' || Yii::$app->user->identity->type == 'Manajemen'
                             ],
                         ],
-                    ],
-                    [
-                        'label' => 'Keuangan',
-                        'icon' => 'money',
-                        'url' => '#',
-                        'visible' => !Yii::$app->user->isGuest && Yii::$app->user->identity->type == 'Administrator'
                     ],
                 ],
             ]

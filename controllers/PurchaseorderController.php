@@ -88,6 +88,7 @@ class PurchaseorderController extends Controller
         if ($model->load(Yii::$app->request->post())) {
             $set_awal = Yii::$app->formatter->asDate($model->set_awal,'yyyy-MM-dd');
             $set_akhir = Yii::$app->formatter->asDate($model->set_akhir,'yyyy-MM-dd');
+            
             return $this->redirect(['hasilpo','range'=>$set_awal.'x'.$set_akhir]);
         }
         return $this->render('hasilpo',['model'=>$model]);

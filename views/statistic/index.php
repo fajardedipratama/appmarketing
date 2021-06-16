@@ -39,20 +39,24 @@ $this->title = 'Statistik Total';
                 }
             ],
             [
-                'header'=>'Total Penawaran (Terkirim + Gagal)',
+                'header'=>'Total Penawaran',
                 'value'=>function($data){
-                    $success = Offer::find()->where(['sales'=>$data['id']])->andWhere(['status'=>'Terkirim'])->count();
-                    $failed = Offer::find()->where(['sales'=>$data['id']])->andWhere(['status'=>'Gagal Kirim'])->count();
-                    return $success+$failed.' ('.$success.'+'.$failed.')';
+                    $offer = Offer::find()->where(['sales'=>$data['id']])->count();
+                    return $offer;
                 }
             ],
             [
-                'header'=>'Statistik PO',
+                'header'=>'Penawaran Terkirim',
                 'value'=>function($data){
-                    $po = PurchaseOrder::find()->where(['sales'=>$data['id']])->andWhere(['!=','status','Ditolak'])->andWhere(['!=','status','Pending']);
-                    $company = PurchaseOrder::find()->select(['perusahaan'])->where(['sales'=>$data['id']])->andWhere(['!=','status','Ditolak'])->andWhere(['!=','status','Pending'])->distinct()->count();
-                    $total_kl=$po->sum('volume')/1000;
-                    return $po->count().'x PO dari '.$company.' Perusahaan, total '.$total_kl.' KL';
+                    $success = Offer::find()->where(['sales'=>$data['id']])->andWhere(['status'=>'Terkirim'])->count();
+                    return $success;
+                }
+            ],
+            [
+                'header'=>'Penawaran Gagal',
+                'value'=>function($data){
+                    $failed = Offer::find()->where(['sales'=>$data['id']])->andWhere(['status'=>'Gagal Kirim'])->count();
+                    return $failed;
                 }
             ],
         ],

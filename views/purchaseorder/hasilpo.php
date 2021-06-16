@@ -3,6 +3,7 @@ use yii\widgets\ActiveForm;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 use app\models\PurchaseOrder;
+use app\models\Karyawan;
 
 if($_GET['range']=='all'){
     $kirim = PurchaseOrder::find()->where(['status'=>'Terkirim'])->orWhere(['status'=>'Terbayar-Selesai'])->sum('volume');
@@ -11,9 +12,12 @@ if($_GET['range']=='all'){
     $data = explode("x", $_GET['range']);
     $set_awal = $data[0];
     $set_akhir = $data[1];
+
     $kirim=PurchaseOrder::find()->where(['status'=>'Terkirim'])->orWhere(['status'=>'Terbayar-Selesai'])->andWhere(['between','tgl_kirim',$set_awal,$set_akhir])->sum('volume');
     $pending = PurchaseOrder::find()->where(['status'=>'Disetujui'])->andWhere(['between','tgl_kirim',$set_awal,$set_akhir])->sum('volume');
 }
+
+$karyawan=Karyawan::find()->where(['posisi'=>6,'status_aktif'=>'Aktif'])->orderBy(['nama_pendek'=>SORT_ASC])->all();
 
 /* @var $this yii\web\View */
 /* @var $model app\models\PurchaseOrder */
@@ -25,7 +29,7 @@ $this->title = 'Hasil PO';
   <div class="col-sm-10">
     <h1><?= Html::a('<i class="glyphicon glyphicon-chevron-left"></i>', ['index'], ['class' => 'btn btn-success']) ?> <?= Html::encode($this->title) ?></h1>
   <?php if($_GET['range']!='all'): ?>
-    <h5><i><?= $set_awal.' / '.$set_akhir ?></i></h5>
+      <h5><i><?= $set_awal.' / '.$set_akhir ?></i></h5>
   <?php endif; ?>
   </div>
   <div class="col-sm-2">
@@ -37,13 +41,45 @@ $this->title = 'Hasil PO';
 <div class="box"><div class="box-body"><div class="table-responsive">
     <table class="table table-bordered">
         <tr>
-            <th>Solar Terkirim</th>
+            <th>PO Terkirim</th>
             <td><?= $kirim/1000 ?> KL</td>
      	</tr>
         <tr>
-            <th>Solar Belum Terkirim</th>
+            <th>PO Belum Terkirim</th>
             <td><?= $pending/1000 ?> KL</td>
         </tr>
+    </table>
+</div></div></div>
+
+<div class="box"><div class="box-body"><div class="table-responsive">
+    <table class="table table-bordered">
+      <tr>
+        <th>Sales</th><th>PO Terkirim</th><th>PO Belum Terkirim</th><th>PO Pending</th><th>PO Ditolak</th>
+      </tr>
+    <?php foreach($karyawan as $sales): ?>
+
+      <?php if($_GET['range']=='all'): ?>
+        <?php $po_terkirim = PurchaseOrder::find()->where(['status'=>'Terkirim'])->orWhere(['status'=>'Terbayar-Selesai'])->andWhere(['sales'=>$sales['id']]); ?>
+        <?php $po_belumkirim = PurchaseOrder::find()->where(['status'=>'Disetujui'])->andWhere(['sales'=>$sales['id']])->sum('volume'); ?>
+        <?php $po_pending = PurchaseOrder::find()->where(['status'=>'Pending'])->andWhere(['sales'=>$sales['id']])->sum('volume'); ?>
+        <?php $po_ditolak = PurchaseOrder::find()->where(['status'=>'Ditolak'])->andWhere(['sales'=>$sales['id']])->sum('volume'); ?>
+        <?php $company = PurchaseOrder::find()->select(['perusahaan'])->where(['status'=>'Terkirim'])->orWhere(['status'=>'Terbayar-Selesai'])->andWhere(['sales'=>$sales['id']])->distinct()->count(); ?>
+      <?php else: ?>
+        <?php $po_terkirim = PurchaseOrder::find()->where(['status'=>'Terkirim'])->orWhere(['status'=>'Terbayar-Selesai'])->andWhere(['sales'=>$sales['id']])->andWhere(['between','tgl_kirim',$set_awal,$set_akhir]); ?>
+        <?php $po_belumkirim = PurchaseOrder::find()->where(['status'=>'Disetujui'])->andWhere(['sales'=>$sales['id']])->andWhere(['between','tgl_kirim',$set_awal,$set_akhir])->sum('volume'); ?>
+        <?php $po_pending = PurchaseOrder::find()->where(['status'=>'Pending'])->andWhere(['sales'=>$sales['id']])->andWhere(['between','tgl_kirim',$set_awal,$set_akhir])->sum('volume'); ?>
+        <?php $po_ditolak = PurchaseOrder::find()->where(['status'=>'Ditolak'])->andWhere(['sales'=>$sales['id']])->andWhere(['between','tgl_kirim',$set_awal,$set_akhir])->sum('volume'); ?>
+        <?php $company = PurchaseOrder::find()->select(['perusahaan'])->where(['status'=>'Terkirim'])->orWhere(['status'=>'Terbayar-Selesai'])->andWhere(['sales'=>$sales['id']])->andWhere(['between','tgl_kirim',$set_awal,$set_akhir])->distinct()->count(); ?>
+      <?php endif; ?>
+
+      <tr>
+        <td><?= $sales['nama_pendek']; ?></td>
+        <td><?= $po_terkirim->count().'x PO dari '.$company.' Perusahaan, Total '.($po_terkirim->sum('volume')/1000).' KL'; ?></td>
+        <td><?= ($po_belumkirim/1000).' KL'; ?></td>
+        <td><?= ($po_pending/1000).' KL'; ?></td>
+        <td><?= ($po_ditolak/1000).' KL'; ?></td>
+      </tr>
+    <?php endforeach; ?>
     </table>
 </div></div></div>
 
