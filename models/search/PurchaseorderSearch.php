@@ -18,7 +18,7 @@ class PurchaseorderSearch extends PurchaseOrder
     {
         return [
             [['id', 'perusahaan', 'sales', 'volume', 'harga', 'cashback', 'bilyet_giro'], 'integer'],
-            [['no_po', 'tgl_po', 'tgl_kirim', 'alamat', 'alamat_kirim', 'purchasing', 'no_purchasing', 'keuangan', 'no_keuangan', 'termin', 'pajak', 'pembayaran','status', 'catatan', 'alasan_tolak'], 'safe'],
+            [['no_po', 'tgl_po', 'tgl_kirim', 'alamat', 'alamat_kirim', 'purchasing', 'no_purchasing', 'keuangan', 'no_keuangan', 'termin', 'pajak', 'pembayaran','status', 'catatan', 'alasan_tolak','jatuh_tempo'], 'safe'],
         ];
     }
 
@@ -80,6 +80,11 @@ class PurchaseorderSearch extends PurchaseOrder
         if(!empty($this->tgl_kirim)){    
             $query->andFilterWhere([
                 'tgl_kirim' => Yii::$app->formatter->asDate($this->tgl_kirim,'yyyy-MM-dd'),
+            ]);
+        }
+        if(!empty($this->jatuh_tempo)){    
+            $query->andFilterWhere([
+                'jatuh_tempo' => Yii::$app->formatter->asDate($this->jatuh_tempo,'yyyy-MM-dd'),
             ]);
         }
 

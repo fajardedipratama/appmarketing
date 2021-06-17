@@ -30,7 +30,20 @@ $this->title = 'PURCHASE ORDER';
         <?= Html::a('<i class="fa fa-fw fa-check-square-o"></i> Setuju', ['accpo', 'id' => $model->id], ['class' => 'btn btn-success','data' => ['confirm' => 'Setujui PO ?','method' => 'post']]) ?>
         <button class="btn btn-danger" data-toggle="modal" data-target="#tolak-po"><i class="fa fa-fw fa-remove"></i> Tolak</button>
     <?php elseif($model->status === 'Disetujui'): ?>
-        <?= Html::a('<i class="fa fa-fw fa-truck"></i> Terkirim', ['sendpo', 'id' => $model->id], ['class' => 'btn btn-success','data' => ['confirm' => 'Barang Terkirim ?','method' => 'post']]) ?>
+        <div class="btn-group">
+            <button type="button" class="btn btn-success"><i class="fa fa-fw fa-truck"></i> Kirim</button>
+            <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
+            <span class="caret"></span><span class="sr-only">Toggle Dropdown</span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+                <li>
+                    <?= Html::a('<i class="fa fa-fw fa-check-square-o"></i> Terkirim', ['sendpo', 'id' => $model->id], ['data' => ['confirm' => 'Barang Terkirim ?','method' => 'post']]) ?>
+                </li>
+                <li>
+                    <?= Html::a('<i class="fa fa-fw fa-times"></i> Batal Kirim', ['dontsendpo', 'id' => $model->id], ['data' => ['confirm' => 'Barang Batal Kirim ?','method' => 'post']]) ?>
+                </li>
+            </ul>
+        </div>
     <?php  elseif($model->status === 'Terkirim'):  ?>
         <?= Html::a('<i class="fa fa-fw fa-money"></i> Terbayar', ['paidpo', 'id' => $model->id], ['class' => 'btn btn-success','data' => ['confirm' => 'PO Terbayar Lunas ?','method' => 'post']]) ?>
     <?php endif; ?>
@@ -83,6 +96,14 @@ $this->title = 'PURCHASE ORDER';
             ],
             ['attribute'=>'tgl_po','value'=>date('d/m/Y',strtotime($model->tgl_po))],
             ['attribute'=>'tgl_kirim','value'=>date('d/m/Y',strtotime($model->tgl_kirim))],
+            [
+                'attribute'=>'jatuh_tempo',
+                'value'=>function($data){
+                    if($data->jatuh_tempo != NULL){
+                        return date('d/m/Y',strtotime($data->jatuh_tempo));
+                    }
+                }
+            ],
             'alamat',
             'alamat_kirim',
             [

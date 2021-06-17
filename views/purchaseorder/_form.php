@@ -133,6 +133,25 @@ use dosamigos\datepicker\DatePicker;
         <label>Backup BG ?</label>
         <?= $form->field($model, 'bilyet_giro')->checkBox(['label'=>false,'selected' => $model->bilyet_giro]) ?>
     </div>
+<?php if(Yii::$app->user->identity->type != 'Marketing' && !$model->isNewRecord): ?>
+    <?php if($model->jatuh_tempo != NULL): ?>
+    <div class="col-sm-4">
+        <?php 
+            if(!$model->isNewRecord || $model->isNewRecord){
+                if($model->jatuh_tempo!=null){
+                    $model->jatuh_tempo=date('d-m-Y',strtotime($model->jatuh_tempo));
+                }
+            }
+        ?>
+        <?= $form->field($model, 'jatuh_tempo')->widget(DatePicker::className(),[
+            'clientOptions'=>['autoclose'=>true,'format'=>'dd-mm-yyyy','orientation'=>'bottom']
+        ])?>
+    </div>
+    <?php endif; ?>
+    <div class="col-sm-4">
+        <?= $form->field($model, 'status')->dropDownList(['Pending'=>'Pending','Disetujui'=>'Disetujui','Terkirim'=>'Terkirim','Batal Kirim'=>'Batal Kirim','Terbayar-Selesai'=>'Terbayar-Selesai']) ?>
+    </div>
+<?php endif ?>
 </div>
     </div></div>
 

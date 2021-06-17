@@ -48,19 +48,6 @@ $this->title = 'Data PO';
               ])
             ],
             [
-              'attribute'=>'tgl_po',
-              'value' => function($data){
-                return $data->tgl_po;
-              },
-              'headerOptions'=>['style'=>'width:15%'],
-              'format' => ['date','dd-MM-Y'],
-              'filter'=> DatePicker::widget([
-                'model'=>$searchModel,'attribute'=>'tgl_po','clientOptions'=>[
-                  'autoclose'=>true, 'format' => 'dd-mm-yyyy','orientation'=>'bottom'
-                ],
-              ])
-            ],
-            [
               'attribute'=>'tgl_kirim',
               'value' => function($data){
                 return $data->tgl_kirim;
@@ -69,6 +56,19 @@ $this->title = 'Data PO';
               'format' => ['date','dd-MM-Y'],
               'filter'=> DatePicker::widget([
                 'model'=>$searchModel,'attribute'=>'tgl_kirim','clientOptions'=>[
+                  'autoclose'=>true, 'format' => 'dd-mm-yyyy','orientation'=>'bottom'
+                ],
+              ])
+            ],
+            [
+              'attribute'=>'jatuh_tempo',
+              'value' => function($data){
+                return $data->jatuh_tempo;
+              },
+              'headerOptions'=>['style'=>'width:15%'],
+              'format' => ['date','dd-MM-Y'],
+              'filter'=> DatePicker::widget([
+                'model'=>$searchModel,'attribute'=>'jatuh_tempo','clientOptions'=>[
                   'autoclose'=>true, 'format' => 'dd-mm-yyyy','orientation'=>'bottom'
                 ],
               ])
@@ -96,7 +96,7 @@ $this->title = 'Data PO';
             [
                'attribute'=>'status',
                'headerOptions'=>['style'=>'width:13%'],
-               'filter'=> ['Pending'=>'Pending','Disetujui'=>'Disetujui','Ditolak'=>'Ditolak','Terkirim'=>'Terkirim','Terbayar'=>'Terbayar']
+               'filter'=> ['Pending'=>'Pending','Disetujui'=>'Disetujui','Ditolak'=>'Ditolak','Terkirim'=>'Terkirim','Batal Kirim'=>'Batal Kirim','Terbayar'=>'Terbayar']
             ],
             ['header'=>'Aksi','class' => 'yii\grid\ActionColumn','template'=>'{view}'],
         ],
