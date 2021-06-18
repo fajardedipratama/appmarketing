@@ -27,8 +27,8 @@ $jobtitle = Jobtitle::find()->where(['id'=>$karyawan['posisi']])->one();
                 'options' => ['class' => 'sidebar-menu tree', 'data-widget'=> 'tree'],
                 'items' => [
                     [
-                        'label' => 'Administrasi',
-                        'icon' => 'book',
+                        'label' => 'Keuangan',
+                        'icon' => 'money',
                         'url' => '#',
                         'visible' => !Yii::$app->user->isGuest && Yii::$app->user->identity->type == 'Administrator'
                     ],

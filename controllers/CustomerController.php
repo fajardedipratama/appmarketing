@@ -140,7 +140,7 @@ class CustomerController extends Controller
         $model->long_expired = NULL;
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['index']);
+            return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('share', [
