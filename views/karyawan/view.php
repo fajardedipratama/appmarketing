@@ -109,6 +109,9 @@ $this->title = 'Detail '.$model->nama;
               <li class="list-group-item">
                 <b>Rekening</b> <font class="pull-right"><?= $model->no_rekening.' ('.$model->bank.'. '.$model->nama_rekening.')' ?></font>
               </li>
+              <li class="list-group-item">
+                <b>Tipe Gaji</b> <font class="pull-right"><?= $model->tipe_gaji ?></font>
+              </li>
             </ul>
             </div></div>
         </div>

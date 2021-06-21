@@ -30,7 +30,11 @@ $jobtitle = Jobtitle::find()->where(['id'=>$karyawan['posisi']])->one();
                         'label' => 'Keuangan',
                         'icon' => 'money',
                         'url' => '#',
-                        'visible' => !Yii::$app->user->isGuest && Yii::$app->user->identity->type == 'Administrator'
+                        'visible' => !Yii::$app->user->isGuest && Yii::$app->user->identity->type == 'Administrator',
+                        'items' => [
+                            ['label' => 'Pengaturan Gaji', 'icon' => 'book', 'url' => ['/salarytype'], 'active'=>in_array(\Yii::$app->controller->id,['salarytype'])],
+                            ['label' => 'Komponen Gaji', 'icon' => 'book', 'url' => ['/salarycategory'], 'active'=>in_array(\Yii::$app->controller->id,['salarycategory'])],
+                        ],
                     ],
                     [
                         'label' => 'Manajemen SDM',

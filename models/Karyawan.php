@@ -27,6 +27,7 @@ use Yii;
  * @property string $bank
  * @property string $no_rekening
  * @property string $nama_rekening
+ * @property string $tipe_gaji
  * @property string $foto_karyawan
  * @property string $status_aktif
  */
@@ -50,7 +51,7 @@ class Karyawan extends \yii\db\ActiveRecord
             [['badge', 'nama', 'nama_pendek', 'gender', 'tempat_lahir', 'tanggal_lahir', 'no_hp', 'alamat_rumah','tanggal_masuk', 'posisi'], 'required'],
             [['tanggal_lahir', 'tanggal_masuk','tanggal','waktu'], 'safe'],
             [['badge', 'posisi', 'departemen'], 'integer'],
-            [['nama','nama_pendek', 'gender', 'tempat_lahir', 'agama', 'no_hp', 'no_ktp', 'pendidikan', 'status_kawin', 'bank','no_rekening',  'nama_rekening', 'status_aktif'], 'string', 'max' => 100],
+            [['nama','nama_pendek', 'gender', 'tempat_lahir', 'agama', 'no_hp', 'no_ktp', 'pendidikan', 'status_kawin', 'bank','no_rekening',  'nama_rekening', 'status_aktif', 'tipe_gaji'], 'string', 'max' => 100],
             [['alamat_ktp', 'alamat_rumah'], 'string', 'max' => 1000],
              [['foto_karyawan'], 'file', 'extensions' => 'png, jpg, jpeg','mimeTypes'=>'image/jpeg,image/png', 'maxSize'=>1048576,'skipOnEmpty'=>true],
             [['badge'], 'unique'],
@@ -84,6 +85,7 @@ class Karyawan extends \yii\db\ActiveRecord
             'bank' => 'Bank',
             'no_rekening' => 'No. Rekening',
             'nama_rekening' => 'Nama Rekening',
+            'tipe_gaji' => 'Tipe Gaji',
             'foto_karyawan' => 'Foto Karyawan',
             'status_aktif' => 'Status Karyawan',
             'waktu' => 'waktu',

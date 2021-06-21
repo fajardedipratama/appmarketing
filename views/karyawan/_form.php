@@ -5,7 +5,7 @@ use yii\widgets\ActiveForm;
 use dosamigos\datepicker\DatePicker;
 use yii\helpers\ArrayHelper;
 use app\models\Jobtitle;
-
+use app\models\SalaryType;
 /* @var $this yii\web\View */
 /* @var $model app\models\Karyawan */
 /* @var $form yii\widgets\ActiveForm */
@@ -112,6 +112,14 @@ use app\models\Jobtitle;
         </div>
         <div class="col-sm-3">
             <?= $form->field($model, 'nama_rekening')->textInput(['maxlength' => true]) ?>
+        </div>
+        <div class="col-sm-3">
+            <?= $form->field($model, 'tipe_gaji')->dropDownList(
+                ArrayHelper::map(SalaryType::find()->all(),'id',
+                    function($model){
+                        return $model['tipe_gaji'];
+                    }
+            ),['prompt'=>'--Tipe Gaji--']); ?>
         </div>
     </div>
     <br>

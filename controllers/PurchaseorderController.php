@@ -224,6 +224,10 @@ class PurchaseorderController extends Controller
             //process
             $model->tgl_po=Yii::$app->formatter->asDate($_POST['PurchaseOrder']['tgl_po'],'yyyy-MM-dd');
             $model->tgl_kirim=Yii::$app->formatter->asDate($_POST['PurchaseOrder']['tgl_kirim'],'yyyy-MM-dd');
+            if($model->jatuh_tempo != NULL){
+                $model->jatuh_tempo=Yii::$app->formatter->asDate($_POST['PurchaseOrder']['jatuh_tempo'],'yyyy-MM-dd');
+            }
+            
             $model->save();
             return $this->redirect(['view', 'id' => $model->id]);
         }
