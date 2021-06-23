@@ -149,7 +149,7 @@ use dosamigos\datepicker\DatePicker;
     </div>
     <?php endif; ?>
     <div class="col-sm-4">
-        <?= $form->field($model, 'status')->dropDownList(['Pending'=>'Pending','Disetujui'=>'Disetujui','Terkirim'=>'Terkirim','Batal Kirim'=>'Batal Kirim','Terbayar-Selesai'=>'Terbayar-Selesai']) ?>
+        <?= $form->field($model, 'status')->dropDownList(['Pending'=>'Pending','Ditolak'=>'Ditolak','Disetujui'=>'Disetujui','Terkirim'=>'Terkirim','Batal Kirim'=>'Batal Kirim','Terbayar-Selesai'=>'Terbayar-Selesai']) ?>
     </div>
 <?php endif ?>
 </div>
