@@ -174,7 +174,7 @@ class PurchaseorderController extends Controller
         $model = $this->findModel($id);
 
         Yii::$app->db->createCommand()->update('id_purchase_order',
-        ['status'=>'Terbayar-Selesai'],
+        ['status'=>'Terbayar-Selesai','tgl_lunas'=>date('Y-m-d')],
         ['id'=>$model->id])->execute();
 
         return $this->redirect(['view','id' => $model->id]);
@@ -226,6 +226,9 @@ class PurchaseorderController extends Controller
             $model->tgl_kirim=Yii::$app->formatter->asDate($_POST['PurchaseOrder']['tgl_kirim'],'yyyy-MM-dd');
             if($model->jatuh_tempo != NULL){
                 $model->jatuh_tempo=Yii::$app->formatter->asDate($_POST['PurchaseOrder']['jatuh_tempo'],'yyyy-MM-dd');
+            }
+            if($model->tgl_lunas != NULL){
+                $model->tgl_lunas=Yii::$app->formatter->asDate($_POST['PurchaseOrder']['tgl_lunas'],'yyyy-MM-dd');
             }
             
             $model->save();

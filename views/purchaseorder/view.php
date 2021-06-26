@@ -99,7 +99,9 @@ $this->title = 'PURCHASE ORDER';
             [
                 'attribute'=>'jatuh_tempo',
                 'value'=>function($data){
-                    if($data->jatuh_tempo != NULL){
+                    if($data->jatuh_tempo != NULL && $data->tgl_lunas != NULL){
+                        return date('d/m/Y',strtotime($data->jatuh_tempo)).' (Lunas '.date('d/m/Y',strtotime($data->tgl_lunas)).')';
+                    }elseif($data->jatuh_tempo != NULL){
                         return date('d/m/Y',strtotime($data->jatuh_tempo));
                     }
                 }

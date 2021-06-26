@@ -148,6 +148,20 @@ use dosamigos\datepicker\DatePicker;
         ])?>
     </div>
     <?php endif; ?>
+    <?php if($model->tgl_lunas != NULL): ?>
+    <div class="col-sm-4">
+        <?php 
+            if(!$model->isNewRecord || $model->isNewRecord){
+                if($model->tgl_lunas!=null){
+                    $model->tgl_lunas=date('d-m-Y',strtotime($model->tgl_lunas));
+                }
+            }
+        ?>
+        <?= $form->field($model, 'tgl_lunas')->widget(DatePicker::className(),[
+            'clientOptions'=>['autoclose'=>true,'format'=>'dd-mm-yyyy','orientation'=>'bottom']
+        ])?>
+    </div>
+    <?php endif; ?>
     <div class="col-sm-4">
         <?= $form->field($model, 'status')->dropDownList(['Pending'=>'Pending','Ditolak'=>'Ditolak','Disetujui'=>'Disetujui','Terkirim'=>'Terkirim','Batal Kirim'=>'Batal Kirim','Terbayar-Selesai'=>'Terbayar-Selesai']) ?>
     </div>

@@ -33,6 +33,7 @@ use Yii;
  * @property string|null $eksternal
  * @property int|null $penalti
  * @property string|null $jatuh_tempo
+ * @property string|null $tgl_lunas
  */
 class PurchaseOrder extends \yii\db\ActiveRecord
 {
@@ -53,7 +54,7 @@ class PurchaseOrder extends \yii\db\ActiveRecord
         return [
             [['perusahaan', 'no_po', 'tgl_po', 'tgl_kirim', 'alamat', 'alamat_kirim', 'purchasing', 'no_purchasing', 'volume', 'termin', 'harga', 'pajak', 'pembayaran'], 'required'],
             [['perusahaan', 'sales', 'volume', 'harga', 'cashback','bilyet_giro','penalti'], 'integer'],
-            [['tgl_po', 'tgl_kirim','set_awal','set_akhir','jatuh_tempo'], 'safe'],
+            [['tgl_po', 'tgl_kirim','set_awal','set_akhir','jatuh_tempo','tgl_lunas'], 'safe'],
             [['no_po', 'purchasing', 'no_purchasing', 'keuangan', 'no_keuangan', 'termin', 'pajak', 'pembayaran', 'status','penerima','eksternal'], 'string', 'max' => 100],
             [['alamat', 'alamat_kirim', 'catatan', 'alasan_tolak'], 'string', 'max' => 1000],
         ];
@@ -93,6 +94,7 @@ class PurchaseOrder extends \yii\db\ActiveRecord
             'set_awal'=> 'Dari',
             'set_akhir'=> 'Sampai',
             'jatuh_tempo' => 'Jatuh Tempo',
+            'tgl_lunas' => 'Tanggal Lunas',
         ];
     }
     public function getCustomer()
