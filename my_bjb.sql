@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 26 Jun 2021 pada 07.07
+-- Waktu pembuatan: 26 Jun 2021 pada 07.51
 -- Versi server: 10.4.17-MariaDB
 -- Versi PHP: 8.0.0
 
@@ -4015,7 +4015,9 @@ INSERT INTO `id_customer` (`id`, `perusahaan`, `lokasi`, `alamat_lengkap`, `pic`
 (5424, 'BONERO RESIDENCE HOTEL', '6', 'l. Raya Bojonegoro-Cepu No.Km. 7, Leran, Kec. Kalitidu, Kabupaten Bojonegoro, Jawa Timur 62152•', 'PURCHASING PT', '0353512330', '', '', '', '', 19, NULL, '', 19, '2021-06-26 11:46:15', '', '', NULL, ''),
 (5425, 'ADHIKARISMA PUTRAPRATAMA', '29', 'Jl. Raya Pagesangan No.62, Pagesangan, Kec. Jambangan, Kota SBY, Jawa Timur 60234', 'purchasing', '+62318274246', '', '', '', '', 18, NULL, '', 18, '2021-06-26 11:47:07', '', '', NULL, ''),
 (5426, 'HIDUP KARYA ABADI PT', '17', '', 'BAPAK JOHAN ', '0321366298', '', 'chasback 200', '8', 'Setiap 1 Bulan', 8, NULL, '', 8, '2021-06-26 11:54:40', '', '', NULL, ''),
-(5427, 'ASTON BOJONEGORO CITY HOTEL', '6', 'Jl. MH. Thamrin No.100, Ledok Kulon Tiga, Ledok Wetan, Kec. Bojonegoro, Kabupaten Bojonegoro, Jawa Timur 62112•', 'PURCHASING PT', '0353571777', '', '', '', '', 19, NULL, '', 19, '2021-06-26 12:03:23', '', '', NULL, '');
+(5427, 'ASTON BOJONEGORO CITY HOTEL', '6', 'Jl. MH. Thamrin No.100, Ledok Kulon Tiga, Ledok Wetan, Kec. Bojonegoro, Kabupaten Bojonegoro, Jawa Timur 62112•', 'PURCHASING PT', '0353571777', '', '', '', '', 19, NULL, '', 19, '2021-06-26 12:03:23', '', '', NULL, ''),
+(5428, 'DEWARNA HOTEL & CONVENTION', '6', 'Jl. Veteran No.55, Jambean, Sukorejo, Kec. Bojonegoro, Kabupaten Bojonegoro, Jawa Timur 62115', 'PURCHASING PT', '03533412222', '', '', '', '', 19, NULL, '', 19, '2021-06-26 12:23:54', '', '', NULL, ''),
+(5429, 'PERDANA MULIA JAYA PT', '8', 'Jl. Raya Bambe No.116, Sarirejo, Bambe, Kec. Driyorejo, Kabupaten Gresik, Jawa Timur 61177', 'purchasing', '+6281332677080', '', '', '', '', 18, NULL, '', 18, '2021-06-26 12:39:41', '', '', NULL, '');
 
 -- --------------------------------------------------------
 
@@ -11053,7 +11055,9 @@ INSERT INTO `id_dailyreport` (`id`, `sales`, `waktu`, `perusahaan`, `keterangan`
 (7315, 18, '2021-06-26 11:43:35', 5423, 'Tidak terhubung ke PIC', '', '2021-06-28', 'Telfon Kantor'),
 (7316, 18, '2021-06-26 11:47:14', 5425, 'Tidak pakai solar', '', NULL, 'Telfon Kantor'),
 (7317, 19, '2021-06-26 11:48:05', 5424, 'Tidak terhubung ke PIC', 'Orangnya lg kluar, Senin tlp lg', '2021-06-28', 'Telfon Kantor'),
-(7318, 19, '2021-06-26 12:04:18', 5427, 'Tidak terhubung ke PIC', 'Orangnya tdk ada di tmpt, Senin tlpn lg', '2021-06-28', 'Telfon Kantor');
+(7318, 19, '2021-06-26 12:04:18', 5427, 'Tidak terhubung ke PIC', 'Orangnya tdk ada di tmpt, Senin tlpn lg', '2021-06-28', 'Telfon Kantor'),
+(7319, 19, '2021-06-26 12:26:46', 5428, 'Tidak terhubung ke PIC', 'Orangnya tdk ada, Senin tlp lg', '2021-06-28', 'Telfon Kantor'),
+(7320, 18, '2021-06-26 12:39:49', 5429, 'Tidak pakai solar', '', NULL, 'Telfon Kantor');
 
 -- --------------------------------------------------------
 
@@ -14810,7 +14814,8 @@ INSERT INTO `id_offer` (`id`, `tanggal`, `waktu`, `no_surat`, `perusahaan`, `pic
 (3824, '2021-06-26', '11:46:42', 816, 859, 'Bapak Iwan', 'Cash On Delivery', 'PPN', 7600, '', 10, 'Terkirim', 'yes', 0),
 (3825, '2021-06-26', '11:46:41', 815, 381, 'Bapak Budi', 'Cash On Delivery', 'PPN', 7400, '', 10, 'Terkirim', 'yes', 0),
 (3826, '2021-06-26', '11:46:40', 814, 99, 'Purchasing Pt', 'Cash On Delivery', 'PPN', 7700, '', 10, 'Terkirim', 'no', 0),
-(3827, '2021-06-26', '11:46:44', 813, 97, 'Purchasing Pt', 'Cash On Delivery', 'PPN', 7500, '', 10, 'Terkirim', 'yes', 1);
+(3827, '2021-06-26', '11:46:44', 813, 97, 'Purchasing Pt', 'Cash On Delivery', 'PPN', 7500, '', 10, 'Terkirim', 'yes', 1),
+(3828, '2021-06-26', '12:23:25', 817, 2092, 'Purchasing', 'Cash On Delivery', 'PPN', 7300, '', 2, 'Terkirim', 'no', 1);
 
 -- --------------------------------------------------------
 
@@ -14830,7 +14835,7 @@ CREATE TABLE `id_offer_number` (
 --
 
 INSERT INTO `id_offer_number` (`id`, `nomor`, `inisial`, `periode`) VALUES
-(1, 816, 'BJB-SBY / VI', '15-30 Juni 2021');
+(1, 817, 'BJB-SBY / VI', '15-30 Juni 2021');
 
 -- --------------------------------------------------------
 
@@ -15135,7 +15140,7 @@ CREATE TABLE `id_user` (
 --
 
 INSERT INTO `id_user` (`id`, `profilname`, `username`, `password`, `last_login`, `authKey`, `accessToken`, `type`, `blocked`) VALUES
-(1, '5', 'dedy', '$2y$13$.d2C0.bHMWLqkIT0k6Dd3.7xNwLBUey3mvzOwx/v.6fiDSOEzn/2e', '2021-06-26 11:16:33', 'd5fdbe5b16111739a53f6bedc2c29e5c', 'd5fdbe5b16111739a53f6bedc2c29e5c', 'Administrator', ''),
+(1, '5', 'dedy', '$2y$13$.d2C0.bHMWLqkIT0k6Dd3.7xNwLBUey3mvzOwx/v.6fiDSOEzn/2e', '2021-06-26 12:21:57', 'd5fdbe5b16111739a53f6bedc2c29e5c', 'd5fdbe5b16111739a53f6bedc2c29e5c', 'Administrator', ''),
 (2, '10', 'sugeng', '$2y$13$zF4RuFW743TDuFQwqzXzaOa18a2l21Q8WGPevoGynoc9FeWl361O2', '2021-06-26 08:46:41', '9e28894760bdf11cb2bef7a32c020e3b', '9e28894760bdf11cb2bef7a32c020e3b', 'Marketing', ''),
 (7, '1', 'alisiachintya', '$2y$13$SMiUO/xBwZvGKMEKtfXe7.wG3qXPcUjCCkKcxHFSxfP11OzriM.s2', '2021-06-26 08:42:52', '60532c4e119ce506036cf74f655259dd', '60532c4e119ce506036cf74f655259dd', 'Marketing', ''),
 (9, '12', 'risza', '$2y$13$tD2k5kTBFRwv0DAfWO0LjO1o2gju3lAwTsctLGUDZ0G//L0u8xNa2', '2021-06-26 08:43:17', '521f6ab426fbb7296a695ab243412094', '521f6ab426fbb7296a695ab243412094', 'Marketing', ''),
@@ -15146,7 +15151,7 @@ INSERT INTO `id_user` (`id`, `profilname`, `username`, `password`, `last_login`,
 (15, '3', 'atis', '$2y$13$3vB.jlDrw/Dwu58lWPh69eQm/65P0DGGh5VyIE.hCnQLVdqG6d2z2', '2021-06-26 09:52:26', 'd5455de2f44f740d0e7ae3b97ffaf9ea', 'd5455de2f44f740d0e7ae3b97ffaf9ea', 'Administrator', ''),
 (16, '2', 'daniel', '$2y$13$SG3QwERtuL/K747RAnaRPeerme2VtUFN1pMG0nsVE3vzjW2lR5p86', '2021-06-25 14:37:33', 'aa47f8215c6f30a0dcdb2a36a9f4168e', 'aa47f8215c6f30a0dcdb2a36a9f4168e', 'Manajemen', ''),
 (17, '6', 'budi', '$2y$13$RXxTG3zEg.olwUNpJXAHc.IcclzuzMXrMvKrae3V/m0xvkasORFFa', '2021-06-26 11:16:21', '00dfc53ee86af02e742515cdcf075ed3', '00dfc53ee86af02e742515cdcf075ed3', 'Marketing', ''),
-(19, '17', 'ebet', '$2y$13$B/BSK305sYm0CE.K.0.E6.EYtDlG3526lH/tznlqlIDb1unUGkv.W', '2021-06-26 08:24:40', 'bc52c57a755cb90b05a8aab1142094d4', 'bc52c57a755cb90b05a8aab1142094d4', 'Marketing', ''),
+(19, '17', 'ebet', '$2y$13$B/BSK305sYm0CE.K.0.E6.EYtDlG3526lH/tznlqlIDb1unUGkv.W', '2021-06-26 12:45:35', 'bc52c57a755cb90b05a8aab1142094d4', 'bc52c57a755cb90b05a8aab1142094d4', 'Marketing', ''),
 (20, '18', 'hendra', '$2y$13$n1K.OvEMIUegjrflQnDI1u9afiwbjxeXLuLSxpzYMaGVdjQVRRJbm', '2021-06-26 08:41:28', 'a04cca766a885687e33bc6b114230ee9', 'a04cca766a885687e33bc6b114230ee9', 'Marketing', ''),
 (21, '19', 'dewi', '$2y$13$.kFvjMITEaTFTt7aj4xAzuw8guS6cyLpcE2QOnA8B/2UzQmAfShHK', '2021-06-26 08:41:26', 'ed1d859c50262701d92e5cbf39652792', 'ed1d859c50262701d92e5cbf39652792', 'Marketing', '');
 
@@ -15264,13 +15269,13 @@ ALTER TABLE `id_city`
 -- AUTO_INCREMENT untuk tabel `id_customer`
 --
 ALTER TABLE `id_customer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5428;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5430;
 
 --
 -- AUTO_INCREMENT untuk tabel `id_dailyreport`
 --
 ALTER TABLE `id_dailyreport`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7319;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7321;
 
 --
 -- AUTO_INCREMENT untuk tabel `id_departemen`
@@ -15300,7 +15305,7 @@ ALTER TABLE `id_karyawan`
 -- AUTO_INCREMENT untuk tabel `id_offer`
 --
 ALTER TABLE `id_offer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3828;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3829;
 
 --
 -- AUTO_INCREMENT untuk tabel `id_offer_number`
