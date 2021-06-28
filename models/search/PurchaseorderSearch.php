@@ -51,7 +51,7 @@ class PurchaseorderSearch extends PurchaseOrder
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
             'pagination'=>array('pageSize'=>30),
-            'sort'=>['defaultOrder'=>['tgl_po'=>SORT_DESC]]
+            'sort'=>['defaultOrder'=>['tgl_kirim'=>SORT_DESC]]
         ]);
 
         $this->load($params);
