@@ -65,7 +65,6 @@ use dosamigos\datepicker\DatePicker;
         ]) ?>
      </div>
     <?php endif; ?>
-    <?php if(!$model->isNewRecord && $model->expired!=null) : ?>
      <div class="col-sm-4">
         <?php 
             if(!$model->isNewRecord || $model->isNewRecord){
@@ -82,7 +81,6 @@ use dosamigos\datepicker\DatePicker;
             ]
         ])?>
      </div>
-    <?php endif; ?>
      <div class="col-sm-4">
         <?= $form->field($model, 'verified')->dropDownList(['yes'=>'yes','no'=>'no'],['prompt'=>'--Verifikasi--']) ?>
      </div>
