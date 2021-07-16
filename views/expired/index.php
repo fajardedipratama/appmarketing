@@ -97,7 +97,7 @@ $this->title = 'Data Expired';
             ],
             [
                 'class' => 'yii\grid\ActionColumn','header'=>'Aksi',
-                'template' => '{assign}',
+                'template' => '{view} {assign}',
                 'buttons'=>
                 [
                     'assign'=>function($url,$model)
@@ -107,6 +107,15 @@ $this->title = 'Data Expired';
                         '<span class="glyphicon glyphicon-share"></span>',
                         ["customer/share",'id'=>$model->id],
                         ['title' => Yii::t('app', 'Sebarkan')],
+                     );
+                    },
+                    'view'=>function($url,$model)
+                    {
+                    return Html::a
+                     (
+                        '<span class="glyphicon glyphicon-eye-open"></span>',
+                        ["customer/view",'id'=>$model->id],
+                        ['title' => Yii::t('app', 'View')],
                      );
                     },
                 ],
