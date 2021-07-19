@@ -35,7 +35,7 @@ $this->title = 'Kabupaten/Kota';
 
             [
                 'class' => 'yii\grid\ActionColumn','header'=>'Aksi',
-                'template' => '{update} {delete}',
+                'template' => '{update}',
                 'visible' => Yii::$app->user->identity->type == 'Administrator'
             ],
         ],
