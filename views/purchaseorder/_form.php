@@ -5,6 +5,7 @@ use yii\helpers\ArrayHelper;
 use kartik\select2\Select2;
 use app\models\Customer;
 use app\models\Karyawan;
+use app\models\City;
 use dosamigos\datepicker\DatePicker;
 /* @var $this yii\web\View */
 /* @var $model app\models\PurchaseOrder */
@@ -81,6 +82,16 @@ use dosamigos\datepicker\DatePicker;
     </div>
     <div class="col-sm-4">
         <?= $form->field($model, 'alamat')->textInput(['maxlength' => true]) ?>
+    </div>
+    <div class="col-sm-4">
+        <?= $form->field($model, 'kota_kirim')->widget(Select2::className(),[
+            'data'=>ArrayHelper::map(City::find()->orderBy(['kota'=>SORT_ASC])->all(),'id',
+                function($model){
+                    return $model['kota'];
+                }
+            ),
+            'options'=>['placeholder'=>"Kab/Kota Kirim"],'pluginOptions'=>['allowClear'=>true]
+        ]) ?>
     </div>
     <div class="col-sm-4">
         <?= $form->field($model, 'alamat_kirim')->textInput(['maxlength' => true]) ?>

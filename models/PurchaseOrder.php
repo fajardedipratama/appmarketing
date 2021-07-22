@@ -14,6 +14,7 @@ use Yii;
  * @property string $tgl_po
  * @property string $tgl_kirim
  * @property string $alamat
+ * @property int|null $kota_kirim
  * @property string $alamat_kirim
  * @property string $purchasing
  * @property string $no_purchasing
@@ -52,8 +53,8 @@ class PurchaseOrder extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['perusahaan', 'no_po', 'tgl_po', 'tgl_kirim', 'alamat', 'alamat_kirim', 'purchasing', 'no_purchasing', 'volume', 'termin', 'harga', 'pajak', 'pembayaran'], 'required'],
-            [['perusahaan', 'sales', 'volume', 'harga', 'cashback','bilyet_giro','penalti'], 'integer'],
+            [['perusahaan', 'no_po', 'tgl_po', 'tgl_kirim', 'alamat', 'kota_kirim', 'alamat_kirim', 'purchasing', 'no_purchasing', 'volume', 'termin', 'harga', 'pajak', 'pembayaran'], 'required'],
+            [['perusahaan', 'sales', 'kota_kirim', 'volume', 'harga', 'cashback','bilyet_giro','penalti'], 'integer'],
             [['tgl_po', 'tgl_kirim','set_awal','set_akhir','jatuh_tempo','tgl_lunas'], 'safe'],
             [['no_po', 'purchasing', 'no_purchasing', 'keuangan', 'no_keuangan', 'termin', 'pajak', 'pembayaran', 'status','penerima','eksternal'], 'string', 'max' => 100],
             [['alamat', 'alamat_kirim', 'catatan', 'alasan_tolak'], 'string', 'max' => 1000],
@@ -73,6 +74,7 @@ class PurchaseOrder extends \yii\db\ActiveRecord
             'tgl_po' => 'Tanggal PO',
             'tgl_kirim' => 'Tanggal Kirim',
             'alamat' => 'Alamat Perusahaan',
+            'kota_kirim' => 'Kab/Kota Kirim',
             'alamat_kirim' => 'Alamat Kirim',
             'purchasing' => 'Purchasing',
             'no_purchasing' => 'No.HP Purchasing',
@@ -104,6 +106,10 @@ class PurchaseOrder extends \yii\db\ActiveRecord
     public function getKaryawan()
     {
         return $this->hasOne(Karyawan::className(), ['id' => 'sales']);
+    }
+    public function getCity()
+    {
+        return $this->hasOne(City::className(), ['id' => 'kota_kirim']);
     }
     public function beforeSave($options = array()) {
         if(!empty($this->eksternal)){

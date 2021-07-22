@@ -1,5 +1,6 @@
 <?php
 use app\models\PurchaseOrderPaid;
+use app\models\City;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
@@ -107,7 +108,13 @@ $this->title = 'PURCHASE ORDER';
                 }
             ],
             'alamat',
-            'alamat_kirim',
+            [
+                'attribute'=>'alamat_kirim',
+                'value'=>function($data){
+                    $city = City::find()->where(['id'=>$data->kota_kirim])->one();
+                    return $data->alamat_kirim.' ('.$city['kota'].')';
+                }
+            ],
             [
                 'attribute'=>'purchasing',
                 'value'=>function($data){
