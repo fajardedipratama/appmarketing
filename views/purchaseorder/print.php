@@ -1,5 +1,27 @@
 <?php 
 use app\models\PurchaseOrder;
+use app\models\City;
+
+function termin_value($value){
+    if($value=='Cash On Delivery'){
+        return 0;
+    }elseif($value=='Cash Before Delivery'){
+        return 0;
+    }elseif($value=='Tempo 7 Hari'){
+        return 100;
+    }elseif($value=='Tempo 14 Hari'){
+        return 200;
+    }elseif($value=='Tempo 21 Hari'){
+        return 300;
+    }elseif($value=='Tempo 30 Hari'){
+        return 400;
+    }
+}
+function cashback_value($value){
+    if($value){
+        return ' + Cashback '.$value;
+    }
+}
 
 ?>
 <!DOCTYPE html>
@@ -48,16 +70,22 @@ use app\models\PurchaseOrder;
 			<td style="font-weight: bold;">Penerima Barang</td><td>: <?= $model->penerima ?></td>
 		</tr>
 		<tr>
-			<td style="font-weight: bold;">Volume (l)</td><td>: <?= $model->volume ?></td>
-		</tr>
-		<tr>
-			<td style="font-weight: bold;">Harga/liter</td><td>: <?= $model->harga.' ('.$model->pajak.')' ?></td>
-		</tr>
-		<tr>
-			<td style="font-weight: bold;">Cashback</td><td>: <?= $model->cashback ?></td>
+			<td style="font-weight: bold;">Volume</td><td>: <?= $model->volume ?> Liter</td>
 		</tr>
 		<tr>
 			<td style="font-weight: bold;">Pembayaran</td><td>: <?= $model->termin ?></td>
+		</tr>
+		<tr>
+			<td style="font-weight: bold;">Harga/liter</td>
+			<td>: 
+				<?php 
+					$city = City::find()->where(['id'=>$model->kota_kirim])->one();
+                    echo ($model->harga-termin_value($model->termin)-$city['oat']-$model->cashback).' + Termin '.termin_value($model->termin).' + OAT '.$city['oat'].cashback_value($model->cashback).' = '.$model->harga;
+				?>
+			</td>
+		</tr>
+		<tr>
+			<td style="font-weight: bold;">Pajak</td><td>: <?= $model->pajak ?></td>
 		</tr>
 		<tr>
 			<td style="font-weight: bold;">Metode Bayar</td>

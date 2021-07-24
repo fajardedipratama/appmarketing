@@ -10,6 +10,27 @@ use yii\widgets\DetailView;
 $paid = PurchaseOrderPaid::find()->where(['purchase_order_id'=>$model->id])->orderBy(['paid_date'=>SORT_DESC])->all();
 $paid_done = PurchaseOrderPaid::find()->where(['purchase_order_id'=>$model->id])->sum('amount');
 
+function termin_value($value){
+    if($value=='Cash On Delivery'){
+        return 0;
+    }elseif($value=='Cash Before Delivery'){
+        return 0;
+    }elseif($value=='Tempo 7 Hari'){
+        return 100;
+    }elseif($value=='Tempo 14 Hari'){
+        return 200;
+    }elseif($value=='Tempo 21 Hari'){
+        return 300;
+    }elseif($value=='Tempo 30 Hari'){
+        return 400;
+    }
+}
+function cashback_value($value){
+    if($value){
+        return ' + Cashback '.$value;
+    }
+}
+
 $this->title = 'PURCHASE ORDER';
 \yii\web\YiiAsset::register($this);
 ?>
@@ -133,9 +154,11 @@ $this->title = 'PURCHASE ORDER';
             [
                 'attribute'=>'harga',
                 'value'=>function($data){
-                    return $data->harga.' ('.$data->pajak.')';
+                    $city = City::find()->where(['id'=>$data->kota_kirim])->one();
+                    return ($data->harga-termin_value($data->termin)-$city['oat']-$data->cashback).' + Termin '.termin_value($data->termin).' + OAT '.$city['oat'].cashback_value($data->cashback).' = '.$data->harga;
                 }
             ],
+            'pajak',
             'cashback',
             'penalti',
             [
