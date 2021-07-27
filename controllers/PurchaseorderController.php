@@ -173,8 +173,10 @@ class PurchaseorderController extends Controller
     {
         $model = $this->findModel($id);
 
+        $last_paid = PurchaseOrderPaid::find()->where(['purchase_order_id'=>$model->id])->orderBy(['paid_date'=>SORT_DESC])->one();
+
         Yii::$app->db->createCommand()->update('id_purchase_order',
-        ['status'=>'Terbayar-Selesai','tgl_lunas'=>date('Y-m-d')],
+        ['status'=>'Terbayar-Selesai','tgl_lunas'=>$last_paid['paid_date']],
         ['id'=>$model->id])->execute();
 
         return $this->redirect(['view','id' => $model->id]);

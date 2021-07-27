@@ -25,12 +25,17 @@ $this->title = 'Gabung Customer';
                     
                     if($model['sales']){
                         $sales = Karyawan::find()->where(['id'=>$model['sales']])->one();
-                        return $model['perusahaan'].'-'.$sales['nama_pendek'];
+                        if($model->verified == 'yes'){
+                            return '(OK) '.$model['perusahaan'].'-'.$sales['nama_pendek'];
+                        }else{
+                            return $model['perusahaan'].'-'.$sales['nama_pendek'];
+                        }
+                        
                     }
                     
                 }
             ),
-            'options'=>['placeholder'=>"Perusahaan"],'pluginOptions'=>['allowClear'=>true]
+            'options'=>['placeholder'=>"Perusahaan"],'pluginOptions'=>['allowClear'=>true],
         ]) ?>
      </div>
     </div>
