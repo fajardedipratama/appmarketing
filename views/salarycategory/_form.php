@@ -16,10 +16,6 @@ use yii\widgets\ActiveForm;
         <?= $form->field($model, 'nama')->textInput(['maxlength' => true]) ?>
     </div>
     <div class="col-sm-4">
-        <?= $form->field($model, 'kategori')->dropDownList(
-            ['Fixed Salary'=>'Fixed Salary','Salary Allowance'=>'Salary Allowance','Additional Allowance'=>'Additional Allowance']); ?>
-    </div>
-    <div class="col-sm-4">
         <?= $form->field($model, 'jenis')->dropDownList(
             ['Pendapatan'=>'Pendapatan','Potongan'=>'Potongan']); ?>
     </div>

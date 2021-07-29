@@ -27,11 +27,13 @@ $this->title = 'Komponen Gaji';
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
             'nama',
-            'kategori',
             'jenis',
             'status',
-
-            ['class' => 'yii\grid\ActionColumn'],
+            'keterangan',
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'template' => '{update} {delete}',
+            ],
         ],
     ]); ?>
 </div></div></div>

@@ -5,21 +5,20 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "id_salary_type".
+ * This is the model class for table "id_salary_hubtype".
  *
  * @property int $id
- * @property string $type
- * @property int|null $prorate
-
+ * @property int|null $salary_type
+ * @property int|null $salary_category
  */
-class SalaryType extends \yii\db\ActiveRecord
+class SalaryHubtype extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
      */
     public static function tableName()
     {
-        return 'id_salary_type';
+        return 'id_salary_hubtype';
     }
 
     /**
@@ -28,9 +27,7 @@ class SalaryType extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['type'], 'required'],
-            [['prorate'], 'integer'],
-            [['type'], 'string', 'max' => 100],
+            [['salary_type', 'salary_category'], 'integer'],
         ];
     }
 
@@ -41,8 +38,8 @@ class SalaryType extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'type' => 'Tipe Gaji',
-            'prorate' => 'Prorate ?',
+            'salary_type' => 'Tipe Gaji',
+            'salary_category' => 'Komponen Gaji',
         ];
     }
 }

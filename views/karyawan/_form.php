@@ -117,7 +117,7 @@ use app\models\SalaryType;
             <?= $form->field($model, 'tipe_gaji')->dropDownList(
                 ArrayHelper::map(SalaryType::find()->all(),'id',
                     function($model){
-                        return $model['tipe_gaji'];
+                        return $model['type'];
                     }
             ),['prompt'=>'--Tipe Gaji--']); ?>
         </div>

@@ -4,11 +4,12 @@ namespace app\controllers;
 
 use Yii;
 use app\models\SalaryType;
+use app\models\SalaryHubtype;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-
+use yii\filters\AccessControl;
 /**
  * SalarytypeController implements the CRUD actions for SalaryType model.
  */
@@ -20,6 +21,16 @@ class SalarytypeController extends Controller
     public function behaviors()
     {
         return [
+            'access'=> [
+                'class'=>AccessControl::className(),
+                'only'=>['create','index','update','view'],
+                'rules'=>[
+                    [
+                        'allow'=>true,
+                        'roles'=>['@']
+                    ]
+                ]
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -52,8 +63,17 @@ class SalarytypeController extends Controller
      */
     public function actionView($id)
     {
+        $datacategory = new SalaryHubtype();
+
+        if ($datacategory->load(Yii::$app->request->post())) {
+            $datacategory->salary_type = $id;
+            $datacategory->save();
+            return $this->redirect(['view', 'id' => $id]);
+        }
+
         return $this->render('view', [
             'model' => $this->findModel($id),
+            'datacategory' => $datacategory,
         ]);
     }
 
@@ -108,6 +128,13 @@ class SalarytypeController extends Controller
 
         return $this->redirect(['index']);
     }
+    public function actionDeletehub($id)
+    {
+        $data = $this->findModel2($id);
+        $data->delete();
+
+        return $this->redirect(['view','id'=>$data->salary_type]);
+    }
 
     /**
      * Finds the SalaryType model based on its primary key value.
@@ -119,6 +146,14 @@ class SalarytypeController extends Controller
     protected function findModel($id)
     {
         if (($model = SalaryType::findOne($id)) !== null) {
+            return $model;
+        }
+
+        throw new NotFoundHttpException('The requested page does not exist.');
+    }
+    protected function findModel2($id)
+    {
+        if (($model = SalaryHubtype::findOne($id)) !== null) {
             return $model;
         }
 
