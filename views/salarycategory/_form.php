@@ -16,6 +16,10 @@ use yii\widgets\ActiveForm;
         <?= $form->field($model, 'nama')->textInput(['maxlength' => true]) ?>
     </div>
     <div class="col-sm-4">
+        <?= $form->field($model, 'role')->dropDownList(
+            ['Fixed'=>'Fixed','Additional'=>'Additional']); ?>
+    </div>
+    <div class="col-sm-4">
         <?= $form->field($model, 'jenis')->dropDownList(
             ['Pendapatan'=>'Pendapatan','Potongan'=>'Potongan']); ?>
     </div>

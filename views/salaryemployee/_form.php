@@ -14,7 +14,7 @@ use yii\helpers\ArrayHelper;
     <div class="row">
         <div class="col-sm-4">
             <?= $form->field($datasalary, 'komponen_id')->dropDownList(
-            ArrayHelper::map(SalaryCategory::find()->all(),'id',
+            ArrayHelper::map(SalaryCategory::find()->where(['role'=>'Fixed'])->all(),'id',
                 function($data){
                     return $data['nama'];
                 }

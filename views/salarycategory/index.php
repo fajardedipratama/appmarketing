@@ -27,6 +27,7 @@ $this->title = 'Komponen Gaji';
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
             'nama',
+            'role',
             'jenis',
             'status',
             'keterangan',
