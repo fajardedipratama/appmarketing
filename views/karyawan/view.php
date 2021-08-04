@@ -2,11 +2,10 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
-use app\models\Departemen;
+
 /* @var $this yii\web\View */
 /* @var $model app\models\Karyawan */
 
-$departemen = Departemen::find()->where(['id'=>$model->jobtitle->departemen])->one();
 
 $this->title = 'Detail '.$model->nama;
 
@@ -79,7 +78,7 @@ $this->title = 'Detail '.$model->nama;
                 <b>Posisi</b> <font class="pull-right"><?= $model->jobtitle->posisi ?></font>
               </li>
               <li class="list-group-item">
-                <b>Departemen</b> <font class="pull-right"><?= $departemen['departemen'] ?></font>
+                <b>Departemen</b> <font class="pull-right"><?= $model->departement->departemen ?></font>
               </li>
               <li class="list-group-item">
                 <b>Tanggal Masuk</b> <font class="pull-right">

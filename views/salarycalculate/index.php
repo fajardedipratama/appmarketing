@@ -31,7 +31,8 @@ $this->title = 'Kalkulasi Gaji';
                 }
             ],
             'tahun',
-
+            ['attribute'=>'begin_date','format'=>['date','dd-MM-Y']],
+            ['attribute'=>'end_date','format'=>['date','dd-MM-Y']],
             ['header'=>'Aksi','class' => 'yii\grid\ActionColumn','template'=>'{view}'],
         ],
     ]); ?>

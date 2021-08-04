@@ -95,4 +95,8 @@ class Karyawan extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Jobtitle::className(), ['id' => 'posisi']);
     }
+    public function getDepartement()
+    {
+        return $this->hasOne(Departemen::className(), ['id' => 'departemen']);
+    }
 }

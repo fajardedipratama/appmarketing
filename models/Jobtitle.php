@@ -9,7 +9,6 @@ use Yii;
  *
  * @property int $id
  * @property string $posisi
- * @property int $departemen
  */
 class Jobtitle extends \yii\db\ActiveRecord
 {
@@ -27,8 +26,7 @@ class Jobtitle extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['posisi', 'departemen'], 'required'],
-            [['departemen'], 'integer'],
+            [['posisi'], 'required'],
             [['posisi'], 'string', 'max' => 100],
         ];
     }
@@ -41,12 +39,6 @@ class Jobtitle extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'posisi' => 'Jabatan',
-            'departemen' => 'Departemen',
         ];
-    }
-
-    public function getDepartement()
-    {
-        return $this->hasOne(Departemen::className(), ['id' => 'departemen']);
     }
 }

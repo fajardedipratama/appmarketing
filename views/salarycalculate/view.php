@@ -1,50 +1,37 @@
 <?php
-use app\models\Karyawan;
-use app\models\SalaryCategory;
-use app\models\SalaryEmployee;
-use app\models\SalaryAdditional;
+use app\models\Departemen;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\SalaryCalculate */
 
-$komponen = SalaryCategory::find()->where(['status'=>'Aktif'])->all();
-$karyawan = Karyawan::find()->where(['status_aktif'=>'Aktif'])->all();
+$departemen = Departemen::find()->all();
 
 $this->title = "Detail Gaji";
 \yii\web\YiiAsset::register($this);
 ?>
 <div class="salary-calculate-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h1>
+        <?= Html::a('<i class="glyphicon glyphicon-chevron-left"></i>', ['index'], ['class' => 'btn btn-success']) ?>
+        <?= Html::encode($this->title) ?>
+    </h1>
     <h5>Periode <?= $model->bulan.'-'.$model->tahun ?></h5>
 
     <div class="box"><div class="box-body"><div class="table-responsive">
     <table class="table table-bordered">
         <tr>
-            <th>Karyawan</th>
-    <?php foreach($komponen as $show): ?>
-            <th><?= $show['nama'] ?></th>
-    <?php endforeach ?>
+            <th>Departemen</th>
+            <th>Aksi</th>
         </tr>
-    <?php foreach($karyawan as $show): ?>
+    <?php foreach($departemen as $show): ?>
         <tr>
-            <td><?= $show['nama'] ?></td>
-            <?php foreach($komponen as $show2): ?>
-                <td>
-                <?php
-                    if($show2['role']=='Fixed'){ 
-                        $gaji = SalaryEmployee::find()->where(['karyawan_id'=>$show['id'],'komponen_id'=>$show2['id']])->all();
-                    }elseif($show2['role']=='Additional'){
-                        $gaji = SalaryAdditional::find()->where(['karyawan_id'=>$show['id'],'komponen_id'=>$show2['id']])->all();
-                    }
-                ?>
-                <?php foreach($gaji as $show3): ?>
-                   <?= Yii::$app->formatter->asCurrency($show3['nilai']) ?>
-                <?php endforeach ?>
-                </td>
-            <?php endforeach ?>
+            <td><?= $show['departemen'] ?></td>
+            <td>
+                <?= Html::a('<i class="fa fa-fw fa-eye"></i>', ['preview','period'=>$model->id,'dept'=>$show['id']]) ?>
+                <i class="fa fa-fw fa-file-excel-o"></i>
+            </td>
         </tr>
     <?php endforeach ?>
     </table>

@@ -5,6 +5,7 @@ use yii\widgets\ActiveForm;
 use dosamigos\datepicker\DatePicker;
 use yii\helpers\ArrayHelper;
 use app\models\Jobtitle;
+use app\models\Departemen;
 /* @var $this yii\web\View */
 /* @var $model app\models\Karyawan */
 /* @var $form yii\widgets\ActiveForm */
@@ -77,6 +78,14 @@ use app\models\Jobtitle;
                         return $model['posisi'];
                     }
             ),['prompt'=>'--Jabatan--']); ?>
+        </div>
+        <div class="col-sm-3">
+            <?= $form->field($model, 'departemen')->dropDownList(
+                ArrayHelper::map(Departemen::find()->all(),'id',
+                    function($model){
+                        return $model['departemen'];
+                    }
+            ),['prompt'=>'--Departemen--']); ?>
         </div>
          <div class="col-sm-3">
             <?php 

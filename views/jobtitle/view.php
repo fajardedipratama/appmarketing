@@ -34,7 +34,6 @@ $this->title = $model->posisi;
         'model' => $model,
         'attributes' => [
             'posisi',
-            'departement.departemen',
         ],
     ]) ?>
 

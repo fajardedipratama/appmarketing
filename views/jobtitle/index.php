@@ -29,10 +29,6 @@ $this->title = 'Jabatan';
             ['class' => 'yii\grid\SerialColumn'],
             'posisi',
             [
-                'header'=> 'Departemen',
-                'value'=> 'departement.departemen',
-            ],
-            [
                 'header'=>'Aksi','class' => 'yii\grid\ActionColumn',
                 'template'=>'{update}',
                 'visible' => Yii::$app->user->identity->type == 'Administrator'

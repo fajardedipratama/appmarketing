@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-
+use dosamigos\datepicker\DatePicker;
 /* @var $this yii\web\View */
 /* @var $model app\models\SalaryCalculate */
 /* @var $form yii\widgets\ActiveForm */
@@ -17,6 +17,24 @@ use yii\widgets\ActiveForm;
         </div>
         <div class="col-sm-6">
             <?= $form->field($model, 'tahun')->textInput(['type'=>'number']) ?>
+        </div>
+        <div class="col-sm-6">
+            <?= $form->field($model, 'begin_date')->widget(DatePicker::className(),[
+            'clientOptions'=>[
+                'autoclose'=>true,
+                'format'=>'dd-mm-yyyy',
+                'orientation'=>'bottom',
+            ]
+        ])?>
+        </div>
+        <div class="col-sm-6">
+            <?= $form->field($model, 'end_date')->widget(DatePicker::className(),[
+            'clientOptions'=>[
+                'autoclose'=>true,
+                'format'=>'dd-mm-yyyy',
+                'orientation'=>'bottom',
+            ]
+        ])?>
         </div>
     </div>
 

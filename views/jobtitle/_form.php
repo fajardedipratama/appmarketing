@@ -18,15 +18,6 @@ use yii\helpers\ArrayHelper;
     		<div class="col-sm-4">
     			<?= $form->field($model, 'posisi')->textInput(['maxlength' => true]) ?>
     		</div>
-    		<div class="col-sm-4">
-    			<?= $form->field($model, 'departemen')->dropDownList(
-	              ArrayHelper::map(departemen::find()->all(),'id',
-	                function($model){
-	                  return $model['departemen'];
-	                }
-	              ),
-	              ['prompt'=>'--Pilih Departemen--']); ?>
-    		</div>
     	</div>
     </div></div>
 

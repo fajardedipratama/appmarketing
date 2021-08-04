@@ -76,6 +76,13 @@ class SalarycalculateController extends Controller
         ]);
     }
 
+    public function actionPreview($period,$dept)
+    {
+        return $this->render('preview', [
+            'model' => $this->findModel($period),
+        ]);
+    }
+
     /**
      * Creates a new SalaryCalculate model.
      * If creation is successful, the browser will be redirected to the 'view' page.
