@@ -30,6 +30,7 @@ $this->title = 'Kirim Sampel';
             [
                 'attribute'=>'perusahaan',
                 'value'=>'customer.perusahaan',
+                'headerOptions'=>['style'=>'width:35%'],
                 'filter'=>\kartik\select2\Select2::widget([
                     'model'=>$searchModel,'attribute'=>'perusahaan','data'=>$customer,
                     'options'=>['placeholder'=>'Perusahaan'],'pluginOptions'=>['allowClear'=>true]
@@ -38,6 +39,7 @@ $this->title = 'Kirim Sampel';
             [
                 'attribute'=>'sales',
                 'value'=>'karyawan.nama_pendek',
+                'headerOptions'=>['style'=>'width:20%'],
                 'filter'=>\kartik\select2\Select2::widget([
                     'model'=>$searchModel,'attribute'=>'sales','data'=>$sales,
                     'options'=>['placeholder'=>'Sales'],'pluginOptions'=>['allowClear'=>true]

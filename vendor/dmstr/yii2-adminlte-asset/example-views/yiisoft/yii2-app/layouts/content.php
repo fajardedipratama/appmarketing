@@ -38,10 +38,9 @@ use dmstr\widgets\Alert;
 
 <footer class="main-footer">
     <div class="pull-right hidden-xs">
-        <b>Version</b> 1.0
+        <b>Version</b> 1.1
     </div>
-    <strong>Copyright &copy; 2021 BJB Surabaya.</strong> All rights
-    reserved.
+    <strong>Copyright &copy; 2021 BJB NAVI Surabaya.</strong>
 </footer>
 
 <!-- Control Sidebar -->

@@ -23,14 +23,28 @@ $this->title = 'Detail Kirim Sampel';
             <?= Html::a('<i class="fa fa-fw fa-check-square-o"></i> Setuju', ['accsend', 'id' => $model->id], ['class' => 'btn btn-success','data' => ['confirm' => 'Setuju Kirim Sampel ?','method' => 'post']]) ?>
             <?= Html::a('<i class="fa fa-fw fa-remove"></i> Tolak', ['dontsend', 'id' => $model->id], ['class' => 'btn btn-danger','data' => ['confirm' => 'Tolak Kirim Sampel ?','method' => 'post']]) ?>
          <?php elseif($model->status == 'Disetujui' && Yii::$app->user->identity->type == 'Administrator'): ?>
-            <?= Html::a('<i class="fa fa-fw fa-check-square-o"></i> Terkirim', ['sendsuccess', 'id' => $model->id], ['class' => 'btn btn-success','data' => ['confirm' => 'Sampel Terkirim ?','method' => 'post']]) ?>
-         <?php endif; ?>
-            <?= Html::a('<i class="fa fa-fw fa-print"></i> Print', ['print', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?php endif ?>
-        <?php if($model->status == 'Pending'): ?>
+            <div class="btn-group">
+                <button type="button" class="btn btn-success"><i class="fa fa-fw fa-truck"></i> Kirim</button>
+                <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
+                <span class="caret"></span><span class="sr-only">Toggle Dropdown</span>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                    <li>
+                        <?= Html::a('<i class="fa fa-fw fa-check-square-o"></i> Terkirim', ['sendsuccess', 'id' => $model->id], ['data' => ['confirm' => 'Barang Terkirim ?','method' => 'post']]) ?>
+                    </li>
+                    <li>
+                        <?= Html::a('<i class="fa fa-fw fa-times"></i> Batal Kirim', ['sendfailed', 'id' => $model->id], ['data' => ['confirm' => 'Barang Batal Kirim ?','method' => 'post']]) ?>
+                    </li>
+                </ul>
+            </div>
             <?= Html::a('<i class="fa fa-fw fa-pencil"></i> Ubah', ['update', 'id' => $model->id], ['class' => 'btn btn-warning']) ?>
+         <?php endif; ?>
+         <?php if(Yii::$app->user->identity->type == 'Administrator'): ?>
+            <?= Html::a('<i class="fa fa-fw fa-print"></i> Print', ['print', 'id' => $model->id], ['class' => 'btn btn-primary','target'=>'_blank']) ?>
+         <?php endif; ?>
         <?php endif ?>
-        <?php if($model->status == 'Pending'): ?>
+        <?php if($model->status == 'Pending' && Yii::$app->user->identity->type != 'Manajemen'): ?>
+            <?= Html::a('<i class="fa fa-fw fa-pencil"></i> Ubah', ['update', 'id' => $model->id], ['class' => 'btn btn-warning']) ?>
             <?= Html::a('<i class="fa fa-fw fa-trash"></i> Hapus', ['delete', 'id' => $model->id], [
                 'class' => 'btn btn-danger',
                 'data' => ['confirm' => 'Hapus data ini ?','method' => 'post',],

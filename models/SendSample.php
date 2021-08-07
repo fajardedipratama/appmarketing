@@ -62,6 +62,11 @@ class SendSample extends \yii\db\ActiveRecord
             'acc_by' => 'Disetujui Oleh',
         ];
     }
+    public function beforeSave($options = array()) {
+        $this->penerima=ucwords(strtolower($this->penerima));
+        $this->alamat=ucwords(strtolower($this->alamat));
+        return true;
+    }
     public function getKaryawan()
     {
         return $this->hasOne(Karyawan::className(), ['id' => 'sales']);

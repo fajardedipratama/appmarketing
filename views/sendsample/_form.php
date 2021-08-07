@@ -23,7 +23,7 @@ use dosamigos\datepicker\DatePicker;
         <div class="col-sm-4">
     <?php if(Yii::$app->user->identity->type == 'Marketing'): ?>
             <?= $form->field($model, 'perusahaan')->widget(Select2::className(),[
-            'data'=>ArrayHelper::map(Customer::find()->where(['sales'=>Yii::$app->user->identity->profilname])->all(),'id',
+            'data'=>ArrayHelper::map(Customer::find()->where(['sales'=>Yii::$app->user->identity->profilname])->orderBy(['perusahaan'=>SORT_ASC])->all(),'id',
                 function($model){
                     return $model['perusahaan'];
                 }
@@ -32,7 +32,7 @@ use dosamigos\datepicker\DatePicker;
             ]) ?>
     <?php else: ?>
             <?= $form->field($model, 'perusahaan')->widget(Select2::className(),[
-            'data'=>ArrayHelper::map(Customer::find()->all(),'id',
+            'data'=>ArrayHelper::map(Customer::find()->orderBy(['perusahaan'=>SORT_ASC])->all(),'id',
                 function($model){
                     return $model['perusahaan'];
                 }
@@ -55,10 +55,11 @@ use dosamigos\datepicker\DatePicker;
     <?php endif ?>
         <div class="col-sm-4">
             <?= $form->field($model, 'jumlah')->textInput(['type'=>'number']) ?>
+            <p class="help-block">Standar : 125</p>
         </div>
         <div class="col-sm-4">
             <?= $form->field($model, 'penerima')->textInput(['maxlength' => true]) ?>
-            <p class="help-block">Bapak/Ibu XXX (082xxxxxxx)</p>
+            <p class="help-block">Bapak Tama (082xxxxxxx)</p>
         </div>
         <div class="col-sm-4">
             <?= $form->field($model, 'alamat')->textInput(['maxlength' => true]) ?>
@@ -82,7 +83,7 @@ use dosamigos\datepicker\DatePicker;
         </div>
     </div>
     <div class="row">
-    <?php if(!$model->isNewRecord && Yii::$app->user->identity->type != 'Marketing' && $model->status == 'Terkirim'): ?>
+    <?php if(!$model->isNewRecord && Yii::$app->user->identity->type != 'Marketing' && $model->status != 'Pending'): ?>
         <div class="col-sm-4">
             <?= $form->field($model, 'status')->dropDownList(['Pending'=>'Pending','Ditolak'=>'Ditolak','Disetujui'=>'Disetujui','Terkirim'=>'Terkirim']) ?>
         </div>

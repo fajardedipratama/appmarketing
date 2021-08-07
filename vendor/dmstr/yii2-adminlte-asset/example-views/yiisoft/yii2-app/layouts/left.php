@@ -79,7 +79,6 @@ $jobtitle = Jobtitle::find()->where(['id'=>$karyawan['posisi']])->one();
                             ['label' => 'Data PO', 'icon' => 'cart-plus', 'url' => ['/purchaseorder'], 'active'=>in_array(\Yii::$app->controller->id,['purchaseorder'])],
                             [
                                 'label' => 'Kirim Sampel', 'icon' => 'truck', 'url' => ['/sendsample'], 'active'=>in_array(\Yii::$app->controller->id,['sendsample']),
-                                'visible' => !Yii::$app->user->isGuest && Yii::$app->user->identity->type == 'Administrator' || Yii::$app->user->identity->type == 'Manajemen'
                             ],
                             ['label' => '.'],
                             ['label' => 'Aktivitas Sales', 'icon' => 'table', 'url' => ['/dailyreport','waktu'=>date('Y-m-d')], 'active'=>in_array(\Yii::$app->controller->id,['dailyreport'])],

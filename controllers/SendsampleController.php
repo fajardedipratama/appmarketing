@@ -181,6 +181,16 @@ class SendsampleController extends Controller
 
         return $this->redirect(['view','id' => $model->id]);
     }
+    public function actionSendfailed($id)
+    {
+        $model = $this->findModel($id);
+
+        Yii::$app->db->createCommand()->update('id_send_sample',
+        ['status'=>'Batal Kirim'],
+        ['id'=>$model->id])->execute();
+
+        return $this->redirect(['view','id' => $model->id]);
+    }
 
     /**
      * Deletes an existing SendSample model.
