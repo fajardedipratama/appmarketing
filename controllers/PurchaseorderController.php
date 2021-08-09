@@ -5,6 +5,7 @@ namespace app\controllers;
 use Yii;
 use app\models\PurchaseOrder;
 use app\models\PurchaseOrderPaid;
+use app\models\City;
 use app\models\search\PurchaseorderSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -56,6 +57,10 @@ class PurchaseorderController extends Controller
                 function($model){
                     return $model['nama_pendek'];
                 });
+        $kota = ArrayHelper::map(City::find()->all(),'id',
+                function($model){
+                    return $model['kota'];
+                });
 
         if(Yii::$app->user->identity->type == 'Marketing'){
             $customer = ArrayHelper::map(PurchaseOrder::find()->where(['sales'=>Yii::$app->user->identity->profilname])->all(),'perusahaan',
@@ -77,6 +82,7 @@ class PurchaseorderController extends Controller
 
         return $this->render('index', [
             'sales' => $sales,
+            'kota' => $kota,
             'customer' => $customer,
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,

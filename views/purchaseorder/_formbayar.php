@@ -29,6 +29,9 @@ use dosamigos\datepicker\DatePicker;
     	<?= $form->field($modelpaid, 'amount')->textInput(['type'=>'number']) ?>
 	</div>
     <div class="col-sm-4">
+        <?= $form->field($modelpaid, 'bank')->dropDownList(['Mandiri 1430014465569 (PT Berdikari Jaya Bersama)'=>'Mandiri 1430014465569 (PT Berdikari Jaya Bersama)','BCA 0393039300 (PT Berdikari Jaya Bersama)'=>'BCA 0393039300 (PT Berdikari Jaya Bersama)','BCA 0566515151 (Godwin)'=>'BCA 0566515151 (Godwin)']) ?>
+    </div>
+    <div class="col-sm-4">
     	<?= $form->field($modelpaid, 'note')->textInput(['maxlength' => true]) ?>
 	</div>
 </div>

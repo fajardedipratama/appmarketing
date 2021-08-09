@@ -11,6 +11,7 @@ use Yii;
  * @property int $purchase_order_id
  * @property string $paid_date
  * @property int $amount
+ * @property string $bank
  * @property string $note
  */
 class PurchaseOrderPaid extends \yii\db\ActiveRecord
@@ -33,6 +34,7 @@ class PurchaseOrderPaid extends \yii\db\ActiveRecord
             [['purchase_order_id', 'amount'], 'integer'],
             [['paid_date'], 'safe'],
             [['note'], 'string', 'max' => 100],
+            [['bank'], 'string', 'max' => 200],
         ];
     }
 
@@ -46,6 +48,7 @@ class PurchaseOrderPaid extends \yii\db\ActiveRecord
             'purchase_order_id' => 'ID PO',
             'paid_date' => 'Tanggal Bayar',
             'amount' => 'Jumlah',
+            'bank' => 'Bank',
             'note' => 'Catatan',
         ];
     }

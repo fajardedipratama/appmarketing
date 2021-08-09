@@ -48,6 +48,14 @@ $this->title = 'Data PO';
               ])
             ],
             [
+                'attribute' => 'kota_kirim',
+                'value' => 'city.kota',
+                'filter'=>\kartik\select2\Select2::widget([
+                    'model'=>$searchModel,'attribute'=>'kota_kirim','data'=>$kota,
+                    'options'=>['placeholder'=>'Kirim'],'pluginOptions'=>['allowClear'=>true]
+                ])
+            ],
+            [
               'attribute'=>'tgl_kirim',
               'value' => function($data){
                 return $data->tgl_kirim;
@@ -79,10 +87,6 @@ $this->title = 'Data PO';
               'value'=>function($data){
                 return $data->volume;
               }
-            ],
-            [
-              'attribute'=>'termin',
-              'filter'=> ['Cash On Delivery'=>'Cash On Delivery','Cash Before Delivery'=>'Cash Before Delivery','Tempo 7 Hari'=>'Tempo 7 Hari','Tempo 14 Hari'=>'Tempo 14 Hari','Tempo 21 Hari'=>'Tempo 21 Hari','Tempo 30 Hari'=>'Tempo 30 Hari']
             ],
             [
               'attribute'=>'sales',

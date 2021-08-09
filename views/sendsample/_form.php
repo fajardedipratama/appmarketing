@@ -55,7 +55,7 @@ use dosamigos\datepicker\DatePicker;
     <?php endif ?>
         <div class="col-sm-4">
             <?= $form->field($model, 'jumlah')->textInput(['type'=>'number']) ?>
-            <p class="help-block">Standar : 125</p>
+            <p class="help-block">1 botol : 125 ml</p>
         </div>
         <div class="col-sm-4">
             <?= $form->field($model, 'penerima')->textInput(['maxlength' => true]) ?>

@@ -39,33 +39,22 @@ $this->title = "Preview";
     <?php
         $posisi = Jobtitle::find()->where(['id'=>$show['posisi']])->one(); 
         $gapok = SalaryEmployee::find()->where(['karyawan_id'=>$show['id'],'komponen_id'=>1])->one();
-        $pot_absen = SalaryAdditional::find()->where(['karyawan_id'=>$show['id'],'komponen_id'=>4])->andWhere(['between','tanggal',$model->begin_date,$model->end_date])->one();
+
+        $pot_absen = SalaryAdditional::find()->where(['karyawan_id'=>$show['id'],'komponen_id'=>4])->andWhere(['between','tanggal',$model->begin_date,$model->end_date]);
+        if($pot_absen->count() > 0){
+            $value_absen = $pot_absen->sum('nilai');
+        }else{
+            $value_absen = 0;
+        }
     ?>
         <tr>
             <td><?= $i++ ?></td>
             <td><?= $show['nama'] ?></td>
             <td><?= $posisi['posisi'] ?></td>
             <td><?= Yii::$app->formatter->asCurrency($gapok['nilai']) ?></td>
-            <td>
-            <?php
-                if($pot_absen){ 
-                    echo Yii::$app->formatter->asCurrency($pot_absen['nilai']);
-                }else{
-                    echo 0;
-                }
-            ?>        
-            </td>
-            <td>
-            <?php
-                if($pot_absen){ 
-                    echo Yii::$app->formatter->asCurrency($gapok['nilai']-$pot_absen['nilai']);
-                }else{
-                    echo Yii::$app->formatter->asCurrency($gapok['nilai']);
-                }
-            ?>  
-            </td>
+            <td><?= Yii::$app->formatter->asCurrency($value_absen) ?></td>
+            <td><?= Yii::$app->formatter->asCurrency($gapok['nilai']-$value_absen) ?></td>
             <td><?= $show['no_rekening'].' '.$show['nama_rekening'] ?></td>
-
         </tr>
     <?php endforeach ?>
     </table>

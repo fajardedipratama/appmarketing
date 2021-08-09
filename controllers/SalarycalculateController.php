@@ -78,9 +78,15 @@ class SalarycalculateController extends Controller
 
     public function actionPreview($period,$dept)
     {
-        return $this->render('preview', [
-            'model' => $this->findModel($period),
-        ]);
+        if($dept == 1){
+            return $this->render('prev_management', [
+                'model' => $this->findModel($period),
+            ]);
+        }elseif($dept == 2){
+            return $this->render('prev_marketing', [
+                'model' => $this->findModel($period),
+            ]);
+        }
     }
 
     /**

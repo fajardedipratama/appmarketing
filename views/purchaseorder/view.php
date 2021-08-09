@@ -188,6 +188,7 @@ $this->title = 'PURCHASE ORDER';
             <tr>
                 <th>Tanggal</th>
                 <th>Jumlah</th>
+                <th>Bank</th>
                 <th>Catatan</th>
                 <th>Aksi</th>
             </tr>
@@ -195,6 +196,7 @@ $this->title = 'PURCHASE ORDER';
             <tr>
                 <td><?= date('d/m/Y',strtotime($show_paid['paid_date'])) ?></td>
                 <td><?= Yii::$app->formatter->asCurrency($show_paid['amount']) ?></td>
+                <td><?= $show_paid['bank'] ?></td>
                 <td><?= $show_paid['note'] ?></td>
                 <td>
                     <?= Html::a('<i class="fa fa-fw fa-pencil"></i>', ['purchaseorderpaid/update', 'id' => $show_paid['id']]) ?>
