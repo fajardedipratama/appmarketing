@@ -18,10 +18,10 @@ if($_GET['range']=='all'){
     $kirim=PurchaseOrder::find()->where(['status'=>'Terkirim'])->orWhere(['status'=>'Terbayar-Selesai'])->andWhere(['between','tgl_kirim',$set_awal,$set_akhir])->sum('volume');
     $proses = PurchaseOrder::find()->where(['status'=>'Disetujui'])->andWhere(['between','tgl_kirim',$set_awal,$set_akhir])->sum('volume');
     $pending = PurchaseOrder::find()->where(['status'=>'Pending'])->andWhere(['between','tgl_kirim',$set_awal,$set_akhir])->sum('volume');
-     $terbayar = PurchaseOrder::find()->where(['status'=>'Terbayar-Selesai'])->andWhere(['between','tgl_kirim',$set_awal,$set_akhir])->sum('volume');
+    $terbayar = PurchaseOrder::find()->where(['status'=>'Terbayar-Selesai'])->andWhere(['between','tgl_kirim',$set_awal,$set_akhir])->sum('volume');
 }
 
-$karyawan=Karyawan::find()->where(['posisi'=>6,'status_aktif'=>'Aktif'])->orderBy(['nama_pendek'=>SORT_ASC])->all();
+$karyawan=Karyawan::find()->where(['posisi'=>6])->orderBy(['status_aktif'=>SORT_ASC])->all();
 
 /* @var $this yii\web\View */
 /* @var $model app\models\PurchaseOrder */
@@ -85,7 +85,14 @@ $this->title = 'Hasil PO';
       <?php endif; ?>
 
       <tr>
-        <td><?= $sales['nama_pendek']; ?></td>
+        <td>
+          <?php if($sales['status_aktif']=='Aktif'){
+            echo $sales['nama_pendek']; 
+          }else{
+            echo '<font style="color:red">'.$sales['nama_pendek'].'</font>';
+          }
+          ?>
+        </td>
         <td><?= $po_terkirim->count().'x PO dari '.$company.' Perusahaan, Total '.($po_terkirim->sum('volume')/1000).' KL'; ?></td>
         <td><?= ($po_belumkirim/1000).' KL'; ?></td>
         <td><?= ($po_pending/1000).' KL'; ?></td>
