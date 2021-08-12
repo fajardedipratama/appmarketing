@@ -4,13 +4,13 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 use app\models\Karyawan;
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\search\ExkaryawanSearch */
+/* @var $searchModel app\models\search\KaryawanSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Ex-Karyawan';
 
 ?>
-<div class="exkaryawan-index">
+<div class="exdata-index">
 
     <div class="row">
         <div class="col-sm-10">
@@ -26,32 +26,15 @@ $this->title = 'Ex-Karyawan';
         'dataProvider' => $dataProvider,
         // 'filterModel' => $searchModel,
         'columns' => [
-            [
-                'header' => 'NIP',
-                'value'=>'karyawan.badge',
-            ],
-            [
-                'header' => 'Nama',
-                'value'=>'karyawan.nama',
-            ],
-            'alasan',
+            'badge',
+            'nama',
+            'alasan_resign',
             'tgl_resign',
-
             [
                 'class' => 'yii\grid\ActionColumn',
                 'header' => 'Aksi',
                 'template' => '{view} {update}',
                 'visible' => Yii::$app->user->identity->type == 'Administrator',
-                'buttons'=> [
-                    'view'=>function($url,$model)
-                    {
-                    return Html::a
-                     (
-                        '<span class="glyphicon glyphicon-user"></span>',
-                        ["karyawan/view",'id'=>$model->id_employee],['title' => Yii::t('app', 'View Profile')]
-                     );
-                    },
-                ],
             ],
         ],
     ]); ?>

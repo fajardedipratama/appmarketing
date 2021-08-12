@@ -20,7 +20,7 @@ $this->title = 'Data Karyawan';
             <?= Html::a('<i class="fa fa-fw fa-file-excel-o"></i>', ['export-excel2'], ['class'=>'btn btn-success']); ?>
             <?= Html::a('<i class="fa fa-fw fa-plus-square"></i> Tambah Data', ['create'], ['class' => 'btn btn-primary']) ?>
         <?php endif; ?>
-            <?= Html::a('<i class="fa fa-fw fa-users"></i> Ex-Karyawan', ['/exkaryawan'], ['class' => 'btn btn-danger']) ?>
+            <?= Html::a('<i class="fa fa-fw fa-users"></i> Ex-Karyawan', ['exdata'], ['class' => 'btn btn-danger']) ?>
         </div>
     </div>
 

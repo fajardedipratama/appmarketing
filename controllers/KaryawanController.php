@@ -4,9 +4,9 @@ namespace app\controllers;
 
 use Yii;
 use app\models\Karyawan;
-use app\models\Exkaryawan;
 use app\models\Departemen;
 use app\models\search\KaryawanSearch;
+use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\AccessControl;
@@ -54,6 +54,17 @@ class KaryawanController extends Controller
 
         return $this->render('index', [
             'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
+    public function actionExdata()
+    {
+        $dataProvider = new ActiveDataProvider([
+            'query' => Karyawan::find()->where(['status_aktif'=>'Tidak Aktif']),
+        ]);
+
+        return $this->render('exdata', [
             'dataProvider' => $dataProvider,
         ]);
     }
@@ -123,6 +134,9 @@ class KaryawanController extends Controller
             //process
             $model->tanggal_lahir=Yii::$app->formatter->asDate($_POST['Karyawan']['tanggal_lahir'],'yyyy-MM-dd');
             $model->tanggal_masuk=Yii::$app->formatter->asDate($_POST['Karyawan']['tanggal_masuk'],'yyyy-MM-dd');
+            if(!empty($model->tgl_resign)){
+               $model->tgl_resign=Yii::$app->formatter->asDate($_POST['Karyawan']['tgl_resign'],'yyyy-MM-dd');
+            }
             
             $uploadedFile = UploadedFile::getInstance($model, 'foto_karyawan');
             $query=Karyawan::findOne($id);
@@ -166,23 +180,23 @@ class KaryawanController extends Controller
     public function actionResign($id)
     {
         $model = $this->findModel($id);
-        $model2 = new Exkaryawan();
 
-        if ($model2->load(Yii::$app->request->post())) {
-            $model2->tgl_resign=Yii::$app->formatter->asDate($_POST['Exkaryawan']['tgl_resign'],'yyyy-MM-dd');
-            $model2->id_employee=$id;
+        if ($model->load(Yii::$app->request->post())) {
+            $model->tgl_resign=Yii::$app->formatter->asDate($_POST['Karyawan']['tgl_resign'],'yyyy-MM-dd');
                 
             Yii::$app->db->createCommand()->update('id_karyawan',
-            ['status_aktif' => 'Tidak Aktif'],
+            [
+                'status_aktif' => 'Tidak Aktif',
+                'alasan_resign' => $model->alasan_resign,
+                'tgl_resign' => $model->tgl_resign,
+            ],
             ['id'=>$id])->execute();
 
-            $model2->save();
+            $model->save();
             return $this->redirect(['index']);
         }
 
-        return $this->render('_formex', [
-            'model' => $model,'model2'=>$model2
-        ]);
+        return $this->render('_formex', ['model' => $model]);
     }
 
     /*

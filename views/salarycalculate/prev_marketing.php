@@ -24,15 +24,36 @@ $this->title = "Preview";
     <h5>Periode <?= $model->bulan.'-'.$model->tahun ?></h5>
 
     <div class="box"><div class="box-body"><div class="table-responsive">
-    <table class="table table-bordered">
+    <table class="table table-bordered text-center" style="white-space: nowrap;">
         <tr>
-            <th>#</th>
-            <th>Nama</th>
-            <th>Posisi</th>
-            <th>Gaji</th>
-            <th>Potongan Absensi</th>
-            <th>Total Diterima</th>
-            <th>Rekening (BCA)</th>
+            <th rowspan="2">#</th>
+            <th rowspan="2">Nama</th>
+            <th rowspan="2">Posisi</th>
+            <th rowspan="2">Hari Kerja</th>
+            <th colspan="2">Total PO</th>
+            <th rowspan="2">Gaji</th>
+            <th rowspan="2">Gaji (ProRate)</th>
+            <th colspan="4">Komisi</th>
+            <th rowspan="2">Bonus</th>
+            <th colspan="2">PO CBD/COD 50rb</th>
+            <th rowspan="2">Bonus CBD/COD 50rb</th>
+            <th colspan="2">PO CBD/COD 25rb</th>
+            <th rowspan="2">Bonus CBD/COD 25rb</th>
+            <th rowspan="2">Potongan Absensi</th>
+            <th rowspan="2">Total Diterima</th>
+            <th rowspan="2">Rekening (BCA)</th>
+        </tr>
+        <tr>
+            <th>Terkirim</th>
+            <th>Terbayar</th>
+            <th>5-34KL</th>
+            <th>35-49KL</th>
+            <th>50-99KL</th>
+            <th>>100KL</th>
+            <th>Terkirim</th>
+            <th>Terbayar</th>
+            <th>Terkirim</th>
+            <th>Terbayar</th>
         </tr>
     <?php $i = 1; ?>
     <?php foreach($karyawan as $show): ?>
@@ -45,12 +66,23 @@ $this->title = "Preview";
             <td><?= $show['nama'] ?></td>
             <td><?= $posisi['posisi'] ?></td>
             <td>-</td>
-            <td>
-               -
-            </td>
-            <td>
-            -
-            </td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
             <td><?= $show['no_rekening'].' '.$show['nama_rekening'] ?></td>
 
         </tr>

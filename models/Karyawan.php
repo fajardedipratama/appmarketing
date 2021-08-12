@@ -30,6 +30,8 @@ use Yii;
  * @property string $tipe_gaji
  * @property string $foto_karyawan
  * @property string $status_aktif
+ * @property string $alasan_resign
+ * @property string|null $tgl_resign
  */
 class Karyawan extends \yii\db\ActiveRecord
 {
@@ -48,11 +50,11 @@ class Karyawan extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['badge', 'nama', 'nama_pendek', 'gender', 'tempat_lahir', 'tanggal_lahir', 'no_hp', 'alamat_rumah','tanggal_masuk', 'posisi'], 'required'],
-            [['tanggal_lahir', 'tanggal_masuk','tanggal','waktu'], 'safe'],
+            [['badge', 'nama', 'nama_pendek', 'gender', 'tempat_lahir', 'tanggal_lahir', 'no_hp', 'alamat_rumah','tanggal_masuk', 'posisi', 'departemen','no_ktp'], 'required'],
+            [['tanggal_lahir', 'tanggal_masuk','tanggal','waktu','tgl_resign'], 'safe'],
             [['badge', 'posisi', 'departemen'], 'integer'],
             [['nama','nama_pendek', 'gender', 'tempat_lahir', 'agama', 'no_hp', 'no_ktp', 'pendidikan', 'status_kawin', 'bank','no_rekening',  'nama_rekening', 'status_aktif', 'tipe_gaji'], 'string', 'max' => 100],
-            [['alamat_ktp', 'alamat_rumah'], 'string', 'max' => 1000],
+            [['alamat_ktp', 'alamat_rumah','alasan_resign'], 'string', 'max' => 1000],
              [['foto_karyawan'], 'file', 'extensions' => 'png, jpg, jpeg','mimeTypes'=>'image/jpeg,image/png', 'maxSize'=>1048576,'skipOnEmpty'=>true],
             [['badge'], 'unique'],
             [['no_ktp'], 'unique'],
@@ -89,6 +91,8 @@ class Karyawan extends \yii\db\ActiveRecord
             'foto_karyawan' => 'Foto Karyawan',
             'status_aktif' => 'Status Karyawan',
             'waktu' => 'waktu',
+            'alasan_resign'=>'Alasan',
+            'tgl_resign'=>'Tanggal Keluar',
         ];
     }
     public function getJobtitle()
