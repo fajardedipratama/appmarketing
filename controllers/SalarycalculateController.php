@@ -48,12 +48,15 @@ class SalarycalculateController extends Controller
         $dataProvider = new ActiveDataProvider([
             'query' => SalaryCalculate::find(),
             'pagination'=>array('pageSize'=>12),
-            'sort'=>['defaultOrder'=>['id'=>SORT_DESC]]
+            'sort'=>['defaultOrder'=>['begin_date'=>SORT_DESC]]
         ]);
 
         $model = new SalaryCalculate();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post()) ) {
+            $model->begin_date=Yii::$app->formatter->asDate($_POST['SalaryCalculate']['begin_date'],'yyyy-MM-dd');
+            $model->end_date=Yii::$app->formatter->asDate($_POST['SalaryCalculate']['end_date'],'yyyy-MM-dd');
+            $model->save();
             return $this->redirect(['index']);
         }
 
@@ -118,7 +121,10 @@ class SalarycalculateController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post()) ) {
+            $model->begin_date=Yii::$app->formatter->asDate($_POST['SalaryCalculate']['begin_date'],'yyyy-MM-dd');
+            $model->end_date=Yii::$app->formatter->asDate($_POST['SalaryCalculate']['end_date'],'yyyy-MM-dd');
+            $model->save();
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
