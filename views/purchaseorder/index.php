@@ -26,7 +26,7 @@ $this->title = 'Data PO';
         </div>
     </div>
 
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+
 <div class="box"><div class="box-body"><div class="table-responsive">
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
