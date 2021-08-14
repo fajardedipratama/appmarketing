@@ -44,6 +44,11 @@ $this->title = 'PURCHASE ORDER';
             <b><?= Html::encode($this->title) ?></b>
         </h1>
         <h4><?= $model->no_po ?></h4>
+    <?php if($model->range_paid != NULL): ?>
+        <p style="font-style: italic;">Kirim-Bayar = <?= $model->range_paid ?> hari 
+            <?= Html::a('<i class="fa fa-fw fa-refresh"></i>', ['calculaterange', 'id' => $model->id], ['class' => 'btn btn-success btn-xs']) ?>
+        </p>
+    <?php endif ?>
     </div>
 <?php if(Yii::$app->user->identity->type == 'Administrator'): ?>
     <div class="col-sm-5">

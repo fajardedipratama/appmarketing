@@ -181,8 +181,23 @@ class PurchaseorderController extends Controller
 
         $last_paid = PurchaseOrderPaid::find()->where(['purchase_order_id'=>$model->id])->orderBy(['paid_date'=>SORT_DESC])->one();
 
+        $range = strtotime($last_paid['paid_date']) - strtotime($model->tgl_kirim); 
+        $range_paid = $range/60/60/24;
+
         Yii::$app->db->createCommand()->update('id_purchase_order',
-        ['status'=>'Terbayar-Selesai','tgl_lunas'=>$last_paid['paid_date']],
+        ['status'=>'Terbayar-Selesai','tgl_lunas'=>$last_paid['paid_date'],'range_paid'=>$range_paid],
+        ['id'=>$model->id])->execute();
+
+        return $this->redirect(['view','id' => $model->id]);
+    }
+    public function actionCalculaterange($id){
+        $model = $this->findModel($id);
+
+        $range = strtotime($model->tgl_lunas) - strtotime($model->tgl_kirim); 
+        $range_paid = $range/60/60/24;
+
+        Yii::$app->db->createCommand()->update('id_purchase_order',
+        ['range_paid'=>$range_paid],
         ['id'=>$model->id])->execute();
 
         return $this->redirect(['view','id' => $model->id]);
