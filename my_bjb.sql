@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 14 Agu 2021 pada 07.48
+-- Waktu pembuatan: 16 Agu 2021 pada 03.43
 -- Versi server: 10.4.17-MariaDB
 -- Versi PHP: 8.0.0
 
@@ -5684,7 +5684,8 @@ INSERT INTO `id_customer` (`id`, `perusahaan`, `lokasi`, `alamat_lengkap`, `pic`
 (7619, 'BERKAT BAHARI LOGISTIK PT', '29', 'Jl. Ikan Mungsing VII No.28, RT.010/RW.04, Perak Bar., Kec. Krembangan, Kota SBY, Jawa Timur 60177', 'PURCHASING PT', '(031) 99091762', 'marketing@berkatbahari.com', '', '', '', 10, NULL, '', 10, '2021-08-14 11:21:15', '', '', NULL, ''),
 (7620, 'BEE JAY SEAFOOD PT', '24', 'JL.Tanjung Tembaga barat Mayangan Probolinggo', '', '082140630782', '', '', '', '', 20, NULL, '', 20, '2021-08-14 11:23:06', '', '', NULL, ''),
 (7622, 'MODERN MITRA SEJATI PT', '29', '', 'PAK RICHARD', '031 8411840', 'modernmitrasejati@gmail.com', '', '', '', 17, NULL, '', 17, '2021-08-14 11:37:37', '', '', NULL, ''),
-(7623, 'HUME SAKTI INDONESIA PT', '29', 'Jl. Manyar Kertoarjo V No.42, Mojo, Kec. Gubeng, Kota SBY, Jawa Timur 60116', 'PURCHASING PT', ' (031) 5946787', '', '', '', '', 10, NULL, '', 10, '2021-08-14 12:27:19', '', '', NULL, '');
+(7623, 'HUME SAKTI INDONESIA PT', '29', 'Jl. Manyar Kertoarjo V No.42, Mojo, Kec. Gubeng, Kota SBY, Jawa Timur 60116', 'PURCHASING PT', ' (031) 5946787', '', '', '', '', 10, NULL, '', 10, '2021-08-14 12:27:19', '', '', NULL, ''),
+(7624, 'INDOPACK PRINTING PT', '17', '', 'BAPAK ARON', '(0321) 6851237', '', '', '', '', 1, NULL, '', 1, '2021-08-16 08:42:00', '', '', NULL, '');
 
 -- --------------------------------------------------------
 
@@ -16237,7 +16238,8 @@ INSERT INTO `id_dailyreport` (`id`, `sales`, `waktu`, `perusahaan`, `keterangan`
 (11004, 9, '2021-08-14 11:29:01', 683, 'Belum ada kebutuhan', 'KONFRMASI PENAWARAN', NULL, 'Telfon Kantor'),
 (11005, 17, '2021-08-14 11:37:46', 7622, 'Penawaran', '', NULL, 'Telfon Kantor'),
 (11006, 9, '2021-08-14 11:42:10', 277, 'Tidak terhubung ke PIC', '', NULL, 'Telfon Pribadi'),
-(11007, 10, '2021-08-14 12:27:24', 7623, 'Penawaran', '', NULL, 'Telfon Kantor');
+(11007, 10, '2021-08-14 12:27:24', 7623, 'Penawaran', '', NULL, 'Telfon Kantor'),
+(11008, 1, '2021-08-16 08:42:10', 7624, 'Penawaran', '', NULL, 'Telfon Pribadi');
 
 -- --------------------------------------------------------
 
@@ -21517,7 +21519,8 @@ INSERT INTO `id_offer` (`id`, `tanggal`, `waktu`, `no_surat`, `perusahaan`, `pic
 (5523, '2021-08-14', '11:21:32', NULL, 7619, 'Purchasing Pt', 'Cash On Delivery', 'PPN', 7600, '', 10, 'Pending', '', 0),
 (5524, '2021-08-14', '11:38:13', 525, 2719, 'Ibu Devi ', 'Cash On Delivery', 'PPN', 7700, '', 17, 'Terkirim', 'yes', 0),
 (5525, '2021-08-14', '11:37:54', NULL, 7622, 'Pak Richard', 'Cash On Delivery', 'PPN', 7700, '', 17, 'Pending', '', 0),
-(5526, '2021-08-14', '12:27:31', NULL, 7623, 'Purchasing Pt', 'Cash On Delivery', 'PPN', 7500, '', 10, 'Pending', '', 1);
+(5526, '2021-08-14', '12:27:31', NULL, 7623, 'Purchasing Pt', 'Cash On Delivery', 'PPN', 7500, '', 10, 'Pending', '', 1),
+(5527, '2021-08-16', '08:42:39', NULL, 7624, 'Bapak Aron', 'Cash On Delivery', 'PPN', 7700, '', 1, 'Pending', '', 1);
 
 -- --------------------------------------------------------
 
@@ -21537,7 +21540,7 @@ CREATE TABLE `id_offer_number` (
 --
 
 INSERT INTO `id_offer_number` (`id`, `nomor`, `inisial`, `periode`) VALUES
-(1, 525, 'BJB-SBY / VIII', '01-15 Agustus 2021');
+(1, 525, 'BJB-SBY / VIII', '16-31 Agustus 2021');
 
 -- --------------------------------------------------------
 
@@ -21784,12 +21787,12 @@ INSERT INTO `id_purchase_order` (`id`, `perusahaan`, `sales`, `no_po`, `tgl_po`,
 (212, 6821, 8, '144/VIII/SP/2021', '2021-08-07', '2021-08-09', 'JL.Raya Bagusan No.97 Terusan,Gedeg, Mojokerto', 17, 'JL.Raya Tumpak No. 2 Ds Sidoharjo, Kec Gedeg, Kab Mojokerto ', 'Ibu Olin ', '082231132981', 'IBU Olin ', '082231132981', 10000, 'Tempo 14 Hari', 7600, NULL, 'PPN', 'Transfer', 0, 'Terkirim', 'kirim 2x di tanggal 9 & 10, masing-masing 5kl', '', 'Bapak Agus + 081217821239', NULL, NULL, '2021-08-23', NULL, NULL),
 (213, 234, 12, 'DSA.210360', '2021-08-09', '2021-08-10', 'DS BAMBE KEC DRIYOREJO, GRESIK', 8, 'DS BAMBE KEC DRIYOREJO, GRESIK', 'BAPAK BENI', '085655127752', 'IBU ROSA', '081233294757', 5000, 'Tempo 30 Hari', 7900, NULL, 'PPN', 'Transfer', 0, 'Terkirim', '', '', 'BAPAK BENI + 085655127752', NULL, NULL, '2021-09-09', NULL, NULL),
 (214, 5217, 10, 'PO2108003', '2021-08-09', '2021-08-10', 'Ruko Section One A - 15 Jl. Rungkut Industri Raya Kec. Tenggilis Mejoyo Surabaya', 12, 'Desa Beru, Canggah, Sarirejo, Kab.Lamongan Jawa Timur', '-', '-', '-', '-', 5000, 'Tempo 14 Hari', 8600, 800, 'PPN', 'Transfer', 0, 'Terkirim', '', '', '', 'yes', NULL, '2021-08-24', NULL, NULL),
-(215, 4835, 10, 'TBR/SP-PERTIKA/VIII-2021/003', '2021-08-09', '2021-08-15', 'Jl. Ketintang Madya Cempaka No.14 Surabaya', 3, 'TPI Tambakrejo Ds.Tambakrejo, Wonotirto Proyek pembangunan pelabuhan perikanan, tambakrejo blitar', '-', '-', '-', '-', 5000, 'Cash On Delivery', 7700, 300, 'PPN', 'Transfer', 0, 'Disetujui', '', '', 'Azwan 082199687395', 'yes', NULL, NULL, NULL, NULL),
+(215, 4835, 10, 'TBR/SP-PERTIKA/VIII-2021/003', '2021-08-09', '2021-08-15', 'Jl. Ketintang Madya Cempaka No.14 Surabaya', 3, 'TPI Tambakrejo Ds.Tambakrejo, Wonotirto Proyek pembangunan pelabuhan perikanan, tambakrejo blitar', '-', '-', '-', '-', 5000, 'Cash On Delivery', 7700, 300, 'PPN', 'Transfer', 0, 'Terkirim', '', '', 'Azwan 082199687395', 'yes', NULL, '2021-08-15', NULL, NULL),
 (216, 144, 1, '18/06/128', '2021-08-09', '2021-08-11', 'JL. RAYA TAMBAKREJO - SIDOGIRI KM 1 KRATON - PASURUAN - JAWA TIMUR', 22, 'JL. RAYA TAMBAKREJO - SIDOGIRI KM 1 KRATON - PASURUAN - JAWA TIMUR', 'IBU FELIN', '085607047450', 'IBU FELIN', '085607047450', 5000, 'Tempo 21 Hari', 7650, NULL, 'PPN', 'Transfer', 0, 'Terkirim', '', '', 'Pak Rehan + 0857-8586-3150', NULL, NULL, '2021-09-01', NULL, NULL),
 (217, 2557, 1, '005/BJB-HSD/UIS/VIII/2021', '2021-08-12', '2021-08-13', 'sungonlegowo,kec bungah-Gresik', 8, 'Jl. Raya Mojopetung Desa Mojopetung Kec.Dukun Gresik', 'Kholili', '-', '', '', 5000, 'Cash On Delivery', 7800, 400, 'PPN', 'Transfer', 0, 'Terbayar-Selesai', '', '', '', 'yes', NULL, '2021-08-13', '2021-08-14', 1),
 (218, 7514, 12, 'PO/D/034/VIII/GBA/2021', '2021-08-12', '2021-08-13', 'TAMBAK LANGON NO 234 SURABAYA', 29, 'TAMBAK LANGON NO 234 SURABAYA', 'IBU EKI', '088996980138', 'IBU EKI', '088996980138', 5000, 'Tempo 14 Hari', 7700, 100, 'PPN', 'Transfer', 0, 'Terkirim', 'KIRIM BESOK SIANG', '', 'IBU EKI + 088996980138', NULL, NULL, '2021-08-27', NULL, NULL),
-(220, 3196, 17, 'PO000085', '2021-08-13', '2021-08-15', 'Jl. Sidosermo PDK VA 21 Surabaya', 30, 'Ds. Ngadirejo Kec.Rengel Tuban (Tambangan Gembloraseh, Timur Kantor Desa Ngadirejo)', 'Riska Fitri ', '-', '-', '-', 5000, 'Cash On Delivery', 7700, 200, 'PPN', 'Transfer', 0, 'Disetujui', '', '', 'bapak sulis 081327779850', 'yes', NULL, NULL, NULL, NULL),
-(221, 5701, 10, '017 MJ9/VIII/21', '2021-08-14', '2021-08-15', 'Jl. Balai Desa, Sumberrejo, Pandaan, Pasuruan', 22, 'Tambang Klangrong dan Stockpile, Sambisirah, Pasuruan', '-', '-', '-', '-', 5000, 'Tempo 7 Hari', 7100, 200, 'Non PPN', 'Transfer', 0, 'Disetujui', '', '', 'Zainul 085233450073', 'yes', NULL, NULL, NULL, NULL),
+(220, 3196, 17, 'PO000085', '2021-08-13', '2021-08-15', 'Jl. Sidosermo PDK VA 21 Surabaya', 30, 'Ds. Ngadirejo Kec.Rengel Tuban (Tambangan Gembloraseh, Timur Kantor Desa Ngadirejo)', 'Riska Fitri ', '-', '-', '-', 5000, 'Cash On Delivery', 7700, 200, 'PPN', 'Transfer', 0, 'Terkirim', '', '', 'bapak sulis 081327779850', 'yes', NULL, '2021-08-15', NULL, NULL),
+(221, 5701, 10, '017 MJ9/VIII/21', '2021-08-14', '2021-08-15', 'Jl. Balai Desa, Sumberrejo, Pandaan, Pasuruan', 22, 'Tambang Klangrong dan Stockpile, Sambisirah, Pasuruan', '-', '-', '-', '-', 5000, 'Tempo 7 Hari', 7100, 200, 'Non PPN', 'Transfer', 0, 'Terkirim', '', '', 'Zainul 085233450073', 'yes', NULL, '2021-08-22', NULL, NULL),
 (222, 6553, 1, 'PO-SC/WDK-CKMT/VIII-2021/12', '2021-08-13', '2021-08-16', 'RUKO GRAND KETINTANG JL. KETINTANG BARU NO. 14E SURABAYA', 17, 'Jl. Tirto Husada RT.01 RW.01 Kec. Sooko Kab. Mojokerto', '-', '-', '', '-', 5000, 'Cash On Delivery', 7600, 200, 'PPN', 'Transfer', 0, 'Disetujui', '', '', 'Irfan 0821-4110-2688', 'yes', NULL, NULL, NULL, NULL),
 (223, 924, 17, '014/SKS/MDN/VIII/2021', '2021-08-14', '2021-08-16', 'JL BASUKI RAHMAT  NO 3 MADIUN', 19, 'JL RAYA SOLO KM 11 NGAWI ', 'IBU  PRAS', '082230771387', '', '', 5000, 'Cash On Delivery', 7500, NULL, 'PPN', 'Transfer', 0, 'Disetujui', '', '', 'BAPAK NUROCHIM  085331915060 /  BAPAK DONI 082332509745', NULL, NULL, NULL, NULL, NULL);
 
@@ -22155,17 +22158,17 @@ CREATE TABLE `id_user` (
 --
 
 INSERT INTO `id_user` (`id`, `profilname`, `username`, `password`, `last_login`, `authKey`, `accessToken`, `type`, `blocked`) VALUES
-(1, '5', 'dedy', '$2y$13$.d2C0.bHMWLqkIT0k6Dd3.7xNwLBUey3mvzOwx/v.6fiDSOEzn/2e', '2021-08-14 09:06:59', 'd5fdbe5b16111739a53f6bedc2c29e5c', 'd5fdbe5b16111739a53f6bedc2c29e5c', 'Administrator', ''),
+(1, '5', 'dedy', '$2y$13$.d2C0.bHMWLqkIT0k6Dd3.7xNwLBUey3mvzOwx/v.6fiDSOEzn/2e', '2021-08-16 08:39:29', 'd5fdbe5b16111739a53f6bedc2c29e5c', 'd5fdbe5b16111739a53f6bedc2c29e5c', 'Administrator', ''),
 (2, '10', 'sugeng', '$2y$13$zF4RuFW743TDuFQwqzXzaOa18a2l21Q8WGPevoGynoc9FeWl361O2', '2021-08-14 12:06:45', '9e28894760bdf11cb2bef7a32c020e3b', '9e28894760bdf11cb2bef7a32c020e3b', 'Marketing', ''),
-(7, '1', 'alisiachintya', '$2y$13$SMiUO/xBwZvGKMEKtfXe7.wG3qXPcUjCCkKcxHFSxfP11OzriM.s2', '2021-08-14 09:04:35', '60532c4e119ce506036cf74f655259dd', '60532c4e119ce506036cf74f655259dd', 'Marketing', ''),
+(7, '1', 'alisiachintya', '$2y$13$SMiUO/xBwZvGKMEKtfXe7.wG3qXPcUjCCkKcxHFSxfP11OzriM.s2', '2021-08-16 08:40:29', '60532c4e119ce506036cf74f655259dd', '60532c4e119ce506036cf74f655259dd', 'Marketing', ''),
 (9, '12', 'risza', '$2y$13$tD2k5kTBFRwv0DAfWO0LjO1o2gju3lAwTsctLGUDZ0G//L0u8xNa2', '2021-08-14 09:24:57', '521f6ab426fbb7296a695ab243412094', '521f6ab426fbb7296a695ab243412094', 'Marketing', ''),
 (12, '9', 'aly', '$2y$13$.7fwCl3DSo3.Gk4UjknlWOKflN.xU77CfRkZftCQ6Xp/6J.D.47ny', '2021-08-14 09:14:37', '33fb5fa89f84d0a48397f693a7c7c242', '33fb5fa89f84d0a48397f693a7c7c242', 'Marketing', ''),
 (14, '4', 'daang', '$2y$13$731zJT.roHa9xeDfsOKA6eWhIkOFb/9KOXwZSvUtTsWIDO6JQ9yo.', '2021-07-27 12:24:49', 'baff9b7f53b3bc5853a8e2185d36207c', 'baff9b7f53b3bc5853a8e2185d36207c', 'Manajemen', ''),
 (15, '3', 'atis', '$2y$13$3vB.jlDrw/Dwu58lWPh69eQm/65P0DGGh5VyIE.hCnQLVdqG6d2z2', '2021-08-13 16:56:12', 'd5455de2f44f740d0e7ae3b97ffaf9ea', 'd5455de2f44f740d0e7ae3b97ffaf9ea', 'Administrator', ''),
-(16, '2', 'daniel', '$2y$13$SG3QwERtuL/K747RAnaRPeerme2VtUFN1pMG0nsVE3vzjW2lR5p86', '2021-08-14 09:29:40', 'aa47f8215c6f30a0dcdb2a36a9f4168e', 'aa47f8215c6f30a0dcdb2a36a9f4168e', 'Manajemen', ''),
+(16, '2', 'daniel', '$2y$13$SG3QwERtuL/K747RAnaRPeerme2VtUFN1pMG0nsVE3vzjW2lR5p86', '2021-08-16 08:35:47', 'aa47f8215c6f30a0dcdb2a36a9f4168e', 'aa47f8215c6f30a0dcdb2a36a9f4168e', 'Manajemen', ''),
 (17, '6', 'budi', '$2y$13$RXxTG3zEg.olwUNpJXAHc.IcclzuzMXrMvKrae3V/m0xvkasORFFa', '2021-08-07 10:10:37', '00dfc53ee86af02e742515cdcf075ed3', '00dfc53ee86af02e742515cdcf075ed3', 'Marketing', ''),
-(19, '17', 'ebet', '$2y$13$B/BSK305sYm0CE.K.0.E6.EYtDlG3526lH/tznlqlIDb1unUGkv.W', '2021-08-14 12:07:12', 'bc52c57a755cb90b05a8aab1142094d4', 'bc52c57a755cb90b05a8aab1142094d4', 'Marketing', ''),
-(22, '20', 'bre', '$2y$13$LWoLA.E0CTnzZsTUAybCg.j5qWYFKR/nxKtAMGjgOzlvxURr6Q0Py', '2021-08-14 09:03:34', '0cd00ec14f1d05d419375d6a37d183a6', '0cd00ec14f1d05d419375d6a37d183a6', 'Marketing', '');
+(19, '17', 'ebet', '$2y$13$B/BSK305sYm0CE.K.0.E6.EYtDlG3526lH/tznlqlIDb1unUGkv.W', '2021-08-16 08:40:13', 'bc52c57a755cb90b05a8aab1142094d4', 'bc52c57a755cb90b05a8aab1142094d4', 'Marketing', ''),
+(22, '20', 'bre', '$2y$13$LWoLA.E0CTnzZsTUAybCg.j5qWYFKR/nxKtAMGjgOzlvxURr6Q0Py', '2021-08-16 08:35:38', '0cd00ec14f1d05d419375d6a37d183a6', '0cd00ec14f1d05d419375d6a37d183a6', 'Marketing', '');
 
 --
 -- Indexes for dumped tables
@@ -22298,13 +22301,13 @@ ALTER TABLE `id_city`
 -- AUTO_INCREMENT untuk tabel `id_customer`
 --
 ALTER TABLE `id_customer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7624;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7625;
 
 --
 -- AUTO_INCREMENT untuk tabel `id_dailyreport`
 --
 ALTER TABLE `id_dailyreport`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11008;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11009;
 
 --
 -- AUTO_INCREMENT untuk tabel `id_departemen`
@@ -22328,7 +22331,7 @@ ALTER TABLE `id_karyawan`
 -- AUTO_INCREMENT untuk tabel `id_offer`
 --
 ALTER TABLE `id_offer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5527;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5528;
 
 --
 -- AUTO_INCREMENT untuk tabel `id_offer_number`
