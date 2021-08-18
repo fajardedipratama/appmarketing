@@ -44,7 +44,7 @@ $this->title = 'PURCHASE ORDER';
             <b><?= Html::encode($this->title) ?></b>
         </h1>
         <h4><?= $model->no_po ?></h4>
-    <?php if($model->range_paid != NULL || $model->range_paid == 0): ?>
+    <?php if(($model->range_paid != NULL || $model->range_paid == 0) &&$model->status === 'Terbayar-Selesai'): ?>
         <p style="font-style: italic;">Kirim-Bayar = <?= $model->range_paid ?> hari 
             <?= Html::a('<i class="fa fa-fw fa-refresh"></i>', ['calculaterange', 'id' => $model->id], ['class' => 'btn btn-success btn-xs']) ?>
         </p>

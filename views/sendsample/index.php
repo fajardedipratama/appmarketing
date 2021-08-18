@@ -25,7 +25,6 @@ $this->title = 'Kirim Sampel';
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
 
             [
                 'attribute'=>'perusahaan',
