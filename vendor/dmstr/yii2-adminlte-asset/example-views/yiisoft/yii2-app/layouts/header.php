@@ -50,7 +50,7 @@ $callback = Dailyreport::find()->where(['sales'=>Yii::$app->user->identity->prof
                     </ul>
                 </li>
                 <?php endif ?>
-                <!-- User Account: style can be found in dropdown.less -->
+                
 
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -66,18 +66,6 @@ $callback = Dailyreport::find()->where(['sales'=>Yii::$app->user->identity->prof
                                 <small>@<?= Yii::$app->user->identity->username ?></small>
                             </p>
                         </li>
-                        <!-- Menu Body -->
-                        <!-- <li class="user-body">
-                            <div class="col-xs-4 text-center">
-                                <a href="#">Followers</a>
-                            </div>
-                            <div class="col-xs-4 text-center">
-                                <a href="#">Sales</a>
-                            </div>
-                            <div class="col-xs-4 text-center">
-                                <a href="#">Friends</a>
-                            </div>
-                        </li> -->
                         <!-- Menu Footer-->
                         <li class="user-footer">
                             <div class="pull-left">

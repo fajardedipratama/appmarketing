@@ -164,7 +164,15 @@ $this->title = 'PURCHASE ORDER';
                 }
             ],
             'pajak',
-            'cashback',
+            [
+                'attribute'=>'cashback',
+                'format'=>'raw',
+                'value'=>function($data){
+                    if($data->cashback > 1){
+                        return $data->cashback.Html::a(' <i class="fa fa-fw fa-file-text-o"></i>', ['purchaseorder/cashback', 'id' => $data->id]);;
+                    }
+                }
+            ],
             'penalti',
             [
                 'attribute'=>'pembayaran',

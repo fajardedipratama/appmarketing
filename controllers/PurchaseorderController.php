@@ -208,6 +208,12 @@ class PurchaseorderController extends Controller
             'model' => $this->findModel($id),
         ]);
     }
+    public function actionCashback($id)
+    {
+        return $this->renderPartial('cashback', [
+            'model' => $this->findModel($id),
+        ]);
+    }
     /**
      * Creates a new PurchaseOrder model.
      * If creation is successful, the browser will be redirected to the 'view' page.
