@@ -169,7 +169,7 @@ $this->title = 'PURCHASE ORDER';
                 'format'=>'raw',
                 'value'=>function($data){
                     if($data->cashback > 1){
-                        return $data->cashback.Html::a(' <i class="fa fa-fw fa-file-text-o"></i>', ['purchaseorder/cashback', 'id' => $data->id]);;
+                        return $data->cashback.Html::a(' <i class="fa fa-fw fa-file-text-o"></i>', ['purchaseorder/cashback', 'id' => $data->id],['target'=>'_blank']);;
                     }
                 }
             ],
