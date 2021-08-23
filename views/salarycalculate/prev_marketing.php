@@ -96,58 +96,77 @@ $this->title = "Preview";
 <?php if($show['tgl_resign']==NULL || $show['tgl_resign']>=$model->begin_date): ?>
     <?php
         $result_po=PurchaseOrder::find()->where(['sales'=>$show['id']])->andWhere(['between','tgl_kirim',$model->begin_date,$model->end_date])->andWhere(['status'=>['Terkirim','Terbayar-Selesai']])->sum('volume');
-        $cod_a=PurchaseOrder::find()->where(['sales'=>$show['id']])->andWhere(['between','tgl_kirim',$model->begin_date,$model->end_date])->andWhere(['termin'=>['Cash On Delivery','Cash Before Delivery']])->andWhere(['tgl_lunas'=>'jatuh_tempo'])->sum('volume');
+        $cod_a=PurchaseOrder::find()->where(['sales'=>$show['id']])->andWhere(['between','tgl_kirim',$model->begin_date,$model->end_date])->andWhere(['termin'=>['Cash On Delivery','Cash Before Delivery']])->andWhere(['<=','range_paid',0])->sum('volume');
+        $cod_b=PurchaseOrder::find()->where(['sales'=>$show['id']])->andWhere(['between','tgl_kirim',$model->begin_date,$model->end_date])->andWhere(['termin'=>['Cash On Delivery']])->andWhere(['between','range_paid',1,2])->sum('volume');
         // $pot_absen = SalaryAdditional::find()->where(['karyawan_id'=>$show['id'],'komponen_id'=>4])->andWhere(['between','tanggal',$model->begin_date,$model->end_date])->one();
     ?>
         <tr>
             <td><?= $i++ ?></td>
             <td><?= $show['nama'] ?></td>
-            <td><?= date('d/m/Y',strtotime($show['tanggal_masuk'])) ?></td>
-            <td>-</td>
-            <td><?= $result_po/1000 ?></td>
-            <td><?= round_po($result_po) ?></td>
-            <td>
-                <?php if($result_po <= 34000){
+            <td title="<?= $show['nama_pendek'] ?>"><?= date('d/m/Y',strtotime($show['tanggal_masuk'])) ?></td>
+            <td title="<?= $show['nama_pendek'] ?>">
+                <?php 
+                    if($show['status_aktif']=='Tidak Aktif'){
+                        echo date('d',strtotime($show['tgl_resign']))-0;
+                    }else{
+                        echo 30;
+                    }
+                ?>
+            </td>
+            <td title="<?= $show['nama_pendek'] ?>"><?= $result_po/1000 ?></td>
+            <td title="<?= $show['nama_pendek'] ?>"><?= round_po($result_po) ?></td>
+            <td title="<?= $show['nama_pendek'] ?>">
+                <?php if($result_po <= 34000 && $show['status_aktif']=='Aktif'){
                     echo Yii::$app->formatter->asCurrency(1500000);
-                }elseif($result_po <= 49000){
+                }elseif($result_po <= 49000 && $show['status_aktif']=='Aktif'){
                     echo Yii::$app->formatter->asCurrency(2000000);
-                }elseif($result_po >= 50000){
+                }elseif($result_po >= 50000 && $show['status_aktif']=='Aktif'){
                     echo Yii::$app->formatter->asCurrency(3000000);
                 }
 
                 ?>
             </td>
-            <td>-</td>
-            <td>
+            <td title="<?= $show['nama_pendek'] ?>">
+                <?php if($result_po <= 34000 && $show['status_aktif']=='Tidak Aktif'){
+                    echo Yii::$app->formatter->asCurrency((1500000/30)*(date('d',strtotime($show['tgl_resign']))-0));
+                }elseif($result_po <= 49000 && $show['status_aktif']=='Tidak Aktif'){
+                    echo Yii::$app->formatter->asCurrency((2000000/30)*(date('d',strtotime($show['tgl_resign']))-0));
+                }elseif($result_po >= 50000 && $show['status_aktif']=='Tidak Aktif'){
+                    echo Yii::$app->formatter->asCurrency((3000000/30)*(date('d',strtotime($show['tgl_resign']))-0));
+                }
+
+                ?>
+            </td>
+            <td title="<?= $show['nama_pendek'] ?>">
                 <?php if( round_po($result_po) >= 5 && round_po($result_po) <= 34){
                     echo Yii::$app->formatter->asCurrency( (round_po($result_po)/5)*125000 );
                 }?>     
             </td>
-            <td>
+            <td title="<?= $show['nama_pendek'] ?>">
                 <?php if( round_po($result_po) >= 35 && round_po($result_po) <= 49){
                     echo Yii::$app->formatter->asCurrency( (round_po($result_po)/5)*130000 );
                 }?> 
             </td>
-            <td>
+            <td title="<?= $show['nama_pendek'] ?>">
                 <?php if( round_po($result_po) >= 50 && round_po($result_po) <= 99){
                     echo Yii::$app->formatter->asCurrency( (round_po($result_po)/5)*135000 );
                 }?>
             </td>
-            <td>
+            <td title="<?= $show['nama_pendek'] ?>">
                 <?php if( round_po($result_po) >= 100){
                     echo Yii::$app->formatter->asCurrency( (round_po($result_po)/5)*200000 );
                 }?>
             </td>
-            <td><?= bonus_po($result_po) ?></td>
-            <td><?= $cod_a ?></td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-            <td><?= $show['no_rekening'].' '.$show['nama_rekening'] ?></td>
+            <td title="<?= $show['nama_pendek'] ?>"><?= bonus_po($result_po) ?></td>
+            <td title="<?= $show['nama_pendek'] ?>"><?= $cod_a/1000 ?></td>
+            <td title="<?= $show['nama_pendek'] ?>"><?= round_po($cod_a) ?></td>
+            <td title="<?= $show['nama_pendek'] ?>"><?= Yii::$app->formatter->asCurrency((round_po($cod_a)/5)*50000) ?></td>
+            <td title="<?= $show['nama_pendek'] ?>"><?= $cod_b/1000 ?></td>
+            <td title="<?= $show['nama_pendek'] ?>"><?= round_po($cod_b) ?></td>
+            <td title="<?= $show['nama_pendek'] ?>"><?= Yii::$app->formatter->asCurrency((round_po($cod_b)/5)*25000) ?></td>
+            <td title="<?= $show['nama_pendek'] ?>">-</td>
+            <td title="<?= $show['nama_pendek'] ?>">-</td>
+            <td title="<?= $show['nama_pendek'] ?>"><?= $show['no_rekening'].' '.$show['nama_rekening'] ?></td>
 
         </tr>
 <?php endif ?>

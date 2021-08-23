@@ -12,6 +12,8 @@ use Yii;
  * @property int|null $tahun
  * @property string|null $begin_date
  * @property string|null $end_date
+ * @property string|null $begin_absen
+ * @property string|null $end_absen
  * @property string|null $date_calculate
  * @property int|null $user_calculate
  */
@@ -32,7 +34,7 @@ class SalaryCalculate extends \yii\db\ActiveRecord
     {
         return [
             [['bulan', 'tahun', 'user_calculate'], 'integer'],
-            [['begin_date','end_date','date_calculate'], 'safe'],
+            [['begin_date','end_date','begin_absen','end_absen','date_calculate'], 'safe'],
         ];
     }
 
@@ -45,8 +47,10 @@ class SalaryCalculate extends \yii\db\ActiveRecord
             'id' => 'ID',
             'bulan' => 'Bulan',
             'tahun' => 'Tahun',
-            'begin_date' => 'Tanggal Awal',
-            'end_date' => 'Tanggal Akhir',
+            'begin_date' => 'Tanggal PO Awal',
+            'end_date' => 'Tanggal PO Akhir',
+            'begin_absen' => 'Tanggal Awal Absensi',
+            'end_absen' => 'Tanggal Akhir Absensi',
             'date_calculate' => 'Date Calculate',
             'user_calculate' => 'User Calculate',
         ];

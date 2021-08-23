@@ -81,6 +81,10 @@ $this->title = 'Data PO';
                 ],
               ])
             ],
+            // [
+            //   'attribute'=>'termin',
+            //   'filter'=> ['Cash On Delivery'=>'Cash On Delivery','Cash Before Delivery'=>'Cash Before Delivery']
+            // ],
             [
               'attribute'=>'volume',
               'headerOptions'=>['style'=>'width:5%'],

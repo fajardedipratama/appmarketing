@@ -31,8 +31,18 @@ $this->title = 'Kalkulasi Gaji';
                 }
             ],
             'tahun',
-            ['attribute'=>'begin_date','format'=>['date','dd-MM-Y']],
-            ['attribute'=>'end_date','format'=>['date','dd-MM-Y']],
+            [
+                'header'=>'Tanggal PO',
+                'value'=>function($data){
+                return date('d/m/Y',strtotime($data->begin_date)).' - '.date('d/m/Y',strtotime($data->end_date));
+                }
+            ],
+            [
+                'header'=>'Tanggal Absensi',
+                'value'=>function($data){
+                return date('d/m/Y',strtotime($data->begin_absen)).' - '.date('d/m/Y',strtotime($data->end_absen));
+                }
+            ],
             ['header'=>'Aksi','class' => 'yii\grid\ActionColumn','template'=>'{view}'],
         ],
     ]); ?>
