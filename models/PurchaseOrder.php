@@ -36,6 +36,7 @@ use Yii;
  * @property string|null $jatuh_tempo
  * @property string|null $tgl_lunas
  * @property int|null $range_paid
+ * @property int|null $driver_id
  */
 class PurchaseOrder extends \yii\db\ActiveRecord
 {
@@ -55,7 +56,7 @@ class PurchaseOrder extends \yii\db\ActiveRecord
     {
         return [
             [['perusahaan', 'no_po', 'tgl_po', 'tgl_kirim', 'alamat', 'kota_kirim', 'alamat_kirim', 'purchasing', 'no_purchasing', 'volume', 'termin', 'harga', 'pajak', 'pembayaran'], 'required'],
-            [['perusahaan', 'sales', 'kota_kirim', 'volume', 'harga', 'cashback','bilyet_giro','penalti','range_paid'], 'integer'],
+            [['perusahaan', 'sales', 'kota_kirim', 'volume', 'harga', 'cashback','bilyet_giro','penalti','range_paid','driver_id'], 'integer'],
             [['tgl_po', 'tgl_kirim','set_awal','set_akhir','jatuh_tempo','tgl_lunas'], 'safe'],
             [['no_po', 'purchasing', 'no_purchasing', 'keuangan', 'no_keuangan', 'termin', 'pajak', 'pembayaran', 'status','penerima','eksternal'], 'string', 'max' => 100],
             [['alamat', 'alamat_kirim', 'catatan', 'alasan_tolak'], 'string', 'max' => 1000],
@@ -99,6 +100,7 @@ class PurchaseOrder extends \yii\db\ActiveRecord
             'jatuh_tempo' => 'Jatuh Tempo',
             'tgl_lunas' => 'Tanggal Lunas',
             'range_paid' => 'Kirim-Bayar',
+            'driver_id' => 'Driver',
         ];
     }
     public function getCustomer()
@@ -112,6 +114,10 @@ class PurchaseOrder extends \yii\db\ActiveRecord
     public function getCity()
     {
         return $this->hasOne(City::className(), ['id' => 'kota_kirim']);
+    }
+    public function getDrivers()
+    {
+        return $this->hasOne(Drivers::className(), ['id' => 'driver_id']);
     }
     public function beforeSave($options = array()) {
         if(!empty($this->eksternal)){

@@ -64,7 +64,7 @@ $this->title = 'PURCHASE ORDER';
             </button>
             <ul class="dropdown-menu" role="menu">
                 <li>
-                    <?= Html::a('<i class="fa fa-fw fa-check-square-o"></i> Terkirim', ['sendpo', 'id' => $model->id], ['data' => ['confirm' => 'Barang Terkirim ?','method' => 'post']]) ?>
+                    <a data-toggle="modal" data-target="#kirim-po"><i class="fa fa-fw fa-check"></i> Terkirim</a>
                 </li>
                 <li>
                     <?= Html::a('<i class="fa fa-fw fa-times"></i> Batal Kirim', ['dontsendpo', 'id' => $model->id], ['data' => ['confirm' => 'Barang Batal Kirim ?','method' => 'post']]) ?>
@@ -185,6 +185,14 @@ $this->title = 'PURCHASE ORDER';
                 }
             ],
             'catatan',
+            [
+                'attribute'=>'driver_id',
+                'value'=>function($data){
+                    if($data->driver_id != NULL){
+                        return $data->drivers->driver.' - '.$data->drivers->no_hp;
+                    }
+                }
+            ],
             'status',
             'alasan_tolak',
         ],
@@ -245,6 +253,19 @@ $this->title = 'PURCHASE ORDER';
             </div>
             <div class="modal-body">
               <?= $this->render('_formtolak', ['model' => $model]) ?>
+            </div>
+        </div>
+    </div></div>
+
+    <div class="modal fade" id="kirim-po"><div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title"><b>Driver Pengiriman</b></h4>          
+            </div>
+            <div class="modal-body">
+              <?= $this->render('_formdriver', ['model' => $model]) ?>
             </div>
         </div>
     </div></div>

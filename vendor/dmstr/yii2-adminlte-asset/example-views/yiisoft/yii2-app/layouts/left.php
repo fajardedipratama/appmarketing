@@ -91,6 +91,10 @@ $jobtitle = Jobtitle::find()->where(['id'=>$karyawan['posisi']])->one();
                                 'label' => 'Kabupaten/Kota', 'icon' => 'map-marker', 'url' => ['/city'], 'active'=>in_array(\Yii::$app->controller->id,['city']),
                                 'visible' => !Yii::$app->user->isGuest && Yii::$app->user->identity->type == 'Administrator' || Yii::$app->user->identity->type == 'Manajemen'
                             ],
+                            [
+                                'label' => 'Data Supir', 'icon' => 'truck', 'url' => ['/drivers'], 'active'=>in_array(\Yii::$app->controller->id,['drivers']),
+                                'visible' => !Yii::$app->user->isGuest && Yii::$app->user->identity->type == 'Administrator' || Yii::$app->user->identity->type == 'Manajemen'
+                            ],
                         ],
                     ],
                 ],

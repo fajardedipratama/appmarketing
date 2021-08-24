@@ -124,6 +124,33 @@ class PurchaseorderController extends Controller
             ['id'=>$model->id])->execute();
             return $this->redirect(['view','id' => $model->id]);
         }
+
+        if(isset($_POST['po_send'])){
+
+            //set jatuh tempo
+            if($model->termin == 'Cash On Delivery' || $model->termin == 'Cash Before Delivery'){
+                $jatuh_tempo = $model->tgl_kirim;
+            }elseif($model->termin == 'Tempo 7 Hari'){
+                $jatuh_tempo = date('Y-m-d', strtotime('+7 days', strtotime($model->tgl_kirim)));
+            }elseif($model->termin == 'Tempo 14 Hari'){
+                $jatuh_tempo = date('Y-m-d', strtotime('+14 days', strtotime($model->tgl_kirim)));
+            }elseif($model->termin == 'Tempo 21 Hari'){
+                $jatuh_tempo = date('Y-m-d', strtotime('+21 days', strtotime($model->tgl_kirim)));
+            }elseif($model->termin == 'Tempo 30 Hari'){
+                $jatuh_tempo = date('Y-m-d', strtotime('+30 days', strtotime($model->tgl_kirim)));
+            }
+
+            Yii::$app->db->createCommand()->update('id_purchase_order',
+            ['status'=>'Terkirim','jatuh_tempo'=>$jatuh_tempo,'driver_id'=>$_POST['PurchaseOrder']['driver_id']],
+            ['id'=>$model->id])->execute();
+
+            Yii::$app->db->createCommand()->update('id_customer',
+            ['expired'=>'2070-01-01'],
+            ['id'=>$model->perusahaan])->execute();
+
+            return $this->redirect(['view','id' => $model->id]);
+        }
+
         return $this->render('view', [
             'model' => $model,
             'modelpaid' => $modelpaid
@@ -136,32 +163,6 @@ class PurchaseorderController extends Controller
         Yii::$app->db->createCommand()->update('id_purchase_order',
         ['status'=>'Disetujui'],
         ['id'=>$model->id])->execute();
-
-        return $this->redirect(['view','id' => $model->id]);
-    }
-    public function actionSendpo($id)
-    {
-        $model = $this->findModel($id);
-        //set jatuh tempo
-        if($model->termin == 'Cash On Delivery' || $model->termin == 'Cash Before Delivery'){
-            $jatuh_tempo = $model->tgl_kirim;
-        }elseif($model->termin == 'Tempo 7 Hari'){
-            $jatuh_tempo = date('Y-m-d', strtotime('+7 days', strtotime($model->tgl_kirim)));
-        }elseif($model->termin == 'Tempo 14 Hari'){
-            $jatuh_tempo = date('Y-m-d', strtotime('+14 days', strtotime($model->tgl_kirim)));
-        }elseif($model->termin == 'Tempo 21 Hari'){
-            $jatuh_tempo = date('Y-m-d', strtotime('+21 days', strtotime($model->tgl_kirim)));
-        }elseif($model->termin == 'Tempo 30 Hari'){
-            $jatuh_tempo = date('Y-m-d', strtotime('+30 days', strtotime($model->tgl_kirim)));
-        }
-
-        Yii::$app->db->createCommand()->update('id_purchase_order',
-        ['status'=>'Terkirim','jatuh_tempo'=>$jatuh_tempo],
-        ['id'=>$model->id])->execute();
-
-        Yii::$app->db->createCommand()->update('id_customer',
-        ['expired'=>'2070-01-01'],
-        ['id'=>$model->perusahaan])->execute();
 
         return $this->redirect(['view','id' => $model->id]);
     }

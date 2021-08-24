@@ -10,6 +10,7 @@ if($_GET['range']=='all'){
     $proses = PurchaseOrder::find()->where(['status'=>'Disetujui'])->sum('volume');
     $pending = PurchaseOrder::find()->where(['status'=>'Pending'])->sum('volume');
     $terbayar = PurchaseOrder::find()->where(['status'=>'Terbayar-Selesai'])->sum('volume');
+    $po_cod = PurchaseOrder::find()->where(['status'=>['Disetujui','Terkirim','Terbayar-Selesai']])->andWhere(['termin'=>['Cash On Delivery','Cash Before Delivery']])->sum('volume');
 }else{
     $data = explode("x", $_GET['range']);
     $set_awal = $data[0];
@@ -19,6 +20,7 @@ if($_GET['range']=='all'){
     $proses = PurchaseOrder::find()->where(['status'=>'Disetujui'])->andWhere(['between','tgl_kirim',$set_awal,$set_akhir])->sum('volume');
     $pending = PurchaseOrder::find()->where(['status'=>'Pending'])->andWhere(['between','tgl_kirim',$set_awal,$set_akhir])->sum('volume');
     $terbayar = PurchaseOrder::find()->where(['status'=>'Terbayar-Selesai'])->andWhere(['between','tgl_kirim',$set_awal,$set_akhir])->sum('volume');
+    $po_cod = PurchaseOrder::find()->where(['status'=>['Disetujui','Terkirim','Terbayar-Selesai']])->andWhere(['between','tgl_kirim',$set_awal,$set_akhir])->andWhere(['termin'=>['Cash On Delivery','Cash Before Delivery']])->sum('volume');
 }
 
 $karyawan=Karyawan::find()->where(['posisi'=>6])->orderBy(['status_aktif'=>SORT_ASC])->all();
@@ -59,6 +61,10 @@ $this->title = 'Hasil PO';
       <tr>
         <th>PO Terbayar</th>
         <td><?= $terbayar/1000 ?> KL</td>
+      </tr>
+      <tr>
+        <th>PO COD/CBD</th>
+        <td><?= $po_cod/1000 ?> KL</td>
       </tr>
     </table>
 </div></div></div>
