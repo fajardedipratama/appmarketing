@@ -6,6 +6,7 @@ use kartik\select2\Select2;
 use app\models\Customer;
 use app\models\Karyawan;
 use app\models\City;
+use app\models\Drivers;
 use dosamigos\datepicker\DatePicker;
 /* @var $this yii\web\View */
 /* @var $model app\models\PurchaseOrder */
@@ -176,6 +177,14 @@ use dosamigos\datepicker\DatePicker;
     <?php endif; ?>
     <div class="col-sm-4">
         <?= $form->field($model, 'status')->dropDownList(['Pending'=>'Pending','Ditolak'=>'Ditolak','Disetujui'=>'Disetujui','Terkirim'=>'Terkirim','Batal Kirim'=>'Batal Kirim','Terbayar-Selesai'=>'Terbayar-Selesai']) ?>
+    </div>
+    <div class="col-sm-4">
+        <?= $form->field($model, 'driver_id')->dropDownList(
+        ArrayHelper::map(Drivers::find()->all(),'id',
+            function($model){
+                return $model['driver'];
+            }
+        )); ?>
     </div>
 <?php endif ?>
 </div>

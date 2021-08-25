@@ -12,6 +12,9 @@ $dept_id = $_GET['dept'];
 
 $karyawan = Karyawan::find()->where(['departemen'=>$dept_id])->andWhere(['<=','tanggal_masuk',$model->end_date])->orderBy('nama')->all();
 
+$start_month = date('Y-m-01', strtotime($model->end_date));
+// $end_month = date('Y-m-t', strtotime($model->end_date));
+
 function round_po($value){
     return floor(($value/1000)/5)*5;
 }
@@ -93,12 +96,12 @@ $this->title = "Preview";
         </tr>
     <?php $i = 1; ?>
     <?php foreach($karyawan as $show): ?>
-<?php if($show['tgl_resign']==NULL || $show['tgl_resign']>=$model->begin_date): ?>
+<?php if($show['tgl_resign']==NULL || $show['tgl_resign']>=$start_month): ?>
     <?php
         $result_po=PurchaseOrder::find()->where(['sales'=>$show['id']])->andWhere(['between','tgl_kirim',$model->begin_date,$model->end_date])->andWhere(['status'=>['Terkirim','Terbayar-Selesai']])->sum('volume');
         $cod_a=PurchaseOrder::find()->where(['sales'=>$show['id']])->andWhere(['between','tgl_kirim',$model->begin_date,$model->end_date])->andWhere(['termin'=>['Cash On Delivery','Cash Before Delivery']])->andWhere(['<=','range_paid',0])->sum('volume');
         $cod_b=PurchaseOrder::find()->where(['sales'=>$show['id']])->andWhere(['between','tgl_kirim',$model->begin_date,$model->end_date])->andWhere(['termin'=>['Cash On Delivery']])->andWhere(['between','range_paid',1,2])->sum('volume');
-        // $pot_absen = SalaryAdditional::find()->where(['karyawan_id'=>$show['id'],'komponen_id'=>4])->andWhere(['between','tanggal',$model->begin_date,$model->end_date])->one();
+        $pot_absen = SalaryAdditional::find()->where(['karyawan_id'=>$show['id'],'komponen_id'=>4])->andWhere(['between','tanggal',$model->begin_date,$model->end_date])->sum('nilai');
     ?>
         <tr>
             <td><?= $i++ ?></td>
@@ -106,7 +109,7 @@ $this->title = "Preview";
             <td title="<?= $show['nama_pendek'] ?>"><?= date('d/m/Y',strtotime($show['tanggal_masuk'])) ?></td>
             <td title="<?= $show['nama_pendek'] ?>">
                 <?php 
-                    if($show['status_aktif']=='Tidak Aktif'){
+                    if($show['status_aktif']=='Tidak Aktif' && $show['tgl_resign']<$model->end_date){
                         echo date('d',strtotime($show['tgl_resign']))-0;
                     }else{
                         echo 30;
@@ -164,7 +167,7 @@ $this->title = "Preview";
             <td title="<?= $show['nama_pendek'] ?>"><?= $cod_b/1000 ?></td>
             <td title="<?= $show['nama_pendek'] ?>"><?= round_po($cod_b) ?></td>
             <td title="<?= $show['nama_pendek'] ?>"><?= Yii::$app->formatter->asCurrency((round_po($cod_b)/5)*25000) ?></td>
-            <td title="<?= $show['nama_pendek'] ?>">-</td>
+            <td title="<?= $show['nama_pendek'] ?>"><?= Yii::$app->formatter->asCurrency($pot_absen) ?></td>
             <td title="<?= $show['nama_pendek'] ?>">-</td>
             <td title="<?= $show['nama_pendek'] ?>"><?= $show['no_rekening'].' '.$show['nama_rekening'] ?></td>
 
