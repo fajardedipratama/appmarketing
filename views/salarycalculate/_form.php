@@ -36,6 +36,24 @@ use dosamigos\datepicker\DatePicker;
             ]
         ])?>
         </div>
+        <div class="col-sm-6">
+            <?= $form->field($model, 'begin_absen')->widget(DatePicker::className(),[
+            'clientOptions'=>[
+                'autoclose'=>true,
+                'format'=>'dd-mm-yyyy',
+                'orientation'=>'bottom',
+            ]
+        ])?>
+        </div>
+        <div class="col-sm-6">
+            <?= $form->field($model, 'end_absen')->widget(DatePicker::className(),[
+            'clientOptions'=>[
+                'autoclose'=>true,
+                'format'=>'dd-mm-yyyy',
+                'orientation'=>'bottom',
+            ]
+        ])?>
+        </div>
     </div>
 
     <div class="form-group">

@@ -12,7 +12,7 @@ $dept_id = $_GET['dept'];
 
 $karyawan = Karyawan::find()->where(['departemen'=>$dept_id])->andWhere(['<=','tanggal_masuk',$model->end_date])->orderBy('nama')->all();
 
-$start_month = date('Y-m-01', strtotime($model->end_date));
+// $start_month = date('Y-m-01', strtotime($model->end_date));
 // $end_month = date('Y-m-t', strtotime($model->end_date));
 
 function round_po($value){
@@ -96,7 +96,7 @@ $this->title = "Preview";
         </tr>
     <?php $i = 1; ?>
     <?php foreach($karyawan as $show): ?>
-<?php if($show['tgl_resign']==NULL || $show['tgl_resign']>=$start_month): ?>
+<?php if($show['tgl_resign']==NULL || $show['tgl_resign']>=$model->begin_absen): ?>
     <?php
         $result_po=PurchaseOrder::find()->where(['sales'=>$show['id']])->andWhere(['between','tgl_kirim',$model->begin_date,$model->end_date])->andWhere(['status'=>['Terkirim','Terbayar-Selesai']])->sum('volume');
         $cod_a=PurchaseOrder::find()->where(['sales'=>$show['id']])->andWhere(['between','tgl_kirim',$model->begin_date,$model->end_date])->andWhere(['termin'=>['Cash On Delivery','Cash Before Delivery']])->andWhere(['<=','range_paid',0])->sum('volume');
@@ -111,6 +111,9 @@ $this->title = "Preview";
                 <?php 
                     if($show['status_aktif']=='Tidak Aktif' && $show['tgl_resign']<$model->end_date){
                         echo date('d',strtotime($show['tgl_resign']))-0;
+                    }elseif($show['tanggal_masuk']>$model->begin_absen){
+                        $range = strtotime($model->end_absen)-strtotime($show['tanggal_masuk']);
+                        echo 1+($range/60/60/24);
                     }else{
                         echo 30;
                     }
@@ -119,23 +122,38 @@ $this->title = "Preview";
             <td title="<?= $show['nama_pendek'] ?>"><?= $result_po/1000 ?></td>
             <td title="<?= $show['nama_pendek'] ?>"><?= round_po($result_po) ?></td>
             <td title="<?= $show['nama_pendek'] ?>">
-                <?php if($result_po <= 34000 && $show['status_aktif']=='Aktif'){
-                    echo Yii::$app->formatter->asCurrency(1500000);
-                }elseif($result_po <= 49000 && $show['status_aktif']=='Aktif'){
-                    echo Yii::$app->formatter->asCurrency(2000000);
-                }elseif($result_po >= 50000 && $show['status_aktif']=='Aktif'){
-                    echo Yii::$app->formatter->asCurrency(3000000);
+                <?php 
+                if (($show['tgl_resign']>=$model->end_date || $show['tgl_resign']==NULL) && $show['tanggal_masuk']<=$model->begin_absen) {
+                    if($result_po <= 34000){
+                        echo Yii::$app->formatter->asCurrency(1500000);
+                    }elseif($result_po <= 49000){
+                        echo Yii::$app->formatter->asCurrency(2000000);
+                    }elseif($result_po >= 50000){
+                        echo Yii::$app->formatter->asCurrency(3000000);
+                    }
                 }
-
                 ?>
             </td>
             <td title="<?= $show['nama_pendek'] ?>">
-                <?php if($result_po <= 34000 && $show['status_aktif']=='Tidak Aktif'){
-                    echo Yii::$app->formatter->asCurrency((1500000/30)*(date('d',strtotime($show['tgl_resign']))-0));
-                }elseif($result_po <= 49000 && $show['status_aktif']=='Tidak Aktif'){
-                    echo Yii::$app->formatter->asCurrency((2000000/30)*(date('d',strtotime($show['tgl_resign']))-0));
-                }elseif($result_po >= 50000 && $show['status_aktif']=='Tidak Aktif'){
-                    echo Yii::$app->formatter->asCurrency((3000000/30)*(date('d',strtotime($show['tgl_resign']))-0));
+                <?php 
+
+                if ($show['status_aktif']=='Tidak Aktif' && $show['tgl_resign']<$model->end_date) {
+                    if($result_po <= 34000){
+                        echo Yii::$app->formatter->asCurrency((1500000/30)*(date('d',strtotime($show['tgl_resign']))-0));
+                    }elseif($result_po <= 49000){
+                        echo Yii::$app->formatter->asCurrency((2000000/30)*(date('d',strtotime($show['tgl_resign']))-0));
+                    }elseif($result_po >= 50000){
+                        echo Yii::$app->formatter->asCurrency((3000000/30)*(date('d',strtotime($show['tgl_resign']))-0));
+                    }
+                }elseif($show['tanggal_masuk']>$model->begin_absen){
+                    $range = strtotime($model->end_absen)-strtotime($show['tanggal_masuk']);
+                    if($result_po <= 34000){
+                        echo Yii::$app->formatter->asCurrency((1500000/30)*(1+($range/60/60/24)));
+                    }elseif($result_po <= 49000){
+                        echo Yii::$app->formatter->asCurrency((2000000/30)*(1+($range/60/60/24)));
+                    }elseif($result_po >= 50000){
+                        echo Yii::$app->formatter->asCurrency((3000000/30)*(1+($range/60/60/24)));
+                    }
                 }
 
                 ?>

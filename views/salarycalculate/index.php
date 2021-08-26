@@ -40,7 +40,9 @@ $this->title = 'Kalkulasi Gaji';
             [
                 'header'=>'Tanggal Absensi',
                 'value'=>function($data){
+                    if($data->begin_absen != NULL){
                 return date('d/m/Y',strtotime($data->begin_absen)).' - '.date('d/m/Y',strtotime($data->end_absen));
+                    }
                 }
             ],
             ['header'=>'Aksi','class' => 'yii\grid\ActionColumn','template'=>'{view}'],

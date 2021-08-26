@@ -35,7 +35,6 @@ $jobtitle = Jobtitle::find()->where(['id'=>$karyawan['posisi']])->one();
                             ['label' => 'Gaji Karyawan', 'icon' => 'book', 'url' => ['/salaryemployee'], 'active'=>in_array(\Yii::$app->controller->id,['salaryemployee'])],
                             ['label' => 'Tambahan & Potongan', 'icon' => 'book', 'url' => ['/salaryadditional'], 'active'=>in_array(\Yii::$app->controller->id,['salaryadditional'])],
                             ['label' => 'Kalkulasi Gaji', 'icon' => 'book', 'url' => ['/salarycalculate'], 'active'=>in_array(\Yii::$app->controller->id,['salarycalculate'])],
-                            ['label' => 'Tipe Gaji', 'icon' => 'book', 'url' => ['/salarytype'], 'active'=>in_array(\Yii::$app->controller->id,['salarytype'])],
                             ['label' => 'Komponen Gaji', 'icon' => 'book', 'url' => ['/salarycategory'], 'active'=>in_array(\Yii::$app->controller->id,['salarycategory'])],
                         ],
                     ],

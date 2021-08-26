@@ -56,6 +56,8 @@ class SalarycalculateController extends Controller
         if ($model->load(Yii::$app->request->post()) ) {
             $model->begin_date=Yii::$app->formatter->asDate($_POST['SalaryCalculate']['begin_date'],'yyyy-MM-dd');
             $model->end_date=Yii::$app->formatter->asDate($_POST['SalaryCalculate']['end_date'],'yyyy-MM-dd');
+            $model->begin_absen=Yii::$app->formatter->asDate($_POST['SalaryCalculate']['begin_absen'],'yyyy-MM-dd');
+            $model->end_absen=Yii::$app->formatter->asDate($_POST['SalaryCalculate']['end_absen'],'yyyy-MM-dd');
             $model->save();
             return $this->redirect(['index']);
         }
