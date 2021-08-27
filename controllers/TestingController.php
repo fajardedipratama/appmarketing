@@ -3,16 +3,16 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\Drivers;
+use app\models\Testing;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use yii\filters\AccessControl;
+
 /**
- * DriversController implements the CRUD actions for Drivers model.
+ * TestingController implements the CRUD actions for Testing model.
  */
-class DriversController extends Controller
+class TestingController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -20,16 +20,6 @@ class DriversController extends Controller
     public function behaviors()
     {
         return [
-            'access'=> [
-                'class'=>AccessControl::className(),
-                'only'=>['create','index','update','view'],
-                'rules'=>[
-                    [
-                        'allow'=>true,
-                        'roles'=>['@']
-                    ]
-                ]
-            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -40,14 +30,13 @@ class DriversController extends Controller
     }
 
     /**
-     * Lists all Drivers models.
+     * Lists all Testing models.
      * @return mixed
      */
     public function actionIndex()
     {
         $dataProvider = new ActiveDataProvider([
-            'query' => Drivers::find(),
-            'sort'=>['defaultOrder'=>['driver'=>SORT_ASC]]
+            'query' => Testing::find(),
         ]);
 
         return $this->render('index', [
@@ -56,7 +45,7 @@ class DriversController extends Controller
     }
 
     /**
-     * Displays a single Drivers model.
+     * Displays a single Testing model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -69,15 +58,18 @@ class DriversController extends Controller
     }
 
     /**
-     * Creates a new Drivers model.
+     * Creates a new Testing model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Drivers();
+        $model = new Testing();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post())) {
+            for ($i=0; $i < 2; $i++) { 
+                $model->save();
+            }
             return $this->redirect(['index']);
         }
 
@@ -87,7 +79,7 @@ class DriversController extends Controller
     }
 
     /**
-     * Updates an existing Drivers model.
+     * Updates an existing Testing model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -98,7 +90,7 @@ class DriversController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['index']);
+            return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('update', [
@@ -107,7 +99,7 @@ class DriversController extends Controller
     }
 
     /**
-     * Deletes an existing Drivers model.
+     * Deletes an existing Testing model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -121,15 +113,15 @@ class DriversController extends Controller
     }
 
     /**
-     * Finds the Drivers model based on its primary key value.
+     * Finds the Testing model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Drivers the loaded model
+     * @return Testing the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Drivers::findOne($id)) !== null) {
+        if (($model = Testing::findOne($id)) !== null) {
             return $model;
         }
 

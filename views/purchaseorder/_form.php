@@ -179,12 +179,14 @@ use dosamigos\datepicker\DatePicker;
         <?= $form->field($model, 'status')->dropDownList(['Pending'=>'Pending','Ditolak'=>'Ditolak','Disetujui'=>'Disetujui','Terkirim'=>'Terkirim','Batal Kirim'=>'Batal Kirim','Terbayar-Selesai'=>'Terbayar-Selesai']) ?>
     </div>
     <div class="col-sm-4">
+    <?php if($model->status==['Terkirim','Terbayar-Selesai']): ?>
         <?= $form->field($model, 'driver_id')->dropDownList(
         ArrayHelper::map(Drivers::find()->all(),'id',
             function($model){
                 return $model['driver'];
             }
         )); ?>
+    <?php endif ?>
     </div>
 <?php endif ?>
 </div>

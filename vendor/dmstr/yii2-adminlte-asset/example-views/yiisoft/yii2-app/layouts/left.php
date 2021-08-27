@@ -27,18 +27,6 @@ $jobtitle = Jobtitle::find()->where(['id'=>$karyawan['posisi']])->one();
                 'options' => ['class' => 'sidebar-menu tree', 'data-widget'=> 'tree'],
                 'items' => [
                     [
-                        'label' => 'Keuangan',
-                        'icon' => 'money',
-                        'url' => '#',
-                        'visible' => !Yii::$app->user->isGuest && Yii::$app->user->identity->type == 'Administrator',
-                        'items' => [
-                            ['label' => 'Gaji Karyawan', 'icon' => 'book', 'url' => ['/salaryemployee'], 'active'=>in_array(\Yii::$app->controller->id,['salaryemployee'])],
-                            ['label' => 'Tambahan & Potongan', 'icon' => 'book', 'url' => ['/salaryadditional'], 'active'=>in_array(\Yii::$app->controller->id,['salaryadditional'])],
-                            ['label' => 'Kalkulasi Gaji', 'icon' => 'book', 'url' => ['/salarycalculate'], 'active'=>in_array(\Yii::$app->controller->id,['salarycalculate'])],
-                            ['label' => 'Komponen Gaji', 'icon' => 'book', 'url' => ['/salarycategory'], 'active'=>in_array(\Yii::$app->controller->id,['salarycategory'])],
-                        ],
-                    ],
-                    [
                         'label' => 'Manajemen SDM',
                         'icon' => 'user-secret',
                         'url' => '#',
@@ -94,6 +82,20 @@ $jobtitle = Jobtitle::find()->where(['id'=>$karyawan['posisi']])->one();
                                 'label' => 'Data Supir', 'icon' => 'truck', 'url' => ['/drivers'], 'active'=>in_array(\Yii::$app->controller->id,['drivers']),
                                 'visible' => !Yii::$app->user->isGuest && Yii::$app->user->identity->type == 'Administrator' || Yii::$app->user->identity->type == 'Manajemen'
                             ],
+                        ],
+                    ],
+                    [
+                        'label' => 'Payroll',
+                        'icon' => 'money',
+                        'url' => '#',
+                        'visible' => !Yii::$app->user->isGuest && Yii::$app->user->identity->type == 'Administrator',
+                        'items' => [
+                            ['label' => 'Absensi Harian', 'icon' => 'book', 'url' => ['/attendancedata'], 'active'=>in_array(\Yii::$app->controller->id,['attendancedata'])],
+                            ['label' => '.'],
+                            ['label' => 'Gaji Karyawan', 'icon' => 'book', 'url' => ['/salaryemployee'], 'active'=>in_array(\Yii::$app->controller->id,['salaryemployee'])],
+                            ['label' => 'Tambahan & Potongan', 'icon' => 'book', 'url' => ['/salaryadditional'], 'active'=>in_array(\Yii::$app->controller->id,['salaryadditional'])],
+                            ['label' => 'Kalkulasi Gaji', 'icon' => 'book', 'url' => ['/salarycalculate'], 'active'=>in_array(\Yii::$app->controller->id,['salarycalculate'])],
+                            ['label' => 'Komponen Gaji', 'icon' => 'book', 'url' => ['/salarycategory'], 'active'=>in_array(\Yii::$app->controller->id,['salarycategory'])],
                         ],
                     ],
                 ],
