@@ -5,6 +5,7 @@ namespace app\models\search;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use app\models\AttendanceData;
+use app\models\Karyawan;
 
 /**
  * AttendancedataSearch represents the model behind the search form of `app\models\AttendanceData`.
@@ -40,12 +41,14 @@ class AttendancedataSearch extends AttendanceData
      */
     public function search($params)
     {
-        $query = AttendanceData::find();
+        //$query = AttendanceData::find();
+        $query = Karyawan::find()->where(['status_aktif'=>'Aktif']);
 
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'sort'=>['defaultOrder'=>['nama_pendek'=>SORT_ASC]]
         ]);
 
         $this->load($params);

@@ -3,17 +3,17 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\AttendanceData;
-use app\models\search\AttendancedataSearch;
+use app\models\AttendanceSchedule;
+use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 
 /**
- * AttendancedataController implements the CRUD actions for AttendanceData model.
+ * AttendancescheduleController implements the CRUD actions for AttendanceSchedule model.
  */
-class AttendancedataController extends Controller
+class AttendancescheduleController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -41,22 +41,22 @@ class AttendancedataController extends Controller
     }
 
     /**
-     * Lists all AttendanceData models.
+     * Lists all AttendanceSchedule models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new AttendancedataSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider = new ActiveDataProvider([
+            'query' => AttendanceSchedule::find(),
+        ]);
 
         return $this->render('index', [
-            'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
     }
 
     /**
-     * Displays a single AttendanceData model.
+     * Displays a single AttendanceSchedule model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -69,13 +69,13 @@ class AttendancedataController extends Controller
     }
 
     /**
-     * Creates a new AttendanceData model.
+     * Creates a new AttendanceSchedule model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new AttendanceData();
+        $model = new AttendanceSchedule();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -87,7 +87,7 @@ class AttendancedataController extends Controller
     }
 
     /**
-     * Updates an existing AttendanceData model.
+     * Updates an existing AttendanceSchedule model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -107,7 +107,7 @@ class AttendancedataController extends Controller
     }
 
     /**
-     * Deletes an existing AttendanceData model.
+     * Deletes an existing AttendanceSchedule model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -121,15 +121,15 @@ class AttendancedataController extends Controller
     }
 
     /**
-     * Finds the AttendanceData model based on its primary key value.
+     * Finds the AttendanceSchedule model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return AttendanceData the loaded model
+     * @return AttendanceSchedule the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = AttendanceData::findOne($id)) !== null) {
+        if (($model = AttendanceSchedule::findOne($id)) !== null) {
             return $model;
         }
 

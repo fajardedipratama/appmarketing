@@ -46,13 +46,13 @@ class AttendanceData extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'karyawan_id' => 'Karyawan ID',
-            'work_day' => 'Work Day',
-            'work_date' => 'Work Date',
-            'schedule_in' => 'Schedule In',
-            'schedule_out' => 'Schedule Out',
-            'real_in' => 'Real In',
-            'real_out' => 'Real Out',
+            'karyawan_id' => 'Karyawan',
+            'work_day' => 'Hari',
+            'work_date' => 'Tanggal',
+            'schedule_in' => 'Jadwal Masuk',
+            'schedule_out' => 'Jadwal Pulang',
+            'real_in' => 'Absen Masuk',
+            'real_out' => 'Absen Pulang',
         ];
     }
 }
