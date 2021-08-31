@@ -44,14 +44,21 @@ class AttendancedataController extends Controller
      * Lists all AttendanceData models.
      * @return mixed
      */
-    public function actionIndex()
+    public function actionIndex($work_date)
     {
         $searchModel = new AttendancedataSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
+        $model = new AttendanceData();
+        if ($model->load(Yii::$app->request->post()) ) {
+            $work_date = Yii::$app->formatter->asDate($model->work_date,'yyyy-MM-dd');
+            return $this->redirect(['index','work_date'=>$work_date]);
+        }
+
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'model'=>$model,
         ]);
     }
 

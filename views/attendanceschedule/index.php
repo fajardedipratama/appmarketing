@@ -16,7 +16,7 @@ $this->title = 'Jadwal Kerja';
             <h1><?= Html::encode($this->title) ?></h1>
         </div>
         <div class="col-sm-2">
-            <?= Html::a('<i class="fa fa-fw fa-clock-o"></i> Absensi Harian', ['attendancedata/index'], ['class' => 'btn btn-success']) ?>
+            <?= Html::a('<i class="fa fa-fw fa-clock-o"></i> Absensi Harian', ['attendancedata/index','work_date'=>date('Y-m-d')], ['class' => 'btn btn-success']) ?>
         </div>
     </div>
 
