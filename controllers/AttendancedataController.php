@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use Yii;
 use app\models\AttendanceData;
+use app\models\AttendanceSchedule;
 use app\models\search\AttendancedataSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -46,18 +47,30 @@ class AttendancedataController extends Controller
      */
     public function actionIndex($work_date)
     {
-        $searchModel = new AttendancedataSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        // $searchModel = new AttendancedataSearch();
+        // $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         $model = new AttendanceData();
-        if ($model->load(Yii::$app->request->post()) ) {
-            $work_date = Yii::$app->formatter->asDate($model->work_date,'yyyy-MM-dd');
+        if (isset($_POST['cari'])) {
+            $work_date = Yii::$app->formatter->asDate($_POST['AttendanceData']['work_date'],'yyyy-MM-dd');
+            return $this->redirect(['index','work_date'=>$work_date]);
+        }
+        
+        $jadwal = AttendanceSchedule::find()->where(['hari'=>date('l',strtotime($work_date))])->one();
+        if ($model->load(Yii::$app->request->post())) {
+            $model->work_date = Yii::$app->formatter->asDate($work_date,'yyyy-MM-dd');
+            $model->schedule_in = $jadwal->jam_masuk;
+            $model->schedule_out = $jadwal->jam_pulang;
+            $model->save();
             return $this->redirect(['index','work_date'=>$work_date]);
         }
 
-        return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
+        // return $this->render('index', [
+        //     'searchModel' => $searchModel,
+        //     'dataProvider' => $dataProvider,
+        //     'model'=>$model,
+        // ]);
+        return $this->render('view', [
             'model'=>$model,
         ]);
     }

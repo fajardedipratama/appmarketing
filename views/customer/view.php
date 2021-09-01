@@ -102,6 +102,7 @@ $offers = Offer::find()->where(['perusahaan'=>$model->id])->orderBy(['id'=>SORT_
                 'volume',
                 'jarak_ambil',
                 'catatan',
+                'long_expired',
                 [
                   'attribute'=>'sales',
                   'value'=>($model->karyawan)?$model->karyawan->nama:'-',
@@ -151,7 +152,7 @@ $offers = Offer::find()->where(['perusahaan'=>$model->id])->orderBy(['id'=>SORT_
             </tr>
         <?php endforeach ?>
             </table>
-            </div>
+        </div>
     </div>
     <div class="tab-pane" id="offers">
         <div class="box-body table-responsive no-padding">

@@ -19,7 +19,7 @@ class AttendancedataSearch extends AttendanceData
     {
         return [
             [['id', 'karyawan_id'], 'integer'],
-            [['work_day', 'work_date', 'schedule_in', 'schedule_out', 'real_in', 'real_out'], 'safe'],
+            [['work_date', 'schedule_in', 'schedule_out', 'real_in', 'real_out'], 'safe'],
         ];
     }
 
@@ -69,8 +69,6 @@ class AttendancedataSearch extends AttendanceData
             'real_in' => $this->real_in,
             'real_out' => $this->real_out,
         ]);
-
-        $query->andFilterWhere(['like', 'work_day', $this->work_day]);
 
         return $dataProvider;
     }

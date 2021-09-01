@@ -5,9 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\AttendanceData */
 
-$this->title = 'Create Attendance Data';
-$this->params['breadcrumbs'][] = ['label' => 'Attendance Datas', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = 'Tambah Data';
 ?>
 <div class="attendance-data-create">
 

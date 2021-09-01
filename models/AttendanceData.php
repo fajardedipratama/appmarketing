@@ -9,7 +9,6 @@ use Yii;
  *
  * @property int $id
  * @property int $karyawan_id
- * @property string $work_day
  * @property string|null $work_date
  * @property string|null $schedule_in
  * @property string|null $schedule_out
@@ -32,10 +31,9 @@ class AttendanceData extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['karyawan_id', 'work_day'], 'required'],
+            [['karyawan_id'], 'required'],
             [['karyawan_id'], 'integer'],
             [['work_date', 'schedule_in', 'schedule_out', 'real_in', 'real_out'], 'safe'],
-            [['work_day'], 'string', 'max' => 10],
         ];
     }
 
@@ -47,7 +45,6 @@ class AttendanceData extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'karyawan_id' => 'Karyawan',
-            'work_day' => 'Hari',
             'work_date' => 'Tanggal',
             'schedule_in' => 'Jadwal Masuk',
             'schedule_out' => 'Jadwal Pulang',

@@ -11,23 +11,17 @@ use yii\widgets\ActiveForm;
 <div class="attendance-data-form">
 
     <?php $form = ActiveForm::begin(); ?>
-
-    <?= $form->field($model, 'karyawan_id')->textInput() ?>
-
-    <?= $form->field($model, 'work_day')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'work_date')->textInput() ?>
-
-    <?= $form->field($model, 'schedule_in')->textInput() ?>
-
-    <?= $form->field($model, 'schedule_out')->textInput() ?>
-
-    <?= $form->field($model, 'real_in')->textInput() ?>
-
-    <?= $form->field($model, 'real_out')->textInput() ?>
+    <div class="row">
+        <div class="col-sm-6">
+            <?= $form->field($model, 'real_in')->textInput() ?>
+        </div>
+        <div class="col-sm-6">
+            <?= $form->field($model, 'real_out')->textInput() ?>
+        </div>
+    </div>
 
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Simpan', ['name'=>'simpan','class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

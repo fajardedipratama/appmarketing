@@ -20,7 +20,7 @@ use dosamigos\datepicker\DatePicker;
         ]
     ])?>
     <div class="form-group">
-        <?= Html::submitButton('Cari', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Cari', ['name'=>'cari','class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
