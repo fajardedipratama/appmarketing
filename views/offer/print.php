@@ -74,7 +74,6 @@ $inisial = OfferNumber::find()->where(['id'=>1])->one();
 	<tr><td colspan="2"><br></td></tr>
 
 	<tr><td colspan="2" style="font-weight: bold;">HARGA SATUAN / LITER : <?= Yii::$app->formatter->asCurrency($model->harga) ?> / Liter </td></tr>
-	<tr><td colspan="2"><br></td></tr>
 
 	<tr>
 		<td colspan="2" style="font-size: 14px;font-weight: bold;line-height: 1.5em">
@@ -102,7 +101,6 @@ $inisial = OfferNumber::find()->where(['id'=>1])->one();
 			</ul>
 		</td>
 	</tr>
-	<tr><td colspan="2"><br></td></tr>
 
 	<tr><td colspan="2" style="text-align: justify;line-height: 1.5em">Demikian surat penawaran ini kami ajukan untuk dapat dipertimbangkan. Atas perhatian dan kerjasamanya kami ucapkan terima kasih.</td></tr>
 	<tr><td colspan="2"><br></td></tr>

@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use Yii;
 use app\models\Offer;
+use app\models\OfferExtra;
 use app\models\Customer;
 use app\models\Karyawan;
 use app\models\City;
@@ -192,14 +193,23 @@ class OfferController extends Controller
     public function actionView($id)
     {
         $model = $this->findModel($id);
-        //view
-        if($model->sales == Yii::$app->user->identity->profilname || Yii::$app->user->identity->type != 'Marketing'){
+        
+        if($model->sales==Yii::$app->user->identity->profilname || Yii::$app->user->identity->type!='Marketing'){
+
+            $modelextra = new OfferExtra();
+            if ($modelextra->load(Yii::$app->request->post()) && $modelextra->save()) {
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
+
             return $this->render('view', [
                 'model' => $this->findModel($id),
+                'modelextra' => $modelextra,
             ]);
         }else{
             return $this->redirect(['selfcustomer/index']);
         }
+
+        
     }
 
     /**
@@ -272,6 +282,7 @@ class OfferController extends Controller
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
+        Yii::$app->db->createCommand()->delete('id_offer_extra',['offer_id'=>$id])->execute();
 
         return $this->redirect(['index']);
     }
