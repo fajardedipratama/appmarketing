@@ -235,7 +235,7 @@ $this->title = 'PURCHASE ORDER';
                 <th><?= Yii::$app->formatter->asCurrency($paid_done); ?></th>
             </tr>
             <tr>
-                <th>Kurang Bayar</th>
+                <th>Sisa</th>
                 <th><?= Yii::$app->formatter->asCurrency($total_tagihan-$paid_done); ?></th>
             </tr>
           </table>

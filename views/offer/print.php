@@ -1,10 +1,12 @@
 <?php 
 use app\models\City;
 use app\models\OfferNumber;
+use app\models\OfferExtra;
 
 $hariIni = \Carbon\Carbon::now()->locale('id');
 $lokasi = City::find()->where(['id'=>$model->customer->lokasi])->one();
 $inisial = OfferNumber::find()->where(['id'=>1])->one();
+$extra = OfferExtra::find()->where(['offer_id'=>$model->id]);
 
 ?>
 <!DOCTYPE html>
@@ -73,7 +75,24 @@ $inisial = OfferNumber::find()->where(['id'=>1])->one();
 	<tr><td colspan="2" style="text-align: justify;line-height: 1.5em"><span style="display:inline-block; width: 4%;"></span>Melalui surat ini kami jelaskan bahwa PT. Berdikari Jaya Bersama adalah perusahaan yang bergerak dalam penyediaan Bahan Bakar Minyak Diesel Industri. Adapun penawaran harganya yang berlaku sesuai periode <?= $inisial['periode'] ?>, adalah sebagai berikut :</td></tr>
 	<tr><td colspan="2"><br></td></tr>
 
-	<tr><td colspan="2" style="font-weight: bold;">HARGA SATUAN / LITER : <?= Yii::$app->formatter->asCurrency($model->harga) ?> / Liter </td></tr>
+	<tr>
+		<td colspan="2" style="font-weight: bold;">HARGA SATUAN / LITER : 
+		<?php if($extra->count() < 1): ?>
+			<?= Yii::$app->formatter->asCurrency($model->harga) ?> / Liter 
+		<?php endif; ?>
+		</td>
+	</tr>
+	<?php if($extra->count() > 0): ?>
+	<tr>
+		<td colspan="2" style="font-weight: bold;">
+			<ul>
+			<?php foreach($extra->all() as $show): ?>
+				<li><?= Yii::$app->formatter->asCurrency($show->harga).' / Liter (Term Of Payment : '.$show->top.', Harga '.$show->pajak.')'; ?></li>
+			<?php endforeach ?>
+			</ul>
+		</td>
+	</tr>
+	<?php endif; ?>
 
 	<tr>
 		<td colspan="2" style="font-size: 14px;font-weight: bold;line-height: 1.5em">
@@ -81,6 +100,7 @@ $inisial = OfferNumber::find()->where(['id'=>1])->one();
 			<ul>
 				<li>Minimal per PO 5.000 liter</li>
 				<li>Toleransi susut yang berlaku adalah 0,5%</li>
+			<?php if($extra->count() < 1): ?>
 				<li>
 					<?php if($model->pajak === 'PPN'){
 						echo 'Harga termasuk PPN';
@@ -89,13 +109,18 @@ $inisial = OfferNumber::find()->where(['id'=>1])->one();
 					}?>
 				</li>
 				<li>Term Of Payment : <?= $model->top ?></li>
+			<?php endif; ?>
 				<li>Pengiriman setelah PO (Purchase Order) </li>
 				<li>
+				<?php if($extra->count() < 1): ?>
 					<?php if($model->pajak === 'PPN'){
 						echo 'Pembayaran Wajib ke :<br>Rekening Bank Mandiri (PPN) : 1430014465569 a.n. PT. Berdikari Jaya Bersama<br>Rekening Bank BCA (PPN) : 0393039300 a.n. PT. Berdikari Jaya Bersama';
 					}else{
 						echo 'Pembayaran Wajib ke :<br>Rekening Bank BCA (NON PPN) :  0566515151 a.n. Godwin';
 					}?>
+				<?php else: ?>
+					<?= 'Pembayaran Wajib ke :<br>Rekening Bank Mandiri (PPN) : 1430014465569 a.n. PT. Berdikari Jaya Bersama<br>Rekening Bank BCA (PPN) : 0393039300 a.n. PT. Berdikari Jaya Bersama<br>Rekening Bank BCA (NON PPN) :  0566515151 a.n. Godwin'; ?>
+				<?php endif; ?>
 				</li>
 				<li>Hubungi Sales : <?= $model->karyawan->nama_pendek.' ( '.$model->karyawan->no_hp.' )' ?></li>
 			</ul>

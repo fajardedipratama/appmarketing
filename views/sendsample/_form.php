@@ -34,7 +34,11 @@ use dosamigos\datepicker\DatePicker;
             <?= $form->field($model, 'perusahaan')->widget(Select2::className(),[
             'data'=>ArrayHelper::map(Customer::find()->orderBy(['perusahaan'=>SORT_ASC])->all(),'id',
                 function($model){
-                    return $model['perusahaan'];
+                    if($model->verified == 'yes'){
+                        return '(OK) '.$model['perusahaan'];
+                    }else{
+                        return $model['perusahaan'];
+                    }
                 }
             ),
             'options'=>['placeholder'=>"Perusahaan"],'pluginOptions'=>['allowClear'=>true]
