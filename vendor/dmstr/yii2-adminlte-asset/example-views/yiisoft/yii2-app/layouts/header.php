@@ -14,7 +14,7 @@ $callback = Dailyreport::find()->where(['sales'=>Yii::$app->user->identity->prof
 
 <header class="main-header" style="position: fixed;">
 
-    <?= Html::a('<span class="logo-mini"><b>BJB</b></span><span class="logo-lg"><b>BJB</b>-APP</span>', Yii::$app->homeUrl, ['class' => 'logo']) ?>
+    <?= Html::a('<span class="logo-mini"><b>BJB</b></span><span class="logo-lg"><b>BJB</b>-APP</span>', 'index.php?r=dashboard', ['class' => 'logo']) ?>
 
     <nav class="navbar navbar-fixed-top" role="navigation">
 
