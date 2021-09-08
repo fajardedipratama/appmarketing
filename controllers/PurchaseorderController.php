@@ -5,6 +5,7 @@ namespace app\controllers;
 use Yii;
 use app\models\PurchaseOrder;
 use app\models\PurchaseOrderPaid;
+use app\models\PurchaseOrderFile;
 use app\models\City;
 use app\models\search\PurchaseorderSearch;
 use yii\web\Controller;
@@ -117,6 +118,15 @@ class PurchaseorderController extends Controller
             $modelpaid->save();
             return $this->redirect(['view', 'id' => $model->id]);
         }
+        //files
+        $modelfile = new PurchaseOrderFile();
+        if ($modelfile->load(Yii::$app->request->post()) ) {
+            //process
+            $modelfile->purchase_order_id = $id;
+            $modelfile->created_time = date('Y-m-d H:i:s');
+            $modelfile->save();
+            return $this->redirect(['view', 'id' => $model->id]);
+        }
 
         if(isset($_POST['tolak'])){
             Yii::$app->db->createCommand()->update('id_purchase_order',
@@ -153,7 +163,8 @@ class PurchaseorderController extends Controller
 
         return $this->render('view', [
             'model' => $model,
-            'modelpaid' => $modelpaid
+            'modelpaid' => $modelpaid,
+            'modelfile' => $modelfile,
         ]);
     }
     public function actionAccpo($id)

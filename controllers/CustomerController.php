@@ -84,6 +84,14 @@ class CustomerController extends Controller
      */
     public function actionView($id)
     {
+        $model = $this->findModel($id);
+        if ($model->load(Yii::$app->request->post())) {
+            $model->expired=Yii::$app->formatter->asDate($_POST['Customer']['expired'],'yyyy-MM-dd');
+            $model->long_expired='yes';
+            $model->save();
+            return $this->redirect(['view', 'id' => $id]);
+        }
+
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);

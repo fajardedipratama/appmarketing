@@ -5,6 +5,8 @@ use yii\widgets\DetailView;
 use app\models\Dailyreport;
 use app\models\Offer;
 use app\models\Karyawan;
+use dosamigos\datepicker\DatePicker;
+use yii\widgets\ActiveForm;
 /* @var $this yii\web\View */
 /* @var $model app\models\Customer */
 
@@ -17,7 +19,7 @@ $offers = Offer::find()->where(['perusahaan'=>$model->id])->orderBy(['id'=>SORT_
 ?>
 <div class="customer-view">
     <div class="row">
-        <div class="col-sm-8">
+        <div class="col-sm-9">
             <h2>
               <?php if($model->verified === 'yes'): ?>
                 <?php if(!$model->entrusted): ?>
@@ -49,26 +51,29 @@ $offers = Offer::find()->where(['perusahaan'=>$model->id])->orderBy(['id'=>SORT_
           <?php endif; ?>
         </div>
         <?php if(Yii::$app->user->identity->type == 'Administrator'): ?>
-        <div class="col-sm-4">
+        <div class="col-sm-3">
             <p>
-                <?= Html::a('<i class="fa fa-fw fa-pencil"></i> Ubah', ['update', 'id' => $model->id], ['class' => 'btn btn-success']) ?>
-                <?= Html::a('<i class="fa fa-fw fa-trash"></i> Hapus', ['delete', 'id' => $model->id], [
-                    'class' => 'btn btn-warning',
+                <?= Html::a('<i class="fa fa-fw fa-pencil"></i>', ['update', 'id' => $model->id], ['class' => 'btn btn-success','title'=>'Update']) ?>
+                <?= Html::a('<i class="fa fa-fw fa-trash"></i>', ['delete', 'id' => $model->id], [
+                    'class' => 'btn btn-warning','title'=>'Delete',
                     'data' => [
                         'confirm' => 'Hapus data ini ?',
                         'method' => 'post',
                     ],
                 ]) ?>
             <?php if($model->verified != 'black'): ?>
-                <?= Html::a('<i class="fa fa-fw fa-warning"></i> Blokir', ['blokir', 'id' => $model->id], [
-                    'class' => 'btn btn-danger',
+                <?= Html::a('<i class="fa fa-fw fa-times"></i>', ['blokir', 'id' => $model->id], [
+                    'class' => 'btn btn-danger','title'=>'Blokir',
                     'data' => [
                         'confirm' => 'Blacklist perusahaan ini ?',
                         'method' => 'post',
                     ],
                 ]) ?>
             <?php endif; ?>
-                <?= Html::a('<i class="fa fa-fw fa-refresh"></i> Gabung', ['merge', 'id' => $model->id], ['class' => 'btn btn-primary','target'=>'_blank']) ?>
+                <?= Html::a('<i class="fa fa-fw fa-refresh"></i>', ['merge', 'id' => $model->id], ['class' => 'btn btn-primary','target'=>'_blank','title'=>'Gabung']) ?>
+            <?php if($model->long_expired != 'yes'): ?>
+                <button class="btn btn-info" title="Perpanjang" data-toggle="modal" data-target="#extra-expired"><i class="fa fa-fw  fa-clock-o"></i></button>
+            <?php endif ?>
             </p>
         </div>
         <?php endif ?>
@@ -190,5 +195,36 @@ $offers = Offer::find()->where(['perusahaan'=>$model->id])->orderBy(['id'=>SORT_
 
     </div>
     </section>
+
+    <div class="modal fade" id="extra-expired"><div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title"><b>Perpanjang Expired</b></h4>          
+            </div>
+            <div class="modal-body">
+            <?php $form = ActiveForm::begin(); ?>
+                <?php 
+                    if(!$model->isNewRecord || $model->isNewRecord){
+                        if($model->expired!=null){
+                            $model->expired=date('d-m-Y',strtotime($model->expired));
+                        }
+                    }
+                ?>
+                <?= $form->field($model, 'expired')->widget(DatePicker::className(),[
+                    'clientOptions'=>[
+                        'autoclose'=>true,
+                        'format'=>'dd-mm-yyyy',
+                        'orientation'=>'bottom',
+                    ]
+                ])?>
+                <div class="form-group">
+                    <?= Html::submitButton('Simpan', ['class' => 'btn btn-success']) ?>
+                </div>
+            <?php ActiveForm::end(); ?>
+            </div>
+        </div>
+    </div></div>
 
 </div>

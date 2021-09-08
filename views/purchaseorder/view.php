@@ -1,5 +1,6 @@
 <?php
 use app\models\PurchaseOrderPaid;
+use app\models\PurchaseOrderFile;
 use app\models\City;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
@@ -9,6 +10,7 @@ use yii\widgets\DetailView;
 
 $paid = PurchaseOrderPaid::find()->where(['purchase_order_id'=>$model->id])->orderBy(['paid_date'=>SORT_DESC])->all();
 $paid_done = PurchaseOrderPaid::find()->where(['purchase_order_id'=>$model->id])->sum('amount');
+$files = PurchaseOrderFile::find()->where(['purchase_order_id'=>$model->id])->orderBy(['created_time'=>SORT_DESC])->all();
 
 function termin_value($value){
     if($value=='Cash On Delivery'){
@@ -98,6 +100,7 @@ $this->title = 'PURCHASE ORDER';
     <ul class="nav nav-tabs">
         <li class="active"><a href="#detail" data-toggle="tab">Detail</a></li>
         <li><a href="#paid" data-toggle="tab">Pembayaran</a></li>
+        <li><a href="#po_files" data-toggle="tab">Berkas</a></li>
     </ul>
 
 <div class="tab-content">
@@ -241,6 +244,40 @@ $this->title = 'PURCHASE ORDER';
           </table>
         </div>
     </div>
+    <div class="tab-pane" id="po_files">
+        <?php if(Yii::$app->user->identity->type != 'Marketing'): ?>
+            <button class="btn btn-sm btn-success" data-toggle="modal" data-target="#files-po"><i class="fa fa-fw fa-plus-square"></i> Kirim Berkas</button>
+        <?php endif ?>
+        <div class="box-body table-responsive no-padding">
+          <table class="table table-hover">
+            <tr>
+                <th>Terkirim</th>
+                <th>Penerima</th>
+                <th>Alamat</th>
+                <th>Berkas</th>
+                <th>Via</th>
+                <th>Aksi</th>
+            </tr>
+        <?php foreach($files as $show_files): ?>
+            <tr>
+                <td>
+                    <?php if($show_files['tgl_kirim']!=NULL){
+                        echo date('d/m/Y',strtotime($show_files['tgl_kirim']));
+                    } ?>
+                </td>
+                <td><?= $show_files['penerima'] ?></td>
+                <td><?= $show_files['alamat'] ?></td>
+                <td><?= $show_files['berkas'] ?></td>
+                <td><?= $show_files['kirim_by'] ?></td>
+                <td>
+                    <i class="fa fa-fw fa-pencil"></i>
+                    <i class="fa fa-fw fa-print"></i>
+                </td>
+            </tr>
+        <?php endforeach ?>
+          </table>
+        </div>
+    </div>
 </div>
 </div></section>
 
@@ -279,6 +316,19 @@ $this->title = 'PURCHASE ORDER';
             </div>
             <div class="modal-body">
               <?= $this->render('_formbayar', ['model'=>$model,'modelpaid' => $modelpaid]) ?>
+            </div>
+        </div>
+    </div></div>
+
+    <div class="modal fade" id="files-po"><div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title"><b>Kirim Berkas</b></h4>          
+            </div>
+            <div class="modal-body">
+              <?= $this->render('_formberkas', ['modelfile' => $modelfile,'model'=>$model]) ?>
             </div>
         </div>
     </div></div>
