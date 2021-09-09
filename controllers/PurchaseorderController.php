@@ -123,7 +123,7 @@ class PurchaseorderController extends Controller
         if ($modelfile->load(Yii::$app->request->post()) ) {
             //process
             $modelfile->purchase_order_id = $id;
-            $modelfile->created_time = date('Y-m-d H:i:s');
+            $modelfile->tgl_kirim=Yii::$app->formatter->asDate($modelfile->tgl_kirim,'yyyy-MM-dd');
             $modelfile->save();
             return $this->redirect(['view', 'id' => $model->id]);
         }

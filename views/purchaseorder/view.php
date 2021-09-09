@@ -10,7 +10,7 @@ use yii\widgets\DetailView;
 
 $paid = PurchaseOrderPaid::find()->where(['purchase_order_id'=>$model->id])->orderBy(['paid_date'=>SORT_DESC])->all();
 $paid_done = PurchaseOrderPaid::find()->where(['purchase_order_id'=>$model->id])->sum('amount');
-$files = PurchaseOrderFile::find()->where(['purchase_order_id'=>$model->id])->orderBy(['created_time'=>SORT_DESC])->all();
+$files = PurchaseOrderFile::find()->where(['purchase_order_id'=>$model->id])->all();
 
 function termin_value($value){
     if($value=='Cash On Delivery'){
@@ -270,8 +270,8 @@ $this->title = 'PURCHASE ORDER';
                 <td><?= $show_files['berkas'] ?></td>
                 <td><?= $show_files['kirim_by'] ?></td>
                 <td>
-                    <i class="fa fa-fw fa-pencil"></i>
-                    <i class="fa fa-fw fa-print"></i>
+                    <?= Html::a('<i class="fa fa-fw fa-pencil"></i>', ['purchaseorderfile/update', 'id' => $show_files['id']],['target'=>'_blank']) ?>
+                   <?= Html::a('<i class="fa fa-fw fa-print"></i>', ['purchaseorderfile/view', 'id' => $show_files['id']],['target'=>'_blank']) ?>
                 </td>
             </tr>
         <?php endforeach ?>

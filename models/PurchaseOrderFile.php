@@ -13,7 +13,6 @@ use Yii;
  * @property string $alamat
  * @property string $berkas
  * @property string $kirim_by
- * @property string|null $created_time
  * @property string|null $tgl_kirim
  */
 class PurchaseOrderFile extends \yii\db\ActiveRecord
@@ -34,7 +33,7 @@ class PurchaseOrderFile extends \yii\db\ActiveRecord
         return [
             [['purchase_order_id', 'penerima', 'alamat','berkas'], 'required'],
             [['purchase_order_id'], 'integer'],
-            [['tgl_kirim','created_time'], 'safe'],
+            [['tgl_kirim'], 'safe'],
             [['penerima','berkas','kirim_by'], 'string', 'max' => 100],
             [['alamat'], 'string', 'max' => 1000],
         ];
@@ -53,7 +52,6 @@ class PurchaseOrderFile extends \yii\db\ActiveRecord
             'berkas' => 'Berkas',
             'tgl_kirim' => 'Dikirim',
             'kirim_by' => 'Via',
-            'created_time' => 'Created Time',
         ];
     }
 }
