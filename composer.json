@@ -22,7 +22,8 @@
         "2amigos/yii2-date-picker-widget": "^1.0",
         "kartik-v/yii2-widget-select2": "^2.2",
         "hscstudio/yii2-export": "*",
-        "nesbot/carbon": "^2.46"
+        "nesbot/carbon": "^2.46",
+        "2amigos/yii2-chartjs-widget": "~2.0"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",

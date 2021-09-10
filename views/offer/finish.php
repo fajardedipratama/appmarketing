@@ -65,13 +65,6 @@ $this->title = 'Penawaran Selesai';
               ])
             ],
             [
-              'header'=>'Lokasi',
-              'value'=>function($data){
-                $query = City::find()->where(['id'=>$data->customer->lokasi])->one();
-                return $query['kota'];
-              }
-            ],
-            [
               'attribute'=>'sales',
               'value' => 'karyawan.nama_pendek',
               'filter'=>\kartik\select2\Select2::widget([

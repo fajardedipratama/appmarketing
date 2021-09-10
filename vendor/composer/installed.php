@@ -6,11 +6,20 @@
     'aliases' => 
     array (
     ),
-    'reference' => 'de2ed4ac6730c4ba65d59b24a41a04efd5fe2482',
+    'reference' => 'ac973bffa566a47bdc4f6ef1524c371c4ceed014',
     'name' => 'yiisoft/yii2-app-basic',
   ),
   'versions' => 
   array (
+    '2amigos/yii2-chartjs-widget' => 
+    array (
+      'pretty_version' => '2.1.3',
+      'version' => '2.1.3.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'b144a4ebd923872a7263c980f8afe2e212378275',
+    ),
     '2amigos/yii2-date-picker-widget' => 
     array (
       'pretty_version' => '1.0.7',
@@ -55,6 +64,15 @@
       array (
       ),
       'reference' => 'd364be5b066b38f3675a5a1dc174ce1ab1f3360e',
+    ),
+    'bower-asset/chartjs' => 
+    array (
+      'pretty_version' => 'v2.9.4',
+      'version' => '2.9.4.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '9bd4cf82fda9f50a5fb50b72843e06ab88124278',
     ),
     'bower-asset/inputmask' => 
     array (
@@ -919,7 +937,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => 'de2ed4ac6730c4ba65d59b24a41a04efd5fe2482',
+      'reference' => 'ac973bffa566a47bdc4f6ef1524c371c4ceed014',
     ),
     'yiisoft/yii2-bootstrap' => 
     array (

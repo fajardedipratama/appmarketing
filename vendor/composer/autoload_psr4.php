@@ -19,6 +19,7 @@ return array(
     'kartik\\base\\' => array($vendorDir . '/kartik-v/yii2-krajee-base/src'),
     'hscstudio\\export\\' => array($vendorDir . '/hscstudio/yii2-export'),
     'dosamigos\\datepicker\\' => array($vendorDir . '/2amigos/yii2-date-picker-widget/src'),
+    'dosamigos\\chartjs\\' => array($vendorDir . '/2amigos/yii2-chartjs-widget/src'),
     'dmstr\\' => array($vendorDir . '/dmstr/yii2-adminlte-asset'),
     'cebe\\markdown\\' => array($vendorDir . '/cebe/markdown'),
     'Webmozart\\Assert\\' => array($vendorDir . '/webmozart/assert/src'),

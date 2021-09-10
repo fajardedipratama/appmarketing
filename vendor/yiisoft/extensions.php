@@ -111,4 +111,13 @@ return array (
       '@yii/debug' => $vendorDir . '/yiisoft/yii2-debug/src',
     ),
   ),
+  '2amigos/yii2-chartjs-widget' => 
+  array (
+    'name' => '2amigos/yii2-chartjs-widget',
+    'version' => '2.1.3.0',
+    'alias' => 
+    array (
+      '@dosamigos/chartjs' => $vendorDir . '/2amigos/yii2-chartjs-widget/src',
+    ),
+  ),
 );

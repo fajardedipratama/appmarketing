@@ -6,7 +6,8 @@ use app\models\PurchaseOrder;
 use app\models\Karyawan;
 
 if($_GET['range']=='all'){
-    $kirim = PurchaseOrder::find()->where(['status'=>'Terkirim'])->orWhere(['status'=>'Terbayar-Selesai'])->sum('volume');
+    $company = PurchaseOrder::find()->select(['perusahaan'])->where(['status'=>['Terkirim','Terbayar-Selesai']])->distinct()->count();
+    $kirim = PurchaseOrder::find()->where(['status'=>['Terkirim','Terbayar-Selesai']])->sum('volume');
     $proses = PurchaseOrder::find()->where(['status'=>'Disetujui'])->sum('volume');
     $pending = PurchaseOrder::find()->where(['status'=>'Pending'])->sum('volume');
     $terbayar = PurchaseOrder::find()->where(['status'=>'Terbayar-Selesai'])->sum('volume');
@@ -16,7 +17,8 @@ if($_GET['range']=='all'){
     $set_awal = $data[0];
     $set_akhir = $data[1];
 
-    $kirim=PurchaseOrder::find()->where(['status'=>'Terkirim'])->orWhere(['status'=>'Terbayar-Selesai'])->andWhere(['between','tgl_kirim',$set_awal,$set_akhir])->sum('volume');
+    $company = PurchaseOrder::find()->select(['perusahaan'])->where(['status'=>['Terkirim','Terbayar-Selesai']])->andWhere(['between','tgl_kirim',$set_awal,$set_akhir])->distinct()->count();
+    $kirim=PurchaseOrder::find()->where(['status'=>['Terkirim','Terbayar-Selesai']])->andWhere(['between','tgl_kirim',$set_awal,$set_akhir])->sum('volume');
     $proses = PurchaseOrder::find()->where(['status'=>'Disetujui'])->andWhere(['between','tgl_kirim',$set_awal,$set_akhir])->sum('volume');
     $pending = PurchaseOrder::find()->where(['status'=>'Pending'])->andWhere(['between','tgl_kirim',$set_awal,$set_akhir])->sum('volume');
     $terbayar = PurchaseOrder::find()->where(['status'=>'Terbayar-Selesai'])->andWhere(['between','tgl_kirim',$set_awal,$set_akhir])->sum('volume');
@@ -49,7 +51,7 @@ $this->title = 'Hasil PO';
     <table class="table table-bordered">
       <tr>
         <th>PO Terkirim</th>
-        <td><?= $kirim/1000 ?> KL</td>
+        <td><?= $kirim/1000 ?> KL dari <?= $company ?> Perusahaan</td>
      	</tr>
       <tr>
         <th>PO Belum Terkirim</th>
@@ -78,14 +80,14 @@ $this->title = 'Hasil PO';
     <?php foreach($karyawan as $sales): ?>
 
       <?php if($_GET['range']=='all'): ?>
-        <?php $po_terkirim = PurchaseOrder::find()->where(['status'=>'Terkirim'])->orWhere(['status'=>'Terbayar-Selesai'])->andWhere(['sales'=>$sales['id']]); ?>
+        <?php $po_terkirim = PurchaseOrder::find()->where(['status'=>['Terkirim','Terbayar-Selesai']])->andWhere(['sales'=>$sales['id']]); ?>
         <?php $po_belumkirim = PurchaseOrder::find()->where(['status'=>'Disetujui'])->andWhere(['sales'=>$sales['id']])->sum('volume'); ?>
         <?php $po_pending = PurchaseOrder::find()->where(['status'=>'Pending'])->andWhere(['sales'=>$sales['id']])->sum('volume'); ?>
         <?php $po_ditolak = PurchaseOrder::find()->where(['status'=>'Ditolak'])->orWhere(['status'=>'Batal Kirim'])->andWhere(['sales'=>$sales['id']])->sum('volume'); ?>
         <?php $company = PurchaseOrder::find()->select(['perusahaan'])->where(['status'=>'Terkirim'])->orWhere(['status'=>'Terbayar-Selesai'])->andWhere(['sales'=>$sales['id']])->distinct()->count(); ?>
         <?php $po_eksternal = PurchaseOrder::find()->where(['status'=>['Terkirim','Terbayar-Selesai']])->andWhere(['eksternal'=>'yes'])->andWhere(['sales'=>$sales['id']]); ?>
       <?php else: ?>
-        <?php $po_terkirim = PurchaseOrder::find()->where(['status'=>'Terkirim'])->orWhere(['status'=>'Terbayar-Selesai'])->andWhere(['sales'=>$sales['id']])->andWhere(['between','tgl_kirim',$set_awal,$set_akhir]); ?>
+        <?php $po_terkirim = PurchaseOrder::find()->where(['status'=>['Terkirim','Terbayar-Selesai']])->andWhere(['sales'=>$sales['id']])->andWhere(['between','tgl_kirim',$set_awal,$set_akhir]); ?>
         <?php $po_belumkirim = PurchaseOrder::find()->where(['status'=>'Disetujui'])->andWhere(['sales'=>$sales['id']])->andWhere(['between','tgl_kirim',$set_awal,$set_akhir])->sum('volume'); ?>
         <?php $po_pending = PurchaseOrder::find()->where(['status'=>'Pending'])->andWhere(['sales'=>$sales['id']])->andWhere(['between','tgl_kirim',$set_awal,$set_akhir])->sum('volume'); ?>
         <?php $po_ditolak = PurchaseOrder::find()->where(['status'=>'Ditolak'])->orWhere(['status'=>'Batal Kirim'])->andWhere(['sales'=>$sales['id']])->andWhere(['between','tgl_kirim',$set_awal,$set_akhir])->sum('volume'); ?>

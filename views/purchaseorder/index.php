@@ -60,7 +60,7 @@ $this->title = 'Data PO';
               'value' => function($data){
                 return $data->tgl_kirim;
               },
-              'headerOptions'=>['style'=>'width:15%'],
+              'headerOptions'=>['style'=>'width:10%'],
               'format' => ['date','dd-MM-Y'],
               'filter'=> DatePicker::widget([
                 'model'=>$searchModel,'attribute'=>'tgl_kirim','clientOptions'=>[
@@ -68,12 +68,25 @@ $this->title = 'Data PO';
                 ],
               ])
             ],
+            // [
+            //   'attribute'=>'tgl_po',
+            //   'value' => function($data){
+            //     return $data->tgl_po;
+            //   },
+            //   'headerOptions'=>['style'=>'width:15%'],
+            //   'format' => ['date','dd-MM-Y'],
+            //   'filter'=> DatePicker::widget([
+            //     'model'=>$searchModel,'attribute'=>'tgl_po','clientOptions'=>[
+            //       'autoclose'=>true, 'format' => 'dd-mm-yyyy','orientation'=>'bottom'
+            //     ],
+            //   ])
+            // ],
             [
               'attribute'=>'jatuh_tempo',
               'value' => function($data){
                 return $data->jatuh_tempo;
               },
-              'headerOptions'=>['style'=>'width:15%'],
+              'headerOptions'=>['style'=>'width:10%'],
               'format' => ['date','dd-MM-Y'],
               'filter'=> DatePicker::widget([
                 'model'=>$searchModel,'attribute'=>'jatuh_tempo','clientOptions'=>[
@@ -81,10 +94,10 @@ $this->title = 'Data PO';
                 ],
               ])
             ],
-            // [
-            //   'attribute'=>'termin',
-            //   'filter'=> ['Cash On Delivery'=>'Cash On Delivery','Cash Before Delivery'=>'Cash Before Delivery']
-            // ],
+            [
+              'attribute'=>'termin',
+              'filter'=> ['Cash On Delivery'=>'Cash On Delivery','Cash Before Delivery'=>'Cash Before Delivery']
+            ],
             [
               'attribute'=>'volume',
               'headerOptions'=>['style'=>'width:5%'],
