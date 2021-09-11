@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 11 Sep 2021 pada 07.43
+-- Waktu pembuatan: 11 Sep 2021 pada 07.54
 -- Versi server: 10.4.17-MariaDB
 -- Versi PHP: 8.0.0
 
@@ -26288,7 +26288,7 @@ INSERT INTO `id_purchase_order` (`id`, `perusahaan`, `sales`, `no_po`, `tgl_po`,
 (239, 769, 10, '001/PIPI/PO/VIII/2021', '2021-08-24', '2021-08-25', 'Dusun Melik RT 001 RW 004 Desa, Rayud, Parijatah Kulon, Kec. Srono, Kabupaten Banyuwangi, Jawa Timur 68471', 2, 'Dusun Melik RT 001 RW 004 Desa, Rayud, Parijatah Kulon, Kec. Srono, Kabupaten Banyuwangi, Jawa Timur 68471', 'BAPAK MUFID', '082330066976', '', '', 5000, 'Tempo 30 Hari', 8200, 200, 'PPN', 'Transfer', 0, 'Terkirim', 'MINTA DIKIRIM PAGI JAM 09.00 WIB SUDAH SAMPAI TEMPAT', '', 'BAPAK MUFID', NULL, NULL, '2021-09-24', NULL, NULL, 3),
 (240, 812, 10, '112/PO/RTL/VIII/2021', '2021-08-24', '2021-08-26', 'Jl. Tambak Langon No.10 Surabaya', 29, 'Jl. Tambak Langon No.10 Surabaya', '-', '-', '-', '-', 5000, 'Tempo 30 Hari', 8500, 700, 'PPN', 'Transfer', 0, 'Terkirim', 'sampai lokasi pagi & bawa surat timbang', '', 'Sutiyono 081331042109', 'yes', NULL, '2021-09-25', NULL, NULL, 4),
 (241, 622, 17, '0991/KTM-P/VIII/21', '2021-08-24', '2021-08-25', 'Jl.KIG Raya Barat Kav.G-2 Gresik ', 8, 'Jl.KIG Raya Barat Kav.G-2 Gresik', 'IBU VINA ', '081330254557', '', '', 5000, 'Tempo 14 Hari', 8000, 400, 'PPN', 'Transfer', 0, 'Terkirim', '', '', '', 'yes', NULL, '2021-09-08', NULL, NULL, 3),
-(242, 5217, 10, 'PO2108011', '2021-08-25', '2021-08-27', 'Ruko Section One A - 15 Jl. Rungkut Industri Raya Kec. Tenggilis Mejoyo Surabaya', 12, 'Desa Beru, Canggah, Sarirejo, Kab.Lamongan Jawa Timur', '-', '-', '-', '-', 5000, 'Tempo 14 Hari', 8600, 800, 'PPN', 'Transfer', 0, 'Terkirim', '', '', '', 'yes', NULL, '2021-09-10', NULL, NULL, 4),
+(242, 5217, 10, 'PO2108011', '2021-08-25', '2021-08-27', 'Ruko Section One A - 15 Jl. Rungkut Industri Raya Kec. Tenggilis Mejoyo Surabaya', 12, 'Desa Beru, Canggah, Sarirejo, Kab.Lamongan Jawa Timur', '-', '-', '-', '-', 5000, 'Tempo 14 Hari', 8600, 800, 'PPN', 'Transfer', 0, 'Terbayar-Selesai', '', '', '', 'yes', NULL, '2021-09-10', '2021-09-10', 14, 4),
 (243, 6553, 1, 'PO-SC/WDK-CKMT/VIII-2021/19', '2021-08-25', '2021-08-27', 'RUKO GRAND KETINTANG JL. KETINTANG BARU NO. 14E SURABAYA', 17, 'Jl. Tirto Husada RT.01 RW.01 Kec. Sooko Kab. Mojokerto', '-', '-', '', '-', 5000, 'Cash On Delivery', 7700, 300, 'PPN', 'Transfer', 0, 'Terbayar-Selesai', '', '', 'Irfan 0821-4110-2688 / Khoirul 082140813277', 'yes', NULL, '2021-08-27', '2021-09-02', 6, 5),
 (244, 184, 10, 'PO/PJSP/08/21/025', '2021-08-27', '2021-08-28', 'JL.JAKSA AGUNG SUPRAPTO NO. 192 BOJONEGORO', 6, 'JL.JAKSA AGUNG SUPRAPTO NO. 192 BOJONEGORO', 'BU AIRIN', '081217272302', '', '', 5000, 'Cash On Delivery', 7600, 100, 'PPN', 'Transfer', 0, 'Terbayar-Selesai', 'MINTA DIKIRIM JAM HARI KERJA', '', '', NULL, NULL, '2021-08-28', '2021-09-01', 4, 2),
 (245, 419, 10, 'PO/CORMIX/17/VIII/2021', '2021-08-27', '2021-08-28', 'JL.RAYA MAOSPATI - MAGETAN KM.5,5 SUKOMORO,MAGETAN', 15, 'JL.RAYA MAOSPATI - MAGETAN KM.5,5 SUKOMORO,MAGETAN', 'BU.DITA', '081363619093', '', '', 8000, 'Cash On Delivery', 7500, NULL, 'PPN', 'Transfer', 0, 'Terbayar-Selesai', 'MINTA DIKIRIM JAM HARI KERJA', '', 'BAPAK MAFUL', NULL, NULL, '2021-08-28', '2021-08-29', 1, 5),
@@ -26632,7 +26632,8 @@ INSERT INTO `id_purchase_order_paid` (`id`, `purchase_order_id`, `paid_date`, `a
 (266, 249, '2021-09-01', 39000000, 'BCA 0393039300 (PT Berdikari Jaya Bersama)', ''),
 (267, 259, '2021-09-02', 36000000, 'BCA 0566515151 (Godwin)', ''),
 (268, 258, '2021-09-06', 39000000, 'Mandiri 1430014465569 (PT Berdikari Jaya Bersama)', ''),
-(269, 267, '2021-09-09', 42997100, 'Mandiri 1430014465569 (PT Berdikari Jaya Bersama)', '');
+(269, 267, '2021-09-09', 42997100, 'Mandiri 1430014465569 (PT Berdikari Jaya Bersama)', ''),
+(270, 242, '2021-09-10', 43000000, 'Mandiri 1430014465569 (PT Berdikari Jaya Bersama)', '');
 
 -- --------------------------------------------------------
 
@@ -26867,7 +26868,7 @@ CREATE TABLE `id_user` (
 --
 
 INSERT INTO `id_user` (`id`, `profilname`, `username`, `password`, `last_login`, `authKey`, `accessToken`, `type`, `blocked`) VALUES
-(1, '5', 'dedy', '$2y$13$.d2C0.bHMWLqkIT0k6Dd3.7xNwLBUey3mvzOwx/v.6fiDSOEzn/2e', '2021-09-11 10:53:00', 'd5fdbe5b16111739a53f6bedc2c29e5c', 'd5fdbe5b16111739a53f6bedc2c29e5c', 'Administrator', ''),
+(1, '5', 'dedy', '$2y$13$.d2C0.bHMWLqkIT0k6Dd3.7xNwLBUey3mvzOwx/v.6fiDSOEzn/2e', '2021-09-11 12:53:42', 'd5fdbe5b16111739a53f6bedc2c29e5c', 'd5fdbe5b16111739a53f6bedc2c29e5c', 'Administrator', ''),
 (2, '10', 'sugeng', '$2y$13$zF4RuFW743TDuFQwqzXzaOa18a2l21Q8WGPevoGynoc9FeWl361O2', '2021-09-11 09:06:08', '9e28894760bdf11cb2bef7a32c020e3b', '9e28894760bdf11cb2bef7a32c020e3b', 'Marketing', ''),
 (7, '1', 'alisiachintya', '$2y$13$SMiUO/xBwZvGKMEKtfXe7.wG3qXPcUjCCkKcxHFSxfP11OzriM.s2', '2021-09-11 08:46:59', '60532c4e119ce506036cf74f655259dd', '60532c4e119ce506036cf74f655259dd', 'Marketing', ''),
 (9, '12', 'risza', '$2y$13$tD2k5kTBFRwv0DAfWO0LjO1o2gju3lAwTsctLGUDZ0G//L0u8xNa2', '2021-09-10 08:45:52', '521f6ab426fbb7296a695ab243412094', '521f6ab426fbb7296a695ab243412094', 'Marketing', ''),
@@ -27125,7 +27126,7 @@ ALTER TABLE `id_purchase_order_file`
 -- AUTO_INCREMENT untuk tabel `id_purchase_order_paid`
 --
 ALTER TABLE `id_purchase_order_paid`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=270;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=271;
 
 --
 -- AUTO_INCREMENT untuk tabel `id_salary_additional`
