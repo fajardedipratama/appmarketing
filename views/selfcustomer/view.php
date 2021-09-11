@@ -17,7 +17,7 @@ $offers = Offer::find()->where(['perusahaan'=>$model->id])->orderBy(['id'=>SORT_
 ?>
 <div class="customer-view">
     <div class="row">
-        <div class="col-sm-7">
+        <div class="col-sm-9">
             <h2>
               <?php if($model->verified === 'yes'): ?>
                 <i class="fa fa-fw fa-check-circle" title="Terverifikasi"></i>
@@ -36,9 +36,9 @@ $offers = Offer::find()->where(['perusahaan'=>$model->id])->orderBy(['id'=>SORT_
             <h5><?= $model->city->kota ?> - Exp. - </h5>
           <?php endif; ?>
         </div>
-        <div class="col-sm-5">
+        <div class="col-sm-3">
             <p>
-              <?php if($model->long_expired != 'yes' && $model->verified === 'yes' && $model->expired != NULL): ?>
+              <!-- <?php if($model->long_expired != 'yes' && $model->verified === 'yes' && $model->expired != NULL): ?>
                 <?php if(strtotime($model->expired) >= strtotime(date('Y-m-d'))): ?>
                 <?= Html::a('<i class="fa fa-fw fa-refresh"></i> Perpanjang', ['longexpired', 'id' => $model->id], ['class' => 'btn btn-primary',
                   'data' => [
@@ -47,7 +47,7 @@ $offers = Offer::find()->where(['perusahaan'=>$model->id])->orderBy(['id'=>SORT_
                   ],
                 ]) ?>
                 <?php endif; ?>
-              <?php endif; ?>
+              <?php endif; ?> -->
 
               <?php if(strtotime($model->expired) >= strtotime(date('Y-m-d')) || $model->expired == NULL): ?>
                 <?= Html::a('<i class="fa fa-fw fa-pencil"></i> Ubah', ['update', 'id' => $model->id], ['class' => 'btn btn-warning']) ?>
@@ -61,10 +61,10 @@ $offers = Offer::find()->where(['perusahaan'=>$model->id])->orderBy(['id'=>SORT_
                 <button class="btn btn-danger disabled"><i class="fa fa-fw fa-plus-square"></i> Progress</button>
               <?php endif; ?>
 
-              <?php if(strtotime('+14 days', strtotime($model->expired)) <= strtotime(date('Y-m-d')) && $model->expired != NULL): ?>
+              <!-- <?php if(strtotime('+14 days', strtotime($model->expired)) <= strtotime(date('Y-m-d')) && $model->expired != NULL): ?>
                 <?= Html::a('<i class="fa fa-fw fa-pencil"></i> Ubah', ['update', 'id' => $model->id], ['class' => 'btn btn-warning']) ?>
                 <button class="btn btn-success" data-toggle="modal" data-target="#daily-report"><i class="fa fa-fw fa-check-square"></i> Aktifkan</button>
-              <?php endif; ?>
+              <?php endif; ?> -->
             </p>
         </div>
     </div>

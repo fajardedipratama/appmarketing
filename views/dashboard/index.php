@@ -66,6 +66,15 @@ $this->title = 'Dashboard';
       $jan = PurchaseOrder::find()->where(['between','tgl_kirim','2020-12-28','2021-01-27'])->andWhere(['status'=>['Terkirim','Terbayar-Selesai']])->sum('volume');
       $feb = PurchaseOrder::find()->where(['between','tgl_kirim','2021-01-28','2021-02-27'])->andWhere(['status'=>['Terkirim','Terbayar-Selesai']])->sum('volume');
       $mar = PurchaseOrder::find()->where(['between','tgl_kirim','2021-02-28','2021-03-27'])->andWhere(['status'=>['Terkirim','Terbayar-Selesai']])->sum('volume');
+      $apr = PurchaseOrder::find()->where(['between','tgl_kirim','2021-03-28','2021-04-27'])->andWhere(['status'=>['Terkirim','Terbayar-Selesai']])->sum('volume');
+      $may = PurchaseOrder::find()->where(['between','tgl_kirim','2021-04-28','2021-05-27'])->andWhere(['status'=>['Terkirim','Terbayar-Selesai']])->sum('volume');
+      $jun = PurchaseOrder::find()->where(['between','tgl_kirim','2021-05-28','2021-06-27'])->andWhere(['status'=>['Terkirim','Terbayar-Selesai']])->sum('volume');
+      $jul = PurchaseOrder::find()->where(['between','tgl_kirim','2021-06-28','2021-07-27'])->andWhere(['status'=>['Terkirim','Terbayar-Selesai']])->sum('volume');
+      $aug = PurchaseOrder::find()->where(['between','tgl_kirim','2021-07-28','2021-08-27'])->andWhere(['status'=>['Terkirim','Terbayar-Selesai']])->sum('volume');
+      $sep = PurchaseOrder::find()->where(['between','tgl_kirim','2021-08-28','2021-09-27'])->andWhere(['status'=>['Terkirim','Terbayar-Selesai']])->sum('volume');
+      $oct = PurchaseOrder::find()->where(['between','tgl_kirim','2021-09-28','2021-10-27'])->andWhere(['status'=>['Terkirim','Terbayar-Selesai']])->sum('volume');
+      $nov = PurchaseOrder::find()->where(['between','tgl_kirim','2021-10-28','2021-11-27'])->andWhere(['status'=>['Terkirim','Terbayar-Selesai']])->sum('volume');
+      $dec = PurchaseOrder::find()->where(['between','tgl_kirim','2021-11-28','2021-12-27'])->andWhere(['status'=>['Terkirim','Terbayar-Selesai']])->sum('volume');
     ?>
     <?= ChartJs::widget([
         'type' => 'line',
@@ -84,7 +93,7 @@ $this->title = 'Dashboard';
                     'pointBorderColor' => "#fff",
                     'pointHoverBackgroundColor' => "#fff",
                     'pointHoverBorderColor' => "rgba(179,181,198,1)",
-                    'data' => [$jan/1000,$feb/1000,$mar/1000,80,90,100,110,120,130,140,150,160]
+                    'data' => [$jan/1000,$feb/1000,$mar/1000,$apr/1000,$may/1000,$jun/1000,$jul/1000,$aug/1000,$sep/1000,$oct/1000,$nov/1000,$dec/1000]
                 ],
             ]
         ]
@@ -95,7 +104,11 @@ $this->title = 'Dashboard';
 
   <div class="col-sm-3">
     <div class="box bg-green"><div class="box-body">
-      <h2 style="text-align:center;font-weight: bold;" class="text-white"><i>I NEVER <br> DREAMED <br> ABOUT <br> SUCCESS,<br> I WORK <br>FOR IT</i></h2>
+      <h4 style="text-align:center;font-weight: bold;" class="text-white">
+        <i>"I NEVER WAITED RESULTS,<br> I WORK FOR IT"</i>
+        <br><br><br>
+        <i>"SAYA TIDAK PERNAH MENUNGGU HASIL,<br> SAYA BEKERJA UNTUK ITU"</i>
+      </h4><br>
       <h5 style="text-align:center;font-weight: bold;" class="text-white"><i>- NaVi Team -</i></h5>
     </div></div>
   </div>
