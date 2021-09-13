@@ -104,7 +104,10 @@ $this->title = 'Hasil PO';
           }
           ?>
         </td>
-        <td><?= $po_terkirim->count().'x PO dari '.$company.' Perusahaan, Total '.($po_terkirim->sum('volume')/1000).' KL'.' (bantuan '.($po_eksternal->sum('volume')/1000).' KL)'; ?></td>
+        <td>
+          <!-- <?= $po_terkirim->count().'x PO dari '.$company.' Perusahaan, Total '.($po_terkirim->sum('volume')/1000).' KL'.' (bantuan '.($po_eksternal->sum('volume')/1000).' KL)'; ?> -->
+          <?= $po_terkirim->count().'x PO dari '.$company.' Perusahaan, Total '.($po_terkirim->sum('volume')/1000).' KL'; ?>
+        </td>
         <td><?= ($po_belumkirim/1000).' KL'; ?></td>
         <td><?= ($po_pending/1000).' KL'; ?></td>
         <td><?= ($po_ditolak/1000).' KL'; ?></td>

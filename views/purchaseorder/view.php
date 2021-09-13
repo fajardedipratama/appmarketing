@@ -40,9 +40,9 @@ $this->title = 'PURCHASE ORDER';
 <div class="row">
     <div class="col-sm-7">
         <h1>
-            <?php if($model->eksternal): ?>
+            <!-- <?php if($model->eksternal): ?>
                 <i class="fa fa-fw fa-user-secret" title="Titipan"></i>
-            <?php endif; ?>
+            <?php endif; ?> -->
             <b><?= Html::encode($this->title) ?></b>
         </h1>
         <h4><?= $model->no_po ?></h4>
@@ -198,6 +198,7 @@ $this->title = 'PURCHASE ORDER';
             ],
             'status',
             'alasan_tolak',
+            'eksternal',
         ],
     ]) ?>
     </div>
@@ -269,9 +270,12 @@ $this->title = 'PURCHASE ORDER';
                 <td><?= $show_files['alamat'] ?></td>
                 <td><?= $show_files['berkas'] ?></td>
                 <td><?= $show_files['kirim_by'] ?></td>
-                <td>
-                    <?= Html::a('<i class="fa fa-fw fa-pencil"></i>', ['purchaseorderfile/update', 'id' => $show_files['id']],['target'=>'_blank']) ?>
-                   <?= Html::a('<i class="fa fa-fw fa-print"></i>', ['purchaseorderfile/view', 'id' => $show_files['id']],['target'=>'_blank']) ?>
+                <td width="10%">
+                <?php if(Yii::$app->user->identity->type != 'Marketing'): ?>
+                   <?= Html::a('<i class="fa fa-fw fa-print"></i>', ['purchaseorderfile/view', 'id' => $show_files['id']],['target'=>'_blank']) ?> 
+                   <?= Html::a('<i class="fa fa-fw fa-pencil"></i>', ['purchaseorderfile/update', 'id' => $show_files['id']],['target'=>'_blank']) ?>
+                   <?= Html::a('<i class="fa fa-fw fa-trash"></i>', ['purchaseorderfile/delete', 'id' => $show_files['id']],['data' => ['confirm' => 'Hapus data ini ?','method' => 'post']]) ?>
+                <?php endif; ?>
                 </td>
             </tr>
         <?php endforeach ?>

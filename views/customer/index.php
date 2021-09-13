@@ -38,7 +38,7 @@ $this->title = 'Data Perusahaan';
                 'headerOptions'=>['style'=>'width:6%'],
                 'format'=>'raw',
                 'value'=>function($model){
-                    $query = PurchaseOrder::find()->where(['perusahaan'=>$model->id])->andWhere(['!=','status','Ditolak'])->andWhere(['!=','status','Pending'])->count();
+                    $query = PurchaseOrder::find()->where(['perusahaan'=>$model->id])->andWhere(['status'=>['Terkirim','Terbayar-Selesai']])->count();
                     if($query>0){
                         if($model->verified == 'yes'){
                             return '<i class="fa fa-fw fa-check" title="Disetujui"></i> <i class="fa fa-fw fa-lock" title="PO"></i>';
