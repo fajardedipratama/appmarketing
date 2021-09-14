@@ -10,7 +10,7 @@ use yii\widgets\DetailView;
 /* @var $model app\models\SalaryCalculate */
 $dept_id = $_GET['dept'];
 
-$karyawan = Karyawan::find()->where(['departemen'=>$dept_id,'status_aktif'=>'Aktif'])->all();
+$karyawan = Karyawan::find()->where(['departemen'=>$dept_id])->andWhere(['<=','tanggal_masuk',$model->end_date])->all();
 
 $this->title = "Preview";
 \yii\web\YiiAsset::register($this);
@@ -21,7 +21,7 @@ $this->title = "Preview";
         <?= Html::a('<i class="glyphicon glyphicon-chevron-left"></i>', ['view','id'=>$model->id], ['class' => 'btn btn-success']) ?>
         <?= Html::encode($this->title) ?>
     </h1>
-    <h5>Periode <?= $model->bulan.'-'.$model->tahun ?></h5>
+    <h5>Gaji Manajemen - Periode <?= $model->bulan.'/'.$model->tahun ?></h5>
 
     <div class="box"><div class="box-body"><div class="table-responsive">
     <table class="table table-bordered">
@@ -47,6 +47,7 @@ $this->title = "Preview";
             $value_absen = 0;
         }
     ?>
+    <?php if($show['tgl_resign']==NULL || $show['tgl_resign']>=$model->begin_absen): ?>
         <tr>
             <td><?= $i++ ?></td>
             <td><?= $show['nama'] ?></td>
@@ -56,6 +57,7 @@ $this->title = "Preview";
             <td><?= Yii::$app->formatter->asCurrency($gapok['nilai']-$value_absen) ?></td>
             <td><?= $show['no_rekening'].' '.$show['nama_rekening'] ?></td>
         </tr>
+    <?php endif; ?>
     <?php endforeach ?>
     </table>
     </div></div></div>

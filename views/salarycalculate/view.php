@@ -8,7 +8,7 @@ use yii\widgets\DetailView;
 
 $departemen = Departemen::find()->all();
 
-$this->title = "Detail Gaji";
+$this->title = "Detail";
 \yii\web\YiiAsset::register($this);
 ?>
 <div class="salary-calculate-view">
@@ -20,9 +20,24 @@ $this->title = "Detail Gaji";
     <h5>Periode <?= $model->bulan.'-'.$model->tahun ?></h5>
 
     <div class="box"><div class="box-body"><div class="table-responsive">
+    <h4>Laporan Absensi</h4>
     <table class="table table-bordered">
         <tr>
-            <th>Departemen</th>
+            <th width="75%">Departemen</th>
+            <th>Aksi</th>
+        </tr>
+        <tr>
+            <td>All Department</td>
+            <td>
+                <?= Html::a('<i class="fa fa-fw fa-eye"></i>', ['previewabsen','period'=>$model->id]) ?>
+                <i class="fa fa-fw fa-file-excel-o"></i>
+            </td>
+        </tr>
+    </table>
+    <h4>Laporan Gaji</h4>
+    <table class="table table-bordered">
+        <tr>
+            <th width="75%">Departemen</th>
             <th>Aksi</th>
         </tr>
     <?php foreach($departemen as $show): ?>

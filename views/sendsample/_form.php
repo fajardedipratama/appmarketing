@@ -23,7 +23,7 @@ use dosamigos\datepicker\DatePicker;
         <div class="col-sm-4">
     <?php if(Yii::$app->user->identity->type == 'Marketing'): ?>
             <?= $form->field($model, 'perusahaan')->widget(Select2::className(),[
-            'data'=>ArrayHelper::map(Customer::find()->where(['sales'=>Yii::$app->user->identity->profilname])->orderBy(['perusahaan'=>SORT_ASC])->all(),'id',
+            'data'=>ArrayHelper::map(Customer::find()->where(['sales'=>Yii::$app->user->identity->profilname])->andWhere(['>=','expired',date('Y-m-d')])->orderBy(['perusahaan'=>SORT_ASC])->all(),'id',
                 function($model){
                     return $model['perusahaan'];
                 }

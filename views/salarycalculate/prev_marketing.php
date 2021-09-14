@@ -60,7 +60,7 @@ $this->title = "Preview";
         <?= Html::a('<i class="glyphicon glyphicon-chevron-left"></i>', ['view','id'=>$model->id], ['class' => 'btn btn-success']) ?>
         <?= Html::encode($this->title) ?>
     </h1>
-    <h5>Periode <?= $model->bulan.'-'.$model->tahun ?></h5>
+    <h5>Gaji Marketing - Periode <?= $model->bulan.'/'.$model->tahun ?></h5>
 
     <div class="box"><div class="box-body"><div class="table-responsive">
     <table class="table table-bordered text-center" style="white-space: nowrap;">

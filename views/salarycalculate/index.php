@@ -6,7 +6,7 @@ use yii\grid\GridView;
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Kalkulasi Gaji';
+$this->title = 'Laporan';
 
 ?>
 <div class="salary-calculate-index">

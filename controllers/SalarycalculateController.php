@@ -93,6 +93,13 @@ class SalarycalculateController extends Controller
             ]);
         }
     }
+    public function actionPreviewabsen($period)
+    {
+        
+        return $this->render('prev_absensi', [
+            'model' => $this->findModel($period),
+        ]);
+    }
 
     /**
      * Creates a new SalaryCalculate model.

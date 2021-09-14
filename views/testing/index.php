@@ -18,18 +18,15 @@ $this->params['breadcrumbs'][] = $this->title;
     </p>
 
 
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+<?php
+    $start_date = '2015-06-01';
+    $end_date = '2015-06-30';
 
-            'id',
-            'data_a',
-            'data_b',
-
-            ['class' => 'yii\grid\ActionColumn'],
-        ],
-    ]); ?>
+    while (strtotime($start_date) <= strtotime($end_date)) {
+        echo $start_date.'<br>';
+        $start_date = date ("Y-m-d", strtotime("+1 days", strtotime($start_date)));
+    }
+?>
 
 
 </div>
