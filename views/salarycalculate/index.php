@@ -32,13 +32,13 @@ $this->title = 'Laporan';
             ],
             'tahun',
             [
-                'header'=>'Tanggal PO',
+                'header'=>'Cutoff',
                 'value'=>function($data){
                 return date('d/m/Y',strtotime($data->begin_date)).' - '.date('d/m/Y',strtotime($data->end_date));
                 }
             ],
             [
-                'header'=>'Tanggal Absensi',
+                'header'=>'Laporan Absensi',
                 'value'=>function($data){
                     if($data->begin_absen != NULL){
                 return date('d/m/Y',strtotime($data->begin_absen)).' - '.date('d/m/Y',strtotime($data->end_absen));

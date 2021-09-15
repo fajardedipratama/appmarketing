@@ -2,33 +2,21 @@
 use app\models\Karyawan;
 use app\models\Jobtitle;
 use app\models\AttendanceData;
-use yii\helpers\Html;
-use yii\widgets\DetailView;
-
-/* @var $this yii\web\View */
-/* @var $model app\models\SalaryCalculate */
 
 $karyawan = Karyawan::find()->where(['<=','tanggal_masuk',$model->end_absen])->orderBy('nama')->all();
 
-$this->title = "Preview";
-\yii\web\YiiAsset::register($this);
+header("Content-type: application/vnd-ms-excel");
+header("Content-Disposition: attachment; filename=Absensi.xls");
+
 ?>
-<div class="salary-calculate-view">
 
-    <div class="row">
-        <div class="col-sm-10">
-            <h1>
-                <?= Html::a('<i class="glyphicon glyphicon-chevron-left"></i>', ['view','id'=>$model->id], ['class' => 'btn btn-success']) ?>
-                <?= Html::encode($this->title) ?>
-            </h1>
-            <h5>Absensi - Periode <?= $model->bulan.'/'.$model->tahun ?></h5>
-        </div>
-        <div class="col-sm-2">
-          <?= Html::a('<i class="fa fa-fw fa-file-excel-o"></i> Export', ['exportabsensi','period'=>$model->id], ['class' => 'btn btn-success']) ?>  
-        </div>
-    </div>
-
-    <div class="box"><div class="box-body"><div class="table-responsive">
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Export Absensi</title>
+</head>
+<body>
     <table class="table table-bordered">
     <!-- header -->
         <tr>
@@ -51,7 +39,7 @@ $this->title = "Preview";
             <?php foreach($karyawan as $show): ?>
             <?php if($show['tgl_resign']==NULL || $show['tgl_resign']>=$model->begin_absen): ?>
                 <?php $absen=AttendanceData::find()->where(['karyawan_id'=>$show['id']])->andWhere(['work_date'=>$begin])->one(); ?>
-                <td title="<?= $show['nama_pendek'].'/'.$begin ?>" style="background-color:
+                <td style="background-color:
                  <?php 
                     if(date('l',strtotime($begin)) == 'Sunday'){
                         echo 'grey';
@@ -70,6 +58,5 @@ $this->title = "Preview";
         ?>
     <!-- value -->
     </table>
-    </div></div></div>
-
-</div>
+</body>
+</html>

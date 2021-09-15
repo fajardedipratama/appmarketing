@@ -100,6 +100,13 @@ class SalarycalculateController extends Controller
             'model' => $this->findModel($period),
         ]);
     }
+    public function actionExportabsensi($period)
+    {
+        
+        return $this->renderPartial('export_absensi', [
+            'model' => $this->findModel($period),
+        ]);
+    }
 
     /**
      * Creates a new SalaryCalculate model.

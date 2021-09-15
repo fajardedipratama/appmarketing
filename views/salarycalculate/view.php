@@ -30,7 +30,7 @@ $this->title = "Detail";
             <td>All Department</td>
             <td>
                 <?= Html::a('<i class="fa fa-fw fa-eye"></i>', ['previewabsen','period'=>$model->id]) ?>
-                <i class="fa fa-fw fa-file-excel-o"></i>
+                <?= Html::a('<i class="fa fa-fw fa-file-excel-o"></i>', ['exportabsensi','period'=>$model->id]) ?>
             </td>
         </tr>
     </table>
