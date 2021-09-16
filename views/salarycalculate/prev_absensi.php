@@ -2,6 +2,7 @@
 use app\models\Karyawan;
 use app\models\Jobtitle;
 use app\models\AttendanceData;
+use app\models\Holiday;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
@@ -10,7 +11,7 @@ use yii\widgets\DetailView;
 
 $karyawan = Karyawan::find()->where(['<=','tanggal_masuk',$model->end_absen])->orderBy('nama')->all();
 
-$this->title = "Preview";
+$this->title = "Laporan";
 \yii\web\YiiAsset::register($this);
 ?>
 <div class="salary-calculate-view">
@@ -50,11 +51,16 @@ $this->title = "Preview";
             <td><?= date('d/m/Y',strtotime($begin)) ?></td>
             <?php foreach($karyawan as $show): ?>
             <?php if($show['tgl_resign']==NULL || $show['tgl_resign']>=$model->begin_absen): ?>
-                <?php $absen=AttendanceData::find()->where(['karyawan_id'=>$show['id']])->andWhere(['work_date'=>$begin])->one(); ?>
+                <?php 
+                    $absen=AttendanceData::find()->where(['karyawan_id'=>$show['id']])->andWhere(['work_date'=>$begin])->one();
+                    $holiday=Holiday::find()->where(['tanggal'=>$begin])->one();
+                ?>
                 <td title="<?= $show['nama_pendek'].'/'.$begin ?>" style="background-color:
                  <?php 
                     if(date('l',strtotime($begin)) == 'Sunday'){
-                        echo 'grey';
+                        echo 'red';
+                    }elseif ($holiday) {
+                        echo 'red';
                     } 
                 ?>;">
                     <?php if($absen): ?>

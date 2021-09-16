@@ -82,6 +82,9 @@ use dosamigos\datepicker\DatePicker;
         ])?>
      </div>
      <div class="col-sm-4">
+        <?= $form->field($model, 'long_expired')->dropDownList(['yes'=>'yes'],['prompt'=>'--Perpanjang--']) ?>
+     </div>
+     <div class="col-sm-4">
         <?= $form->field($model, 'verified')->dropDownList(['yes'=>'yes','no'=>'no'],['prompt'=>'--Verifikasi--']) ?>
      </div>
      <div class="col-sm-4">
