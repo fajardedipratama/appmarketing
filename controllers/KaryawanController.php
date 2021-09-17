@@ -5,6 +5,7 @@ namespace app\controllers;
 use Yii;
 use app\models\Karyawan;
 use app\models\Departemen;
+use app\models\SalaryCalculate;
 use app\models\search\KaryawanSearch;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
@@ -77,8 +78,10 @@ class KaryawanController extends Controller
      */
     public function actionView($id)
     {
+
         return $this->render('view', [
             'model' => $this->findModel($id),
+            'period' => SalaryCalculate::find()->where(['bulan'=>date('m')])->one(),
         ]);
     }
 

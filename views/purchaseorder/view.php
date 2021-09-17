@@ -40,9 +40,9 @@ $this->title = 'PURCHASE ORDER';
 <div class="row">
     <div class="col-sm-7">
         <h1>
-            <!-- <?php if($model->eksternal): ?>
+            <?php if($model->eksternal): ?>
                 <i class="fa fa-fw fa-user-secret" title="Titipan"></i>
-            <?php endif; ?> -->
+            <?php endif; ?>
             <b><?= Html::encode($this->title) ?></b>
         </h1>
         <h4><?= $model->no_po ?></h4>

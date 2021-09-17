@@ -1,5 +1,6 @@
 <?php
-
+use app\models\AttendanceData;
+use app\models\Holiday;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
@@ -68,8 +69,15 @@ $this->title = 'Detail '.$model->nama;
           </div>
         </div>
 
-        <div class="col-md-8">
-            <div class="box box-success"><div class="box-body box-profile">
+  <div class="col-md-8">
+      <div class="nav-tabs-custom tab-success">
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#detail" data-toggle="tab">Detail</a></li>
+            <li><a href="#absensi" data-toggle="tab">Absensi</a></li>
+        </ul>
+
+        <div class="tab-content">
+          <div class="active tab-pane" id="detail">
             <ul class="list-group">
               <li class="list-group-item">
                 <b>Status</b> <font class="pull-right"><?= $model->status_aktif ?></font>
@@ -109,8 +117,49 @@ $this->title = 'Detail '.$model->nama;
                 <b>Rekening</b> <font class="pull-right"><?= $model->no_rekening.' ('.$model->bank.'. '.$model->nama_rekening.')' ?></font>
               </li>
             </ul>
-            </div></div>
+          </div>
+
+          <div class="tab-pane" id="absensi">
+            <div class="table-responsive"><table class="table table-bordered">
+              <tr>
+                <th width="20%">Tanggal</th>
+                <th width="20%">Absensi</th>
+                <th width="60%">Catatan</th>
+              </tr>
+          <?php 
+            $begin = date('Y-m-d',strtotime($period->begin_date));
+            $end = date('Y-m-d',strtotime($period->end_date));
+            while (strtotime($begin) <= strtotime($end)) : 
+          ?>
+              <tr>
+                <td><?= date('d/m/Y',strtotime($begin)) ?></td>
+          <?php 
+            $absen=AttendanceData::find()->where(['karyawan_id'=>$model->id])->andWhere(['work_date'=>$begin])->one();
+            $holiday=Holiday::find()->where(['tanggal'=>$begin])->one();
+          ?>
+                <td style="background-color:
+                  <?php 
+                    if(date('l',strtotime($begin)) == 'Sunday'){
+                        echo 'red';
+                    }elseif ($holiday) {
+                        echo 'red';
+                    } 
+                  ?>;">
+                  <?php if($absen): ?>
+                    <?= date('H:i',strtotime($absen->real_in)).' - '.date('H:i',strtotime($absen->real_out)) ?>
+                  <?php endif; ?>
+                </td>
+              </tr>
+          <?php
+            $begin = date ("Y-m-d", strtotime("+1 days", strtotime($begin))); 
+            endwhile; 
+          ?>
+            </table></div>
+          </div>
+
         </div>
+      </div>
+  </div>
 
     </div>
     </section>
