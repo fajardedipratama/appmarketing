@@ -55,7 +55,7 @@ class Karyawan extends \yii\db\ActiveRecord
             [['badge', 'posisi', 'departemen'], 'integer'],
             [['nama','nama_pendek', 'gender', 'tempat_lahir', 'agama', 'no_hp', 'no_ktp', 'pendidikan', 'status_kawin', 'bank','no_rekening',  'nama_rekening', 'status_aktif', 'tipe_gaji'], 'string', 'max' => 100],
             [['alamat_ktp', 'alamat_rumah','alasan_resign'], 'string', 'max' => 1000],
-             [['foto_karyawan'], 'file', 'extensions' => 'png, jpg, jpeg','mimeTypes'=>'image/jpeg,image/png', 'maxSize'=>1048576,'skipOnEmpty'=>true],
+            [['foto_karyawan'], 'file', 'extensions' => 'png, jpg, jpeg','mimeTypes'=>'image/jpeg,image/png', 'maxSize'=>1048576,'skipOnEmpty'=>true],
             [['badge'], 'unique'],
             [['no_ktp'], 'unique'],
         ];

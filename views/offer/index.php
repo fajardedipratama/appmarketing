@@ -50,12 +50,12 @@ $this->title = 'Penawaran Baru';
               'attribute'=>'perusahaan',
               'format'=>'raw',
               'value'=>function($data){
-                if($data->customer->verified == 'yes'){
+                if($data->customer->verified == 'yes' && $data->customer->expired >= date('Y-m-d')){
                   return $data->customer->perusahaan.'<i class="fa fa-fw fa-check"></i>';
+                }elseif($data->customer->verified == 'yes' && $data->customer->expired < date('Y-m-d')){
+                  return $data->customer->perusahaan.'<i class="fa fa-fw fa-clock-o"></i>';
                 }elseif($data->customer->verified == NULL){
                   return $data->customer->perusahaan.'<i class="fa fa-fw fa-hourglass-2"></i>';
-                }else{
-                  return $data->customer->perusahaan.'<i class="fa fa-fw fa-question-circle"></i>';
                 }
               },
               'filter'=>\kartik\select2\Select2::widget([
