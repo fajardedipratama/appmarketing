@@ -51,11 +51,15 @@ class Permit extends \yii\db\ActiveRecord
             'karyawan_id' => 'Karyawan',
             'kategori' => 'Kategori',
             'tgl_izin' => 'Tanggal',
-            'jam_masuk' => 'Jam Masuk',
+            'jam_masuk' => 'Jam Masuk/Kembali',
             'jam_keluar' => 'Jam Keluar',
             'alasan' => 'Alasan',
             'status' => 'Status',
             'created_time' => 'Created Time',
         ];
+    }
+    public function getKaryawan()
+    {
+        return $this->hasOne(Karyawan::className(), ['id' => 'karyawan_id']);
     }
 }

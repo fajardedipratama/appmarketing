@@ -134,6 +134,7 @@ $offers = Offer::find()->where(['perusahaan'=>$model->id])->orderBy(['id'=>SORT_
                 <th>Catatan</th>
                 <th>Hub.Balik</th>
                 <th>By</th>
+                <th>Del.</th>
             </tr>
         <?php foreach($progress as $daily): ?>
         <?php $sales=Karyawan::find()->where(['id'=>$daily['sales']])->one(); ?>
@@ -154,6 +155,16 @@ $offers = Offer::find()->where(['perusahaan'=>$model->id])->orderBy(['id'=>SORT_
                       <i class="fa fa-fw fa-whatsapp" title="Telfon Pribadi"></i> 
                     <?php endif; ?>
                 </td>
+                <?php if(Yii::$app->user->identity->type == 'Administrator'): ?>
+                <td>
+                    <?= Html::a('<i class="fa fa-fw fa-trash"></i>', ['/dailyreport/delete', 'id' => $daily->id], [
+                        'data' => [
+                            'confirm' => 'Hapus data ini ?',
+                            'method' => 'post',
+                        ],
+                    ]) ?>
+                </td>
+                <?php endif ?>
             </tr>
         <?php endforeach ?>
             </table>

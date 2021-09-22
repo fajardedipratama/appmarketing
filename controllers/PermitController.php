@@ -67,6 +67,28 @@ class PermitController extends Controller
         ]);
     }
 
+    public function actionConfirmhrd($id)
+    {
+        $model = $this->findModel($id);
+
+        Yii::$app->db->createCommand()->update('id_permit',
+        ['status'=>'Konfirmasi-HRD'],
+        ['id'=>$model->id])->execute();
+
+        return $this->redirect(['view','id' => $model->id]);
+    }
+
+    public function actionConfirmkacab($id)
+    {
+        $model = $this->findModel($id);
+
+        Yii::$app->db->createCommand()->update('id_permit',
+        ['status'=>'Terverifikasi'],
+        ['id'=>$model->id])->execute();
+
+        return $this->redirect(['view','id' => $model->id]);
+    }
+
     /**
      * Creates a new Permit model.
      * If creation is successful, the browser will be redirected to the 'view' page.
@@ -76,7 +98,11 @@ class PermitController extends Controller
     {
         $model = new Permit();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post())) {
+            $model->tgl_izin=Yii::$app->formatter->asDate($_POST['Permit']['tgl_izin'],'yyyy-MM-dd');
+            $model->created_time=date('Y-m-d H:i:s');
+            $model->status='Pending';
+            $model->save();
             return $this->redirect(['view', 'id' => $model->id]);
         }
 

@@ -29,11 +29,18 @@ $this->title = 'Cuti & Izin';
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            'tgl_izin',
-            'karyawan_id',
+            [
+                'attribute'=>'tgl_izin',
+                'format' => ['date','dd-MM-Y'],
+                'headerOptions'=>['style'=>'width:15%'],
+            ],
+            [
+                'attribute'=>'karyawan_id',
+                'value'=>'karyawan.nama',
+            ],
             'kategori',
             'status',
-            ['header'=>'Aksi','class' => 'yii\grid\ActionColumn'],
+            ['header'=>'Aksi','class' => 'yii\grid\ActionColumn','template'=>'{view}'],
         ],
     ]); ?>
 </div></div></div>

@@ -1,44 +1,60 @@
 <?php
-
+use app\models\PermitAccess;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Permit */
 
-$this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Permits', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+$personalia = PermitAccess::find()->where(['tipe_akses'=>'Personalia'])->one();
+$kacab = PermitAccess::find()->where(['tipe_akses'=>'Ka.Cabang Sby'])->one();
+
+$this->title = 'Detail Cuti & Izin';
 \yii\web\YiiAsset::register($this);
 ?>
 <div class="permit-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <div class="row">
+        <div class="col-sm-8">
+            <h1><?= Html::encode($this->title) ?></h1>
+        </div>
+        <div class="col-sm-4">
+        <?php if($model->status=='Pending' && Yii::$app->user->identity->profilname==$personalia->karyawan_id): ?>
+            <?= Html::a('<i class="fa fa-fw fa-check-square-o"></i> Konfirmasi', ['confirmhrd', 'id' => $model->id], ['class' => 'btn btn-success','data' => ['confirm' => 'Konfirmasi Cuti & Izin ?','method' => 'post']]) ?>
+            <?= Html::a('<i class="fa fa-fw fa-pencil"></i> Ubah', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+            <?= Html::a('<i class="fa fa-fw fa-trash"></i> Hapus', ['delete', 'id' => $model->id], [
+                'class' => 'btn btn-danger',
+                'data' => [
+                    'confirm' => 'Are you sure you want to delete this item?',
+                    'method' => 'post',
+                ],
+            ]) ?>
+        <?php elseif($model->status=='Konfirmasi-HRD' && Yii::$app->user->identity->profilname==$kacab->karyawan_id): ?>
+            <?= Html::a('<i class="fa fa-fw fa-check-square-o"></i> Konfirmasi', ['confirmkacab', 'id' => $model->id], ['class' => 'btn btn-success','data' => ['confirm' => 'Konfirmasi Cuti & Izin ?','method' => 'post']]) ?>
+        <?php endif; ?>
+        </div>
+    </div>
 
-    <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
-                'method' => 'post',
-            ],
-        ]) ?>
-    </p>
-
+<div class="box"><div class="box-body"><div class="table-responsive">
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id',
-            'karyawan_id',
+            [
+                'attribute'=>'karyawan_id',
+                'value'=>($model->karyawan)?$model->karyawan->nama:'-',
+            ],
             'kategori',
-            'tgl_izin',
+            'alasan',
+            [
+                'attribute'=>'tgl_izin',
+                'value'=>date('d/m/Y',strtotime($model->tgl_izin)),
+            ],
             'jam_masuk',
             'jam_keluar',
-            'alasan',
             'status',
             'created_time',
         ],
     ]) ?>
+</div></div></div>
 
 </div>

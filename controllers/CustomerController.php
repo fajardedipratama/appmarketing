@@ -106,7 +106,14 @@ class CustomerController extends Controller
     {
         $model = new Customer();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post())) {
+            //process
+            if(!empty($_POST['Customer']['expired'])){
+                $model->expired=Yii::$app->formatter->asDate($_POST['Customer']['expired'],'yyyy-MM-dd');
+            }else{
+                $model->expired=NULL;
+            }
+            $model->save();
             return $this->redirect(['index']);
         }
 

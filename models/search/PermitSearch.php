@@ -46,6 +46,7 @@ class PermitSearch extends Permit
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'sort'=>['defaultOrder'=>['tgl_izin'=>SORT_DESC]]
         ]);
 
         $this->load($params);

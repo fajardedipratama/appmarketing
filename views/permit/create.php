@@ -5,9 +5,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Permit */
 
-$this->title = 'Create Permit';
-$this->params['breadcrumbs'][] = ['label' => 'Permits', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = 'Tambah Cuti & Izin';
+
 ?>
 <div class="permit-create">
 
