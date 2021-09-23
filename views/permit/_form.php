@@ -31,22 +31,34 @@ use app\models\Karyawan;
     <div class="col-sm-4">
         <?= $form->field($model, 'alasan')->textInput(['maxlength' => true]) ?>
     </div>
-    <div class="col-sm-4">
+    <div class="col-sm-3">
         <?php 
             if(!$model->isNewRecord || $model->isNewRecord){
-                if($model->tgl_izin!=null){
-                    $model->tgl_izin=date('d-m-Y',strtotime($model->tgl_izin));
+                if($model->tgl_mulai!=null){
+                    $model->tgl_mulai=date('d-m-Y',strtotime($model->tgl_mulai));
                 }
             }
         ?>
-        <?= $form->field($model, 'tgl_izin')->widget(DatePicker::className(),[
+        <?= $form->field($model, 'tgl_mulai')->widget(DatePicker::className(),[
             'clientOptions'=>['autoclose'=>true,'format'=>'dd-mm-yyyy','orientation'=>'bottom']
         ])?>
     </div>
-    <div class="col-sm-4">
+    <div class="col-sm-3">
+        <?php 
+            if(!$model->isNewRecord || $model->isNewRecord){
+                if($model->tgl_selesai!=null){
+                    $model->tgl_selesai=date('d-m-Y',strtotime($model->tgl_selesai));
+                }
+            }
+        ?>
+        <?= $form->field($model, 'tgl_selesai')->widget(DatePicker::className(),[
+            'clientOptions'=>['autoclose'=>true,'format'=>'dd-mm-yyyy','orientation'=>'bottom']
+        ])?>
+    </div>
+    <div class="col-sm-3">
         <?= $form->field($model, 'jam_masuk')->textInput(['type'=>'time']) ?>
     </div>
-    <div class="col-sm-4">
+    <div class="col-sm-3">
         <?= $form->field($model, 'jam_keluar')->textInput(['type'=>'time']) ?>
     </div>
     </div></div></div>

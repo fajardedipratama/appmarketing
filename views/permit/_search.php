@@ -21,7 +21,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'kategori') ?>
 
-    <?= $form->field($model, 'tgl_izin') ?>
+    <?= $form->field($model, 'tgl_mulai') ?>
 
     <?= $form->field($model, 'jam_masuk') ?>
 

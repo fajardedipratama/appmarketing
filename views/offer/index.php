@@ -87,8 +87,8 @@ $this->title = 'Penawaran Baru';
               'headerOptions'=>['style'=>'width:8%'],
               'header'=>'Verif.',
               'template' => '{accept} {decline} {duplicate}',
-                'buttons'=>
-                [
+              'buttons'=>
+              [
                     'accept'=>function($url,$model)
                     {
                     return Html::a
@@ -129,7 +129,18 @@ $this->title = 'Penawaran Baru';
               'class' => 'yii\grid\ActionColumn',
               'header' => 'Aksi',
               'headerOptions'=>['style'=>'width:8%'],
-              // 'buttonOptions' => ['target'=>'_blank'],
+              'template' => '{view} {update} {delete}',
+              'buttons' => [
+                'view'=>function($url,$model)
+                {
+                  return Html::a
+                    (
+                      '<i class="fa fa-fw fa-eye"></i>',
+                      ["offer/view",'id'=>$model->id],
+                      ['title' => Yii::t('app', 'View'),'target'=>'_blank'],
+                    );
+                },
+              ],
               'visibleButtons'=>
               [
                 'update'=>function($model){

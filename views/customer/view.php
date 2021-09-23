@@ -62,7 +62,7 @@ $offers = Offer::find()->where(['perusahaan'=>$model->id])->orderBy(['id'=>SORT_
                     ],
                 ]) ?>
             <?php if($model->verified != 'black'): ?>
-                <?= Html::a('<i class="fa fa-fw fa-times"></i>', ['blokir', 'id' => $model->id], [
+                <?= Html::a('<i class="fa fa-fw fa-ban"></i>', ['blokir', 'id' => $model->id], [
                     'class' => 'btn btn-danger','title'=>'Blokir',
                     'data' => [
                         'confirm' => 'Blacklist perusahaan ini ?',

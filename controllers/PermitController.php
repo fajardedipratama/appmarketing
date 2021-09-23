@@ -4,11 +4,13 @@ namespace app\controllers;
 
 use Yii;
 use app\models\Permit;
+use app\models\Karyawan;
 use app\models\search\PermitSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
+use yii\helpers\ArrayHelper;
 /**
  * PermitController implements the CRUD actions for Permit model.
  */
@@ -48,7 +50,13 @@ class PermitController extends Controller
         $searchModel = new PermitSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
+        $karyawan = ArrayHelper::map(Karyawan::find()->all(),'id',
+        function($model){
+            return $model['nama'];
+        });
+
         return $this->render('index', [
+            'karyawan' => $karyawan,
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
@@ -99,7 +107,8 @@ class PermitController extends Controller
         $model = new Permit();
 
         if ($model->load(Yii::$app->request->post())) {
-            $model->tgl_izin=Yii::$app->formatter->asDate($_POST['Permit']['tgl_izin'],'yyyy-MM-dd');
+            $model->tgl_mulai=Yii::$app->formatter->asDate($_POST['Permit']['tgl_mulai'],'yyyy-MM-dd');
+            $model->tgl_selesai=Yii::$app->formatter->asDate($_POST['Permit']['tgl_selesai'],'yyyy-MM-dd');
             $model->created_time=date('Y-m-d H:i:s');
             $model->status='Pending';
             $model->save();
@@ -122,7 +131,10 @@ class PermitController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post())) {
+            $model->tgl_mulai=Yii::$app->formatter->asDate($_POST['Permit']['tgl_mulai'],'yyyy-MM-dd');
+            $model->tgl_selesai=Yii::$app->formatter->asDate($_POST['Permit']['tgl_selesai'],'yyyy-MM-dd');
+            $model->save();
             return $this->redirect(['view', 'id' => $model->id]);
         }
 

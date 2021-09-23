@@ -10,7 +10,8 @@ use Yii;
  * @property int $id
  * @property int|null $karyawan_id
  * @property string $kategori
- * @property string|null $tgl_izin
+ * @property string|null $tgl_mulai
+ * @property string|null $tgl_selesai
  * @property string|null $jam_masuk
  * @property string|null $jam_keluar
  * @property string $alasan
@@ -34,8 +35,8 @@ class Permit extends \yii\db\ActiveRecord
     {
         return [
             [['karyawan_id'], 'integer'],
-            [['kategori', 'alasan'], 'required'],
-            [['tgl_izin', 'jam_masuk', 'jam_keluar', 'created_time'], 'safe'],
+            [['kategori', 'alasan','tgl_mulai', 'tgl_selesai'], 'required'],
+            [['tgl_mulai', 'tgl_selesai', 'jam_masuk', 'jam_keluar', 'created_time'], 'safe'],
             [['kategori', 'status'], 'string', 'max' => 30],
             [['alasan'], 'string', 'max' => 1000],
         ];
@@ -50,7 +51,8 @@ class Permit extends \yii\db\ActiveRecord
             'id' => 'ID',
             'karyawan_id' => 'Karyawan',
             'kategori' => 'Kategori',
-            'tgl_izin' => 'Tanggal',
+            'tgl_mulai' => 'Tanggal Izin',
+            'tgl_selesai' => 'Tanggal Selesai',
             'jam_masuk' => 'Jam Masuk/Kembali',
             'jam_keluar' => 'Jam Keluar',
             'alasan' => 'Alasan',
@@ -61,5 +63,12 @@ class Permit extends \yii\db\ActiveRecord
     public function getKaryawan()
     {
         return $this->hasOne(Karyawan::className(), ['id' => 'karyawan_id']);
+    }
+    public function beforeSave($options = array()) {
+        if(strtotime($this->tgl_mulai) > strtotime($this->tgl_selesai)){
+            echo Yii::$app->getSession()->setFlash('error','Tanggal Izin melebihi Tanggal Selesai');  
+        }else{
+            return true;
+        }
     }
 }

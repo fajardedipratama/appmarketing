@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
-
+use dosamigos\datepicker\DatePicker;
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\search\PermitSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -30,16 +30,41 @@ $this->title = 'Cuti & Izin';
         'filterModel' => $searchModel,
         'columns' => [
             [
-                'attribute'=>'tgl_izin',
-                'format' => ['date','dd-MM-Y'],
-                'headerOptions'=>['style'=>'width:15%'],
-            ],
-            [
                 'attribute'=>'karyawan_id',
                 'value'=>'karyawan.nama',
+                'filter'=>\kartik\select2\Select2::widget([
+                    'model'=>$searchModel,'attribute'=>'karyawan_id','data'=>$karyawan,
+                    'options'=>['placeholder'=>'Karyawan'],'pluginOptions'=>['allowClear'=>true]
+                ])
             ],
-            'kategori',
-            'status',
+            [
+                'attribute'=>'tgl_mulai',
+                'format' => ['date','dd-MM-Y'],
+                'headerOptions'=>['style'=>'width:15%'],
+                'filter'=> DatePicker::widget([
+                    'model'=>$searchModel,'attribute'=>'tgl_mulai','clientOptions'=>[
+                      'autoclose'=>true, 'format' => 'dd-mm-yyyy','orientation'=>'bottom'
+                    ],
+                ]),
+            ],
+            [
+                'attribute'=>'tgl_selesai',
+                'format' => ['date','dd-MM-Y'],
+                'headerOptions'=>['style'=>'width:15%'],
+                'filter'=> DatePicker::widget([
+                    'model'=>$searchModel,'attribute'=>'tgl_selesai','clientOptions'=>[
+                      'autoclose'=>true, 'format' => 'dd-mm-yyyy','orientation'=>'bottom'
+                    ],
+                ]),
+            ],
+            [
+                'attribute'=>'kategori',
+                'filter'=> ['Sakit'=>'Sakit','Izin Cuti'=>'Izin Cuti','Terlambat'=>'Terlambat','Pulang Awal'=>'Pulang Awal','Keluar Kantor'=>'Keluar Kantor']
+            ],
+            [
+                'attribute'=>'status',
+                'filter'=> ['Pending'=>'Pending','Konfirmasi-HRD'=>'Konfirmasi-HRD','Terverifikasi'=>'Terverifikasi']
+            ],
             ['header'=>'Aksi','class' => 'yii\grid\ActionColumn','template'=>'{view}'],
         ],
     ]); ?>

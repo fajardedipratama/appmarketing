@@ -1,7 +1,7 @@
 <?php
 
 namespace app\models\search;
-
+use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use app\models\Permit;
@@ -18,7 +18,7 @@ class PermitSearch extends Permit
     {
         return [
             [['id', 'karyawan_id'], 'integer'],
-            [['kategori', 'tgl_izin', 'jam_masuk', 'jam_keluar', 'alasan', 'status', 'created_time'], 'safe'],
+            [['kategori', 'tgl_mulai','tgl_selesai', 'jam_masuk', 'jam_keluar', 'alasan', 'status', 'created_time'], 'safe'],
         ];
     }
 
@@ -46,7 +46,7 @@ class PermitSearch extends Permit
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
-            'sort'=>['defaultOrder'=>['tgl_izin'=>SORT_DESC]]
+            'sort'=>['defaultOrder'=>['tgl_mulai'=>SORT_DESC]]
         ]);
 
         $this->load($params);
@@ -61,11 +61,21 @@ class PermitSearch extends Permit
         $query->andFilterWhere([
             'id' => $this->id,
             'karyawan_id' => $this->karyawan_id,
-            'tgl_izin' => $this->tgl_izin,
             'jam_masuk' => $this->jam_masuk,
             'jam_keluar' => $this->jam_keluar,
             'created_time' => $this->created_time,
         ]);
+
+        if(!empty($this->tgl_mulai)){    
+            $query->andFilterWhere([
+                'tgl_mulai' => Yii::$app->formatter->asDate($this->tgl_mulai,'yyyy-MM-dd'),
+            ]);
+        }
+        if(!empty($this->tgl_selesai)){    
+            $query->andFilterWhere([
+                'tgl_selesai' => Yii::$app->formatter->asDate($this->tgl_selesai,'yyyy-MM-dd'),
+            ]);
+        }
 
         $query->andFilterWhere(['like', 'kategori', $this->kategori])
             ->andFilterWhere(['like', 'alasan', $this->alasan])

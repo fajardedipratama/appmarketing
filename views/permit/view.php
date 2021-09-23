@@ -46,8 +46,14 @@ $this->title = 'Detail Cuti & Izin';
             'kategori',
             'alasan',
             [
-                'attribute'=>'tgl_izin',
-                'value'=>date('d/m/Y',strtotime($model->tgl_izin)),
+                'attribute'=>'tgl_mulai',
+                'value'=>function($data){
+                    if($data->tgl_mulai==$data->tgl_selesai){
+                        return date('d/m/Y',strtotime($data->tgl_mulai));
+                    }else{
+                        return date('d/m/Y',strtotime($data->tgl_mulai)).' - '.date('d/m/Y',strtotime($data->tgl_selesai));
+                    }
+                }
             ],
             'jam_masuk',
             'jam_keluar',
