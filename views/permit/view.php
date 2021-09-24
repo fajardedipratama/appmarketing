@@ -31,6 +31,8 @@ $this->title = 'Detail Cuti & Izin';
             ]) ?>
         <?php elseif($model->status=='Konfirmasi-HRD' && Yii::$app->user->identity->profilname==$kacab->karyawan_id): ?>
             <?= Html::a('<i class="fa fa-fw fa-check-square-o"></i> Konfirmasi', ['confirmkacab', 'id' => $model->id], ['class' => 'btn btn-success','data' => ['confirm' => 'Konfirmasi Cuti & Izin ?','method' => 'post']]) ?>
+        <?php elseif($model->status=='Terverifikasi'): ?>
+            <?= Html::a('<i class="fa fa-fw fa-print"></i> Print', ['print', 'id' => $model->id], ['class' => 'btn btn-success','target'=>'_blank']) ?>
         <?php endif; ?>
         </div>
     </div>

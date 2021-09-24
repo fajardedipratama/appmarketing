@@ -55,8 +55,17 @@ class PermitController extends Controller
             return $model['nama'];
         });
 
+        $model = new Permit();
+        if ($model->load(Yii::$app->request->post())) {
+            $set_awal = Yii::$app->formatter->asDate($model->set_awal,'yyyy-MM-dd');
+            $set_akhir = Yii::$app->formatter->asDate($model->set_akhir,'yyyy-MM-dd');
+            
+            return $this->redirect(['printreport','range'=>$set_awal.'x'.$set_akhir]);
+        }
+
         return $this->render('index', [
             'karyawan' => $karyawan,
+            'model'=>$model,
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
@@ -72,6 +81,21 @@ class PermitController extends Controller
     {
         return $this->render('view', [
             'model' => $this->findModel($id),
+        ]);
+    }
+
+    public function actionPrint($id)
+    {
+        return $this->renderPartial('print', [
+            'model' => $this->findModel($id),
+        ]);
+    }
+
+    public function actionPrintreport($range)
+    {
+        $model = new Permit();
+        return $this->renderPartial('printreport', [
+            'model' => $model,
         ]);
     }
 

@@ -20,6 +20,7 @@ use Yii;
  */
 class Permit extends \yii\db\ActiveRecord
 {
+    public $set_awal,$set_akhir;
     /**
      * {@inheritdoc}
      */
@@ -36,7 +37,7 @@ class Permit extends \yii\db\ActiveRecord
         return [
             [['karyawan_id'], 'integer'],
             [['kategori', 'alasan','tgl_mulai', 'tgl_selesai'], 'required'],
-            [['tgl_mulai', 'tgl_selesai', 'jam_masuk', 'jam_keluar', 'created_time'], 'safe'],
+            [['tgl_mulai', 'tgl_selesai', 'jam_masuk', 'jam_keluar', 'created_time','set_awal','set_akhir'], 'safe'],
             [['kategori', 'status'], 'string', 'max' => 30],
             [['alasan'], 'string', 'max' => 1000],
         ];
@@ -58,6 +59,8 @@ class Permit extends \yii\db\ActiveRecord
             'alasan' => 'Alasan',
             'status' => 'Status',
             'created_time' => 'Created Time',
+            'set_awal'=> 'Dari',
+            'set_akhir'=> 'Sampai',
         ];
     }
     public function getKaryawan()
