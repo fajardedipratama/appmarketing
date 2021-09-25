@@ -74,12 +74,30 @@ class ExpiredController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    // public function actionView($id)
-    // {
-    //     return $this->render('view', [
-    //         'model' => $this->findModel($id),
-    //     ]);
-    // }
+    public function actionMove()
+    {
+        $model = new Customer();
+
+        if ($model->load(Yii::$app->request->post())){
+            $model->dari_tgl = Yii::$app->formatter->asDate($dari_tgl,'yyyy-MM-dd');
+            $model->ke_tgl = Yii::$app->formatter->asDate($ke_tgl,'yyyy-MM-dd');
+
+            if(empty($model->target)){
+                Yii::$app->db->createCommand()->update('id_customer',
+                ['expired' => $model->ke_tgl],
+                ['expired' => $model->dari_tgl])->execute();
+            }else{
+                 Yii::$app->db->createCommand()->update('id_customer',
+                ['expired' => $model->ke_tgl],
+                ['expired' => $model->dari_tgl,'sales'=>$model->target])->execute();
+            }
+            return $this->redirect(['customer/index']);
+        }
+
+        return $this->render('move', [
+            'model' => $model,
+        ]);
+    }
 
     /**
      * Creates a new Customer model.

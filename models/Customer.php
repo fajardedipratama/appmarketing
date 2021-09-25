@@ -29,7 +29,7 @@ use Yii;
  */
 class Customer extends \yii\db\ActiveRecord
 {
-    public $target;
+    public $target, $dari_tgl, $ke_tgl;
     /**
      * {@inheritdoc}
      */
@@ -45,7 +45,7 @@ class Customer extends \yii\db\ActiveRecord
     {
         return [
             [['perusahaan', 'lokasi'], 'required'],
-            [['expired','created_time'], 'safe'],
+            [['expired','created_time','$dari_tgl','$ke_tgl'], 'safe'],
             [['perusahaan', 'lokasi', 'pic', 'telfon', 'verified', 'volume', 'jarak_ambil','long_expired','keterangan_fix','entrusted'], 'string', 'max' => 100],
             [['alamat_lengkap', 'catatan', 'alasan'], 'string', 'max' => 1000],
             [['sales','created_by','target'], 'integer'],
@@ -79,6 +79,8 @@ class Customer extends \yii\db\ActiveRecord
             'alasan' => 'Alasan',
             'keterangan_fix' => 'Keterangan',
             'entrusted'=>'Pihak Eksternal',
+            'dari_tgl'=>'Dari Tanggal',
+            'ke_tgl'=>'Ke Tanggal',
         ];
     }
     

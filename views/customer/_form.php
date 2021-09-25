@@ -65,7 +65,7 @@ use dosamigos\datepicker\DatePicker;
         ]) ?>
      </div>
     <?php endif; ?>
-     <div class="col-sm-4">
+    <div class="col-sm-4">
         <?php 
             if(!$model->isNewRecord || $model->isNewRecord){
                 if($model->expired!=null){
