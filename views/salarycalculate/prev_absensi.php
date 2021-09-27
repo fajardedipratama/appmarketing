@@ -3,6 +3,7 @@ use app\models\Karyawan;
 use app\models\Jobtitle;
 use app\models\AttendanceData;
 use app\models\Holiday;
+use app\models\Permit;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
@@ -54,13 +55,16 @@ $this->title = "Laporan";
                 <?php 
                     $absen=AttendanceData::find()->where(['karyawan_id'=>$show['id']])->andWhere(['work_date'=>$begin])->one();
                     $holiday=Holiday::find()->where(['tanggal'=>$begin])->one();
+                    $permit=Permit::find()->where(['tgl_mulai'=>$begin])->andWhere(['karyawan_id'=>$show['id']])->one();
                 ?>
                 <td title="<?= $show['nama_pendek'].'/'.$begin ?>" style="background-color:
                  <?php 
                     if(date('l',strtotime($begin)) == 'Sunday'){
                         echo 'red';
-                    }elseif ($holiday) {
+                    }elseif($holiday) {
                         echo 'red';
+                    }elseif($permit){
+                        echo 'yellow';
                     } 
                 ?>;">
                     <?php if($absen): ?>

@@ -79,8 +79,8 @@ class ExpiredController extends Controller
         $model = new Customer();
 
         if ($model->load(Yii::$app->request->post())){
-            $model->dari_tgl = Yii::$app->formatter->asDate($model->dari_tgl,'yyyy-MM-dd');
-            $model->ke_tgl = Yii::$app->formatter->asDate($model->ke_tgl,'yyyy-MM-dd');
+            $model->dari_tgl = Yii::$app->formatter->asDate($_POST['Customer']['dari_tgl'],'yyyy-MM-dd');
+            $model->ke_tgl = Yii::$app->formatter->asDate($_POST['Customer']['ke_tgl'],'yyyy-MM-dd');
 
             if(empty($model->target)){
                 Yii::$app->db->createCommand()->update('id_customer',
@@ -91,7 +91,7 @@ class ExpiredController extends Controller
                 ['expired' => $model->ke_tgl],
                 ['expired' => $model->dari_tgl,'sales'=>$model->target])->execute();
             }
-            return $this->redirect(['customer/index']);
+            return $this->redirect(['index']);
         }
 
         return $this->render('move', [

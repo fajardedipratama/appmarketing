@@ -19,12 +19,14 @@ $this->title = 'Pindah Expired';
 <div class="box box-success"><div class="box-body">
     <div class="row">
      <div class="col-sm-4">
-        <?= $form->field($model, 'target')->dropDownList(
-            ArrayHelper::map(Karyawan::find()->where(['posisi'=>'6'])->orderBy(['nama'=>SORT_ASC])->all(),'id',
+        <?= $form->field($model, 'target')->widget(Select2::className(),[
+            'data'=>ArrayHelper::map(Karyawan::find()->where(['posisi'=>'6'])->orderBy(['nama'=>SORT_ASC])->all(),'id',
                 function($model){
                     return $model['nama_pendek'];
                 }
-        ),['prompt'=>'---Target---']); ?>
+            ),
+            'options'=>['placeholder'=>"Target"],'pluginOptions'=>['allowClear'=>true]
+        ]) ?>
         <small>*Jika target = semua, kosongi field ini</small>
      </div>
      <div class="col-sm-4">
