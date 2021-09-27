@@ -17,11 +17,11 @@ $kacab = PermitAccess::find()->where(['tipe_akses'=>'Ka.Cabang Sby'])->one();
 <body style="margin-top: 0">
 <table style="font-family: Arial;font-size: 12px;" border="1" cellspacing="0" cellpadding="7">
 	<tr>
-		<td colspan="2" align="center" style="padding:0"><h3>SURAT KETERANGAN IZIN<br>PT. BERDIKARI JAYA BERSAMA</h3></td>
+		<td colspan="4" align="center" style="padding:0"><h3>SURAT KETERANGAN IZIN<br>PT. BERDIKARI JAYA BERSAMA</h3></td>
 	</tr>
 	<tr>
-		<td width="50%">Karyawan : <?= $model->karyawan->nama_pendek.' ('.$jabatan['posisi'].')'; ?></td>
-		<td width="50%">Tanggal : 
+		<td>Karyawan : <?= $model->karyawan->nama.' ('.$jabatan['posisi'].')'; ?></td>
+		<td>Tanggal : 
 			<?php 
 			if($model->tgl_mulai==$model->tgl_selesai){
 				echo date('d/m/Y',strtotime($model->tgl_mulai));
@@ -30,21 +30,20 @@ $kacab = PermitAccess::find()->where(['tipe_akses'=>'Ka.Cabang Sby'])->one();
 			}
 			?>
 		</td>
-	</tr>
-	<tr>
 		<td>Jam Masuk : <?= $model->jam_masuk ?></td>
 		<td>Jam Keluar : <?= $model->jam_keluar ?></td>
 	</tr>
 	<tr>
-		<td colspan="2">Keterangan : <?= $model->kategori.' ('.$model->alasan.')' ?></td>
+		<td colspan="4">Keterangan : <?= $model->kategori.' ('.$model->alasan.')' ?></td>
 	</tr>
 	<tr>
-		<td colspan="2">
+		<td colspan="4">
 			<table>
 			<tr align="center">
+				<td style="padding: 0px 25px 0px 25px"></td>
 				<td style="padding: 0px 25px 0px 25px">Ka.Cabang Sby,<br><br><br><br><?= $kacab->karyawan->nama ?></td>
-				<td style="padding: 0px 25px 0px 25px">Personalia,<br><br><br><br><br><?= $personalia->karyawan->nama ?></td>
-				<td style="padding: 0px 25px 0px 25px">Pemohon,<br><br><br><br><br><?= $model->karyawan->nama_pendek ?></td>
+				<td style="padding: 0px 25px 0px 25px">Personalia,<br><br><br><br><?= $personalia->karyawan->nama ?></td>
+				<td style="padding: 0px 25px 0px 25px">Pemohon,<br><br><br><br><?= $model->karyawan->nama_pendek ?></td>
 			</tr>
 			</table>
 		</td>

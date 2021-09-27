@@ -87,9 +87,9 @@ use dosamigos\datepicker\DatePicker;
      <div class="col-sm-4">
         <?= $form->field($model, 'verified')->dropDownList(['yes'=>'yes','no'=>'no'],['prompt'=>'--Verifikasi--']) ?>
      </div>
-     <div class="col-sm-4">
+     <!-- <div class="col-sm-4">
         <?= $form->field($model, 'entrusted')->textInput(['maxlength' => true]) ?>
-     </div>
+     </div> -->
     </div>
 </div></div>
     <div class="form-group">
