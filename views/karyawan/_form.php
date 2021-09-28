@@ -4,11 +4,15 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use dosamigos\datepicker\DatePicker;
 use yii\helpers\ArrayHelper;
+use app\models\Karyawan;
 use app\models\Jobtitle;
 use app\models\Departemen;
 /* @var $this yii\web\View */
 /* @var $model app\models\Karyawan */
 /* @var $form yii\widgets\ActiveForm */
+
+$nip_max = Karyawan::find()->max('badge');
+
 ?>
 
 <div class="karyawan-form">
@@ -17,7 +21,7 @@ use app\models\Departemen;
     <div class="box box-success"><div class="box-body">
     <div class="row">
         <div class="col-sm-3">
-            <?= $form->field($model, 'badge')->textInput(['maxlength' => true]) ?>
+            <?= $form->field($model, 'badge')->textInput(['maxlength' => true,'value'=>$nip_max+1]) ?>
         </div>
         <div class="col-sm-3">
             <?= $form->field($model, 'nama')->textInput(['maxlength' => true]) ?>

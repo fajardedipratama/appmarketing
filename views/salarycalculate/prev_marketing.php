@@ -123,7 +123,7 @@ $this->title = "Preview";
             <td title="<?= $show['nama_pendek'] ?>"><?= round_po($result_po) ?></td>
             <td title="<?= $show['nama_pendek'] ?>">
                 <?php 
-                if (($show['tgl_resign']>=$model->end_date || $show['tgl_resign']==NULL) && $show['tanggal_masuk']<=$model->begin_absen) {
+                if (($show['tgl_resign']>=$model->end_absen || $show['tgl_resign']==NULL) && $show['tanggal_masuk']<=$model->begin_absen) {
                     if($result_po <= 34000){
                         echo Yii::$app->formatter->asCurrency(1500000);
                     }elseif($result_po <= 49000){
@@ -137,7 +137,7 @@ $this->title = "Preview";
             <td title="<?= $show['nama_pendek'] ?>">
                 <?php 
 
-                if ($show['status_aktif']=='Tidak Aktif' && $show['tgl_resign']<$model->end_date) {
+                if ($show['status_aktif']=='Tidak Aktif' && $show['tgl_resign']<$model->end_absen) {
                     if($result_po <= 34000){
                         echo Yii::$app->formatter->asCurrency((1500000/30)*(date('d',strtotime($show['tgl_resign']))-0));
                     }elseif($result_po <= 49000){

@@ -153,6 +153,14 @@ class DailyreportController extends Controller
         return $this->redirect(['index', 'waktu'=>date('Y-m-d')]);
     }
 
+    public function actionDelete2($id)
+    {
+        $model=$this->findModel($id);
+        $model->delete();
+
+        return $this->redirect(['customer/view', 'id'=>$model->perusahaan]);
+    }
+
     /*
     EXPORT WITH OPENTBS
     */

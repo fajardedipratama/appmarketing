@@ -55,7 +55,7 @@ $this->title = "Laporan";
                 <?php 
                     $absen=AttendanceData::find()->where(['karyawan_id'=>$show['id']])->andWhere(['work_date'=>$begin])->one();
                     $holiday=Holiday::find()->where(['tanggal'=>$begin])->one();
-                    $permit=Permit::find()->where(['tgl_mulai'=>$begin])->andWhere(['karyawan_id'=>$show['id']])->one();
+                    $permit=Permit::find()->where(['<=','tgl_mulai',$begin])->andWhere(['>=','tgl_selesai',$begin])->andWhere(['karyawan_id'=>$show['id']])->andWhere(['status'=>'Terverifikasi'])->one();
                 ?>
                 <td title="<?= $show['nama_pendek'].'/'.$begin ?>" style="background-color:
                  <?php 

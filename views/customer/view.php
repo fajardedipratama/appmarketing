@@ -157,7 +157,7 @@ $offers = Offer::find()->where(['perusahaan'=>$model->id])->orderBy(['id'=>SORT_
                 </td>
                 <?php if(Yii::$app->user->identity->type == 'Administrator'): ?>
                 <td>
-                    <?= Html::a('<i class="fa fa-fw fa-trash"></i>', ['/dailyreport/delete', 'id' => $daily->id], [
+                    <?= Html::a('<i class="fa fa-fw fa-trash"></i>', ['/dailyreport/delete2', 'id' => $daily->id], [
                         'data' => [
                             'confirm' => 'Hapus data ini ?',
                             'method' => 'post',
