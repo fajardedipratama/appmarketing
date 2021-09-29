@@ -12,7 +12,7 @@ use app\models\Drivers;
 
     <?php $form = ActiveForm::begin(); ?>
     <?= $form->field($model, 'driver_id')->dropDownList(
-        ArrayHelper::map(Drivers::find()->all(),'id',
+        ArrayHelper::map(Drivers::find()->orderBy(['driver'=>SORT_ASC])->all(),'id',
             function($model){
                 return $model['driver'];
             }
