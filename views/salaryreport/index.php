@@ -37,7 +37,7 @@ $this->title = 'Laporan';
                 return date('d/m/Y',strtotime($data->awal_cutoff)).' - '.date('d/m/Y',strtotime($data->akhir_cutoff));
                 }
             ],
-            ['header'=>'Aksi','class' => 'yii\grid\ActionColumn','template'=>'{view}'],
+            ['header'=>'Aksi','class' => 'yii\grid\ActionColumn','template'=>'{view} {update}'],
         ],
     ]); ?>
 </div></div></div>

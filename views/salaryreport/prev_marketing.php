@@ -60,7 +60,7 @@ $this->title = "Preview";
         <?= Html::a('<i class="glyphicon glyphicon-chevron-left"></i>', ['view','id'=>$model->id], ['class' => 'btn btn-success']) ?>
         <?= Html::encode($this->title) ?>
     </h1>
-    <h5>Gaji Marketing - Periode <?= date('F',strtotime($model->bulan)).'-'.$model->tahun ?></h5>
+    <h5>Gaji Marketing - Periode <?= $model->bulan.'-'.$model->tahun ?></h5>
 
     <div class="box"><div class="box-body"><div class="table-responsive">
     <table class="table table-bordered text-center" style="white-space: nowrap;">
@@ -109,12 +109,13 @@ $this->title = "Preview";
             <td title="<?= $show['nama_pendek'] ?>"><?= date('d/m/Y',strtotime($show['tanggal_masuk'])) ?></td>
             <td title="<?= $show['nama_pendek'] ?>">
                 <?php 
+                // akhir bulan (tgl 30/31) - tanggal masuk
+                    $range = date('t',strtotime($model->akhir_cutoff))-date('d',strtotime($show['tanggal_masuk']));
                     if($show['status_aktif']=='Tidak Aktif' && $show['tgl_resign']<$model->akhir_cutoff){
                         echo date('d',strtotime($show['tgl_resign']))-0;
-                    }elseif($show['tanggal_masuk']>date('Y-m-01',strtotime($model->awal_cutoff))){
-                        $range = date('t',strtotime($model->akhir_cutoff))-date('d',strtotime($show['tanggal_masuk']));
+                    }elseif($show['tanggal_masuk']>date('Y-m-01',strtotime($model->akhir_cutoff))){
                         echo 1+$range;
-                    }else{
+                    }elseif($show['tanggal_masuk']=date('Y-m-01',strtotime($model->akhir_cutoff))){
                         echo 30;
                     }
                 ?>
@@ -123,7 +124,7 @@ $this->title = "Preview";
             <td title="<?= $show['nama_pendek'] ?>"><?= round_po($result_po) ?></td>
             <td title="<?= $show['nama_pendek'] ?>">
                 <?php 
-                if (($show['tgl_resign']>=$model->akhir_cutoff || $show['tgl_resign']==NULL) && $show['tanggal_masuk']<=$model->awal_cutoff) {
+                if (($show['tgl_resign']>=$model->akhir_cutoff || $show['tgl_resign']==NULL) && $show['tanggal_masuk']<=date('Y-m-01',strtotime($model->akhir_cutoff))) {
                     if($result_po <= 34000){
                         echo Yii::$app->formatter->asCurrency(1500000);
                     }elseif($result_po <= 49000){
@@ -136,8 +137,7 @@ $this->title = "Preview";
             </td>
             <td title="<?= $show['nama_pendek'] ?>">
                 <?php 
-
-                if ($show['status_aktif']=='Tidak Aktif' && $show['tgl_resign']<$model->akhir_cutoff) {
+                if ($show['status_aktif']=='Tidak Aktif' && $show['tgl_resign']<$model->akhir_cutoff){
                     if($result_po <= 34000){
                         echo Yii::$app->formatter->asCurrency((1500000/30)*(date('d',strtotime($show['tgl_resign']))-0));
                     }elseif($result_po <= 49000){
@@ -145,14 +145,15 @@ $this->title = "Preview";
                     }elseif($result_po >= 50000){
                         echo Yii::$app->formatter->asCurrency((3000000/30)*(date('d',strtotime($show['tgl_resign']))-0));
                     }
-                }elseif($show['tanggal_masuk']>$model->awal_cutoff){
-                    $range = strtotime($model->akhir_cutoff)-strtotime($show['tanggal_masuk']);
+                }elseif($show['tanggal_masuk']>date('Y-m-01',strtotime($model->akhir_cutoff))){
+                    // akhir bulan (tgl 30/31) - tanggal masuk
+                    $range = date('t',strtotime($model->akhir_cutoff))-date('d',strtotime($show['tanggal_masuk']));
                     if($result_po <= 34000){
-                        echo Yii::$app->formatter->asCurrency((1500000/30)*(1+($range/60/60/24)));
+                        echo Yii::$app->formatter->asCurrency((1500000/30)*(1+$range));
                     }elseif($result_po <= 49000){
-                        echo Yii::$app->formatter->asCurrency((2000000/30)*(1+($range/60/60/24)));
+                        echo Yii::$app->formatter->asCurrency((2000000/30)*(1+$range));
                     }elseif($result_po >= 50000){
-                        echo Yii::$app->formatter->asCurrency((3000000/30)*(1+($range/60/60/24)));
+                        echo Yii::$app->formatter->asCurrency((3000000/30)*(1+$range));
                     }
                 }
 

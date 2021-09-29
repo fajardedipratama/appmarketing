@@ -5,14 +5,12 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\SalaryReport */
 
-$this->title = 'Update Salary Report: ' . $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Salary Reports', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->title = 'Update Detail Laporan';
 ?>
 <div class="salary-report-update">
 
     <h1><?= Html::encode($this->title) ?></h1>
+    <h5><?= 'Periode '.date('F',strtotime($model->bulan)).'-'.$model->tahun ?></h5>
 
     <?= $this->render('_form', [
         'model' => $model,
