@@ -19,7 +19,7 @@ $offers = Offer::find()->where(['perusahaan'=>$model->id])->orderBy(['id'=>SORT_
 ?>
 <div class="customer-view">
     <div class="row">
-        <div class="col-sm-9">
+        <div class="col-sm-7">
             <h2>
               <?php if($model->verified === 'yes'): ?>
                 <?php if(!$model->entrusted): ?>
@@ -51,28 +51,19 @@ $offers = Offer::find()->where(['perusahaan'=>$model->id])->orderBy(['id'=>SORT_
           <?php endif; ?>
         </div>
         <?php if(Yii::$app->user->identity->type == 'Administrator'): ?>
-        <div class="col-sm-3">
+        <div class="col-sm-5">
             <p>
-                <?= Html::a('<i class="fa fa-fw fa-pencil"></i>', ['update', 'id' => $model->id], ['class' => 'btn btn-success','title'=>'Update']) ?>
-                <?= Html::a('<i class="fa fa-fw fa-trash"></i>', ['delete', 'id' => $model->id], [
-                    'class' => 'btn btn-warning','title'=>'Delete',
+                <?= Html::a('<i class="fa fa-fw fa-pencil"></i> Ubah', ['update', 'id' => $model->id], ['class' => 'btn btn-success','title'=>'Update']) ?>
+                <?= Html::a('<i class="fa fa-fw fa-trash"></i> Hapus', ['delete', 'id' => $model->id], [
+                    'class' => 'btn btn-danger','title'=>'Delete',
                     'data' => [
                         'confirm' => 'Hapus data ini ?',
                         'method' => 'post',
                     ],
                 ]) ?>
-            <?php if($model->verified != 'black'): ?>
-                <?= Html::a('<i class="fa fa-fw fa-ban"></i>', ['blokir', 'id' => $model->id], [
-                    'class' => 'btn btn-danger','title'=>'Blokir',
-                    'data' => [
-                        'confirm' => 'Blacklist perusahaan ini ?',
-                        'method' => 'post',
-                    ],
-                ]) ?>
-            <?php endif; ?>
-                <?= Html::a('<i class="fa fa-fw fa-refresh"></i>', ['merge', 'id' => $model->id], ['class' => 'btn btn-primary','target'=>'_blank','title'=>'Gabung']) ?>
+                <?= Html::a('<i class="fa fa-fw fa-refresh"></i> Gabung', ['merge', 'id' => $model->id], ['class' => 'btn btn-primary','target'=>'_blank','title'=>'Gabung']) ?>
             <?php if($model->long_expired != 'yes'): ?>
-                <button class="btn btn-info" title="Perpanjang" data-toggle="modal" data-target="#extra-expired"><i class="fa fa-fw  fa-clock-o"></i></button>
+                <button class="btn btn-warning" title="Perpanjang" data-toggle="modal" data-target="#extra-expired"><i class="fa fa-fw fa-plus"></i> Expired</button>
             <?php endif ?>
             </p>
         </div>

@@ -85,14 +85,6 @@ class SelfcustomerController extends Controller
                     return $this->redirect(['view', 'id' => $model->id]);
                 }
 
-                // if ($_POST['Dailyreport']['keterangan']==='Tidak pakai solar' || $_POST['Dailyreport']['keterangan']==='Kebutuhan minim' || $_POST['Dailyreport']['keterangan']==='Kontrak vendor lain' || $_POST['Dailyreport']['keterangan']==='Pakai minyak jenis lain') {
-                    
-                //     Yii::$app->db->createCommand()->update('id_customer',
-                //     ['keterangan_fix' => $_POST['Dailyreport']['keterangan']],
-                //     ['id'=> $modelprogress->perusahaan ])->execute();
-
-                // }
-
             }
 
             return $this->render('view', [

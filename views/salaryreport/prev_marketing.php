@@ -110,9 +110,16 @@ $this->title = "Preview";
             <td title="<?= $show['nama_pendek'] ?>">
                 <?php 
                 // akhir bulan (tgl 30/31) - tanggal masuk
-                    $range = date('t',strtotime($model->akhir_cutoff))-date('d',strtotime($show['tanggal_masuk']));
-                    if($show['status_aktif']=='Tidak Aktif' && $show['tgl_resign']<$model->akhir_cutoff){
-                        echo date('d',strtotime($show['tgl_resign']))-0;
+                    $range =date('t',strtotime($model->akhir_cutoff))-date('d',strtotime($show['tanggal_masuk']));
+                    if($show['status_aktif']=='Tidak Aktif'){
+                        // jika resign antara tgl akhir cutoff & tgl akhir bulan
+                        if(date('d',strtotime($show['tgl_resign']))>=date('d',strtotime($model->akhir_cutoff)) && date('d',strtotime($show['tgl_resign']))<=date('t',strtotime($model->akhir_cutoff)))
+                        {
+                            echo 30;
+                        // jika resign sebelum tgl akhir cutoff
+                        }elseif($show['tgl_resign']<$model->akhir_cutoff){
+                            echo date('d',strtotime($show['tgl_resign']))-0;
+                        }
                     }elseif($show['tanggal_masuk']>date('Y-m-01',strtotime($model->akhir_cutoff))){
                         echo 1+$range;
                     }elseif($show['tanggal_masuk']=date('Y-m-01',strtotime($model->akhir_cutoff))){

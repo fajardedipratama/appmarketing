@@ -17,7 +17,7 @@ $this->title = "Detail";
         <?= Html::a('<i class="glyphicon glyphicon-chevron-left"></i>', ['index'], ['class' => 'btn btn-success']) ?>
         <?= Html::encode($this->title) ?>
     </h1>
-    <h5>Periode <?= date('F',strtotime($model->bulan)).'-'.$model->tahun ?></h5>
+    <h5>Periode <?= $model->bulan.'-'.$model->tahun ?></h5>
 
     <div class="box"><div class="box-body"><div class="table-responsive">
     <h4>Laporan Absensi</h4>
