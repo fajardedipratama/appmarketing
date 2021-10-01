@@ -127,8 +127,8 @@ $this->title = 'Detail '.$model->nama;
                 <th width="60%">Catatan</th>
               </tr>
           <?php 
-            $begin = date('Y-m-d',strtotime($period->begin_date));
-            $end = date('Y-m-d',strtotime($period->end_date));
+            $begin = date('Y-m-d',strtotime($period->awal_cutoff));
+            $end = date('Y-m-d',strtotime($period->akhir_cutoff));
             while (strtotime($begin) <= strtotime($end)) : 
           ?>
               <tr>
