@@ -9,7 +9,7 @@ $this->title = 'Penawaran Baru';
 ?>
 <div class="offer-create">
 
-    <h1><b><?= Html::encode($this->title) ?></b></h1>
+    <h1><?= Html::encode($this->title) ?></h1>
 
     <?= $this->render('_formadmin', [
         'model' => $model,

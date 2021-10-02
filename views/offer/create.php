@@ -10,7 +10,7 @@ $this->title = 'Penawaran';
 ?>
 <div class="offer-create">
 
-    <h1><b><?= Html::encode($this->title) ?></b></h1>
+    <h1><?= Html::encode($this->title) ?></h1>
     <h4><?= $customer->perusahaan.' - '.$city['kota'] ?></h4>
 
     <?= $this->render('_form', [

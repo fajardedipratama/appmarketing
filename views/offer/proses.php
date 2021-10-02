@@ -20,11 +20,11 @@ $this->title = 'Penawaran Proses';
         'filterModel' => $searchModel,
         'columns' => [
             [
-              'attribute'=>'no_surat',
+              'header'=>'No Surat','value'=>'no_surat',
               'headerOptions'=>['style'=>'width:8%'],
             ],
             [
-              'attribute'=>'perusahaan',
+              'header'=>'Perusahaan','value'=>'perusahaan',
               'format' => 'raw',
               'value'=>function($data){
                 if(!empty($data->catatan)){
@@ -33,10 +33,14 @@ $this->title = 'Penawaran Proses';
                   return $data->customer->perusahaan;
                 }
               },
-              'filter'=>\kartik\select2\Select2::widget([
-                'model'=>$searchModel,'attribute'=>'perusahaan','data'=>$customer,
-                'options'=>['placeholder'=>'Perusahaan'],'pluginOptions'=>['allowClear'=>true]
-              ])
+            ],
+            [
+              'header'=>'Lokasi',
+              'value'=>function($data){
+                $query = City::find()->where(['id'=>$data->customer->lokasi])->one();
+                return $query['kota'];
+              },
+              'visible' => Yii::$app->user->identity->type != 'Administrator'
             ],
             [
               'header'=>'SendToWA',
@@ -61,7 +65,8 @@ $this->title = 'Penawaran Proses';
               'filter'=>\kartik\select2\Select2::widget([
                 'model'=>$searchModel,'attribute'=>'sales','data'=>$sales,
                 'options'=>['placeholder'=>'Sales'],'pluginOptions'=>['allowClear'=>true]
-              ])
+              ]),
+              'visible' => Yii::$app->user->identity->type == 'Administrator' || Yii::$app->user->identity->type == 'Manajemen'
             ],
             [
               'class' => 'yii\grid\ActionColumn',
@@ -117,12 +122,7 @@ $this->title = 'Penawaran Proses';
                   );
                 },
               ],
-              'visibleButtons'=>
-              [
-                'cetak'=>function($model){
-                  return Yii::$app->user->identity->type == 'Administrator' || Yii::$app->user->identity->type == 'Manajemen';
-                }
-              ]
+              'visible' => Yii::$app->user->identity->type == 'Administrator' || Yii::$app->user->identity->type == 'Manajemen'
             ],
         ],
     ]); ?>
