@@ -8,6 +8,7 @@ use app\models\PurchaseOrderPaid;
 use app\models\PurchaseOrderFile;
 use app\models\City;
 use app\models\search\PurchaseorderSearch;
+use app\models\search\PurchasereviewSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -89,6 +90,48 @@ class PurchaseorderController extends Controller
             'dataProvider' => $dataProvider,
         ]);
     }
+
+    public function actionReview()
+    {
+        $searchModel = new PurchasereviewSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        $sales = ArrayHelper::map(Karyawan::find()->all(),'id',
+                function($model){
+                    return $model['nama_pendek'];
+                });
+        $kota = ArrayHelper::map(City::find()->all(),'id',
+                function($model){
+                    return $model['kota'];
+                });
+
+        if(Yii::$app->user->identity->type == 'Marketing'){
+            $customer = ArrayHelper::map(PurchaseOrder::find()->where(['sales'=>Yii::$app->user->identity->profilname])->all(),'perusahaan',
+                function($model){
+                $query=Customer::find()->where(['id'=>$model['perusahaan']])->all();
+                  foreach ($query as $key){
+                    return $key['perusahaan'];
+                  }
+                });
+        }else{
+            $customer = ArrayHelper::map(PurchaseOrder::find()->all(),'perusahaan',
+                function($model){
+                $query=Customer::find()->where(['id'=>$model['perusahaan']])->all();
+                  foreach ($query as $key){
+                    return $key['perusahaan'];
+                  }
+                });
+        }
+
+        return $this->render('review', [
+            'sales' => $sales,
+            'kota' => $kota,
+            'customer' => $customer,
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
     public function actionHasilpo($range)
     {
         $model = new PurchaseOrder();
