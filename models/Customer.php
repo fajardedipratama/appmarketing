@@ -42,7 +42,7 @@ class Customer extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['perusahaan', 'lokasi'], 'required'],
+            [['perusahaan', 'lokasi', 'pic'], 'required'],
             [['expired','created_time','$dari_tgl','$ke_tgl'], 'safe'],
             [['perusahaan','lokasi','pic','telfon','verified','volume','jarak_ambil','long_expired','entrusted'], 'string', 'max' => 100],
             [['alamat_lengkap', 'catatan'], 'string', 'max' => 1000],

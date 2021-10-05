@@ -38,7 +38,6 @@ function cashback_value($value){
 		</tr>
 	</thead>
 	<tbody>
-		<tr><td><br></td></tr>
 		<tr>
 			<td style="font-weight: bold;">Nama Sales</td><td>: <?= $model->karyawan->nama ?></td>
 		</tr>

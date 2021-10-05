@@ -33,7 +33,7 @@ use dosamigos\datepicker\DatePicker;
         ]) ?>
       <?php else: ?>
         <?= $form->field($model, 'perusahaan')->widget(Select2::className(),[
-            'data'=>ArrayHelper::map(Customer::find()->where(['verified'=>'yes'])->all(),'id',
+            'data'=>ArrayHelper::map(Customer::find()->where(['verified'=>['yes','black']])->all(),'id',
                 function($model){
                     return $model['perusahaan'];
                 }
