@@ -48,7 +48,10 @@ $this->title = 'Aktivitas Sales';
             ],
             [
               'attribute'=>'perusahaan',
-              'value'=>'customer.perusahaan',
+              'format'=>'raw',
+              'value'=>function($data){
+                return '<a href="index.php?r=customer/view&id='.$data->customer->id.'" target="_blank">'.$data->customer->perusahaan.'</a>';
+              },
               'headerOptions'=>['style'=>'width:25%'],
             ],
             [
