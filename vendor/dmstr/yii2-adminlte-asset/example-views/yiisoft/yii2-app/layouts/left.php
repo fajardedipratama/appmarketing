@@ -26,6 +26,7 @@ $jobtitle = Jobtitle::find()->where(['id'=>$karyawan['posisi']])->one();
             [
                 'options' => ['class' => 'sidebar-menu tree', 'data-widget'=> 'tree'],
                 'items' => [
+                    ['label' => 'Dashboard', 'icon' => 'bar-chart', 'url' => ['/dashboard'], 'active'=>in_array(\Yii::$app->controller->id,['dashboard'])],
                     [
                         'label' => 'Manajemen SDM',
                         'icon' => 'user-secret',

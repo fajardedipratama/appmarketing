@@ -21,7 +21,11 @@ $nip_max = Karyawan::find()->max('badge');
     <div class="box box-success"><div class="box-body">
     <div class="row">
         <div class="col-sm-3">
+        <?php if($model->isNewRecord): ?>
             <?= $form->field($model, 'badge')->textInput(['maxlength' => true,'value'=>$nip_max+1]) ?>
+        <?php else: ?>
+            <?= $form->field($model, 'badge')->textInput(['maxlength' => true]) ?>
+        <?php endif; ?>
         </div>
         <div class="col-sm-3">
             <?= $form->field($model, 'nama')->textInput(['maxlength' => true]) ?>

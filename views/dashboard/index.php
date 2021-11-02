@@ -60,6 +60,16 @@ $this->title = 'Dashboard';
       </div>
 
 <div class="row">
+  <div class="col-sm-3">
+    <div class="box bg-green"><div class="box-body">
+      <h4 style="text-align:center;font-weight: bold;" class="text-white">
+        <br><br>
+        <i>"SING WES YOWES, SING ILANG BEN ILANG,<br> TETEP SEMANGAT YO REK"</i>
+      </h4><br>
+      <h5 style="text-align:center;font-weight: bold;" class="text-white"><i>- NaVi Team -</i></h5>
+    </div></div>
+  </div>
+  
   <div class="col-sm-9">
   <div class="box"><div class="box-body">
     <?php 
@@ -102,16 +112,6 @@ $this->title = 'Dashboard';
   </div></div>
   </div>
 
-  <div class="col-sm-3">
-    <div class="box bg-green"><div class="box-body">
-      <h4 style="text-align:center;font-weight: bold;" class="text-white">
-        <i>"I NEVER WAITED RESULTS,<br> I WORK FOR IT"</i>
-        <br><br><br>
-        <i>"SAYA TIDAK PERNAH MENUNGGU HASIL,<br> SAYA BEKERJA UNTUK ITU"</i>
-      </h4><br>
-      <h5 style="text-align:center;font-weight: bold;" class="text-white"><i>- NaVi Team -</i></h5>
-    </div></div>
-  </div>
 </div>
 
 </section>
