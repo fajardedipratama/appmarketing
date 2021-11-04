@@ -1,4 +1,5 @@
 <?php
+use app\models\PurchaseOrder;
 use app\models\PurchaseOrderPaid;
 use app\models\PurchaseOrderFile;
 use app\models\City;
@@ -198,7 +199,18 @@ $this->title = 'PURCHASE ORDER';
             ],
             'status',
             'alasan_tolak',
-            'eksternal',
+            [
+                'label'=>'Status Order',
+                'attribute'=>'tgl_po',
+                'value'=>function($data){
+                    $check=PurchaseOrder::find()->where(['perusahaan'=>$data->perusahaan])->andWhere(['status'=>['Pending','Terkirim','Terbayar-Selesai']])->andWhere(['<=','tgl_po',$data->tgl_po])->count();
+                    if($check > 1){
+                        return "Repeat Order";
+                    }else{
+                        return "First Order";
+                    }
+                }
+            ],
         ],
     ]) ?>
     </div>

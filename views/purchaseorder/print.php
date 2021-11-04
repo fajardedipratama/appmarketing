@@ -32,11 +32,6 @@ function cashback_value($value){
 <body style="margin-top: 0">
 
 <table style="font-family: Arial;font-size: 15px;margin-left: 10%" cellpadding="7">
-	<thead>
-		<tr>
-			<td colspan="2" style="font-size: 18px;font-weight: bold;">FORMULIR PURCHASE ORDER (PO)</td>
-		</tr>
-	</thead>
 	<tbody>
 		<tr>
 			<td style="font-weight: bold;">Nama Sales</td><td>: <?= $model->karyawan->nama ?></td>
@@ -100,6 +95,19 @@ function cashback_value($value){
 		</tr>
 		<tr>
 			<td style="font-weight: bold;">Catatan</td><td>: <?= $model->catatan ?></td>
+		</tr>
+		<tr>
+			<td style="font-weight: bold;">Status Order</td>
+			<td>:
+				<?php 
+					$check=PurchaseOrder::find()->where(['perusahaan'=>$model->perusahaan])->andWhere(['status'=>['Pending','Terkirim','Terbayar-Selesai']])->andWhere(['<=','tgl_po',$model->tgl_po])->count();
+                    if($check > 1){
+                        echo "Repeat Order";
+                    }else{
+                        echo "First Order";
+                    }
+				?>
+			</td>
 		</tr>
 	</tbody>
 </table>
