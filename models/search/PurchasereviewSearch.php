@@ -4,12 +4,13 @@ namespace app\models\search;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
+use app\models\PurchaseReview;
 use app\models\PurchaseOrder;
 
 /**
- * PurchaseorderSearch represents the model behind the search form of `app\models\PurchaseOrder`.
+ * PurchasereviewSearch represents the model behind the search form of `app\models\PurchaseReview`.
  */
-class PurchasereviewSearch extends PurchaseOrder
+class PurchasereviewSearch extends PurchaseReview
 {
     /**
      * {@inheritdoc}
@@ -17,7 +18,8 @@ class PurchasereviewSearch extends PurchaseOrder
     public function rules()
     {
         return [
-            [['id', 'perusahaan', 'sales','kota_kirim'], 'integer'],
+            [['id', 'perusahaan_id', 'jarak_ambil', 'review_by'], 'integer'],
+            [['waktu_ambil', 'catatan_kirim', 'catatan_berkas', 'catatan_bayar', 'catatan_lain', 'kendala'], 'safe'],
         ];
     }
 
@@ -63,10 +65,17 @@ class PurchasereviewSearch extends PurchaseOrder
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'perusahaan' => $this->perusahaan,
-            'sales' => $this->sales,
-            'kota_kirim' => $this->kota_kirim,
+            'perusahaan_id' => $this->perusahaan_id,
+            'jarak_ambil' => $this->jarak_ambil,
+            'review_by' => $this->review_by,
         ]);
+
+        $query->andFilterWhere(['like', 'waktu_ambil', $this->waktu_ambil])
+            ->andFilterWhere(['like', 'catatan_kirim', $this->catatan_kirim])
+            ->andFilterWhere(['like', 'catatan_berkas', $this->catatan_berkas])
+            ->andFilterWhere(['like', 'catatan_bayar', $this->catatan_bayar])
+            ->andFilterWhere(['like', 'catatan_lain', $this->catatan_lain])
+            ->andFilterWhere(['like', 'kendala', $this->kendala]);
 
         return $dataProvider;
     }
