@@ -19,11 +19,15 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'perusahaan_id') ?>
 
+    <?= $form->field($model, 'last_purchase_id') ?>
+
+    <?= $form->field($model, 'sales_id') ?>
+
     <?= $form->field($model, 'waktu_ambil') ?>
 
-    <?= $form->field($model, 'jarak_ambil') ?>
+    <?php // echo $form->field($model, 'jarak_ambil') ?>
 
-    <?= $form->field($model, 'catatan_kirim') ?>
+    <?php // echo $form->field($model, 'catatan_kirim') ?>
 
     <?php // echo $form->field($model, 'catatan_berkas') ?>
 

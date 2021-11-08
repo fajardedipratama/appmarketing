@@ -14,6 +14,10 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'perusahaan_id')->textInput() ?>
 
+    <?= $form->field($model, 'last_purchase_id')->textInput() ?>
+
+    <?= $form->field($model, 'sales_id')->textInput() ?>
+
     <?= $form->field($model, 'waktu_ambil')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'jarak_ambil')->textInput() ?>

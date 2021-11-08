@@ -11,7 +11,7 @@ use dosamigos\datepicker\DatePicker;
 $this->title = 'Review';
 
 ?>
-<div class="purchase-order-index">
+<div class="purchase-order-review">
 
     <h1><?= Html::a('<i class="glyphicon glyphicon-chevron-left"></i>', ['index'], ['class' => 'btn btn-success']) ?> <?= Html::encode($this->title) ?></h1>
 

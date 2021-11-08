@@ -4,15 +4,11 @@ namespace app\controllers;
 
 use Yii;
 use app\models\PurchaseReview;
-use app\models\PurchaseOrder;
-use app\models\Customer;
-use app\models\search\PurchaseorderSearch;
 use app\models\search\PurchasereviewSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
-use yii\helpers\ArrayHelper;
 /**
  * PurchasereviewController implements the CRUD actions for PurchaseReview model.
  */
@@ -49,31 +45,12 @@ class PurchasereviewController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new PurchaseorderSearch();
+        $searchModel = new PurchasereviewSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
-        if(Yii::$app->user->identity->type == 'Marketing'){
-            $customer = ArrayHelper::map(PurchaseOrder::find()->where(['sales'=>Yii::$app->user->identity->profilname])->all(),'perusahaan',
-                function($model){
-                $query=Customer::find()->where(['id'=>$model['perusahaan']])->all();
-                  foreach ($query as $key){
-                    return $key['perusahaan'];
-                  }
-                });
-        }else{
-            $customer = ArrayHelper::map(PurchaseOrder::find()->all(),'perusahaan',
-                function($model){
-                $query=Customer::find()->where(['id'=>$model['perusahaan']])->all();
-                  foreach ($query as $key){
-                    return $key['perusahaan'];
-                  }
-                });
-        }
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
-            'customer' => $customer,
         ]);
     }
 

@@ -6,7 +6,7 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\SendSample */
 
-$this->title = 'Detail Kirim Sampel';
+$this->title = 'Detail Kirim Dok/Sampel';
 
 \yii\web\YiiAsset::register($this);
 ?>

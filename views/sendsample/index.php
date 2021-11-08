@@ -7,7 +7,7 @@ use dosamigos\datepicker\DatePicker;
 /* @var $searchModel app\models\search\SendsampleSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Kirim Sampel';
+$this->title = 'Kirim Dok/Sampel';
 
 ?>
 <div class="send-sample-index">

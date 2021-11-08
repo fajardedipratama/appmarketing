@@ -13,7 +13,10 @@ use yii\widgets\ActiveForm;
 $this->title = $model->perusahaan;
 
 $progress = Dailyreport::find()->where(['perusahaan'=>$model->id])->orderBy(['waktu'=>SORT_DESC])->limit(15)->all();
+
+$count_offer = Offer::find()->where(['perusahaan'=>$model->id])->count();
 $offers = Offer::find()->where(['perusahaan'=>$model->id])->orderBy(['id'=>SORT_DESC])->limit(15)->all();
+$first_offer = Offer::find()->where(['perusahaan'=>$model->id])->orderBy(['id'=>SORT_ASC])->one();
 
 \yii\web\YiiAsset::register($this);
 ?>
@@ -164,6 +167,9 @@ $offers = Offer::find()->where(['perusahaan'=>$model->id])->orderBy(['id'=>SORT_
     <div class="tab-pane" id="offers">
         <div class="box-body table-responsive no-padding">
         <table class="table table-hover">
+        <?php if($count_offer > 0): ?>
+            <p style="font-style: italic;">Penawaran Pertama : <?= date("d/m/Y",strtotime($first_offer['tanggal'])).' - No.'.$first_offer['no_surat'] ?></p>
+        <?php endif; ?>
             <tr>
                 <th>Waktu</th>
                 <th>No.Surat</th>

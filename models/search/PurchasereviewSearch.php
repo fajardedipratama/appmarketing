@@ -1,11 +1,10 @@
 <?php
 
 namespace app\models\search;
-use Yii;
+
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use app\models\PurchaseReview;
-use app\models\PurchaseOrder;
 
 /**
  * PurchasereviewSearch represents the model behind the search form of `app\models\PurchaseReview`.
@@ -18,7 +17,7 @@ class PurchasereviewSearch extends PurchaseReview
     public function rules()
     {
         return [
-            [['id', 'perusahaan_id', 'jarak_ambil', 'review_by'], 'integer'],
+            [['id', 'perusahaan_id', 'last_purchase_id', 'sales_id', 'jarak_ambil', 'review_by'], 'integer'],
             [['waktu_ambil', 'catatan_kirim', 'catatan_berkas', 'catatan_bayar', 'catatan_lain', 'kendala'], 'safe'],
         ];
     }
@@ -41,17 +40,12 @@ class PurchasereviewSearch extends PurchaseReview
      */
     public function search($params)
     {
-        if(Yii::$app->user->identity->type == 'Marketing'){
-            $query =  PurchaseOrder::find()->select(['perusahaan'])->where(['sales'=>Yii::$app->user->identity->profilname])->andWhere(['status'=>['Terkirim','Terbayar-Selesai']])->andWhere(['eksternal'=>NULL])->distinct();
-        }else{
-            $query =  PurchaseOrder::find()->select(['perusahaan'])->where(['status'=>['Terkirim','Terbayar-Selesai']])->distinct();
-        }
+        $query = PurchaseReview::find();
 
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
-            'pagination'=>array('pageSize'=>30),
         ]);
 
         $this->load($params);
@@ -66,6 +60,8 @@ class PurchasereviewSearch extends PurchaseReview
         $query->andFilterWhere([
             'id' => $this->id,
             'perusahaan_id' => $this->perusahaan_id,
+            'last_purchase_id' => $this->last_purchase_id,
+            'sales_id' => $this->sales_id,
             'jarak_ambil' => $this->jarak_ambil,
             'review_by' => $this->review_by,
         ]);

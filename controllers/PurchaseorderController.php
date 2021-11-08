@@ -8,7 +8,7 @@ use app\models\PurchaseOrderPaid;
 use app\models\PurchaseOrderFile;
 use app\models\City;
 use app\models\search\PurchaseorderSearch;
-use app\models\search\PurchasereviewoldSearch;
+use app\models\search\PurchasereviewSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -93,7 +93,7 @@ class PurchaseorderController extends Controller
 
     public function actionReview()
     {
-        $searchModel = new PurchasereviewoldSearch();
+        $searchModel = new PurchasereviewSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         $sales = ArrayHelper::map(Karyawan::find()->all(),'id',

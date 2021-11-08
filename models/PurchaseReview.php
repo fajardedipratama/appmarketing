@@ -9,6 +9,8 @@ use Yii;
  *
  * @property int $id
  * @property int|null $perusahaan_id
+ * @property int|null $last_purchase_id
+ * @property int|null $sales_id
  * @property string $waktu_ambil
  * @property int|null $jarak_ambil
  * @property string $catatan_kirim
@@ -34,7 +36,7 @@ class PurchaseReview extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['perusahaan_id', 'jarak_ambil', 'review_by'], 'integer'],
+            [['perusahaan_id', 'last_purchase_id', 'sales_id', 'jarak_ambil', 'review_by'], 'integer'],
             [['waktu_ambil', 'catatan_kirim', 'catatan_berkas', 'catatan_bayar', 'catatan_lain', 'kendala'], 'required'],
             [['waktu_ambil'], 'string', 'max' => 30],
             [['catatan_kirim', 'catatan_berkas', 'catatan_bayar', 'catatan_lain', 'kendala'], 'string', 'max' => 2000],
@@ -49,6 +51,8 @@ class PurchaseReview extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'perusahaan_id' => 'Perusahaan ID',
+            'last_purchase_id' => 'Last Purchase ID',
+            'sales_id' => 'Sales ID',
             'waktu_ambil' => 'Waktu Ambil',
             'jarak_ambil' => 'Jarak Ambil',
             'catatan_kirim' => 'Catatan Kirim',

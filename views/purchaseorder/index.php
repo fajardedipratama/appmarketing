@@ -23,7 +23,7 @@ $this->title = 'Data PO';
         <?php if(Yii::$app->user->identity->type != 'Marketing'): ?>
             <?= Html::a('<i class="fa fa-fw fa-dollar"></i> Hasil PO', ['hasilpo','range'=>'all'],['class' => 'btn btn-danger']) ?>
         <?php endif; ?>
-        <?= Html::a('<i class="fa fa-fw fa-pencil-square-o"></i> Review', ['purchasereview/index'],['class' => 'btn btn-warning']) ?>
+        <?= Html::a('<i class="fa fa-fw fa-pencil-square-o"></i> Review', ['/purchasereview'],['class' => 'btn btn-warning']) ?>
         </div>
     </div>
 
