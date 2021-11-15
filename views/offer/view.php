@@ -73,7 +73,19 @@ $this->title = 'Detail Penawaran #'.$model->no_surat;
             'pic',
             'top',
             'pajak',
-            'harga',
+            [
+                'attribute'=>'harga',
+                'value'=>function($data){
+                    $ppn = ($data->harga*10)/100;
+                    $pph = ($data->harga*0.3)/100;
+                    $include = ceil($data->harga+$ppn+$pph);
+                    if($data->pajak === 'PPN'){
+                        return $data->harga.' ('.'include PPN & PPH22 : '.$include.')';
+                    }else{
+                        return $data->harga;
+                    }
+                }
+            ],
             'catatan',
             [
               'attribute'=>'sales',
@@ -87,6 +99,17 @@ $this->title = 'Detail Penawaran #'.$model->no_surat;
                 'format'=>'raw',
                 'value'=>function($data){
                     if($data->send_wa === 1){
+                        return '<i class="fa fa-fw fa-check"></i>';
+                    }else{
+                        return ' ';
+                    }
+                },
+            ],
+            [
+                'attribute'=>'show_tax',
+                'format'=>'raw',
+                'value'=>function($data){
+                    if($data->show_tax === 1){
                         return '<i class="fa fa-fw fa-check"></i>';
                     }else{
                         return ' ';

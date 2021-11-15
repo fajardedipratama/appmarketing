@@ -8,6 +8,10 @@ $lokasi = City::find()->where(['id'=>$model->customer->lokasi])->one();
 $inisial = OfferNumber::find()->where(['id'=>1])->one();
 $extra = OfferExtra::find()->where(['offer_id'=>$model->id]);
 
+$ppn = ($model->harga*10)/100;
+$pph = ($model->harga*0.3)/100;
+$include = ceil($model->harga+$ppn+$pph);
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -76,9 +80,18 @@ $extra = OfferExtra::find()->where(['offer_id'=>$model->id]);
 	<tr><td colspan="2"><br></td></tr>
 
 	<tr>
-		<td colspan="2" style="font-weight: bold;">HARGA SATUAN / LITER : 
+		<td colspan="2" style="font-weight: bold;">HARGA : 
 		<?php if($extra->count() < 1): ?>
 			<?= Yii::$app->formatter->asCurrency($model->harga) ?> / Liter 
+			<?php if($model->pajak === 'PPN'): ?>
+				(belum termasuk PPN & PPH22)
+			<?php else: ?>
+				(harga non-PPN)
+			<?php endif ?>
+			<br>
+			<?php if($model->show_tax === 1 && $model->pajak === 'PPN'): ?>
+				<font style="font-weight: normal;font-style: italic;">termasuk PPN(10%) & PPH22(0,3%) : <?= Yii::$app->formatter->asCurrency($include); ?> / Liter</font><br>
+			<?php endif ?>
 		<?php endif; ?>
 		</td>
 	</tr>
@@ -87,7 +100,24 @@ $extra = OfferExtra::find()->where(['offer_id'=>$model->id]);
 		<td colspan="2" style="font-weight: bold;">
 			<ul>
 			<?php foreach($extra->all() as $show): ?>
-				<li><?= Yii::$app->formatter->asCurrency($show->harga).' / Liter (Term Of Payment : '.$show->top.', Harga '.$show->pajak.')'; ?></li>
+			<?php 
+				$ppn_ex = ($show->harga*10)/100;
+				$pph_ex = ($show->harga*0.3)/100;
+				$include_ex = ceil($show->harga+$ppn_ex+$pph_ex);
+			?>
+				<li>
+				<?php 
+					echo Yii::$app->formatter->asCurrency($show->harga).' / Liter (Payment : '.$show->top;
+					if($show->pajak === 'PPN'){
+						echo ', belum termasuk PPN & PPH22)';
+						if($model->show_tax===1){
+							echo '<br><font style="font-weight: normal;font-style: italic;">termasuk PPN(10%) & PPH22(0,3%) : '.Yii::$app->formatter->asCurrency($include_ex).'  / Liter</font>';
+						}
+					}else{
+						echo ', harga non-PPN)';
+					}
+				?>
+				</li>
 			<?php endforeach ?>
 			</ul>
 		</td>
@@ -101,25 +131,18 @@ $extra = OfferExtra::find()->where(['offer_id'=>$model->id]);
 				<li>Minimal per PO 5.000 liter</li>
 				<li>Toleransi susut yang berlaku adalah 0,5%</li>
 			<?php if($extra->count() < 1): ?>
-				<li>
-					<?php if($model->pajak === 'PPN'){
-						echo 'Harga termasuk PPN';
-					}else{
-						echo 'Harga Non PPN';
-					}?>
-				</li>
 				<li>Term Of Payment : <?= $model->top ?></li>
 			<?php endif; ?>
 				<li>Pengiriman setelah PO (Purchase Order) </li>
 				<li>
 				<?php if($extra->count() < 1): ?>
 					<?php if($model->pajak === 'PPN'){
-						echo 'Pembayaran Wajib ke :<br>Rekening Bank Mandiri (PPN) : 1430014465569 a.n. PT. Berdikari Jaya Bersama<br>Rekening Bank BCA (PPN) : 0393039300 a.n. PT. Berdikari Jaya Bersama';
+						echo 'Pembayaran Wajib ke :<br>Rekening Bank Mandiri : 1430014465569 a.n. PT. Berdikari Jaya Bersama<br>Rekening Bank BCA : 0393039300 a.n. PT. Berdikari Jaya Bersama';
 					}else{
 						echo 'Pembayaran Wajib ke :<br>Rekening Bank BCA (NON PPN) :  0566515151 a.n. Godwin';
 					}?>
 				<?php else: ?>
-					<?= 'Pembayaran Wajib ke :<br>Rekening Bank Mandiri (PPN) : 1430014465569 a.n. PT. Berdikari Jaya Bersama<br>Rekening Bank BCA (PPN) : 0393039300 a.n. PT. Berdikari Jaya Bersama<br>Rekening Bank BCA (NON PPN) :  0566515151 a.n. Godwin'; ?>
+					<?= 'Pembayaran Wajib ke :<br>Rekening Bank Mandiri : 1430014465569 a.n. PT. Berdikari Jaya Bersama<br>Rekening Bank BCA  : 0393039300 a.n. PT. Berdikari Jaya Bersama<br>Rekening Bank BCA (NON PPN) :  0566515151 a.n. Godwin'; ?>
 				<?php endif; ?>
 				</li>
 				<li>Hubungi Sales : <?= $model->karyawan->nama_pendek.' ( '.$model->karyawan->no_hp.' )' ?></li>

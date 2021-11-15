@@ -21,6 +21,7 @@ use Yii;
  * @property string $status
  * @property string $is_new
  * @property int|null $send_wa
+ * @property int|null $show_tax
  */
 class Offer extends \yii\db\ActiveRecord
 {
@@ -40,7 +41,7 @@ class Offer extends \yii\db\ActiveRecord
         return [
             [['perusahaan', 'pic', 'top', 'pajak', 'harga'], 'required'],
             [['tanggal','waktu'], 'safe'],
-            [['no_surat', 'perusahaan', 'harga', 'sales','send_wa'], 'integer'],
+            [['no_surat', 'perusahaan', 'harga', 'sales','send_wa', 'show_tax'], 'integer'],
             [['pic', 'top', 'pajak', 'status','is_new'], 'string', 'max' => 100],
             [['catatan'], 'string', 'max' => 1000],
         ];
@@ -66,6 +67,7 @@ class Offer extends \yii\db\ActiveRecord
             'status' => 'Status',
             'is_new' => 'Penawaran Baru ?',
             'send_wa' => 'Kirim WhatsApp ?',
+            'show_tax' => 'Tampil Harga PPN & PPH22 ?',
         ];
     }
 

@@ -30,9 +30,15 @@ use yii\widgets\ActiveForm;
      <div class="col-sm-4">
         <?= $form->field($model, 'catatan')->textInput(['maxlength' => true]) ?>
      </div>
+    </div>
+    <div class="row">
      <div class="col-sm-4">
         <label>Kirim Ke WhatsApp ?</label>
         <?= $form->field($model, 'send_wa')->checkBox(['label'=>false,'selected' => $model->send_wa]) ?>
+     </div>
+     <div class="col-sm-4">
+        <label>Tampil Harga PPN & PPH22 ? ?</label>
+        <?= $form->field($model, 'show_tax')->checkBox(['label'=>false,'selected' => $model->show_tax]) ?>
      </div>
     </div>
     <div class="row">
