@@ -10,7 +10,7 @@ $extra = OfferExtra::find()->where(['offer_id'=>$model->id]);
 
 $ppn = ($model->harga*10)/100;
 $pph = ($model->harga*0.3)/100;
-$include = ceil($model->harga+$ppn+$pph);
+$include = round($model->harga+$ppn+$pph,2,PHP_ROUND_HALF_UP);
 
 ?>
 <!DOCTYPE html>
@@ -103,7 +103,7 @@ $include = ceil($model->harga+$ppn+$pph);
 			<?php 
 				$ppn_ex = ($show->harga*10)/100;
 				$pph_ex = ($show->harga*0.3)/100;
-				$include_ex = ceil($show->harga+$ppn_ex+$pph_ex);
+				$include_ex = round($show->harga+$ppn_ex+$pph_ex,2,PHP_ROUND_HALF_UP);
 			?>
 				<li>
 				<?php 

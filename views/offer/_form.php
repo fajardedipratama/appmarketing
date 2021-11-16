@@ -1,11 +1,11 @@
 <?php
-
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Offer */
 /* @var $form yii\widgets\ActiveForm */
+
 ?>
 
 <div class="offer-form">
@@ -37,7 +37,7 @@ use yii\widgets\ActiveForm;
         <?= $form->field($model, 'send_wa')->checkBox(['label'=>false,'selected' => $model->send_wa]) ?>
      </div>
      <div class="col-sm-4">
-        <label>Tampil Harga PPN & PPH22 ? ?</label>
+        <label>Tampil Harga PPN & PPH22 ?</label>
         <?= $form->field($model, 'show_tax')->checkBox(['label'=>false,'selected' => $model->show_tax]) ?>
      </div>
     </div>

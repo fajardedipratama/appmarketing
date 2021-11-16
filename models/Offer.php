@@ -41,7 +41,7 @@ class Offer extends \yii\db\ActiveRecord
         return [
             [['perusahaan', 'pic', 'top', 'pajak', 'harga'], 'required'],
             [['tanggal','waktu'], 'safe'],
-            [['no_surat', 'perusahaan', 'harga', 'sales','send_wa', 'show_tax'], 'integer'],
+            [['no_surat', 'perusahaan', 'harga','sales','send_wa', 'show_tax'], 'integer'],
             [['pic', 'top', 'pajak', 'status','is_new'], 'string', 'max' => 100],
             [['catatan'], 'string', 'max' => 1000],
         ];

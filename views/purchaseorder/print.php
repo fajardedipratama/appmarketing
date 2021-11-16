@@ -22,6 +22,8 @@ function cashback_value($value){
         return ' + Cashback '.$value;
     }
 }
+$ppn = ($model->harga*10)/100;
+$pph = ($model->harga*0.3)/100;
 
 ?>
 <!DOCTYPE html>
@@ -61,6 +63,23 @@ function cashback_value($value){
 		<tr>
 			<td style="font-weight: bold;">Pembayaran</td><td><?= $model->termin ?></td>
 		</tr>
+	<?php if($model->pajak === 'PPN'): ?>
+		<tr>
+			<td rowspan="3" style="font-weight: bold;">Harga/liter</td>
+			<td> 
+				<?php 
+					$city = City::find()->where(['id'=>$model->kota_kirim])->one();
+                    echo ($model->harga-termin_value($model->termin)-$city['oat']-$model->cashback).' + Termin '.termin_value($model->termin).' + OAT '.$city['oat'].cashback_value($model->cashback).' = <b>DPP '.$model->harga.'</b>';
+				?>
+			</td>
+		</tr>
+		<tr>
+			<td>PPN = <?= $ppn ?>, PPH22 = <?= $pph ?></td>
+		</tr>
+		<tr>
+			<td>Total = <?= Yii::$app->formatter->asCurrency(round($model->harga+$ppn+$pph,2,PHP_ROUND_HALF_UP)) ?></td>
+		</tr>
+	<?php else: ?>
 		<tr>
 			<td style="font-weight: bold;">Harga/liter</td>
 			<td> 
@@ -70,6 +89,7 @@ function cashback_value($value){
 				?>
 			</td>
 		</tr>
+	<?php endif; ?>
 		<tr>
 			<td style="font-weight: bold;">Pajak</td><td><?= $model->pajak ?></td>
 		</tr>

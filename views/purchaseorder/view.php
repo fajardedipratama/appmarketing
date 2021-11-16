@@ -162,9 +162,22 @@ $this->title = 'PURCHASE ORDER';
             'termin',
             [
                 'attribute'=>'harga',
+                'format'=>'raw',
                 'value'=>function($data){
+                    $ppn = ($data->harga*10)/100;
+                    $pph = ($data->harga*0.3)/100;
+                    $include = $data->harga+$ppn+$pph;
                     $city = City::find()->where(['id'=>$data->kota_kirim])->one();
+                  if($data->pajak==='PPN'){
+                    if($data->tgl_po > '2021-11-15'){
+                        return ($data->harga-termin_value($data->termin)-$city['oat']-$data->cashback).' + Termin '.termin_value($data->termin).' + OAT '.$city['oat'].cashback_value($data->cashback).' = <b>DPP '.$data->harga.'</b><br> PPN = '.$ppn.' ,PPH22 = '.$pph.'<br> Total = '.Yii::$app->formatter->asCurrency(round($include,2,PHP_ROUND_HALF_UP));
+                    }else{
+                        return ($data->harga-termin_value($data->termin)-$city['oat']-$data->cashback).' + Termin '.termin_value($data->termin).' + OAT '.$city['oat'].cashback_value($data->cashback).' = '.$data->harga;
+                    }
+                  }else{
                     return ($data->harga-termin_value($data->termin)-$city['oat']-$data->cashback).' + Termin '.termin_value($data->termin).' + OAT '.$city['oat'].cashback_value($data->cashback).' = '.$data->harga;
+                  }
+                    
                 }
             ],
             'pajak',
@@ -241,7 +254,16 @@ $this->title = 'PURCHASE ORDER';
                 </td>
             </tr>
         <?php endforeach ?>
-        <?php $total_tagihan = ($model->harga+$model->penalti)*$model->volume; ?>
+        <?php 
+            $ppn = ($model->harga*10)/100;
+            $pph = ($model->harga*0.3)/100;
+            if($model->tgl_po > '2021-11-15'){
+                $total_tagihan = ($model->harga+$ppn+$pph+$model->penalti)*$model->volume;
+            }else{
+                $total_tagihan = ($model->harga+$model->penalti)*$model->volume;
+            }
+             
+        ?>
             <tr>
                 <th>Total Tagihan</th>
                 <th><?= Yii::$app->formatter->asCurrency($total_tagihan); ?></th>

@@ -78,7 +78,7 @@ $this->title = 'Detail Penawaran #'.$model->no_surat;
                 'value'=>function($data){
                     $ppn = ($data->harga*10)/100;
                     $pph = ($data->harga*0.3)/100;
-                    $include = ceil($data->harga+$ppn+$pph);
+                    $include = round($data->harga+$ppn+$pph,2,PHP_ROUND_HALF_UP);
                     if($data->pajak === 'PPN'){
                         return $data->harga.' ('.'include PPN & PPH22 : '.$include.')';
                     }else{
