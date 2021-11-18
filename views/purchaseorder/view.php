@@ -34,6 +34,12 @@ function cashback_value($value){
     }
 }
 
+function round_up($number, $precision = 2)
+{
+    $fig = pow(10, $precision);
+    return (ceil($number * $fig) / $fig);
+}
+
 $this->title = 'PURCHASE ORDER';
 \yii\web\YiiAsset::register($this);
 ?>
@@ -165,12 +171,12 @@ $this->title = 'PURCHASE ORDER';
                 'format'=>'raw',
                 'value'=>function($data){
                     $ppn = ($data->harga*10)/100;
-                    $pph = ($data->harga*0.3)/100;
+                    $pph = round_up(($data->harga*0.3)/100,2);
                     $include = $data->harga+$ppn+$pph;
                     $city = City::find()->where(['id'=>$data->kota_kirim])->one();
                   if($data->pajak==='PPN'){
                     if($data->tgl_po > '2021-11-15'){
-                        return ($data->harga-termin_value($data->termin)-$city['oat']-$data->cashback).' + Termin '.termin_value($data->termin).' + OAT '.$city['oat'].cashback_value($data->cashback).' = <b>DPP '.$data->harga.'</b><br> PPN = '.$ppn.' ,PPH22 = '.$pph.'<br> Total = '.Yii::$app->formatter->asCurrency(round($include,2,PHP_ROUND_HALF_UP));
+                        return ($data->harga-termin_value($data->termin)-$city['oat']-$data->cashback).' + Termin '.termin_value($data->termin).' + OAT '.$city['oat'].cashback_value($data->cashback).' = <b>DPP '.$data->harga.'</b><br> PPN = '.$ppn.' ,PPH22 = '.$pph.'<br> Total = '.Yii::$app->formatter->asCurrency($include);
                     }else{
                         return ($data->harga-termin_value($data->termin)-$city['oat']-$data->cashback).' + Termin '.termin_value($data->termin).' + OAT '.$city['oat'].cashback_value($data->cashback).' = '.$data->harga;
                     }
@@ -256,7 +262,7 @@ $this->title = 'PURCHASE ORDER';
         <?php endforeach ?>
         <?php 
             $ppn = ($model->harga*10)/100;
-            $pph = ($model->harga*0.3)/100;
+            $pph = round_up(($model->harga*0.3)/100,2);
             if($model->tgl_po > '2021-11-15'){
                 $total_tagihan = ($model->harga+$ppn+$pph+$model->penalti)*$model->volume;
             }else{

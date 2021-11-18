@@ -8,9 +8,15 @@ $lokasi = City::find()->where(['id'=>$model->customer->lokasi])->one();
 $inisial = OfferNumber::find()->where(['id'=>1])->one();
 $extra = OfferExtra::find()->where(['offer_id'=>$model->id]);
 
+function round_up($number, $precision = 2)
+{
+    $fig = pow(10, $precision);
+    return (ceil($number * $fig) / $fig);
+}
+
 $ppn = ($model->harga*10)/100;
-$pph = ($model->harga*0.3)/100;
-$include = round($model->harga+$ppn+$pph,2,PHP_ROUND_HALF_UP);
+$pph = round_up(($model->harga*0.3)/100,2);
+$include = $model->harga+$ppn+$pph;
 
 ?>
 <!DOCTYPE html>

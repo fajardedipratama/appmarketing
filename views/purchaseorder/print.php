@@ -22,8 +22,14 @@ function cashback_value($value){
         return ' + Cashback '.$value;
     }
 }
+
+function round_up($number, $precision = 2)
+{
+    $fig = pow(10, $precision);
+    return (ceil($number * $fig) / $fig);
+}
 $ppn = ($model->harga*10)/100;
-$pph = ($model->harga*0.3)/100;
+$pph = round_up(($model->harga*0.3)/100,2);
 
 ?>
 <!DOCTYPE html>
@@ -77,7 +83,7 @@ $pph = ($model->harga*0.3)/100;
 			<td>PPN = <?= $ppn ?>, PPH22 = <?= $pph ?></td>
 		</tr>
 		<tr>
-			<td>Total = <?= Yii::$app->formatter->asCurrency(round($model->harga+$ppn+$pph,2,PHP_ROUND_HALF_UP)) ?></td>
+			<td>Total = <?= Yii::$app->formatter->asCurrency($model->harga+$ppn+$pph) ?></td>
 		</tr>
 	<?php else: ?>
 		<tr>

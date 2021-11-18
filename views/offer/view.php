@@ -6,6 +6,12 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\Offer */
 
+function round_up($number, $precision = 2)
+{
+    $fig = pow(10, $precision);
+    return (ceil($number * $fig) / $fig);
+}
+
 $this->title = 'Detail Penawaran #'.$model->no_surat;
 \yii\web\YiiAsset::register($this);
 ?>
@@ -77,8 +83,8 @@ $this->title = 'Detail Penawaran #'.$model->no_surat;
                 'attribute'=>'harga',
                 'value'=>function($data){
                     $ppn = ($data->harga*10)/100;
-                    $pph = ($data->harga*0.3)/100;
-                    $include = round($data->harga+$ppn+$pph,2,PHP_ROUND_HALF_UP);
+                    $pph = round_up(($data->harga*0.3)/100,2);
+                    $include = $data->harga+$ppn+$pph;
                     if($data->pajak === 'PPN'){
                         return $data->harga.' ('.'include PPN & PPH22 : '.$include.')';
                     }else{
