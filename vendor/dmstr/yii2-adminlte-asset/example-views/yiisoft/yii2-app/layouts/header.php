@@ -31,9 +31,9 @@ $callback = Dailyreport::find()->where(['sales'=>Yii::$app->user->identity->prof
                         <i class="fa fa-fw fa-calculator"></i>
                     </a>
                     <ul class="dropdown-menu">
-                        <li class="header">DPP -> Include Tax</li>
-                        <li class="header">Include Tax -> Tax</li>
-                        <li class="header">Cashback</li>
+                        <li class="header"><a href="index.php?r=calculator/to_include" target="_blank"><i class="fa fa-calculator"></i> DPP -> Include Tax</a></li>
+                        <li class="header"><a href="index.php?r=calculator/to_dpp" target="_blank"><i class="fa fa-calculator"></i> Include Tax -> DPP</a></li>
+                        <li class="header"><a href="index.php?r=calculator/cashback" target="_blank"><i class="fa fa-calculator"></i> Cashback</a></li>
                     </ul>
                 </li>
                 <?php endif ?>

@@ -13,6 +13,7 @@ use Yii;
  */
 class Calculator extends \yii\db\ActiveRecord
 {
+    public $dpp_value;
     /**
      * {@inheritdoc}
      */
@@ -27,7 +28,7 @@ class Calculator extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['persentase'], 'integer'],
+            [['persentase','dpp_value'], 'integer'],
             [['komponen'], 'string', 'max' => 100],
         ];
     }
@@ -41,6 +42,7 @@ class Calculator extends \yii\db\ActiveRecord
             'id' => 'ID',
             'komponen' => 'Komponen',
             'persentase' => 'Persentase',
+            'dpp_value' => 'Nominal DPP',
         ];
     }
 }

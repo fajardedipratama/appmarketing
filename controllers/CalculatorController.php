@@ -54,6 +54,30 @@ class CalculatorController extends Controller
             'dataProvider' => $dataProvider,
         ]);
     }
+    public function actionTo_include()
+    {
+        $model = new Calculator();
+
+        return $this->render('to_include', [
+            'model' => $model,
+        ]);
+    }
+    public function actionTo_dpp()
+    {
+        $model = new Calculator();
+
+        return $this->render('to_dpp', [
+            'model' => $model,
+        ]);
+    }
+    public function actionCashback()
+    {
+        $model = new Calculator();
+
+        return $this->render('cashback', [
+            'model' => $model,
+        ]);
+    }
 
     /**
      * Displays a single Calculator model.
