@@ -263,8 +263,12 @@ $this->title = 'PURCHASE ORDER';
         <?php 
             $ppn = ($model->harga*10)/100;
             $pph = round_up(($model->harga*0.3)/100,2);
-            if($model->tgl_po > '2021-11-15'){
-                $total_tagihan = ($model->harga+$ppn+$pph+$model->penalti)*$model->volume;
+            if($model->pajak === 'PPN'){
+                if($model->tgl_po > '2021-11-15'){
+                    $total_tagihan = ($model->harga+$ppn+$pph+$model->penalti)*$model->volume;
+                }else{
+                    $total_tagihan = ($model->harga+$model->penalti)*$model->volume;
+                }
             }else{
                 $total_tagihan = ($model->harga+$model->penalti)*$model->volume;
             }

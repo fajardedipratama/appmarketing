@@ -58,6 +58,10 @@ class CalculatorController extends Controller
     {
         $model = new Calculator();
 
+        if ($model->load(Yii::$app->request->post())) {
+            return $this->redirect(['to_include', 'value' => $model->input_value]);
+        }
+
         return $this->render('to_include', [
             'model' => $model,
         ]);
@@ -65,6 +69,10 @@ class CalculatorController extends Controller
     public function actionTo_dpp()
     {
         $model = new Calculator();
+
+        if ($model->load(Yii::$app->request->post())) {
+            return $this->redirect(['to_dpp', 'value' => $model->input_value]);
+        }
 
         return $this->render('to_dpp', [
             'model' => $model,
