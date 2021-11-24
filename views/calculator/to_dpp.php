@@ -23,7 +23,7 @@ $this->title = 'Indlude Tax -> DPP';
             <div class="box box-success"><div class="box-body">
                 <div class="row">
                     <div class="col-sm-6">
-                        <?= $form->field($model, 'input_value')->textInput(['type' => 'number']) ?>
+                        <?= $form->field($model, 'input_value')->textInput(['type' => 'double']) ?>
                     </div>
                 </div>
                 <div class="form-group">

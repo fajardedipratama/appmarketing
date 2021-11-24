@@ -81,6 +81,9 @@ class CalculatorController extends Controller
     public function actionCashback()
     {
         $model = new Calculator();
+        if ($model->load(Yii::$app->request->post())) {
+            return $this->redirect(['cashback', 'value' => $model->input_value,'volume'=>$model->volume,'tax'=>$model->tax]);
+        }
 
         return $this->render('cashback', [
             'model' => $model,

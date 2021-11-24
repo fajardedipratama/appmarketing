@@ -13,7 +13,7 @@ use Yii;
  */
 class Calculator extends \yii\db\ActiveRecord
 {
-    public $input_value;
+    public $input_value,$volume,$tax;
     /**
      * {@inheritdoc}
      */
@@ -28,9 +28,10 @@ class Calculator extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            ['input_value','required'],
-            [['persentase','input_value'], 'integer'],
-            [['komponen'], 'string', 'max' => 100],
+            [['input_value','volume'],'required'],
+            ['input_value','double'],
+            [['persentase','volume'], 'integer'],
+            [['komponen','tax'], 'string', 'max' => 100],
         ];
     }
 
@@ -43,7 +44,9 @@ class Calculator extends \yii\db\ActiveRecord
             'id' => 'ID',
             'komponen' => 'Komponen',
             'persentase' => 'Persentase',
-            'input_value' => 'Nominal DPP',
+            'input_value' => 'Nominal',
+            'volume' => 'Volume',
+            'tax' => 'Pajak',
         ];
     }
 }
