@@ -18,10 +18,17 @@ $this->title = 'Review PO';
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            'customer.perusahaan',
-            'last_purchase_id',
-            'customer.sales',
-            'review_by',
+            'perusahaan',
+            [
+                'attribute'=>'sales',
+                'value'=>function($data){
+                    if($data->sales === 2){
+                        return '-';
+                    }else{
+                        return $data->karyawan->nama_pendek;
+                    }
+                }
+            ],
             ['header'=>'Aksi','class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>

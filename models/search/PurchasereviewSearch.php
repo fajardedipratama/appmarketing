@@ -5,7 +5,7 @@ namespace app\models\search;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use app\models\PurchaseReview;
-
+use app\models\Customer;
 /**
  * PurchasereviewSearch represents the model behind the search form of `app\models\PurchaseReview`.
  */
@@ -40,12 +40,13 @@ class PurchasereviewSearch extends PurchaseReview
      */
     public function search($params)
     {
-        $query = PurchaseReview::find();
+        $query = Customer::find()->where(['expired'=>'2070-01-01']);
 
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'sort'=>['defaultOrder'=>['perusahaan'=>SORT_ASC]],
         ]);
 
         $this->load($params);
