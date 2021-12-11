@@ -43,6 +43,19 @@ $pph = round_up(($model->harga*0.3)/100,2);
 	<tbody>
 		<tr><td colspan="2" style="font-weight: bold;text-align: center;">FORM PO</td></tr>
 		<tr>
+			<td style="font-weight: bold;">Status Order</td>
+			<td>
+				<?php 
+					$check=PurchaseOrder::find()->where(['perusahaan'=>$model->perusahaan])->andWhere(['status'=>['Pending','Terkirim','Terbayar-Selesai']])->andWhere(['<=','tgl_po',$model->tgl_po])->count();
+                    if($check > 1){
+                        echo "Repeat Order";
+                    }else{
+                        echo "First Order";
+                    }
+				?>
+			</td>
+		</tr>
+		<tr>
 			<td style="font-weight: bold;">Perusahaan</td><td><?= $model->customer->perusahaan ?></td>
 		</tr>
 		<tr>
@@ -67,25 +80,17 @@ $pph = round_up(($model->harga*0.3)/100,2);
 			<td style="font-weight: bold;">Volume</td><td><?= $model->volume ?> Liter</td>
 		</tr>
 		<tr>
+			<td style="font-weight: bold;">Pajak</td><td><?= $model->pajak ?></td>
+		</tr>
+		<tr>
+			<td style="font-weight: bold;">Catatan</td><td><?= $model->catatan ?></td>
+		</tr>
+		<tr>
+			<td style="font-weight: bold;">Penerima Barang</td><td><?= $model->penerima ?></td>
+		</tr>
+		<tr>
 			<td style="font-weight: bold;">Pembayaran</td><td><?= $model->termin ?></td>
 		</tr>
-	<?php if($model->pajak === 'PPN'): ?>
-		<tr>
-			<td rowspan="3" style="font-weight: bold;">Harga/liter</td>
-			<td> 
-				<?php 
-					$city = City::find()->where(['id'=>$model->kota_kirim])->one();
-                    echo ($model->harga-termin_value($model->termin)-$city['oat']-$model->cashback).' + Termin '.termin_value($model->termin).' + OAT '.$city['oat'].cashback_value($model->cashback).' = <b>DPP '.$model->harga.'</b>';
-				?>
-			</td>
-		</tr>
-		<tr>
-			<td>PPN = <?= $ppn ?>, PPH22 = <?= $pph ?></td>
-		</tr>
-		<tr>
-			<td>Total = <?= Yii::$app->formatter->asCurrency($model->harga+$ppn+$pph) ?></td>
-		</tr>
-	<?php else: ?>
 		<tr>
 			<td style="font-weight: bold;">Harga/liter</td>
 			<td> 
@@ -94,10 +99,6 @@ $pph = round_up(($model->harga*0.3)/100,2);
                     echo ($model->harga-termin_value($model->termin)-$city['oat']-$model->cashback).' + Termin '.termin_value($model->termin).' + OAT '.$city['oat'].cashback_value($model->cashback).' = '.$model->harga;
 				?>
 			</td>
-		</tr>
-	<?php endif; ?>
-		<tr>
-			<td style="font-weight: bold;">Pajak</td><td><?= $model->pajak ?></td>
 		</tr>
 		<tr>
 			<td style="font-weight: bold;">Metode Bayar</td>
@@ -112,29 +113,10 @@ $pph = round_up(($model->harga*0.3)/100,2);
 			</td>
 		</tr>
 		<tr>
-			<td style="font-weight: bold;">Purchasing</td><td><?= $model->purchasing.'-'.$model->no_purchasing ?></td>
+			<td style="font-weight: bold;">Purchasing</td><td><?= $model->purchasing.' '.$model->no_purchasing ?></td>
 		</tr>
 		<tr>
-			<td style="font-weight: bold;">Keuangan</td><td><?= $model->keuangan.'-'.$model->no_keuangan ?></td>
-		</tr>
-		<tr>
-			<td style="font-weight: bold;">Penerima Barang</td><td><?= $model->penerima ?></td>
-		</tr>
-		<tr>
-			<td style="font-weight: bold;">Catatan</td><td><?= $model->catatan ?></td>
-		</tr>
-		<tr>
-			<td style="font-weight: bold;">Status Order</td>
-			<td>
-				<?php 
-					$check=PurchaseOrder::find()->where(['perusahaan'=>$model->perusahaan])->andWhere(['status'=>['Pending','Terkirim','Terbayar-Selesai']])->andWhere(['<=','tgl_po',$model->tgl_po])->count();
-                    if($check > 1){
-                        echo "Repeat Order";
-                    }else{
-                        echo "First Order";
-                    }
-				?>
-			</td>
+			<td style="font-weight: bold;">Keuangan</td><td><?= $model->keuangan.' '.$model->no_keuangan ?></td>
 		</tr>
 	</tbody>
 </table>
