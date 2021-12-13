@@ -59,7 +59,7 @@ $this->title = 'PURCHASE ORDER';
         </p>
     <?php endif ?>
     </div>
-<?php if(Yii::$app->user->identity->type == 'Administrator'): ?>
+<?php if(Yii::$app->user->identity->type != 'Marketing'): ?>
     <div class="col-sm-5">
         <!-- tombol admin -->
     <?php if($model->status === 'Pending'): ?>
@@ -86,10 +86,12 @@ $this->title = 'PURCHASE ORDER';
         <!-- tombol admin -->
         <?= Html::a('<i class="fa fa-fw fa-print"></i> Print', ['print', 'id' => $model->id], ['class' => 'btn btn-primary','target'=>'_blank']) ?>
         <?= Html::a('<i class="fa fa-fw fa-pencil"></i> Ubah', ['update', 'id' => $model->id], ['class' => 'btn btn-info']) ?>
+    <?php if(Yii::$app->user->identity->type == 'Administrator'): ?>
         <?= Html::a('<i class="fa fa-fw fa-trash"></i> Hapus', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-warning',
             'data' => ['confirm' => 'Hapus data ini ?','method' => 'post',],
         ]) ?>
+    <?php endif ?>
     </div>
 <?php elseif(Yii::$app->user->identity->type == 'Marketing' && $model->status == 'Pending'): ?>
     <div class="col-sm-2"></div>

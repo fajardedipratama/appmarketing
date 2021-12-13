@@ -96,7 +96,11 @@ $pph = round_up(($model->harga*0.3)/100,2);
 			<td> 
 				<?php 
 					$city = City::find()->where(['id'=>$model->kota_kirim])->one();
-                    echo ($model->harga-termin_value($model->termin)-$city['oat']-$model->cashback).' + Termin '.termin_value($model->termin).' + OAT '.$city['oat'].cashback_value($model->cashback).' = '.$model->harga;
+					if($model->pajak === 'Non PPN'){
+						echo ($model->harga-termin_value($model->termin)-$city['oat']-$model->cashback).' + Termin '.termin_value($model->termin).' + OAT '.$city['oat'].cashback_value($model->cashback).' = '.$model->harga;
+					}else{
+						echo ($model->harga-termin_value($model->termin)-$city['oat']-$model->cashback).' + Termin '.termin_value($model->termin).' + OAT '.$city['oat'].cashback_value($model->cashback).' = <b>DPP '.$model->harga.'</b>';
+					}
 				?>
 			</td>
 		</tr>
