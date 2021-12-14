@@ -17,7 +17,7 @@ class KasdetailSearch extends KasDetail
     public function rules()
     {
         return [
-            [['id', 'kas_id', 'akun_id', 'nominal', 'titip?', 'saldo_akhir'], 'integer'],
+            [['id', 'kas_id', 'akun_id', 'nominal', 'titip', 'saldo_akhir'], 'integer'],
             [['tgl_kas', 'deskripsi', 'jenis'], 'safe'],
         ];
     }
@@ -63,7 +63,7 @@ class KasdetailSearch extends KasDetail
             'akun_id' => $this->akun_id,
             'tgl_kas' => $this->tgl_kas,
             'nominal' => $this->nominal,
-            'titip?' => $this->titip?,
+            'titip' => $this->titip,
             'saldo_akhir' => $this->saldo_akhir,
         ]);
 

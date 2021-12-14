@@ -24,7 +24,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'nominal')->textInput() ?>
 
-    <?= $form->field($model, 'titip?')->textInput() ?>
+    <?= $form->field($model, 'titip')->textInput() ?>
 
     <?= $form->field($model, 'saldo_akhir')->textInput() ?>
 

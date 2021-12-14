@@ -36,7 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'deskripsi',
             'jenis',
             'nominal',
-            'titip?',
+            'titip',
             'saldo_akhir',
         ],
     ]) ?>

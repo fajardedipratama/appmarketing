@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use Yii;
 use app\models\Kas;
+use app\models\KasDetail;
 use app\models\search\KasSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -63,8 +64,29 @@ class KasController extends Controller
      */
     public function actionView($id)
     {
+        $model = $this->findModel($id);
+        $newModel = new KasDetail();
+
+        if ($newModel->load(Yii::$app->request->post())) {
+            $newModel->kas_id = $id;
+            $newModel->tgl_kas = date('Y-m-d');
+            if($newModel->jenis === 'Masuk'){
+                $newModel->saldo_akhir = $model->saldo+$newModel->nominal;
+            }else{
+                $newModel->saldo_akhir = $model->saldo-$newModel->nominal;
+            }
+            $newModel->save();
+
+            Yii::$app->db->createCommand()->update('id_kas',
+            ['saldo' =>  $newModel->saldo_akhir ],
+            ['id'=>$model->id])->execute();
+
+            return $this->redirect(['view', 'id' => $id]);
+        }
+
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $model,
+            'newModel' => $newModel,
         ]);
     }
 
