@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use Yii;
+use app\models\Kas;
 use app\models\KasDetail;
 use app\models\search\KasdetailSearch;
 use yii\web\Controller;
@@ -118,6 +119,24 @@ class KasdetailController extends Controller
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
+    }
+    public function actionDeletelast($id)
+    {
+        $model = KasDetail::find()->where(['kas_id'=>$id])->orderBy(['id'=>SORT_DESC])->one();
+        $kas = Kas::find()->where(['id'=>$id])->one();
+
+            if($model->jenis === 'Masuk'){
+                $saldo_kas = $kas->saldo-$model->nominal;
+            }else{
+                $saldo_kas = $kas->saldo+$model->nominal;
+            }
+            Yii::$app->db->createCommand()->update('id_kas',
+            ['saldo' =>  $saldo_kas ],
+            ['id'=>$id])->execute();
+
+        $model->delete();
+
+        return $this->redirect(['/kas/view', 'id' => $id]);
     }
 
     /**

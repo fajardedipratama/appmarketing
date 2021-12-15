@@ -13,7 +13,7 @@ use Yii;
  * @property string|null $tgl_kas
  * @property string $deskripsi
  * @property string $jenis
- * @property int $nominal
+ * @property int|null $nominal
  * @property int|null $titip
  * @property int $saldo_akhir
  */
@@ -33,7 +33,7 @@ class KasDetail extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['deskripsi', 'jenis', 'nominal'], 'required'],
+            [['deskripsi'], 'required'],
             [['kas_id', 'akun_id', 'nominal', 'titip', 'saldo_akhir'], 'integer'],
             [['tgl_kas'], 'safe'],
             [['deskripsi'], 'string', 'max' => 1000],
