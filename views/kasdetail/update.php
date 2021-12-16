@@ -5,10 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\KasDetail */
 
-$this->title = 'Update Kas Detail: ' . $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Kas Details', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->title = 'Update Detail Kas';
 ?>
 <div class="kas-detail-update">
 

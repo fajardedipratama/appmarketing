@@ -14,12 +14,13 @@ $this->title = 'Kas '.$model->bulan.'/'.$model->tahun;
 <div class="kas-view">
 
 <div class="row">
-    <div class="col-sm-10">
+    <div class="col-sm-9">
         <h1><?= Html::encode($this->title) ?></h1>
         <button class="btn btn-success"><i class="fa fa-fw fa-money"></i> Saldo : <?= Yii::$app->formatter->asCurrency($model->saldo); ?></button>
     </div>
-    <div class="col-sm-2">
+    <div class="col-sm-3">
         <button class="btn btn-success" data-toggle="modal" data-target="#input-detail"><i class="fa fa-fw fa-plus-square"></i> Tambah Data</button>
+        <button class="btn btn-primary" data-toggle="modal" data-target="#print-detail"><i class="fa fa-fw fa-print"></i> Print</button>
     </div>
 </div>
     
@@ -36,7 +37,10 @@ $this->title = 'Kas '.$model->bulan.'/'.$model->tahun;
     <?php foreach($detail as $show): ?>
         <tr>
             <td><?= date('d/m/Y',strtotime($show->tgl_kas)); ?></td>
-            <td><?= $show->deskripsi; ?></td>
+            <td>
+                <?= Html::a('<i class="fa fa-fw fa-pencil"></i>', ['/kasdetail/update','id'=>$show->id])?>
+                <?= $show->deskripsi; ?>
+            </td>
             <td>
                 <?php if($show->jenis === 'Masuk'){
                         echo Yii::$app->formatter->asCurrency($show->nominal);
@@ -69,6 +73,19 @@ $this->title = 'Kas '.$model->bulan.'/'.$model->tahun;
             </div>
             <div class="modal-body">
               <?= $this->render('_formdetail', ['newModel' => $newModel]) ?>
+            </div>
+        </div>
+    </div></div>
+
+    <div class="modal fade" id="print-detail"><div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title"><b>Print</b></h4>          
+            </div>
+            <div class="modal-body">
+              <?= $this->render('_formsearch', ['newModel' => $newModel]) ?>
             </div>
         </div>
     </div></div>

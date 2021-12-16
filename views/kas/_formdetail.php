@@ -26,7 +26,7 @@ use yii\widgets\ActiveForm;
     </div>
 </div>
     <div class="form-group">
-        <?= Html::submitButton('Simpan', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Simpan', ['name'=>'simpan','class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

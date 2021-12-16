@@ -33,7 +33,6 @@ class KasDetail extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['deskripsi'], 'required'],
             [['kas_id', 'akun_id', 'nominal', 'titip', 'saldo_akhir'], 'integer'],
             [['tgl_kas'], 'safe'],
             [['deskripsi'], 'string', 'max' => 1000],

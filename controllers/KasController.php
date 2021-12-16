@@ -67,7 +67,8 @@ class KasController extends Controller
         $model = $this->findModel($id);
         $newModel = new KasDetail();
 
-        if ($newModel->load(Yii::$app->request->post())) {
+        if(isset($_POST['simpan'])){
+         if ($newModel->load(Yii::$app->request->post())) {
             $newModel->kas_id = $id;
             $newModel->tgl_kas = date('Y-m-d');
             if($newModel->jenis === 'Masuk'){
@@ -82,6 +83,12 @@ class KasController extends Controller
             ['id'=>$model->id])->execute();
 
             return $this->redirect(['view', 'id' => $id]);
+         }
+        }
+
+        if(isset($_POST['print'])){
+            $newModel->tgl_kas = Yii::$app->formatter->asDate($_POST['KasDetail']['tgl_kas'],'yyyy-MM-dd');
+            return $this->redirect(['/kasdetail/print', 'tgl' => $newModel->tgl_kas]);
         }
 
         return $this->render('view', [

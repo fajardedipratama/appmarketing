@@ -69,6 +69,11 @@ class KasdetailController extends Controller
         ]);
     }
 
+    public function actionPrint($tgl)
+    {
+        return $this->renderPartial('print', ['tgl' => $tgl]);
+    }
+
     /**
      * Creates a new KasDetail model.
      * If creation is successful, the browser will be redirected to the 'view' page.
@@ -99,7 +104,7 @@ class KasdetailController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['/kas/view', 'id' => $model->kas_id]);
         }
 
         return $this->render('update', [
