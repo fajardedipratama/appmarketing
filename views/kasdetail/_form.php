@@ -13,6 +13,7 @@ use yii\widgets\ActiveForm;
     <?php $form = ActiveForm::begin(); ?>
     <div class="box box-success"><div class="box-body">
         <?= $form->field($model, 'deskripsi')->textarea(['style' => 'resize:none','rows' => 3]) ?>
+        <?= $form->field($model, 'titip')->checkBox(['selected' => $model->titip]) ?>
     </div></div>
     <div class="form-group">
         <?= Html::submitButton('Simpan', ['class' => 'btn btn-success']) ?>

@@ -11,12 +11,11 @@ $this->title = 'Kas';
 ?>
 <div class="kas-index">
 <div class="row">
-    <div class="col-sm-9">
+    <div class="col-sm-10">
         <h1><?= Html::encode($this->title) ?></h1>
     </div>
-    <div class="col-sm-3">
+    <div class="col-sm-2">
         <?= Html::a('<i class="fa fa-fw fa-plus-square"></i> Tambah Data', ['create'], ['class' => 'btn btn-success']) ?>
-        <?= Html::a('<i class="fa fa-fw fa-book"></i> Akun', ['/kasakun'], ['class' => 'btn btn-warning']) ?>
     </div>
 </div>
 <div class="box"><div class="box-body"><div class="table-responsive">

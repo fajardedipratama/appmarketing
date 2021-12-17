@@ -6,7 +6,7 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\Kas */
 
-$detail = KasDetail::find()->where(['kas_id'=>$model->id])->all();
+$detail = KasDetail::find()->where(['kas_id'=>$model->id]);
 
 $this->title = 'Kas '.$model->bulan.'/'.$model->tahun;
 \yii\web\YiiAsset::register($this);
@@ -34,8 +34,8 @@ $this->title = 'Kas '.$model->bulan.'/'.$model->tahun;
             <th width="15%">Keluar</th>
             <th width="15%">Saldo</th>
         </tr>
-    <?php foreach($detail as $show): ?>
-        <tr>
+    <?php foreach($detail->all() as $show): ?>
+        <tr <?php if($show->titip==1){ echo "style='background-color:yellow'"; } ?> >
             <td><?= date('d/m/Y',strtotime($show->tgl_kas)); ?></td>
             <td>
                 <?= Html::a('<i class="fa fa-fw fa-pencil"></i>', ['/kasdetail/update','id'=>$show->id])?>
@@ -43,18 +43,19 @@ $this->title = 'Kas '.$model->bulan.'/'.$model->tahun;
             </td>
             <td>
                 <?php if($show->jenis === 'Masuk'){
-                        echo Yii::$app->formatter->asCurrency($show->nominal);
+                    echo Yii::$app->formatter->asCurrency($show->nominal);
                 } ?>  
             </td>
             <td>
                 <?php if($show->jenis === 'Keluar'){
-                        echo Yii::$app->formatter->asCurrency($show->nominal);
+                    echo Yii::$app->formatter->asCurrency($show->nominal);
                 } ?>  
             </td>
             <td><?= Yii::$app->formatter->asCurrency($show->saldo_akhir) ?></td>
         </tr>
     <?php endforeach ?>
     </table>
+<?php if($detail->count() > 0): ?>
     <?= Html::a('<i class="fa fa-fw fa-trash"></i> Hapus Baris Terakhir', ['/kasdetail/deletelast','id' =>$model->id], [
         'class' => 'btn btn-sm btn-danger',
         'data' => [
@@ -62,6 +63,7 @@ $this->title = 'Kas '.$model->bulan.'/'.$model->tahun;
             'method' => 'post',
         ],
     ]) ?>
+<?php endif ?>
 </div></div></div>
 
     <div class="modal fade" id="input-detail"><div class="modal-dialog">

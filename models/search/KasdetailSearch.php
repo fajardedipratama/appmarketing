@@ -17,7 +17,7 @@ class KasdetailSearch extends KasDetail
     public function rules()
     {
         return [
-            [['id', 'kas_id', 'akun_id', 'nominal', 'titip', 'saldo_akhir'], 'integer'],
+            [['id', 'kas_id', 'nominal', 'titip', 'saldo_akhir'], 'integer'],
             [['tgl_kas', 'deskripsi', 'jenis'], 'safe'],
         ];
     }
@@ -60,7 +60,6 @@ class KasdetailSearch extends KasDetail
         $query->andFilterWhere([
             'id' => $this->id,
             'kas_id' => $this->kas_id,
-            'akun_id' => $this->akun_id,
             'tgl_kas' => $this->tgl_kas,
             'nominal' => $this->nominal,
             'titip' => $this->titip,

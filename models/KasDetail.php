@@ -9,7 +9,6 @@ use Yii;
  *
  * @property int $id
  * @property int $kas_id
- * @property int|null $akun_id
  * @property string|null $tgl_kas
  * @property string $deskripsi
  * @property string $jenis
@@ -33,7 +32,7 @@ class KasDetail extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['kas_id', 'akun_id', 'nominal', 'titip', 'saldo_akhir'], 'integer'],
+            [['kas_id', 'nominal', 'titip', 'saldo_akhir'], 'integer'],
             [['tgl_kas'], 'safe'],
             [['deskripsi'], 'string', 'max' => 1000],
             [['jenis'], 'string', 'max' => 100],
@@ -48,7 +47,6 @@ class KasDetail extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'kas_id' => 'Kas ID',
-            'akun_id' => 'Akun',
             'tgl_kas' => 'Tanggal',
             'deskripsi' => 'Deskripsi',
             'jenis' => 'Jenis',
