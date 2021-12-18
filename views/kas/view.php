@@ -6,7 +6,7 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\Kas */
 
-$detail = KasDetail::find()->where(['kas_id'=>$model->id]);
+$detail = KasDetail::find()->where(['kas_id'=>$model->id])->orderBy(['tgl_kas'=>SORT_DESC]);
 
 $this->title = 'Kas '.$model->bulan.'/'.$model->tahun;
 \yii\web\YiiAsset::register($this);
