@@ -6,7 +6,7 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\Kas */
 
-$detail = KasDetail::find()->where(['kas_id'=>$model->id])->orderBy(['tgl_kas'=>SORT_DESC]);
+$detail = KasDetail::find()->where(['kas_id'=>$model->id])->orderBy(['tgl_kas'=>SORT_DESC,'id'=>SORT_DESC,]);
 
 $this->title = 'Kas '.$model->bulan.'/'.$model->tahun;
 \yii\web\YiiAsset::register($this);
@@ -26,6 +26,15 @@ $this->title = 'Kas '.$model->bulan.'/'.$model->tahun;
     
 
 <div class="box box-success" style="margin-top:1%"><div class="box-body"><div class="table-responsive">
+<?php if($detail->count() > 0): ?>
+    <?= Html::a('<i class="fa fa-fw fa-trash"></i> Hapus Input Terakhir', ['/kasdetail/deletelast','id' =>$model->id], [
+        'class' => 'btn btn-sm btn-danger',
+        'data' => [
+            'confirm' => 'Hapus Input Terakhir ?',
+            'method' => 'post',
+        ],
+    ]) ?>
+<?php endif ?>
     <table class="table table-hover table-bordered">
         <tr>
             <th width="10%">Tanggal</th>
@@ -55,15 +64,6 @@ $this->title = 'Kas '.$model->bulan.'/'.$model->tahun;
         </tr>
     <?php endforeach ?>
     </table>
-<?php if($detail->count() > 0): ?>
-    <?= Html::a('<i class="fa fa-fw fa-trash"></i> Hapus Baris Terakhir', ['/kasdetail/deletelast','id' =>$model->id], [
-        'class' => 'btn btn-sm btn-danger',
-        'data' => [
-            'confirm' => 'Hapus Baris Terakhir ?',
-            'method' => 'post',
-        ],
-    ]) ?>
-<?php endif ?>
 </div></div></div>
 
     <div class="modal fade" id="input-detail"><div class="modal-dialog">
