@@ -39,7 +39,7 @@ class TestingController extends Controller
             'query' => Testing::find(),
         ]);
 
-        return $this->render('index', [
+        return $this->renderPartial('index', [
             'dataProvider' => $dataProvider,
         ]);
     }

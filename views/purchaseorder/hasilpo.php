@@ -73,6 +73,9 @@ $this->title = 'Hasil PO';
 </div></div></div>
 
 <div class="box"><div class="box-body"><div class="table-responsive">
+  <?php if($_GET['range']!='all'): ?>
+     <?= Html::a('<i class="fa fa-fw fa-file-excel-o"></i> Export Rincian', ['export-excel2'], ['class'=>'btn btn-success']); ?>
+  <?php endif ?>
     <table class="table table-bordered">
       <tr>
         <th>Sales</th><th>PO Terkirim</th><th>PO Belum Terkirim</th><th>PO Pending</th><th>PO Gagal</th>

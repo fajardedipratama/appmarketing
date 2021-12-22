@@ -1,7 +1,7 @@
 <?php 
 use app\models\KasDetail;
 
-$result = KasDetail::find()->where(['tgl_kas'=>$tgl])->andWhere(['titip'=>0]);
+$result = KasDetail::find()->where(['tgl_kas'=>$tgl,'jenis'=>'Keluar'])->andWhere(['titip'=>0]);
 
 ?>
 <!DOCTYPE html>
@@ -34,12 +34,12 @@ $result = KasDetail::find()->where(['tgl_kas'=>$tgl])->andWhere(['titip'=>0]);
 			<td align="center"><?= $i++ ?></td>
 			<td><?= $show->deskripsi ?></td>
 			<td></td>
-			<td><?= Yii::$app->formatter->asCurrency($show->nominal) ?></td>
+			<td align="right"><?= Yii::$app->formatter->asCurrency($show->nominal) ?></td>
 		</tr>
 	<?php endforeach ?>
 		<tr>			
 			<th colspan="3">Total</th>
-			<th align="left"><?= Yii::$app->formatter->asCurrency($result->sum('nominal')) ?></th>
+			<th align="right"><?= Yii::$app->formatter->asCurrency($result->sum('nominal')) ?></th>
 		</tr>
 		<tr>
 			<td colspan="4" align="right" style="padding-right:3%">
