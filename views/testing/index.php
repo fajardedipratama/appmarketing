@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$query = SendSample::find()->where(['id'=>[124,137]])->andWhere(['>','created_time','2021-12-21 00:00:00']);
+$query = SendSample::find()->where(['id'=>139])->andWhere(['>','created_time','2021-12-21 00:00:00']);
 
 $this->title = 'Testings';
 $this->params['breadcrumbs'][] = $this->title;
