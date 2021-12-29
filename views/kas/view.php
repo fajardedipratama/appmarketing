@@ -23,9 +23,14 @@ $this->title = 'Kas '.$model->bulan.'/'.$model->tahun;
         <button class="btn btn-primary" data-toggle="modal" data-target="#print-detail"><i class="fa fa-fw fa-print"></i> Print</button>
     </div>
 </div>
-    
+
 
 <div class="box box-success" style="margin-top:1%"><div class="box-body"><div class="table-responsive">
+    <ul class="pagination pagination-sm no-margin pull-right">
+        <li><a href="#">1</a></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+    </ul>
 <?php if($detail->count() > 0): ?>
     <?= Html::a('<i class="fa fa-fw fa-trash"></i> Hapus Input Terakhir', ['/kasdetail/deletelast','id' =>$model->id], [
         'class' => 'btn btn-sm btn-danger',
