@@ -6,6 +6,7 @@ use kartik\select2\Select2;
 use app\models\Customer;
 use app\models\Karyawan;
 use app\models\City;
+use app\models\Broker;
 use app\models\Drivers;
 use dosamigos\datepicker\DatePicker;
 /* @var $this yii\web\View */
@@ -44,7 +45,6 @@ use dosamigos\datepicker\DatePicker;
     </div>
 <?php if(Yii::$app->user->identity->type != 'Marketing'): ?>
     <div class="col-sm-4">
-        <!-- ->where(['status_aktif'=>'Aktif']) -->
         <?= $form->field($model, 'sales')->widget(Select2::className(),[
             'data'=>ArrayHelper::map(Karyawan::find()->orderBy(['nama'=>SORT_ASC])->all(),'id',
                 function($model){
@@ -52,6 +52,16 @@ use dosamigos\datepicker\DatePicker;
                 }
             ),
             'options'=>['placeholder'=>"Sales"],'pluginOptions'=>['allowClear'=>true]
+        ]) ?>
+    </div>
+     <div class="col-sm-4">
+        <?= $form->field($model, 'broker')->widget(Select2::className(),[
+            'data'=>ArrayHelper::map(Broker::find()->orderBy(['nama'=>SORT_ASC])->all(),'id',
+                function($model){
+                    return $model['nama'];
+                }
+            ),
+            'options'=>['placeholder'=>"Broker"],'pluginOptions'=>['allowClear'=>true]
         ]) ?>
     </div>
 <?php endif; ?>

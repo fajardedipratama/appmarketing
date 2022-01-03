@@ -64,7 +64,7 @@ $this->title = 'Dashboard';
     <div class="box bg-green"><div class="box-body">
       <h4 style="text-align:center;font-weight: bold;" class="text-white">
         <br><br>
-        <i>"SING WES YOWES, SING ILANG BEN ILANG,<br> TETEP SEMANGAT YO REK"</i>
+        <i style="font-size:24px">2022<br> WANI !!!</i>
       </h4><br>
       <h5 style="text-align:center;font-weight: bold;" class="text-white"><i>- NaVi Team -</i></h5>
     </div></div>
@@ -73,18 +73,18 @@ $this->title = 'Dashboard';
   <div class="col-sm-9">
   <div class="box"><div class="box-body">
     <?php 
-      $jan = PurchaseOrder::find()->where(['between','tgl_kirim','2020-12-28','2021-01-27'])->andWhere(['status'=>['Terkirim','Terbayar-Selesai']])->sum('volume');
-      $feb = PurchaseOrder::find()->where(['between','tgl_kirim','2021-01-28','2021-02-27'])->andWhere(['status'=>['Terkirim','Terbayar-Selesai']])->sum('volume');
-      $mar = PurchaseOrder::find()->where(['between','tgl_kirim','2021-02-28','2021-03-27'])->andWhere(['status'=>['Terkirim','Terbayar-Selesai']])->sum('volume');
-      $apr = PurchaseOrder::find()->where(['between','tgl_kirim','2021-03-28','2021-04-27'])->andWhere(['status'=>['Terkirim','Terbayar-Selesai']])->sum('volume');
-      $may = PurchaseOrder::find()->where(['between','tgl_kirim','2021-04-28','2021-05-27'])->andWhere(['status'=>['Terkirim','Terbayar-Selesai']])->sum('volume');
-      $jun = PurchaseOrder::find()->where(['between','tgl_kirim','2021-05-28','2021-06-27'])->andWhere(['status'=>['Terkirim','Terbayar-Selesai']])->sum('volume');
-      $jul = PurchaseOrder::find()->where(['between','tgl_kirim','2021-06-28','2021-07-27'])->andWhere(['status'=>['Terkirim','Terbayar-Selesai']])->sum('volume');
-      $aug = PurchaseOrder::find()->where(['between','tgl_kirim','2021-07-28','2021-08-27'])->andWhere(['status'=>['Terkirim','Terbayar-Selesai']])->sum('volume');
-      $sep = PurchaseOrder::find()->where(['between','tgl_kirim','2021-08-28','2021-09-27'])->andWhere(['status'=>['Terkirim','Terbayar-Selesai']])->sum('volume');
-      $oct = PurchaseOrder::find()->where(['between','tgl_kirim','2021-09-28','2021-10-27'])->andWhere(['status'=>['Terkirim','Terbayar-Selesai']])->sum('volume');
-      $nov = PurchaseOrder::find()->where(['between','tgl_kirim','2021-10-28','2021-11-27'])->andWhere(['status'=>['Terkirim','Terbayar-Selesai']])->sum('volume');
-      $dec = PurchaseOrder::find()->where(['between','tgl_kirim','2021-11-28','2021-12-27'])->andWhere(['status'=>['Terkirim','Terbayar-Selesai']])->sum('volume');
+      $jan = PurchaseOrder::find()->where(['between','tgl_kirim','2021-12-28','2022-01-27'])->andWhere(['status'=>['Terkirim','Terbayar-Selesai']])->sum('volume');
+      $feb = PurchaseOrder::find()->where(['between','tgl_kirim','2022-01-28','2022-02-27'])->andWhere(['status'=>['Terkirim','Terbayar-Selesai']])->sum('volume');
+      $mar = PurchaseOrder::find()->where(['between','tgl_kirim','2022-02-28','2022-03-27'])->andWhere(['status'=>['Terkirim','Terbayar-Selesai']])->sum('volume');
+      $apr = PurchaseOrder::find()->where(['between','tgl_kirim','2022-03-28','2022-04-27'])->andWhere(['status'=>['Terkirim','Terbayar-Selesai']])->sum('volume');
+      $may = PurchaseOrder::find()->where(['between','tgl_kirim','2022-04-28','2022-05-27'])->andWhere(['status'=>['Terkirim','Terbayar-Selesai']])->sum('volume');
+      $jun = PurchaseOrder::find()->where(['between','tgl_kirim','2022-05-28','2022-06-27'])->andWhere(['status'=>['Terkirim','Terbayar-Selesai']])->sum('volume');
+      $jul = PurchaseOrder::find()->where(['between','tgl_kirim','2022-06-28','2022-07-27'])->andWhere(['status'=>['Terkirim','Terbayar-Selesai']])->sum('volume');
+      $aug = PurchaseOrder::find()->where(['between','tgl_kirim','2022-07-28','2022-08-27'])->andWhere(['status'=>['Terkirim','Terbayar-Selesai']])->sum('volume');
+      $sep = PurchaseOrder::find()->where(['between','tgl_kirim','2022-08-28','2022-09-27'])->andWhere(['status'=>['Terkirim','Terbayar-Selesai']])->sum('volume');
+      $oct = PurchaseOrder::find()->where(['between','tgl_kirim','2022-09-28','2022-10-27'])->andWhere(['status'=>['Terkirim','Terbayar-Selesai']])->sum('volume');
+      $nov = PurchaseOrder::find()->where(['between','tgl_kirim','2022-10-28','2022-11-27'])->andWhere(['status'=>['Terkirim','Terbayar-Selesai']])->sum('volume');
+      $dec = PurchaseOrder::find()->where(['between','tgl_kirim','2022-11-28','2022-12-27'])->andWhere(['status'=>['Terkirim','Terbayar-Selesai']])->sum('volume');
     ?>
     <?= ChartJs::widget([
         'type' => 'line',

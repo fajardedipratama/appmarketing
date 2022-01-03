@@ -10,6 +10,7 @@ use Yii;
  * @property int $id
  * @property int $perusahaan
  * @property int $sales
+ * @property int|null $broker
  * @property string $no_po
  * @property string $tgl_po
  * @property string $tgl_kirim
@@ -56,7 +57,7 @@ class PurchaseOrder extends \yii\db\ActiveRecord
     {
         return [
             [['perusahaan', 'no_po', 'tgl_po', 'tgl_kirim', 'alamat', 'kota_kirim', 'alamat_kirim', 'purchasing', 'no_purchasing', 'volume', 'termin', 'harga', 'pajak', 'pembayaran','catatan'], 'required'],
-            [['perusahaan', 'sales', 'kota_kirim', 'volume', 'harga', 'cashback','bilyet_giro','penalti','range_paid','driver_id'], 'integer'],
+            [['perusahaan', 'sales', 'broker','kota_kirim', 'volume', 'harga', 'cashback','bilyet_giro','penalti','range_paid','driver_id'], 'integer'],
             [['tgl_po', 'tgl_kirim','set_awal','set_akhir','jatuh_tempo','tgl_lunas'], 'safe'],
             [['no_po', 'purchasing', 'no_purchasing', 'keuangan', 'no_keuangan', 'termin', 'pajak', 'pembayaran', 'status','penerima','eksternal'], 'string', 'max' => 100],
             [['alamat', 'alamat_kirim', 'catatan', 'alasan_tolak'], 'string', 'max' => 1000],
@@ -72,6 +73,7 @@ class PurchaseOrder extends \yii\db\ActiveRecord
             'id' => 'ID',
             'perusahaan' => 'Perusahaan',
             'sales' => 'Sales',
+            'broker' => 'Broker',
             'no_po' => 'No.PO',
             'tgl_po' => 'Tanggal PO',
             'tgl_kirim' => 'Tanggal Kirim',
@@ -110,6 +112,10 @@ class PurchaseOrder extends \yii\db\ActiveRecord
     public function getKaryawan()
     {
         return $this->hasOne(Karyawan::className(), ['id' => 'sales']);
+    }
+    public function getBroker()
+    {
+        return $this->hasOne(Broker::className(), ['id' => 'broker']);
     }
     public function getCity()
     {

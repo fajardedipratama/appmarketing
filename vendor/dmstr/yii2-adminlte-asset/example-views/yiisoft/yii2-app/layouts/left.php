@@ -35,6 +35,7 @@ $jobtitle = Jobtitle::find()->where(['id'=>$karyawan['posisi']])->one();
                             ['label' => 'Data Karyawan', 'icon' => 'users', 'url' => ['/karyawan'], 'active'=>in_array(\Yii::$app->controller->id,['karyawan','exkaryawan'])],
                             ['label' => 'Jabatan', 'icon' => 'briefcase', 'url' => ['/jobtitle'], 'active'=>in_array(\Yii::$app->controller->id,['jobtitle'])],
                             ['label' => 'Departemen', 'icon' => 'building', 'url' => ['/departemen'], 'active'=>in_array(\Yii::$app->controller->id,['departemen'])],
+                            ['label' => 'Data Broker', 'icon' => 'user-secret', 'url' => ['/broker'], 'active'=>in_array(\Yii::$app->controller->id,['broker'])],
                             ['label' => '.'],
                             [
                                 'label' => 'User Login', 'icon' => 'key', 'url' => ['/users'], 'active'=>in_array(\Yii::$app->controller->id,['users']),

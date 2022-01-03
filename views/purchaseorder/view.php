@@ -3,6 +3,7 @@ use app\models\PurchaseOrder;
 use app\models\PurchaseOrderPaid;
 use app\models\PurchaseOrderFile;
 use app\models\City;
+use app\models\Broker;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
@@ -132,6 +133,16 @@ $this->title = 'PURCHASE ORDER';
             [
                 'attribute'=>'sales',
                 'value'=>($model->karyawan)?$model->karyawan->nama:'-',
+            ],
+            [
+                'attribute'=>'broker',
+                'value'=>function($data){
+                    if($data->broker != NULL){
+                        $query = Broker::find()->where(['id'=>$data->broker])->one();
+                        return $query['nama'];
+                    }  
+                },
+                'visible' => Yii::$app->user->identity->type == 'Administrator'
             ],
             ['attribute'=>'tgl_po','value'=>date('d/m/Y',strtotime($model->tgl_po))],
             ['attribute'=>'tgl_kirim','value'=>date('d/m/Y',strtotime($model->tgl_kirim))],

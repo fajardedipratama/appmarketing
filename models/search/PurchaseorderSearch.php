@@ -17,8 +17,8 @@ class PurchaseorderSearch extends PurchaseOrder
     public function rules()
     {
         return [
-            [['id', 'perusahaan', 'sales', 'volume', 'harga', 'cashback', 'bilyet_giro','kota_kirim'], 'integer'],
-            [['no_po', 'tgl_po', 'tgl_kirim', 'alamat', 'alamat_kirim', 'purchasing', 'no_purchasing', 'keuangan', 'no_keuangan', 'termin', 'pajak', 'pembayaran','status', 'catatan', 'alasan_tolak','jatuh_tempo','tgl_lunas'], 'safe'],
+            [['id', 'perusahaan', 'sales','volume', 'harga', 'cashback', 'bilyet_giro','kota_kirim'], 'integer'],
+            [['no_po', 'broker','tgl_po', 'tgl_kirim', 'alamat', 'alamat_kirim', 'purchasing', 'no_purchasing', 'keuangan', 'no_keuangan', 'termin', 'pajak', 'pembayaran','status', 'catatan', 'alasan_tolak','jatuh_tempo','tgl_lunas'], 'safe'],
         ];
     }
 
