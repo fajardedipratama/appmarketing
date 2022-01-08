@@ -218,12 +218,11 @@ class KaryawanController extends Controller
         //$OpenTBS->VarRef['modelName']= "Mahasiswa";               
         $data = [];
         foreach($dataProvider->getModels() as $print){
-        $dept = Departemen::find()->where(['id'=>$print->jobtitle->departemen])->one();
             $data[] = [
                 'badge'=> $print->badge,
                 'nama' => $print->nama,
                 'posisi' => $print->jobtitle->posisi,
-                'departemen'=>$dept['departemen'],
+                'departemen'=>$print->departement->departemen,
                 'tanggal_masuk' => date('d/m/Y',strtotime($print->tanggal_masuk)),
                 'alamat_ktp' => $print->alamat_ktp,
                 'alamat_rumah' => $print->alamat_rumah,
