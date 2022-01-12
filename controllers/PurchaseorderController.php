@@ -16,6 +16,7 @@ use yii\filters\AccessControl;
 use yii\helpers\ArrayHelper;
 use app\models\Customer;
 use app\models\Karyawan;
+use yii\data\ActiveDataProvider;
 /**
  * PurchaseorderController implements the CRUD actions for PurchaseOrder model.
  */
@@ -346,5 +347,46 @@ class PurchaseorderController extends Controller
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    /*
+    EXPORT WITH OPENTBS
+    */
+    public function actionExportExcel2($range)
+    {
+        $data = explode("x", $_GET['range']);
+        $set_awal = $data[0];
+        $set_akhir = $data[1];
+        $query = PurchaseOrder::find()->where(['between','tgl_kirim',$set_awal,$set_akhir]);
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+            'pagination'=> false,
+        ]);
+        
+        // Initalize the TBS instance
+        $OpenTBS = new \hscstudio\export\OpenTBS; // new instance of TBS
+        // Change with Your template kaka
+        $template = Yii::getAlias('@hscstudio/export').'/templates/opentbs/purchaseorder.xlsx';
+        $OpenTBS->LoadTemplate($template); // Also merge some [onload] automatic fields (depends of the type of document).
+        //$OpenTBS->VarRef['modelName']= "Mahasiswa";               
+        $data = [];
+        foreach($dataProvider->getModels() as $po){
+            $data[] = [
+                'tgl_po'=>$po->tgl_po,
+                'tgl_kirim'=>$po->tgl_kirim,
+                'perusahaan'=>$po->customer->perusahaan,
+                'sales'=>$po->karyawan->nama_pendek,
+                'volume'=>$po->volume,
+                'termin'=>$po->termin,
+                'status'=>$po->status,
+                'tgl_lunas'=>$po->tgl_lunas,
+            ];
+        }
+        
+        $OpenTBS->MergeBlock('data', $data);
+        // Output the result as a file on the server. You can change output file
+        $filename = 'Purchase Order '.$_GET['range'].'.xlsx';
+        $OpenTBS->Show(OPENTBS_DOWNLOAD, $filename); // Also merges all [onshow] automatic fields.          
+        exit;
     }
 }

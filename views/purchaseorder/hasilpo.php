@@ -74,7 +74,7 @@ $this->title = 'Hasil PO';
 
 <div class="box"><div class="box-body"><div class="table-responsive">
   <?php if($_GET['range']!='all'): ?>
-     <?= Html::a('<i class="fa fa-fw fa-file-excel-o"></i> Export Rincian', ['export-excel2'], ['class'=>'btn btn-success']); ?>
+     <?= Html::a('<i class="fa fa-fw fa-file-excel-o"></i> Export Rincian', ['export-excel2','range'=>$_GET['range']], ['class'=>'btn btn-success']); ?>
   <?php endif ?>
     <table class="table table-bordered">
       <tr>
