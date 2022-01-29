@@ -1,5 +1,6 @@
 <?php
 use app\models\City;
+use app\models\Offer;
 use app\models\Karyawan;
 use app\models\OfferNumber;
 use yii\helpers\Html;
@@ -71,6 +72,14 @@ $this->title = 'Penawaran';
                 $query = City::find()->where(['id'=>$data->customer->lokasi])->one();
                 return $query['kota'];
               }
+            ],
+            [
+              'header'=>'Last',
+              'value'=>function($data){
+                $query = Offer::find()->where(['perusahaan'=>$data->perusahaan])->orderBy(['id'=>SORT_DESC])->offset(1)->one();
+                return date('d/m/Y',strtotime($query['tanggal']));
+              },
+              'visible' => Yii::$app->user->identity->type == 'Administrator'
             ],
             [
               'attribute'=>'sales',
