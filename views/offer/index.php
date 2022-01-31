@@ -71,13 +71,24 @@ $this->title = 'Penawaran';
               'value'=>function($data){
                 $query = City::find()->where(['id'=>$data->customer->lokasi])->one();
                 return $query['kota'];
-              }
+              },
+            ],
+            [
+              'header'=>'Expired',
+              'value'=>function($data){
+                if($data->customer->expired != NULL){
+                  return date('d/m/Y',strtotime($data->customer->expired));
+                }
+              },
+              'visible' => Yii::$app->user->identity->type == 'Administrator'
             ],
             [
               'header'=>'Last',
               'value'=>function($data){
                 $query = Offer::find()->where(['perusahaan'=>$data->perusahaan])->orderBy(['id'=>SORT_DESC])->offset(1)->one();
-                return date('d/m/Y',strtotime($query['tanggal']));
+                if($query){
+                  return date('d/m/Y',strtotime($query['tanggal']));
+                }
               },
               'visible' => Yii::$app->user->identity->type == 'Administrator'
             ],
