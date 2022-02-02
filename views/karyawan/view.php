@@ -73,7 +73,7 @@ $this->title = 'Detail '.$model->nama;
       <div class="nav-tabs-custom tab-success">
         <ul class="nav nav-tabs">
             <li class="active"><a href="#detail" data-toggle="tab">Detail</a></li>
-            <li><a href="#absensi" data-toggle="tab">Absensi</a></li>
+            <!-- <li><a href="#absensi" data-toggle="tab">Absensi</a></li> -->
         </ul>
 
         <div class="tab-content">
@@ -119,43 +119,43 @@ $this->title = 'Detail '.$model->nama;
             </ul>
           </div>
 
-          <div class="tab-pane" id="absensi">
+          <!-- <div class="tab-pane" id="absensi">
             <div class="table-responsive"><table class="table table-bordered">
               <tr>
                 <th width="20%">Tanggal</th>
                 <th width="20%">Absensi</th>
                 <th width="60%">Catatan</th>
               </tr>
-          <?php 
+          php 
             $begin = date('Y-m-d',strtotime($period->awal_cutoff));
             $end = date('Y-m-d',strtotime($period->akhir_cutoff));
             while (strtotime($begin) <= strtotime($end)) : 
           ?>
               <tr>
-                <td><?= date('d/m/Y',strtotime($begin)) ?></td>
-          <?php 
+                <td>php echo date('d/m/Y',strtotime($begin)) ?></td>
+          php 
             $absen=AttendanceData::find()->where(['karyawan_id'=>$model->id])->andWhere(['work_date'=>$begin])->one();
             $holiday=Holiday::find()->where(['tanggal'=>$begin])->one();
           ?>
                 <td style="background-color:
-                  <?php 
+                  php 
                     if(date('l',strtotime($begin)) == 'Sunday'){
                         echo 'red';
                     }elseif ($holiday) {
                         echo 'red';
                     } 
                   ?>;">
-                  <?php if($absen): ?>
-                    <?= date('H:i',strtotime($absen->real_in)).' - '.date('H:i',strtotime($absen->real_out)) ?>
-                  <?php endif; ?>
+                  php if($absen): ?>
+                    php echo date('H:i',strtotime($absen->real_in)).' - '.date('H:i',strtotime($absen->real_out)) ?>
+                  php endif; ?>
                 </td>
               </tr>
-          <?php
+          php
             $begin = date ("Y-m-d", strtotime("+1 days", strtotime($begin))); 
             endwhile; 
           ?>
             </table></div>
-          </div>
+          </div> -->
 
         </div>
       </div>
