@@ -5,7 +5,6 @@ namespace app\controllers;
 use Yii;
 use app\models\Karyawan;
 use app\models\Departemen;
-use app\models\SalaryReport;
 use app\models\search\KaryawanSearch;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
@@ -81,7 +80,6 @@ class KaryawanController extends Controller
 
         return $this->render('view', [
             'model' => $this->findModel($id),
-            'period' => SalaryReport::find()->where(['bulan'=>date('m')])->one(),
         ]);
     }
 

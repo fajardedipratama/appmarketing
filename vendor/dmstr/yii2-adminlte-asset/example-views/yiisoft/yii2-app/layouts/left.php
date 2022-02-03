@@ -92,23 +92,7 @@ $jobtitle = Jobtitle::find()->where(['id'=>$karyawan['posisi']])->one();
                         ],
                         'visible' => !Yii::$app->user->isGuest && Yii::$app->user->identity->type == 'Administrator'
                     ],
-                    [
-                        'label' => 'Payroll',
-                        'icon' => 'money',
-                        'url' => '#',
-                        'visible' => !Yii::$app->user->isGuest && Yii::$app->user->identity->type == 'Administrator',
-                        'items' => [
-                            ['label' => 'Absensi Harian', 'icon' => 'book', 'url' => ['/attendancedata','work_date'=>date('Y-m-d')], 'active'=>in_array(\Yii::$app->controller->id,['attendancedata','attendanceschedule'])],
-                            ['label' => 'Cuti & Izin', 'icon' => 'book', 'url' => ['/permit'], 'active'=>in_array(\Yii::$app->controller->id,['permit','permitaccess'])],
-                            ['label' => 'Hari Libur', 'icon' => 'book', 'url' => ['/holiday'], 'active'=>in_array(\Yii::$app->controller->id,['holiday'])],
-                            ['label' => '.'],
-                            ['label' => 'Gaji Karyawan', 'icon' => 'book', 'url' => ['/salaryemployee'], 'active'=>in_array(\Yii::$app->controller->id,['salaryemployee'])],
-                            ['label' => 'Tambahan & Potongan', 'icon' => 'book', 'url' => ['/salaryadditional'], 'active'=>in_array(\Yii::$app->controller->id,['salaryadditional'])],
-                            ['label' => 'Laporan', 'icon' => 'book', 'url' => ['/salarycalculate'], 'active'=>in_array(\Yii::$app->controller->id,['salarycalculate'])],
-                            ['label' => 'Report', 'icon' => 'book', 'url' => ['/salaryreport'], 'active'=>in_array(\Yii::$app->controller->id,['salaryreport'])],
-                            ['label' => 'Komponen Gaji', 'icon' => 'book', 'url' => ['/salarycategory'], 'active'=>in_array(\Yii::$app->controller->id,['salarycategory'])],
-                        ],
-                    ],
+
                 ],
             ]
         ) ?>
