@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use Yii;
 use app\models\PurchaseReview;
+use app\models\Customer;
 use app\models\search\PurchasereviewSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -62,8 +63,9 @@ class PurchasereviewController extends Controller
      */
     public function actionView($id)
     {
+        $model = $this->findModel2($id);
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $model,
         ]);
     }
 
@@ -129,6 +131,14 @@ class PurchasereviewController extends Controller
     protected function findModel($id)
     {
         if (($model = PurchaseReview::findOne($id)) !== null) {
+            return $model;
+        }
+
+        throw new NotFoundHttpException('The requested page does not exist.');
+    }
+    protected function findModel2($id)
+    {
+        if (($model = Customer::findOne($id)) !== null) {
             return $model;
         }
 

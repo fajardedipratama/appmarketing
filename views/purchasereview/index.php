@@ -11,7 +11,10 @@ $this->title = 'Review PO';
 ?>
 <div class="purchase-review-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h1>
+        <?= Html::a('<i class="glyphicon glyphicon-chevron-left"></i>', ['/purchaseorder'], ['class' => 'btn btn-success']) ?>
+        <?= Html::encode($this->title) ?>
+    </h1>
 
 <div class="box"><div class="box-body"><div class="table-responsive">
     <?= GridView::widget([
@@ -29,7 +32,10 @@ $this->title = 'Review PO';
                     }
                 }
             ],
-            ['header'=>'Aksi','class' => 'yii\grid\ActionColumn'],
+            [
+                'header'=>'Aksi','class' => 'yii\grid\ActionColumn',
+                'template'=>'{view}',
+            ],
         ],
     ]); ?>
 </div></div></div>

@@ -6,30 +6,27 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\PurchaseReview */
 
-$this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Purchase Reviews', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = 'Review '.$model->perusahaan;
 \yii\web\YiiAsset::register($this);
 ?>
 <div class="purchase-review-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <div class="row">
+        <div class="col-sm-10">
+            <h1>
+                <?= Html::a('<i class="glyphicon glyphicon-chevron-left"></i>', ['/purchasereview'], ['class' => 'btn btn-success']) ?>
+                Review <b><?= $model->perusahaan ?></b>
+            </h1>
+        </div>
+        <div class="col-sm-2">
+            <?= Html::a('<i class="fa fa-fw fa-pencil"></i> Ubah', ['update', 'id' => $model->id], ['class' => 'btn btn-warning','title'=>'Update']) ?>
+        </div>
+    </div>
 
-    <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
-                'method' => 'post',
-            ],
-        ]) ?>
-    </p>
-
+<div class="box box-success"><div class="box-body"><div class="table-responsive">
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id',
             'perusahaan_id',
             'last_purchase_id',
             'sales_id',
@@ -43,5 +40,5 @@ $this->params['breadcrumbs'][] = $this->title;
             'review_by',
         ],
     ]) ?>
-
+</div></div></div>
 </div>
