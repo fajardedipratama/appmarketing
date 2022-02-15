@@ -6,9 +6,13 @@ use yii\helpers\ArrayHelper;
 use kartik\select2\Select2;
 use app\models\Karyawan;
 use app\models\Customer;
+use app\models\OfferNumber;
 /* @var $this yii\web\View */
 /* @var $model app\models\Offer */
 /* @var $form yii\widgets\ActiveForm */
+
+$setting = OfferNumber::find()->where(['id'=>1])->one();
+
 ?>
 
 <div class="offer-form">
@@ -40,7 +44,7 @@ use app\models\Customer;
         <?= $form->field($model, 'pajak')->dropDownList(['PPN'=>'PPN','Non PPN'=>'Non PPN']) ?>
      </div>
      <div class="col-sm-4">
-        <?= $form->field($model, 'harga')->textInput(['type'=>'number','min'=>1000,'max'=>50000]) ?>
+        <?= $form->field($model, 'harga')->textInput(['type'=>'number','min'=>$setting->min_price,'max'=>$setting->max_price]) ?>
      </div>
      <div class="col-sm-4">
         <?= $form->field($model, 'catatan')->textInput(['maxlength' => true]) ?>

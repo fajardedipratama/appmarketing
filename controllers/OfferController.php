@@ -68,7 +68,10 @@ class OfferController extends Controller
 
         //update no_surat,periode,inisial
         $modelnumber = $this->findModel3();
-        if ($modelnumber->load(Yii::$app->request->post()) && $modelnumber->save()) {
+        if ($modelnumber->load(Yii::$app->request->post())) {
+            if($modelnumber->min_price < $modelnumber->max_price){
+                $modelnumber->save();
+            }
             return $this->redirect(['index']);
         }
 

@@ -21,6 +21,12 @@ use yii\widgets\ActiveForm;
         <div class="col-sm-4">
             <?= $form->field($modelnumber, 'periode')->textInput(['maxlength' => true]) ?>  
         </div>
+        <div class="col-sm-4">
+            <?= $form->field($modelnumber, 'min_price')->textInput(['type'=>'number','min'=>0]) ?>
+        </div>
+        <div class="col-sm-4">
+            <?= $form->field($modelnumber, 'max_price')->textInput(['type'=>'number','min'=>0]) ?>
+        </div>
     </div>
 
     <div class="form-group">

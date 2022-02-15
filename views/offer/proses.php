@@ -3,9 +3,26 @@ use app\models\City;
 use app\models\Karyawan;
 use yii\helpers\Html;
 use yii\grid\GridView;
+use app\models\OfferNumber;
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\search\OfferSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
+
+function termin_value($value){
+    if($value=='Cash On Delivery'){
+        return 0;
+    }elseif($value=='Cash Before Delivery'){
+        return 0;
+    }elseif($value=='Tempo 7 Hari'){
+        return 100;
+    }elseif($value=='Tempo 14 Hari'){
+        return 200;
+    }elseif($value=='Tempo 21 Hari'){
+        return 300;
+    }elseif($value=='Tempo 30 Hari'){
+        return 400;
+    }
+}
 
 $this->title = 'Penawaran Proses';
 
@@ -114,12 +131,22 @@ $this->title = 'Penawaran Proses';
                 },
                 'cetak'=>function($url,$model)
                 {
-                  return Html::a
-                  (
-                    '<span class="glyphicon glyphicon-print"></span>',
-                    ["offer/print",'id'=>$model->id],
-                    ['title' => Yii::t('app', 'Print'),'target'=>'_blank'],
-                  );
+                  $city = City::find()->where(['id'=>$model->customer->lokasi])->one();
+                  $setting = OfferNumber::find()->where(['id'=>1])->one();
+                  
+                  $min_price = $setting->min_price;
+                  $oat = $city->oat;
+                  $termin = termin_value($model->top);
+                  $price = $model->harga;
+
+                  if($price-$termin-$oat > $min_price){
+                    return Html::a
+                    (
+                      '<span class="glyphicon glyphicon-print"></span>',
+                      ["offer/print",'id'=>$model->id],
+                      ['title' => Yii::t('app', 'Print'),'target'=>'_blank'],
+                    );
+                  }
                 },
               ],
               'visible' => Yii::$app->user->identity->type == 'Administrator' || Yii::$app->user->identity->type == 'Manajemen'

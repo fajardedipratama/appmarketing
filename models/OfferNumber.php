@@ -11,6 +11,9 @@ use Yii;
  * @property int|null $nomor
  * @property string $inisial
  * @property string $periode
+ * @property int|null $min_price
+ * @property int|null $max_price
+
  */
 class OfferNumber extends \yii\db\ActiveRecord
 {
@@ -28,7 +31,7 @@ class OfferNumber extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['nomor'], 'integer'],
+            [['nomor','min_price','max_price'], 'integer'],
             [['inisial','periode'], 'required'],
             [['inisial','periode'], 'string', 'max' => 100],
             [['nomor'], 'unique'],
@@ -44,7 +47,9 @@ class OfferNumber extends \yii\db\ActiveRecord
             'id' => 'ID',
             'nomor' => 'Nomor',
             'inisial' => 'Inisial',
-            'periode' => 'Periode'
+            'periode' => 'Periode',
+            'min_price' => 'Harga Minimal',
+            'max_price' => 'Harga Maksimal',
         ];
     }
 }
