@@ -5,9 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\PurchaseReview */
 
-$this->title = 'Create Purchase Review';
-$this->params['breadcrumbs'][] = ['label' => 'Purchase Reviews', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = 'Review '.$customer->perusahaan;;
 ?>
 <div class="purchase-review-create">
 
@@ -15,6 +13,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?= $this->render('_form', [
         'model' => $model,
+        'customer' => $customer,
     ]) ?>
 
 </div>

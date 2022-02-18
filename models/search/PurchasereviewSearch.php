@@ -17,8 +17,8 @@ class PurchasereviewSearch extends PurchaseReview
     public function rules()
     {
         return [
-            [['id', 'perusahaan_id', 'last_purchase_id', 'sales_id', 'jarak_ambil', 'review_by'], 'integer'],
-            [['waktu_ambil', 'catatan_kirim', 'catatan_berkas', 'catatan_bayar', 'catatan_lain', 'kendala'], 'safe'],
+            [['id', 'perusahaan_id', 'jarak_ambil', 'review_by'], 'integer'],
+            [['catatan_kirim', 'catatan_berkas', 'catatan_bayar', 'catatan_lain', 'kendala'], 'safe'],
         ];
     }
 
@@ -61,14 +61,11 @@ class PurchasereviewSearch extends PurchaseReview
         $query->andFilterWhere([
             'id' => $this->id,
             'perusahaan_id' => $this->perusahaan_id,
-            'last_purchase_id' => $this->last_purchase_id,
-            'sales_id' => $this->sales_id,
             'jarak_ambil' => $this->jarak_ambil,
             'review_by' => $this->review_by,
         ]);
 
-        $query->andFilterWhere(['like', 'waktu_ambil', $this->waktu_ambil])
-            ->andFilterWhere(['like', 'catatan_kirim', $this->catatan_kirim])
+        $query->andFilterWhere(['like', 'catatan_kirim', $this->catatan_kirim])
             ->andFilterWhere(['like', 'catatan_berkas', $this->catatan_berkas])
             ->andFilterWhere(['like', 'catatan_bayar', $this->catatan_bayar])
             ->andFilterWhere(['like', 'catatan_lain', $this->catatan_lain])

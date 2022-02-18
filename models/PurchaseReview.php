@@ -9,9 +9,6 @@ use Yii;
  *
  * @property int $id
  * @property int|null $perusahaan_id
- * @property int|null $last_purchase_id
- * @property int|null $sales_id
- * @property string $waktu_ambil
  * @property int|null $jarak_ambil
  * @property string $catatan_kirim
  * @property string $catatan_berkas
@@ -36,9 +33,8 @@ class PurchaseReview extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['perusahaan_id', 'last_purchase_id', 'sales_id', 'jarak_ambil', 'review_by'], 'integer'],
-            [['waktu_ambil', 'catatan_kirim', 'catatan_berkas', 'catatan_bayar', 'catatan_lain', 'kendala'], 'required'],
-            [['waktu_ambil'], 'string', 'max' => 30],
+            [['perusahaan_id', 'jarak_ambil', 'review_by'], 'integer'],
+            [['jarak_ambil', 'catatan_kirim', 'catatan_berkas', 'catatan_bayar', 'catatan_lain', 'kendala'], 'required'],
             [['catatan_kirim', 'catatan_berkas', 'catatan_bayar', 'catatan_lain', 'kendala'], 'string', 'max' => 2000],
         ];
     }
@@ -50,11 +46,8 @@ class PurchaseReview extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'perusahaan_id' => 'Perusahaan ID',
-            'last_purchase_id' => 'Last Purchase ID',
-            'sales_id' => 'Sales ID',
-            'waktu_ambil' => 'Waktu Ambil',
-            'jarak_ambil' => 'Jarak Ambil',
+            'perusahaan_id' => 'Perusahaan',
+            'jarak_ambil' => 'Jarak Ambil (hari)',
             'catatan_kirim' => 'Catatan Kirim',
             'catatan_berkas' => 'Catatan Berkas',
             'catatan_bayar' => 'Catatan Bayar',
@@ -66,5 +59,9 @@ class PurchaseReview extends \yii\db\ActiveRecord
     public function getCustomer()
     {
         return $this->hasOne(Customer::className(), ['id' => 'perusahaan_id']);
+    }
+    public function beforeSave($options = array()) {
+        $this->review_by = Yii::$app->user->identity->profilname;
+        return true;
     }
 }

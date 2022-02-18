@@ -12,30 +12,31 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'perusahaan_id')->textInput() ?>
-
-    <?= $form->field($model, 'last_purchase_id')->textInput() ?>
-
-    <?= $form->field($model, 'sales_id')->textInput() ?>
-
-    <?= $form->field($model, 'waktu_ambil')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'jarak_ambil')->textInput() ?>
-
-    <?= $form->field($model, 'catatan_kirim')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'catatan_berkas')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'catatan_bayar')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'catatan_lain')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'kendala')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'review_by')->textInput() ?>
-
+    <?= $form->field($model, 'perusahaan_id')->hiddenInput(['value'=>$customer->id,'readonly'=>true])->label(false) ?>
+<div class="box box-success"><div class="box-body">
+    <div class="row">
+    <div class="col-sm-4">
+        <?= $form->field($model, 'jarak_ambil')->textInput(['type'=>'number'])->hint("interval turunnya PO") ?>
+    </div>
+    <div class="col-sm-4">
+        <?= $form->field($model, 'catatan_kirim')->textarea(['style' => 'resize:none','rows' => 3]) ?>
+    </div>
+    <div class="col-sm-4">
+        <?= $form->field($model, 'catatan_berkas')->textarea(['style' => 'resize:none','rows' => 3]) ?>
+    </div>
+    <div class="col-sm-4">
+        <?= $form->field($model, 'catatan_bayar')->textarea(['style' => 'resize:none','rows' => 3]) ?>
+    </div>
+    <div class="col-sm-4">
+        <?= $form->field($model, 'catatan_lain')->textarea(['style' => 'resize:none','rows' => 3]) ?>
+    </div>
+    <div class="col-sm-4">
+        <?= $form->field($model, 'kendala')->textarea(['style' => 'resize:none','rows' => 3]) ?>
+    </div>
+    </div>
+</div></div>
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Simpan', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

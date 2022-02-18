@@ -64,8 +64,10 @@ class PurchasereviewController extends Controller
     public function actionView($id)
     {
         $model = $this->findModel2($id);
+        $detail = PurchaseReview::find()->where(['perusahaan_id'=>$id])->one();
         return $this->render('view', [
             'model' => $model,
+            'detail' => $detail
         ]);
     }
 
@@ -74,16 +76,18 @@ class PurchasereviewController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate()
+    public function actionCreate($id)
     {
         $model = new PurchaseReview();
+        $customer = $this->findModel2($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['view', 'id' => $customer->id]);
         }
 
         return $this->render('create', [
             'model' => $model,
+            'customer' => $customer,
         ]);
     }
 
@@ -96,14 +100,16 @@ class PurchasereviewController extends Controller
      */
     public function actionUpdate($id)
     {
-        $model = $this->findModel($id);
+        $model = PurchaseReview::find()->where(['perusahaan_id'=>$id])->one();
+        $customer = $this->findModel2($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['view', 'id' => $customer->id]);
         }
 
         return $this->render('update', [
             'model' => $model,
+            'customer' => $customer,
         ]);
     }
 
