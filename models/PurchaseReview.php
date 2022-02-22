@@ -56,12 +56,16 @@ class PurchaseReview extends \yii\db\ActiveRecord
             'review_by' => 'Review By',
         ];
     }
+    public function beforeSave($options = array()) {
+        $this->review_by = Yii::$app->user->identity->profilname;
+        return true;
+    }
     public function getCustomer()
     {
         return $this->hasOne(Customer::className(), ['id' => 'perusahaan_id']);
     }
-    public function beforeSave($options = array()) {
-        $this->review_by = Yii::$app->user->identity->profilname;
-        return true;
+    public function getKaryawan()
+    {
+        return $this->hasOne(Karyawan::className(), ['id' => 'review_by']);
     }
 }

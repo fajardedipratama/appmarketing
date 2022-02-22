@@ -1,5 +1,6 @@
 <?php
-
+use app\models\PurchaseOrder;
+use app\models\PurchaseReview;
 use yii\helpers\Html;
 use yii\grid\GridView;
 
@@ -22,6 +23,16 @@ $this->title = 'Review PO';
         'filterModel' => $searchModel,
         'columns' => [
             'perusahaan',
+            [
+                'header'=>'Estimasi PO',
+                'value'=>function($model){
+                    $review = PurchaseReview::find()->where(['perusahaan_id'=>$model->id])->one();
+                    if($review){
+                        $purchase = PurchaseOrder::find()->where(['perusahaan'=>$model->id])->andWhere(['status'=>['Terkirim','Terbayar-Selesai']])->orderBy(['tgl_kirim'=>SORT_DESC])->one();
+                        return date('d/m/Y', strtotime('+'.$review->jarak_ambil.' days', strtotime($purchase->tgl_kirim)));
+                    }
+                }
+            ],
             [
                 'attribute'=>'sales',
                 'value'=>function($data){

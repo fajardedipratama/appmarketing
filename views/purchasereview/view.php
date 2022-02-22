@@ -40,7 +40,10 @@ $this->title = 'Review '.$model->perusahaan;
             'catatan_bayar',
             'catatan_lain',
             'kendala',
-            'review_by',
+            [
+                'attribute'=>'review_by',
+                'value'=>$detail->karyawan->nama_pendek,
+            ],
         ],
     ]) ?>
 </div></div></div>
