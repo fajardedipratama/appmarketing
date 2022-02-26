@@ -59,6 +59,7 @@ $this->title = 'Dashboard';
         </div>
       </div>
 
+<?php if(Yii::$app->user->identity->type != 'Administrator'): ?>
   <div class="box bg-green"><div class="box-body">
       <h4 style="text-align:center;font-weight: bold;" class="text-white">
         <br><br>
@@ -66,6 +67,22 @@ $this->title = 'Dashboard';
       </h4><br>
       <h5 style="text-align:center;font-weight: bold;" class="text-white"><i>- NaVi Team -</i></h5>
   </div></div>
+<?php else: ?>
+  <div class="box box-success"><div class="box-body">
+  <table class="table table-hover table-bordered">
+    <tr>
+      <th>Perusahaan</th>
+      <th>Estimasi Pengambilan</th>
+      <th>Sales</th>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </table>
+  </div></div>
+<?php endif ?>
 
   <div class="box box-success"><div class="box-body">
     <?php 
