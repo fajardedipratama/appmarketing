@@ -51,15 +51,16 @@ $include = $model->harga+$ppn+$pph;
 <table style="font-family: Calibri">
 	<tr>
 		<td width="20%"><img src="photos/logo.png" style="width: 105%"></td>
-		<td width="80%" style="text-align: center">
+		<td width="60%" style="text-align: center">
 			<font style="font-weight: bold;font-size: 28px">PT. BERDIKARI JAYA BERSAMA</font><br>
-			<font style="font-size: 18px">ENVIRONMENTAL PROTECTION ENERGY</font><br>
-			<font style="font-size: 14px">Jl. Raya Lumajang KM 5 No. 618</font><br>
-			<font style="font-size: 14px">Kelurahan Kedung Asem – Kecamatan Wonoasih – Kota Probolinggo – Jawa Timur</font><br>
+			<font style="font-size: 18px">SOLUTION FOR OUR ENERGY</font><br>
+			<font style="font-size: 14px">Jl. Raya Lumajang KM 5 No. 618</font>
+			<font style="font-size: 14px">Kelurahan Kedung Asem – Kecamatan Wonoasih – Kota Probolinggo – Jawa Timur</font>
 			<font style="font-size: 14px">Telp/ Fax : 0335 – 421809</font>
 		</td>
+		<td width="20%"><img src="photos/iso.png" style="width: 55%;margin-left: 6%;"></td>
 	</tr>
-	<tr><td colspan="2"><hr style="height: 3px;background-color: black"></td></tr>
+	<tr><td colspan="3"><hr style="height: 3px;background-color: black"></td></tr>
 </table>
 <table style="font-family: Arial;font-size: 15px">
 	<tr>
