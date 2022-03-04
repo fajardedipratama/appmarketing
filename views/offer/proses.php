@@ -139,7 +139,7 @@ $this->title = 'Penawaran Proses';
                   $termin = termin_value($model->top);
                   $price = $model->harga;
 
-                  if($price-$termin-$oat > $min_price){
+                  if($price-$termin-$oat >= $min_price){
                     return Html::a
                     (
                       '<span class="glyphicon glyphicon-print"></span>',
