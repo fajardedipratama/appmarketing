@@ -139,7 +139,7 @@ class OfferController extends Controller
         ['id'=>$model->id])->execute();
 
         Yii::$app->db->createCommand()->update('id_customer',
-        ['verified' => 'no'],
+        ['verified' => 'no','expired'=>NULL],
         ['id'=> $model->perusahaan ])->execute();
 
         return $this->redirect(['index']);
