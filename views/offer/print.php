@@ -153,6 +153,7 @@ $include = $model->harga+$ppn+$pph;
 				<?php endif; ?>
 				</li>
 				<li>Hubungi Sales : <?= $model->karyawan->nama_pendek.' ( '.$model->karyawan->no_hp.' )' ?></li>
+				<li>Apabila pembayaran melewati jatuh tempo, akan dikenakan denda Rp.100/liter</li>
 			</ul>
 		</td>
 	</tr>
