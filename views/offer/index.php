@@ -74,6 +74,15 @@ $this->title = 'Penawaran';
               },
             ],
             [
+              'attribute'=>'sales',
+              'value' => 'karyawan.nama_pendek',
+              'filter'=>\kartik\select2\Select2::widget([
+                'model'=>$searchModel,'attribute'=>'sales','data'=>$sales,
+                'options'=>['placeholder'=>'Sales'],'pluginOptions'=>['allowClear'=>true]
+              ]),
+              'visible' => Yii::$app->user->identity->type == 'Administrator' || Yii::$app->user->identity->type == 'Manajemen'
+            ],
+            [
               'header'=>'Expired',
               'value'=>function($data){
                 if($data->customer->expired != NULL){
@@ -91,15 +100,6 @@ $this->title = 'Penawaran';
                 }
               },
               'visible' => Yii::$app->user->identity->type == 'Administrator'
-            ],
-            [
-              'attribute'=>'sales',
-              'value' => 'karyawan.nama_pendek',
-              'filter'=>\kartik\select2\Select2::widget([
-                'model'=>$searchModel,'attribute'=>'sales','data'=>$sales,
-                'options'=>['placeholder'=>'Sales'],'pluginOptions'=>['allowClear'=>true]
-              ]),
-              'visible' => Yii::$app->user->identity->type == 'Administrator' || Yii::$app->user->identity->type == 'Manajemen'
             ],
             [
               'class' => 'yii\grid\ActionColumn',
