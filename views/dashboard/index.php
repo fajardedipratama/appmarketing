@@ -87,8 +87,8 @@ $this->title = 'Dashboard';
   <div class="box box-success"><div class="box-body">
     <?php 
       $jan = PurchaseOrder::find()->where(['between','tgl_kirim','2021-12-28','2022-01-27'])->andWhere(['status'=>['Terkirim','Terbayar-Selesai']])->sum('volume');
-      $feb = PurchaseOrder::find()->where(['between','tgl_kirim','2022-01-28','2022-02-27'])->andWhere(['status'=>['Terkirim','Terbayar-Selesai']])->sum('volume');
-      $mar = PurchaseOrder::find()->where(['between','tgl_kirim','2022-02-28','2022-03-27'])->andWhere(['status'=>['Terkirim','Terbayar-Selesai']])->sum('volume');
+      $feb = PurchaseOrder::find()->where(['between','tgl_kirim','2022-01-28','2022-02-25'])->andWhere(['status'=>['Terkirim','Terbayar-Selesai']])->sum('volume');
+      $mar = PurchaseOrder::find()->where(['between','tgl_kirim','2022-02-26','2022-03-27'])->andWhere(['status'=>['Terkirim','Terbayar-Selesai']])->sum('volume');
       $apr = PurchaseOrder::find()->where(['between','tgl_kirim','2022-03-28','2022-04-27'])->andWhere(['status'=>['Terkirim','Terbayar-Selesai']])->sum('volume');
       $may = PurchaseOrder::find()->where(['between','tgl_kirim','2022-04-28','2022-05-27'])->andWhere(['status'=>['Terkirim','Terbayar-Selesai']])->sum('volume');
       $jun = PurchaseOrder::find()->where(['between','tgl_kirim','2022-05-28','2022-06-27'])->andWhere(['status'=>['Terkirim','Terbayar-Selesai']])->sum('volume');
