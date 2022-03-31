@@ -183,7 +183,11 @@ $this->title = 'PURCHASE ORDER';
                 'attribute'=>'harga',
                 'format'=>'raw',
                 'value'=>function($data){
-                    $ppn = ($data->harga*10)/100;
+                    if($data->tgl_kirim>'2022-03-31'){
+                        $ppn = ($data->harga*11)/100;
+                    }else{
+                        $ppn = ($data->harga*10)/100;
+                    }
                     $pph = round_up(($data->harga*0.3)/100,2);
                     $include = $data->harga+$ppn+$pph;
                     $city = City::find()->where(['id'=>$data->kota_kirim])->one();
@@ -266,7 +270,11 @@ $this->title = 'PURCHASE ORDER';
             </tr>
         <?php endforeach ?>
         <?php 
-            $ppn = ($model->harga*10)/100;
+            if($model->tgl_kirim>'2022-03-31'){
+                $ppn = ($model->harga*11)/100;
+            }else{
+                $ppn = ($model->harga*10)/100;
+            }
             $pph = round_up(($model->harga*0.3)/100,2);
             if($model->pajak === 'PPN'){
                 if($model->tgl_po > '2021-11-15'){

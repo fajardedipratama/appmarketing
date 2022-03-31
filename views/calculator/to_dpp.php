@@ -36,8 +36,8 @@ $this->title = 'Indlude Tax -> DPP';
         <?php if(isset($_GET['value'])): ?>
         <?php 
             $include = $_GET['value'];
-            $dpp = ($_GET['value']*100)/110.3;
-            $ppn = ($dpp*10)/100;
+            $dpp = ($_GET['value']*100)/111.3;
+            $ppn = ($dpp*11)/100;
             $pph = round_up(($dpp*0.3)/100,2);
         ?>
             <div class="box box-success"><div class="box-body">
@@ -55,7 +55,7 @@ $this->title = 'Indlude Tax -> DPP';
                     </tr>
                     <tr>
                       <td>PPN</td>
-                      <td>10%</td>
+                      <td>11%</td>
                       <td><?= Yii::$app->formatter->asCurrency($ppn); ?></td>
                     </tr>
                     <tr>

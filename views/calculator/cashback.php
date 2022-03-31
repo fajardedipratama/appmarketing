@@ -40,7 +40,7 @@ $this->title = 'Cashback';
         <?php if(isset($_GET['value'])): ?>
         <?php 
             $cashback = $_GET['value'];
-            $ppn = ($_GET['value']*10)/100;
+            $ppn = ($_GET['value']*11)/100;
             $non_ppn = ($_GET['value']*5)/100;
             $pph = round_up((($cashback-$ppn)*25)/100,2);
         ?>
@@ -60,7 +60,7 @@ $this->title = 'Cashback';
                 <?php $include = $cashback-$ppn-$pph; ?>
                     <tr>
                       <td>PPN</td>
-                      <td>10%</td>
+                      <td>11%</td>
                       <td><?= Yii::$app->formatter->asCurrency($ppn); ?></td>
                     </tr>
                     <tr>

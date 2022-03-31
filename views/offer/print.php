@@ -14,7 +14,7 @@ function round_up($number, $precision = 2)
     return (ceil($number * $fig) / $fig);
 }
 
-$ppn = ($model->harga*10)/100;
+$ppn = ($model->harga*11)/100;
 $pph = round_up(($model->harga*0.3)/100,2);
 $include = $model->harga+$ppn+$pph;
 
@@ -97,7 +97,7 @@ $include = $model->harga+$ppn+$pph;
 			<?php endif ?>
 			<br>
 			<?php if($model->show_tax === 1 && $model->pajak === 'PPN'): ?>
-				<font style="font-weight: normal;font-style: italic;">termasuk PPN(10%) & PPH22(0,3%) : <?= Yii::$app->formatter->asCurrency($include); ?> / Liter</font><br>
+				<font style="font-weight: normal;font-style: italic;">termasuk PPN(11%) & PPH22(0,3%) : <?= Yii::$app->formatter->asCurrency($include); ?> / Liter</font><br>
 			<?php endif ?>
 		<?php endif; ?>
 		</td>
@@ -108,7 +108,7 @@ $include = $model->harga+$ppn+$pph;
 			<ul>
 			<?php foreach($extra->all() as $show): ?>
 			<?php 
-				$ppn_ex = ($show->harga*10)/100;
+				$ppn_ex = ($show->harga*11)/100;
 				$pph_ex = ($show->harga*0.3)/100;
 				$include_ex = round($show->harga+$ppn_ex+$pph_ex,2,PHP_ROUND_HALF_UP);
 			?>
@@ -118,7 +118,7 @@ $include = $model->harga+$ppn+$pph;
 					if($show->pajak === 'PPN'){
 						echo ', belum termasuk PPN & PPH22)';
 						if($model->show_tax===1){
-							echo '<br><font style="font-weight: normal;font-style: italic;">termasuk PPN(10%) & PPH22(0,3%) : '.Yii::$app->formatter->asCurrency($include_ex).'  / Liter</font>';
+							echo '<br><font style="font-weight: normal;font-style: italic;">termasuk PPN(11%) & PPH22(0,3%) : '.Yii::$app->formatter->asCurrency($include_ex).'  / Liter</font>';
 						}
 					}else{
 						echo ', harga non-PPN)';

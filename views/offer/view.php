@@ -82,7 +82,7 @@ $this->title = 'Detail Penawaran #'.$model->no_surat;
             [
                 'attribute'=>'harga',
                 'value'=>function($data){
-                    $ppn = ($data->harga*10)/100;
+                    $ppn = ($data->harga*11)/100;
                     $pph = round_up(($data->harga*0.3)/100,2);
                     $include = $data->harga+$ppn+$pph;
                     if($data->pajak === 'PPN'){
