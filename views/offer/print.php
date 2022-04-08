@@ -48,7 +48,7 @@ $include = $model->harga+$ppn+$pph;
 </head>
 <body style="margin-top: 0">
 <div class="back">
-<table style="font-family: Calibri">
+<table style="font-family: Calibri;">
 	<tr>
 		<td width="20%"><img src="photos/logo.png" style="width: 105%"></td>
 		<td width="60%" style="text-align: center">
