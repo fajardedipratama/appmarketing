@@ -156,6 +156,9 @@ class OfferController extends Controller
         ['verified' => 'no','expired'=>NULL],
         ['id'=> $model->perusahaan ])->execute();
 
+        Yii::$app->db->createCommand()->delete('id_offer_permit',
+            ['id_customer'=> $model->perusahaan ])->execute();
+
         return $this->redirect(['index']);
     }
     public function actionDuplicate($id)
@@ -164,11 +167,43 @@ class OfferController extends Controller
 
         Yii::$app->db->createCommand()->delete('id_customer',
         ['id'=> $model->perusahaan ])->execute();
+
         Yii::$app->db->createCommand()->delete('id_dailyreport',
         ['perusahaan'=> $model->perusahaan ])->execute();
+
         Yii::$app->db->createCommand()->delete('id_offer',
         ['perusahaan'=> $model->perusahaan ])->execute();
 
+        Yii::$app->db->createCommand()->delete('id_offer_permit',
+        ['id_customer'=> $model->perusahaan ])->execute();
+
+        return $this->redirect(['index']);
+    }
+    public function actionPending($id)
+    {
+        $model = $this->findModel($id);
+
+        $date_now = date('Y-m-d');
+        $expired_pending = date('Y-m-d', strtotime('+7 days', strtotime($date_now)));
+
+            Yii::$app->db->createCommand()->update('id_offer',
+            ['status' => 'Gagal Kirim','tanggal'=>date('Y-m-d'),'waktu'=>date('H:i:s')],
+            ['id'=>$model->id])->execute();
+
+            Yii::$app->db->createCommand()->update('id_customer',
+            ['expired_pending'=>$expired_pending],
+            ['id'=>$model->perusahaan])->execute();
+
+            Yii::$app->db->createCommand()->delete('id_offer_permit',
+            ['id_customer'=> $model->perusahaan ])->execute();
+
+        $check_exp = Customer::find()->where(['id'=>$model->perusahaan])->one();
+        if($check_exp['expired']===NULL || strtotime($check_exp['expired']) < strtotime($date_now)){
+            $expired=date('Y-m-d', strtotime('+30 days', strtotime($date_now)));
+            Yii::$app->db->createCommand()->update('id_customer',
+            ['expired' => $expired],
+            ['id'=> $model->perusahaan ])->execute();
+        }
 
         return $this->redirect(['index']);
     }

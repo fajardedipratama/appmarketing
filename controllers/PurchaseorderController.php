@@ -198,8 +198,9 @@ class PurchaseorderController extends Controller
             ['status'=>'Terkirim','jatuh_tempo'=>$jatuh_tempo,'driver_id'=>$_POST['PurchaseOrder']['driver_id']],
             ['id'=>$model->id])->execute();
 
+            $expired_pusat = date('Y-m-d', strtotime('+60 days', strtotime($model->tgl_kirim)));
             Yii::$app->db->createCommand()->update('id_customer',
-            ['expired'=>'2070-01-01'],
+            ['expired'=>'2070-01-01','expired_pusat'=>$expired_pusat],
             ['id'=>$model->perusahaan])->execute();
 
             return $this->redirect(['view','id' => $model->id]);

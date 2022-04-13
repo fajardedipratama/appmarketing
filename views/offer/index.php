@@ -70,6 +70,14 @@ $this->title = 'Penawaran';
               ])
             ],
             [
+              'header'=>'Lokasi',
+              'value'=>function($data){
+                $query = City::find()->where(['id'=>$data->customer->lokasi])->one();
+                return $query['kota'];
+              },
+              'visible' => Yii::$app->user->identity->type != 'Administrator'
+            ],
+            [
               'attribute'=>'sales',
               'value' => 'karyawan.nama_pendek',
               'filter'=>\kartik\select2\Select2::widget([
@@ -122,9 +130,9 @@ $this->title = 'Penawaran';
             ],
             [
               'class' => 'yii\grid\ActionColumn',
-              'headerOptions'=>['style'=>'width:8%'],
+              'headerOptions'=>['style'=>'width:10%'],
               'header'=>'Verif.',
-              'template' => '{accept} {decline} {duplicate}',
+              'template' => '{accept} {decline} {pending} {duplicate}',
               'buttons'=>
               [
                     'accept'=>function($url,$model)
@@ -148,15 +156,15 @@ $this->title = 'Penawaran';
                         ],
                      );
                     },
-                    'duplicate'=>function($url,$model)
+                    'pending'=>function($url,$model)
                     {
                     return Html::a
                      (
-                        '<span class="glyphicon glyphicon-minus-sign"></span>',
-                        ["offer/duplicate",'id'=>$model->id],
+                        '<span class="glyphicon glyphicon-alert"></span>',
+                        ["offer/pending",'id'=>$model->id],
                         [
-                          'title' => Yii::t('app', 'Duplicate Data!'),
-                          'data' => ['confirm' => 'Perusahaan terdeteksi duplikat ?','method' => 'post',]
+                          'title' => Yii::t('app', 'Pending'),
+                          'data' => ['confirm' => 'Pending 1 minggu ?','method' => 'post',]
                         ],
                      );
                     },
@@ -165,9 +173,9 @@ $this->title = 'Penawaran';
             ],
             [
               'class' => 'yii\grid\ActionColumn',
-              'header' => 'Detail',
+              'header' => 'Aksi',
               'headerOptions'=>['style'=>'width:8%'],
-              'template' => '{view}',
+              'template' => '{view} {duplicate}',
               'buttons' => [
                 'view'=>function($url,$model)
                 {
@@ -178,7 +186,24 @@ $this->title = 'Penawaran';
                       ['title' => Yii::t('app', 'View'),'target'=>'_blank'],
                     );
                 },
+                'duplicate'=>function($url,$model)
+                {
+                  return Html::a
+                     (
+                        '<span class="glyphicon glyphicon-minus-sign"></span>',
+                        ["offer/duplicate",'id'=>$model->id],
+                        [
+                          'title' => Yii::t('app', 'Duplicate Data!'),
+                          'data' => ['confirm' => 'Perusahaan terdeteksi duplikat ?','method' => 'post',],
+                        ],
+                     );
+                },
               ],
+              'visibleButtons' => [
+                    'duplicate' => function ($model) {
+                        return Yii::$app->user->identity->type == 'Administrator';
+                    },
+              ]
             ],
         ],
     ]); ?>

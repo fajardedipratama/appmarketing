@@ -88,10 +88,22 @@ class OfferfinishController extends \yii\web\Controller
         $data = [];
         foreach($dataProvider->getModels() as $offer){
         $lokasi = City::find()->where(['id'=>$offer->customer->lokasi])->one();
+        // last activity
         $last_activity = Dailyreport::find()->where(['perusahaan'=>$offer->customer->id])->orderBy(['waktu'=>SORT_DESC])->one();
-            if($last_activity){
+        if($last_activity){
+            $activity = date('d/m/Y',strtotime($last_activity['waktu']));
+        }else{
+            $activity = '20/03/2021';
+        }
+        // expired pusat
+        if($offer->customer->expired_pusat != NULL){
+            $expired_pusat = date('d/m/Y',strtotime($offer->customer->expired_pusat));
+        }else{
+            $expired_pusat = '-';
+        }
                 $data[] = [
                     'tanggal'=>date('d/m/Y',strtotime($offer->tanggal)),
+                    'expired_pusat'=>$expired_pusat,
                     'no_surat'=>$offer->no_surat,
                     'perusahaan'=>$offer->customer->perusahaan,
                     'lokasi'=>$lokasi['kota'],
@@ -103,25 +115,9 @@ class OfferfinishController extends \yii\web\Controller
                     'catatan'=>$offer->catatan,
                     'status'=>$offer->status,
                     'is_new'=>$offer->is_new,
-                    'last_activity'=> date('d/m/Y',strtotime($last_activity['waktu'])),
+                    'last_activity'=> $activity,
                 ];
-            }else{
-                $data[] = [
-                    'tanggal'=>date('d/m/Y',strtotime($offer->tanggal)),
-                    'no_surat'=>$offer->no_surat,
-                    'perusahaan'=>$offer->customer->perusahaan,
-                    'lokasi'=>$lokasi['kota'],
-                    'pic'=>$offer->pic,
-                    'top'=>$offer->top,
-                    'pajak'=>$offer->pajak,
-                    'harga'=>$offer->harga,
-                    'sales'=>$offer->karyawan->nama_pendek,
-                    'catatan'=>$offer->catatan,
-                    'status'=>$offer->status,
-                    'is_new'=>$offer->is_new,
-                    'last_activity'=> '20/03/2021',
-                ];
-            }
+            
         }
         
         $OpenTBS->MergeBlock('data', $data);
@@ -148,10 +144,22 @@ class OfferfinishController extends \yii\web\Controller
         $data = [];
         foreach($dataProvider->getModels() as $offer){
         $lokasi = City::find()->where(['id'=>$offer->customer->lokasi])->one();
+        // last activity
         $last_activity = Dailyreport::find()->where(['perusahaan'=>$offer->customer->id])->orderBy(['waktu'=>SORT_DESC])->one();
-            if($last_activity){
+        if($last_activity){
+            $activity = date('d/m/Y',strtotime($last_activity['waktu']));
+        }else{
+            $activity = '20/03/2021';
+        }
+        // expired pusat
+        if($offer->customer->expired_pusat != NULL){
+            $expired_pusat = date('d/m/Y',strtotime($offer->customer->expired_pusat));
+        }else{
+            $expired_pusat = '-';
+        }
                 $data[] = [
                     'tanggal'=>date('d/m/Y',strtotime($offer->tanggal)),
+                    'expired_pusat'=>$expired_pusat,
                     'no_surat'=>$offer->no_surat,
                     'perusahaan'=>$offer->customer->perusahaan,
                     'lokasi'=>$lokasi['kota'],
@@ -164,26 +172,8 @@ class OfferfinishController extends \yii\web\Controller
                     'catatan'=>$offer->catatan,
                     'status'=>$offer->status,
                     'is_new'=>$offer->is_new,
-                    'last_activity'=> date('d/m/Y',strtotime($last_activity['waktu'])),
+                    'last_activity'=> $activity,
                 ];
-            }else{
-                $data[] = [
-                    'tanggal'=>date('d/m/Y',strtotime($offer->tanggal)),
-                    'no_surat'=>$offer->no_surat,
-                    'perusahaan'=>$offer->customer->perusahaan,
-                    'lokasi'=>$lokasi['kota'],
-                    'alamat_lengkap'=>$offer->customer->alamat_lengkap,
-                    'pic'=>$offer->pic,
-                    'top'=>$offer->top,
-                    'pajak'=>$offer->pajak,
-                    'harga'=>$offer->harga,
-                    'sales'=>$offer->karyawan->nama_pendek,
-                    'catatan'=>$offer->catatan,
-                    'status'=>$offer->status,
-                    'is_new'=>$offer->is_new,
-                    'last_activity'=> '20/03/2021',
-                ];
-            }
         }
         
         $OpenTBS->MergeBlock('data', $data);

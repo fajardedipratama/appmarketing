@@ -18,6 +18,7 @@ use Yii;
  * @property int|null $sales
  * @property string|null $expired
  * @property string|null $expired_pusat
+ * @property string|null $expired_pending
  * @property string $long_expired
  * @property int|null $created_by
  * @property string|null $created_time
@@ -42,7 +43,7 @@ class Customer extends \yii\db\ActiveRecord
     {
         return [
             [['perusahaan', 'lokasi', 'pic','alamat_lengkap'], 'required'],
-            [['expired','expired_pusat','created_time','$dari_tgl','$ke_tgl'], 'safe'],
+            [['expired','expired_pusat','expired_pending','created_time','$dari_tgl','$ke_tgl'], 'safe'],
             [['perusahaan','lokasi','pic','telfon','verified','long_expired','entrusted'], 'string', 'max' => 100],
             [['alamat_lengkap', 'catatan'], 'string', 'max' => 1000],
             [['sales','created_by','target'], 'integer'],
@@ -67,6 +68,7 @@ class Customer extends \yii\db\ActiveRecord
             'sales' => 'Sales',
             'expired' => 'Expired',
             'expired_pusat' => 'Expired Pusat',
+            'expired_pending' => 'Expired Pending',
             'long_expired' => 'Perpanjang ?',
             'created_by' => 'Add By',
             'created_time' => 'Created',
