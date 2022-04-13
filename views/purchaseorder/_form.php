@@ -121,7 +121,7 @@ use dosamigos\datepicker\DatePicker;
         <?= $form->field($model, 'no_keuangan')->textInput(['maxlength' => true]) ?>
     </div>
     <div class="col-sm-4">
-        <?= $form->field($model, 'volume')->textInput(['type'=>'number','min'=>1000]) ?>
+        <?= $form->field($model, 'volume')->textInput(['type'=>'number']) ?>
     </div>
     <div class="col-sm-4">
         <?= $form->field($model, 'termin')->dropDownList(['Cash On Delivery'=>'Cash On Delivery','Cash Before Delivery'=>'Cash Before Delivery','Tempo 7 Hari'=>'Tempo 7 Hari','Tempo 14 Hari'=>'Tempo 14 Hari','Tempo 21 Hari'=>'Tempo 21 Hari','Tempo 30 Hari'=>'Tempo 30 Hari']) ?>

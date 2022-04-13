@@ -1,7 +1,9 @@
 <?php
 use app\models\City;
 use app\models\Offer;
+use app\models\OfferPermit;
 use app\models\Karyawan;
+use app\models\Customer;
 use app\models\OfferNumber;
 use yii\helpers\Html;
 use yii\grid\GridView;
@@ -16,13 +18,14 @@ $this->title = 'Penawaran';
 <div class="offer-index">
 
     <div class="row">
-        <div class="col-sm-9">
+        <div class="col-sm-8">
             <h1><?= Html::encode($this->title) ?></h1>
         </div>
-        <div class="col-sm-3">
+        <div class="col-sm-4">
         <?php if(Yii::$app->user->identity->type == 'Administrator'): ?>
             <?= Html::a('<i class="fa fa-fw fa-plus-square"></i> Tambah Data', ['createadmin'], ['class' => 'btn btn-success']) ?>
             <button class="btn btn-warning" data-toggle="modal" data-target="#offer-number"><i class="fa fa-fw fa-sort-numeric-asc"></i> No.Surat</button>
+            <?= Html::a('<i class="fa fa-fw fa-file-excel-o"></i> Ekspor', ['export-excel'], ['class' => 'btn btn-danger']) ?>
         <?php endif; ?>
         </div>
     </div>
@@ -67,13 +70,6 @@ $this->title = 'Penawaran';
               ])
             ],
             [
-              'header'=>'Lokasi',
-              'value'=>function($data){
-                $query = City::find()->where(['id'=>$data->customer->lokasi])->one();
-                return $query['kota'];
-              },
-            ],
-            [
               'attribute'=>'sales',
               'value' => 'karyawan.nama_pendek',
               'filter'=>\kartik\select2\Select2::widget([
@@ -100,6 +96,29 @@ $this->title = 'Penawaran';
                 }
               },
               'visible' => Yii::$app->user->identity->type == 'Administrator'
+            ],
+            [
+              'class' => 'yii\grid\ActionColumn',
+              'header'=>'Pengajuan',
+              'template'=> '{permit}',
+              'buttons'=>
+              [
+                'permit'=>function($url,$model){
+                  $result = OfferPermit::find()->where(['id_customer'=>$model->perusahaan])->one();
+                  if($result){
+                    return Html::a('Batal', ['cancelpermit','id'=>$model->perusahaan], ['class' => 'btn btn-xs btn-danger']);
+                  }else{
+                    $cust = Customer::find()->where(['id'=>$model->perusahaan])->one();
+                    if($cust['expired_pusat'] >= date('Y-m-d')){
+                      return Html::a('Ajukan', ['permit','id'=>$model->perusahaan], ['class' => 'btn btn-xs btn-default disabled']);
+                    }else{
+                      return Html::a('Ajukan', ['permit','id'=>$model->perusahaan], ['class' => 'btn btn-xs btn-success']);
+                    }
+                    
+                  }
+                }
+              ],
+              'visible' => Yii::$app->user->identity->type == 'Administrator',
             ],
             [
               'class' => 'yii\grid\ActionColumn',
@@ -146,9 +165,9 @@ $this->title = 'Penawaran';
             ],
             [
               'class' => 'yii\grid\ActionColumn',
-              'header' => 'Aksi',
+              'header' => 'Detail',
               'headerOptions'=>['style'=>'width:8%'],
-              'template' => '{view} {update} {delete}',
+              'template' => '{view}',
               'buttons' => [
                 'view'=>function($url,$model)
                 {
@@ -160,15 +179,6 @@ $this->title = 'Penawaran';
                     );
                 },
               ],
-              'visibleButtons'=>
-              [
-                'update'=>function($model){
-                  return Yii::$app->user->identity->type == 'Administrator';
-                },
-                'delete'=>function($model){
-                  return Yii::$app->user->identity->type == 'Administrator';
-                }
-              ]
             ],
         ],
     ]); ?>

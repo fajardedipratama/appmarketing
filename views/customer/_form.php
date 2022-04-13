@@ -44,12 +44,6 @@ use dosamigos\datepicker\DatePicker;
      <div class="col-sm-4">
         <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
      </div>
-     <div class="col-sm-4">
-        <?= $form->field($model, 'volume')->textInput(['type' => 'number','min'=>5,'max'=>1000]) ?>
-     </div>
-     <div class="col-sm-4">
-        <?= $form->field($model, 'jarak_ambil')->dropDownList(['Setiap 1-3 Minggu'=>'Setiap 1-3 Minggu','Setiap 1 Bulan'=>'Setiap 1 Bulan','Setiap 2-5 bulan'=>'Setiap 2-5 bulan','Setiap 6-12 bulan'=>'Setiap 6-12 bulan'],['prompt'=>'--Jarak Kebutuhan--']) ?>
-     </div>
       <div class="col-sm-4">
         <?= $form->field($model, 'catatan')->textInput(['maxlength' => true]) ?>
      </div>

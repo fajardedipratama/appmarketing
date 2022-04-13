@@ -98,8 +98,6 @@ $first_offer = Offer::find()->where(['perusahaan'=>$model->id])->orderBy(['id'=>
                 'pic',
                 'telfon',
                 'email:email',
-                'volume',
-                'jarak_ambil',
                 'catatan',
                 'long_expired',
                 [

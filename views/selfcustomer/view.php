@@ -94,8 +94,6 @@ $offers = Offer::find()->where(['perusahaan'=>$model->id])->orderBy(['id'=>SORT_
                         'pic',
                         'telfon',
                         'email:email',
-                        'volume',
-                        'jarak_ambil',
                         'catatan',
                         [
                           'attribute'=>'sales',

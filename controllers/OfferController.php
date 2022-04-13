@@ -5,6 +5,7 @@ namespace app\controllers;
 use Yii;
 use app\models\Offer;
 use app\models\OfferExtra;
+use app\models\OfferPermit;
 use app\models\Customer;
 use app\models\Karyawan;
 use app\models\City;
@@ -15,6 +16,7 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use yii\helpers\ArrayHelper;
+use yii\data\ActiveDataProvider;
 /**
  * OfferController implements the CRUD actions for Offer model.
  */
@@ -126,6 +128,18 @@ class OfferController extends Controller
             Yii::$app->db->createCommand()->update('id_customer',
             ['expired' => $expired],
             ['id'=> $model->perusahaan ])->execute();
+        }
+
+        //expired pusat
+        $check_permit = OfferPermit::find()->where(['id_customer'=>$model->perusahaan])->one();
+        if($check_permit){
+            $expired_pusat = date('Y-m-d', strtotime('+7 days', strtotime($date_now)));
+            Yii::$app->db->createCommand()->update('id_customer',
+            ['expired_pusat' => $expired_pusat],
+            ['id'=> $model->perusahaan ])->execute();
+
+            Yii::$app->db->createCommand()->delete('id_offer_permit',
+            ['id_customer'=> $model->perusahaan ])->execute();
         }
 
         return $this->redirect(['index']);
@@ -254,6 +268,22 @@ class OfferController extends Controller
             'model' => $model,
         ]);
     }
+    public function actionPermit($id)
+    {
+        $model = new OfferPermit();
+
+        $model->id_customer = $id;
+        $model->save();
+        return $this->redirect(['offer/index']);
+    }
+    public function actionCancelpermit($id)
+    {
+        $model = $this->findModel($id);
+
+        Yii::$app->db->createCommand()->delete('id_offer_permit',
+        ['id_customer'=> $id ])->execute();
+        return $this->redirect(['offer/index']);
+    }
 
     /**
      * Updates an existing Offer model.
@@ -290,6 +320,42 @@ class OfferController extends Controller
         return $this->redirect(['index']);
     }
 
+    /*
+    EXPORT WITH OPENTBS
+    */
+    public function actionExportExcel()
+    {
+        $query = OfferPermit::find();
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+            'pagination'=> false,
+        ]);
+        
+        // Initalize the TBS instance
+        $OpenTBS = new \hscstudio\export\OpenTBS; // new instance of TBS
+        // Change with Your template kaka
+        $template = Yii::getAlias('@hscstudio/export').'/templates/opentbs/pengajuan.xlsx';
+        $OpenTBS->LoadTemplate($template); // Also merge some [onload] automatic fields (depends of the type of document).
+        //$OpenTBS->VarRef['modelName']= "Mahasiswa";               
+        $data = [];
+        foreach($dataProvider->getModels() as $offer){
+        $lokasi = City::find()->where(['id'=>$offer->customer->lokasi])->one();
+        $sales = Karyawan::find()->where(['id'=>$offer->customer->sales])->one();
+                $data[] = [
+                    'customer'=>$offer->customer->perusahaan,
+                    'lokasi'=>$lokasi['kota'],
+                    'sales'=>$sales->nama_pendek,
+                    'verified'=>$offer->customer->verified,
+                ];
+        }
+        
+        $OpenTBS->MergeBlock('data', $data);
+        // Output the result as a file on the server. You can change output file
+        $filename = 'Pengajuan '.date('d-m-y').'.xlsx';
+        $OpenTBS->Show(OPENTBS_DOWNLOAD, $filename); // Also merges all [onshow] automatic fields.          
+        exit;
+    } 
+
     /**
      * Finds the Offer model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
@@ -316,6 +382,14 @@ class OfferController extends Controller
     protected function findModel3()
     {
         if (($model = OfferNumber::find()->where(['id'=>1])->one()) !== null) {
+            return $model;
+        }
+
+        throw new NotFoundHttpException('The requested page does not exist.');
+    }
+    protected function findModel4()
+    {
+        if (($model = OfferPermit::find()->where(['id_customer'=>1])->one()) !== null) {
             return $model;
         }
 
