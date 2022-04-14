@@ -76,6 +76,38 @@ use dosamigos\datepicker\DatePicker;
         ])?>
      </div>
      <div class="col-sm-4">
+        <?php 
+            if(!$model->isNewRecord || $model->isNewRecord){
+                if($model->expired_pusat!=null){
+                    $model->expired_pusat=date('d-m-Y',strtotime($model->expired_pusat));
+                }
+            }
+        ?>
+        <?= $form->field($model, 'expired_pusat')->widget(DatePicker::className(),[
+            'clientOptions'=>[
+                'autoclose'=>true,
+                'format'=>'dd-mm-yyyy',
+                'orientation'=>'bottom',
+            ]
+        ])?>
+     </div>
+     <div class="col-sm-4">
+        <?php 
+            if(!$model->isNewRecord || $model->isNewRecord){
+                if($model->expired_pending!=null){
+                    $model->expired_pending=date('d-m-Y',strtotime($model->expired_pending));
+                }
+            }
+        ?>
+        <?= $form->field($model, 'expired_pending')->widget(DatePicker::className(),[
+            'clientOptions'=>[
+                'autoclose'=>true,
+                'format'=>'dd-mm-yyyy',
+                'orientation'=>'bottom',
+            ]
+        ])?>
+     </div>
+     <div class="col-sm-4">
         <?= $form->field($model, 'long_expired')->dropDownList(['yes'=>'yes'],['prompt'=>'--Perpanjang--']) ?>
      </div>
      <div class="col-sm-4">

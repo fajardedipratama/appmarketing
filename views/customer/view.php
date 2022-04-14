@@ -18,6 +18,9 @@ $count_offer = Offer::find()->where(['perusahaan'=>$model->id])->count();
 $offers = Offer::find()->where(['perusahaan'=>$model->id])->orderBy(['id'=>SORT_DESC])->limit(15)->all();
 $first_offer = Offer::find()->where(['perusahaan'=>$model->id])->orderBy(['id'=>SORT_ASC])->one();
 
+$akhir_tenggang = date('Y-m-d', strtotime('+3 days', strtotime($model->expired_pusat)));
+$awal_tenggang = date('Y-m-d', strtotime('+1 days', strtotime($model->expired_pusat)));
+
 \yii\web\YiiAsset::register($this);
 ?>
 <div class="customer-view">
@@ -52,6 +55,11 @@ $first_offer = Offer::find()->where(['perusahaan'=>$model->id])->orderBy(['id'=>
           <?php else: ?>
             <h5><?= $model->city->kota ?> - Exp. - </h5>
           <?php endif; ?>
+          Exp Pusat : <?php if($model->expired_pusat!=NULL){
+            echo date('d-m-Y', strtotime($model->expired_pusat));
+          } ?>, Pending Pusat : <?php if($model->expired_pending!=NULL && $model->expired_pending>date('Y-m-d')){
+            echo date('d-m-Y', strtotime($model->expired_pending));
+          } ?>  
         </div>
         <?php if(Yii::$app->user->identity->type == 'Administrator'): ?>
         <div class="col-sm-5">

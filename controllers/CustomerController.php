@@ -107,11 +107,23 @@ class CustomerController extends Controller
         $model = new Customer();
 
         if ($model->load(Yii::$app->request->post())) {
-            //process
+            //expired
             if(!empty($_POST['Customer']['expired'])){
                 $model->expired=Yii::$app->formatter->asDate($_POST['Customer']['expired'],'yyyy-MM-dd');
             }else{
                 $model->expired=NULL;
+            }
+            //expired pusat
+            if(!empty($_POST['Customer']['expired_pusat'])){
+                $model->expired_pusat=Yii::$app->formatter->asDate($_POST['Customer']['expired_pusat'],'yyyy-MM-dd');
+            }else{
+                $model->expired_pusat=NULL;
+            }
+            //expired pending
+            if(!empty($_POST['Customer']['expired_pending'])){
+                $model->expired_pending=Yii::$app->formatter->asDate($_POST['Customer']['expired_pending'],'yyyy-MM-dd');
+            }else{
+                $model->expired_pending=NULL;
             }
             $model->save();
             return $this->redirect(['index']);
@@ -134,12 +146,25 @@ class CustomerController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post())) {
-            //process
+            //expired
             if(!empty($_POST['Customer']['expired'])){
                 $model->expired=Yii::$app->formatter->asDate($_POST['Customer']['expired'],'yyyy-MM-dd');
             }else{
                 $model->expired=NULL;
             }
+            //expired pusat 
+            if(!empty($_POST['Customer']['expired_pusat'])){
+                $model->expired_pusat=Yii::$app->formatter->asDate($_POST['Customer']['expired_pusat'],'yyyy-MM-dd');
+            }else{
+                $model->expired_pusat=NULL;
+            }
+            //expired pending
+            if(!empty($_POST['Customer']['expired_pending'])){
+                $model->expired_pending=Yii::$app->formatter->asDate($_POST['Customer']['expired_pending'],'yyyy-MM-dd');
+            }else{
+                $model->expired_pending=NULL;
+            }
+            
             $model->save();
             return $this->redirect(['view', 'id' => $model->id]);
         }
