@@ -5,6 +5,7 @@ use app\models\OfferPermit;
 use app\models\Karyawan;
 use app\models\Customer;
 use app\models\OfferNumber;
+use app\models\PurchaseOrder;
 use yii\helpers\Html;
 use yii\grid\GridView;
 use dosamigos\datepicker\DatePicker;
@@ -53,10 +54,13 @@ $this->title = 'Penawaran';
               'format'=>'raw',
               'value'=>function($data){
                 if($data->customer->verified == 'yes'){
-                  if ($data->customer->expired >= date('Y-m-d')) {
-                    return $data->customer->perusahaan.'<i class="fa fa-fw fa-check"></i>';
-                  }elseif($data->customer->expired == NULL){
-                    return $data->customer->perusahaan.'<i class="fa fa-fw fa-check"></i>';
+                  if ($data->customer->expired >= date('Y-m-d') || $data->customer->expired == NULL) {
+                    $po = PurchaseOrder::find()->where(['perusahaan'=>$data->customer->id])->andWhere(['status'=>['Terkirim','Terbayar-Selesai']])->orderBy(['id'=>SORT_DESC])->one();
+                    if($po){
+                      return $data->customer->perusahaan.'<i class="fa fa-fw fa-check"></i><i class="fa fa-fw fa-truck" title="'.$po->tgl_kirim.'"></i> ';
+                    }else{
+                      return $data->customer->perusahaan.'<i class="fa fa-fw fa-check"></i>';
+                    }
                   }elseif($data->customer->expired < date('Y-m-d')){
                     return $data->customer->perusahaan.'<i class="fa fa-fw fa-clock-o"></i>';
                   }
@@ -87,10 +91,10 @@ $this->title = 'Penawaran';
               'visible' => Yii::$app->user->identity->type == 'Administrator' || Yii::$app->user->identity->type == 'Manajemen'
             ],
             [
-              'header'=>'Expired',
+              'header'=>'Expired Pusat',
               'value'=>function($data){
-                if($data->customer->expired != NULL){
-                  return date('d/m/Y',strtotime($data->customer->expired));
+                if($data->customer->expired_pusat != NULL){
+                  return date('d/m/Y',strtotime($data->customer->expired_pusat));
                 }
               },
               'visible' => Yii::$app->user->identity->type == 'Administrator'
@@ -117,8 +121,15 @@ $this->title = 'Penawaran';
                     return Html::a('Batal', ['cancelpermit','id'=>$model->perusahaan], ['class' => 'btn btn-xs btn-danger']);
                   }else{
                     $cust = Customer::find()->where(['id'=>$model->perusahaan])->one();
+                    $akhir_tenggang = date('Y-m-d', strtotime('+3 days', strtotime($cust->expired_pusat)));
+                    $awal_tenggang = date('Y-m-d', strtotime('+1 days', strtotime($cust->expired_pusat)));
+
                     if($cust['expired_pusat'] >= date('Y-m-d')){
                       return Html::a('Ajukan', ['permit','id'=>$model->perusahaan], ['class' => 'btn btn-xs btn-default disabled']);
+                    }elseif(date('Y-m-d') >= $awal_tenggang && date('Y-m-d') <= $akhir_tenggang){
+                      return Html::a('Pending', ['permit','id'=>$model->perusahaan], ['class' => 'btn btn-xs btn-danger disabled']);
+                    }elseif(date('Y-m-d') < $cust->expired_pending){
+                      return Html::a('Pending', ['permit','id'=>$model->perusahaan], ['class' => 'btn btn-xs btn-danger disabled']);
                     }else{
                       return Html::a('Ajukan', ['permit','id'=>$model->perusahaan], ['class' => 'btn btn-xs btn-success']);
                     }
