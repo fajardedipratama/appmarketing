@@ -100,6 +100,10 @@ class SendsampleController extends Controller
             'model' => $this->findModel($id),
         ]);
     }
+    public function actionPrintall()
+    {
+        return $this->renderPartial('printall');
+    }
 
     /**
      * Creates a new SendSample model.
