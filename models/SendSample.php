@@ -36,7 +36,7 @@ class SendSample extends \yii\db\ActiveRecord
     {
         return [
             [['perusahaan', 'sales', 'jumlah', 'acc_by'], 'integer'],
-            [['penerima', 'alamat'], 'required'],
+            [['perusahaan','penerima', 'alamat'], 'required'],
             [['tgl_kirim', 'created_time'], 'safe'],
             [['penerima', 'status'], 'string', 'max' => 100],
             [['alamat', 'catatan'], 'string', 'max' => 1000],
