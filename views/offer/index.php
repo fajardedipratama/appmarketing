@@ -128,7 +128,7 @@ $this->title = 'Penawaran';
                       return Html::a('Ajukan', ['permit','id'=>$model->perusahaan], ['class' => 'btn btn-xs btn-default disabled']);
                     }elseif(date('Y-m-d') >= $awal_tenggang && date('Y-m-d') <= $akhir_tenggang){
                       return Html::a('Pending', ['permit','id'=>$model->perusahaan], ['class' => 'btn btn-xs btn-danger disabled']);
-                    }elseif(date('Y-m-d') < $cust->expired_pending){
+                    }elseif(date('Y-m-d') <= $cust->expired_pending){
                       return Html::a('Pending', ['permit','id'=>$model->perusahaan], ['class' => 'btn btn-xs btn-danger disabled']);
                     }else{
                       return Html::a('Ajukan', ['permit','id'=>$model->perusahaan], ['class' => 'btn btn-xs btn-success']);
