@@ -5,6 +5,7 @@ namespace app\controllers;
 use Yii;
 use app\models\Customer;
 use app\models\search\CustomerSearch;
+use app\models\search\CustomermergeSearch;
 use app\models\Karyawan;
 use app\models\City;
 use yii\web\Controller;
@@ -212,7 +213,46 @@ class CustomerController extends Controller
             'model' => $model,
         ]);
     }
+    public function actionMergerequest($id)
+    {
+        $model = $this->findModel($id);
+        $searchModel = new CustomermergeSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
+        $kota = ArrayHelper::map(City::find()->all(),'id',
+                function($model){
+                    return $model['kota'];
+                });
+        $sales = ArrayHelper::map(Karyawan::find()->all(),'id',
+                function($model){
+                    return $model['nama_pendek'];
+                });
+
+        return $this->render('mergeoffer', [
+            'model' => $model,
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+            'kota' => $kota,
+            'sales' => $sales,
+        ]);
+    }
+    public function actionMergeoffer($source,$target){
+        $model = $this->findModel($source);
+
+            Yii::$app->db->createCommand()->update('id_dailyreport',
+            ['perusahaan' => $target ],
+            ['perusahaan'=>$source])->execute();
+
+            Yii::$app->db->createCommand()->update('id_offer',
+            ['perusahaan' => $target ],
+            ['perusahaan'=>$source])->execute();
+
+            Yii::$app->db->createCommand()->update('id_customer',
+            ['expired' => NULL,'sales'=>$model->sales,'long_expired'=>NULL],
+            ['id'=>$target])->execute();
+
+            return $this->redirect(['view', 'id' => $target ]);
+    }
     public function actionBlokir($id)
     {
         $model = $this->findModel($id);

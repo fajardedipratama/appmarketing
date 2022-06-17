@@ -91,22 +91,29 @@ $this->title = 'Penawaran';
               'visible' => Yii::$app->user->identity->type == 'Administrator' || Yii::$app->user->identity->type == 'Manajemen'
             ],
             [
-              'header'=>'Expired Pusat',
-              'value'=>function($data){
-                if($data->customer->expired_pusat != NULL){
-                  return date('d/m/Y',strtotime($data->customer->expired_pusat));
-                }
-              },
-              'visible' => Yii::$app->user->identity->type == 'Administrator'
-            ],
-            [
-              'header'=>'Last',
+              'header'=>'Penawaran Terakhir',
+              'headerOptions'=>['style'=>'width:10%'],
               'value'=>function($data){
                 $query = Offer::find()->where(['perusahaan'=>$data->perusahaan])->orderBy(['id'=>SORT_DESC])->offset(1)->one();
                 if($query){
                   return date('d/m/Y',strtotime($query['tanggal']));
                 }
               },
+              'visible' => Yii::$app->user->identity->type == 'Administrator'
+            ],
+            [
+              'class' => 'yii\grid\ActionColumn',
+              'header'=>'Gabung',
+              'template'=> '{merge}',
+              'buttons'=>
+              [
+                'merge'=>function($url,$model)
+                {
+                  if($model->customer->verified == NULL){
+                    return Html::a('Gabung', ['customer/mergerequest','id'=>$model->perusahaan], ['class' => 'btn btn-xs btn-primary']);
+                  }
+                },
+              ],
               'visible' => Yii::$app->user->identity->type == 'Administrator'
             ],
             [
@@ -142,8 +149,8 @@ $this->title = 'Penawaran';
             [
               'class' => 'yii\grid\ActionColumn',
               'headerOptions'=>['style'=>'width:10%'],
-              'header'=>'Verif.',
-              'template' => '{accept} {decline} {pending} {duplicate}',
+              'header'=>'Verifikasi',
+              'template' => '{accept} {decline} {pending}',
               'buttons'=>
               [
                     'accept'=>function($url,$model)
@@ -163,7 +170,7 @@ $this->title = 'Penawaran';
                         ["offer/decline",'id'=>$model->id],
                         [
                           'title' => Yii::t('app', 'Decline'),
-                          'data' => ['confirm' => 'Perusahaan ditolak ?','method' => 'post',]
+                          'data' => ['confirm' => $model->customer->perusahaan.' ditolak ?','method' => 'post',]
                         ],
                      );
                     },
@@ -175,7 +182,7 @@ $this->title = 'Penawaran';
                         ["offer/pending",'id'=>$model->id],
                         [
                           'title' => Yii::t('app', 'Pending'),
-                          'data' => ['confirm' => 'Pending 1 minggu ?','method' => 'post',]
+                          'data' => ['confirm' => $model->customer->perusahaan.' pending 1 minggu ?','method' => 'post',]
                         ],
                      );
                     },
