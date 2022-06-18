@@ -24,11 +24,11 @@ $this->title = 'Gabung Customer';
         </h1>
     </div>
     <div class="col-sm-3">
-        <?= Html::a('<i class="fa fa-fw fa-eye"></i> Lihat Profil', ['view','id'=>$model->id], ['class' => 'btn btn-success']) ?>
-        <button class="btn btn-danger" data-toggle="modal" data-target="#print-detail"><i class="fa fa-fw fa-trash"></i> Hapus Data</button>
+        <button class="btn btn-success" data-toggle="modal" data-target="#lihat-profil"><i class="fa fa-fw fa-eye"></i> Lihat Profil</button>
+        <?= Html::a('<i class="fa fa-fw fa-trash"></i> Hapus Data', ['customer/clear','id'=>$model->id], ['class' => 'btn btn-danger','data' => ['confirm' => 'Hapus Data ?','method' => 'post'] ]); ?>
     </div>
 </div>
-<h4><?= $model->perusahaan.' - '.$model->karyawan->nama_pendek ?></h4>
+<h4><?= $model->perusahaan.' - '.$model->city->kota.' - '.$model->karyawan->nama_pendek ?></h4>
 
 <div class="box"><div class="box-body"><div class="table-responsive">
     <?= GridView::widget([
@@ -134,5 +134,50 @@ $this->title = 'Gabung Customer';
         ],
     ]); ?>
 </div></div></div>
+
+    <div class="modal fade" id="lihat-profil"><div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title"><b>Profil Customer</b></h4>          
+            </div>
+            <div class="modal-body">
+              <div class="box-body table-responsive no-padding">
+                <?= Html::a('<i class="fa fa-fw fa-pencil"></i> Ubah', ['update', 'id' => $model->id], ['class' => 'btn btn-sm btn-success','title'=>'Update','target'=>'_blank']) ?>
+                <table class="table table-hover">
+                <tr>
+                    <td>Perusahaan</td>
+                    <td><?= $model->perusahaan ?></td>
+                </tr>
+                <tr>
+                    <td>Kab/Kota</td>
+                    <td><?= $model->city->kota ?></td>
+                </tr>
+                <tr>
+                    <td>Alamat</td>
+                    <td><?= $model->alamat_lengkap ?></td>
+                </tr>
+                <tr>
+                    <td>PIC</td>
+                    <td><?= $model->pic ?></td>
+                </tr>
+                <tr>
+                    <td>Telfon</td>
+                    <td><?= $model->telfon ?></td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td><?= $model->email ?></td>
+                </tr>
+                <tr>
+                    <td>Catatan</td>
+                    <td><?= $model->catatan ?></td>
+                </tr>
+                </table>
+              </div>
+            </div>
+        </div>
+    </div></div>
 
 </div>
