@@ -25,28 +25,14 @@ $awal_tenggang = date('Y-m-d', strtotime('+1 days', strtotime($model->expired_pu
 ?>
 <div class="customer-view">
     <div class="row">
-        <div class="col-sm-7">
+        <div class="col-sm-8">
             <h2>
               <?php if($model->verified === 'yes'): ?>
-                <?php if(!$model->entrusted): ?>
                     <i class="fa fa-fw fa-check-circle" title="Terverifikasi"></i>
-                <?php else: ?>
-                    <i class="fa fa-fw fa-check-circle" title="Terverifikasi"></i><i class="fa fa-fw  fa-user-secret" title="Titipan"></i>
-                <?php endif; ?>
-              <?php elseif($model->verified === 'no'): ?>
-                <?php if(!$model->entrusted): ?>
-                    <i class="fa fa-fw fa-times-circle" title="Ditolak Pusat"></i>
-                <?php else: ?>
-                    <i class="fa fa-fw fa-times-circle" title="Ditolak Pusat"></i><i class="fa fa-fw  fa-user-secret" title="Titipan"></i>
-                <?php endif; ?>
               <?php elseif($model->verified === 'black'): ?>
-                <?php if(!$model->entrusted): ?>
                     <i class="fa fa-fw fa-ban" title="Blacklist"></i>
-                <?php else: ?>
-                    <i class="fa fa-fw fa-ban" title="Blacklist"></i><i class="fa fa-fw  fa-user-secret" title="Titipan"></i>
-                <?php endif; ?>
               <?php else: ?>
-                <i class="fa fa-fw fa-hourglass-2"></i>
+                    <i class="fa fa-fw fa-hourglass-2"></i>
               <?php endif; ?>
               <b><?= Html::encode($this->title) ?></b>
             </h2>
@@ -55,16 +41,12 @@ $awal_tenggang = date('Y-m-d', strtotime('+1 days', strtotime($model->expired_pu
           <?php else: ?>
             <h5><?= $model->city->kota ?> - Exp. - </h5>
           <?php endif; ?>
-          Exp Pusat : <?php if($model->expired_pusat!=NULL){
-            echo date('d-m-Y', strtotime($model->expired_pusat));
-          } ?>, Pending Pusat : <?php if($model->expired_pending!=NULL && $model->expired_pending>=date('Y-m-d')){
-            echo date('d-m-Y', strtotime($model->expired_pending));
-          } ?>  
         </div>
         <?php if(Yii::$app->user->identity->type == 'Administrator'): ?>
-        <div class="col-sm-5">
+        <div class="col-sm-4">
             <p>
                 <?= Html::a('<i class="fa fa-fw fa-pencil"></i> Ubah', ['update', 'id' => $model->id], ['class' => 'btn btn-success','title'=>'Update']) ?>
+                <?= Html::a('<i class="fa fa-fw fa-refresh"></i> Gabung', ['merge', 'id' => $model->id], ['class' => 'btn btn-primary','target'=>'_blank','title'=>'Gabung']) ?>
                 <?= Html::a('<i class="fa fa-fw fa-trash"></i> Hapus', ['delete', 'id' => $model->id], [
                     'class' => 'btn btn-danger','title'=>'Delete',
                     'data' => [
@@ -72,10 +54,6 @@ $awal_tenggang = date('Y-m-d', strtotime('+1 days', strtotime($model->expired_pu
                         'method' => 'post',
                     ],
                 ]) ?>
-                <?= Html::a('<i class="fa fa-fw fa-refresh"></i> Gabung', ['merge', 'id' => $model->id], ['class' => 'btn btn-primary','target'=>'_blank','title'=>'Gabung']) ?>
-            <?php if($model->long_expired != 'yes'): ?>
-                <button class="btn btn-warning" title="Perpanjang" data-toggle="modal" data-target="#extra-expired"><i class="fa fa-fw fa-plus"></i> Expired</button>
-            <?php endif ?>
             </p>
         </div>
         <?php endif ?>
@@ -107,7 +85,6 @@ $awal_tenggang = date('Y-m-d', strtotime('+1 days', strtotime($model->expired_pu
                 'telfon',
                 'email:email',
                 'catatan',
-                'long_expired',
                 [
                   'attribute'=>'sales',
                   'value'=>($model->karyawan)?$model->karyawan->nama:'-',

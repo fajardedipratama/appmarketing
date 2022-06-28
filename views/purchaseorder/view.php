@@ -1,9 +1,7 @@
 <?php
 use app\models\PurchaseOrder;
 use app\models\PurchaseOrderPaid;
-use app\models\PurchaseOrderFile;
 use app\models\City;
-use app\models\Broker;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
@@ -12,7 +10,6 @@ use yii\widgets\DetailView;
 
 $paid = PurchaseOrderPaid::find()->where(['purchase_order_id'=>$model->id])->orderBy(['paid_date'=>SORT_DESC])->all();
 $paid_done = PurchaseOrderPaid::find()->where(['purchase_order_id'=>$model->id])->sum('amount');
-$files = PurchaseOrderFile::find()->where(['purchase_order_id'=>$model->id])->all();
 
 function termin_value($value){
     if($value=='Cash On Delivery'){
@@ -48,25 +45,30 @@ $this->title = 'PURCHASE ORDER';
 <div class="row">
     <div class="col-sm-7">
         <h1>
-            <?php if($model->eksternal): ?>
-                <i class="fa fa-fw fa-user-secret" title="Titipan"></i>
-            <?php endif; ?>
             <b><?= Html::encode($this->title) ?></b>
         </h1>
         <h4><?= $model->no_po ?></h4>
-    <?php if(($model->range_paid != NULL || $model->range_paid == 0) &&$model->status === 'Terbayar-Selesai'): ?>
+    <?php if(($model->range_paid != NULL || $model->range_paid == 0) && $model->status === 'Terbayar-Selesai'): ?>
         <p style="font-style: italic;">Kirim-Bayar = <?= $model->range_paid ?> hari 
+        <?php if(Yii::$app->user->identity->type != 'Marketing'): ?>
             <?= Html::a('<i class="fa fa-fw fa-refresh"></i>', ['calculaterange', 'id' => $model->id], ['class' => 'btn btn-success btn-xs']) ?>
+        <?php endif ?>
         </p>
     <?php endif ?>
     </div>
-<?php if(Yii::$app->user->identity->type != 'Marketing'): ?>
-    <div class="col-sm-5">
-        <!-- tombol admin -->
+<?php if(Yii::$app->user->identity->type == 'Manajemen'): ?>
+    <div class="col-sm-2"></div>
+    <div class="col-sm-3">
     <?php if($model->status === 'Pending'): ?>
         <?= Html::a('<i class="fa fa-fw fa-check-square-o"></i> Setuju', ['accpo', 'id' => $model->id], ['class' => 'btn btn-success','data' => ['confirm' => 'Setujui PO ?','method' => 'post']]) ?>
         <button class="btn btn-danger" data-toggle="modal" data-target="#tolak-po"><i class="fa fa-fw fa-remove"></i> Tolak</button>
-    <?php elseif($model->status === 'Disetujui'): ?>
+    <?php endif ?>
+    </div>
+
+<?php elseif(Yii::$app->user->identity->type == 'Administrator'): ?>
+    <div class="col-sm-1"></div>
+    <div class="col-sm-4">
+    <?php if($model->status === 'Disetujui'): ?>
         <div class="btn-group">
             <button type="button" class="btn btn-success"><i class="fa fa-fw fa-truck"></i> Kirim</button>
             <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
@@ -74,26 +76,28 @@ $this->title = 'PURCHASE ORDER';
             </button>
             <ul class="dropdown-menu" role="menu">
                 <li>
-                    <a data-toggle="modal" data-target="#kirim-po"><i class="fa fa-fw fa-check"></i> Terkirim</a>
+                    <?= Html::a('<i class="fa fa-fw fa-check"></i> Terkirim', ['sendpo', 'id' => $model->id], ['data' => ['confirm' => 'Barang Terkirim ?','method' => 'post']]) ?>
                 </li>
                 <li>
                     <?= Html::a('<i class="fa fa-fw fa-times"></i> Batal Kirim', ['dontsendpo', 'id' => $model->id], ['data' => ['confirm' => 'Barang Batal Kirim ?','method' => 'post']]) ?>
                 </li>
             </ul>
         </div>
+        <?= Html::a('<i class="fa fa-fw fa-pencil"></i> Ubah', ['update', 'id' => $model->id], ['class' => 'btn btn-warning']) ?>
     <?php  elseif($model->status === 'Terkirim'):  ?>
         <?= Html::a('<i class="fa fa-fw fa-money"></i> Terbayar', ['paidpo', 'id' => $model->id], ['class' => 'btn btn-success','data' => ['confirm' => 'PO Terbayar Lunas ?','method' => 'post']]) ?>
-    <?php endif; ?>
-        <!-- tombol admin -->
-        <?= Html::a('<i class="fa fa-fw fa-print"></i> Print', ['print', 'id' => $model->id], ['class' => 'btn btn-primary','target'=>'_blank']) ?>
-        <?= Html::a('<i class="fa fa-fw fa-pencil"></i> Ubah', ['update', 'id' => $model->id], ['class' => 'btn btn-info']) ?>
-    <?php if(Yii::$app->user->identity->type == 'Administrator'): ?>
+        <?= Html::a('<i class="fa fa-fw fa-pencil"></i> Ubah', ['update', 'id' => $model->id], ['class' => 'btn btn-warning']) ?>
+    <?php endif ?>
+    <?= Html::a('<i class="fa fa-fw fa-print"></i> Print', ['print', 'id' => $model->id], ['class' => 'btn btn-primary','target'=>'_blank']) ?>
+    <?php if($model->status === 'Pending'): ?>
+        <?= Html::a('<i class="fa fa-fw fa-pencil"></i> Ubah', ['update', 'id' => $model->id], ['class' => 'btn btn-warning']) ?>
         <?= Html::a('<i class="fa fa-fw fa-trash"></i> Hapus', ['delete', 'id' => $model->id], [
-            'class' => 'btn btn-warning',
+            'class' => 'btn btn-danger',
             'data' => ['confirm' => 'Hapus data ini ?','method' => 'post',],
         ]) ?>
-    <?php endif ?>
+    <?php endif; ?>
     </div>
+
 <?php elseif(Yii::$app->user->identity->type == 'Marketing' && $model->status == 'Pending'): ?>
     <div class="col-sm-2"></div>
     <div class="col-sm-3">
@@ -110,7 +114,6 @@ $this->title = 'PURCHASE ORDER';
     <ul class="nav nav-tabs">
         <li class="active"><a href="#detail" data-toggle="tab">Detail</a></li>
         <li><a href="#paid" data-toggle="tab">Pembayaran</a></li>
-        <li><a href="#po_files" data-toggle="tab">Berkas</a></li>
     </ul>
 
 <div class="tab-content">
@@ -133,16 +136,6 @@ $this->title = 'PURCHASE ORDER';
             [
                 'attribute'=>'sales',
                 'value'=>($model->karyawan)?$model->karyawan->nama:'-',
-            ],
-            [
-                'attribute'=>'broker',
-                'value'=>function($data){
-                    if($data->broker != NULL){
-                        $query = Broker::find()->where(['id'=>$data->broker])->one();
-                        return $query['nama'];
-                    }  
-                },
-                'visible' => Yii::$app->user->identity->type == 'Administrator'
             ],
             ['attribute'=>'tgl_po','value'=>date('d/m/Y',strtotime($model->tgl_po))],
             ['attribute'=>'tgl_kirim','value'=>date('d/m/Y',strtotime($model->tgl_kirim))],
@@ -217,14 +210,6 @@ $this->title = 'PURCHASE ORDER';
                 }
             ],
             'catatan',
-            [
-                'attribute'=>'driver_id',
-                'value'=>function($data){
-                    if($data->driver_id != NULL){
-                        return $data->drivers->driver.' - '.$data->drivers->no_hp;
-                    }
-                }
-            ],
             'status',
             'alasan_tolak',
             [
@@ -245,7 +230,7 @@ $this->title = 'PURCHASE ORDER';
     </div>
     
     <div class="tab-pane" id="paid">
-    <?php if(Yii::$app->user->identity->type != 'Marketing'): ?>
+    <?php if(Yii::$app->user->identity->type == 'Administrator'): ?>
         <button class="btn btn-sm btn-success" data-toggle="modal" data-target="#paid-po"><i class="fa fa-fw fa-dollar"></i> Tambah Bayar</button>
     <?php endif ?>
         <div class="box-body table-responsive no-padding">
@@ -264,8 +249,10 @@ $this->title = 'PURCHASE ORDER';
                 <td><?= $show_paid['bank'] ?></td>
                 <td><?= $show_paid['note'] ?></td>
                 <td>
+                <?php if(Yii::$app->user->identity->type == 'Administrator'): ?>
                     <?= Html::a('<i class="fa fa-fw fa-pencil"></i>', ['purchaseorderpaid/update', 'id' => $show_paid['id']]) ?>
                     <?= Html::a('<i class="fa fa-fw fa-trash"></i>', ['purchaseorderpaid/delete', 'id' => $show_paid['id']], ['data' => ['confirm' => 'Hapus data ini ?','method' => 'post']]) ?>
+                <?php endif ?>
                 </td>
             </tr>
         <?php endforeach ?>
@@ -302,43 +289,6 @@ $this->title = 'PURCHASE ORDER';
           </table>
         </div>
     </div>
-    <div class="tab-pane" id="po_files">
-        <?php if(Yii::$app->user->identity->type != 'Marketing'): ?>
-            <button class="btn btn-sm btn-success" data-toggle="modal" data-target="#files-po"><i class="fa fa-fw fa-plus-square"></i> Kirim Berkas</button>
-        <?php endif ?>
-        <div class="box-body table-responsive no-padding">
-          <table class="table table-hover">
-            <tr>
-                <th>Terkirim</th>
-                <th>Penerima</th>
-                <th>Alamat</th>
-                <th>Berkas</th>
-                <th>Via</th>
-                <th>Aksi</th>
-            </tr>
-        <?php foreach($files as $show_files): ?>
-            <tr>
-                <td>
-                    <?php if($show_files['tgl_kirim']!=NULL){
-                        echo date('d/m/Y',strtotime($show_files['tgl_kirim']));
-                    } ?>
-                </td>
-                <td><?= $show_files['penerima'] ?></td>
-                <td><?= $show_files['alamat'] ?></td>
-                <td><?= $show_files['berkas'] ?></td>
-                <td><?= $show_files['kirim_by'] ?></td>
-                <td width="10%">
-                <?php if(Yii::$app->user->identity->type != 'Marketing'): ?>
-                   <?= Html::a('<i class="fa fa-fw fa-print"></i>', ['purchaseorderfile/view', 'id' => $show_files['id']],['target'=>'_blank']) ?> 
-                   <?= Html::a('<i class="fa fa-fw fa-pencil"></i>', ['purchaseorderfile/update', 'id' => $show_files['id']],['target'=>'_blank']) ?>
-                   <?= Html::a('<i class="fa fa-fw fa-trash"></i>', ['purchaseorderfile/delete', 'id' => $show_files['id']],['data' => ['confirm' => 'Hapus data ini ?','method' => 'post']]) ?>
-                <?php endif; ?>
-                </td>
-            </tr>
-        <?php endforeach ?>
-          </table>
-        </div>
-    </div>
 </div>
 </div></section>
 
@@ -355,19 +305,6 @@ $this->title = 'PURCHASE ORDER';
         </div>
     </div></div>
 
-    <div class="modal fade" id="kirim-po"><div class="modal-dialog modal-sm">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title"><b>Driver Pengiriman</b></h4>          
-            </div>
-            <div class="modal-body">
-              <?= $this->render('_formdriver', ['model' => $model]) ?>
-            </div>
-        </div>
-    </div></div>
-
     <div class="modal fade" id="paid-po"><div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -377,19 +314,6 @@ $this->title = 'PURCHASE ORDER';
             </div>
             <div class="modal-body">
               <?= $this->render('_formbayar', ['model'=>$model,'modelpaid' => $modelpaid]) ?>
-            </div>
-        </div>
-    </div></div>
-
-    <div class="modal fade" id="files-po"><div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title"><b>Kirim Berkas</b></h4>          
-            </div>
-            <div class="modal-body">
-              <?= $this->render('_formberkas', ['modelfile' => $modelfile,'model'=>$model]) ?>
             </div>
         </div>
     </div></div>

@@ -24,8 +24,6 @@ $awal_tenggang = date('Y-m-d', strtotime('+1 days', strtotime($model->expired_pu
             <h2>
               <?php if($model->verified === 'yes'): ?>
                 <i class="fa fa-fw fa-check-circle" title="Terverifikasi"></i>
-              <?php elseif($model->verified === 'no'): ?>
-                <i class="fa fa-fw fa-times-circle" title="Ditolak Pusat"></i>
               <?php elseif($model->verified === 'black'): ?>
                 <i class="fa fa-fw fa-ban" title="Blacklist"></i>
               <?php else: ?>
@@ -38,11 +36,6 @@ $awal_tenggang = date('Y-m-d', strtotime('+1 days', strtotime($model->expired_pu
           <?php else: ?>
             <h5><?= $model->city->kota ?> - Exp. - </h5>
           <?php endif; ?>
-          Exp Pusat : <?php if($model->expired_pusat!=NULL){
-            echo date('d-m-Y', strtotime($model->expired_pusat));
-          } ?>, Pending Pusat : <?php if($model->expired_pending!=NULL && $model->expired_pending>=date('Y-m-d')){
-            echo date('d-m-Y', strtotime($model->expired_pending));
-          } ?>  
         </div>
         <div class="col-sm-3">
             <p>

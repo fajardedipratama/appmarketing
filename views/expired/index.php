@@ -14,12 +14,15 @@ $this->title = 'Data Expired';
 
     <div class="row">
         <div class="col-sm-8">
-            <h1><?= Html::encode($this->title) ?></h1>
+            <h1>
+                <?php if(Yii::$app->user->identity->type == 'Marketing'): ?>
+                    <?= Html::a('<i class="glyphicon glyphicon-chevron-left"></i>', ['selfcustomer/index'], ['class' => 'btn btn-success']) ?>
+                <?php endif; ?>
+                <?= Html::encode($this->title) ?>
+            </h1>
         </div>
         <div class="col-sm-4">
-        <?php if(Yii::$app->user->identity->type == 'Marketing'): ?>
-            <?= Html::a('<i class="fa fa-fw fa-chevron-left"></i> Kembali', ['selfcustomer/index'], ['class' => 'btn btn-success']) ?>
-        <?php else: ?>
+        <?php if(Yii::$app->user->identity->type != 'Marketing'): ?>
             <?= Html::a('<i class="fa fa-fw fa-institution"></i> Data Perusahaan', ['customer/index'], ['class' => 'btn btn-success']) ?>
             <?= Html::a('<i class="fa fa-fw fa-exchange"></i> Pindah Expired', ['expired/move'], ['class' => 'btn btn-danger']) ?>
         <?php endif; ?>

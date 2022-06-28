@@ -35,7 +35,6 @@ $jobtitle = Jobtitle::find()->where(['id'=>$karyawan['posisi']])->one();
                             ['label' => 'Data Karyawan', 'icon' => 'users', 'url' => ['/karyawan'], 'active'=>in_array(\Yii::$app->controller->id,['karyawan','exkaryawan'])],
                             ['label' => 'Jabatan', 'icon' => 'briefcase', 'url' => ['/jobtitle'], 'active'=>in_array(\Yii::$app->controller->id,['jobtitle'])],
                             ['label' => 'Departemen', 'icon' => 'building', 'url' => ['/departemen'], 'active'=>in_array(\Yii::$app->controller->id,['departemen'])],
-                            ['label' => 'Data Broker', 'icon' => 'user-secret', 'url' => ['/broker'], 'active'=>in_array(\Yii::$app->controller->id,['broker'])],
                             ['label' => '.'],
                             [
                                 'label' => 'User Login', 'icon' => 'key', 'url' => ['/users'], 'active'=>in_array(\Yii::$app->controller->id,['users']),
@@ -63,34 +62,14 @@ $jobtitle = Jobtitle::find()->where(['id'=>$karyawan['posisi']])->one();
                                 ],
                             ],
                             ['label' => 'Data PO', 'icon' => 'cart-plus', 'url' => ['/purchaseorder'], 'active'=>in_array(\Yii::$app->controller->id,['purchaseorder'])],
-                            [
-                                'label' => 'Kirim Dok/Sampel', 'icon' => 'flask', 'url' => ['/sendsample'], 'active'=>in_array(\Yii::$app->controller->id,['sendsample']),
-                            ],
                             ['label' => '.'],
                             ['label' => 'Aktivitas Sales', 'icon' => 'table', 'url' => ['/dailyreport','waktu'=>date('Y-m-d')], 'active'=>in_array(\Yii::$app->controller->id,['dailyreport'])],
-                            [
-                                'label' => 'Statistik Sales', 'icon' => 'table', 'url' => ['/statistic'], 'active'=>in_array(\Yii::$app->controller->id,['statistic']),
-                                'visible' => !Yii::$app->user->isGuest && Yii::$app->user->identity->type == 'Administrator' || Yii::$app->user->identity->type == 'Manajemen'
-                            ],
                             ['label' => '.'],
                             [
                                 'label' => 'Kabupaten/Kota', 'icon' => 'map-marker', 'url' => ['/city'], 'active'=>in_array(\Yii::$app->controller->id,['city']),
                                 'visible' => !Yii::$app->user->isGuest && Yii::$app->user->identity->type == 'Administrator' || Yii::$app->user->identity->type == 'Manajemen'
                             ],
-                            [
-                                'label' => 'Data Supir', 'icon' => 'truck', 'url' => ['/drivers'], 'active'=>in_array(\Yii::$app->controller->id,['drivers']),
-                                'visible' => !Yii::$app->user->isGuest && Yii::$app->user->identity->type == 'Administrator' || Yii::$app->user->identity->type == 'Manajemen'
-                            ],
                         ],
-                    ],
-                    [
-                        'label' => 'Finance',
-                        'icon' => 'money',
-                        'url' => '#',
-                        'items' => [
-                            ['label' => 'Kas', 'icon' => 'book', 'url' => ['/kas'], 'active'=>in_array(\Yii::$app->controller->id,['kas','kasakun','kasdetail'])],
-                        ],
-                        'visible' => !Yii::$app->user->isGuest && Yii::$app->user->identity->type == 'Administrator'
                     ],
 
                 ],

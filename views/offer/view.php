@@ -17,7 +17,7 @@ $this->title = 'Detail Penawaran #'.$model->no_surat;
 ?>
 <div class="offer-view">
     <div class="row">
-        <div class="col-sm-8">
+        <div class="col-sm-9">
             <h1>
             <?php if(Yii::$app->user->identity->type == 'Marketing'): ?>
                 <?= Html::a('<i class="glyphicon glyphicon-chevron-left"></i>', ['selfcustomer/view', 'id' => $model->perusahaan], ['class' => 'btn btn-success']) ?>
@@ -25,7 +25,7 @@ $this->title = 'Detail Penawaran #'.$model->no_surat;
                 Detail Penawaran <b>#<?= $model->no_surat ?></b>
             </h1>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-3">
             <p>
             <?php if(Yii::$app->user->identity->type == 'Marketing'): ?>
                 <?php if($model->status === 'Pending'): ?>
@@ -48,7 +48,6 @@ $this->title = 'Detail Penawaran #'.$model->no_surat;
                         'method' => 'post',
                     ],
                 ]) ?>
-                <button class="btn btn-primary" data-toggle="modal" data-target="#extra-offer"><i class="fa fa-fw fa-plus-square"></i> Harga</button>
             <?php endif; ?>
             </p>
         </div>
@@ -122,33 +121,8 @@ $this->title = 'Detail Penawaran #'.$model->no_surat;
                     }
                 },
             ],
-            [
-                'label'=>'Extra Harga',
-                'format'=>'raw',
-                'value'=> function($data){
-                    $result=OfferExtra::find()->where(['offer_id'=>$data->id])->all();
-                    $print = '';
-                    foreach ($result as $show) {
-                        $print .= $show->top.'/'.$show->harga.'/'.$show->pajak.' - ';
-                    }
-                    return $print;
-                }
-            ],
         ],
     ]) ?>   
     </div>
-
-    <div class="modal fade" id="extra-offer"><div class="modal-dialog modal-md">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title"><b>Tambah Harga</b></h4>          
-            </div>
-            <div class="modal-body">
-              <?= $this->render('_formextra', ['model' => $model,'modelextra' => $modelextra]) ?>
-            </div>
-        </div>
-    </div></div>
 
 </div>

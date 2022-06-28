@@ -111,7 +111,7 @@ $this->title = 'Penawaran Proses';
                      );
                     },
                 ],
-                'visible' => Yii::$app->user->identity->type == 'Administrator' || Yii::$app->user->identity->type == 'Manajemen'
+                'visible' => Yii::$app->user->identity->type == 'Administrator'
             ],
             [
               'class' => 'yii\grid\ActionColumn',

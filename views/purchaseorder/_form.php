@@ -54,16 +54,6 @@ use dosamigos\datepicker\DatePicker;
             'options'=>['placeholder'=>"Sales"],'pluginOptions'=>['allowClear'=>true]
         ]) ?>
     </div>
-     <div class="col-sm-4">
-        <?= $form->field($model, 'broker')->widget(Select2::className(),[
-            'data'=>ArrayHelper::map(Broker::find()->orderBy(['nama'=>SORT_ASC])->all(),'id',
-                function($model){
-                    return $model['nama'];
-                }
-            ),
-            'options'=>['placeholder'=>"Broker"],'pluginOptions'=>['allowClear'=>true]
-        ]) ?>
-    </div>
 <?php endif; ?>
     <div class="col-sm-4">
         <?= $form->field($model, 'no_po')->textInput(['maxlength' => true]) ?>
@@ -146,9 +136,6 @@ use dosamigos\datepicker\DatePicker;
     </div>
 <?php if(Yii::$app->user->identity->type != 'Marketing'): ?>
     <div class="col-sm-4">
-        <?= $form->field($model, 'eksternal')->dropDownList(['yes'=>'yes'],['prompt'=>'--Eksternal ?--']) ?>
-    </div>
-    <div class="col-sm-4">
         <?= $form->field($model, 'penalti')->textInput(['type'=>'number']) ?>
     </div>
 <?php endif ?>
@@ -188,16 +175,6 @@ use dosamigos\datepicker\DatePicker;
     <div class="col-sm-4">
         <?= $form->field($model, 'status')->dropDownList(['Pending'=>'Pending','Ditolak'=>'Ditolak','Disetujui'=>'Disetujui','Terkirim'=>'Terkirim','Batal Kirim'=>'Batal Kirim','Terbayar-Selesai'=>'Terbayar-Selesai']) ?>
     </div>
-    <?php if(in_array($model->status,['Terkirim','Terbayar-Selesai'])): ?>
-    <div class="col-sm-4">
-        <?= $form->field($model, 'driver_id')->dropDownList(
-        ArrayHelper::map(Drivers::find()->all(),'id',
-            function($model){
-                return $model['driver'];
-            }
-        )); ?>
-    </div>
-    <?php endif ?>
 <?php endif ?>
 </div>
     </div></div>

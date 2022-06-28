@@ -13,18 +13,29 @@ $this->title = 'Data PO';
 <div class="purchase-order-index">
 
     <div class="row">
-        <div class="col-sm-8">
+    <?php if(Yii::$app->user->identity->type == 'Administrator'): ?>
+        <div class="col-sm-9">
             <h1><?= Html::encode($this->title) ?></h1>
         </div>
-        <div class="col-sm-4">
-        <?php if(Yii::$app->user->identity->type != 'Manajemen'): ?>
+        <div class="col-sm-3">
             <?= Html::a('<i class="fa fa-fw fa-plus-square"></i> Tambah Data', ['create'], ['class' => 'btn btn-success']) ?>
-        <?php endif; ?>
-        <?php if(Yii::$app->user->identity->type != 'Marketing'): ?>
             <?= Html::a('<i class="fa fa-fw fa-dollar"></i> Hasil PO', ['hasilpo','range'=>'all'],['class' => 'btn btn-danger']) ?>
-        <?php endif; ?>
-        <?= Html::a('<i class="fa fa-fw fa-pencil-square-o"></i> Review', ['/purchasereview'],['class' => 'btn btn-warning']) ?>
         </div>
+    <?php elseif(Yii::$app->user->identity->type == 'Manajemen'): ?>
+        <div class="col-sm-10">
+            <h1><?= Html::encode($this->title) ?></h1>
+        </div>
+        <div class="col-sm-2">
+            <?= Html::a('<i class="fa fa-fw fa-dollar"></i> Hasil PO', ['hasilpo','range'=>'all'],['class' => 'btn btn-danger']) ?>
+        </div>
+    <?php else: ?>
+        <div class="col-sm-10">
+            <h1><?= Html::encode($this->title) ?></h1>
+        </div>
+        <div class="col-sm-2">
+            <?= Html::a('<i class="fa fa-fw fa-plus-square"></i> Tambah Data', ['create'], ['class' => 'btn btn-success']) ?>
+        </div>
+    <?php endif; ?>
     </div>
 
 

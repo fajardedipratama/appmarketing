@@ -42,7 +42,6 @@ $this->title = 'Hasil PO';
   <?php endif; ?>
   </div>
   <div class="col-sm-2">
-    <?= Html::a('<i class="glyphicon glyphicon-refresh"></i>', ['hasilpo','range'=>'all'], ['class' => 'btn btn-warning']) ?>
     <button class="btn btn-success" data-toggle="modal" data-target="#search-po"><i class="fa fa-fw fa-search"></i> Cari</button>
   </div>
 </div>

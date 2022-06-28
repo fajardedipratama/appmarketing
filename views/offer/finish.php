@@ -30,8 +30,6 @@ $this->title = 'Penawaran Selesai';
                 <li><?= Html::a('Semua', ['export-excel2']); ?></li>
               </ul>
             </div>
-        <?php else: ?>
-            <?= Html::a('<i class="glyphicon glyphicon-refresh"></i>', ['index'], ['class' => 'btn btn-warning pull-right']) ?>
         <?php endif ?> 
         </div>
     </div>
@@ -70,7 +68,8 @@ $this->title = 'Penawaran Selesai';
               'filter'=>\kartik\select2\Select2::widget([
                 'model'=>$searchModel,'attribute'=>'sales','data'=>$sales,
                 'options'=>['placeholder'=>'Sales'],'pluginOptions'=>['allowClear'=>true]
-              ])
+              ]),
+              'visible' => Yii::$app->user->identity->type != 'Marketing'
             ],
             [
               'attribute' => 'status',

@@ -22,8 +22,6 @@ $this->title = 'Data Perusahaan';
         <?php if(Yii::$app->user->identity->type == 'Administrator'): ?>
             <?= Html::a('<i class="fa fa-fw fa-plus-square"></i> Tambah Data', ['create'], ['class' => 'btn btn-success']) ?>
             <?= Html::a('<i class="fa fa-fw fa-warning"></i> Expired', ['/expired'], ['class' => 'btn btn-danger']) ?>
-        <?php else: ?>
-            <?= Html::a('<i class="glyphicon glyphicon-refresh"></i>', ['index'], ['class' => 'btn btn-warning pull-right']) ?>
         <?php endif; ?>
         </div>
     </div>
@@ -35,7 +33,7 @@ $this->title = 'Data Perusahaan';
         'columns' => [
             [
                 'attribute'=>'verified',
-                'headerOptions'=>['style'=>'width:6%'],
+                'headerOptions'=>['style'=>'width:8%'],
                 'format'=>'raw',
                 'value'=>function($model){
                     $query = PurchaseOrder::find()->where(['perusahaan'=>$model->id])->andWhere(['status'=>['Terkirim','Terbayar-Selesai']])->count();

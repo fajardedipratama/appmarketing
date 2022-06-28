@@ -12,16 +12,23 @@ $this->title = 'Data Karyawan';
 <div class="karyawan-index">
 
     <div class="row">
+    <?php if(Yii::$app->user->identity->type == 'Administrator'): ?>
         <div class="col-sm-8">
             <h1><?= Html::encode($this->title) ?></h1>
         </div>
         <div class="col-sm-4">
-        <?php if(Yii::$app->user->identity->type == 'Administrator'): ?>
             <?= Html::a('<i class="fa fa-fw fa-file-excel-o"></i>', ['export-excel2'], ['class'=>'btn btn-success']); ?>
             <?= Html::a('<i class="fa fa-fw fa-plus-square"></i> Tambah Data', ['create'], ['class' => 'btn btn-primary']) ?>
-        <?php endif; ?>
             <?= Html::a('<i class="fa fa-fw fa-users"></i> Ex-Karyawan', ['exdata'], ['class' => 'btn btn-danger']) ?>
         </div>
+    <?php else: ?>
+        <div class="col-sm-10">
+            <h1><?= Html::encode($this->title) ?></h1>
+        </div>
+        <div class="col-sm-2">
+            <?= Html::a('<i class="fa fa-fw fa-users"></i> Ex-Karyawan', ['exdata'], ['class' => 'btn btn-danger']) ?>
+        </div>
+    <?php endif; ?>
     </div>
 
 <div class="box"><div class="box-body"><div class="table-responsive">

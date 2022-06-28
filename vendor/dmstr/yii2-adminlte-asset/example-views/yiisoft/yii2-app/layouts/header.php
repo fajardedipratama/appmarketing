@@ -25,16 +25,6 @@ $callback = Dailyreport::find()->where(['sales'=>Yii::$app->user->identity->prof
         <div class="navbar-custom-menu">
 
             <ul class="nav navbar-nav">
-                <li class="dropdown notifications-menu" title="Kalkulator">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <i class="fa fa-fw fa-calculator"></i>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li class="header"><a href="index.php?r=calculator/to_include" target="_blank"><i class="fa fa-calculator"></i> DPP -> Include Tax</a></li>
-                        <li class="header"><a href="index.php?r=calculator/to_dpp" target="_blank"><i class="fa fa-calculator"></i> Include Tax -> DPP</a></li>
-                        <li class="header"><a href="index.php?r=calculator/cashback" target="_blank"><i class="fa fa-calculator"></i> Cashback</a></li>
-                    </ul>
-                </li>
                 <?php if(Yii::$app->user->identity->type == 'Marketing'): ?>
                 <li class="dropdown notifications-menu" title="Hubungi Balik">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">

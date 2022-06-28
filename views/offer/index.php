@@ -19,14 +19,13 @@ $this->title = 'Penawaran';
 <div class="offer-index">
 
     <div class="row">
-        <div class="col-sm-8">
+        <div class="col-sm-9">
             <h1><?= Html::encode($this->title) ?></h1>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-3">
         <?php if(Yii::$app->user->identity->type == 'Administrator'): ?>
             <?= Html::a('<i class="fa fa-fw fa-plus-square"></i> Tambah Data', ['createadmin'], ['class' => 'btn btn-success']) ?>
             <button class="btn btn-warning" data-toggle="modal" data-target="#offer-number"><i class="fa fa-fw fa-sort-numeric-asc"></i> No.Surat</button>
-            <?= Html::a('<i class="fa fa-fw fa-file-excel-o"></i> Ekspor', ['export-excel'], ['class' => 'btn btn-danger']) ?>
         <?php endif; ?>
         </div>
     </div>
@@ -118,81 +117,22 @@ $this->title = 'Penawaran';
             ],
             [
               'class' => 'yii\grid\ActionColumn',
-              'header'=>'Pengajuan',
-              'template'=> '{permit}',
-              'buttons'=>
-              [
-                'permit'=>function($url,$model){
-                  $result = OfferPermit::find()->where(['id_customer'=>$model->perusahaan])->one();
-                  if($result){
-                    return Html::a('Batal', ['cancelpermit','id'=>$model->perusahaan], ['class' => 'btn btn-xs btn-danger']);
-                  }else{
-                    $cust = Customer::find()->where(['id'=>$model->perusahaan])->one();
-                    $akhir_tenggang = date('Y-m-d', strtotime('+3 days', strtotime($cust->expired_pusat)));
-                    $awal_tenggang = date('Y-m-d', strtotime('+1 days', strtotime($cust->expired_pusat)));
-
-                    if($cust['expired_pusat'] >= date('Y-m-d')){
-                      return Html::a('Ajukan', ['permit','id'=>$model->perusahaan], ['class' => 'btn btn-xs btn-default disabled']);
-                    }elseif(date('Y-m-d') >= $awal_tenggang && date('Y-m-d') <= $akhir_tenggang){
-                      return Html::a('Pending', ['permit','id'=>$model->perusahaan], ['class' => 'btn btn-xs btn-danger disabled']);
-                    }elseif(date('Y-m-d') <= $cust->expired_pending){
-                      return Html::a('Pending', ['permit','id'=>$model->perusahaan], ['class' => 'btn btn-xs btn-danger disabled']);
-                    }else{
-                      return Html::a('Ajukan', ['permit','id'=>$model->perusahaan], ['class' => 'btn btn-xs btn-success']);
-                    }
-                    
-                  }
-                }
-              ],
-              'visible' => Yii::$app->user->identity->type == 'Administrator',
-            ],
-            [
-              'class' => 'yii\grid\ActionColumn',
-              'headerOptions'=>['style'=>'width:10%'],
+              'headerOptions'=>['style'=>'width:5%'],
               'header'=>'Verifikasi',
-              'template' => '{accept} {decline} {pending}',
+              'template' => '{accept}',
               'buttons'=>
               [
                     'accept'=>function($url,$model)
                     {
-                    return Html::a
-                     (
-                        '<span class="glyphicon glyphicon-ok"></span>',
-                        ["offer/accept",'id'=>$model->id],
-                        ['title' => Yii::t('app', 'Accept')],
-                     );
-                    },
-                    'decline'=>function($url,$model)
-                    {
-                    return Html::a
-                     (
-                        '<span class="glyphicon glyphicon-remove"></span>',
-                        ["offer/decline",'id'=>$model->id],
-                        [
-                          'title' => Yii::t('app', 'Decline'),
-                          'data' => ['confirm' => $model->customer->perusahaan.' ditolak ?','method' => 'post',]
-                        ],
-                     );
-                    },
-                    'pending'=>function($url,$model)
-                    {
-                    return Html::a
-                     (
-                        '<span class="glyphicon glyphicon-alert"></span>',
-                        ["offer/pending",'id'=>$model->id],
-                        [
-                          'title' => Yii::t('app', 'Pending'),
-                          'data' => ['confirm' => $model->customer->perusahaan.' pending 1 minggu ?','method' => 'post',]
-                        ],
-                     );
+                      return Html::a('Proses', ["offer/accept",'id'=>$model->id], ['class' => 'btn btn-xs btn-success']);
                     },
                 ],
                 'visible' => Yii::$app->user->identity->type == 'Administrator'
             ],
             [
               'class' => 'yii\grid\ActionColumn',
-              'header' => 'Aksi',
-              'headerOptions'=>['style'=>'width:8%'],
+              'header' => 'Detail',
+              'headerOptions'=>['style'=>'width:5%'],
               'template' => '{view}',
               'buttons' => [
                 'view'=>function($url,$model)
