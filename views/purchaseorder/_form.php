@@ -6,8 +6,6 @@ use kartik\select2\Select2;
 use app\models\Customer;
 use app\models\Karyawan;
 use app\models\City;
-use app\models\Broker;
-use app\models\Drivers;
 use dosamigos\datepicker\DatePicker;
 /* @var $this yii\web\View */
 /* @var $model app\models\PurchaseOrder */

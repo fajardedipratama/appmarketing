@@ -18,9 +18,6 @@ $count_offer = Offer::find()->where(['perusahaan'=>$model->id])->count();
 $offers = Offer::find()->where(['perusahaan'=>$model->id])->orderBy(['id'=>SORT_DESC])->limit(15)->all();
 $first_offer = Offer::find()->where(['perusahaan'=>$model->id])->orderBy(['id'=>SORT_ASC])->one();
 
-$akhir_tenggang = date('Y-m-d', strtotime('+3 days', strtotime($model->expired_pusat)));
-$awal_tenggang = date('Y-m-d', strtotime('+1 days', strtotime($model->expired_pusat)));
-
 \yii\web\YiiAsset::register($this);
 ?>
 <div class="customer-view">

@@ -17,13 +17,9 @@ use Yii;
  * @property string $catatan
  * @property int|null $sales
  * @property string|null $expired
- * @property string|null $expired_pusat
- * @property string|null $expired_pending
- * @property string $long_expired
  * @property int|null $created_by
  * @property string|null $created_time
  * @property string $verified
- * @property string $entrusted
  */
 class Customer extends \yii\db\ActiveRecord
 {
@@ -43,8 +39,8 @@ class Customer extends \yii\db\ActiveRecord
     {
         return [
             [['perusahaan', 'lokasi', 'pic','alamat_lengkap'], 'required'],
-            [['expired','expired_pusat','expired_pending','created_time','$dari_tgl','$ke_tgl'], 'safe'],
-            [['perusahaan','lokasi','pic','telfon','verified','long_expired','entrusted'], 'string', 'max' => 100],
+            [['expired','created_time','$dari_tgl','$ke_tgl'], 'safe'],
+            [['perusahaan','lokasi','pic','telfon','verified'], 'string', 'max' => 100],
             [['alamat_lengkap', 'catatan'], 'string', 'max' => 1000],
             [['sales','created_by','target'], 'integer'],
             [['email'], 'email', 'message'=>'Penulisan alamat email tidak valid, pastikan ada @ dan diakhiri dengan domain'],
@@ -67,14 +63,10 @@ class Customer extends \yii\db\ActiveRecord
             'catatan' => 'Catatan',
             'sales' => 'Sales',
             'expired' => 'Expired',
-            'expired_pusat' => 'Expired Pusat',
-            'expired_pending' => 'Expired Pending',
-            'long_expired' => 'Perpanjang ?',
             'created_by' => 'Add By',
             'created_time' => 'Created',
             'verified' => 'Verif.',
             'target' => 'Target',
-            'entrusted'=>'Pihak Eksternal',
             'dari_tgl'=>'Dari Tanggal',
             'ke_tgl'=>'Ke Tanggal',
         ];

@@ -18,7 +18,7 @@ class PurchaseorderSearch extends PurchaseOrder
     {
         return [
             [['id', 'perusahaan', 'sales','volume', 'harga', 'cashback', 'bilyet_giro','kota_kirim'], 'integer'],
-            [['no_po', 'broker','tgl_po', 'tgl_kirim', 'alamat', 'alamat_kirim', 'purchasing', 'no_purchasing', 'keuangan', 'no_keuangan', 'termin', 'pajak', 'pembayaran','status', 'catatan', 'alasan_tolak','jatuh_tempo','tgl_lunas'], 'safe'],
+            [['no_po','tgl_po', 'tgl_kirim', 'alamat', 'alamat_kirim', 'purchasing', 'no_purchasing', 'keuangan', 'no_keuangan', 'termin', 'pajak', 'pembayaran','status', 'catatan', 'alasan_tolak','jatuh_tempo','tgl_lunas'], 'safe'],
         ];
     }
 
@@ -41,7 +41,7 @@ class PurchaseorderSearch extends PurchaseOrder
     public function search($params)
     {
         if(Yii::$app->user->identity->type == 'Marketing'){
-            $query = PurchaseOrder::find()->where(['sales'=>Yii::$app->user->identity->profilname])->andWhere(['eksternal'=>NULL]);
+            $query = PurchaseOrder::find()->where(['sales'=>Yii::$app->user->identity->profilname]);
         }else{
             $query = PurchaseOrder::find();
         }

@@ -13,9 +13,6 @@ $this->title = $model->perusahaan;
 $progress = Dailyreport::find()->where(['perusahaan'=>$model->id])->orderBy(['waktu'=>SORT_DESC])->limit(15)->all();
 $offers = Offer::find()->where(['perusahaan'=>$model->id])->orderBy(['id'=>SORT_DESC])->limit(15)->all();
 
-$akhir_tenggang = date('Y-m-d', strtotime('+3 days', strtotime($model->expired_pusat)));
-$awal_tenggang = date('Y-m-d', strtotime('+1 days', strtotime($model->expired_pusat)));
-
 \yii\web\YiiAsset::register($this);
 ?>
 <div class="customer-view">
@@ -39,25 +36,12 @@ $awal_tenggang = date('Y-m-d', strtotime('+1 days', strtotime($model->expired_pu
         </div>
         <div class="col-sm-3">
             <p>
-
               <?php if(strtotime($model->expired) >= strtotime(date('Y-m-d')) || $model->expired == NULL): ?>
                 <?= Html::a('<i class="fa fa-fw fa-pencil"></i> Ubah', ['update', 'id' => $model->id], ['class' => 'btn btn-warning']) ?>
-              <?php endif; ?>
-
-              <?php if($model->verified !== 'no' && $model->verified !== 'black' && !$model->entrusted): ?>
-                <?php if($model->expired >= date('Y-m-d') || $model->expired == NULL): ?>
-                  <?php if(date('Y-m-d') < $awal_tenggang || date('Y-m-d') > $akhir_tenggang || $model->expired_pusat == NULL): ?>
-                    <?php if(date('Y-m-d') > $model->expired_pending || $model->expired_pending == NULL): ?>
-                    <button class="btn btn-danger" data-toggle="modal" data-target="#daily-report"><i class="fa fa-fw fa-plus-square"></i> Progress</button>
-                    <?php endif ?>
-                  <?php elseif(date('Y-m-d') >= $awal_tenggang && date('Y-m-d') <= $akhir_tenggang): ?>
-                     <button class="btn btn-danger disabled"><i class="fa fa-fw fa-plus-square"></i> Progress</button>
-                  <?php endif; ?>
-                <?php endif; ?>
+                <button class="btn btn-danger" data-toggle="modal" data-target="#daily-report"><i class="fa fa-fw fa-plus-square"></i> Progress</button>
               <?php else: ?>
                 <button class="btn btn-danger disabled"><i class="fa fa-fw fa-plus-square"></i> Progress</button>
               <?php endif; ?>
-
             </p>
         </div>
     </div>

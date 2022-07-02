@@ -46,15 +46,7 @@ $this->title = 'Data PO';
         'columns' => [
             [
               'attribute'=>'perusahaan',
-              'format'=>'raw',
-              'value'=>function($data){
-                if($data->eksternal){
-                  return '<i class="fa fa-fw fa-user-secret" title="Titipan"></i>'.$data->customer->perusahaan;
-                }else{
-                  return $data->customer->perusahaan;
-                }
-                //return $data->customer->perusahaan;
-              },
+              'value'=>'customer.perusahaan',
               'filter'=>\kartik\select2\Select2::widget([
                 'model'=>$searchModel,'attribute'=>'perusahaan','data'=>$customer,
                 'options'=>['placeholder'=>'Perusahaan'],'pluginOptions'=>['allowClear'=>true]

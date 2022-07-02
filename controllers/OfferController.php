@@ -130,18 +130,6 @@ class OfferController extends Controller
             ['id'=> $model->perusahaan ])->execute();
         }
 
-        //expired pusat
-        $check_permit = OfferPermit::find()->where(['id_customer'=>$model->perusahaan])->one();
-        if($check_permit){
-            $expired_pusat = date('Y-m-d', strtotime('+7 days', strtotime($date_now)));
-            Yii::$app->db->createCommand()->update('id_customer',
-            ['expired_pusat' => $expired_pusat],
-            ['id'=> $model->perusahaan ])->execute();
-
-            Yii::$app->db->createCommand()->delete('id_offer_permit',
-            ['id_customer'=> $model->perusahaan ])->execute();
-        }
-
         return $this->redirect(['index']);
     }
     public function actionDecline($id)
@@ -155,9 +143,6 @@ class OfferController extends Controller
         Yii::$app->db->createCommand()->update('id_customer',
         ['verified' => 'no','expired'=>NULL],
         ['id'=> $model->perusahaan ])->execute();
-
-        Yii::$app->db->createCommand()->delete('id_offer_permit',
-            ['id_customer'=> $model->perusahaan ])->execute();
 
         return $this->redirect(['index']);
     }
@@ -173,9 +158,6 @@ class OfferController extends Controller
 
         Yii::$app->db->createCommand()->delete('id_offer',
         ['perusahaan'=> $model->perusahaan ])->execute();
-
-        Yii::$app->db->createCommand()->delete('id_offer_permit',
-        ['id_customer'=> $model->perusahaan ])->execute();
 
         return $this->redirect(['index']);
     }

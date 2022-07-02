@@ -1,7 +1,6 @@
 <?php
 use app\models\City;
 use app\models\Offer;
-use app\models\OfferPermit;
 use app\models\Karyawan;
 use app\models\Customer;
 use app\models\OfferNumber;

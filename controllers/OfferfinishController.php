@@ -95,15 +95,8 @@ class OfferfinishController extends \yii\web\Controller
         }else{
             $activity = '20/03/2021';
         }
-        // expired pusat
-        if($offer->customer->expired_pusat != NULL){
-            $expired_pusat = date('d/m/Y',strtotime($offer->customer->expired_pusat));
-        }else{
-            $expired_pusat = '-';
-        }
                 $data[] = [
                     'tanggal'=>date('d/m/Y',strtotime($offer->tanggal)),
-                    'expired_pusat'=>$expired_pusat,
                     'no_surat'=>$offer->no_surat,
                     'perusahaan'=>$offer->customer->perusahaan,
                     'lokasi'=>$lokasi['kota'],
@@ -151,15 +144,8 @@ class OfferfinishController extends \yii\web\Controller
         }else{
             $activity = '20/03/2021';
         }
-        // expired pusat
-        if($offer->customer->expired_pusat != NULL){
-            $expired_pusat = date('d/m/Y',strtotime($offer->customer->expired_pusat));
-        }else{
-            $expired_pusat = '-';
-        }
                 $data[] = [
                     'tanggal'=>date('d/m/Y',strtotime($offer->tanggal)),
-                    'expired_pusat'=>$expired_pusat,
                     'no_surat'=>$offer->no_surat,
                     'perusahaan'=>$offer->customer->perusahaan,
                     'lokasi'=>$lokasi['kota'],

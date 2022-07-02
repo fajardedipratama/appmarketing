@@ -1,5 +1,4 @@
 <?php
-use app\models\OfferExtra;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 28 Jun 2022 pada 11.28
+-- Waktu pembuatan: 02 Jul 2022 pada 13.56
 -- Versi server: 10.4.17-MariaDB
 -- Versi PHP: 8.0.2
 
@@ -99,14 +99,17 @@ CREATE TABLE `id_customer` (
   `catatan` varchar(1000) NOT NULL,
   `sales` int(11) DEFAULT NULL,
   `expired` date DEFAULT NULL,
-  `expired_pusat` date DEFAULT NULL,
-  `expired_pending` date DEFAULT NULL,
-  `long_expired` varchar(100) NOT NULL,
   `created_by` int(11) DEFAULT NULL,
   `created_time` datetime DEFAULT NULL,
-  `verified` varchar(100) NOT NULL,
-  `entrusted` varchar(100) NOT NULL
+  `verified` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `id_customer`
+--
+
+INSERT INTO `id_customer` (`id`, `perusahaan`, `lokasi`, `alamat_lengkap`, `pic`, `telfon`, `email`, `catatan`, `sales`, `expired`, `created_by`, `created_time`, `verified`) VALUES
+(2, 'SPARTAWOOD PRODUCTS PT', '26', 'ds keboan anom rt1/rw8 gedangan sidoarjo', 'purchasing', '03199719541', 'spartawood_pt@yahoo.co.id', '', 32, '2070-01-01', 32, '2022-07-02 18:13:04', 'yes');
 
 -- --------------------------------------------------------
 
@@ -124,6 +127,13 @@ CREATE TABLE `id_dailyreport` (
   `pengingat` date DEFAULT NULL,
   `con_used` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `id_dailyreport`
+--
+
+INSERT INTO `id_dailyreport` (`id`, `sales`, `waktu`, `perusahaan`, `keterangan`, `catatan`, `pengingat`, `con_used`) VALUES
+(3, 32, '2022-07-02 18:13:20', 2, 'Penawaran', 'estimasi minggu depan', '2022-07-02', 'Telfon Kantor');
 
 -- --------------------------------------------------------
 
@@ -277,6 +287,13 @@ CREATE TABLE `id_offer` (
   `show_tax` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data untuk tabel `id_offer`
+--
+
+INSERT INTO `id_offer` (`id`, `tanggal`, `waktu`, `no_surat`, `perusahaan`, `pic`, `top`, `pajak`, `harga`, `catatan`, `sales`, `status`, `is_new`, `send_wa`, `show_tax`) VALUES
+(2, '2022-07-02', '18:18:50', 918, 2, 'Purchasing', 'Cash On Delivery', 'PPN', 11600, '', 32, 'Terkirim', 'yes', 1, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -297,7 +314,7 @@ CREATE TABLE `id_offer_number` (
 --
 
 INSERT INTO `id_offer_number` (`id`, `nomor`, `inisial`, `periode`, `min_price`, `max_price`) VALUES
-(1, 916, 'BJB-SBY / VI', '15-30 Juni 2022', 10800, 20000);
+(1, 918, 'BJB-SBY / VI', '15-30 Juni 2022', 10800, 20000);
 
 -- --------------------------------------------------------
 
@@ -309,7 +326,6 @@ CREATE TABLE `id_purchase_order` (
   `id` int(11) NOT NULL,
   `perusahaan` int(11) NOT NULL,
   `sales` int(11) NOT NULL,
-  `broker` int(11) DEFAULT NULL,
   `no_po` varchar(100) NOT NULL,
   `tgl_po` date NOT NULL,
   `tgl_kirim` date NOT NULL,
@@ -331,13 +347,18 @@ CREATE TABLE `id_purchase_order` (
   `catatan` varchar(1000) NOT NULL,
   `alasan_tolak` varchar(1000) NOT NULL,
   `penerima` varchar(100) NOT NULL,
-  `eksternal` varchar(100) DEFAULT NULL,
   `penalti` int(11) DEFAULT NULL,
   `jatuh_tempo` date DEFAULT NULL,
   `tgl_lunas` date DEFAULT NULL,
-  `range_paid` int(11) DEFAULT NULL,
-  `driver_id` int(11) DEFAULT NULL
+  `range_paid` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `id_purchase_order`
+--
+
+INSERT INTO `id_purchase_order` (`id`, `perusahaan`, `sales`, `no_po`, `tgl_po`, `tgl_kirim`, `alamat`, `kota_kirim`, `alamat_kirim`, `purchasing`, `no_purchasing`, `keuangan`, `no_keuangan`, `volume`, `termin`, `harga`, `cashback`, `pajak`, `pembayaran`, `bilyet_giro`, `status`, `catatan`, `alasan_tolak`, `penerima`, `penalti`, `jatuh_tempo`, `tgl_lunas`, `range_paid`) VALUES
+(1, 2, 32, '0001/PO/I/2022', '2022-07-02', '2022-07-04', 'ds keboan anom rt1/rw8 gedangan sidoarjo', 26, 'ds keboan anom rt1/rw8 gedangan sidoarjo', 'Bapak Faiq', '0812345678', 'Ibu Icha', '0812345678', 5000, 'Cash On Delivery', 11600, 100, 'PPN', 'Transfer', 0, 'Terbayar-Selesai', 'sampai lokasi pagi', '', '083173388708', NULL, '2022-07-04', '2022-07-05', 1);
 
 -- --------------------------------------------------------
 
@@ -353,6 +374,13 @@ CREATE TABLE `id_purchase_order_paid` (
   `bank` varchar(200) NOT NULL,
   `note` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `id_purchase_order_paid`
+--
+
+INSERT INTO `id_purchase_order_paid` (`id`, `purchase_order_id`, `paid_date`, `amount`, `bank`, `note`) VALUES
+(1, 1, '2022-07-05', 64554000, 'Mandiri 1430014465569 (PT Berdikari Jaya Bersama)', '');
 
 -- --------------------------------------------------------
 
@@ -377,14 +405,14 @@ CREATE TABLE `id_user` (
 --
 
 INSERT INTO `id_user` (`id`, `profilname`, `username`, `password`, `last_login`, `authKey`, `accessToken`, `type`, `blocked`) VALUES
-(1, '5', 'dedy', '$2y$13$.d2C0.bHMWLqkIT0k6Dd3.7xNwLBUey3mvzOwx/v.6fiDSOEzn/2e', '2022-06-28 16:19:29', 'd5fdbe5b16111739a53f6bedc2c29e5c', 'd5fdbe5b16111739a53f6bedc2c29e5c', 'Administrator', ''),
+(1, '5', 'dedy', '$2y$13$.d2C0.bHMWLqkIT0k6Dd3.7xNwLBUey3mvzOwx/v.6fiDSOEzn/2e', '2022-07-02 18:51:20', 'd5fdbe5b16111739a53f6bedc2c29e5c', 'd5fdbe5b16111739a53f6bedc2c29e5c', 'Administrator', ''),
 (7, '1', 'alisiachintya', '$2y$13$SMiUO/xBwZvGKMEKtfXe7.wG3qXPcUjCCkKcxHFSxfP11OzriM.s2', '2022-06-20 08:46:55', '60532c4e119ce506036cf74f655259dd', '60532c4e119ce506036cf74f655259dd', 'Marketing', ''),
 (12, '9', 'aly', '$2y$13$.7fwCl3DSo3.Gk4UjknlWOKflN.xU77CfRkZftCQ6Xp/6J.D.47ny', '2022-06-20 08:55:36', '33fb5fa89f84d0a48397f693a7c7c242', '33fb5fa89f84d0a48397f693a7c7c242', 'Marketing', ''),
-(16, '2', 'daniel', '$2y$13$1rUsrEDMK47J/WMIqVFFHO8Jz.eHFnxN4z7xq/31JaxlOy7WXwYHC', '2022-06-28 15:24:45', 'aa47f8215c6f30a0dcdb2a36a9f4168e', 'aa47f8215c6f30a0dcdb2a36a9f4168e', 'Manajemen', ''),
+(16, '2', 'daniel', '$2y$13$1rUsrEDMK47J/WMIqVFFHO8Jz.eHFnxN4z7xq/31JaxlOy7WXwYHC', '2022-07-02 18:46:53', 'aa47f8215c6f30a0dcdb2a36a9f4168e', 'aa47f8215c6f30a0dcdb2a36a9f4168e', 'Manajemen', ''),
 (17, '6', 'budi', '$2y$13$CswxJJBZ1QWKtmx28ohWBu9NfpJblNH3I1YFsditqRPjSGDiuU73a', '2022-06-17 09:56:41', '00dfc53ee86af02e742515cdcf075ed3', '00dfc53ee86af02e742515cdcf075ed3', 'Marketing', ''),
 (19, '17', 'ebet', '$2y$13$B/BSK305sYm0CE.K.0.E6.EYtDlG3526lH/tznlqlIDb1unUGkv.W', '2022-06-20 14:40:34', 'bc52c57a755cb90b05a8aab1142094d4', 'bc52c57a755cb90b05a8aab1142094d4', 'Marketing', ''),
 (22, '20', 'bre', '$2y$13$LWoLA.E0CTnzZsTUAybCg.j5qWYFKR/nxKtAMGjgOzlvxURr6Q0Py', '2022-06-20 08:51:30', '0cd00ec14f1d05d419375d6a37d183a6', '0cd00ec14f1d05d419375d6a37d183a6', 'Marketing', ''),
-(31, '32', 'irvan', '$2y$13$Rewy41tOoJ6NzxpAvNX1mOozR/ZccaiojYSmeamIVKc7lfI0N.z6u', '2022-06-28 15:22:29', '4c8e0251c853de2172b5e138075c7b3f', '4c8e0251c853de2172b5e138075c7b3f', 'Marketing', ''),
+(31, '32', 'irvan', '$2y$13$Rewy41tOoJ6NzxpAvNX1mOozR/ZccaiojYSmeamIVKc7lfI0N.z6u', '2022-07-02 18:44:04', '4c8e0251c853de2172b5e138075c7b3f', '4c8e0251c853de2172b5e138075c7b3f', 'Marketing', ''),
 (32, '33', 'zainul', '$2y$13$ziLFaA8JpuWPutpQGgZt8u2k8tl9s6nNkmpXrwdLzKZQBIL.fvwCS', '2022-06-17 16:03:02', '2072b90bc63f596b8908791f47617a7c', '2072b90bc63f596b8908791f47617a7c', 'Manajemen', ''),
 (33, '37', 'fio', '$2y$13$Aj2LNO1CbixvCXW.YqltbuVUoh0pg.kuAHyMReofFm9O3VsWUHOMq', '2022-02-03 08:37:47', 'f003984af6466a03625ae1b386ad8977', 'f003984af6466a03625ae1b386ad8977', 'Marketing', ''),
 (35, '35', 'rensy', '$2y$13$YLZ2jZXV7.chgPgQUEjFT.FfA7qqIcy2KH7rOBKYjcKY8Ta3PGJsa', '2022-06-20 08:44:38', '4210185c0564aaf8037de7b94c43a7a8', '4210185c0564aaf8037de7b94c43a7a8', 'Marketing', ''),
@@ -499,13 +527,13 @@ ALTER TABLE `id_city`
 -- AUTO_INCREMENT untuk tabel `id_customer`
 --
 ALTER TABLE `id_customer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `id_dailyreport`
 --
 ALTER TABLE `id_dailyreport`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `id_dashboard`
@@ -535,7 +563,7 @@ ALTER TABLE `id_karyawan`
 -- AUTO_INCREMENT untuk tabel `id_offer`
 --
 ALTER TABLE `id_offer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `id_offer_number`
@@ -547,13 +575,13 @@ ALTER TABLE `id_offer_number`
 -- AUTO_INCREMENT untuk tabel `id_purchase_order`
 --
 ALTER TABLE `id_purchase_order`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `id_purchase_order_paid`
 --
 ALTER TABLE `id_purchase_order_paid`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `id_user`

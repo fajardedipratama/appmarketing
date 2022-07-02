@@ -1,7 +1,6 @@
 <?php 
 use app\models\PurchaseOrder;
 use app\models\City;
-use app\models\Broker;
 
 function termin_value($value){
     if($value=='Cash On Delivery'){
@@ -40,7 +39,7 @@ $pph = round_up(($model->harga*0.3)/100,2);
 </head>
 <body style="margin-top: 0">
 
-<table border="1" style="font-family: Arial;font-size: 15px;margin-left: 65%" cellpadding="7" cellspacing="0">
+<table border="1" style="font-family: Arial;font-size: 15px" cellpadding="7" cellspacing="0">
 	<tbody>
 		<tr><td colspan="2" style="font-weight: bold;text-align: center;">FORM PO</td></tr>
 		<tr>
@@ -61,17 +60,6 @@ $pph = round_up(($model->harga*0.3)/100,2);
 		</tr>
 		<tr>
 			<td style="font-weight: bold;">Nama Sales</td><td><?= $model->karyawan->nama ?></td>
-		</tr>
-		<tr>
-			<td style="font-weight: bold;">Nama Broker</td>
-			<td><?php if($model->broker != NULL){
-						$query = Broker::find()->where(['id'=>$model->broker])->one();
-	                    echo $query['nama'];
-	                }else{
-	                	echo "-";
-	                }
-				?>
-			</td>
 		</tr>
 		<tr>
 			<td style="font-weight: bold;">No. PO</td><td><?= $model->no_po ?></td>

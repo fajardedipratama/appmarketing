@@ -10,7 +10,6 @@ use Yii;
  * @property int $id
  * @property int $perusahaan
  * @property int $sales
- * @property int|null $broker
  * @property string $no_po
  * @property string $tgl_po
  * @property string $tgl_kirim
@@ -32,12 +31,10 @@ use Yii;
  * @property string $catatan
  * @property string $alasan_tolak
  * @property string $penerima
- * @property string|null $eksternal
  * @property int|null $penalti
  * @property string|null $jatuh_tempo
  * @property string|null $tgl_lunas
  * @property int|null $range_paid
- * @property int|null $driver_id
  */
 class PurchaseOrder extends \yii\db\ActiveRecord
 {
@@ -57,9 +54,9 @@ class PurchaseOrder extends \yii\db\ActiveRecord
     {
         return [
             [['perusahaan', 'no_po', 'tgl_po', 'tgl_kirim', 'alamat', 'kota_kirim', 'alamat_kirim', 'purchasing', 'no_purchasing', 'volume', 'termin', 'harga', 'pajak', 'pembayaran','catatan'], 'required'],
-            [['perusahaan', 'sales', 'broker','kota_kirim', 'volume', 'harga', 'cashback','bilyet_giro','penalti','range_paid','driver_id'], 'integer'],
+            [['perusahaan', 'sales', 'kota_kirim', 'volume', 'harga', 'cashback','bilyet_giro','penalti','range_paid'], 'integer'],
             [['tgl_po', 'tgl_kirim','set_awal','set_akhir','jatuh_tempo','tgl_lunas'], 'safe'],
-            [['no_po', 'purchasing', 'no_purchasing', 'keuangan', 'no_keuangan', 'termin', 'pajak', 'pembayaran', 'status','penerima','eksternal'], 'string', 'max' => 100],
+            [['no_po', 'purchasing', 'no_purchasing', 'keuangan', 'no_keuangan', 'termin', 'pajak', 'pembayaran', 'status','penerima'], 'string', 'max' => 100],
             [['alamat', 'alamat_kirim', 'catatan', 'alasan_tolak'], 'string', 'max' => 1000],
         ];
     }
@@ -73,7 +70,6 @@ class PurchaseOrder extends \yii\db\ActiveRecord
             'id' => 'ID',
             'perusahaan' => 'Perusahaan',
             'sales' => 'Sales',
-            'broker' => 'Broker',
             'no_po' => 'No.PO',
             'tgl_po' => 'Tanggal PO',
             'tgl_kirim' => 'Tanggal Kirim',
@@ -95,14 +91,12 @@ class PurchaseOrder extends \yii\db\ActiveRecord
             'catatan' => 'Catatan',
             'alasan_tolak' => 'Alasan Tolak',
             'penerima' => 'Penerima + No.Hp',
-            'eksternal' => 'Eksternal ?',
             'penalti' => 'Penalti',
             'set_awal'=> 'Dari',
             'set_akhir'=> 'Sampai',
             'jatuh_tempo' => 'Jatuh Tempo',
             'tgl_lunas' => 'Tanggal Lunas',
             'range_paid' => 'Kirim-Bayar',
-            'driver_id' => 'Driver',
         ];
     }
     public function getCustomer()
@@ -113,25 +107,8 @@ class PurchaseOrder extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Karyawan::className(), ['id' => 'sales']);
     }
-    public function getBroker()
-    {
-        return $this->hasOne(Broker::className(), ['id' => 'broker']);
-    }
     public function getCity()
     {
         return $this->hasOne(City::className(), ['id' => 'kota_kirim']);
-    }
-    public function getDrivers()
-    {
-        return $this->hasOne(Drivers::className(), ['id' => 'driver_id']);
-    }
-    public function beforeSave($options = array()) {
-        if(!empty($this->eksternal)){
-            $this->eksternal = $this->eksternal;    
-        }else{
-            $this->eksternal = null;
-        }
-
-        return true;
     }
 }

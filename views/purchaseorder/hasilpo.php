@@ -87,14 +87,12 @@ $this->title = 'Hasil PO';
         <?php $po_pending = PurchaseOrder::find()->where(['status'=>'Pending'])->andWhere(['sales'=>$sales['id']])->sum('volume'); ?>
         <?php $po_ditolak = PurchaseOrder::find()->where(['status'=>'Ditolak'])->orWhere(['status'=>'Batal Kirim'])->andWhere(['sales'=>$sales['id']])->sum('volume'); ?>
         <?php $company = PurchaseOrder::find()->select(['perusahaan'])->where(['status'=>'Terkirim'])->orWhere(['status'=>'Terbayar-Selesai'])->andWhere(['sales'=>$sales['id']])->distinct()->count(); ?>
-        <?php $po_eksternal = PurchaseOrder::find()->where(['status'=>['Terkirim','Terbayar-Selesai']])->andWhere(['eksternal'=>'yes'])->andWhere(['sales'=>$sales['id']]); ?>
       <?php else: ?>
         <?php $po_terkirim = PurchaseOrder::find()->where(['status'=>['Terkirim','Terbayar-Selesai']])->andWhere(['sales'=>$sales['id']])->andWhere(['between','tgl_kirim',$set_awal,$set_akhir]); ?>
         <?php $po_belumkirim = PurchaseOrder::find()->where(['status'=>'Disetujui'])->andWhere(['sales'=>$sales['id']])->andWhere(['between','tgl_kirim',$set_awal,$set_akhir])->sum('volume'); ?>
         <?php $po_pending = PurchaseOrder::find()->where(['status'=>'Pending'])->andWhere(['sales'=>$sales['id']])->andWhere(['between','tgl_kirim',$set_awal,$set_akhir])->sum('volume'); ?>
         <?php $po_ditolak = PurchaseOrder::find()->where(['status'=>'Ditolak'])->orWhere(['status'=>'Batal Kirim'])->andWhere(['sales'=>$sales['id']])->andWhere(['between','tgl_kirim',$set_awal,$set_akhir])->sum('volume'); ?>
         <?php $company = PurchaseOrder::find()->select(['perusahaan'])->where(['status'=>'Terkirim'])->orWhere(['status'=>'Terbayar-Selesai'])->andWhere(['sales'=>$sales['id']])->andWhere(['between','tgl_kirim',$set_awal,$set_akhir])->distinct()->count(); ?>
-         <?php $po_eksternal = PurchaseOrder::find()->where(['status'=>['Terkirim','Terbayar-Selesai']])->andWhere(['eksternal'=>'yes'])->andWhere(['sales'=>$sales['id']])->andWhere(['between','tgl_kirim',$set_awal,$set_akhir]); ?>
       <?php endif; ?>
 
       <tr>
@@ -107,7 +105,7 @@ $this->title = 'Hasil PO';
           ?>
         </td>
         <td>
-          <?= $po_terkirim->count().'x PO dari '.$company.' Perusahaan, Total '.($po_terkirim->sum('volume')/1000).' KL'.' (bantuan '.($po_eksternal->sum('volume')/1000).' KL)'; ?>
+          <?= $po_terkirim->count().'x PO dari '.$company.' Perusahaan, Total '.($po_terkirim->sum('volume')/1000).' KL'; ?>
         </td>
         <td><?= ($po_belumkirim/1000).' KL'; ?></td>
         <td><?= ($po_pending/1000).' KL'; ?></td>
