@@ -18,7 +18,7 @@ class PurchaseorderSearch extends PurchaseOrder
     {
         return [
             [['id', 'perusahaan', 'sales','volume', 'harga', 'cashback', 'bilyet_giro','kota_kirim'], 'integer'],
-            [['no_po','tgl_po', 'tgl_kirim', 'alamat', 'alamat_kirim', 'purchasing', 'no_purchasing', 'keuangan', 'no_keuangan', 'termin', 'pajak', 'pembayaran','status', 'catatan', 'alasan_tolak','jatuh_tempo','tgl_lunas'], 'safe'],
+            [['no_po','tgl_po', 'tgl_kirim', 'alamat', 'alamat_kirim', 'purchasing', 'keuangan', 'termin', 'pajak', 'pembayaran','status', 'catatan', 'alasan_tolak','jatuh_tempo','tgl_lunas'], 'safe'],
         ];
     }
 
@@ -93,9 +93,7 @@ class PurchaseorderSearch extends PurchaseOrder
             ->andFilterWhere(['like', 'alamat', $this->alamat])
             ->andFilterWhere(['like', 'alamat_kirim', $this->alamat_kirim])
             ->andFilterWhere(['like', 'purchasing', $this->purchasing])
-            ->andFilterWhere(['like', 'no_purchasing', $this->no_purchasing])
             ->andFilterWhere(['like', 'keuangan', $this->keuangan])
-            ->andFilterWhere(['like', 'no_keuangan', $this->no_keuangan])
             ->andFilterWhere(['like', 'termin', $this->termin])
             ->andFilterWhere(['like', 'pajak', $this->pajak])
             ->andFilterWhere(['like', 'pembayaran', $this->pembayaran])

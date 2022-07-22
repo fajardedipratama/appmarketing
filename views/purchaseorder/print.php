@@ -46,7 +46,7 @@ $pph = round_up(($model->harga*0.3)/100,2);
 			<td style="font-weight: bold;">Status Order</td>
 			<td>
 				<?php 
-					$check=PurchaseOrder::find()->where(['perusahaan'=>$model->perusahaan])->andWhere(['status'=>['Pending','Terkirim','Terbayar-Selesai']])->andWhere(['<=','tgl_po',$model->tgl_po])->count();
+					$check=PurchaseOrder::find()->where(['perusahaan'=>$model->perusahaan])->andWhere(['status'=>['Pending','Disetujui','Terkirim','Terbayar-Selesai']])->andWhere(['<=','tgl_po',$model->tgl_po])->count();
                     if($check > 1){
                         echo "Repeat Order";
                     }else{
@@ -117,10 +117,10 @@ $pph = round_up(($model->harga*0.3)/100,2);
 			</td>
 		</tr>
 		<tr>
-			<td style="font-weight: bold;">Purchasing</td><td><?= $model->purchasing.' '.$model->no_purchasing ?></td>
+			<td style="font-weight: bold;">Purchasing</td><td><?= $model->purchasing ?></td>
 		</tr>
 		<tr>
-			<td style="font-weight: bold;">Keuangan</td><td><?= $model->keuangan.' '.$model->no_keuangan ?></td>
+			<td style="font-weight: bold;">Keuangan</td><td><?= $model->keuangan ?></td>
 		</tr>
 	</tbody>
 </table>

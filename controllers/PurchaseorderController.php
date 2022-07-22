@@ -5,7 +5,6 @@ namespace app\controllers;
 use Yii;
 use app\models\PurchaseOrder;
 use app\models\PurchaseOrderPaid;
-use app\models\PurchaseOrderFile;
 use app\models\City;
 use app\models\search\PurchaseorderSearch;
 use app\models\search\PurchasereviewSearch;
@@ -162,15 +161,6 @@ class PurchaseorderController extends Controller
             $modelpaid->save();
             return $this->redirect(['view', 'id' => $model->id]);
         }
-        //files
-        $modelfile = new PurchaseOrderFile();
-        if ($modelfile->load(Yii::$app->request->post()) ) {
-            //process
-            $modelfile->purchase_order_id = $id;
-            $modelfile->tgl_kirim=Yii::$app->formatter->asDate($modelfile->tgl_kirim,'yyyy-MM-dd');
-            $modelfile->save();
-            return $this->redirect(['view', 'id' => $model->id]);
-        }
 
         if(isset($_POST['tolak'])){
             Yii::$app->db->createCommand()->update('id_purchase_order',
@@ -182,7 +172,6 @@ class PurchaseorderController extends Controller
         return $this->render('view', [
             'model' => $model,
             'modelpaid' => $modelpaid,
-            'modelfile' => $modelfile,
         ]);
     }
     public function actionAccpo($id)

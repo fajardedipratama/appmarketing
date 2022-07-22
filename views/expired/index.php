@@ -47,17 +47,7 @@ $this->title = 'Data Expired';
                 },
                 'filter'=> ['yes'=>'yes','no'=>'no']
             ],
-            [
-                'attribute'=>'perusahaan',
-                'format'=>'raw',
-                'value'=>function($model){
-                    if($model->long_expired == 'yes'){
-                        return $model->perusahaan.' <i class="fa fa-fw fa-warning" title="Pernah Diperpanjang"></i>';
-                    }else{
-                        return $model->perusahaan;
-                    }
-                }
-            ],
+            'perusahaan',
             [
                 'attribute' => 'lokasi',
                 'value' => 'city.kota',
@@ -125,24 +115,6 @@ $this->title = 'Data Expired';
                 ],
                 'visible' => Yii::$app->user->identity->type == 'Administrator' || Yii::$app->user->identity->type == 'Manajemen',
             ],
-            // [
-            //     'class' => 'yii\grid\ActionColumn','header'=>'Detail',
-            //     'template' => '{view}',
-            //     'buttons'=>
-            //     [
-            //         'view'=>function($url,$model)
-            //         {
-            //             if(strtotime('+14 days', strtotime($model->expired)) <= strtotime(date('Y-m-d'))){
-            //                 return Html::a
-            //                 (
-            //                     '<span class="glyphicon glyphicon-eye-open"></span>',
-            //                     ["selfcustomer/view",'id'=>$model->id],['title' => Yii::t('app', 'View')],
-            //                 );
-            //             }
-            //         },
-            //     ],
-            //     'visible' => Yii::$app->user->identity->type == 'Marketing',
-            // ],
         ],
     ]); ?>
 </div></div></div>

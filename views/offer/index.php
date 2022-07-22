@@ -143,18 +143,6 @@ $this->title = 'Penawaran';
                       ['title' => Yii::t('app', 'View'),'target'=>'_blank'],
                     );
                 },
-                // 'duplicate'=>function($url,$model)
-                // {
-                //   return Html::a
-                //      (
-                //         '<span class="glyphicon glyphicon-minus-sign"></span>',
-                //         ["offer/duplicate",'id'=>$model->id],
-                //         [
-                //           'title' => Yii::t('app', 'Duplicate Data!'),
-                //           'data' => ['confirm' => 'Perusahaan terdeteksi duplikat ?','method' => 'post',],
-                //         ],
-                //      );
-                // },
               ],
               'visibleButtons' => [
                     'duplicate' => function ($model) {

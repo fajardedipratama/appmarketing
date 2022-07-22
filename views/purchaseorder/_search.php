@@ -33,11 +33,7 @@ use yii\widgets\ActiveForm;
 
     <?php // echo $form->field($model, 'purchasing') ?>
 
-    <?php // echo $form->field($model, 'no_purchasing') ?>
-
     <?php // echo $form->field($model, 'keuangan') ?>
-
-    <?php // echo $form->field($model, 'no_keuangan') ?>
 
     <?php // echo $form->field($model, 'volume') ?>
 

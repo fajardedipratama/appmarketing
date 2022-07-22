@@ -158,18 +158,8 @@ $this->title = 'PURCHASE ORDER';
                     return $data->alamat_kirim.' ('.$city['kota'].')';
                 }
             ],
-            [
-                'attribute'=>'purchasing',
-                'value'=>function($data){
-                    return $data->purchasing.' - '.$data->no_purchasing;
-                }
-            ],
-            [
-                'attribute'=>'keuangan',
-                'value'=>function($data){
-                    return $data->keuangan.' - '.$data->no_keuangan;
-                }
-            ],
+            'purchasing',
+            'keuangan',
             'penerima',
             'volume',
             'termin',

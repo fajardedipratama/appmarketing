@@ -18,7 +18,7 @@ class ExpiredSearch extends Customer
     {
         return [
             [['id', 'sales', 'created_by'], 'integer'],
-            [['perusahaan', 'lokasi', 'alamat_lengkap', 'pic', 'telfon', 'email', 'catatan', 'expired', 'long_expired', 'created_time', 'verified'], 'safe'],
+            [['perusahaan', 'lokasi', 'alamat_lengkap', 'pic', 'telfon', 'email', 'catatan', 'expired', 'created_time', 'verified'], 'safe'],
         ];
     }
 
@@ -82,7 +82,6 @@ class ExpiredSearch extends Customer
             ->andFilterWhere(['like', 'telfon', $this->telfon])
             ->andFilterWhere(['like', 'email', $this->email])
             ->andFilterWhere(['like', 'catatan', $this->catatan])
-            ->andFilterWhere(['like', 'long_expired', $this->long_expired])
             ->andFilterWhere(['like', 'verified', $this->verified]);
 
         return $dataProvider;

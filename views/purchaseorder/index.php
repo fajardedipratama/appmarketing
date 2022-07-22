@@ -73,19 +73,6 @@ $this->title = 'Data PO';
                 ],
               ])
             ],
-            // [
-            //   'attribute'=>'tgl_po',
-            //   'value' => function($data){
-            //     return $data->tgl_po;
-            //   },
-            //   'headerOptions'=>['style'=>'width:15%'],
-            //   'format' => ['date','dd-MM-Y'],
-            //   'filter'=> DatePicker::widget([
-            //     'model'=>$searchModel,'attribute'=>'tgl_po','clientOptions'=>[
-            //       'autoclose'=>true, 'format' => 'dd-mm-yyyy','orientation'=>'bottom'
-            //     ],
-            //   ])
-            // ],
             [
               'attribute'=>'jatuh_tempo',
               'value' => function($data){

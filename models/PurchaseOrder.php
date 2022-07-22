@@ -17,9 +17,7 @@ use Yii;
  * @property int|null $kota_kirim
  * @property string $alamat_kirim
  * @property string $purchasing
- * @property string $no_purchasing
  * @property string $keuangan
- * @property string $no_keuangan
  * @property int $volume
  * @property string $termin
  * @property int $harga
@@ -53,10 +51,10 @@ class PurchaseOrder extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['perusahaan', 'no_po', 'tgl_po', 'tgl_kirim', 'alamat', 'kota_kirim', 'alamat_kirim', 'purchasing', 'no_purchasing', 'volume', 'termin', 'harga', 'pajak', 'pembayaran','catatan'], 'required'],
+            [['perusahaan', 'no_po', 'tgl_po', 'tgl_kirim', 'alamat', 'kota_kirim', 'alamat_kirim', 'purchasing','volume', 'termin', 'harga', 'pajak', 'pembayaran','catatan'], 'required'],
             [['perusahaan', 'sales', 'kota_kirim', 'volume', 'harga', 'cashback','bilyet_giro','penalti','range_paid'], 'integer'],
             [['tgl_po', 'tgl_kirim','set_awal','set_akhir','jatuh_tempo','tgl_lunas'], 'safe'],
-            [['no_po', 'purchasing', 'no_purchasing', 'keuangan', 'no_keuangan', 'termin', 'pajak', 'pembayaran', 'status','penerima'], 'string', 'max' => 100],
+            [['no_po', 'purchasing', 'keuangan', 'termin', 'pajak', 'pembayaran', 'status','penerima'], 'string', 'max' => 100],
             [['alamat', 'alamat_kirim', 'catatan', 'alasan_tolak'], 'string', 'max' => 1000],
         ];
     }
@@ -77,9 +75,7 @@ class PurchaseOrder extends \yii\db\ActiveRecord
             'kota_kirim' => 'Kab/Kota Kirim',
             'alamat_kirim' => 'Alamat Kirim',
             'purchasing' => 'Purchasing',
-            'no_purchasing' => 'No.HP Purchasing',
             'keuangan' => 'Keuangan',
-            'no_keuangan' => 'No.HP Keuangan',
             'volume' => 'Volume(l)',
             'termin' => 'Pembayaran',
             'harga' => 'Harga/liter (Total)',

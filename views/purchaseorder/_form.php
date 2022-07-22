@@ -100,13 +100,7 @@ use dosamigos\datepicker\DatePicker;
         <?= $form->field($model, 'purchasing')->textInput(['maxlength' => true]) ?>
     </div>
     <div class="col-sm-4">
-        <?= $form->field($model, 'no_purchasing')->textInput(['maxlength' => true]) ?>
-    </div>
-    <div class="col-sm-4">
         <?= $form->field($model, 'keuangan')->textInput(['maxlength' => true]) ?>
-    </div>
-    <div class="col-sm-4">
-        <?= $form->field($model, 'no_keuangan')->textInput(['maxlength' => true]) ?>
     </div>
     <div class="col-sm-4">
         <?= $form->field($model, 'volume')->textInput(['type'=>'number']) ?>
